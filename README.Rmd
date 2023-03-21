@@ -1,0 +1,110 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# plume
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/arnaudgallou/plume/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/arnaudgallou/plume/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+## Overview
+
+plume provides tools for handling and generating author-related information for scientific writing in Rmarkdown and Quarto.
+The package implements two `R6` classes:
+
+- `Plume`: class that generates author lists and other author-related information
+from tabular data.
+
+- `PlumeQuarto`: class extending `Plume` that allows you to push or update author metadata in the yaml header of a Quarto file. The generated yaml complies with [Quarto's author and affiliations schemas](https://quarto.org/docs/journals/authors.html).
+
+## Installation
+
+You can install the development version of plume from GitHub with:
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("arnaudgallou/plume")
+```
+
+## Usage
+
+The minimal required data to work with plume classes is a data set containing given and family names but you would normally want to provide more information such as email addresses, orcid, affiliations, etc.
+
+```{r, message = FALSE}
+library(plume)
+
+encyclopedists
+
+aut <- PlumeQuarto$new(encyclopedists)
+aut
+```
+
+```{r, include = FALSE}
+tmp <- withr::local_tempfile(
+  lines = "---\ntitle: Encyclopédie\n---\n\nQui scribit bis legit",
+  fileext = ".qmd"
+)
+```
+
+`PlumeQuarto` lets you push author metadata in the yaml header of any `.qmd` files using `to_yaml()`.
+
+Consider the following example:
+
+```{r, echo = FALSE, comment = ""}
+cat(readr::read_file(tmp))
+```
+
+```{r, eval = FALSE}
+aut$set_corresponding_authors(1, 4)
+aut$to_yaml("file.qmd")
+```
+
+```{r, echo = FALSE, comment = ""}
+aut$set_corresponding_authors(1, 4)
+aut$to_yaml(tmp)
+cat(readr::read_file(tmp))
+```
+
+You can also generate author information as character strings:
+
+```{r, message = FALSE}
+aut <- Plume$new(encyclopedists, names = c(contribution = "contribution_n"))
+aut$set_corresponding_authors(diderot, by = "family_name")
+
+aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
+
+aut$get_contact_details()
+
+aut$get_affiliations()
+
+aut$get_notes()
+
+aut$get_contributions()
+
+aut_v <- Plume$new(
+  encyclopedists,
+  names = c(contribution = "contribution_v"),
+  symbols = list(affiliation = letters)
+)
+
+aut_v$get_author_list(format = "^a^") |> enumerate(last = ",\n")
+
+aut_v$get_contributions(role_first = FALSE, name_list = TRUE)
+```
+
+## Acknowledgements
+
+Thanks to [Richard J. Telford](https://github.com/richardjtelford) for his advice
+that helped me conceive this package.

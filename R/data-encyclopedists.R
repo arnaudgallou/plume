@@ -1,0 +1,26 @@
+#' Famous encyclopedists
+#'
+#' Data on four famous authors of the Encyclopédie (originally "Encyclopédie, ou
+#' dictionnaire raisonné des sciences, des arts et des métiers") published in
+#' France in the second half of the 18th century. The data set is available in
+#' English (`encyclopedists`) and French (`encyclopedists_fr`).
+#'
+#' @format A tibble with 4 rows and 11 variables:
+#' \describe{
+#'   \item{given_name,prénom}{authors' given names}
+#'   \item{family_name,nom}{authors' family names}
+#'   \item{email,courriel}{authors' email addresses}
+#'   \item{number,numéro}{authors' phone numbers}
+#'   \item{affiliation}{authors' affiliations}
+#'   \item{contribution_n}{authors' contributions written as nouns}
+#'   \item{contribution_v}{authors' contributions written as active verbs}
+#'   \item{note}{special notes about authors}
+#' }
+#' @examples
+#' encyclopedists
+#' encyclopedists_fr
+"encyclopedists"
+
+#' @rdname encyclopedists
+#' @format NULL
+"encyclopedists_fr"

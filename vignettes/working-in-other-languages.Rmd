@@ -1,0 +1,40 @@
+---
+title: "Working in other languages"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Working in other languages}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(plume)
+```
+
+If you work in a language other than English, you can extend plume classes with default names in your desired language. plume provides `set_default_names()` to help you assign new names.
+
+E.g. to extend `PlumeQuarto` with default names in French:
+
+```{r}
+PlumeQuartoFr <- R6::R6Class(
+  classname = "PlumeQuartoFr",
+  inherit = PlumeQuarto,
+  private = list(
+    plume_names = set_default_names(
+      initials = "initiales",
+      literal_name = "nom_complet",
+      corresponding = "correspondant",
+      deceased = "décédé",
+      equal_contributor = "contribution_égale",
+      given_name = "prénom",
+      family_name = "nom",
+      dropping_particle = "particule_delaissée",
+      email = "courriel",
+      number = "numéro"
+    )
+  )
+)
+
+PlumeQuartoFr$new(encyclopedists_fr)
+```

@@ -1,0 +1,304 @@
+---
+title: "Introduction to plume"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to plume}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+options(str = strOptions(vec.len = 9))
+library(plume)
+library(readr)
+```
+
+The goal of the plume package is to make the handling and formatting of author data for scientific writing in Rmarkdown and Quarto easy and (almost) painless.
+
+## Example data
+
+We'll use the data sets `encyclopedists` and `encyclopedists_fr` to explore the different functionalities of the package. These data sets contain information on four famous authors of the "Encyclopédie", published in France in the 18th century. `encyclopedists_fr` is the French translation of `encyclopedists` and will be used to illustrate how to handle custom variable names. Both data sets are documented in `?encyclopedists`.
+
+```{r}
+encyclopedists
+```
+
+## Creating a `plume` object
+
+plume provides two `R6` classes, namely `Plume` and `PlumeQuarto`. To create a `plume` object, simply write the name of the class you want to use followed by the `new()` method. plume classes take a data frame or tibble as input data. The input data must have at least two columns named `given_name` and `family_name`.
+
+```{r}
+Plume$new(encyclopedists)
+```
+
+## Default variables
+
+The default variables handled by plume classes are organised into five categories:
+
+```{r, echo = FALSE, results = "asis"}
+plume_keys <- lapply(plume:::default_names(), names)
+```
+
+**Primary**: variables required to create a `Plume` object.
+
+```{r, echo = FALSE, results = "asis"}
+cat(paste("*", plume:::wrap(plume_keys$primary, "`")), sep = "\n\n")
+```
+
+**Secondary**: optional variables that can be provided in the input data.
+
+```{r, echo = FALSE, results = "asis"}
+cat(paste("*", plume:::wrap(plume_keys$secondary, "`")), sep = "\n\n")
+```
+
+**Nestable**: optional variables that can be provided in the input data. These variables differ from the `secondary` variables in that they can be used to pass multiple independent values to authors. Nestable variables must start with the same prefix. E.g. `affiliation_1`, `affiliation_2`, ..., `affiliation_n` to pass several affiliations to authors.
+
+```{r, echo = FALSE, results = "asis"}
+cat(paste("*", plume:::wrap(plume_keys$nestable, "`")), sep = "\n\n")
+```
+
+**Internal**: variables created internally. These variables don't need to be provided in the input data and are ignored if supplied. You shouldn't worry much about these variables unless you want to customise names or extend plume classes with new default names.
+
+```{r, echo = FALSE, results = "asis"}
+cat(paste("*", plume:::wrap(plume_keys$internal, "`")), sep = "\n\n")
+```
+
+**Meta**: `PlumeQuarto`-specific variables used to pass extra information that don't fit in other categories. Meta columns must start with the prefix `meta-` and are followed by a custom name (e.g. `meta-extra_info`). You should only use these variables to pass data that are template specific. See Quarto's [arbitrary-metadata](quarto.org/docs/journals/authors.html#arbitrary-metadata) section for details.
+
+## Using custom names
+
+plume lets you use custom variable names. Simply provide the `names` parameter a named vector when instantiating a plume class, where keys are default names and values their respective replacements.
+
+```{r}
+Plume$new(
+  encyclopedists_fr,
+  names = c(
+    given_name = "prénom",
+    family_name = "nom",
+    literal_name = "nom_complet",
+    email = "courriel",
+    initials = "initiales",
+    contribution = "contribution_v"
+  )
+)
+```
+
+## Pushing data into a yaml header
+
+`PlumeQuarto` allows you to inject author metadata directly into the yaml header of a `.qmd` file.
+
+Consider the following `.qmd` file:
+
+```{r, include = FALSE}
+tmp <- withr::local_tempfile(
+  lines = "---\ntitle: Encyclopédie\n---\n\nQui scribit bis legit",
+  fileext = ".qmd"
+)
+```
+
+```{r, echo = FALSE, comment = ""}
+cat(read_file(tmp))
+```
+
+You can push information from the input data into the yaml header using the `to_yaml()` method.
+
+```{r, eval = FALSE}
+aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 1, 4))
+aut$to_yaml("file.qmd")
+```
+
+```{r, echo = FALSE, comment = ""}
+aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 1, 4))
+aut$to_yaml(tmp)
+cat(read_file(tmp))
+```
+
+Authors are listed in the order they're defined in the input data.
+
+If the yaml header already has an `author` and `affiliations` keys, `to_yaml()` replaces old values with new ones.
+
+```{r, eval = FALSE}
+aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 2))
+aut$to_yaml("file.qmd")
+```
+
+```{r, echo = FALSE, comment = ""}
+aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 2))
+aut$to_yaml(tmp)
+cat(read_file(tmp))
+```
+
+## Assigning status to authors
+
+plume provides three methods to set particular status to authors:
+
+- `set_corresponding_authors()`
+
+- `set_equal_contributor()`
+
+- `set_deceased()`
+
+`set_equal_contributor()` and `set_deceased()` are specific to `PlumeQuarto`. You can specify equal contributors and deceased authors in `Plume` via the `note` variable.
+
+By default, `set_*()` methods assign values by authors' id. You can change this behavior at the object or method level using the `by` parameter.
+
+Note that these methods are case insensitive.
+
+```{r}
+aut <- Plume$new(
+  dplyr::select(encyclopedists, given_name, family_name),
+  by = "initials"
+)
+
+aut$set_corresponding_authors(dd, "j-jr")
+aut
+
+aut$set_corresponding_authors(arouet, by = "family_name")
+aut
+```
+
+Use the `"all"` keyword to assign `TRUE` to all authors.
+
+```{r}
+aut$set_corresponding_authors("all")
+aut
+```
+
+## Getting author information
+
+`get_*()` methods format author information into character vectors. This can be useful if you want to output author data in a document without using journal templates, print contributions or simply to generate author information ready to be copy-pasted for other documents.
+
+### Author lists
+
+`get_author_list()` generates author lists. You can control the formatting of author suffixes (symbols linking authors to affiliations, notes and other metadata) using the `format` parameter. `format` takes a character string as argument and allows you to choose which symbol categories to suffix authors with, using the following keys:
+
+- `a` for affiliations
+
+- `c` for corresponding authors
+
+- `n` for notes
+
+- `o` for ORCIDs
+
+The order of the keys determines the order of symbol categories.
+
+```{r}
+aut <- Plume$new(encyclopedists)
+aut$set_corresponding_authors("all")
+
+aut$get_author_list(format = "ac") |> enumerate(last = ",\n")
+
+aut$get_author_list(format = "ca") |> enumerate(last = ",\n")
+```
+
+In addition, you can use `^` to superscript and `,` to separate symbols.
+
+```{r}
+aut$set_corresponding_authors(1, 4)
+
+aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
+```
+
+Use `format = NULL` to ignore suffixes:
+
+```{r}
+aut$get_author_list(format = NULL) |> enumerate()
+```
+
+### Affiliations & notes
+
+`get_affiliations()` and `get_notes()` return authors' affiliations and notes.
+
+```{r}
+aut$get_affiliations()
+
+aut$get_notes(sep = ": ", superscript = FALSE)
+```
+
+### Contact details
+
+You can get contact details of corresponding authors using the `get_contact_details()` method.
+
+```{r}
+aut$get_contact_details()
+
+aut$get_contact_details(number = TRUE)
+
+aut$get_contact_details(format = "{details} ({name})")
+```
+
+### Contributions
+
+plume provides a convenient way to generate contribution lists using the `get_contributions()` method.
+
+```{r}
+aut <- Plume$new(encyclopedists, names = c(contribution = "contribution_n"))
+aut$get_contributions()
+
+aut$get_contributions(role_first = FALSE, literal_name = TRUE)
+
+aut_v <- Plume$new(encyclopedists, names = c(contribution = "contribution_v"))
+aut_v$get_contributions(role_first = FALSE, name_list = TRUE)
+```
+
+By default, `get_contributions()` lists contributors in the order they're defined. You can arrange contributors in alphabetical order with `alphabetical_order = TRUE`.
+
+```{r}
+aut$get_contributions(alphabetical_order = TRUE)
+```
+
+## Symbols
+
+Default symbols are:
+
+```{r}
+str(aut$symbols)
+```
+
+You can change symbols when creating a `plume` object using the parameter `symbols`.
+
+Use `NULL` to display numbers.
+
+```{r}
+aut <- Plume$new(encyclopedists, symbols = list(affiliation = letters, note = NULL))
+
+aut$get_author_list(format = "^a,n^") |> enumerate(last = ",\n")
+```
+
+Use `NULL` as much as possible for symbols using numerous unique items (typically affiliations). If you have to use letters for a given category that has more unique items than letters, you can control the sequencing behaviour using the `sequential()` modifier, as shown below.
+
+```{r, eval = FALSE}
+Plume$new(
+  encyclopedists,
+  symbols = list(affiliation = sequential(letters))
+)
+```
+
+By default, plume repeats elements when all elements in a vector are consumed. Using `sequential()` allows you to display a logical sequence of characters (e.g. `a, b, c, ..., z, aa, ab, ac, ..., az, ba, bb, bc, ...`).
+
+## Outputting as markdown content
+
+To output author data as markdown content on multiple lines, use the chunk option `results = "asis"` in combination with `cat()`.
+
+In Rmarkdown:
+
+````{verbatim}
+```{r, results = "asis"}
+aut$get_contributions() |> cat(sep = "\n\n")
+```
+````
+
+Or in Quarto:
+
+````{verbatim}
+```{r}
+#| results = "asis"
+
+aut$get_contributions() |> cat(sep = "\n\n")
+```
+````
+
+Inline chunks output values "as is" by default and can be used as follows:
+
+`` `r knitr::inline_expr("aut$get_contact_details()")` ``
