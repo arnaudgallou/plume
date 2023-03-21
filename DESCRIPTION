@@ -8,7 +8,8 @@ Authors@R:
 Description: A tool for handling and printing author information in
     Rmarkdown and Quarto.
 License: MIT + file LICENSE
-URL: https://github.com/arnaudgallou/plume
+URL: https://github.com/arnaudgallou/plume,
+    https://arnaudgallou.github.io/plume/
 BugReports: https://github.com/arnaudgallou/plume/issues
 Depends: 
     R (>= 4.1.0)
@@ -33,6 +34,7 @@ Suggests:
     withr
 VignetteBuilder: 
     knitr
+Config/Needs/website: arnaudgallou/cygne
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB

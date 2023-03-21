@@ -1,0 +1,23 @@
+url: https://arnaudgallou.github.io/plume/
+template:
+  bootstrap: 5
+  package: cygne
+reference:
+  - title: Classes
+    contents:
+      - PlumeQuarto
+      - Plume
+      - PlumeHandler
+      - NameHandler
+  - title: Helpers
+    contents:
+      - enumerate
+      - plume_template
+      - sequential
+      - set_default_names
+  - title: Built-in datasets
+    contents:
+      - encyclopedists
+      - encyclopedists_fr
+development:
+  mode: auto

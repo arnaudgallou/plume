@@ -13,6 +13,7 @@ and Quarto.
 Useful links:
 \itemize{
   \item \url{https://github.com/arnaudgallou/plume}
+  \item \url{https://arnaudgallou.github.io/plume/}
   \item Report bugs at \url{https://github.com/arnaudgallou/plume/issues}
 }
 
