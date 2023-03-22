@@ -40,7 +40,7 @@ The default variables handled by plume classes are organised into five categorie
 plume_keys <- lapply(plume:::default_names(), names)
 ```
 
-**Primary**: variables required to create a `Plume` object.
+**Primary**: variables required to create a `plume` object.
 
 ```{r, echo = FALSE, results = "asis"}
 cat(paste("*", plume:::wrap(plume_keys$primary, "`")), sep = "\n\n")
@@ -64,7 +64,7 @@ cat(paste("*", plume:::wrap(plume_keys$nestable, "`")), sep = "\n\n")
 cat(paste("*", plume:::wrap(plume_keys$internal, "`")), sep = "\n\n")
 ```
 
-**Meta**: `PlumeQuarto`-specific variables used to pass extra information that don't fit in other categories. Meta columns must start with the prefix `meta-` and are followed by a custom name (e.g. `meta-extra_info`). You should only use these variables to pass data that are template specific. See Quarto's [arbitrary-metadata](quarto.org/docs/journals/authors.html#arbitrary-metadata) section for details.
+**Meta**: `PlumeQuarto`-specific variables used to pass extra information that doesn't fit in other categories. Meta columns must start with the prefix `meta-` and are followed by a custom name (e.g. `meta-extra_info`). You should only use these variables to pass data that are template specific. See Quarto's [arbitrary-metadata](quarto.org/docs/journals/authors.html#arbitrary-metadata) section for details.
 
 ## Using custom names
 

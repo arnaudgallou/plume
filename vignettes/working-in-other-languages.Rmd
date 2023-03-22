@@ -29,7 +29,7 @@ PlumeQuartoFr <- R6::R6Class(
       equal_contributor = "contribution_égale",
       given_name = "prénom",
       family_name = "nom",
-      dropping_particle = "particule_delaissée",
+      dropping_particle = "particule_délaissée",
       email = "courriel",
       number = "numéro"
     )
