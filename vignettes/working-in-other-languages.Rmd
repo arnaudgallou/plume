@@ -12,7 +12,7 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 library(plume)
 ```
 
-If you work in a language other than English, you can extend plume classes with default names in your desired language. plume provides `set_default_names()` to help you assign new names.
+If you work in a language other than English, you can extend plume classes with default names in your desired language. plume provides `set_default_names()` to help you set new default names.
 
 E.g. to extend `PlumeQuarto` with default names in French:
 
