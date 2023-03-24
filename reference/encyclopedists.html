@@ -105,39 +105,31 @@ English (<code>encyclopedists</code>) and French (<code>encyclopedists_fr</code>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">encyclopedists</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   given_name  famil…¹ email number contr…² contr…³ contr…⁴ contr…⁵ note  affil…⁶</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Denis       Diderot dide… 00 00… Writing Superv… contri… superv… born… Univer…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Jean-Jacqu… Rousse… rous… <span style="color: #BB0000;">NA</span>     Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    Lycée …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> François-M… Arouet  arou… <span style="color: #BB0000;">NA</span>     Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      also… Lycée …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Jean        Le Ron… alem… <span style="color: #BB0000;">NA</span>     Writing Superv… contri… superv… born… Univer…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: affiliation2 &lt;chr&gt;, and abbreviated variable names</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​family_name, ²​contribution_n1, ³​contribution_n2, ⁴​contribution_v1,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁵​contribution_v2, ⁶​affiliation1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   given_name     family_name        email number contribution_n1 contribution_n2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Denis          Diderot            dide… 00 00… Writing         Supervision    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau           rous… <span style="color: #BB0000;">NA</span>     Writing         <span style="color: #BB0000;">NA</span>             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> François-Marie Arouet             arou… <span style="color: #BB0000;">NA</span>     Writing         <span style="color: #BB0000;">NA</span>             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'Alembert alem… <span style="color: #BB0000;">NA</span>     Writing         Supervision    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: contribution_v1 &lt;chr&gt;, contribution_v2 &lt;chr&gt;, note &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="va">encyclopedists_fr</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   prénom      nom   courr…¹ numéro contr…² contr…³ contr…⁴ contr…⁵ note  affil…⁶</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Denis       Dide… didero… 00 00… Rédact… Superv… ont co… ont su… né e… Univer…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Jean-Jacqu… Rous… rousse… <span style="color: #BB0000;">NA</span>     Rédact… <span style="color: #BB0000;">NA</span>      ont co… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    Lycée …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> François-M… Arou… arouet… <span style="color: #BB0000;">NA</span>     Rédact… <span style="color: #BB0000;">NA</span>      ont co… <span style="color: #BB0000;">NA</span>      dit … Lycée …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Jean        Le R… alembe… <span style="color: #BB0000;">NA</span>     Rédact… Superv… ont co… ont su… né e… Univer…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: affiliation2 &lt;chr&gt;, and abbreviated variable names</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​courriel, ²​contribution_n1, ³​contribution_n2, ⁴​contribution_v1,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁵​contribution_v2, ⁶​affiliation1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   prénom   nom   courriel numéro contribution_n1 contribution_n2 contribution_v1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Denis    Dide… diderot… 00 00… Rédaction       Supervision     ont contribué …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Jean-Ja… Rous… roussea… <span style="color: #BB0000;">NA</span>     Rédaction       <span style="color: #BB0000;">NA</span>              ont contribué …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Françoi… Arou… arouet@… <span style="color: #BB0000;">NA</span>     Rédaction       <span style="color: #BB0000;">NA</span>              ont contribué …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Jean     Le R… alember… <span style="color: #BB0000;">NA</span>     Rédaction       Supervision     ont contribué …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4 more variables: contribution_v2 &lt;chr&gt;, note &lt;chr&gt;, affiliation1 &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   affiliation2 &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
 
-    <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by Arnaud Gallou.</p>
-</div>
-
-<div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
-</div>
+    <footer><p>Developed by Arnaud Gallou.</p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 
     </footer></div>
 

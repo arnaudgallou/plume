@@ -98,15 +98,14 @@ custom variable names. Both data sets are documented in
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">encyclopedists</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 11</span></span></span>
-<span><span class="co">#&gt;   given_name  famil…¹ email number contr…² contr…³ contr…⁴ contr…⁵ note  affil…⁶</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis       Diderot dide… 00 00… Writing Superv… contri… superv… born… Univer…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacqu… Rousse… rous… <span style="color: #BB0000;">NA</span>     Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    Lycée …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-M… Arouet  arou… <span style="color: #BB0000;">NA</span>     Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      also… Lycée …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean        Le Ron… alem… <span style="color: #BB0000;">NA</span>     Writing Superv… contri… superv… born… Univer…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 1 more variable: affiliation2 &lt;chr&gt;, and abbreviated variable names</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ¹​family_name, ²​contribution_n1, ³​contribution_n2, ⁴​contribution_v1,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ⁵​contribution_v2, ⁶​affiliation1</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   given_name     family_name        email number contribution_n1 contribution_n2</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis          Diderot            dide… 00 00… Writing         Supervision    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau           rous… <span style="color: #BB0000;">NA</span>     Writing         <span style="color: #BB0000;">NA</span>             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-Marie Arouet             arou… <span style="color: #BB0000;">NA</span>     Writing         <span style="color: #BB0000;">NA</span>             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'Alembert alem… <span style="color: #BB0000;">NA</span>     Writing         Supervision    </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5 more variables: contribution_v1 &lt;chr&gt;, contribution_v2 &lt;chr&gt;, note &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="creating-a-plume-object">Creating a <code>plume</code> object<a class="anchor" aria-label="anchor" href="#creating-a-plume-object"></a>
@@ -120,14 +119,13 @@ input data. The input data must have at least two columns named
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 10</span></span></span>
-<span><span class="co">#&gt;      id given_name  famil…¹ liter…² initi…³ email number note  affili…⁴ contri…⁵</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis       Diderot Denis … DD      dide… 00 00… born… &lt;tibble&gt; &lt;tibble&gt;</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacqu… Rousse… Jean-J… J-JR    rous… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    &lt;tibble&gt; &lt;tibble&gt;</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-M… Arouet  Franço… F-MA    arou… <span style="color: #BB0000;">NA</span>     also… &lt;tibble&gt; &lt;tibble&gt;</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean        Le Ron… Jean L… JLRA    alem… <span style="color: #BB0000;">NA</span>     born… &lt;tibble&gt; &lt;tibble&gt;</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​family_name, ²​literal_name, ³​initials,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​affiliation, ⁵​contribution</span></span></span></code></pre></div>
+<span><span class="co">#&gt;      id given_name     family_name      literal_name initials email number note </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot          Denis Dider… DD       dide… 00 00… born…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau         Jean-Jacque… J-JR     rous… <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet           François-Ma… F-MA     arou… <span style="color: #BB0000;">NA</span>     also…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alemb… Jean Le Ron… JLRA     alem… <span style="color: #BB0000;">NA</span>     born…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation &lt;list&gt;, contribution &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="default-variables">Default variables<a class="anchor" aria-label="anchor" href="#default-variables"></a>
@@ -201,14 +199,13 @@ replacements.</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 9</span></span></span>
-<span><span class="co">#&gt;      id prénom         nom       nom_c…¹ initi…² courr…³ note  affili…⁴ contri…⁵</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot   Denis … DD      didero… né e… &lt;tibble&gt; &lt;tibble&gt;</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau  Jean-J… J-JR    rousse… <span style="color: #BB0000;">NA</span>    &lt;tibble&gt; &lt;tibble&gt;</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet    Franço… F-MA    arouet… dit … &lt;tibble&gt; &lt;tibble&gt;</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond … Jean L… JLRA    alembe… né e… &lt;tibble&gt; &lt;tibble&gt;</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​nom_complet, ²​initiales, ³​courriel,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​affiliation, ⁵​contribution_v</span></span></span></code></pre></div>
+<span><span class="co">#&gt;      id prénom         nom      nom_complet initiales courriel note  affiliation</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot  Denis Dide… DD        diderot… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau Jean-Jacqu… J-JR      roussea… <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet   François-M… F-MA      arouet@… dit … <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond… Jean Le Ro… JLRA      alember… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: contribution_v &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="pushing-data-into-a-yaml-header">Pushing data into a yaml header<a class="anchor" aria-label="anchor" href="#pushing-data-into-a-yaml-header"></a>
@@ -306,37 +303,34 @@ id. You can change this behavior at the object or method level using the
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="va">dd</span>, <span class="st">"j-jr"</span><span class="op">)</span></span>
 <span><span class="va">aut</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 6</span></span></span>
-<span><span class="co">#&gt;      id given_name     family_name        literal_name           initi…¹ corre…²</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot            Denis Diderot          DD      TRUE   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau           Jean-Jacques Rousseau  J-JR    TRUE   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet             François-Marie Arouet  F-MA    FALSE  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d'Alembe… JLRA    FALSE  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​initials, ²​corresponding</span></span></span>
+<span><span class="co">#&gt;      id given_name     family_name        literal_name    initials corresponding</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot            Denis Diderot   DD       TRUE         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau           Jean-Jacques R… J-JR     TRUE         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet             François-Marie… F-MA     FALSE        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRA     FALSE</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="va">arouet</span>, by <span class="op">=</span> <span class="st">"family_name"</span><span class="op">)</span></span>
 <span><span class="va">aut</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 6</span></span></span>
-<span><span class="co">#&gt;      id given_name     family_name        literal_name           initi…¹ corre…²</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot            Denis Diderot          DD      FALSE  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau           Jean-Jacques Rousseau  J-JR    FALSE  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet             François-Marie Arouet  F-MA    TRUE   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d'Alembe… JLRA    FALSE  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​initials, ²​corresponding</span></span></span></code></pre></div>
+<span><span class="co">#&gt;      id given_name     family_name        literal_name    initials corresponding</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot            Denis Diderot   DD       FALSE        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau           Jean-Jacques R… J-JR     FALSE        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet             François-Marie… F-MA     TRUE         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRA     FALSE</span></span></code></pre></div>
 <p>Use the <code>"all"</code> keyword to assign <code>TRUE</code> to all
 authors.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="st">"all"</span><span class="op">)</span></span>
 <span><span class="va">aut</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 6</span></span></span>
-<span><span class="co">#&gt;      id given_name     family_name        literal_name           initi…¹ corre…²</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot            Denis Diderot          DD      TRUE   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau           Jean-Jacques Rousseau  J-JR    TRUE   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet             François-Marie Arouet  F-MA    TRUE   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d'Alembe… JLRA    TRUE   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​initials, ²​corresponding</span></span></span></code></pre></div>
+<span><span class="co">#&gt;      id given_name     family_name        literal_name    initials corresponding</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot            Denis Diderot   DD       TRUE         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau           Jean-Jacques R… J-JR     TRUE         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet             François-Marie… F-MA     TRUE         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRA     TRUE</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-author-information">Getting author information<a class="anchor" aria-label="anchor" href="#getting-author-information"></a>
@@ -508,15 +502,8 @@ follows:</p>
 
 
 
-    <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by Arnaud Gallou.</p>
-</div>
-
-<div class="pkgdown-footer-right">
-  <p></p>
+    <footer><p>Developed by Arnaud Gallou.</p>
 <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
-</div>
 
     </footer>
 </div>
