@@ -3,8 +3,8 @@ md_link <- function(url, content = NULL) {
   sprintf("[%s](%s)", content, url)
 }
 
-md_image <- function(path, size, style, margin) {
-  sprintf("%s![](%s){height=%ipx%s}%s", margin, path, size, style, margin)
+md_image <- function(path, size, style, spacing) {
+  sprintf("%s![](%s){height=%ipx%s}%s", spacing, path, size, style, spacing)
 }
 
 file_name <- function(x) {
@@ -38,7 +38,7 @@ icon_pars.default <- function(x, size, margin) {
   list(
     size = size,
     style = "",
-    margin = sprintf("\\hspace{%ipt}", round(margin * .75))
+    spacing = sprintf("\\hspace{%ipt}", round(margin * .75))
   )
 }
 
@@ -46,7 +46,7 @@ icon_pars.svg <- function(x, size, margin) {
   list(
     size = size + 4,
     style = sprintf(" style='margin: 0 %ipx; vertical-align: baseline'", margin),
-    margin = ""
+    spacing = ""
   )
 }
 
@@ -54,7 +54,7 @@ make_icon <- function(x, size = 16, margin = size / 4) {
   aes <- map(c(size = size, margin = margin), round)
   pars <- icon_pars(x, aes$size, aes$margin)
   icon <- get_icon(file_name(x))
-  md_image(icon, pars$size, pars$style, pars$margin)
+  md_image(icon, pars$size, pars$style, pars$spacing)
 }
 
 make_orcid_link <- function(orcid) {
