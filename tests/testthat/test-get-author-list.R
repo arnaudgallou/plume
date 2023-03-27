@@ -98,6 +98,53 @@ test_that("get_author_list() returns author list", {
   )
 })
 
+test_that("get_author_list() makes ORCID icons", {
+  render <- partial(rmarkdown::render, clean = FALSE, quiet = TRUE)
+
+  md_extract_chunk_output <- function(pattern = "(?<=## ).+", dir = getwd()) {
+    file <- list.files(dir, pattern = "\\.md$")
+    text <- readr::read_file(file)
+    string_extract(text, pattern)
+  }
+
+  withr::with_tempdir({
+    tmp_file <- withr::local_tempfile(lines = dedent("
+      ---
+      title: foo
+      ---
+      ```{r echo = FALSE}
+      aut <- Plume$new(tibble(
+        given_name = 'X',
+        family_name = 'Y',
+        orcid = '0000-0000-0000-0000'
+      ))
+      cat(aut$get_author_list('o'))
+      ```
+    "), fileext = ".Rmd", tmpdir = getwd())
+
+    url <- "https://orcid.org/0000-0000-0000-0000"
+
+    # use rtf to speed up test runs
+    render(tmp_file, output_format = "rtf_document")
+    icon <- sprintf(
+      "[\\hspace{3pt}![](%s){height=16px}\\hspace{3pt}](%s)",
+      get_icon("orcid.pdf"),
+      url
+    )
+
+    expect_equal(md_extract_chunk_output(), paste0("X Y", icon))
+
+    render(tmp_file, output_format = "html_document")
+    icon <- sprintf(
+      "[![](%s){height=20px style='margin: 0 4px; vertical-align: baseline'}](%s)",
+      get_icon("orcid.svg"),
+      url
+    )
+
+    expect_equal(md_extract_chunk_output(), paste0("X Y", icon))
+  })
+})
+
 # Errors ----
 
 test_that("get_author_list() gives meaningful error messages", {

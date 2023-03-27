@@ -14,3 +14,11 @@ basic_df <- function() {
     number = c("00", NA, NA)
   )
 }
+
+dedent <- function(string) {
+  out <- string_trim(string)
+  ws_regex <- "(?<=\n) "
+  ws <- string_extract_all(out, paste0(ws_regex, "+"))
+  ws_n <- min(nchar(ws))
+  string_remove_all(out, paste0(ws_regex, "{", ws_n, "}"))
+}
