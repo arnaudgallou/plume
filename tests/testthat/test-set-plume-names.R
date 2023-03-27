@@ -1,5 +1,5 @@
 test_that("set_default_names() sets new plume names", {
-  nms <- set_default_names(c(
+  nms <- set_default_names(
     initials = "initiales",
     literal_name = "nom_complet",
     corresponding = "correspondant",
@@ -10,7 +10,7 @@ test_that("set_default_names() sets new plume names", {
     dropping_particle = "particule_délaissée",
     email = "courriel",
     number = "numéro"
-  ))
+  )
 
   new_nms <- list(
     internal = list(
@@ -49,7 +49,7 @@ test_that("set_default_names() gives meaningful error messages", {
   expect_snapshot({
     (expect_error(set_default_names(1)))
     (expect_error(set_default_names("a")))
-    (expect_error(set_default_names(c(x = "a", y = "a"))))
-    (expect_error(set_default_names(c(x = "a", x = "b"))))
+    (expect_error(set_default_names(x = "a", y = "a")))
+    (expect_error(set_default_names(x = "a", x = "b")))
   })
 })

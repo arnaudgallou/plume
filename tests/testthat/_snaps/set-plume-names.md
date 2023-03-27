@@ -13,13 +13,13 @@
       Error:
       ! All `...` inputs must be named.
     Code
-      (expect_error(set_default_names(c(x = "a", y = "a"))))
+      (expect_error(set_default_names(x = "a", y = "a")))
     Output
       <error/rlang_error>
       Error:
       ! `...` must have unique input values.
     Code
-      (expect_error(set_default_names(c(x = "a", x = "b"))))
+      (expect_error(set_default_names(x = "a", x = "b")))
     Output
       <error/rlang_error>
       Error:
