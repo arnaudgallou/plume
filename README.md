@@ -92,7 +92,7 @@ aut$to_yaml("file.qmd")
         number: 00 00 00 01
         note: born in 1713 in Langres
         attribute:
-          corresponding: yes
+          corresponding: true
         affiliations:
           - ref: aff1
       - id: aut2
@@ -101,7 +101,7 @@ aut$to_yaml("file.qmd")
           family: Rousseau
         email: rousseau@encyclopediste.fr
         attribute:
-          corresponding: no
+          corresponding: false
         affiliations:
           - ref: aff2
       - id: aut3
@@ -111,7 +111,7 @@ aut$to_yaml("file.qmd")
         email: arouet@encyclopediste.fr
         note: also known as Voltaire
         attribute:
-          corresponding: no
+          corresponding: false
         affiliations:
           - ref: aff2
       - id: aut4
@@ -121,7 +121,7 @@ aut$to_yaml("file.qmd")
         email: alembert@encyclopediste.fr
         note: born in 1717 in Paris
         attribute:
-          corresponding: yes
+          corresponding: true
         affiliations:
           - ref: aff1
           - ref: aff3

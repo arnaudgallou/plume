@@ -28,6 +28,11 @@ separate_yaml_header <- function(text) {
   stringr::str_split(text, "(?:^|\\R)-{3}(?:\\R|$)")[[1]]
 }
 
+as_verbatim_lgl <- function(x) {
+  x <- if_else(x, "true", "false")
+  structure(x, class = "verbatim")
+}
+
 yaml_inject <- function(lines, replacement) {
   if (length(lines) < 3L) {
     abort_input_check(msg = c(
@@ -36,7 +41,12 @@ yaml_inject <- function(lines, replacement) {
     ))
   }
   line_break <- line_break()
-  yaml <- as.yaml(replacement, line.sep = line_break, indent.mapping.sequence = TRUE)
+  yaml <- as.yaml(
+    replacement,
+    line.sep = line_break,
+    indent.mapping.sequence = TRUE,
+    handlers = list(logical = as_verbatim_lgl)
+  )
   out <- replace(lines, 2, yaml)
   paste0(out, collapse = paste0("---", line_break))
 }

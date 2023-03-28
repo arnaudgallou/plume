@@ -9,7 +9,7 @@ author:
     number: '00'
     note: a
     attribute:
-      corresponding: yes
+      corresponding: true
     affiliations:
       - ref: aff1
       - ref: aff2
@@ -19,7 +19,7 @@ author:
       family: Zz
     email: c@z.foo
     attribute:
-      corresponding: no
+      corresponding: false
     affiliations:
       - ref: aff3
   - id: aut3
@@ -29,7 +29,7 @@ author:
     email: b@y.foo
     note: b
     attribute:
-      corresponding: no
+      corresponding: false
     affiliations:
       - ref: aff1
       - ref: aff4
@@ -59,7 +59,7 @@ author:
       family: Zz
     email: c@z.foo
     attribute:
-      corresponding: yes
+      corresponding: true
     affiliations:
       - ref: aff1
   - id: aut2
@@ -69,7 +69,7 @@ author:
     email: b@y.foo
     note: b
     attribute:
-      corresponding: no
+      corresponding: false
     affiliations:
       - ref: aff2
       - ref: aff3
@@ -81,7 +81,7 @@ author:
     number: '00'
     note: a
     attribute:
-      corresponding: no
+      corresponding: false
     affiliations:
       - ref: aff3
       - ref: aff4
