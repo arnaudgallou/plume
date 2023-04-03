@@ -29,6 +29,7 @@ Imports:
     vctrs (>= 0.5.1),
     yaml (>= 2.3.5)
 Suggests: 
+    covr,
     rmarkdown,
     testthat,
     withr
