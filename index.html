@@ -83,7 +83,7 @@
 <p>plume provides tools for handling and generating author-related information for scientific writing in Rmarkdown and Quarto. The package implements two <code>R6</code> classes:</p>
 <ul>
 <li><p><code>Plume</code>: class that generates author lists and other author-related information from tabular data.</p></li>
-<li><p><code>PlumeQuarto</code>: class extending <code>Plume</code> that allows you to push or update author metadata in the yaml header of a Quarto file. The generated yaml complies with <a href="https://quarto.org/docs/journals/authors.html" class="external-link">Quarto’s author and affiliations schemas</a>.</p></li>
+<li><p><code>PlumeQuarto</code>: class extending <code>Plume</code> that allows you to push or update author metadata in the YAML header of a Quarto file. The generated YAML complies with <a href="https://quarto.org/docs/journals/authors.html" class="external-link">Quarto’s author and affiliations schemas</a>.</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -97,7 +97,7 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>The minimal required data to work with plume classes is a data set containing given and family names but you would normally want to provide more information such as email addresses, orcid, affiliations, etc.</p>
+<p>The minimal required data to work with plume classes is a data set containing given and family names but you would normally want to provide more information such as email addresses, ORCIDs, affiliations, etc.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/arnaudgallou/plume" class="external-link">plume</a></span><span class="op">)</span></span>
 <span></span>
@@ -124,7 +124,7 @@
 <span><span class="co">#&gt; 4     4 Jean        Le Ron… Jean L… JLRA    alem… &lt;NA&gt;   born… &lt;tibble&gt; &lt;tibble&gt;</span></span>
 <span><span class="co">#&gt; # … with abbreviated variable names ¹​family_name, ²​literal_name, ³​initials,</span></span>
 <span><span class="co">#&gt; #   ⁴​affiliation, ⁵​contribution</span></span></code></pre></div>
-<p><code>PlumeQuarto</code> lets you push author metadata in the yaml header of any <code>.qmd</code> files using <code>to_yaml()</code>.</p>
+<p><code>PlumeQuarto</code> lets you push author metadata in the YAML header of any <code>.qmd</code> files using <code>to_yaml()</code>.</p>
 <p>Consider the following example:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Encyclopédie</span>

@@ -211,17 +211,17 @@ replacements.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: contribution_v &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="pushing-data-into-a-yaml-header">Pushing data into a yaml header<a class="anchor" aria-label="anchor" href="#pushing-data-into-a-yaml-header"></a>
+<h2 id="pushing-data-into-a-yaml-header">Pushing data into a YAML header<a class="anchor" aria-label="anchor" href="#pushing-data-into-a-yaml-header"></a>
 </h2>
 <p><code>PlumeQuarto</code> allows you to inject author metadata
-directly into the yaml header of a <code>.qmd</code> file.</p>
+directly into the YAML header of a <code>.qmd</code> file.</p>
 <p>Consider the following <code>.qmd</code> file:</p>
 <pre><code>---
 title: Encyclopédie
 ---
 
 Qui scribit bis legit</code></pre>
-<p>You can push information from the input data into the yaml header
+<p>You can push information from the input data into the YAML header
 using the <code>to_yaml()</code> method.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">encyclopedists</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
@@ -257,7 +257,7 @@ affiliations:
 Qui scribit bis legit</code></pre>
 <p>Authors are listed in the order they’re defined in the input
 data.</p>
-<p>If the yaml header already has an <code>author</code> and
+<p>If the YAML header already has an <code>author</code> and
 <code>affiliations</code> keys, <code>to_yaml()</code> replaces old
 values with new ones.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
