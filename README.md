@@ -20,8 +20,8 @@ implements two `R6` classes:
   information from tabular data.
 
 - `PlumeQuarto`: class extending `Plume` that allows you to push or
-  update author metadata in the yaml header of a Quarto file. The
-  generated yaml complies with [Quarto’s author and affiliations
+  update author metadata in the YAML header of a Quarto file. The
+  generated YAML complies with [Quarto’s author and affiliations
   schemas](https://quarto.org/docs/journals/authors.html).
 
 ## Installation
@@ -37,7 +37,7 @@ devtools::install_github("arnaudgallou/plume")
 
 The minimal required data to work with plume classes is a data set
 containing given and family names but you would normally want to provide
-more information such as email addresses, orcid, affiliations, etc.
+more information such as email addresses, ORCIDs, affiliations, etc.
 
 ``` r
 library(plume)
@@ -67,7 +67,7 @@ aut
 #> #   ⁴​affiliation, ⁵​contribution
 ```
 
-`PlumeQuarto` lets you push author metadata in the yaml header of any
+`PlumeQuarto` lets you push author metadata in the YAML header of any
 `.qmd` files using `to_yaml()`.
 
 Consider the following example:

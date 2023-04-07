@@ -5,7 +5,7 @@
 \title{PlumeQuarto class}
 \description{
 Class extending \code{Plume} that allows you to push or update author
-metadata in the \code{yaml} header of a \code{.qmd} file. The generated \code{yaml} complies
+metadata in the YAML header of a \code{.qmd} file. The generated YAML complies
 with \code{Quarto}'s author and affiliations
 \href{https://quarto.org/docs/journals/authors.html}{schemas}.
 }
@@ -88,7 +88,7 @@ The class instance.
 \if{html}{\out{<a id="method-PlumeQuarto-to_yaml"></a>}}
 \if{latex}{\out{\hypertarget{method-PlumeQuarto-to_yaml}{}}}
 \subsection{Method \code{to_yaml()}}{
-Push or update author information in a \code{yaml} header.
+Push or update author information in a YAML header.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$to_yaml(file)}\if{html}{\out{</div>}}
 }
@@ -101,7 +101,7 @@ Push or update author information in a \code{yaml} header.
 \if{html}{\out{</div>}}
 }
 \subsection{Details}{
-If missing, \code{to_yaml()} pushes author information into a yaml header. If
+If missing, \code{to_yaml()} pushes author information into a YAML header. If
 already existing, the function replaces old \code{author} and \code{affiliations}
 values with the ones provided in the input data.
 }

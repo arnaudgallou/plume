@@ -46,7 +46,7 @@ aut <- PlumeQuarto$new(author)
 aut$to_yaml("file.qmd")
 ```
 
-The above will produce the following `yaml` header:
+The above will produce the following YAML header:
 
 ```{r, echo = FALSE, comment = ""}
 aut$to_yaml(tmp)

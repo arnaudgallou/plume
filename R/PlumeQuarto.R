@@ -1,6 +1,6 @@
 #' @title PlumeQuarto class
 #' @description Class extending `Plume` that allows you to push or update author
-#'   metadata in the `yaml` header of a `.qmd` file. The generated `yaml` complies
+#'   metadata in the YAML header of a `.qmd` file. The generated YAML complies
 #'   with `Quarto`'s author and affiliations
 #'   [schemas](https://quarto.org/docs/journals/authors.html).
 #' @export
@@ -29,10 +29,10 @@ PlumeQuarto <- R6Class(
       private$set_status("deceased", ..., by = by)
     },
 
-    #' @description Push or update author information in a `yaml` header.
+    #' @description Push or update author information in a YAML header.
     #' @param file A `.qmd` file.
     #' @details
-    #' If missing, `to_yaml()` pushes author information into a yaml header. If
+    #' If missing, `to_yaml()` pushes author information into a YAML header. If
     #' already existing, the function replaces old `author` and `affiliations`
     #' values with the ones provided in the input data.
     #' @return The input `file` invisibly.
