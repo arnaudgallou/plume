@@ -1,34 +1,22 @@
-test_that("sequential() creates a logical sequence of characters", {
-  values <- rep(LETTERS, 3)
-  df <- data.frame(
-    given_name = values,
-    family_name = values,
-    affiliation = seq_along(values)
-  )
+test_that("sequences of characters are properly generated", {
+  df <- data.frame(given_name = "X", family_name = "Y", affiliation = 1:55)
+  aut <- Plume$new(df)
 
-  aut <- Plume$new(df, interword_spacing = FALSE)
+  .h <- paste0("X Y", c("a", "b", "c", "d", "e", "f"))
   aut$symbols$affiliation <- letters
 
-  author_list_head <- c("AAa", "BBb", "CCc", "DDd", "EEe", "FFf")
-
+  expect_equal(head(aut$get_author_list("a")), .h)
   expect_equal(
-    head(aut$get_author_list(format = "a")),
-    author_list_head
-  )
-  expect_equal(
-    tail(aut$get_author_list(format = "a")),
-    c("UUuuu", "VVvvv", "WWwww", "XXxxx", "YYyyy", "ZZzzz")
+    tail(aut$get_author_list("a")),
+    paste0("X Y", c("xx", "yy", "zz", "aaa", "bbb", "ccc"))
   )
 
   aut$symbols$affiliation <- sequential(letters)
 
+  expect_equal(head(aut$get_author_list("a")), .h)
   expect_equal(
-    head(aut$get_author_list(format = "a")),
-    author_list_head
-  )
-  expect_equal(
-    tail(aut$get_author_list(format = "a")),
-    c("UUbu", "VVbv", "WWbw", "XXbx", "YYby", "ZZbz")
+    tail(aut$get_author_list("a")),
+    paste0("X Y", c("ax", "ay", "az", "ba", "bb", "bc"))
   )
 })
 
