@@ -201,8 +201,7 @@ Plume <- R6Class(
         .data[[pars$var]],
         last = sep_last
       ), .by = all_of(pars$grp_var))
-      out <- unite(out, col = "_", !!parse_expr(pars$pattern), sep = pars$divider)
-      out[["_"]]
+      collapse_cols(out, pars$format, sep = pars$divider)
     }
   ),
 
@@ -262,15 +261,15 @@ Plume <- R6Class(
     },
 
     contribution_pars = function(role_first, name_list, authors, divider) {
-      contribution <- self$names$contribution
-      pattern <- paste0(contribution, ":", authors)
       if (!role_first && name_list) {
         divider <- " "
       } else {
         divider <- divider %||% ": "
       }
+      contribution <- self$names$contribution
+      format <- c(contribution, authors)
       if (!role_first) {
-        pattern <- invert(pattern, sep = ":")
+        format <- rev(format)
       }
       if (role_first || name_list) {
         grp_var <- contribution
@@ -279,7 +278,7 @@ Plume <- R6Class(
         grp_var <- authors
         var <- contribution
       }
-      list(divider = divider, grp_var = grp_var, var = var, pattern = pattern)
+      list(divider = divider, grp_var = grp_var, var = var, format = format)
     }
   )
 )

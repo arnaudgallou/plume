@@ -92,10 +92,6 @@ extract_glue_exprs <- function(x) {
   string_extract_all(x, "(?<=\\{)[^}]+")
 }
 
-invert <- function(x, sep) {
-  paste(rev(string_split(x, sep)), collapse = sep)
-}
-
 unique.list <- function(x, ...) {
   unique(unlist(x, use.names = FALSE), ...)
 }
