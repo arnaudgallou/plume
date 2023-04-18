@@ -41,6 +41,15 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
   ))
   aut$to_yaml(tmp_file)
   expect_equal(readr::read_file(tmp_file), yamls[5])
+
+  aut <- PlumeQuarto$new(data.frame(
+    given_name = "X",
+    family_name = "Z",
+    note1 = "a",
+    note2 = "b"
+  ))
+  aut$to_yaml(tmp_file)
+  expect_equal(readr::read_file(tmp_file), yamls[6])
 })
 
 test_that("to_yaml() exits before pushing new header if invalid yaml", {

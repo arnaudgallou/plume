@@ -171,3 +171,20 @@ affiliations: {}
 
 x <- 1
 ```
+%%
+---
+title: test
+author:
+  - id: aut1
+    name:
+      given: X
+      family: Z
+    note: a, b
+affiliations: {}
+---
+
+```{r}
+#| eval: false
+
+x <- 1
+```
