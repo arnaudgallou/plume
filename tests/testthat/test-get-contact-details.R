@@ -27,6 +27,10 @@ test_that("get_contact_details() returns contact details of corresponding author
     aut$get_contact_details(number = TRUE, sep = "; "),
     paste0(literal_names, ": ", emails, c("; 00", ""))
   )
+  expect_equal(
+    aut$get_contact_details(email = FALSE, number = TRUE),
+    paste0(literal_names[1], ": 00")
+  )
 })
 
 test_that("get_contact_details() returns `NULL` if all boolean arguments are `FALSE`", {

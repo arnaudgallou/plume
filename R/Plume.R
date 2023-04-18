@@ -140,12 +140,12 @@ Plume <- R6Class(
       if (is_empty(args)) {
         return()
       }
-      cols <- private$get_names(args)
+      cols <- private$get_names(args, use_keys = FALSE)
       private$check_col(cols)
-      out <- filter(self$plume, corresponding)
+      out <- filter(self$plume, corresponding & not_na_any(cols))
       dict <- list(details = cols, name = self$names$literal_name)
-      dissolve(out, dict, partial(join, sep = sep))
-      glue(format, .na = "")
+      dissolve(out, dict, partial(collapse_cols, sep = sep))
+      glue(format)
     },
 
     #' @description Get authors' contributions.

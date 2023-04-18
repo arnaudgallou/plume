@@ -26,6 +26,10 @@ if_not_na <- function(x, value, ..., all = FALSE) {
   if_else(cnd, NA, value, ...)
 }
 
+not_na_any <- function(cols) {
+  if_any(all_of(cols), negate(is.na))
+}
+
 dot <- function(x) {
   string_replace_all(x, "(?<=\\pL)", ".")
 }
@@ -65,20 +69,17 @@ arg_names_true <- function() {
   names(args_true)
 }
 
-join <- function(data, cols, sep) {
+join <- function(x, sep) {
+  paste(x[!is.na(x)], collapse = sep)
+}
+
+collapse_cols <- function(data, cols, sep) {
   if (length(cols) == 1L) {
     return(data[[cols]])
   }
-  head <- cols[1]
-  out <- map(cols, \(value) {
-    values <- data[[value]]
-    these <- values
-    if (value != head) {
-      these <- paste0(sep, these)
-    }
-    replace(these, is.na(values), "")
-  })
-  reduce(out, paste0)
+  out <- map(data[cols], as.character)
+  out <- list_transpose(out)
+  map_chr(out, partial(join, sep = sep))
 }
 
 dissolve <- function(data, dict, callback, env = caller_env()) {
