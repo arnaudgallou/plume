@@ -37,7 +37,7 @@ Plume$new(encyclopedists)
 The default variables handled by plume classes are organised into five categories:
 
 ```{r, echo = FALSE, results = "asis"}
-plume_keys <- lapply(plume:::default_names(), names)
+plume_keys <- lapply(plume:::default_names, names)
 ```
 
 **Primary**: variables required to create a `plume` object.
