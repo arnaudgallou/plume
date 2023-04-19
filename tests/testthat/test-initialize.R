@@ -100,6 +100,22 @@ test_that("initialize() ignores unknown `symbols` keys", {
   expect_false(has_name(aut$symbols, "foo"))
 })
 
+test_that("initialize() converts blank and empty strings to `NA` (#2)", {
+  aut <- Plume$new(data.frame(
+    given_name = "X",
+    family_name = "Y",
+    email = "",
+    affiliation = "a",
+    affiliation2 = "  ",
+    affiliation3 = "\n"
+  ))
+
+  expect_equal(
+    unlist(aut$plume, use.names = FALSE),
+    c("1", "X", "Y", "X Y", "XY", NA, "a", NA, NA)
+  )
+})
+
 # Errors ----
 
 test_that("initialize() gives meaningful error messages", {

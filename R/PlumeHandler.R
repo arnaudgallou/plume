@@ -78,6 +78,7 @@ PlumeHandler <- R6Class(
 
     mount = function() {
       private$build()
+      private$sanitise()
       for (col in private$get_names(private$plume_keys$nestable)) {
         if (private$is_nestable(paste0("^", col))) {
           private$nest(col)
@@ -132,6 +133,14 @@ PlumeHandler <- R6Class(
         names_to = NULL
       )
       self$plume <- nest(out, !!col := any_of(col))
+    },
+
+    sanitise = function() {
+      vars <- private$plume_keys[c("secondary", "nestable")]
+      self$plume <- mutate(self$plume, across(
+        starts_with(private$get_names(vars)),
+        blank_to_na
+      ))
     },
 
     get = function(col) {

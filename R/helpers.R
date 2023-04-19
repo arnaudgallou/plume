@@ -141,3 +141,11 @@ to_chr_class <- function(x, negate = FALSE) {
 wrap <- function(x, value) {
   paste0(value, x, value)
 }
+
+is_blank <- function(x) {
+  string_detect(x, "^\\s*$")
+}
+
+blank_to_na <- function(x) {
+  replace(x, is_blank(x), NA)
+}
