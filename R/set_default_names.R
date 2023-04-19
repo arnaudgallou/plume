@@ -7,7 +7,7 @@
 #' @details
 #' Available names are:
 #'
-#' `r wrap(unlist(map(default_names(), names)), "\x60")`
+#' `r wrap(unlist(map(default_names, names)), "\x60")`
 #' @return A named list.
 #' @export
 set_default_names <- function(...) {
@@ -19,7 +19,7 @@ set_default_names <- function(...) {
     msg = "`...` inputs must be character vectors.",
     arg = "..."
   )
-  nms <- default_names()
+  nms <- default_names
   for (i in seq_along(nms)) {
     nms[[i]] <- supplant(nms[[i]], dots)
   }

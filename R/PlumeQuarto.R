@@ -150,12 +150,16 @@ PlumeQuarto <- R6Class(
   )
 )
 
+affiliation_keys <- c(
+  "number", "name", "department", "address", "city",
+  "region", "country", "postal-code", "url"
+)
 
 parse_affiliation <- function(x) {
   if (!has_affiliation_sep(x)) {
     return(set_names(x, "name"))
   }
-  keys <- paste(affiliation_keys(), collapse = "|")
+  keys <- paste(affiliation_keys, collapse = "|")
   keys_regex <- paste0("\\b(?:", keys, ")")
   nms <- string_extract_all(x, paste0(keys_regex, "(?==)"))
   els <- string_split(x, paste0(keys_regex, "="))[-1]
@@ -168,11 +172,4 @@ make_affiliation_id <- function(x) {
 
 has_affiliation_sep <- function(x) {
   string_contain(x, "=")
-}
-
-affiliation_keys <- function() {
-  c(
-    "number", "name", "department", "address",
-    "city", "region", "country", "postal-code", "url"
-  )
 }

@@ -1,32 +1,30 @@
-default_names <- function() {
-  list(
-    internal = list(
-      id = "id",
-      initials = "initials",
-      literal_name = "literal_name",
-      corresponding = "corresponding",
-      deceased = "deceased",
-      equal_contributor = "equal_contributor"
-    ),
-    primary = list(
-      given_name = "given_name",
-      family_name = "family_name"
-    ),
-    secondary = list(
-      dropping_particle = "dropping_particle",
-      email = "email",
-      orcid = "orcid",
-      number = "number",
-      fax = "fax",
-      url = "url"
-    ),
-    nestable = list(
-      affiliation = "affiliation",
-      contribution = "contribution",
-      note = "note"
-    )
+default_names <- list(
+  internal = list(
+    id = "id",
+    initials = "initials",
+    literal_name = "literal_name",
+    corresponding = "corresponding",
+    deceased = "deceased",
+    equal_contributor = "equal_contributor"
+  ),
+  primary = list(
+    given_name = "given_name",
+    family_name = "family_name"
+  ),
+  secondary = list(
+    dropping_particle = "dropping_particle",
+    email = "email",
+    orcid = "orcid",
+    number = "number",
+    fax = "fax",
+    url = "url"
+  ),
+  nestable = list(
+    affiliation = "affiliation",
+    contribution = "contribution",
+    note = "note"
   )
-}
+)
 
 
 #' @title PlumeHandler class
@@ -72,8 +70,8 @@ PlumeHandler <- R6Class(
   ),
 
   private = list(
-    plume_names = default_names(),
-    plume_keys = map(default_names(), names),
+    plume_names = default_names,
+    plume_keys = map(default_names, names),
     initials_given_name = NULL,
     family_name_first = NULL,
     interword_spacing = " ",

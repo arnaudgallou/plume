@@ -12,7 +12,7 @@ plume_template <- function(minimal = TRUE) {
   check_bool(minimal)
   nestables <- c(seq_names("affiliation", "contribution", n = 2), "note")
   vars <- list_assign(
-    default_names(),
+    default_names,
     nestable = set_names(dots_list(!!!nestables), nestables)
   )
   to_ignore <- vars$internal

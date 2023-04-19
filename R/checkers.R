@@ -51,10 +51,6 @@ is_type <- function(x, type) {
   do.call(paste0("is.", type), list(x))
 }
 
-vector_types <- function() {
-  c("character", "double", "integer", "logical", "complex", "raw", "list")
-}
-
 expr_to_string <- function(x, env = caller_env()) {
   as.character(substitute(x, env = env))[-1]
 }
@@ -114,9 +110,14 @@ check_duplicates <- function(x, ..., arg = caller_arg(x)) {
   abort_input_check(msg = msg, ..., arg = arg)
 }
 
+vector_types <- c(
+  "character", "double", "integer",
+  "logical", "complex", "raw", "list"
+)
+
 check_vector <- function(
     x,
-    type = vector_types(),
+    type = vector_types,
     force_names = FALSE,
     allow_duplicates = TRUE,
     allow_homonyms = FALSE,
