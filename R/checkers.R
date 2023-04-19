@@ -245,7 +245,7 @@ check_file <- function(
     return(invisible(NULL))
   }
   ext <- file_ext(x)
-  if (!is.na(ext) && includes(ext, extension)) {
+  if (is_not_na(ext) && includes(ext, extension)) {
     return(invisible(NULL))
   }
   extension <- wrap(predot(extension), "`")

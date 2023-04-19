@@ -26,8 +26,10 @@ if_not_na <- function(x, value, ..., all = FALSE) {
   if_else(cnd, NA, value, ...)
 }
 
+is_not_na <- Negate(is.na)
+
 not_na_any <- function(cols) {
-  if_any(all_of(cols), negate(is.na))
+  if_any(all_of(cols), is_not_na)
 }
 
 dot <- function(x) {
@@ -70,7 +72,7 @@ arg_names_true <- function() {
 }
 
 join <- function(x, sep) {
-  paste(x[!is.na(x)], collapse = sep)
+  paste(x[is_not_na(x)], collapse = sep)
 }
 
 collapse_cols <- function(data, cols, sep) {
@@ -117,7 +119,7 @@ propagate_na <- function(x, from) {
 
 condense <- function(x) {
   x <- unique(x)
-  x[!is.na(x)]
+  x[is_not_na(x)]
 }
 
 supplant <- function(old, new) {
