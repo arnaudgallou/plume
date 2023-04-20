@@ -81,7 +81,7 @@ collapse_cols <- function(data, cols, sep) {
   }
   out <- map(data[cols], as.character)
   out <- list_transpose(out)
-  map_chr(out, partial(join, sep = sep))
+  map_vec(out, partial(join, sep = sep))
 }
 
 dissolve <- function(data, dict, callback, env = caller_env()) {
