@@ -1,5 +1,9 @@
 # plume (development version)
 
+## Documentation improvements
+
+* New `vignette("plume-workflow")` which describes how to use plume and [googlesheets4](https://googlesheets4.tidyverse.org) to manage author metadata.
+
 ## Minor improvements and bug fixes
 
 * Blank and empty strings are now converted to `NA` when creating a plume object (#2).
