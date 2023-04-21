@@ -283,7 +283,7 @@ To output author data as markdown content on multiple lines, use the chunk optio
 
 ````{verbatim}
 ```{r}
-#| results = "asis"
+#| results: "asis"
 
 aut$get_contributions() |> cat(sep = "\n\n")
 ```
