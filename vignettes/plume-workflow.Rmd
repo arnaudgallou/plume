@@ -1,0 +1,67 @@
+---
+title: "plume workflow"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{plume workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+plume is designed to work with spreadsheets, which makes it easy to maintain and share author data with co-authors.
+
+I recommend using [Google Sheets](https://docs.google.com/spreadsheets/) for this. The [googlesheets4](https://googlesheets4.tidyverse.org) package can help us manage everything from R.
+
+First, we need to create a spreadsheet. We can use `plume_template()` to use the default plume spreadsheet template.
+
+Note that if it's the first time you use googlesheets4, you'll need to grant the package permission to operate with Google Sheets. You can read more about googlesheets4 authentication [here](https://googlesheets4.tidyverse.org/reference/gs4_auth.html).
+
+```{r eval = FALSE}
+library(googlesheets4)
+
+gs4_create(
+  name = "encyclopédie",
+  sheets = plume_template()
+)
+```
+
+The above will create a spreadsheet named `encyclopédie` with the columns defined by `plume_template()`.
+
+Enter your information and share the spreadsheet to your collaborators. You can do it either from Google Drive or in R using `googledrive::drive_share()`.
+
+Once the spreadsheet contains all author metadata, we can use `googlesheets4::read_sheet()` to read in the spreadsheet in R.
+
+```{r eval = FALSE}
+read_sheet(gs4_find("encyclopédie"))
+```
+
+Below is the typical structure we would use in a manuscript written in R Markdown or Quarto.
+
+Note that this code would have to be put in a separate R script when using `PlumeQuarto` to inject author metadata.
+
+````{verbatim}
+---
+title: An awesome future publication
+---
+  
+```{r}
+#| label: setup
+#| include: false
+
+library(googlesheets4)
+library(plume)
+
+tbl_authors <- gs4_find("plume authors") |> read_sheet()
+
+aut <- Plume$new(tbl_authors)
+aut$set_corresponding_authors(1)
+```
+````
+
+To modify author data, simply edit the spreadsheet. All author information will be automatically updated the next time you render the document.
