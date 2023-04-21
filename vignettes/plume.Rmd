@@ -14,7 +14,7 @@ library(plume)
 library(readr)
 ```
 
-The goal of the plume package is to make the handling and formatting of author data for scientific writing in Rmarkdown and Quarto easy and (almost) painless.
+The goal of the plume package is to make the handling and formatting of author data for scientific writing in R Markdown and Quarto easy and (almost) painless.
 
 ## Example data
 
@@ -141,7 +141,7 @@ plume provides three methods to set particular status to authors:
 
 `set_equal_contributor()` and `set_deceased()` are specific to `PlumeQuarto`. You can specify equal contributors and deceased authors in `Plume` via the `note` variable.
 
-By default, `set_*()` methods assign values by authors' id. You can change this behavior at the object or method level using the `by` parameter.
+By default, `set_*()` methods assign values by authors' id. You can change this behaviour at the object or method level using the `by` parameter.
 
 Note that these methods are case insensitive.
 

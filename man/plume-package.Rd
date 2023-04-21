@@ -6,7 +6,7 @@
 \alias{plume-package}
 \title{plume: An Author List Handler}
 \description{
-A tool for handling and printing author information in Rmarkdown
+A tool for handling and printing author information in R Markdown
 and Quarto.
 }
 \seealso{

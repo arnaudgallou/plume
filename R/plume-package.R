@@ -1,4 +1,4 @@
-#' @description A tool for handling and printing author information in Rmarkdown
+#' @description A tool for handling and printing author information in R Markdown
 #'   and Quarto.
 #' @keywords internal
 #' @importFrom dplyr distinct filter arrange select dense_rank

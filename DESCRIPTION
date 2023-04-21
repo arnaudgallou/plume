@@ -6,7 +6,7 @@ Authors@R:
     person("Arnaud", "Gallou", , "agallou.gh@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-1002-4247"))
 Description: A tool for handling and printing author information in
-    Rmarkdown and Quarto.
+    R Markdown and Quarto.
 License: MIT + file LICENSE
 URL: https://github.com/arnaudgallou/plume,
     https://arnaudgallou.github.io/plume/

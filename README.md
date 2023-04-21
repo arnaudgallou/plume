@@ -13,7 +13,7 @@ coverage](https://codecov.io/gh/arnaudgallou/plume/branch/main/graph/badge.svg)]
 ## Overview
 
 plume provides tools for handling and generating author-related
-information for scientific writing in Rmarkdown and Quarto. The package
+information for scientific writing in R Markdown and Quarto. The package
 implements two `R6` classes:
 
 - `Plume`: class that generates author lists and other author-related
@@ -44,27 +44,25 @@ library(plume)
 
 encyclopedists
 #> # A tibble: 4 × 11
-#>   given_name  famil…¹ email number contr…² contr…³ contr…⁴ contr…⁵ note  affil…⁶
-#>   <chr>       <chr>   <chr> <chr>  <chr>   <chr>   <chr>   <chr>   <chr> <chr>  
-#> 1 Denis       Diderot dide… 00 00… Writing Superv… contri… superv… born… Univer…
-#> 2 Jean-Jacqu… Rousse… rous… <NA>   Writing <NA>    contri… <NA>    <NA>  Lycée …
-#> 3 François-M… Arouet  arou… <NA>   Writing <NA>    contri… <NA>    also… Lycée …
-#> 4 Jean        Le Ron… alem… <NA>   Writing Superv… contri… superv… born… Univer…
-#> # … with 1 more variable: affiliation2 <chr>, and abbreviated variable names
-#> #   ¹​family_name, ²​contribution_n1, ³​contribution_n2, ⁴​contribution_v1,
-#> #   ⁵​contribution_v2, ⁶​affiliation1
+#>   given_name     family_name        email number contribution_n1 contribution_n2
+#>   <chr>          <chr>              <chr> <chr>  <chr>           <chr>          
+#> 1 Denis          Diderot            dide… 00 00… Writing         Supervision    
+#> 2 Jean-Jacques   Rousseau           rous… <NA>   Writing         <NA>           
+#> 3 François-Marie Arouet             arou… <NA>   Writing         <NA>           
+#> 4 Jean           Le Rond d'Alembert alem… <NA>   Writing         Supervision    
+#> # ℹ 5 more variables: contribution_v1 <chr>, contribution_v2 <chr>, note <chr>,
+#> #   affiliation1 <chr>, affiliation2 <chr>
 
 aut <- PlumeQuarto$new(encyclopedists)
 aut
 #> # A tibble: 4 × 10
-#>      id given_name  famil…¹ liter…² initi…³ email number note  affili…⁴ contri…⁵
-#>   <int> <chr>       <chr>   <chr>   <chr>   <chr> <chr>  <chr> <list>   <list>  
-#> 1     1 Denis       Diderot Denis … DD      dide… 00 00… born… <tibble> <tibble>
-#> 2     2 Jean-Jacqu… Rousse… Jean-J… J-JR    rous… <NA>   <NA>  <tibble> <tibble>
-#> 3     3 François-M… Arouet  Franço… F-MA    arou… <NA>   also… <tibble> <tibble>
-#> 4     4 Jean        Le Ron… Jean L… JLRA    alem… <NA>   born… <tibble> <tibble>
-#> # … with abbreviated variable names ¹​family_name, ²​literal_name, ³​initials,
-#> #   ⁴​affiliation, ⁵​contribution
+#>      id given_name     family_name      literal_name initials email number note 
+#>   <int> <chr>          <chr>            <chr>        <chr>    <chr> <chr>  <chr>
+#> 1     1 Denis          Diderot          Denis Dider… DD       dide… 00 00… born…
+#> 2     2 Jean-Jacques   Rousseau         Jean-Jacque… J-JR     rous… <NA>   <NA> 
+#> 3     3 François-Marie Arouet           François-Ma… F-MA     arou… <NA>   also…
+#> 4     4 Jean           Le Rond d'Alemb… Jean Le Ron… JLRA     alem… <NA>   born…
+#> # ℹ 2 more variables: affiliation <list>, contribution <list>
 ```
 
 `PlumeQuarto` lets you push author metadata in the YAML header of any
