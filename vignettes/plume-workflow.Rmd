@@ -31,11 +31,11 @@ gs4_create(
 )
 ```
 
-The above will create a spreadsheet named `encyclopédie` with the columns defined by `plume_template()`.
+The above will create a sheet named `encyclopédie` with the columns defined by `plume_template()`.
 
-Enter your information and share the spreadsheet to your collaborators. You can do it either from Google Drive or in R using `googledrive::drive_share()`.
+Enter your information and share the sheet to your collaborators so they can add theirs. You can do it either from Google Drive or in R using `googledrive::drive_share()`.
 
-Once the spreadsheet contains all author metadata, we can use `googlesheets4::read_sheet()` to read in the spreadsheet in R.
+Once the sheet contains all author metadata, we can use `googlesheets4::read_sheet()` to read it in R.
 
 ```{r eval = FALSE}
 read_sheet(gs4_find("encyclopédie"))
