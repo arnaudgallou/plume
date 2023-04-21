@@ -57,7 +57,7 @@ title: An awesome future publication
 library(googlesheets4)
 library(plume)
 
-tbl_authors <- gs4_find("plume authors") |> read_sheet()
+tbl_authors <- gs4_find("encyclopédie") |> read_sheet()
 
 aut <- Plume$new(tbl_authors)
 aut$set_corresponding_authors(1)
