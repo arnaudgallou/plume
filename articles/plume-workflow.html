@@ -103,14 +103,13 @@ read more about googlesheets4 authentication <a href="https://googlesheets4.tidy
 <span>  name <span class="op">=</span> <span class="st">"encyclopédie"</span>,</span>
 <span>  sheets <span class="op">=</span> <span class="fu"><a href="../reference/plume_template.html">plume_template</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>The above will create a spreadsheet named <code>encyclopédie</code>
-with the columns defined by <code><a href="../reference/plume_template.html">plume_template()</a></code>.</p>
-<p>Enter your information and share the spreadsheet to your
-collaborators. You can do it either from Google Drive or in R using
-<code>googledrive::drive_share()</code>.</p>
-<p>Once the spreadsheet contains all author metadata, we can use
-<code>googlesheets4::read_sheet()</code> to read in the spreadsheet in
-R.</p>
+<p>The above will create a sheet named <code>encyclopédie</code> with
+the columns defined by <code><a href="../reference/plume_template.html">plume_template()</a></code>.</p>
+<p>Enter your information and share the sheet to your collaborators so
+they can add theirs. You can do it either from Google Drive or in R
+using <code>googledrive::drive_share()</code>.</p>
+<p>Once the sheet contains all author metadata, we can use
+<code>googlesheets4::read_sheet()</code> to read it in R.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">read_sheet</span><span class="op">(</span><span class="fu">gs4_find</span><span class="op">(</span><span class="st">"encyclopédie"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Below is the typical structure we would use in a manuscript written
