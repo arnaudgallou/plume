@@ -19,5 +19,13 @@ reference:
     contents:
       - encyclopedists
       - encyclopedists_fr
+articles:
+  - title: Get started
+    navbar: ~
+    contents:
+      - plume
+      - plume-workflow
+      - working-in-other-languages
+      - comprehensive-affiliation-schema
 development:
   mode: auto
