@@ -241,9 +241,8 @@ Plume <- R6Class(
       make_author_list_suffixes(out, format, cols)
     },
 
-    get_footnotes = function(col, sep, superscript) {
-      var <- col
-      col <- self$names[[col]]
+    get_footnotes = function(var, sep, superscript) {
+      col <- self$names[[var]]
       private$check_col(col)
       check_string(sep)
       check_bool(superscript)
