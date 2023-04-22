@@ -101,7 +101,7 @@ Plume <- R6Class(
     #' @param superscript Should affiliation ids be superscripted?
     #' @return A character vector.
     get_affiliations = function(sep = "", superscript = TRUE) {
-      private$get_footnotes("affiliation", self$symbols$affiliation, sep, superscript)
+      private$get_footnotes("affiliation", sep, superscript)
     },
 
     #' @description Get authors' notes.
@@ -109,7 +109,7 @@ Plume <- R6Class(
     #' @param superscript Should note ids be superscripted?
     #' @return A character vector.
     get_notes = function(sep = "", superscript = TRUE) {
-      private$get_footnotes("note", self$symbols$note, sep, superscript)
+      private$get_footnotes("note", sep, superscript)
     },
 
     #' @description Get the contact details of corresponding authors.
@@ -241,7 +241,7 @@ Plume <- R6Class(
       make_author_list_suffixes(out, format, cols)
     },
 
-    get_footnotes = function(col, symbols, sep, superscript) {
+    get_footnotes = function(col, sep, superscript) {
       col <- self$names[[col]]
       private$check_col(col)
       check_string(sep)
@@ -249,15 +249,12 @@ Plume <- R6Class(
       .col <- predot(col)
       out <- unnest_drop(self$plume, col)
       out <- add_group_ids(out, col)
-      if (!is.null(symbols)) {
-        out <- set_symbols(out, .col, symbols)
-      }
+      out <- set_symbols(out, .col, self$symbols[[col]])
       out <- distinct(out, .data[[col]], .data[[.col]])
-      prefix <- out[[.col]]
       if (superscript) {
-        prefix <- wrap(prefix, "^")
+        out <- mutate(out, !!.col := wrap(.data[[.col]], "^"))
       }
-      paste0(prefix, sep, out[[col]])
+      collapse_cols(out, c(.col, col), sep)
     },
 
     contribution_pars = function(role_first, name_list, authors, divider) {

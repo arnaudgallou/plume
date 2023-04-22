@@ -178,6 +178,9 @@ set_suffixes <- function(x, cols, symbols) {
 }
 
 set_symbols <- function(x, col, symbols) {
+  if (is.null(symbols)) {
+    return(x)
+  }
   values <- x[[col]]
   symbols <- seq_symbols(symbols,  values)
   x[col] <- symbols[values]
