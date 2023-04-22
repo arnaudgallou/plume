@@ -242,6 +242,7 @@ Plume <- R6Class(
     },
 
     get_footnotes = function(col, sep, superscript) {
+      var <- col
       col <- self$names[[col]]
       private$check_col(col)
       check_string(sep)
@@ -249,7 +250,7 @@ Plume <- R6Class(
       .col <- predot(col)
       out <- unnest_drop(self$plume, col)
       out <- add_group_ids(out, col)
-      out <- set_symbols(out, .col, self$symbols[[col]])
+      out <- set_symbols(out, .col, self$symbols[[var]])
       out <- distinct(out, .data[[col]], .data[[.col]])
       if (superscript) {
         out <- mutate(out, !!.col := wrap(.data[[.col]], "^"))
