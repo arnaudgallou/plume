@@ -14,9 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-plume is designed to work with spreadsheets, which makes it easy to maintain and share author data with co-authors.
-
-I recommend using [Google Sheets](https://docs.google.com/spreadsheets/) for this. The [googlesheets4](https://googlesheets4.tidyverse.org) package can help us manage everything from R.
+plume is designed to work with spreadsheets, which makes it easy to maintain and share data with co-authors. I recommend using [Google Sheets](https://docs.google.com/spreadsheets/) because it's easy to use and works great with the [googlesheets4](https://googlesheets4.tidyverse.org) package to manage sheets from R.
 
 First, we need to create a spreadsheet. We can use `plume_template()` to use the default plume spreadsheet template.
 
@@ -33,9 +31,9 @@ gs4_create(
 
 The above will create a sheet named `encyclopédie` with the columns defined by `plume_template()`.
 
-Enter your information and share the sheet to your collaborators so they can add theirs. You can do it either from Google Drive or in R using `googledrive::drive_share()`.
+Enter your information and share the sheet to your collaborators so they can add theirs too. You can do it either from Google Drive or in R using `googledrive::drive_share()`.
 
-Once the sheet contains all author metadata, we can use `googlesheets4::read_sheet()` to read it in R.
+Once the sheet contains all author metadata, we can use `read_sheet()` to read it in R.
 
 ```{r eval = FALSE}
 read_sheet(gs4_find("encyclopédie"))
@@ -64,4 +62,4 @@ aut$set_corresponding_authors(1)
 ```
 ````
 
-To modify author data, simply edit the spreadsheet. All author information will be automatically updated the next time you render the document.
+To modify author data, simply edit the spreadsheet. All author information in the document will be automatically updated the next time you render it.
