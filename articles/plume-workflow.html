@@ -86,10 +86,9 @@
     
     
 <p>plume is designed to work with spreadsheets, which makes it easy to
-maintain and share author data with co-authors.</p>
-<p>I recommend using <a href="https://docs.google.com/spreadsheets/" class="external-link">Google Sheets</a> for this.
-The <a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a>
-package can help us manage everything from R.</p>
+maintain and share data with co-authors. I recommend using <a href="https://docs.google.com/spreadsheets/" class="external-link">Google Sheets</a> because
+it’s easy to use and works great with the <a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a> package to
+manage sheets from R.</p>
 <p>First, we need to create a spreadsheet. We can use
 <code><a href="../reference/plume_template.html">plume_template()</a></code> to use the default plume spreadsheet
 template.</p>
@@ -106,10 +105,10 @@ read more about googlesheets4 authentication <a href="https://googlesheets4.tidy
 <p>The above will create a sheet named <code>encyclopédie</code> with
 the columns defined by <code><a href="../reference/plume_template.html">plume_template()</a></code>.</p>
 <p>Enter your information and share the sheet to your collaborators so
-they can add theirs. You can do it either from Google Drive or in R
+they can add theirs too. You can do it either from Google Drive or in R
 using <code>googledrive::drive_share()</code>.</p>
 <p>Once the sheet contains all author metadata, we can use
-<code>googlesheets4::read_sheet()</code> to read it in R.</p>
+<code>read_sheet()</code> to read it in R.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">read_sheet</span><span class="op">(</span><span class="fu">gs4_find</span><span class="op">(</span><span class="st">"encyclopédie"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Below is the typical structure we would use in a manuscript written
@@ -133,8 +132,8 @@ using <code>PlumeQuarto</code> to inject author metadata.</p>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>aut$set_corresponding_authors(1)</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div>
 <p>To modify author data, simply edit the spreadsheet. All author
-information will be automatically updated the next time you render the
-document.</p>
+information in the document will be automatically updated the next time
+you render it.</p>
   </main>
 </div>
 
