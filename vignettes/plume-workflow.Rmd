@@ -14,11 +14,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-plume is designed to work with spreadsheets, which makes it easy to maintain and share data with co-authors. I recommend using [Google Sheets](https://docs.google.com/spreadsheets/) because it's easy to use and works great with the [googlesheets4](https://googlesheets4.tidyverse.org) package to manage sheets from R.
+plume is designed to work with spreadsheets, which makes it easy to store, maintain and share data with co-authors. I recommend using [Google Sheets](https://docs.google.com/spreadsheets/) because it works great with the [googlesheets4](https://googlesheets4.tidyverse.org) package to manage sheets from R.
 
-First, we need to create a spreadsheet. We can use `plume_template()` to use the default plume spreadsheet template.
+First, you need to create a spreadsheet. `plume_template()` provides a default spreadsheet template for that purpose.
 
-Note that if it's the first time you use googlesheets4, you'll need to grant the package permission to operate with Google Sheets. You can read more about googlesheets4 authentication [here](https://googlesheets4.tidyverse.org/reference/gs4_auth.html).
+Note that if it's the first time you use googlesheets4, you'll need to grant the package permission to operate with Google Sheets. Read more about googlesheets4 authentication [here](https://googlesheets4.tidyverse.org/reference/gs4_auth.html).
 
 ```{r eval = FALSE}
 library(googlesheets4)
@@ -31,17 +31,15 @@ gs4_create(
 
 The above will create a sheet named `encyclopédie` with the columns defined by `plume_template()`.
 
-Enter your information and share the sheet to your collaborators so they can add theirs too. You can do it either from Google Drive or in R using `googledrive::drive_share()`.
-
-Once the sheet contains all author metadata, we can use `read_sheet()` to read it in R.
+Enter your information and share the sheet to your collaborators so they can add theirs too. Once the sheet contains all author metadata, use `read_sheet()` to read it in R.
 
 ```{r eval = FALSE}
 read_sheet(gs4_find("encyclopédie"))
 ```
 
-Below is the typical structure we would use in a manuscript written in R Markdown or Quarto.
+Below is what the typical plume set up would look like in a R markdown or Quarto document.
 
-Note that this code would have to be put in a separate R script when using `PlumeQuarto` to inject author metadata.
+Note that the code would have to be put in a separate R script when using `PlumeQuarto` to inject author metadata.
 
 ````{verbatim}
 ---
@@ -62,4 +60,4 @@ aut$set_corresponding_authors(1)
 ```
 ````
 
-To modify author data, simply edit the spreadsheet. All author information in the document will be automatically updated the next time you render it.
+To modify author data, simply edit the spreadsheet. All author information in the document will update automatically the next time you render it.
