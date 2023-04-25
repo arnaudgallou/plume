@@ -63,7 +63,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
-<ul><li><p>Blank and empty strings are now converted to <code>NA</code> when creating a plume object (<a href="https://github.com/arnaudgallou/plume/issues/2" class="external-link">#2</a>).</p></li>
+<ul><li><p>plume classes now error when a given or family name is <code>NA</code> or a blank string.</p></li>
+<li><p>Blank and empty strings are now converted to <code>NA</code> when creating a plume object (<a href="https://github.com/arnaudgallou/plume/issues/2" class="external-link">#2</a>).</p></li>
 <li><p><code>get_contact_details()</code> now drops corresponding authors with no contact details.</p></li>
 <li><p><code>get_contact_details()</code> has been reworked to bind any combination of contact details properly.</p></li>
 <li><p><code>to_yaml()</code> now outputs verbatim <code>true</code>/<code>false</code> (<a href="https://github.com/arnaudgallou/plume/issues/1" class="external-link">#1</a>).</p></li>
