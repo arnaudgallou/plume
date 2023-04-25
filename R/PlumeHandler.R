@@ -89,27 +89,8 @@ PlumeHandler <- R6Class(
 
     build = function() {
       private$mold()
-      given_name <- self$names$given_name
-      family_name <- self$names$family_name
-      nominal <- c(given_name, family_name)
-      if (private$family_name_first) {
-        nominal <- rev(nominal)
-      }
-      out <- self$plume
-      if (private$initials_given_name) {
-        out <- mutate(out, !!given_name := make_initials(
-          .data[[given_name]],
-          dot = TRUE
-        ))
-      }
-      out <- mutate(out, !!self$names$literal_name := paste(
-        !!!syms(nominal),
-        sep = private$interword_spacing
-      ), .after = all_of(family_name))
-      self$plume <- rowid_to_column(out, var = self$names$id)
-      if (any(has_uppercase(private$get("literal_name")))) {
-        private$add_initials()
-      }
+      private$make_author_names()
+      self$plume <- rowid_to_column(self$plume, var = self$names$id)
     },
 
     mold = function(...) {
@@ -136,6 +117,38 @@ PlumeHandler <- R6Class(
       self$plume <- nest(out, !!col := any_of(col))
     },
 
+    make_author_names = function() {
+      if (private$initials_given_name) {
+        self$plume <- mutate(self$plume, !!self$names$given_name := make_initials(
+          .data[[self$names$given_name]],
+          dot = TRUE
+        ))
+      }
+      private$make_literals()
+      if (any(has_uppercase(private$get("literal_name")))) {
+        private$make_initials()
+      }
+    },
+
+    make_literals = function() {
+      nominal <- private$get_names("given_name", "family_name")
+      if (private$family_name_first) {
+        nominal <- rev(nominal)
+      }
+      self$plume <- mutate(self$plume, !!self$names$literal_name := paste(
+        !!!syms(nominal),
+        sep = private$interword_spacing
+      ), .after = all_of(self$names$family_name))
+    },
+
+    make_initials = function() {
+      self$plume <- mutate(
+        self$plume,
+        !!self$names$initials := make_initials(.data[[self$names$literal_name]]),
+        .after = all_of(self$names$literal_name)
+      )
+    },
+
     sanitise = function() {
       self$plume <- mutate(self$plume, across(
         \(x) any(is_blank(x)),
@@ -146,15 +159,6 @@ PlumeHandler <- R6Class(
     get = function(col) {
       col <- self$names[[col]]
       self$plume[[col]]
-    },
-
-    add_initials = function() {
-      literal_name <- self$names$literal_name
-      self$plume <- mutate(
-        self$plume,
-        !!self$names$initials := make_initials(.data[[literal_name]]),
-        .after = all_of(literal_name)
-      )
     },
 
     is_nestable = function(col) {
