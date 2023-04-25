@@ -6,6 +6,8 @@
 
 ## Minor improvements and bug fixes
 
+* plume classes now error when a given or family name is `NA` or a blank string.
+
 * Blank and empty strings are now converted to `NA` when creating a plume object (#2).
 
 * `get_contact_details()` now drops corresponding authors with no contact details.

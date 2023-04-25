@@ -129,6 +129,9 @@ test_that("initialize() gives meaningful error messages", {
       Plume$new(data.frame(family_name = "x"))
     ))
     (expect_error(
+      Plume$new(data.frame(given_name = "x", family_name = ""))
+    ))
+    (expect_error(
       Plume$new(data.frame(given_name = "x"))
     ))
     (expect_error(

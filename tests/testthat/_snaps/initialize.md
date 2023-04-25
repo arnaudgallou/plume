@@ -13,6 +13,13 @@
       Error:
       ! Column `given_name` doesn't exist.
     Code
+      (expect_error(Plume$new(data.frame(given_name = "x", family_name = ""))))
+    Output
+      <error/rlang_error>
+      Error:
+      ! Missing author name found in position 1.
+      i You must supply a given and family names.
+    Code
       (expect_error(Plume$new(data.frame(given_name = "x"))))
     Output
       <error/rlang_error>

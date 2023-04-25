@@ -26,6 +26,10 @@ has_homonyms <- function(x) {
   vec_duplicate_any(names(x))
 }
 
+is_void <- function(x) {
+  is.na(x) | is_blank(x)
+}
+
 is_nested <- function(x, item) {
   typeof(x[[item]]) == "list"
 }
@@ -34,8 +38,11 @@ are_dots_all <- function(...) {
   dots_n(...) == 1L && is_string(expr(...)) && ... == "all"
 }
 
-search_failing <- function(x, callback, n = 1) {
-  out <- condense(x)
+search_failing <- function(x, callback, drop_na = TRUE, n = 1) {
+  out <- x
+  if (drop_na) {
+    out <- out[is_not_na(out)]
+  }
   have_passed <- callback(out)
   if (all(have_passed)) {
     return()
@@ -44,7 +51,7 @@ search_failing <- function(x, callback, n = 1) {
   if (!is.null(n)) {
     failed <- failed[n]
   }
-  out[failed]
+  set_names(out[failed], failed)
 }
 
 is_type <- function(x, type) {
@@ -294,3 +301,4 @@ check_orcid <- function(x, ..., arg = caller_arg(x)) {
     i = "The last character of the identifier must be a digit or `X`."
   ), ..., arg = arg)
 }
+

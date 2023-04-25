@@ -61,6 +61,7 @@ PlumeHandler <- R6Class(
         private$set_names(names)
       }
       private$check_col(private$get_names(private$plume_keys$primary))
+      private$check_authors()
       private$mount()
     },
 
@@ -94,7 +95,7 @@ PlumeHandler <- R6Class(
       if (private$family_name_first) {
         nominal <- rev(nominal)
       }
-      out <- drop_na(self$plume, all_of(nominal))
+      out <- self$plume
       if (private$initials_given_name) {
         out <- mutate(out, !!given_name := make_initials(
           .data[[given_name]],
@@ -175,6 +176,22 @@ PlumeHandler <- R6Class(
       }
       msg <- glue("Column `{missing_col}` doesn't exist.")
       abort_input_check(msg = msg, ...)
+    },
+
+    check_authors = function() {
+      nominal <- private$get_names("given_name", "family_name")
+      authors <- select(self$plume, all_of(nominal))
+      authors <- reduce(authors, \(x, y) {
+        if_else(is_void(x) | is_void(y), NA, 1L)
+      })
+      missing_author <- search_failing(authors, Negate(is_void), drop_na = FALSE)
+      if (is.null(missing_author)) {
+        return()
+      }
+      abort_input_check(msg = c(
+        glue("Missing author name found in position {names(missing_author)}."),
+        i = "You must supply a given and family names."
+      ))
     }
   )
 )
