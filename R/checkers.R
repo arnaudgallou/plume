@@ -38,12 +38,12 @@ are_dots_all <- function(...) {
   dots_n(...) == 1L && is_string(expr(...)) && ... == "all"
 }
 
-search_failing <- function(x, callback, drop_na = TRUE, n = 1) {
+search <- function(x, callback, drop_na = TRUE, n = 1) {
   out <- x
   if (drop_na) {
     out <- out[is_not_na(out)]
   }
-  have_passed <- callback(out)
+  have_passed <- !callback(out)
   if (all(have_passed)) {
     return()
   }
@@ -276,7 +276,7 @@ check_glue <- function(x, allowed, ..., arg = caller_arg(x)) {
     if (all(includes(exprs, allowed, ignore_case = FALSE))) {
       return(invisible(NULL))
     }
-    invalid_expr <- search_failing(exprs, \(expr) expr %in% allowed)
+    invalid_expr <- search(exprs, \(expr) !expr %in% allowed)
     allowed_exprs <- wrap(allowed, "`")
     msg <- c(
       glue("Invalid variable `{invalid_expr}`."),
@@ -291,7 +291,7 @@ is_orcid <- function(x) {
 }
 
 check_orcid <- function(x, ..., arg = caller_arg(x)) {
-  invalid_orcid <- search_failing(x, is_orcid)
+  invalid_orcid <- search(x, Negate(is_orcid))
   if (is.null(invalid_orcid)) {
     return(invisible(NULL))
   }
@@ -301,4 +301,3 @@ check_orcid <- function(x, ..., arg = caller_arg(x)) {
     i = "The last character of the identifier must be a digit or `X`."
   ), ..., arg = arg)
 }
-

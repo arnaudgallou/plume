@@ -170,7 +170,7 @@ PlumeHandler <- R6Class(
     },
 
     check_col = function(x, ...) {
-      missing_col <- search_failing(x, private$has_col)
+      missing_col <- search(x, Negate(private$has_col))
       if (is.null(missing_col)) {
         return()
       }
@@ -184,7 +184,7 @@ PlumeHandler <- R6Class(
       authors <- reduce(authors, \(x, y) {
         if_else(is_void(x) | is_void(y), NA, 1L)
       })
-      missing_author <- search_failing(authors, Negate(is_void), drop_na = FALSE)
+      missing_author <- search(authors, is_void, drop_na = FALSE)
       if (is.null(missing_author)) {
         return()
       }
