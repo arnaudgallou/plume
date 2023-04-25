@@ -137,9 +137,8 @@ PlumeHandler <- R6Class(
     },
 
     sanitise = function() {
-      vars <- private$plume_keys[c("secondary", "nestable")]
       self$plume <- mutate(self$plume, across(
-        starts_with(private$get_names(vars)),
+        \(x) any(is_blank(x)),
         blank_to_na
       ))
     },
