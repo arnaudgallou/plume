@@ -16,7 +16,7 @@ A named list.
 \description{
 This helper function allows you to set new default names to a plume
 subclass, e.g. to set default names to a language other than English. See
-\code{Details} for the full list of available names.
+\code{vignette("working-in-other-languages")} for more details.
 }
 \details{
 Available names are:

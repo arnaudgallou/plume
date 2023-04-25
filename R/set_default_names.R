@@ -1,7 +1,7 @@
 #' @title Set new default names to a plume subclass
 #' @description This helper function allows you to set new default names to a plume
 #'   subclass, e.g. to set default names to a language other than English. See
-#'   `Details` for the full list of available names.
+#'   `vignette("working-in-other-languages")` for more details.
 #' @param ... Key-value pairs where keys are old names and values their respective
 #'   replacements.
 #' @details
