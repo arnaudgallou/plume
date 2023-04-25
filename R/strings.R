@@ -17,12 +17,11 @@ is_perl <- function(x) {
 }
 
 string_detect <- function(string, pattern) {
-  out <- grepl(
+  grepl(
     pattern, string,
     fixed = is_fixed(pattern),
     perl = is_perl(pattern)
   )
-  propagate_na(out, from = string)
 }
 
 string_contain <- function(string, pattern) {
