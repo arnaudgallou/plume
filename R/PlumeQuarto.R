@@ -1,7 +1,7 @@
 #' @title PlumeQuarto class
 #' @description Class extending `Plume` that allows you to push or update author
 #'   metadata in the YAML header of a `.qmd` file. The generated YAML complies
-#'   with `Quarto`'s author and affiliations
+#'   with Quarto's author and affiliations
 #'   [schemas](https://quarto.org/docs/journals/authors.html).
 #' @export
 PlumeQuarto <- R6Class(

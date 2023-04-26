@@ -6,7 +6,7 @@
 \description{
 Class extending \code{Plume} that allows you to push or update author
 metadata in the YAML header of a \code{.qmd} file. The generated YAML complies
-with \code{Quarto}'s author and affiliations
+with Quarto's author and affiliations
 \href{https://quarto.org/docs/journals/authors.html}{schemas}.
 }
 \section{Super classes}{
