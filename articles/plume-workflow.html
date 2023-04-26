@@ -86,12 +86,12 @@
     
     
 <p>plume is designed to work with spreadsheets, which makes it easy to
-store, maintain and share data with co-authors. I recommend using <a href="https://docs.google.com/spreadsheets/" class="external-link">Google Sheets</a> because
-it works great with the <a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a> package to
-manage sheets from R.</p>
+store, maintain and share data with co-authors. I recommend using <a href="https://docs.google.com/spreadsheets/" class="external-link">Google Sheets</a> to take
+advantage of the R interface provided by the <a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a>
+package.</p>
 <p>First, you need to create a spreadsheet.
-<code><a href="../reference/plume_template.html">plume_template()</a></code> provides a default spreadsheet template
-for that purpose.</p>
+<code><a href="../reference/plume_template.html">plume_template()</a></code> provides a default template for that
+purpose.</p>
 <p>Note that if it’s the first time you use googlesheets4, you’ll need
 to grant the package permission to operate with Google Sheets. Read more
 about googlesheets4 authentication <a href="https://googlesheets4.tidyverse.org/reference/gs4_auth.html" class="external-link">here</a>.</p>
@@ -104,12 +104,12 @@ about googlesheets4 authentication <a href="https://googlesheets4.tidyverse.org/
 <span><span class="op">)</span></span></code></pre></div>
 <p>The above will create a sheet named <code>encyclopédie</code> with
 the columns defined by <code><a href="../reference/plume_template.html">plume_template()</a></code>.</p>
-<p>Enter your information and share the sheet to your collaborators so
+<p>Enter your information and share the sheet with your collaborators so
 they can add theirs too. Once the sheet contains all author metadata,
 use <code>read_sheet()</code> to read it in R.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">read_sheet</span><span class="op">(</span><span class="fu">gs4_find</span><span class="op">(</span><span class="st">"encyclopédie"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Below is what the typical plume set up would look like in a R
+<p>Below is what the typical plume set up would look like in an R
 markdown or Quarto document.</p>
 <p>Note that the code would have to be put in a separate R script when
 using <code>PlumeQuarto</code> to inject author metadata.</p>
