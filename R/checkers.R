@@ -26,6 +26,18 @@ has_homonyms <- function(x) {
   vec_duplicate_any(names(x))
 }
 
+is_empty <- function(x) {
+  UseMethod("is_empty")
+}
+
+is_empty.default <- function(x) {
+  length(x) == 0L
+}
+
+is_empty.tbl_df <- function(x) {
+  nrow(x) == 0L
+}
+
 is_void <- function(x) {
   is.na(x) | is_blank(x)
 }

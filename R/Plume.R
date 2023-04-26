@@ -181,6 +181,10 @@ Plume <- R6Class(
         literal_name
       ))
       check_args("string", list(sep_last, divider), allow_null = TRUE)
+      out <- unnest_drop(self$plume, contribution)
+      if (is_empty(out)) {
+        return()
+      }
       initials <- self$names$initials
       has_initials <- private$has_col(initials)
       if (!has_initials || literal_name) {
@@ -189,7 +193,6 @@ Plume <- R6Class(
         authors <- initials
       }
       pars <- private$contribution_pars(role_first, name_list, authors, divider)
-      out <- unnest_drop(self$plume, contribution)
       if (has_initials && dotted_initials && !literal_name) {
         out <- mutate(out, !!authors := dot(.data[[authors]]))
       }
@@ -246,9 +249,12 @@ Plume <- R6Class(
       private$check_col(col)
       check_string(sep)
       check_bool(superscript)
-      .col <- predot(col)
       out <- unnest_drop(self$plume, col)
+      if (is_empty(out)) {
+        return()
+      }
       out <- add_group_ids(out, col)
+      .col <- predot(col)
       out <- set_symbols(out, .col, self$symbols[[var]])
       out <- distinct(out, .data[[col]], .data[[.col]])
       if (superscript) {
