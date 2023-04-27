@@ -88,6 +88,7 @@ Plume <- R6Class(
     #' `format = NULL` lists author names without suffixes.
     #' @return A character vector.
     get_author_list = function(format = NULL) {
+      check_suffix_format(format, allowed = c("a", "c", "n", "o", "^", ","))
       authors <- private$get("literal_name")
       if (is.null(format)) {
         return(authors)
@@ -226,7 +227,6 @@ Plume <- R6Class(
     },
 
     get_author_list_suffixes = function(format) {
-      check_suffix_format(format, allowed = c("a", "c", "n", "o", "^", ","))
       dict <- get_key_dict(format)
       vars <- private$get_names(dict)
       cols <- unname(vars)
