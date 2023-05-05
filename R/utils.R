@@ -46,13 +46,6 @@ make_initials <- function(x, dot = FALSE) {
   out
 }
 
-make_suffixes <- function(x) {
-  string_remove(
-    glue(x, .envir = caller_env()),
-    "\\^(?=,\\^)|(?<=^),|^\\^{2}|\\^{2}$"
-  )
-}
-
 bind <- function(x, sep = ",", arrange = TRUE) {
   out <- condense(x)
   if (arrange) {
@@ -75,12 +68,16 @@ join <- function(x, sep) {
   paste(x[is_not_na(x)], collapse = sep)
 }
 
+itemise_rows <- function(data, cols) {
+  out <- map(data[cols], as.character)
+  list_transpose(out)
+}
+
 collapse_cols <- function(data, cols, sep) {
   if (length(cols) == 1L) {
     return(data[[cols]])
   }
-  out <- map(data[cols], as.character)
-  out <- list_transpose(out)
+  out <- itemise_rows(data, cols)
   map_vec(out, partial(join, sep = sep))
 }
 

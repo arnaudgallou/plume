@@ -236,12 +236,9 @@ Plume <- R6Class(
       symbols <- list_assign(self$symbols, orcid = self$names$orcid)
       out <- set_suffixes(out, vars, symbols)
       grp_vars <- private$get_names("id", "literal_name", use_keys = FALSE)
-      out <- summarise(out, across(
-        predot(cols),
-        bind
-      ), .by = all_of(grp_vars))
-      cols <- set_names(cols, names(dict))
-      make_author_list_suffixes(out, format, cols)
+      .cols <- predot(cols)
+      out <- summarise(out, across(all_of(.cols), bind), .by = all_of(grp_vars))
+      als_make(out, .cols, format)
     },
 
     get_footnotes = function(var, sep, superscript) {
@@ -294,21 +291,6 @@ get_key_dict <- function(format) {
     n = "note",
     o = "orcid"
   )
-  keys <- extract_keys(format)
-  dict[names(dict) %in% keys]
-}
-
-make_author_list_suffixes <- function(data, format, cols) {
-  fmt <- parse_suffix_format(format)
-  assign_to_keys(data, predot(cols), seps = fmt$seps)
-  pattern <- keys_to_pattern(fmt$format, keys = names(cols))
-  make_suffixes(pattern)
-}
-
-assign_to_keys <- function(data, cols, seps, env = caller_env()) {
-  iwalk(cols, \(value, key) {
-    x <- data[[value]]
-    value <- if_not_empty(x, paste0(seps[[key]], x))
-    assign(key, value, envir = env)
-  })
+  keys <- als_extract_keys(format)
+  dict[keys]
 }

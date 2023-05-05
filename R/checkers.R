@@ -228,7 +228,7 @@ check_suffix_format <- function(x, allowed, arg = caller_arg(x)) {
     return(invisible(NULL))
   }
   pattern <- to_chr_class(allowed, negate = TRUE)
-  keys <- extract_keys(x)
+  keys <- als_extract_keys(x)
   has_no_keys <- is_empty(keys)
   has_dup_keys <- vec_duplicate_any(keys)
   if (!(has_no_keys || has_dup_keys || grepl(pattern, x))) {

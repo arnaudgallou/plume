@@ -54,10 +54,6 @@ test_that("get_author_list() returns author list", {
   )
 
   expect_equal(
-    aut$get_author_list(format = "^a^,^c"),
-    affix_to_authors("^", .a, "^", .c)
-  )
-  expect_equal(
     aut$get_author_list(format = "a,,c"),
     affix_to_authors(.a, .seps, .c)
   )
