@@ -64,8 +64,8 @@ arg_names_true <- function() {
   names(args_true)
 }
 
-join <- function(x, sep) {
-  paste(x[is_not_na(x)], collapse = sep)
+drop_na.default <- function(data, ...) {
+  data[is_not_na(data)]
 }
 
 itemise_rows <- function(data, cols) {
@@ -77,8 +77,8 @@ collapse_cols <- function(data, cols, sep) {
   if (length(cols) == 1L) {
     return(data[[cols]])
   }
-  out <- itemise_rows(data, cols)
-  map_vec(out, partial(join, sep = sep))
+  rows <- itemise_rows(data, cols)
+  map_vec(rows, \(row) paste0(drop_na(row), collapse = sep))
 }
 
 dissolve <- function(data, dict, callback, env = caller_env()) {
@@ -115,8 +115,7 @@ propagate_na <- function(x, from) {
 }
 
 condense <- function(x) {
-  x <- unique(x)
-  x[is_not_na(x)]
+  drop_na(unique(x))
 }
 
 supplant <- function(old, new) {
