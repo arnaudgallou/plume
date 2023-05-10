@@ -54,7 +54,5 @@ clone_each <- function(x, n) {
   if (n == 1L) {
     return(x)
   }
-  map_vec(x, \(elt) {
-    paste(rep(elt, n), collapse = "")
-  })
+  map_vec(x, \(elt) collapse(rep(elt, n)))
 }

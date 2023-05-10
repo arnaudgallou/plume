@@ -51,7 +51,7 @@ bind <- function(x, sep = ",", arrange = TRUE) {
   if (arrange) {
     out <- vector_arrange(out)
   }
-  paste(out, collapse = sep)
+  collapse(out, sep)
 }
 
 caller_args <- function(n = 2) {
@@ -73,12 +73,16 @@ itemise_rows <- function(data, cols) {
   list_transpose(out)
 }
 
+collapse <- function(x, sep = "") {
+  paste(x, collapse = sep)
+}
+
 collapse_cols <- function(data, cols, sep) {
   if (length(cols) == 1L) {
     return(data[[cols]])
   }
   rows <- itemise_rows(data, cols)
-  map_vec(rows, \(row) paste0(drop_na(row), collapse = sep))
+  map_vec(rows, \(row) collapse(drop_na(row), sep))
 }
 
 dissolve <- function(data, dict, callback, env = caller_env()) {
@@ -129,7 +133,7 @@ supplant <- function(old, new) {
 
 to_chr_class <- function(x, negate = FALSE) {
   neg <- if (negate) "^" else ""
-  x <- paste(x, collapse = "")
+  x <- collapse(x)
   x <- string_replace(x, r"{([-\\\[\]])}", r"{\\\1}")
   paste0("[", neg, x, "]")
 }

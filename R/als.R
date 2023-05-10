@@ -27,12 +27,12 @@ als_join <- function(elts, marks) {
   out <- map2_vec(elts, marks, \(elt, mark) {
     if (is_blank(elt) & string_contain(mark, "^")) {
       return("^")
-    } else if (!is_blank(elt)) {
-      return(paste0(mark, elt))
+    } else if (is_blank(elt)) {
+      return(elt)
     }
-    elt
+    paste0(mark, elt)
   })
-  paste0(out, collapse = "")
+  collapse(out)
 }
 
 als_sanitise <- function(x) {
@@ -50,7 +50,7 @@ als_make <- function(data, cols, format) {
   rows <- itemise_rows(data, cols)
   marks <- als_parse(format)
   if (all(is_blank(marks$heads))) {
-    return(map_vec(rows, \(row) paste0(row, collapse = "")))
+    return(map_vec(rows, collapse))
   }
   out <- map_vec(rows, \(row) als_join(row, marks$heads))
   out <- paste0(out, marks$tail)

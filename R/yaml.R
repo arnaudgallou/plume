@@ -48,7 +48,7 @@ yaml_inject <- function(lines, replacement) {
     handlers = list(logical = as_verbatim_lgl)
   )
   out <- replace(lines, 2, yaml)
-  paste0(out, collapse = paste0("---", line_break))
+  collapse(out, paste0("---", line_break))
 }
 
 yaml_push <- function(file, what) {
