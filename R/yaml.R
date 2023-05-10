@@ -35,7 +35,7 @@ as_verbatim_lgl <- function(x) {
 
 yaml_inject <- function(lines, replacement) {
   if (length(lines) < 3L) {
-    abort_input_check(msg = c(
+    abort_check(msg = c(
       "Invalid YAML header.",
       i = "Did you forget to separate the YAML header with three hyphens?"
     ))

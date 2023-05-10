@@ -91,7 +91,7 @@ message_error <- function(arg, body, what) {
   sprintf("`%s` %s %s.", arg, body, what)
 }
 
-abort_input_check <- function(
+abort_check <- function(
     what,
     msg = NULL,
     bullets = NULL,
@@ -117,7 +117,7 @@ check_named <- function(x, allow_homonyms = FALSE, ..., arg = caller_arg(x)) {
   } else {
     msg <- "All `{arg}` inputs must be named."
   }
-  abort_input_check(msg = glue(msg), ..., arg = arg)
+  abort_check(msg = glue(msg), ..., arg = arg)
 }
 
 check_duplicates <- function(x, ..., arg = caller_arg(x)) {
@@ -125,7 +125,7 @@ check_duplicates <- function(x, ..., arg = caller_arg(x)) {
     return(invisible(NULL))
   }
   msg <- glue("`{arg}` must have unique input values.")
-  abort_input_check(msg = msg, ..., arg = arg)
+  abort_check(msg = msg, ..., arg = arg)
 }
 
 vector_types <- c(
@@ -161,7 +161,7 @@ check_vector <- function(
   if (type != "list") {
     type <- paste(type, "vector")
   }
-  abort_input_check(paste("a", type), ..., arg = arg)
+  abort_check(paste("a", type), ..., arg = arg)
 }
 
 check_list <- partial(check_vector, type = "list")
@@ -172,7 +172,7 @@ check_df <- function(x, ..., arg = caller_arg(x)) {
   if (!missing(x) && inherits(x, c("data.frame", "tbl_df"))) {
     return(invisible(NULL))
   }
-  abort_input_check("a data frame or tibble", ..., arg = arg)
+  abort_check("a data frame or tibble", ..., arg = arg)
 }
 
 check_string <- function(
@@ -191,7 +191,7 @@ check_string <- function(
       adj <- "non-empty"
     }
   }
-  abort_input_check(paste("a", adj, "string"), ..., arg = arg)
+  abort_check(paste("a", adj, "string"), ..., arg = arg)
 }
 
 is_stringish <- function(x, allow_empty, allow_null) {
@@ -208,7 +208,7 @@ check_bool <- function(x, allow_null = FALSE, ..., arg = caller_arg(x)) {
   if (!missing(x) && (is_bool(x) || allow_null && is.null(x))) {
     return(invisible(NULL))
   }
-  abort_input_check("`TRUE` or `FALSE`", ..., arg = arg)
+  abort_check("`TRUE` or `FALSE`", ..., arg = arg)
 }
 
 check_args <- function(type, x, ...) {
@@ -243,7 +243,7 @@ check_suffix_format <- function(x, allowed, arg = caller_arg(x)) {
     what <- paste("any of", enumerate(allowed, last = " or "))
     msg_body <- 3
   }
-  abort_input_check(what, msg_body = msg_body, arg = arg)
+  abort_check(what, msg_body = msg_body, arg = arg)
 }
 
 file_ext <- function(x) {
@@ -270,7 +270,7 @@ check_file <- function(
   if (length(extension) > 1L) {
     extension <- enumerate(extension, last = " or ")
   }
-  abort_input_check(paste("a", extension, "file"), ..., arg = arg)
+  abort_check(paste("a", extension, "file"), ..., arg = arg)
 }
 
 is_glueish <- function(x) {
@@ -294,7 +294,7 @@ check_glue <- function(x, allowed, ..., arg = caller_arg(x)) {
       i = glue("`format` must use variables {enumerate(allowed_exprs)}.")
     )
   }
-  abort_input_check("a glue specification", msg = msg, ..., arg = arg)
+  abort_check("a glue specification", msg = msg, ..., arg = arg)
 }
 
 is_orcid <- function(x) {
@@ -307,7 +307,7 @@ check_orcid <- function(x, ..., arg = caller_arg(x)) {
     return(invisible(NULL))
   }
   msg <- glue("Invalid ORCID identifier found: `{invalid_orcid}`.")
-  abort_input_check(msg = msg, bullets = c(
+  abort_check(msg = msg, bullets = c(
     i = "ORCID identifiers must have 16 digits, separated by a hyphen every 4 digits.",
     i = "The last character of the identifier must be a digit or `X`."
   ), ..., arg = arg)

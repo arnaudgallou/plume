@@ -178,7 +178,7 @@ PlumeHandler <- R6Class(
         return()
       }
       msg <- glue("Column `{missing_col}` doesn't exist.")
-      abort_input_check(msg = msg, ...)
+      abort_check(msg = msg, ...)
     },
 
     check_authors = function() {
@@ -191,7 +191,7 @@ PlumeHandler <- R6Class(
       if (is.null(missing_author)) {
         return()
       }
-      abort_input_check(msg = c(
+      abort_check(msg = c(
         glue("Missing author name found in position {names(missing_author)}."),
         i = "You must supply a given and family names."
       ))
