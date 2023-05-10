@@ -50,12 +50,11 @@ are_dots_all <- function(...) {
   dots_n(...) == 1L && is_string(expr(...)) && ... == "all"
 }
 
-search <- function(x, callback, drop_na = TRUE, n = 1) {
-  out <- x
-  if (drop_na) {
-    out <- out[is_not_na(out)]
+search <- function(x, callback, na_rm = TRUE, n = 1) {
+  if (na_rm) {
+    x <- x[is_not_na(x)]
   }
-  have_passed <- !callback(out)
+  have_passed <- !callback(x)
   if (all(have_passed)) {
     return()
   }
@@ -63,7 +62,7 @@ search <- function(x, callback, drop_na = TRUE, n = 1) {
   if (!is.null(n)) {
     failed <- failed[n]
   }
-  set_names(out[failed], failed)
+  set_names(x[failed], failed)
 }
 
 is_type <- function(x, type) {

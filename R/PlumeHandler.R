@@ -187,7 +187,7 @@ PlumeHandler <- R6Class(
       authors <- reduce(authors, \(x, y) {
         if_else(is_void(x) | is_void(y), NA, 1L)
       })
-      missing_author <- search(authors, is_void, drop_na = FALSE)
+      missing_author <- search(authors, is.na, na_rm = FALSE)
       if (is.null(missing_author)) {
         return()
       }
