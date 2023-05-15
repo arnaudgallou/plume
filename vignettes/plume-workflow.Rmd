@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 plume is designed to work with spreadsheets, which makes it easy to store, maintain and share data with co-authors. I recommend using [Google Sheets](https://docs.google.com/spreadsheets/) to take advantage of the R interface provided by the [googlesheets4](https://googlesheets4.tidyverse.org) package.
 
-First, you need to create a spreadsheet. `plume_template()` provides a default template for that purpose.
+First, you need to create a spreadsheet. `plm_template()` provides a default template for that purpose.
 
 Note that if it's the first time you use googlesheets4, you'll need to grant the package permission to operate with Google Sheets. Read more about googlesheets4 authentication [here](https://googlesheets4.tidyverse.org/reference/gs4_auth.html).
 
@@ -25,11 +25,11 @@ library(googlesheets4)
 
 gs4_create(
   name = "encyclopédie",
-  sheets = plume_template()
+  sheets = plm_template()
 )
 ```
 
-The above will create a sheet named `encyclopédie` with the columns defined by `plume_template()`.
+The above will create a sheet named `encyclopédie` with the columns defined by `plm_template()`.
 
 Enter your information and share the sheet with your collaborators so they can add theirs too. Once the sheet contains all author metadata, use `read_sheet()` to read it in R.
 

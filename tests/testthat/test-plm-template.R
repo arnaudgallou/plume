@@ -1,5 +1,5 @@
-test_that("plume_template() returns a table template", {
-  df <- plume_template()
+test_that("plm_template() returns a table template", {
+  df <- plm_template()
 
   expect_equal(nrow(df), 0)
 
@@ -10,12 +10,12 @@ test_that("plume_template() returns a table template", {
   expect_named(df, nms_minimal, ignore.order = TRUE)
 
   nms_complete <- c(nms_minimal, "dropping_particle", "number", "fax", "url")
-  expect_named(plume_template(FALSE), nms_complete, ignore.order = TRUE)
+  expect_named(plm_template(FALSE), nms_complete, ignore.order = TRUE)
 })
 
 # Errors ----
 
-test_that("plume_template() gives meaningful error messages", {
-  expect_snapshot(plume_template(1), error = TRUE)
+test_that("plm_template() gives meaningful error messages", {
+  expect_snapshot(plm_template(1), error = TRUE)
 })
 

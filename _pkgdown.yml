@@ -12,7 +12,7 @@ reference:
   - title: Helpers
     contents:
       - enumerate
-      - plume_template
+      - plm_template
       - sequential
       - set_default_names
   - title: Built-in datasets

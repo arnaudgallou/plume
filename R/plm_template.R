@@ -8,7 +8,7 @@
 #'   can be supplied to plume classes.
 #' @return An empty tibble.
 #' @export
-plume_template <- function(minimal = TRUE) {
+plm_template <- function(minimal = TRUE) {
   check_bool(minimal)
   nestables <- c(seq_names("affiliation", "contribution", n = 2), "note")
   vars <- list_assign(

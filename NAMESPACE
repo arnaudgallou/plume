@@ -3,7 +3,7 @@
 export(Plume)
 export(PlumeQuarto)
 export(enumerate)
-export(plume_template)
+export(plm_template)
 export(sequential)
 export(set_default_names)
 importFrom(R6,R6Class)
