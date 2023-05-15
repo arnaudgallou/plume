@@ -7,12 +7,6 @@
       Error:
       ! `format` must be a character string.
     Code
-      (expect_error(aut$get_author_list(format = "")))
-    Output
-      <error/rlang_error>
-      Error:
-      ! `format` must have at least one key.
-    Code
       (expect_error(aut$get_author_list(format = "anca")))
     Output
       <error/rlang_error>

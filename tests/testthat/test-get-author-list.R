@@ -152,9 +152,6 @@ test_that("get_author_list() gives meaningful error messages", {
       aut$get_author_list(format = 1)
     ))
     (expect_error(
-      aut$get_author_list(format = "")
-    ))
-    (expect_error(
       aut$get_author_list(format = "anca")
     ))
     (expect_error(

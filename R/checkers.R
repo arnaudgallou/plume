@@ -38,6 +38,13 @@ is_empty.tbl_df <- function(x) {
   nrow(x) == 0L
 }
 
+is_empty.character <- function(x) {
+  if (length(x) > 1L) {
+    return(FALSE)
+  }
+  length(x) == 0L || x == ""
+}
+
 is_void <- function(x) {
   is.na(x) | is_blank(x)
 }
@@ -228,16 +235,13 @@ check_suffix_format <- function(x, allowed, arg = caller_arg(x)) {
   }
   pattern <- to_chr_class(allowed, negate = TRUE)
   keys <- als_extract_keys(x)
-  has_no_keys <- is_empty(keys)
   has_dup_keys <- vec_duplicate_any(keys)
-  if (!(has_no_keys || has_dup_keys || grepl(pattern, x))) {
+  if (!(has_dup_keys || grepl(pattern, x))) {
     return(invisible(NULL))
   }
-  msg_body <- 2
-  if (has_no_keys) {
-    what <- "at least one key"
-  } else if (has_dup_keys) {
+  if (has_dup_keys) {
     what <- "unique keys"
+    msg_body <- 2
   } else {
     allowed <- wrap(allowed, "`")
     what <- paste("any of", enumerate(allowed, last = " or "))

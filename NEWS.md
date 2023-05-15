@@ -6,6 +6,8 @@
 
 ## Minor improvements and bug fixes
 
+* `get_author_list()` now accepts `format = ""` to return author names only. This is equivalent to `format = NULL`. (#3)
+
 * plume classes now error when a given or family name is `NA` or a blank string.
 
 * Blank and empty strings are now converted to `NA` when creating a plume object (#2).

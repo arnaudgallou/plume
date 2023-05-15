@@ -90,7 +90,7 @@ Plume <- R6Class(
     get_author_list = function(format = NULL) {
       check_suffix_format(format, allowed = c("a", "c", "n", "o", "^", ","))
       authors <- private$get("literal_name")
-      if (is.null(format)) {
+      if (is_empty(format)) {
         return(authors)
       }
       suffixes <- private$get_author_list_suffixes(format)

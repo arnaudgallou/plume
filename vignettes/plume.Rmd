@@ -200,7 +200,7 @@ aut$set_corresponding_authors(1, 4)
 aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
 ```
 
-Use `format = NULL` to ignore suffixes:
+Use `format = NULL` or `format = ""` to ignore suffixes:
 
 ```{r}
 aut$get_author_list(format = NULL) |> enumerate()
