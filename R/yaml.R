@@ -3,7 +3,7 @@ is_schema_up_to_date <- function(current, new) {
   identical(current, new)
 }
 
-line_break <- function() {
+get_eol <- function() {
   if (.Platform$OS.type == "unix") "\n" else "\r\n"
 }
 
@@ -40,15 +40,15 @@ yaml_inject <- function(lines, replacement) {
       i = "Did you forget to separate the YAML header with three hyphens?"
     ))
   }
-  line_break <- line_break()
+  eol <- get_eol()
   yaml <- as.yaml(
     replacement,
-    line.sep = line_break,
+    line.sep = eol,
     indent.mapping.sequence = TRUE,
     handlers = list(logical = as_verbatim_lgl)
   )
   out <- replace(lines, 2, yaml)
-  collapse(out, paste0("---", line_break))
+  collapse(out, paste0("---", eol))
 }
 
 yaml_push <- function(file, what) {
