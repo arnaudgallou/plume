@@ -12,6 +12,7 @@ reference:
   - title: Helpers
     contents:
       - enumerate
+      - plm_push
       - plm_template
       - sequential
       - set_default_names
