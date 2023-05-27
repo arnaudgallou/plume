@@ -85,15 +85,15 @@
 
     
     
+<div class="section level2">
+<h2 id="managing-the-data">Managing the data<a class="anchor" aria-label="anchor" href="#managing-the-data"></a>
+</h2>
 <p>plume is designed to work with spreadsheets, which makes it easy to
 store, maintain and share data with co-authors. I recommend using <a href="https://docs.google.com/spreadsheets/" class="external-link">Google Sheets</a> to take
 advantage of the R interface provided by the <a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a>
 package.</p>
 <p>First, you need to create a spreadsheet. <code><a href="../reference/plm_template.html">plm_template()</a></code>
 provides a default template for that purpose.</p>
-<p>Note that if it’s the first time you use googlesheets4, you’ll need
-to grant the package permission to operate with Google Sheets. Read more
-about googlesheets4 authentication <a href="https://googlesheets4.tidyverse.org/reference/gs4_auth.html" class="external-link">here</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
 <span></span>
@@ -104,34 +104,88 @@ about googlesheets4 authentication <a href="https://googlesheets4.tidyverse.org/
 <p>The above will create a sheet named <code>encyclopédie</code> with
 the columns defined by <code><a href="../reference/plm_template.html">plm_template()</a></code>.</p>
 <p>Enter your information and share the sheet with your collaborators so
-they can add theirs too. Once the sheet contains all author metadata,
-use <code>read_sheet()</code> to read it in R.</p>
+they can add theirs too.</p>
+<p>Note that if it’s the first time you use googlesheets4, you’ll need
+to grant the package permission to work with Google Sheets. You can read
+more about googlesheets4 authentication <a href="https://googlesheets4.tidyverse.org/reference/gs4_auth.html" class="external-link">here</a>.</p>
+<!--## Reading in author data-->
+<p>Once the sheet is online, use <code>read_sheet()</code> to read it in
+R.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">read_sheet</span><span class="op">(</span><span class="fu">gs4_find</span><span class="op">(</span><span class="st">"encyclopédie"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Below is what the typical plume set up would look like in an R
-markdown or Quarto document.</p>
-<p>Note that the code would have to be put in a separate R script when
-using <code>PlumeQuarto</code> to inject author metadata.</p>
+</div>
+<div class="section level2">
+<h2 id="set-up">Set up<a class="anchor" aria-label="anchor" href="#set-up"></a>
+</h2>
+<!--differs slightly depending on whether you use `Plume` or `PlumeQuarto`.-->
+<div class="section level3">
+<h3 id="plume">Plume<a class="anchor" aria-label="anchor" href="#plume"></a>
+</h3>
+<p>If you use <code>Plume</code>, put the code directly in your R
+markdown or Quarto document as shown in the example below.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>title: An awesome future publication</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>```{r}</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>#| label: setup</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>#| include: false</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>library(googlesheets4)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>library(plume)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>tbl_authors &lt;- gs4_find("encyclopédie") |&gt; read_sheet()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>title: An awesome publication</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>execute:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  echo: false</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>```{r}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>#| label: setup</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>#| include: false</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>library(googlesheets4)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>library(plume)</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>aut &lt;- Plume$new(tbl_authors)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>aut$set_corresponding_authors(1)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>tbl_authors &lt;- gs4_find("encyclopédie") |&gt; read_sheet()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>aut &lt;- Plume$new(tbl_authors)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>aut$set_corresponding_authors(1)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>```{r}</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>#| result: asis</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>aut$get_author_list("^a,^cn") |&gt; cat(sep = ", ")</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>## Main text</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>Lorem ipsum...</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>## Contributions</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>```{r}</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>#| result: asis</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>aut$get_contributions() |&gt; cat(sep = "; ")</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div>
 <p>To modify author data, simply edit the spreadsheet. All author
 information in the document will update automatically the next time you
 render it.</p>
-  </main>
+</div>
+<div class="section level3">
+<h3 id="plumequarto">PlumeQuarto<a class="anchor" aria-label="anchor" href="#plumequarto"></a>
+</h3>
+<p>If you use <code>PlumeQuarto</code> to inject author information in a
+Quarto document, you’ll have to pass the data from a separate R
+script.</p>
+<p>Use <code><a href="../reference/plm_push.html">plm_push()</a></code> to insert data not handled by Quarto’s
+author schema such as author contributions.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>library(googlesheets4)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>library(plume)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>tbl_authors &lt;- gs4_find("encyclopédie") |&gt; read_sheet()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>file &lt;- "my_file.qmd"</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>aut &lt;- Plume$new(tbl_authors)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>aut$set_corresponding_authors(1)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>aut$to_yaml(file)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>aut$get_contributions() |&gt; plm_push(file, "# Contributions")</span></code></pre></div>
+<p>Remember to run the script everytime the spreadsheet is updated to
+implement the changes in your document.</p>
+<!--meaning the function will always edit the data where they are in the document, even is you change the where argument or the title. If you want to change the location of say contributions, you'll have to move them manually in you Quarto file or delete them and execute `plm_push()` again.-->
+</div>
+</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
