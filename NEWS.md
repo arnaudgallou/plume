@@ -6,7 +6,9 @@
 
 ## Minor improvements and bug fixes
 
-* `get_author_list()` now accepts `format = ""` to return author names only. This is equivalent to `format = NULL`. (#3)
+* New function `plm_push()` that can be used to insert author information into a Quarto document from a separate R script.
+
+* `get_author_list()` now accepts `format = ""` to return author names only. This is equivalent to `format = NULL` (#3).
 
 * plume classes now error when a given or family name is `NA` or a blank string.
 

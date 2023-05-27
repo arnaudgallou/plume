@@ -205,7 +205,8 @@ Plume <- R6Class(
         .data[[pars$var]],
         last = sep_last
       ), .by = all_of(pars$grp_var))
-      collapse_cols(out, pars$format, sep = pars$divider)
+      out <- collapse_cols(out, pars$format, sep = pars$divider)
+      plm_obj(out, name = "contributions")
     }
   ),
 

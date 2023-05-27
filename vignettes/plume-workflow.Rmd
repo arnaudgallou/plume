@@ -14,11 +14,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Managing the data
+
 plume is designed to work with spreadsheets, which makes it easy to store, maintain and share data with co-authors. I recommend using [Google Sheets](https://docs.google.com/spreadsheets/) to take advantage of the R interface provided by the [googlesheets4](https://googlesheets4.tidyverse.org) package.
 
 First, you need to create a spreadsheet. `plm_template()` provides a default template for that purpose.
-
-Note that if it's the first time you use googlesheets4, you'll need to grant the package permission to operate with Google Sheets. Read more about googlesheets4 authentication [here](https://googlesheets4.tidyverse.org/reference/gs4_auth.html).
 
 ```{r eval = FALSE}
 library(googlesheets4)
@@ -31,21 +31,33 @@ gs4_create(
 
 The above will create a sheet named `encyclopédie` with the columns defined by `plm_template()`.
 
-Enter your information and share the sheet with your collaborators so they can add theirs too. Once the sheet contains all author metadata, use `read_sheet()` to read it in R.
+Enter your information and share the sheet with your collaborators so they can add theirs too.
+
+Note that if it's the first time you use googlesheets4, you'll need to grant the package permission to work with Google Sheets. You can read more about googlesheets4 authentication [here](https://googlesheets4.tidyverse.org/reference/gs4_auth.html).
+
+<!--## Reading in author data-->
+
+Once the sheet is online, use `read_sheet()` to read it in R.
 
 ```{r eval = FALSE}
 read_sheet(gs4_find("encyclopédie"))
 ```
 
-Below is what the typical plume set up would look like in an R markdown or Quarto document.
+## Set up
 
-Note that the code would have to be put in a separate R script when using `PlumeQuarto` to inject author metadata.
+<!--differs slightly depending on whether you use `Plume` or `PlumeQuarto`.-->
+
+### Plume
+
+If you use `Plume`, put the code directly in your R markdown or Quarto document as shown in the example below.
 
 ````{verbatim}
 ---
-title: An awesome future publication
+title: An awesome publication
+execute:
+  echo: false
 ---
-  
+
 ```{r}
 #| label: setup
 #| include: false
@@ -58,6 +70,45 @@ tbl_authors <- gs4_find("encyclopédie") |> read_sheet()
 aut <- Plume$new(tbl_authors)
 aut$set_corresponding_authors(1)
 ```
+
+```{r}
+#| result: asis
+aut$get_author_list("^a,^cn") |> cat(sep = ", ")
+```
+
+## Main text
+
+Lorem ipsum...
+
+## Contributions
+
+```{r}
+#| result: asis
+aut$get_contributions() |> cat(sep = "; ")
+```
 ````
 
 To modify author data, simply edit the spreadsheet. All author information in the document will update automatically the next time you render it.
+
+### PlumeQuarto
+
+If you use `PlumeQuarto` to inject author information in a Quarto document, you'll have to pass the data from a separate R script.
+
+Use `plm_push()` to insert data not handled by Quarto's author schema such as author contributions.
+
+```{verbatim}
+library(googlesheets4)
+library(plume)
+
+tbl_authors <- gs4_find("encyclopédie") |> read_sheet()
+file <- "my_file.qmd"
+
+aut <- Plume$new(tbl_authors)
+aut$set_corresponding_authors(1)
+aut$to_yaml(file)
+aut$get_contributions() |> plm_push(file, "# Contributions")
+```
+
+Remember to run the script everytime the spreadsheet is updated to implement the changes in your document.
+
+<!--meaning the function will always edit the data where they are in the document, even is you change the where argument or the title. If you want to change the location of say contributions, you'll have to move them manually in you Quarto file or delete them and execute `plm_push()` again.-->

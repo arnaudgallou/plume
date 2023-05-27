@@ -13,11 +13,13 @@ test_that("get_contributions() return authors' contributions", {
 
   expect_equal(
     aut$get_contributions(dotted_initials = FALSE),
-    paste0(contributions, ": ", contributors)
+    paste0(contributions, ": ", contributors),
+    ignore_attr = TRUE
   )
   expect_equal(
     aut$get_contributions(dotted_initials = FALSE, divider = " - "),
-    paste0(contributions, " - ", contributors)
+    paste0(contributions, " - ", contributors),
+    ignore_attr = TRUE
   )
   expect_equal(
     aut$get_contributions(
@@ -25,28 +27,32 @@ test_that("get_contributions() return authors' contributions", {
       name_list = TRUE,
       dotted_initials = FALSE
     ),
-    paste0(contributors, " ", contributions)
+    paste0(contributors, " ", contributions),
+    ignore_attr = TRUE
   )
 
   contributors <- lapply(list_initials, \(x) enumerate(x, last = " & "))
 
   expect_equal(
     aut$get_contributions(dotted_initials = FALSE, sep_last = " & "),
-    paste0(contributions, ": ", contributors)
+    paste0(contributions, ": ", contributors),
+    ignore_attr = TRUE
   )
 
   contributors <- lapply(list_initials, \(x) enumerate(dot(x)))
 
   expect_equal(
     aut$get_contributions(dotted_initials = TRUE),
-    paste0(contributions, ": ", contributors)
+    paste0(contributions, ": ", contributors),
+    ignore_attr = TRUE
   )
 
   contributors <- lapply(list_initials, \(x) enumerate(sort(x)))
 
   expect_equal(
     aut$get_contributions(alphabetical_order = TRUE, dotted_initials = FALSE),
-    paste0(contributions, ": ", contributors)
+    paste0(contributions, ": ", contributors),
+    ignore_attr = TRUE
   )
 
   literal_names <- df$literal_name
@@ -56,7 +62,8 @@ test_that("get_contributions() return authors' contributions", {
 
   expect_equal(
     aut$get_contributions(role_first = FALSE, literal_name = TRUE),
-    paste0(literal_names, ": ", contributions)
+    paste0(literal_names, ": ", contributions),
+    ignore_attr = TRUE
   )
 })
 

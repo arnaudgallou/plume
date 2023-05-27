@@ -313,3 +313,14 @@ check_orcid <- function(x, ..., arg = caller_arg(x)) {
     i = "The last character of the identifier must be a digit or `X`."
   ), ..., arg = arg)
 }
+
+is_plm <- function(x) {
+  inherits(x, "plm")
+}
+
+check_plm <- function(x, ..., arg = caller_arg(x)) {
+  if (!missing(x) && is_plm(x)) {
+    return(invisible(NULL))
+  }
+  abort_check("a <plm> object", ..., arg = arg)
+}

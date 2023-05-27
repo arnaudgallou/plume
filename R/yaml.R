@@ -3,10 +3,6 @@ is_schema_up_to_date <- function(current, new) {
   identical(current, new)
 }
 
-get_eol <- function() {
-  if (.Platform$OS.type == "unix") "\n" else "\r\n"
-}
-
 json_update <- function(text, json) {
   out <- yaml.load(text)
   if (is.null(out)) {

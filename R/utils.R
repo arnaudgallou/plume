@@ -150,6 +150,19 @@ blank_to_na <- function(x) {
   replace(x, is_blank(x), NA)
 }
 
+get_eol <- function() {
+  if (.Platform$OS.type == "unix") "\n" else "\r\n"
+}
+
+plm_obj <- function(x, name, ...) {
+  structure(x, name = name, class = c("plm", "character"), ...)
+}
+
+unstructure <- function(x) {
+  attributes(x) <- NULL
+  x
+}
+
 unnest_drop <- function(x, cols) {
   x <- unnest(x, cols = all_of(cols))
   drop_na(x, all_of(cols))
