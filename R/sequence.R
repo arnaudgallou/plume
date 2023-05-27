@@ -38,7 +38,7 @@ seq_vector <- function(x, n) {
 }
 
 seq_vector.default <- function(x, n) {
-  out <- map(seq(n), \(i) clone_each(x, i))
+  out <- map(seq(n), \(i) strrep(x, i))
   unlist(out)
 }
 
@@ -48,11 +48,4 @@ seq_vector.sequential <- function(x, n) {
   out <- reduce(out, expand_grid)
   out <- reduce(out, paste0)
   unique(out)
-}
-
-clone_each <- function(x, n) {
-  if (n == 1L) {
-    return(x)
-  }
-  map_vec(x, \(elt) collapse(rep(elt, n)))
 }
