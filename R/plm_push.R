@@ -12,6 +12,7 @@
 #' @param sep Separator used to separate items passed to `x`.
 #' @return The input `file` invisibly.
 #' @examples
+#' \dontrun{
 #' tmp_file <- withr::local_tempfile(
 #'   lines = "# Foo\n\n# Bar",
 #'   fileext = ".qmd"
@@ -26,6 +27,7 @@
 #' o$get_contributions() |> plm_push(tmp_file, where = "# Foo")
 #'
 #' readr::read_file(tmp_file) |> cat()
+#' }
 #' @export
 plm_push <- function(x, file, where = NULL, sep = "; ") {
   check_plm(x)

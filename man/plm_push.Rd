@@ -28,6 +28,7 @@ passed via \code{\link[=PlumeQuarto]{PlumeQuarto$to_yaml()}}. It's handy to avoi
 instantiating the class both in the R script and Quarto file.
 }
 \examples{
+\dontrun{
 tmp_file <- withr::local_tempfile(
   lines = "# Foo\n\n# Bar",
   fileext = ".qmd"
@@ -42,4 +43,5 @@ o <- PlumeQuarto$new(
 o$get_contributions() |> plm_push(tmp_file, where = "# Foo")
 
 readr::read_file(tmp_file) |> cat()
+}
 }
