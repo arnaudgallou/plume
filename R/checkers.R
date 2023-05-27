@@ -39,10 +39,7 @@ is_empty.tbl_df <- function(x) {
 }
 
 is_empty.character <- function(x) {
-  if (length(x) > 1L) {
-    return(FALSE)
-  }
-  length(x) == 0L || x == ""
+  length(x) == 0L || all(x == "")
 }
 
 is_void <- function(x) {

@@ -49,7 +49,7 @@ als_clean <- function(x) {
 als_make <- function(data, cols, format) {
   rows <- itemise_rows(data, cols)
   marks <- als_parse(format)
-  if (all(is_blank(marks$heads))) {
+  if (is_empty(marks$heads)) {
     return(map_vec(rows, collapse))
   }
   out <- map_vec(rows, \(row) als_join(row, marks$heads))
