@@ -251,26 +251,13 @@ file_ext <- function(x) {
   string_extract(x, "(?<=\\.)[^.]+$")
 }
 
-check_file <- function(
-    x,
-    extension,
-    allow_sans_ext = FALSE,
-    allow_null = FALSE,
-    ...,
-    arg = caller_arg(x)
-) {
-  check_string(x, allow_empty = FALSE, allow_null, arg = arg)
-  if (allow_sans_ext || allow_null && is.null(x)) {
-    return(invisible(NULL))
-  }
+check_file <- function(x, extension, ..., arg = caller_arg(x)) {
+  check_string(x, allow_empty = FALSE, arg = arg)
   ext <- file_ext(x)
   if (is_not_na(ext) && includes(ext, extension)) {
     return(invisible(NULL))
   }
   extension <- wrap(predot(extension), "`")
-  if (length(extension) > 1L) {
-    extension <- enumerate(extension, last = " or ")
-  }
   abort_check(paste("a", extension, "file"), ..., arg = arg)
 }
 

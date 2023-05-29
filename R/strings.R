@@ -90,10 +90,6 @@ string_replace_all <- function(string, pattern, replacement) {
   )
 }
 
-string_remove <- function(string, pattern) {
-  string_replace(string, pattern, "")
-}
-
 string_remove_all <- function(string, pattern) {
   string_replace_all(string, pattern, "")
 }
@@ -121,14 +117,8 @@ recycle <- function(x, to, arg = caller_arg(x)) {
   rep(x, length(to))
 }
 
-string_trim <- function(string, side = c("both", "left", "right")) {
-  side <- match.arg(side)
-  switch(
-    side,
-    both  = gsub("^\\s+|\\s+$", "", string),
-    left  = sub("^\\s+", "", string),
-    right = sub("\\s+$", "", string)
-  )
+string_trim <- function(string) {
+  gsub("^\\s+|\\s+$", "", string)
 }
 
 string_split <- function(string, pattern = "") {

@@ -16,10 +16,6 @@ true_if <- function(condition, ...) {
   if_else(condition, TRUE, FALSE, ...)
 }
 
-if_not_empty <- function(x, value, ...) {
-  if_else(x == "", x, value, ...)
-}
-
 if_not_na <- function(x, value, ..., all = FALSE) {
   cnd <- is.na(x)
   if (all) {
