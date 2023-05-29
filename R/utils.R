@@ -147,7 +147,7 @@ blank_to_na <- function(x) {
 }
 
 get_eol <- function() {
-  if (.Platform$OS.type == "unix") "\n" else "\r\n"
+  if (.Platform$OS.type == "unix") "\n" else "\r\n" # nocov
 }
 
 plm_obj <- function(x, name, ...) {
