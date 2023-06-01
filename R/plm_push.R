@@ -20,11 +20,11 @@
 #'
 #' readr::read_file(tmp_file) |> cat()
 #'
-#' o <- PlumeQuarto$new(
+#' aut <- PlumeQuarto$new(
 #'   encyclopedists,
 #'   names = c(contribution = "contribution_n")
 #' )
-#' o$get_contributions() |> plm_push(tmp_file, where = "# Foo")
+#' aut$get_contributions() |> plm_push(tmp_file, where = "# Foo")
 #'
 #' readr::read_file(tmp_file) |> cat()
 #' }
