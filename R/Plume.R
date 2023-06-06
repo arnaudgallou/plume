@@ -19,13 +19,13 @@ Plume <- R6Class(
     #' @description Create a `Plume` object.
     #' @param data A data frame or tibble containing author-related data.
     #' @param names A vector of column names.
-    #' @param by A character string defining the default variable used to assign
-    #'   authors' status in all methods. By default, uses authors' ids.
     #' @param symbols A list of keys and values defining the symbols used to link
     #'   authors to metadata. Valid keys are `"affiliation"`,
     #'   `"corresponding"` and `"note"`. By default, uses digits for affiliations,
     #'   `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`, `"¶"`, `"#"`,
     #'   `"**"` for notes. Set a key to `NULL` to use numerals.
+    #' @param by A character string defining the default variable used to assign
+    #'   authors' status in all methods. By default, uses authors' ids.
     #' @param initials_given_name Should the initials of given names be used?
     #' @param family_name_first Should literal names show family names first.
     #' @param interword_spacing Should literal names use spacing? This parameter
@@ -35,8 +35,8 @@ Plume <- R6Class(
     initialize = function(
         data,
         names = NULL,
-        by = NULL,
         symbols = NULL,
+        by = NULL,
         initials_given_name = FALSE,
         family_name_first = FALSE,
         interword_spacing = TRUE

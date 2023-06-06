@@ -48,8 +48,8 @@ Create a \code{Plume} object.
 \if{html}{\out{<div class="r">}}\preformatted{Plume$new(
   data,
   names = NULL,
-  by = NULL,
   symbols = NULL,
+  by = NULL,
   initials_given_name = FALSE,
   family_name_first = FALSE,
   interword_spacing = TRUE
@@ -63,14 +63,14 @@ Create a \code{Plume} object.
 
 \item{\code{names}}{A vector of column names.}
 
-\item{\code{by}}{A character string defining the default variable used to assign
-authors' status in all methods. By default, uses authors' ids.}
-
 \item{\code{symbols}}{A list of keys and values defining the symbols used to link
 authors to metadata. Valid keys are \code{"affiliation"},
 \code{"corresponding"} and \code{"note"}. By default, uses digits for affiliations,
 \code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"}, \code{"¶"}, \code{"#"},
 \code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
+
+\item{\code{by}}{A character string defining the default variable used to assign
+authors' status in all methods. By default, uses authors' ids.}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 
