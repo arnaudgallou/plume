@@ -55,7 +55,7 @@ test_that("get_contributions() return authors' contributions", {
   })
 
   expect_equal_plm(
-    aut$get_contributions(role_first = FALSE, literal_name = TRUE),
+    aut$get_contributions(role_first = FALSE, literal_names = TRUE),
     paste0(literal_names, ": ", contributions)
   )
 })
@@ -79,7 +79,7 @@ test_that("get_contributions() gives meaningful error messages", {
       aut$get_contributions(dotted_initials = "")
     ))
     (expect_error(
-      aut$get_contributions(literal_name = "")
+      aut$get_contributions(literal_names = "")
     ))
     (expect_error(
       aut$get_contributions(sep_last = 1)

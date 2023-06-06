@@ -33,13 +33,13 @@
       Caused by error:
       ! `dotted_initials` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(aut$get_contributions(literal_name = "")))
+      (expect_error(aut$get_contributions(literal_names = "")))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 5.
       Caused by error:
-      ! `literal_name` must be `TRUE` or `FALSE`.
+      ! `literal_names` must be `TRUE` or `FALSE`.
     Code
       (expect_error(aut$get_contributions(sep_last = 1)))
     Output

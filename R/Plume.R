@@ -179,7 +179,7 @@ Plume <- R6Class(
         name_list,
         alphabetical_order,
         dotted_initials,
-        literal_name
+        literal_names
       ))
       check_args("string", list(sep_last, divider), allow_null = TRUE)
       out <- unnest_drop(self$plume, contribution)
@@ -188,13 +188,13 @@ Plume <- R6Class(
       }
       initials <- self$names$initials
       has_initials <- private$has_col(initials)
-      if (!has_initials || literal_name) {
+      if (!has_initials || literal_names) {
         authors <- self$names$literal_name
       } else {
         authors <- initials
       }
       pars <- private$contribution_pars(role_first, name_list, authors, divider)
-      if (has_initials && dotted_initials && !literal_name) {
+      if (has_initials && dotted_initials && !literal_names) {
         out <- mutate(out, !!authors := dot(.data[[authors]]))
       }
       if (alphabetical_order) {
