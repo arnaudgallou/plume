@@ -73,11 +73,6 @@ test_that("to_yaml() exits before pushing new header if invalid yaml", {
 test_that("to_yaml() gives meaningful error messages", {
   aut <- PlumeQuarto$new(basic_df())
 
-  tmp_file <- withr::local_tempfile(
-    lines = "---\ntitle: test\n--\n\nLorem ipsum\n\n---",
-    fileext = ".qmd"
-  )
-
   expect_snapshot({
     (expect_error(aut$to_yaml(1)))
     (expect_error(aut$to_yaml("")))
