@@ -86,7 +86,7 @@
     
     
 <div class="section level2">
-<h2 id="managing-the-data">Managing the data<a class="anchor" aria-label="anchor" href="#managing-the-data"></a>
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h2>
 <p>plume is designed to work with spreadsheets, which makes it easy to
 store, maintain and share data with co-authors. I recommend using <a href="https://docs.google.com/spreadsheets/" class="external-link">Google Sheets</a> to take
@@ -168,8 +168,7 @@ script.</p>
 <p>Use <code><a href="../reference/plm_push.html">plm_push()</a></code> to insert data not handled by Quarto’s
 author schema such as author contributions.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/arnaudgallou/plume" class="external-link">plume</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tbl_authors</span> <span class="op">&lt;-</span> <span class="fu">gs4_find</span><span class="op">(</span><span class="st">"encyclopédie"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">read_sheet</span><span class="op">(</span><span class="op">)</span></span>
