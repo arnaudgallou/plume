@@ -279,13 +279,13 @@ By default, plume repeats elements when all elements in a vector are consumed. U
 
 ## Outputting as markdown content
 
-To output author data as markdown content on multiple lines, use the chunk option `results: "asis"` in combination with `cat()`.
+To output author data as markdown content, use the chunk option `results: "asis"` in combination with `cat()`.
 
 ````{verbatim}
 ```{r}
 #| results: "asis"
 
-aut$get_contributions() |> cat(sep = "\n\n")
+aut$get_contributions() |> cat(sep = "; ")
 ```
 ````
 

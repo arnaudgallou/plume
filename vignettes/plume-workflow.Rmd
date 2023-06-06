@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Managing the data
+## Data
 
 plume is designed to work with spreadsheets, which makes it easy to store, maintain and share data with co-authors. I recommend using [Google Sheets](https://docs.google.com/spreadsheets/) to take advantage of the R interface provided by the [googlesheets4](https://googlesheets4.tidyverse.org) package.
 
@@ -93,7 +93,6 @@ If you use `PlumeQuarto` to inject author information in a Quarto document, you'
 Use `plm_push()` to insert data not handled by Quarto's author schema such as author contributions.
 
 ```{r, eval = FALSE}
-
 library(googlesheets4)
 library(plume)
 
