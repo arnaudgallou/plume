@@ -15,44 +15,12 @@ test_that("plm_push() inject data to a `.qmd` file.", {
   contributions <- aut$get_contributions()
   plm_push(contributions, tmp_file, "# Contributions")
 
-  expect_equal(
-    read_test_file(tmp_file),
-    dedent("
-      ---
-      title: test
-      ---
-      # Contributions
-
-      <!-- plume contributions: start -->
-
-      a: A.X., C.-C.Z. and B.Y.; d: A.X.
-
-      <!-- plume contributions: end -->
-
-      Lorem ipsum
-    ")
-  )
+  expect_snapshot(cat(read_file(tmp_file)))
 
   contributions <- aut$get_contributions(role_first = FALSE, name_list = TRUE)
-  plm_push(contributions, tmp_file)
+  plm_push(contributions, tmp_file, "# Contributions")
 
-  expect_equal(
-    read_test_file(tmp_file),
-    dedent("
-      ---
-      title: test
-      ---
-      # Contributions
-
-      <!-- plume contributions: start -->
-
-      A.X., C.-C.Z. and B.Y. a; A.X. d
-
-      <!-- plume contributions: end -->
-
-      Lorem ipsum
-    ")
-  )
+  expect_snapshot(cat(read_file(tmp_file)))
 })
 
 # Errors ----

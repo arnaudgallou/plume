@@ -97,10 +97,8 @@ test_that("get_author_list() returns author list", {
 test_that("get_author_list() makes ORCID icons", {
   render <- partial(rmarkdown::render, clean = FALSE, quiet = TRUE)
 
-  md_extract_chunk_output <- function(pattern = "(?<=## )[^\r\n]+", dir = getwd()) {
-    file <- list.files(dir, pattern = "\\.md$")
-    text <- readr::read_file(file)
-    string_extract(text, pattern)
+  read_rendered_md <- function() {
+    read_file(list.files(pattern = "\\.md$"))
   }
 
   withr::with_tempdir({
@@ -128,7 +126,7 @@ test_that("get_author_list() makes ORCID icons", {
       url
     )
 
-    expect_equal(md_extract_chunk_output(), paste0("X Y", icon))
+    expect_match(read_rendered_md(), paste0("X Y", icon), fixed = TRUE)
 
     render(tmp_file, output_format = "html_document")
     icon <- sprintf(
@@ -137,7 +135,7 @@ test_that("get_author_list() makes ORCID icons", {
       url
     )
 
-    expect_equal(md_extract_chunk_output(), paste0("X Y", icon))
+    expect_match(read_rendered_md(), paste0("X Y", icon), fixed = TRUE)
   })
 })
 

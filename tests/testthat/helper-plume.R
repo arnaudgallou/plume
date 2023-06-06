@@ -23,6 +23,4 @@ dedent <- function(string) {
   string_remove_all(out, paste0(ws_regex, "{", ws_n, "}"))
 }
 
-read_test_file <- function(file) {
-  paste(readLines(file), collapse = "\n")
-}
+expect_equal_plm <- partial(expect_equal, ignore_attr = TRUE)

@@ -9,50 +9,44 @@ test_that("get_contributions() return authors' contributions", {
   list_initials <- list(initials, initials[1])
 
   contributions <- condense(c(df_contributions))
+  contributors <- lapply(list_initials, \(x) enumerate(dot(x)))
+
+  expect_equal_plm(
+    aut$get_contributions(),
+    paste0(contributions, ": ", contributors)
+  )
+
   contributors <- lapply(list_initials, enumerate)
 
-  expect_equal(
+  expect_equal_plm(
     aut$get_contributions(dotted_initials = FALSE),
-    paste0(contributions, ": ", contributors),
-    ignore_attr = TRUE
+    paste0(contributions, ": ", contributors)
   )
-  expect_equal(
+  expect_equal_plm(
     aut$get_contributions(dotted_initials = FALSE, divider = " - "),
-    paste0(contributions, " - ", contributors),
-    ignore_attr = TRUE
+    paste0(contributions, " - ", contributors)
   )
-  expect_equal(
+  expect_equal_plm(
     aut$get_contributions(
       role_first = FALSE,
       name_list = TRUE,
       dotted_initials = FALSE
     ),
-    paste0(contributors, " ", contributions),
-    ignore_attr = TRUE
+    paste0(contributors, " ", contributions)
   )
 
   contributors <- lapply(list_initials, \(x) enumerate(x, last = " & "))
 
-  expect_equal(
+  expect_equal_plm(
     aut$get_contributions(dotted_initials = FALSE, sep_last = " & "),
-    paste0(contributions, ": ", contributors),
-    ignore_attr = TRUE
-  )
-
-  contributors <- lapply(list_initials, \(x) enumerate(dot(x)))
-
-  expect_equal(
-    aut$get_contributions(dotted_initials = TRUE),
-    paste0(contributions, ": ", contributors),
-    ignore_attr = TRUE
+    paste0(contributions, ": ", contributors)
   )
 
   contributors <- lapply(list_initials, \(x) enumerate(sort(x)))
 
-  expect_equal(
+  expect_equal_plm(
     aut$get_contributions(alphabetical_order = TRUE, dotted_initials = FALSE),
-    paste0(contributions, ": ", contributors),
-    ignore_attr = TRUE
+    paste0(contributions, ": ", contributors)
   )
 
   literal_names <- df$literal_name
@@ -60,10 +54,9 @@ test_that("get_contributions() return authors' contributions", {
     enumerate(na.omit(x))
   })
 
-  expect_equal(
+  expect_equal_plm(
     aut$get_contributions(role_first = FALSE, literal_name = TRUE),
-    paste0(literal_names, ": ", contributions),
-    ignore_attr = TRUE
+    paste0(literal_names, ": ", contributions)
   )
 })
 

@@ -1,3 +1,39 @@
+# plm_push() inject data to a `.qmd` file.
+
+    Code
+      cat(read_file(tmp_file))
+    Output
+      ---
+      title: test
+      ---
+      # Contributions
+      
+      <!-- plume contributions: start -->
+      
+      a: A.X., C.-C.Z. and B.Y.; d: A.X.
+      
+      <!-- plume contributions: end -->
+      
+      Lorem ipsum
+
+---
+
+    Code
+      cat(read_file(tmp_file))
+    Output
+      ---
+      title: test
+      ---
+      # Contributions
+      
+      <!-- plume contributions: start -->
+      
+      A.X., C.-C.Z. and B.Y. a; A.X. d
+      
+      <!-- plume contributions: end -->
+      
+      Lorem ipsum
+
 # plm_push() gives meaningful error messages
 
     Code
