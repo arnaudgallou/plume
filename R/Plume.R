@@ -157,7 +157,7 @@ Plume <- R6Class(
     #' @param alphabetical_order Should authors be listed in alphabetical order?
     #'   By default, lists authors in the order they are defined.
     #' @param dotted_initials Should initials be dot-separated?
-    #' @param literal_name Should literal names be used?
+    #' @param literal_names Should literal names be used?
     #' @param divider Separator used to separate contribution items and authors
     #'   when `name_list = FALSE`. By default, uses `": "`.
     #' @param sep_last Separator used to separate the last two roles or authors
@@ -168,7 +168,7 @@ Plume <- R6Class(
         name_list = FALSE,
         alphabetical_order = FALSE,
         dotted_initials = TRUE,
-        literal_name = FALSE,
+        literal_names = FALSE,
         divider = NULL,
         sep_last = NULL
     ) {

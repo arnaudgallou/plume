@@ -238,7 +238,7 @@ Get authors' contributions.
   name_list = FALSE,
   alphabetical_order = FALSE,
   dotted_initials = TRUE,
-  literal_name = FALSE,
+  literal_names = FALSE,
   divider = NULL,
   sep_last = NULL
 )}\if{html}{\out{</div>}}
@@ -258,7 +258,7 @@ By default, lists authors in the order they are defined.}
 
 \item{\code{dotted_initials}}{Should initials be dot-separated?}
 
-\item{\code{literal_name}}{Should literal names be used?}
+\item{\code{literal_names}}{Should literal names be used?}
 
 \item{\code{divider}}{Separator used to separate contribution items and authors
 when \code{name_list = FALSE}. By default, uses \code{": "}.}
