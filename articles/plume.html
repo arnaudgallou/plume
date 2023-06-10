@@ -392,12 +392,14 @@ suffixes:</p>
 authors’ affiliations and notes.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_affiliations</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "^1^Université de Paris"        "^2^Lycée Louis-le-Grand"      </span></span>
-<span><span class="co">#&gt; [3] "^3^Collège des Quatre-Nations"</span></span>
+<span><span class="co">#&gt; ^1^Université de Paris</span></span>
+<span><span class="co">#&gt; ^2^Lycée Louis-le-Grand</span></span>
+<span><span class="co">#&gt; ^3^Collège des Quatre-Nations</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_notes</span><span class="op">(</span>sep <span class="op">=</span> <span class="st">": "</span>, superscript <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "†: born in 1713 in Langres" "‡: also known as Voltaire" </span></span>
-<span><span class="co">#&gt; [3] "§: born in 1717 in Paris"</span></span></code></pre></div>
+<span><span class="co">#&gt; †: born in 1713 in Langres</span></span>
+<span><span class="co">#&gt; ‡: also known as Voltaire</span></span>
+<span><span class="co">#&gt; §: born in 1717 in Paris</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="contact-details">Contact details<a class="anchor" aria-label="anchor" href="#contact-details"></a>
@@ -425,26 +427,26 @@ the <code>get_contributions()</code> method.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>contribution <span class="op">=</span> <span class="st">"contribution_n"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Writing: D.D., J.-J.R., F.-M.A. and J.L.R.A."</span></span>
-<span><span class="co">#&gt; [2] "Supervision: D.D. and J.L.R.A."</span></span>
+<span><span class="co">#&gt; Writing: D.D., J.-J.R., F.-M.A. and J.L.R.A.</span></span>
+<span><span class="co">#&gt; Supervision: D.D. and J.L.R.A.</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>role_first <span class="op">=</span> <span class="cn">FALSE</span>, literal_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Denis Diderot: Writing and Supervision"          </span></span>
-<span><span class="co">#&gt; [2] "Jean-Jacques Rousseau: Writing"                  </span></span>
-<span><span class="co">#&gt; [3] "François-Marie Arouet: Writing"                  </span></span>
-<span><span class="co">#&gt; [4] "Jean Le Rond d'Alembert: Writing and Supervision"</span></span>
+<span><span class="co">#&gt; Denis Diderot: Writing and Supervision</span></span>
+<span><span class="co">#&gt; Jean-Jacques Rousseau: Writing</span></span>
+<span><span class="co">#&gt; François-Marie Arouet: Writing</span></span>
+<span><span class="co">#&gt; Jean Le Rond d'Alembert: Writing and Supervision</span></span>
 <span></span>
 <span><span class="va">aut_v</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>contribution <span class="op">=</span> <span class="st">"contribution_v"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">aut_v</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>role_first <span class="op">=</span> <span class="cn">FALSE</span>, name_list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "D.D., J.-J.R., F.-M.A. and J.L.R.A. contributed to the Encyclopédie"</span></span>
-<span><span class="co">#&gt; [2] "D.D. and J.L.R.A. supervised the project"</span></span></code></pre></div>
+<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.A. contributed to the Encyclopédie</span></span>
+<span><span class="co">#&gt; D.D. and J.L.R.A. supervised the project</span></span></code></pre></div>
 <p>By default, <code>get_contributions()</code> lists contributors in
 the order they’re defined. You can arrange contributors in alphabetical
 order with <code>alphabetical_order = TRUE</code>.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>alphabetical_order <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Writing: D.D., F.-M.A., J.-J.R. and J.L.R.A."</span></span>
-<span><span class="co">#&gt; [2] "Supervision: D.D. and J.L.R.A."</span></span></code></pre></div>
+<span><span class="co">#&gt; Writing: D.D., F.-M.A., J.-J.R. and J.L.R.A.</span></span>
+<span><span class="co">#&gt; Supervision: D.D. and J.L.R.A.</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
