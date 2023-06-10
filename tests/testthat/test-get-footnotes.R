@@ -2,6 +2,8 @@ test_that("get_affiliations()/get_notes() return affiliations/notes", {
   df <- basic_df()
   aut <- Plume$new(df)
 
+  expect_s3_class(aut$get_notes(), "plm")
+
   df_affiliations <- select(df, starts_with("affiliation"))
 
   affiliations <- condense(c(t(df_affiliations)))

@@ -150,16 +150,18 @@ aut$get_contact_details()
 #> Denis Diderot: diderot@encyclopediste.fr
 
 aut$get_affiliations()
-#> [1] "^1^Université de Paris"        "^2^Lycée Louis-le-Grand"      
-#> [3] "^3^Collège des Quatre-Nations"
+#> ^1^Université de Paris
+#> ^2^Lycée Louis-le-Grand
+#> ^3^Collège des Quatre-Nations
 
 aut$get_notes()
-#> [1] "^†^born in 1713 in Langres" "^‡^also known as Voltaire" 
-#> [3] "^§^born in 1717 in Paris"
+#> ^†^born in 1713 in Langres
+#> ^‡^also known as Voltaire
+#> ^§^born in 1717 in Paris
 
 aut$get_contributions()
-#> [1] "Writing: D.D., J.-J.R., F.-M.A. and J.L.R.A."
-#> [2] "Supervision: D.D. and J.L.R.A."
+#> Writing: D.D., J.-J.R., F.-M.A. and J.L.R.A.
+#> Supervision: D.D. and J.L.R.A.
 
 aut_v <- Plume$new(
   encyclopedists,
@@ -172,8 +174,8 @@ aut_v$get_author_list(format = "^a^") |> enumerate(last = ",\n")
 #> Jean Le Rond d'Alembert^a,c^
 
 aut_v$get_contributions(role_first = FALSE, name_list = TRUE)
-#> [1] "D.D., J.-J.R., F.-M.A. and J.L.R.A. contributed to the Encyclopédie"
-#> [2] "D.D. and J.L.R.A. supervised the project"
+#> D.D., J.-J.R., F.-M.A. and J.L.R.A. contributed to the Encyclopédie
+#> D.D. and J.L.R.A. supervised the project
 ```
 
 ## Acknowledgements

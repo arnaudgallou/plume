@@ -3,6 +3,8 @@ test_that("get_contact_details() returns contact details of corresponding author
   aut <- Plume$new(df)
   aut$set_corresponding_authors(1, 2)
 
+  expect_s3_class(aut$get_contact_details(), "plm")
+
   df2 <- df[1:2, ]
   literal_names <- df2$literal_name
   emails <- df2$email

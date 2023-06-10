@@ -30,16 +30,11 @@
 #' }
 #' @export
 plm_push <- function(x, file, where = NULL, sep = "; ") {
-  check_plm(x)
+  check_plm_agt(x)
   check_file(file, extension = "qmd")
   check_string(where, allow_empty = FALSE, allow_null = TRUE)
   check_string(sep, allow_empty = FALSE)
   anch_push(x, file, where, sep)
-}
-
-#' @export
-print.plm <- function(x, ...) {
-  print(unstructure(x))
 }
 
 anch_make <- function(name) {
@@ -72,7 +67,7 @@ has_line <- function(x, line) {
 
 check_anchor <- function(x, where, anchor) {
   if (string_detect(x, anchor) || has_line(x, where)) {
-    return()
+    return(invisible(NULL))
   }
   abort_check(msg = glue("Can't find line `{where}`."))
 }

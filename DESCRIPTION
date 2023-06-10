@@ -32,6 +32,7 @@ Suggests:
     covr,
     rmarkdown,
     testthat,
+    waldo (>= 0.3.0),
     withr
 VignetteBuilder: 
     knitr

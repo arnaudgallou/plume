@@ -301,13 +301,13 @@ check_orcid <- function(x, ..., arg = caller_arg(x)) {
   ), ..., arg = arg)
 }
 
-is_plm <- function(x) {
-  inherits(x, "plm")
+is_plm_agt <- function(x) {
+  inherits(x, "plm_agt")
 }
 
-check_plm <- function(x, ..., arg = caller_arg(x)) {
-  if (!missing(x) && is_plm(x)) {
+check_plm_agt <- function(x, ..., arg = caller_arg(x)) {
+  if (!missing(x) && is_plm_agt(x)) {
     return(invisible(NULL))
   }
-  abort_check("a <plm> object", ..., arg = arg)
+  abort_check("a <plm_agt> object", ..., arg = arg)
 }

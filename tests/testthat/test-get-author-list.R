@@ -4,6 +4,7 @@ test_that("get_author_list() returns author list", {
   aut <- Plume$new(df)
   aut$set_corresponding_authors(1, 3)
 
+  expect_s3_class(aut$get_author_list(), "plm")
   expect_equal(
     aut$get_author_list(format = NULL),
     df$literal_name

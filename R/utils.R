@@ -150,10 +150,6 @@ get_eol <- function() {
   if (.Platform$OS.type == "unix") "\n" else "\r\n" # nocov
 }
 
-plm_obj <- function(x, name, ...) {
-  structure(x, name = name, class = c("plm", "character"), ...)
-}
-
 unstructure <- function(x) {
   attributes(x) <- NULL
   x

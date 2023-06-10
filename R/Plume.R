@@ -91,10 +91,12 @@ Plume <- R6Class(
       check_suffix_format(format, allowed = c("a", "c", "n", "o", "^", ","))
       authors <- private$get("literal_name")
       if (is_empty(format)) {
-        return(authors)
+        out <- authors
+      } else {
+        suffixes <- private$get_author_list_suffixes(format)
+        out <- paste0(authors, suffixes)
       }
-      suffixes <- private$get_author_list_suffixes(format)
-      paste0(authors, suffixes)
+      new_plm(out)
     },
 
     #' @description Get authors' affiliations.
@@ -146,7 +148,7 @@ Plume <- R6Class(
       out <- filter(self$plume, corresponding & not_na_any(cols))
       dict <- list(details = cols, name = self$names$literal_name)
       dissolve(out, dict, partial(collapse_cols, sep = sep))
-      glue(format)
+      new_plm(glue(format))
     },
 
     #' @description Get authors' contributions.
@@ -206,7 +208,7 @@ Plume <- R6Class(
         last = sep_last
       ), .by = all_of(pars$grp_var))
       out <- collapse_cols(out, pars$format, sep = pars$divider)
-      plm_obj(out, name = "contributions")
+      new_plm_agt(out, name = "contributions")
     }
   ),
 
@@ -258,7 +260,8 @@ Plume <- R6Class(
       if (superscript) {
         out <- mutate(out, !!.col := wrap(.data[[.col]], "^"))
       }
-      collapse_cols(out, c(.col, col), sep)
+      out <- collapse_cols(out, c(.col, col), sep)
+      new_plm(out)
     },
 
     contribution_pars = function(role_first, name_list, authors, divider) {
@@ -283,7 +286,6 @@ Plume <- R6Class(
     }
   )
 )
-
 
 get_key_dict <- function(format) {
   dict <- list(

@@ -41,7 +41,7 @@
     Output
       <error/rlang_error>
       Error:
-      ! `x` must be a <plm> object.
+      ! `x` must be a <plm_agt> object.
     Code
       (expect_error(plm_push(contributions, file = "file.pdf")))
     Output

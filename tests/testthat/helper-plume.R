@@ -23,4 +23,7 @@ dedent <- function(string) {
   string_remove_all(out, paste0(ws_regex, "{", ws_n, "}"))
 }
 
-expect_equal_plm <- partial(expect_equal, ignore_attr = TRUE)
+compare_proxy.plm <- function(x, path = "x") {
+  x <- unstructure(x)
+  NextMethod()
+}
