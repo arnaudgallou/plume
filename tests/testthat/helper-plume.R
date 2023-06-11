@@ -22,8 +22,3 @@ dedent <- function(string) {
   ws_n <- min(nchar(ws))
   string_remove_all(out, paste0(ws_regex, "{", ws_n, "}"))
 }
-
-compare_proxy.plm <- function(x, path = "x") {
-  x <- unstructure(x)
-  NextMethod()
-}
