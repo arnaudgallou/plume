@@ -22,15 +22,15 @@ test_that("get_contact_details() returns contact details of corresponding author
     emails
   )
   expect_equal(
-    aut$get_contact_details(number = TRUE),
+    aut$get_contact_details(phone = TRUE),
     paste0(literal_names, ": ", emails, c(", 00", ""))
   )
   expect_equal(
-    aut$get_contact_details(number = TRUE, sep = "; "),
+    aut$get_contact_details(phone = TRUE, sep = "; "),
     paste0(literal_names, ": ", emails, c("; 00", ""))
   )
   expect_equal(
-    aut$get_contact_details(email = FALSE, number = TRUE),
+    aut$get_contact_details(email = FALSE, phone = TRUE),
     paste0(literal_names[1], ": 00")
   )
 })

@@ -21,5 +21,5 @@ subclass, e.g. to set default names to a language other than English. See
 \details{
 Available names are:
 
-\code{id}, \code{initials}, \code{literal_name}, \code{corresponding}, \code{deceased}, \code{equal_contributor}, \code{given_name}, \code{family_name}, \code{dropping_particle}, \code{email}, \code{orcid}, \code{number}, \code{fax}, \code{url}, \code{affiliation}, \code{contribution}, \code{note}
+\code{id}, \code{initials}, \code{literal_name}, \code{corresponding}, \code{deceased}, \code{equal_contributor}, \code{given_name}, \code{family_name}, \code{number}, \code{dropping_particle}, \code{email}, \code{orcid}, \code{phone}, \code{fax}, \code{url}, \code{affiliation}, \code{contribution}, \code{note}
 }

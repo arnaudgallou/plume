@@ -223,7 +223,7 @@ You can get contact details of corresponding authors using the `get_contact_deta
 ```{r}
 aut$get_contact_details()
 
-aut$get_contact_details(number = TRUE)
+aut$get_contact_details(phone = TRUE)
 
 aut$get_contact_details(format = "{details} ({name})")
 ```

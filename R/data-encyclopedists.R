@@ -10,7 +10,7 @@
 #'   \item{given_name,prénom}{authors' given names}
 #'   \item{family_name,nom}{authors' family names}
 #'   \item{email,courriel}{authors' email addresses}
-#'   \item{number,numéro}{authors' phone numbers}
+#'   \item{phone,téléphone}{authors' phone numbers}
 #'   \item{affiliation}{authors' affiliations}
 #'   \item{contribution_n}{authors' contributions written as nouns}
 #'   \item{contribution_v}{authors' contributions written as active verbs}

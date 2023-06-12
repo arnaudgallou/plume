@@ -17,7 +17,7 @@ plm_template <- function(minimal = TRUE) {
   )
   to_ignore <- vars$internal
   if (minimal) {
-    to_ignore <- c(to_ignore, "number", "fax", "url", "dropping_particle")
+    to_ignore <- c(to_ignore, "phone", "fax", "url", "dropping_particle", "number")
   }
   vars <- flatten(vars)
   vars <- vars[!vars %in% to_ignore]

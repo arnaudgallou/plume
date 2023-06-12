@@ -202,7 +202,7 @@ Get the contact details of corresponding authors.
 \if{html}{\out{<div class="r">}}\preformatted{Plume$get_contact_details(
   format = "{name}: {details}",
   email = TRUE,
-  number = FALSE,
+  phone = FALSE,
   fax = FALSE,
   url = FALSE,
   sep = ", "
@@ -215,7 +215,7 @@ Get the contact details of corresponding authors.
 \item{\code{format}}{A \code{\link[glue:glue]{glue}} specification that uses the
 variables \code{name} and \code{details}.}
 
-\item{\code{email, number, fax, url}}{Arguments equal to \code{TRUE} are evaluated and
+\item{\code{email, phone, fax, url}}{Arguments equal to \code{TRUE} are evaluated and
 passed to the variable \code{details}. By default, only \code{email} is set to
 \code{TRUE}.}
 

@@ -6,7 +6,7 @@ author:
       given: Aa
       family: Xx
     email: a@x.foo
-    number: '00'
+    phone: '00'
     note: a
     attribute:
       corresponding: true
@@ -78,7 +78,7 @@ author:
       given: Aa
       family: Xx
     email: a@x.foo
-    number: '00'
+    phone: '00'
     note: a
     attribute:
       corresponding: false

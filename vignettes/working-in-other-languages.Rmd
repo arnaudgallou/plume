@@ -31,6 +31,7 @@ PlumeQuartoFr <- R6::R6Class(
       family_name = "nom",
       dropping_particle = "particule_délaissée",
       email = "courriel",
+      phone = "téléphone",
       number = "numéro"
     )
   )

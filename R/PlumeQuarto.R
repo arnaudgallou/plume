@@ -59,6 +59,7 @@ PlumeQuarto <- R6Class(
     author_tbl = function() {
       tibble(
         id = paste0("aut", private$get("id")),
+        number = private$get("number"),
         name = tibble(
           given = private$get("given_name"),
           family = private$get("family_name"),
@@ -66,7 +67,7 @@ PlumeQuarto <- R6Class(
         ),
         orcid = private$get("orcid"),
         email = private$get("email"),
-        number = private$get("number"),
+        phone = private$get("phone"),
         fax = private$get("fax"),
         url = private$get("url"),
         note = private$author_notes(),

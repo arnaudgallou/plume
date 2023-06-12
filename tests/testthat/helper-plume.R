@@ -11,7 +11,7 @@ basic_df <- function() {
     contribution2 = c("d", NA, NA),
     note = c("a", NA, "b"),
     email = paste0(c("a@x", "c@z", "b@y"), ".foo"),
-    number = c("00", NA, NA)
+    phone = c("00", NA, NA)
   )
 }
 

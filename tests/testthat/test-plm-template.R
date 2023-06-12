@@ -9,8 +9,8 @@ test_that("plm_template() returns a table template", {
   )
   expect_named(df, nms_minimal, ignore.order = TRUE)
 
-  nms_complete <- c(nms_minimal, "dropping_particle", "number", "fax", "url")
-  expect_named(plm_template(FALSE), nms_complete, ignore.order = TRUE)
+  nms_all <- c(nms_minimal, "dropping_particle", "number", "phone", "fax", "url")
+  expect_named(plm_template(FALSE), nms_all, ignore.order = TRUE)
 })
 
 # Errors ----

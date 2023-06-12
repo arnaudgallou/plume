@@ -6,6 +6,8 @@
 
 ## Minor improvements and bug fixes
 
+* Phone numbers are now set using the variable and attribute `phone` (#4).
+
 * plume methods now print outputs in the same way.
 
 * New function `plm_push()` that can be used to insert author information into a Quarto document from a separate R script.

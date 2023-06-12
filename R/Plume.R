@@ -118,7 +118,7 @@ Plume <- R6Class(
     #' @description Get the contact details of corresponding authors.
     #' @param format A [`glue`][glue::glue()] specification that uses the
     #'   variables `name` and `details`.
-    #' @param email,number,fax,url Arguments equal to `TRUE` are evaluated and
+    #' @param email,phone,fax,url Arguments equal to `TRUE` are evaluated and
     #'   passed to the variable `details`. By default, only `email` is set to
     #'   `TRUE`.
     #' @param sep Separator used to separate `details` items.
@@ -126,13 +126,13 @@ Plume <- R6Class(
     get_contact_details = function(
         format = "{name}: {details}",
         email = TRUE,
-        number = FALSE,
+        phone = FALSE,
         fax = FALSE,
         url = FALSE,
         sep = ", "
     ) {
       check_glue(format, allowed = c("name", "details"))
-      check_args("bool", list(email, number, fax, url))
+      check_args("bool", list(email, phone, fax, url))
       check_string(sep, allow_empty = FALSE)
       corresponding <- self$names$corresponding
       private$check_col(corresponding, bullets = c(

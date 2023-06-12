@@ -7,9 +7,10 @@ test_that("set_default_names() sets new plume names", {
     equal_contributor = "contribution_égale",
     given_name = "prénom",
     family_name = "nom",
+    number = "numéro",
     dropping_particle = "particule_délaissée",
     email = "courriel",
-    number = "numéro"
+    phone = "téléphone"
   )
 
   new_nms <- list(
@@ -26,10 +27,11 @@ test_that("set_default_names() sets new plume names", {
       family_name = "nom"
     ),
     secondary = list(
+      number = "numéro",
       dropping_particle = "particule_délaissée",
       email = "courriel",
       orcid = "orcid",
-      number = "numéro",
+      phone = "téléphone",
       fax = "fax",
       url = "url"
     ),

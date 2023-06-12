@@ -12,10 +12,11 @@ default_names <- list(
     family_name = "family_name"
   ),
   secondary = list(
+    number = "number",
     dropping_particle = "dropping_particle",
     email = "email",
     orcid = "orcid",
-    number = "number",
+    phone = "phone",
     fax = "fax",
     url = "url"
   ),
