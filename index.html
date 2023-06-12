@@ -104,24 +104,24 @@
 <span></span>
 <span><span class="va">encyclopedists</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 11</span></span>
-<span><span class="co">#&gt;   given_name     family_name        email number contribution_n1 contribution_n2</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;              &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;          </span></span>
-<span><span class="co">#&gt; 1 Denis          Diderot            dide… 00 00… Writing         Supervision    </span></span>
-<span><span class="co">#&gt; 2 Jean-Jacques   Rousseau           rous… &lt;NA&gt;   Writing         &lt;NA&gt;           </span></span>
-<span><span class="co">#&gt; 3 François-Marie Arouet             arou… &lt;NA&gt;   Writing         &lt;NA&gt;           </span></span>
-<span><span class="co">#&gt; 4 Jean           Le Rond d'Alembert alem… &lt;NA&gt;   Writing         Supervision    </span></span>
+<span><span class="co">#&gt;   given_name     family_name        email  phone contribution_n1 contribution_n2</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;              &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;           &lt;chr&gt;          </span></span>
+<span><span class="co">#&gt; 1 Denis          Diderot            dider… 00 0… Writing         Supervision    </span></span>
+<span><span class="co">#&gt; 2 Jean-Jacques   Rousseau           rouss… &lt;NA&gt;  Writing         &lt;NA&gt;           </span></span>
+<span><span class="co">#&gt; 3 François-Marie Arouet             aroue… &lt;NA&gt;  Writing         &lt;NA&gt;           </span></span>
+<span><span class="co">#&gt; 4 Jean           Le Rond d'Alembert alemb… &lt;NA&gt;  Writing         Supervision    </span></span>
 <span><span class="co">#&gt; # ℹ 5 more variables: contribution_v1 &lt;chr&gt;, contribution_v2 &lt;chr&gt;, note &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span>
 <span></span>
 <span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
 <span><span class="va">aut</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 10</span></span>
-<span><span class="co">#&gt;      id given_name     family_name      literal_name initials email number note </span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1     1 Denis          Diderot          Denis Dider… DD       dide… 00 00… born…</span></span>
-<span><span class="co">#&gt; 2     2 Jean-Jacques   Rousseau         Jean-Jacque… J-JR     rous… &lt;NA&gt;   &lt;NA&gt; </span></span>
-<span><span class="co">#&gt; 3     3 François-Marie Arouet           François-Ma… F-MA     arou… &lt;NA&gt;   also…</span></span>
-<span><span class="co">#&gt; 4     4 Jean           Le Rond d'Alemb… Jean Le Ron… JLRA     alem… &lt;NA&gt;   born…</span></span>
+<span><span class="co">#&gt;      id given_name     family_name       literal_name initials email phone note </span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;             &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1     1 Denis          Diderot           Denis Dider… DD       dide… 00 0… born…</span></span>
+<span><span class="co">#&gt; 2     2 Jean-Jacques   Rousseau          Jean-Jacque… J-JR     rous… &lt;NA&gt;  &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 3     3 François-Marie Arouet            François-Ma… F-MA     arou… &lt;NA&gt;  also…</span></span>
+<span><span class="co">#&gt; 4     4 Jean           Le Rond d'Alembe… Jean Le Ron… JLRA     alem… &lt;NA&gt;  born…</span></span>
 <span><span class="co">#&gt; # ℹ 2 more variables: affiliation &lt;list&gt;, contribution &lt;list&gt;</span></span></code></pre></div>
 <p><code>PlumeQuarto</code> lets you push author metadata in the YAML header of any <code>.qmd</code> files using <code>to_yaml()</code>.</p>
 <p>Consider the following example:</p>
@@ -141,7 +141,7 @@
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      given<span class="sc">:</span> Denis</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      family<span class="sc">:</span> Diderot</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    email<span class="sc">:</span> diderot<span class="sc">@</span>encyclopediste.fr</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">:</span> <span class="dv">00</span> <span class="dv">00</span> <span class="dv">00</span> <span class="dv">01</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    phone<span class="sc">:</span> <span class="dv">00</span> <span class="dv">00</span> <span class="dv">00</span> <span class="dv">01</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    note<span class="sc">:</span> born <span class="cf">in</span> <span class="dv">1713</span> <span class="cf">in</span> Langres</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    attribute<span class="sc">:</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> true</span>
