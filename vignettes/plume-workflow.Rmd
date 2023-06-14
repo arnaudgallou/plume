@@ -67,10 +67,7 @@ aut <- Plume$new(tbl_authors)
 aut$set_corresponding_authors(1)
 ```
 
-```{r}
-#| result: asis
-aut$get_author_list("^a,^cn") |> cat(sep = ", ")
-```
+`r aut$get_author_list("^a,^cno")`
 
 ## Main text
 
@@ -79,7 +76,7 @@ Lorem ipsum...
 ## Contributions
 
 ```{r}
-#| result: asis
+#| results: asis
 aut$get_contributions() |> cat(sep = "; ")
 ```
 ````
