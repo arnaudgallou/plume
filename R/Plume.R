@@ -124,7 +124,7 @@ Plume <- R6Class(
     #' @param sep Separator used to separate `details` items.
     #' @return A character vector.
     get_contact_details = function(
-        format = "{name}: {details}",
+        format = "{details} ({name})",
         email = TRUE,
         phone = FALSE,
         fax = FALSE,

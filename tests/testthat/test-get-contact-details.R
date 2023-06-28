@@ -11,11 +11,11 @@ test_that("get_contact_details() returns contact details of corresponding author
 
   expect_equal(
     aut$get_contact_details(),
-    paste(literal_names, emails, sep = ": ")
+    paste0(emails, " (", literal_names, ")")
   )
   expect_equal(
-    aut$get_contact_details("{details} ({name})"),
-    paste0(emails, " (", literal_names, ")")
+    aut$get_contact_details("{name}: {details}"),
+    paste(literal_names, emails, sep = ": ")
   )
   expect_equal(
     aut$get_contact_details("{details}"),
@@ -23,15 +23,15 @@ test_that("get_contact_details() returns contact details of corresponding author
   )
   expect_equal(
     aut$get_contact_details(phone = TRUE),
-    paste0(literal_names, ": ", emails, c(", 00", ""))
+    paste0(emails, c(", 00", ""), " (", literal_names, ")")
   )
   expect_equal(
     aut$get_contact_details(phone = TRUE, sep = "; "),
-    paste0(literal_names, ": ", emails, c("; 00", ""))
+    paste0(emails, c("; 00", ""), " (", literal_names, ")")
   )
   expect_equal(
     aut$get_contact_details(email = FALSE, phone = TRUE),
-    paste0(literal_names[1], ": 00")
+    paste0("00", " (", literal_names[1], ")")
   )
 })
 
