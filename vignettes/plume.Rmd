@@ -225,7 +225,7 @@ aut$get_contact_details()
 
 aut$get_contact_details(phone = TRUE)
 
-aut$get_contact_details(format = "{details} ({name})")
+aut$get_contact_details(format = "{name}: {details}")
 ```
 
 ### Contributions
