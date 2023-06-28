@@ -25,6 +25,7 @@
       aut$to_yaml(tmp_file)
     Condition
       Error:
-      ! Invalid YAML header.
-      i Did you forget to separate the YAML header with three hyphens?
+      ! No YAML header found.
+      i YAML headers must be at the top of the document.
+      i YAML headers must start and end with three hyphens.
 

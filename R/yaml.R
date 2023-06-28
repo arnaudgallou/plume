@@ -30,12 +30,6 @@ as_verbatim_lgl <- function(x) {
 }
 
 yaml_inject <- function(lines, replacement) {
-  if (length(lines) < 3L) {
-    abort_check(msg = c(
-      "Invalid YAML header.",
-      i = "Did you forget to separate the YAML header with three hyphens?"
-    ))
-  }
   eol <- get_eol()
   yaml <- as.yaml(
     replacement,
@@ -47,8 +41,24 @@ yaml_inject <- function(lines, replacement) {
   collapse(out, paste0("---", eol))
 }
 
+has_yaml <- function(x) {
+  string_detect(x, "(?s)^\\R*\\K---\\R.*\\B---(?=\\R|$)")
+}
+
+check_has_yaml <- function(x) {
+  if (has_yaml(x)) {
+    return(invisible(NULL))
+  }
+  abort_check(msg = c(
+    "No YAML header found.",
+    i = "YAML headers must be at the top of the document.",
+    i = "YAML headers must start and end with three hyphens."
+  ))
+}
+
 yaml_push <- function(file, what) {
   text <- read_file(file)
+  check_has_yaml(text)
   items <- separate_yaml_header(text)
   json <- as_json(what)
   json <- json_update(items[2], json)
