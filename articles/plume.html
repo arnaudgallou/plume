@@ -409,12 +409,12 @@ authors’ affiliations and notes.</p>
 <code>get_contact_details()</code> method.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contact_details</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Denis Diderot: diderot@encyclopediste.fr</span></span>
-<span><span class="co">#&gt; Jean Le Rond d'Alembert: alembert@encyclopediste.fr</span></span>
+<span><span class="co">#&gt; diderot@encyclopediste.fr (Denis Diderot)</span></span>
+<span><span class="co">#&gt; alembert@encyclopediste.fr (Jean Le Rond d'Alembert)</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contact_details</span><span class="op">(</span>phone <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Denis Diderot: diderot@encyclopediste.fr, 00 00 00 01</span></span>
-<span><span class="co">#&gt; Jean Le Rond d'Alembert: alembert@encyclopediste.fr</span></span>
+<span><span class="co">#&gt; diderot@encyclopediste.fr, 00 00 00 01 (Denis Diderot)</span></span>
+<span><span class="co">#&gt; alembert@encyclopediste.fr (Jean Le Rond d'Alembert)</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contact_details</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"{details} ({name})"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; diderot@encyclopediste.fr (Denis Diderot)</span></span>
