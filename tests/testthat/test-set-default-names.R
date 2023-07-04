@@ -37,7 +37,7 @@ test_that("set_default_names() sets new plume names", {
     ),
     nestable = list(
       affiliation = "affiliation",
-      contribution = "contribution",
+      role = "role",
       note = "note"
     )
   )

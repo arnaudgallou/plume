@@ -79,7 +79,7 @@ Plume$new(
     literal_name = "nom_complet",
     email = "courriel",
     initials = "initiales",
-    contribution = "contribution_v"
+    role = "role_v"
   )
 )
 ```
@@ -233,12 +233,12 @@ aut$get_contact_details(format = "{name}: {details}")
 plume provides a convenient way to generate contribution lists using the `get_contributions()` method.
 
 ```{r}
-aut <- Plume$new(encyclopedists, names = c(contribution = "contribution_n"))
+aut <- Plume$new(encyclopedists, names = c(role = "role_n"))
 aut$get_contributions()
 
 aut$get_contributions(role_first = FALSE, literal_names = TRUE)
 
-aut_v <- Plume$new(encyclopedists, names = c(contribution = "contribution_v"))
+aut_v <- Plume$new(encyclopedists, names = c(role = "role_v"))
 aut_v$get_contributions(role_first = FALSE, name_list = TRUE)
 ```
 

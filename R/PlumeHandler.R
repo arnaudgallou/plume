@@ -22,7 +22,7 @@ default_names <- list(
   ),
   nestable = list(
     affiliation = "affiliation",
-    contribution = "contribution",
+    role = "role",
     note = "note"
   )
 )

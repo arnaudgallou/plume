@@ -152,16 +152,16 @@ Plume <- R6Class(
     },
 
     #' @description Get authors' contributions.
-    #' @param role_first If `TRUE`, displays contribution roles first and authors
-    #'   second. If `FALSE`, roles follow authors.
+    #' @param role_first If `TRUE`, displays roles first and authors second. If
+    #'   `FALSE`, roles follow authors.
     #' @param name_list Should all authors with the same role be listed together?
     #'   Only applies when `role_first = FALSE`.
     #' @param alphabetical_order Should authors be listed in alphabetical order?
     #'   By default, lists authors in the order they are defined.
     #' @param dotted_initials Should initials be dot-separated?
     #' @param literal_names Should literal names be used?
-    #' @param divider Separator used to separate contribution items and authors
-    #'   when `name_list = FALSE`. By default, uses `": "`.
+    #' @param divider Separator used to separate role items and authors when
+    #'   `name_list = FALSE`. Uses `": "` by default.
     #' @param sep_last Separator used to separate the last two roles or authors
     #'   if more than one item is associated to a role or author.
     #' @return A character vector.
@@ -174,8 +174,8 @@ Plume <- R6Class(
         divider = NULL,
         sep_last = NULL
     ) {
-      contribution <- self$names$contribution
-      private$check_col(contribution)
+      role <- self$names$role
+      private$check_col(role)
       check_args("bool", list(
         role_first,
         name_list,
@@ -184,7 +184,7 @@ Plume <- R6Class(
         literal_names
       ))
       check_args("string", list(sep_last, divider), allow_null = TRUE)
-      out <- unnest_drop(self$plume, contribution)
+      out <- unnest_drop(self$plume, role)
       if (is_empty(out)) {
         return()
       }
@@ -270,17 +270,17 @@ Plume <- R6Class(
       } else {
         divider <- divider %||% ": "
       }
-      contribution <- self$names$contribution
-      format <- c(contribution, authors)
+      role <- self$names$role
+      format <- c(role, authors)
       if (!role_first) {
         format <- rev(format)
       }
       if (role_first || name_list) {
-        grp_var <- contribution
+        grp_var <- role
         var <- authors
       } else {
         grp_var <- authors
-        var <- contribution
+        var <- role
       }
       list(divider = divider, grp_var = grp_var, var = var, format = format)
     }

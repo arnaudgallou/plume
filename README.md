@@ -44,14 +44,13 @@ library(plume)
 
 encyclopedists
 #> # A tibble: 4 × 11
-#>   given_name     family_name        email  phone contribution_n1 contribution_n2
-#>   <chr>          <chr>              <chr>  <chr> <chr>           <chr>          
-#> 1 Denis          Diderot            dider… 00 0… Writing         Supervision    
-#> 2 Jean-Jacques   Rousseau           rouss… <NA>  Writing         <NA>           
-#> 3 François-Marie Arouet             aroue… <NA>  Writing         <NA>           
-#> 4 Jean           Le Rond d'Alembert alemb… <NA>  Writing         Supervision    
-#> # ℹ 5 more variables: contribution_v1 <chr>, contribution_v2 <chr>, note <chr>,
-#> #   affiliation1 <chr>, affiliation2 <chr>
+#>   given_name     family_name   email phone role_n1 role_n2 role_v1 role_v2 note 
+#>   <chr>          <chr>         <chr> <chr> <chr>   <chr>   <chr>   <chr>   <chr>
+#> 1 Denis          Diderot       dide… 00 0… Writing Superv… contri… superv… born…
+#> 2 Jean-Jacques   Rousseau      rous… <NA>  Writing <NA>    contri… <NA>    <NA> 
+#> 3 François-Marie Arouet        arou… <NA>  Writing <NA>    contri… <NA>    also…
+#> 4 Jean           Le Rond d'Al… alem… <NA>  Writing Superv… contri… superv… born…
+#> # ℹ 2 more variables: affiliation1 <chr>, affiliation2 <chr>
 
 aut <- PlumeQuarto$new(encyclopedists)
 aut
@@ -62,7 +61,7 @@ aut
 #> 2     2 Jean-Jacques   Rousseau          Jean-Jacque… J-JR     rous… <NA>  <NA> 
 #> 3     3 François-Marie Arouet            François-Ma… F-MA     arou… <NA>  also…
 #> 4     4 Jean           Le Rond d'Alembe… Jean Le Ron… JLRA     alem… <NA>  born…
-#> # ℹ 2 more variables: affiliation <list>, contribution <list>
+#> # ℹ 2 more variables: affiliation <list>, role <list>
 ```
 
 `PlumeQuarto` lets you push author metadata in the YAML header of any
@@ -139,7 +138,7 @@ aut$to_yaml("file.qmd")
 You can also generate author information as character strings:
 
 ``` r
-aut <- Plume$new(encyclopedists, names = c(contribution = "contribution_n"))
+aut <- Plume$new(encyclopedists, names = c(role = "role_n"))
 aut$set_corresponding_authors(diderot, by = "family_name")
 
 aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
@@ -165,7 +164,7 @@ aut$get_contributions()
 
 aut_v <- Plume$new(
   encyclopedists,
-  names = c(contribution = "contribution_v"),
+  names = c(role = "role_v"),
   symbols = list(affiliation = letters)
 )
 

@@ -38,7 +38,7 @@ readr::read_file(tmp_file) |> cat()
 
 aut <- PlumeQuarto$new(
   encyclopedists,
-  names = c(contribution = "contribution_n")
+  names = c(role = "role_n")
 )
 aut$get_contributions() |> plm_push(tmp_file, where = "# Foo")
 

@@ -5,7 +5,7 @@ test_that("plm_template() returns a table template", {
 
   nms_minimal <- c(
     "given_name", "family_name", "email", "orcid", "affiliation_1",
-    "affiliation_2", "contribution_1", "contribution_2", "note"
+    "affiliation_2", "role_1", "role_2", "note"
   )
   expect_named(df, nms_minimal, ignore.order = TRUE)
 

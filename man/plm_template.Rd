@@ -8,9 +8,9 @@ plm_template(minimal = TRUE)
 }
 \arguments{
 \item{minimal}{If \code{TRUE}, returns an empty tibble with the following columns:
-\code{given_name}, \code{family_name}, \code{email}, \code{orcid}, \code{affiliation}, \code{contribution}
-and \code{note}. Otherwise the function returns a template with all columns that
-can be supplied to plume classes.}
+\code{given_name}, \code{family_name}, \code{email}, \code{orcid}, \code{affiliation}, \code{role} and
+\code{note}. Otherwise the function returns a template with all columns that can
+be supplied to plume classes.}
 }
 \value{
 An empty tibble.

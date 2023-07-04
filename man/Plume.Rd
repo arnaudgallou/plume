@@ -247,8 +247,8 @@ Get authors' contributions.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{role_first}}{If \code{TRUE}, displays contribution roles first and authors
-second. If \code{FALSE}, roles follow authors.}
+\item{\code{role_first}}{If \code{TRUE}, displays roles first and authors second. If
+\code{FALSE}, roles follow authors.}
 
 \item{\code{name_list}}{Should all authors with the same role be listed together?
 Only applies when \code{role_first = FALSE}.}
@@ -260,8 +260,8 @@ By default, lists authors in the order they are defined.}
 
 \item{\code{literal_names}}{Should literal names be used?}
 
-\item{\code{divider}}{Separator used to separate contribution items and authors
-when \code{name_list = FALSE}. By default, uses \code{": "}.}
+\item{\code{divider}}{Separator used to separate role items and authors when
+\code{name_list = FALSE}. Uses \code{": "} by default.}
 
 \item{\code{sep_last}}{Separator used to separate the last two roles or authors
 if more than one item is associated to a role or author.}

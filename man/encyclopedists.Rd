@@ -13,8 +13,8 @@ A tibble with 4 rows and 11 variables:
 \item{email,courriel}{authors' email addresses}
 \item{phone,téléphone}{authors' phone numbers}
 \item{affiliation}{authors' affiliations}
-\item{contribution_n}{authors' contributions written as nouns}
-\item{contribution_v}{authors' contributions written as active verbs}
+\item{role_n}{authors' roles written as nouns}
+\item{role_v}{authors' roles written as active verbs}
 \item{note}{special notes about authors}
 }
 }

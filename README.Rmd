@@ -81,7 +81,7 @@ cat(readr::read_file(tmp))
 You can also generate author information as character strings:
 
 ```{r, message = FALSE}
-aut <- Plume$new(encyclopedists, names = c(contribution = "contribution_n"))
+aut <- Plume$new(encyclopedists, names = c(role = "role_n"))
 aut$set_corresponding_authors(diderot, by = "family_name")
 
 aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
@@ -96,7 +96,7 @@ aut$get_contributions()
 
 aut_v <- Plume$new(
   encyclopedists,
-  names = c(contribution = "contribution_v"),
+  names = c(role = "role_v"),
   symbols = list(affiliation = letters)
 )
 

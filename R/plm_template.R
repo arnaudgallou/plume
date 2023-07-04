@@ -3,14 +3,14 @@
 #'   [`tibble`][tibble::tibble()] that you can use as a template to supply author
 #'   data.
 #' @param minimal If `TRUE`, returns an empty tibble with the following columns:
-#'   `given_name`, `family_name`, `email`, `orcid`, `affiliation`, `contribution`
-#'   and `note`. Otherwise the function returns a template with all columns that
-#'   can be supplied to plume classes.
+#'   `given_name`, `family_name`, `email`, `orcid`, `affiliation`, `role` and
+#'   `note`. Otherwise the function returns a template with all columns that can
+#'   be supplied to plume classes.
 #' @return An empty tibble.
 #' @export
 plm_template <- function(minimal = TRUE) {
   check_bool(minimal)
-  nestables <- c(seq_names("affiliation", "contribution", n = 2), "note")
+  nestables <- c(seq_names("affiliation", "role", n = 2), "note")
   vars <- list_assign(
     default_names,
     nestable = set_names(dots_list(!!!nestables), nestables)

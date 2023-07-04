@@ -36,7 +36,7 @@ test_that("initialize() makes proper initials and literal names", {
   expect_equal(aut$plume$literal_name, literal_names)
 })
 
-test_that("`affiliation`, `contribution` and `note` columns are nestable", {
+test_that("`affiliation`, `role` and `note` columns are nestable", {
   aut <- Plume$new(cbind(basic_df(), data.frame(note2 = "")))
 
   get_nested_cols <- function(x) {
@@ -44,7 +44,7 @@ test_that("`affiliation`, `contribution` and `note` columns are nestable", {
   }
 
   cols <- get_nested_cols(aut$plume)
-  expect_equal(cols, c("affiliation", "contribution", "note"))
+  expect_equal(cols, c("affiliation", "role", "note"))
 })
 
 test_that("single nestables don't nest", {
