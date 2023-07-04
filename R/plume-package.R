@@ -17,7 +17,7 @@
 #' @importFrom rlang have_name is_named is_string is_bool is_true
 #' @importFrom rlang caller_env caller_arg
 #' @importFrom glue glue glue_collapse
-#' @importFrom vctrs vec_group_id vec_duplicate_any
+#' @importFrom vctrs vec_group_id vec_duplicate_any vec_restore
 #' @importFrom jsonlite toJSON parse_json
 #' @importFrom yaml yaml.load as.yaml
 #' @importFrom R6 R6Class

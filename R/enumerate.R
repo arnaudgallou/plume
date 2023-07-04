@@ -7,5 +7,6 @@
 #'   2 items.
 #' @export
 enumerate <- function(x, sep = ", ", last = " and ") {
-  glue_collapse(x, sep = sep, last = last)
+  out <- glue_collapse(x, sep = sep, last = last)
+  vec_restore(out, x)
 }
