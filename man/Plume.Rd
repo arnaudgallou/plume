@@ -200,7 +200,7 @@ A character vector.
 Get the contact details of corresponding authors.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Plume$get_contact_details(
-  format = "{name}: {details}",
+  format = "{details} ({name})",
   email = TRUE,
   phone = FALSE,
   fax = FALSE,
