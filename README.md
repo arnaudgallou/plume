@@ -147,7 +147,7 @@ aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
 #> Jean Le Rond d'Alembert^1,3^§
 
 aut$get_contact_details()
-#> Denis Diderot: diderot@encyclopediste.fr
+#> diderot@encyclopediste.fr (Denis Diderot)
 
 aut$get_affiliations()
 #> ^1^Université de Paris
