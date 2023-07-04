@@ -267,7 +267,7 @@ Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.
 <p>Get the contact details of corresponding authors.</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_contact_details</span><span class="op">(</span></span>
-<span>  format <span class="op">=</span> <span class="st">"{name}: {details}"</span>,</span>
+<span>  format <span class="op">=</span> <span class="st">"{details} ({name})"</span>,</span>
 <span>  email <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  phone <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  fax <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -318,8 +318,8 @@ passed to the variable <code>details</code>. By default, only <code>email</code>
 <div class="section">
 <h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>role_first</code></dt>
-<dd><p>If <code>TRUE</code>, displays contribution roles first and authors
-second. If <code>FALSE</code>, roles follow authors.</p></dd>
+<dd><p>If <code>TRUE</code>, displays roles first and authors second. If
+<code>FALSE</code>, roles follow authors.</p></dd>
 
 
 <dt><code>name_list</code></dt>
@@ -341,8 +341,8 @@ By default, lists authors in the order they are defined.</p></dd>
 
 
 <dt><code>divider</code></dt>
-<dd><p>Separator used to separate contribution items and authors
-when <code>name_list = FALSE</code>. By default, uses <code>": "</code>.</p></dd>
+<dd><p>Separator used to separate role items and authors when
+<code>name_list = FALSE</code>. Uses <code>": "</code> by default.</p></dd>
 
 
 <dt><code>sep_last</code></dt>

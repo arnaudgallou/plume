@@ -102,14 +102,13 @@ custom variable names. Both data sets are documented in
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">encyclopedists</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 11</span></span></span>
-<span><span class="co">#&gt;   given_name     family_name        email  phone contribution_n1 contribution_n2</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis          Diderot            dider… 00 0… Writing         Supervision    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau           rouss… <span style="color: #BB0000;">NA</span>    Writing         <span style="color: #BB0000;">NA</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-Marie Arouet             aroue… <span style="color: #BB0000;">NA</span>    Writing         <span style="color: #BB0000;">NA</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'Alembert alemb… <span style="color: #BB0000;">NA</span>    Writing         Supervision    </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5 more variables: contribution_v1 &lt;chr&gt;, contribution_v2 &lt;chr&gt;, note &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   given_name     family_name   email phone role_n1 role_n2 role_v1 role_v2 note </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis          Diderot       dide… 00 0… Writing Superv… contri… superv… born…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau      rous… <span style="color: #BB0000;">NA</span>    Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-Marie Arouet        arou… <span style="color: #BB0000;">NA</span>    Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      also…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'Al… alem… <span style="color: #BB0000;">NA</span>    Writing Superv… contri… superv… born…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="creating-a-plume-object">Creating a <code>plume</code> object<a class="anchor" aria-label="anchor" href="#creating-a-plume-object"></a>
@@ -129,7 +128,7 @@ input data. The input data must have at least two columns named
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau          Jean-Jacque… J-JR     rous… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet            François-Ma… F-MA     arou… <span style="color: #BB0000;">NA</span>    also…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembe… Jean Le Ron… JLRA     alem… <span style="color: #BB0000;">NA</span>    born…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation &lt;list&gt;, contribution &lt;list&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation &lt;list&gt;, role &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="default-variables">Default variables<a class="anchor" aria-label="anchor" href="#default-variables"></a>
@@ -161,7 +160,7 @@ to authors. Nestable variables must start with the same prefix. E.g.
 <code>affiliation_n</code> to pass several affiliations to authors.</p>
 <ul>
 <li><p><code>affiliation</code></p></li>
-<li><p><code>contribution</code></p></li>
+<li><p><code>role</code></p></li>
 <li><p><code>note</code></p></li>
 </ul>
 <p><strong>Internal</strong>: variables created internally. These
@@ -200,17 +199,16 @@ replacements.</p>
 <span>    literal_name <span class="op">=</span> <span class="st">"nom_complet"</span>,</span>
 <span>    email <span class="op">=</span> <span class="st">"courriel"</span>,</span>
 <span>    initials <span class="op">=</span> <span class="st">"initiales"</span>,</span>
-<span>    contribution <span class="op">=</span> <span class="st">"contribution_v"</span></span>
+<span>    role <span class="op">=</span> <span class="st">"role_v"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 9</span></span></span>
-<span><span class="co">#&gt;      id prénom         nom      nom_complet initiales courriel note  affiliation</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot  Denis Dide… DD        diderot… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau Jean-Jacqu… J-JR      roussea… <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet   François-M… F-MA      arouet@… dit … <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond… Jean Le Ro… JLRA      alember… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: contribution_v &lt;list&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt;      id prénom   nom   nom_complet initiales courriel note  affiliation role_v  </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis    Dide… Denis Dide… DD        diderot… né e… <span style="color: #949494;">&lt;tibble&gt;</span>    <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Ja… Rous… Jean-Jacqu… J-JR      roussea… <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">&lt;tibble&gt;</span>    <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 Françoi… Arou… François-M… F-MA      arouet@… dit … <span style="color: #949494;">&lt;tibble&gt;</span>    <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean     Le R… Jean Le Ro… JLRA      alember… né e… <span style="color: #949494;">&lt;tibble&gt;</span>    <span style="color: #949494;">&lt;tibble&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="pushing-data-into-a-yaml-header">Pushing data into a YAML header<a class="anchor" aria-label="anchor" href="#pushing-data-into-a-yaml-header"></a>
@@ -426,7 +424,7 @@ authors’ affiliations and notes.</p>
 <p>plume provides a convenient way to generate contribution lists using
 the <code>get_contributions()</code> method.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>contribution <span class="op">=</span> <span class="st">"contribution_n"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_n"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Writing: D.D., J.-J.R., F.-M.A. and J.L.R.A.</span></span>
 <span><span class="co">#&gt; Supervision: D.D. and J.L.R.A.</span></span>
@@ -437,7 +435,7 @@ the <code>get_contributions()</code> method.</p>
 <span><span class="co">#&gt; François-Marie Arouet: Writing</span></span>
 <span><span class="co">#&gt; Jean Le Rond d'Alembert: Writing and Supervision</span></span>
 <span></span>
-<span><span class="va">aut_v</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>contribution <span class="op">=</span> <span class="st">"contribution_v"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">aut_v</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_v"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">aut_v</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>role_first <span class="op">=</span> <span class="cn">FALSE</span>, name_list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.A. contributed to the Encyclopédie</span></span>
 <span><span class="co">#&gt; D.D. and J.L.R.A. supervised the project</span></span></code></pre></div>
