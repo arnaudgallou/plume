@@ -9,6 +9,10 @@ test_that("get_author_list() returns author list", {
     aut$get_author_list(format = NULL),
     df$literal_name
   )
+  expect_equal(
+    aut$get_author_list(format = ""),
+    df$literal_name
+  )
 
   affix_to_authors <- function(...) {
     paste0(basic_df()$literal_name, ...)
