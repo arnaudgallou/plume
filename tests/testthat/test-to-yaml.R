@@ -1,10 +1,6 @@
 test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
-  yamls <- string_split(
-    readr::read_file(test_path("yaml-headers.txt")),
-    pattern = "%%\\R"
-  )
   tmp_file <- withr::local_tempfile(
-    lines = "---\ntitle: test\n---\n\n```{r}\n#| eval: false\n\nx <- 1\n```",
+    lines = "---\ntitle: test\n---\n\n```{r}\n#| echo: false\nx <- 1\n```",
     fileext = ".qmd"
   )
 
@@ -13,16 +9,16 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
   aut <- PlumeQuarto$new(df)
   aut$set_corresponding_authors(1)
   aut$to_yaml(tmp_file)
-  expect_equal(readr::read_file(tmp_file), yamls[1])
+  expect_snapshot(read_test_file(tmp_file))
 
   aut <- PlumeQuarto$new(df[c(2, 3, 1), ])
   aut$set_corresponding_authors(1)
   aut$to_yaml(tmp_file)
-  expect_equal(readr::read_file(tmp_file), yamls[2])
+  expect_snapshot(read_test_file(tmp_file))
 
   aut <- PlumeQuarto$new(df[2, ])
   aut$to_yaml(tmp_file)
-  expect_equal(readr::read_file(tmp_file), yamls[3])
+  expect_snapshot(read_test_file(tmp_file))
 
   aut <- PlumeQuarto$new(data.frame(
     given_name = "X", family_name = "Z",
@@ -31,7 +27,7 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
     affiliation3 = "h"
   ))
   aut$to_yaml(tmp_file)
-  expect_equal(readr::read_file(tmp_file), yamls[4])
+  expect_snapshot(read_test_file(tmp_file))
 
   aut <- PlumeQuarto$new(data.frame(
     given_name = "X",
@@ -40,7 +36,7 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
     check.names = FALSE
   ))
   aut$to_yaml(tmp_file)
-  expect_equal(readr::read_file(tmp_file), yamls[5])
+  expect_snapshot(read_test_file(tmp_file))
 
   aut <- PlumeQuarto$new(data.frame(
     given_name = "X",
@@ -49,7 +45,7 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
     note2 = "b"
   ))
   aut$to_yaml(tmp_file)
-  expect_equal(readr::read_file(tmp_file), yamls[6])
+  expect_snapshot(read_test_file(tmp_file))
 })
 
 test_that("to_yaml() exits before pushing new header if invalid yaml", {

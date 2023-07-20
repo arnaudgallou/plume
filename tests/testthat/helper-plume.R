@@ -22,3 +22,7 @@ dedent <- function(string) {
   ws_n <- min(nchar(ws))
   string_remove_all(out, paste0(ws_regex, "{", ws_n, "}"))
 }
+
+read_test_file <- function(file) {
+  cat(readr::read_file(file))
+}
