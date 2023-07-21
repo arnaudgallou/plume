@@ -12,6 +12,7 @@ reference:
   - title: Helpers
     contents:
       - enumerate
+      - orcid
       - plm_push
       - plm_template
       - sequential
