@@ -101,13 +101,13 @@ custom variable names. Both data sets are documented in
 <code><a href="../reference/encyclopedists.html">?encyclopedists</a></code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">encyclopedists</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 11</span></span></span>
-<span><span class="co">#&gt;   given_name     family_name   email phone role_n1 role_n2 role_v1 role_v2 note </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis          Diderot       dide… 00 0… Writing Superv… contri… superv… born…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau      rous… <span style="color: #BB0000;">NA</span>    Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-Marie Arouet        arou… <span style="color: #BB0000;">NA</span>    Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      also…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'Al… alem… <span style="color: #BB0000;">NA</span>    Writing Superv… contri… superv… born…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 12</span></span></span>
+<span><span class="co">#&gt;   given_name family_name email phone orcid role_n1 role_n2 role_v1 role_v2 note </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis      Diderot     dide… 00 0… 0000… Writing Superv… contri… superv… born…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacq… Rousseau    rous… <span style="color: #BB0000;">NA</span>    0000… Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-… Arouet      arou… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      also…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean       Le Rond d'… alem… <span style="color: #BB0000;">NA</span>    0000… Writing Superv… contri… superv… born…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -121,13 +121,13 @@ input data. The input data must have at least two columns named
 <code>given_name</code> and <code>family_name</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 10</span></span></span>
-<span><span class="co">#&gt;      id given_name     family_name       literal_name initials email phone note </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot           Denis Dider… DD       dide… 00 0… born…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau          Jean-Jacque… J-JR     rous… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet            François-Ma… F-MA     arou… <span style="color: #BB0000;">NA</span>    also…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembe… Jean Le Ron… JLRA     alem… <span style="color: #BB0000;">NA</span>    born…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 11</span></span></span>
+<span><span class="co">#&gt;      id given_name     family_name literal_name initials email orcid phone note </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot     Denis Dider… DD       dide… 0000… 00 0… born…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… 0000… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet      François-Ma… F-MA     arou… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    also…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'… Jean Le Ron… JLRA     alem… 0000… <span style="color: #BB0000;">NA</span>    born…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation &lt;list&gt;, role &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -202,13 +202,14 @@ replacements.</p>
 <span>    role <span class="op">=</span> <span class="st">"role_v"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 9</span></span></span>
-<span><span class="co">#&gt;      id prénom   nom   nom_complet initiales courriel note  affiliation role_v  </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis    Dide… Denis Dide… DD        diderot… né e… <span style="color: #949494;">&lt;tibble&gt;</span>    <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Ja… Rous… Jean-Jacqu… J-JR      roussea… <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">&lt;tibble&gt;</span>    <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 Françoi… Arou… François-M… F-MA      arouet@… dit … <span style="color: #949494;">&lt;tibble&gt;</span>    <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean     Le R… Jean Le Ro… JLRA      alember… né e… <span style="color: #949494;">&lt;tibble&gt;</span>    <span style="color: #949494;">&lt;tibble&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 10</span></span></span>
+<span><span class="co">#&gt;      id prénom      nom   nom_complet initiales courriel orcid note  affiliation</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis       Dide… Denis Dide… DD        diderot… 0000… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacqu… Rous… Jean-Jacqu… J-JR      roussea… 0000… <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-M… Arou… François-M… F-MA      arouet@… <span style="color: #BB0000;">NA</span>    dit … <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean        Le R… Jean Le Ro… JLRA      alember… 0000… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: role_v &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="pushing-data-into-a-yaml-header">Pushing data into a YAML header<a class="anchor" aria-label="anchor" href="#pushing-data-into-a-yaml-header"></a>
@@ -233,6 +234,7 @@ author:
     name:
       given: Denis
       family: Diderot
+    orcid: 0000-0000-0000-0001
     email: diderot@encyclopediste.fr
     phone: 00 00 00 01
     note: born in 1713 in Langres
@@ -242,6 +244,7 @@ author:
     name:
       given: Jean
       family: Le Rond d'Alembert
+    orcid: 0000-0000-0000-0003
     email: alembert@encyclopediste.fr
     note: born in 1717 in Paris
     affiliations:
@@ -270,6 +273,7 @@ author:
     name:
       given: Jean-Jacques
       family: Rousseau
+    orcid: 0000-0000-0000-0002
     email: rousseau@encyclopediste.fr
     affiliations:
       - ref: aff1
@@ -447,12 +451,36 @@ order with <code>alphabetical_order = TRUE</code>.</p>
 <span><span class="co">#&gt; Writing: D.D., F.-M.A., J.-J.R. and J.L.R.A.</span></span>
 <span><span class="co">#&gt; Supervision: D.D. and J.L.R.A.</span></span></code></pre></div>
 </div>
+<div class="section level3">
+<h3 id="orcids">ORCIDs<a class="anchor" aria-label="anchor" href="#orcids"></a>
+</h3>
+<p><code>get_orcids()</code> returns authors with their respective
+ORCID.</p>
+<div class="super_chunk">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_orcids</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="super_chunk-output">
+<p>Denis Diderot<a href="https://orcid.org/0000-0000-0000-0001" class="external-link"><img src="../../../_temp/Library/plume/icons/orcid.svg" style="margin: 0 4px; vertical-align: baseline" height="16"></a><a href="https://orcid.org/0000-0000-0000-0001" class="external-link uri">https://orcid.org/0000-0000-0000-0001</a></p>
+<p>Jean-Jacques Rousseau<a href="https://orcid.org/0000-0000-0000-0002" class="external-link"><img src="../../../_temp/Library/plume/icons/orcid.svg" style="margin: 0 4px; vertical-align: baseline" height="16"></a><a href="https://orcid.org/0000-0000-0000-0002" class="external-link uri">https://orcid.org/0000-0000-0000-0002</a></p>
+<p>Jean Le Rond d’Alembert<a href="https://orcid.org/0000-0000-0000-0003" class="external-link"><img src="../../../_temp/Library/plume/icons/orcid.svg" style="margin: 0 4px; vertical-align: baseline" height="16"></a><a href="https://orcid.org/0000-0000-0000-0003" class="external-link uri">https://orcid.org/0000-0000-0000-0003</a></p>
+</div>
+</div>
+<div class="super_chunk">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_orcids</span><span class="op">(</span>compact <span class="op">=</span> <span class="cn">TRUE</span>, icon <span class="op">=</span> <span class="cn">FALSE</span>, sep <span class="op">=</span> <span class="st">": "</span><span class="op">)</span></span></code></pre></div>
+<div class="super_chunk-output">
+<p>Denis Diderot: <a href="https://orcid.org/0000-0000-0000-0001" class="external-link">0000-0000-0000-0001</a></p>
+<p>Jean-Jacques Rousseau: <a href="https://orcid.org/0000-0000-0000-0002" class="external-link">0000-0000-0000-0002</a></p>
+<p>Jean Le Rond d’Alembert: <a href="https://orcid.org/0000-0000-0000-0003" class="external-link">0000-0000-0000-0003</a></p>
+</div>
+</div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="symbols">Symbols<a class="anchor" aria-label="anchor" href="#symbols"></a>
 </h2>
 <p>Default symbols are:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">aut</span><span class="op">$</span><span class="va">symbols</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 3</span></span>
 <span><span class="co">#&gt;  $ affiliation  : NULL</span></span>
@@ -461,7 +489,7 @@ order with <code>alphabetical_order = TRUE</code>.</p>
 <p>You can change symbols when creating a <code>plume</code> object
 using the parameter <code>symbols</code>.</p>
 <p>Use <code>NULL</code> to display numbers.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, symbols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="va">letters</span>, note <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"^a,n^"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
@@ -472,7 +500,7 @@ unique items (typically affiliations). If you have to use letters for a
 given category that has more unique items than letters, you can control
 the sequencing behaviour using the <code><a href="../reference/sequential.html">sequential()</a></code> modifier,
 as shown below.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
 <span>  symbols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="fu"><a href="../reference/sequential.html">sequential</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span><span class="op">)</span></span>
@@ -487,11 +515,11 @@ logical sequence of characters
 </h2>
 <p>To output author data as markdown content, use the chunk option
 <code>results: "asis"</code> in combination with <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>```{r}</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>#| results: "asis"</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>aut$get_contributions() |&gt; cat(sep = "; ")</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>```{r}</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>#| results: "asis"</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>aut$get_contributions() |&gt; cat(sep = "; ")</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div>
 <p>Inline chunks output values “as is” by default and can be used as
 follows:</p>
 <p><code>`r aut$get_contact_details()`</code></p>

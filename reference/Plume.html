@@ -87,6 +87,7 @@ affiliations, notes and other metadata.</p></dd>
 <ul><li><p><a href="#method-Plume-new"><code>Plume$new()</code></a></p></li>
 <li><p><a href="#method-Plume-set_corresponding_authors"><code>Plume$set_corresponding_authors()</code></a></p></li>
 <li><p><a href="#method-Plume-get_author_list"><code>Plume$get_author_list()</code></a></p></li>
+<li><p><a href="#method-Plume-get_orcids"><code>Plume$get_orcids()</code></a></p></li>
 <li><p><a href="#method-Plume-get_affiliations"><code>Plume$get_affiliations()</code></a></p></li>
 <li><p><a href="#method-Plume-get_notes"><code>Plume$get_notes()</code></a></p></li>
 <li><p><a href="#method-Plume-get_contact_details"><code>Plume$get_contact_details()</code></a></p></li>
@@ -104,7 +105,8 @@ affiliations, notes and other metadata.</p></dd>
 <span>  by <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  initials_given_name <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  family_name_first <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  interword_spacing <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  interword_spacing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  orcid_icon <span class="op">=</span> <span class="fu"><a href="../reference/orcid.html">orcid</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -143,6 +145,10 @@ authors' status in all methods. By default, uses authors' ids.</p></dd>
 <dd><p>Should literal names use spacing? This parameter
 is only useful for people writing in languages that don't separate words
 with a space such as Chinese or Japanese.</p></dd>
+
+
+<dt><code>orcid_icon</code></dt>
+<dd><p>The ORCID icon, as defined by <code><a href="orcid.html">orcid()</a></code>, to be used.</p></dd>
 
 
 </dl><p></p></div>
@@ -214,15 +220,43 @@ Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.
 <p>A character vector.</p>
 </div>
 
-</div><p></p><hr><a id="method-Plume-get_affiliations"></a><div class="section">
-<h3 id="method-get-affiliations-">Method <code>get_affiliations()</code><a class="anchor" aria-label="anchor" href="#method-get-affiliations-"></a></h3>
-<p>Get authors' affiliations.</p><div class="section">
+</div><p></p><hr><a id="method-Plume-get_orcids"></a><div class="section">
+<h3 id="method-get-orcids-">Method <code>get_orcids()</code><a class="anchor" aria-label="anchor" href="#method-get-orcids-"></a></h3>
+<p>Get authors' ORCID.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_affiliations</span><span class="op">(</span>sep <span class="op">=</span> <span class="st">""</span>, superscript <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_orcids</span><span class="op">(</span>compact <span class="op">=</span> <span class="cn">FALSE</span>, icon <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>compact</code></dt>
+<dd><p>Should links only display the 16-digit identifier?</p></dd>
+
+
+<dt><code>icon</code></dt>
+<dd><p>Should the ORCID icon be shown?</p></dd>
+
+
+<dt><code>sep</code></dt>
+<dd><p>Separator used to separate authors and their respective ORCID.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<p>Authors' name followed by their respective ORCID.</p>
+</div>
+
+</div><p></p><hr><a id="method-Plume-get_affiliations"></a><div class="section">
+<h3 id="method-get-affiliations-">Method <code>get_affiliations()</code><a class="anchor" aria-label="anchor" href="#method-get-affiliations-"></a></h3>
+<p>Get authors' affiliations.</p><div class="section">
+<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_affiliations</span><span class="op">(</span>sep <span class="op">=</span> <span class="st">""</span>, superscript <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>sep</code></dt>
 <dd><p>Separator used to separate affiliation ids and affiliations.</p></dd>
 
@@ -234,19 +268,19 @@ Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
 <p>A character vector.</p>
 </div>
 
 </div><p></p><hr><a id="method-Plume-get_notes"></a><div class="section">
 <h3 id="method-get-notes-">Method <code>get_notes()</code><a class="anchor" aria-label="anchor" href="#method-get-notes-"></a></h3>
 <p>Get authors' notes.</p><div class="section">
-<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_notes</span><span class="op">(</span>sep <span class="op">=</span> <span class="st">""</span>, superscript <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>sep</code></dt>
 <dd><p>Separator used to separate note ids and notes.</p></dd>
 
@@ -258,14 +292,14 @@ Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
 <p>A character vector.</p>
 </div>
 
 </div><p></p><hr><a id="method-Plume-get_contact_details"></a><div class="section">
 <h3 id="method-get-contact-details-">Method <code>get_contact_details()</code><a class="anchor" aria-label="anchor" href="#method-get-contact-details-"></a></h3>
 <p>Get the contact details of corresponding authors.</p><div class="section">
-<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
+<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_contact_details</span><span class="op">(</span></span>
 <span>  format <span class="op">=</span> <span class="st">"{details} ({name})"</span>,</span>
 <span>  email <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -277,7 +311,7 @@ Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.
 </div>
 
 <div class="section">
-<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>format</code></dt>
 <dd><p>A <code><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></code> specification that uses the
 variables <code>name</code> and <code>details</code>.</p></dd>
@@ -296,14 +330,14 @@ passed to the variable <code>details</code>. By default, only <code>email</code>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
+<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
 <p>A character vector.</p>
 </div>
 
 </div><p></p><hr><a id="method-Plume-get_contributions"></a><div class="section">
 <h3 id="method-get-contributions-">Method <code>get_contributions()</code><a class="anchor" aria-label="anchor" href="#method-get-contributions-"></a></h3>
 <p>Get authors' contributions.</p><div class="section">
-<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
+<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span></span>
 <span>  role_first <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  name_list <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -316,7 +350,7 @@ passed to the variable <code>details</code>. By default, only <code>email</code>
 </div>
 
 <div class="section">
-<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
+<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>role_first</code></dt>
 <dd><p>If <code>TRUE</code>, displays roles first and authors second. If
 <code>FALSE</code>, roles follow authors.</p></dd>
@@ -353,19 +387,19 @@ if more than one item is associated to a role or author.</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
+<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
 <p>A character vector.</p>
 </div>
 
 </div><p></p><hr><a id="method-Plume-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
+<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
+<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
