@@ -10,6 +10,11 @@ orcid <- function(size = 16, bw = FALSE) {
   new_icon("orcid", size = size, bw = bw)
 }
 
+#' @export 
+print.plm_icon <- function(x, ...) {
+  cat(sprintf("<%s>", x))
+}
+
 new_icon <- function(x, ..., size, bw) {
   attrs <- icn_get_attrs(x, size, bw, ...)
   do.call(structure, c(list(x, class = "plm_icon"), attrs))
