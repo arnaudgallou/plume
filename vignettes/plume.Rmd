@@ -248,6 +248,40 @@ By default, `get_contributions()` lists contributors in the order they're define
 aut$get_contributions(alphabetical_order = TRUE)
 ```
 
+### ORCIDs
+
+`get_orcids()` returns authors with their respective ORCID.
+
+::: super_chunk
+```{r}
+#| eval: false
+aut$get_orcids()
+```
+
+::: super_chunk-output
+```{r}
+#| echo: false
+#| results: asis
+cat(aut$get_orcids(), sep = "\n\n")
+```
+:::
+:::
+
+::: super_chunk
+```{r}
+#| eval: false
+aut$get_orcids(compact = TRUE, icon = FALSE, sep = ": ")
+```
+
+::: super_chunk-output
+```{r}
+#| echo: false
+#| results: asis
+cat(aut$get_orcids(compact = TRUE, icon = FALSE, sep = ": "), sep = "\n\n")
+```
+:::
+:::
+
 ## Symbols
 
 Default symbols are:

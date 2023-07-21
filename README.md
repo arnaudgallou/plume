@@ -43,24 +43,24 @@ more information such as email addresses, ORCIDs, affiliations, etc.
 library(plume)
 
 encyclopedists
-#> # A tibble: 4 × 11
-#>   given_name     family_name   email phone role_n1 role_n2 role_v1 role_v2 note 
-#>   <chr>          <chr>         <chr> <chr> <chr>   <chr>   <chr>   <chr>   <chr>
-#> 1 Denis          Diderot       dide… 00 0… Writing Superv… contri… superv… born…
-#> 2 Jean-Jacques   Rousseau      rous… <NA>  Writing <NA>    contri… <NA>    <NA> 
-#> 3 François-Marie Arouet        arou… <NA>  Writing <NA>    contri… <NA>    also…
-#> 4 Jean           Le Rond d'Al… alem… <NA>  Writing Superv… contri… superv… born…
+#> # A tibble: 4 × 12
+#>   given_name family_name email phone orcid role_n1 role_n2 role_v1 role_v2 note 
+#>   <chr>      <chr>       <chr> <chr> <chr> <chr>   <chr>   <chr>   <chr>   <chr>
+#> 1 Denis      Diderot     dide… 00 0… 0000… Writing Superv… contri… superv… born…
+#> 2 Jean-Jacq… Rousseau    rous… <NA>  0000… Writing <NA>    contri… <NA>    <NA> 
+#> 3 François-… Arouet      arou… <NA>  <NA>  Writing <NA>    contri… <NA>    also…
+#> 4 Jean       Le Rond d'… alem… <NA>  0000… Writing Superv… contri… superv… born…
 #> # ℹ 2 more variables: affiliation1 <chr>, affiliation2 <chr>
 
 aut <- PlumeQuarto$new(encyclopedists)
 aut
-#> # A tibble: 4 × 10
-#>      id given_name     family_name       literal_name initials email phone note 
-#>   <int> <chr>          <chr>             <chr>        <chr>    <chr> <chr> <chr>
-#> 1     1 Denis          Diderot           Denis Dider… DD       dide… 00 0… born…
-#> 2     2 Jean-Jacques   Rousseau          Jean-Jacque… J-JR     rous… <NA>  <NA> 
-#> 3     3 François-Marie Arouet            François-Ma… F-MA     arou… <NA>  also…
-#> 4     4 Jean           Le Rond d'Alembe… Jean Le Ron… JLRA     alem… <NA>  born…
+#> # A tibble: 4 × 11
+#>      id given_name     family_name literal_name initials email orcid phone note 
+#>   <int> <chr>          <chr>       <chr>        <chr>    <chr> <chr> <chr> <chr>
+#> 1     1 Denis          Diderot     Denis Dider… DD       dide… 0000… 00 0… born…
+#> 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… 0000… <NA>  <NA> 
+#> 3     3 François-Marie Arouet      François-Ma… F-MA     arou… <NA>  <NA>  also…
+#> 4     4 Jean           Le Rond d'… Jean Le Ron… JLRA     alem… 0000… <NA>  born…
 #> # ℹ 2 more variables: affiliation <list>, role <list>
 ```
 
@@ -87,6 +87,7 @@ aut$to_yaml("file.qmd")
         name:
           given: Denis
           family: Diderot
+        orcid: 0000-0000-0000-0001
         email: diderot@encyclopediste.fr
         phone: 00 00 00 01
         note: born in 1713 in Langres
@@ -98,6 +99,7 @@ aut$to_yaml("file.qmd")
         name:
           given: Jean-Jacques
           family: Rousseau
+        orcid: 0000-0000-0000-0002
         email: rousseau@encyclopediste.fr
         attribute:
           corresponding: false
@@ -117,6 +119,7 @@ aut$to_yaml("file.qmd")
         name:
           given: Jean
           family: Le Rond d'Alembert
+        orcid: 0000-0000-0000-0003
         email: alembert@encyclopediste.fr
         note: born in 1717 in Paris
         attribute:

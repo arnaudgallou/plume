@@ -1,66 +1,107 @@
-md_link <- function(url, content = NULL) {
-  content <- content %||% url
-  sprintf("[%s](%s)", content, url)
+#' @title ORCID icon
+#' @description Helper function to control the size and colour of the ORCID
+#'   icon.
+#' @param size Size of the icon in pixels.
+#' @param bw Should the black and white version of the icon be used?
+#' @export
+orcid <- function(size = 16, bw = FALSE) {
+  check_num(size, allow_null = FALSE, call = caller_env(0))
+  check_bool(bw, call = caller_env(0))
+  new_icon("orcid", size = size, bw = bw)
 }
 
-md_image <- function(path, size, style, spacing) {
-  sprintf("%s![](%s){height=%ipx%s}%s", spacing, path, size, style, spacing)
+new_icon <- function(x, ..., size, bw) {
+  attrs <- icn_get_attrs(x, size, bw, ...)
+  do.call(structure, c(list(x, class = "plm_icon"), attrs))
 }
 
-file_name <- function(x) {
-  paste0(x, ".", class(x))
+md_link <- function(uri, content = NULL) {
+  if (is.null(content)) {
+    out <- sprintf("<%s>", uri)
+  } else {
+    out <- sprintf("[%s](%s)", content, uri)
+  }
+  propagate_na(out, from = uri)
 }
 
-svg <- function(x) {
+md_image <- function(image, size, style, spacing) {
+  wrap(sprintf("![](%s){height=%ipx%s}", image, size, style), spacing)
+}
+
+as_svg <- function(x) {
   structure(x, class = "svg")
 }
 
-pdf <- function(x) {
+as_pdf <- function(x) {
   structure(x, class = "pdf")
 }
 
-icon <- function(x) {
+icn_format <- function(x) {
   if (knitr::is_html_output()) {
-    return(svg(x))
+    return(as_svg(x))
   }
-  pdf(x)
+  as_pdf(x)
 }
 
-get_icon <- function(file) {
-  system.file(paste0("icons/", file), package = "plume")
+icn_filename <- function(x, bw) {
+  bw <- if (bw) "-bw" else ""
+  sprintf("%s%s.%s", x, bw, class(x))
 }
 
-icon_pars <- function(x, size, margin) {
-  UseMethod("icon_pars")
+icn_buffer <- function(x, margin) {
+  UseMethod("icn_buffer")
 }
 
-icon_pars.default <- function(x, size, margin) {
+icn_buffer.default <- function(x, margin) {
   list(
-    size = size,
     style = "",
     spacing = sprintf("\\hspace{%ipt}", round(margin * .75))
   )
 }
 
-icon_pars.svg <- function(x, size, margin) {
+icn_buffer.svg <- function(x, margin) {
   list(
-    size = size + 4,
-    style = sprintf(" style='margin: 0 %ipx; vertical-align: baseline'", margin),
+    style = sprintf(
+      " style='margin: 0 %ipx; vertical-align: baseline'",
+      margin
+    ),
     spacing = ""
   )
 }
 
-make_icon <- function(x, size = 16, margin = size / 4) {
-  aes <- map(c(size = size, margin = margin), round)
-  pars <- icon_pars(x, aes$size, aes$margin)
-  icon <- get_icon(file_name(x))
-  md_image(icon, pars$size, pars$style, pars$spacing)
+icn_get_attrs <- function(x, size, bw, ...) {
+  x <- icn_format(x)
+  c(
+    list(size = round(size), filename = icn_filename(x, bw), ...),
+    icn_buffer(x, margin = round(size / 4))
+  )
 }
 
-make_orcid_link <- function(orcid) {
-  check_orcid(orcid)
-  url <- paste0("https://orcid.org/", orcid)
-  icon <- make_icon(icon("orcid"))
-  out <- md_link(url, icon)
-  propagate_na(out, from = orcid)
+icn_path <- function(file) {
+  system.file(paste0("icons/", file), package = "plume")
+}
+
+icn_create <- function(attrs) {
+  file <- icn_path(attrs$filename)
+  md_image(file, attrs$size, attrs$style, attrs$spacing)
+}
+
+make_orcid_uri <- function(x) {
+  check_orcid(x)
+  out <- set_names(paste0("https://orcid.org/", x), x)
+  propagate_na(out, from = x)
+}
+
+make_orcid_icon <- function(orcid, attrs) {
+  uris <- make_orcid_uri(orcid)
+  icon <- icn_create(attrs)
+  md_link(uris, icon)
+}
+
+make_orcid_link <- function(orcid, compact) {
+  uris <- make_orcid_uri(orcid)
+  if (compact) {
+    return(md_link(uris, names(uris)))
+  }
+  md_link(uris)
 }

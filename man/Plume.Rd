@@ -25,6 +25,7 @@ affiliations, notes and other metadata.}
 \item \href{#method-Plume-new}{\code{Plume$new()}}
 \item \href{#method-Plume-set_corresponding_authors}{\code{Plume$set_corresponding_authors()}}
 \item \href{#method-Plume-get_author_list}{\code{Plume$get_author_list()}}
+\item \href{#method-Plume-get_orcids}{\code{Plume$get_orcids()}}
 \item \href{#method-Plume-get_affiliations}{\code{Plume$get_affiliations()}}
 \item \href{#method-Plume-get_notes}{\code{Plume$get_notes()}}
 \item \href{#method-Plume-get_contact_details}{\code{Plume$get_contact_details()}}
@@ -52,7 +53,8 @@ Create a \code{Plume} object.
   by = NULL,
   initials_given_name = FALSE,
   family_name_first = FALSE,
-  interword_spacing = TRUE
+  interword_spacing = TRUE,
+  orcid_icon = orcid()
 )}\if{html}{\out{</div>}}
 }
 
@@ -79,6 +81,8 @@ authors' status in all methods. By default, uses authors' ids.}
 \item{\code{interword_spacing}}{Should literal names use spacing? This parameter
 is only useful for people writing in languages that don't separate words
 with a space such as Chinese or Japanese.}
+
+\item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=orcid]{orcid()}}, to be used.}
 }
 \if{html}{\out{</div>}}
 }
@@ -147,6 +151,30 @@ Use \code{","} to separate and \code{"^"} to superscript symbols.
 
 \subsection{Returns}{
 A character vector.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Plume-get_orcids"></a>}}
+\if{latex}{\out{\hypertarget{method-Plume-get_orcids}{}}}
+\subsection{Method \code{get_orcids()}}{
+Get authors' ORCID.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Plume$get_orcids(compact = FALSE, icon = TRUE, sep = "")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{compact}}{Should links only display the 16-digit identifier?}
+
+\item{\code{icon}}{Should the ORCID icon be shown?}
+
+\item{\code{sep}}{Separator used to separate authors and their respective ORCID.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+Authors' name followed by their respective ORCID.
 }
 }
 \if{html}{\out{<hr>}}

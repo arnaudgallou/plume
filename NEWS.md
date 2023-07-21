@@ -6,6 +6,8 @@
 
 ## Minor improvements and bug fixes
 
+* New method `get_orcids()` that returns authors' ORCID.
+
 * Phone numbers are now set using the variable and attribute `phone` (#4).
 
 * plume methods now print outputs in the same way.

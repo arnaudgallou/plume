@@ -6,12 +6,13 @@
 \alias{encyclopedists_fr}
 \title{Famous encyclopedists}
 \format{
-A tibble with 4 rows and 11 variables:
+A tibble with 4 rows and 12 variables:
 \describe{
 \item{given_name,prénom}{authors' given names}
 \item{family_name,nom}{authors' family names}
 \item{email,courriel}{authors' email addresses}
 \item{phone,téléphone}{authors' phone numbers}
+\item{orcid}{authors' ORCID}
 \item{affiliation}{authors' affiliations}
 \item{role_n}{authors' roles written as nouns}
 \item{role_v}{authors' roles written as active verbs}

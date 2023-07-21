@@ -159,6 +159,9 @@ test_that("initialize() gives meaningful error messages", {
       Plume$new(df, symbols = list(note = NULL, note = NULL))
     ))
     (expect_error(
+      Plume$new(df, orcid_icon = NULL)
+    ))
+    (expect_error(
       Plume$new(df, by = "foo")
     ))
     (expect_error(

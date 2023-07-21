@@ -31,6 +31,7 @@ Plume <- R6Class(
     #' @param interword_spacing Should literal names use spacing? This parameter
     #'   is only useful for people writing in languages that don't separate words
     #'   with a space such as Chinese or Japanese.
+    #' @param orcid_icon The ORCID icon, as defined by [`orcid()`], to be used.
     #' @return A `Plume` object.
     initialize = function(
         data,
@@ -39,7 +40,8 @@ Plume <- R6Class(
         by = NULL,
         initials_given_name = FALSE,
         family_name_first = FALSE,
-        interword_spacing = TRUE
+        interword_spacing = TRUE,
+        orcid_icon = orcid()
     ) {
       super$initialize(
         data,
@@ -50,6 +52,7 @@ Plume <- R6Class(
       )
       check_list(symbols, force_names = TRUE)
       check_string(by, allow_empty = FALSE, allow_null = TRUE)
+      check_orcid_icon(orcid_icon)
       if (!is.null(by)) {
         private$check_col(by)
         self$by <- self$names[[by]]
@@ -57,6 +60,7 @@ Plume <- R6Class(
       if (!is.null(symbols)) {
         self$symbols <- supplant(self$symbols, symbols)
       }
+      private$orcid_icon <- structure(orcid_icon, var = self$names$orcid)
     },
 
     #' @description Set corresponding authors.
@@ -96,6 +100,25 @@ Plume <- R6Class(
         suffixes <- private$get_author_list_suffixes(format)
         out <- paste0(authors, suffixes)
       }
+      new_plm(out)
+    },
+
+    #' @description Get authors' ORCID.
+    #' @param compact Should links only display the 16-digit identifier?
+    #' @param icon Should the ORCID icon be shown?
+    #' @param sep Separator used to separate authors and their respective ORCID.
+    #' @return Authors' name followed by their respective ORCID.
+    get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
+      check_args("bool", list(compact, icon))
+      check_string(sep)
+      orcid <- self$names$orcid
+      private$check_col(orcid)
+      out <- drop_na(self$plume, orcid)
+      if (icon) {
+        out <- add_orcid_icons(out, private$orcid_icon)
+      }
+      out <- add_orcid_links(out, orcid, compact)
+      out <- collapse_cols(out, c(self$names$literal_name, predot(orcid)), sep)
       new_plm(out)
     },
 
@@ -213,6 +236,8 @@ Plume <- R6Class(
   ),
 
   private = list(
+    orcid_icon = NULL,
+
     set_status = function(col, ..., by) {
       if (missing(by)) {
         by <- self$by
@@ -236,7 +261,7 @@ Plume <- R6Class(
       private$check_col(cols)
       out <- unnest(self$plume, cols = all_of(cols))
       out <- add_group_ids(out, vars)
-      symbols <- list_assign(self$symbols, orcid = self$names$orcid)
+      symbols <- list_assign(self$symbols, orcid = private$orcid_icon)
       out <- set_suffixes(out, vars, symbols)
       grp_vars <- private$get_names("id", "literal_name", use_keys = FALSE)
       .cols <- predot(cols)

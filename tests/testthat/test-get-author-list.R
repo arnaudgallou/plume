@@ -100,48 +100,8 @@ test_that("get_author_list() returns author list", {
 })
 
 test_that("get_author_list() makes ORCID icons", {
-  render <- partial(rmarkdown::render, clean = FALSE, quiet = TRUE)
-
-  read_rendered_md <- function() {
-    read_file(list.files(pattern = "\\.md$"))
-  }
-
-  withr::with_tempdir({
-    tmp_file <- withr::local_tempfile(lines = dedent("
-      ---
-      title: foo
-      ---
-      ```{r echo = FALSE}
-      aut <- Plume$new(tibble(
-        given_name = 'X',
-        family_name = 'Y',
-        orcid = '0000-0000-0000-0000'
-      ))
-      cat(aut$get_author_list('o'))
-      ```
-    "), fileext = ".Rmd", tmpdir = getwd())
-
-    url <- "https://orcid.org/0000-0000-0000-0000"
-
-    # use rtf to speed up test runs
-    render(tmp_file, output_format = "rtf_document")
-    icon <- sprintf(
-      "[\\hspace{3pt}![](%s){height=16px}\\hspace{3pt}](%s)",
-      get_icon("orcid.pdf"),
-      url
-    )
-
-    expect_match(read_rendered_md(), paste0("X Y", icon), fixed = TRUE)
-
-    render(tmp_file, output_format = "html_document")
-    icon <- sprintf(
-      "[![](%s){height=20px style='margin: 0 4px; vertical-align: baseline'}](%s)",
-      get_icon("orcid.svg"),
-      url
-    )
-
-    expect_match(read_rendered_md(), paste0("X Y", icon), fixed = TRUE)
-  })
+  aut <- Plume$new(basic_df())
+  expect_snapshot(aut$get_author_list("o"), transform = scrub_icon_path)
 })
 
 # Errors ----

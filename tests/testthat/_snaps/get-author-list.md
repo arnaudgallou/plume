@@ -1,3 +1,12 @@
+# get_author_list() makes ORCID icons
+
+    Code
+      aut$get_author_list("o")
+    Output
+      Zip Zap[\hspace{3pt}![](orcid.pdf){height=16px}\hspace{3pt}](https://orcid.org/0000-0000-0000-0001)
+      Ric Rac[\hspace{3pt}![](orcid.pdf){height=16px}\hspace{3pt}](https://orcid.org/0000-0000-0000-0002)
+      Pim-Pam Pom
+
 # get_author_list() gives meaningful error messages
 
     Code

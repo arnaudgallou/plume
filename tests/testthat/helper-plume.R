@@ -32,3 +32,7 @@ dedent <- function(string) {
 read_test_file <- function(file) {
   cat(readr::read_file(file))
 }
+
+scrub_icon_path <- function(x) {
+    sub("(?<=\\()\\/.+\\/(?=[\\w-]+\\.(?:pdf|svg)\\))", "", x, perl = TRUE)
+}

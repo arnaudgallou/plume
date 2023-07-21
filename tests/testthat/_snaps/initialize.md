@@ -76,6 +76,13 @@
       Error:
       ! `symbols` must have unique input names.
     Code
+      (expect_error(Plume$new(df, orcid_icon = NULL)))
+    Output
+      <error/rlang_error>
+      Error:
+      ! Invalid `orcid_icon` input.
+      i Use `orcid()` to set the ORCID icon.
+    Code
       (expect_error(Plume$new(df, by = "foo")))
     Output
       <error/rlang_error>

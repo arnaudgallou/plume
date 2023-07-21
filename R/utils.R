@@ -174,7 +174,7 @@ set_suffixes <- function(x, cols, symbols) {
       return()
     }
     if (key == "orcid") {
-      x <<- set_orcid_icons(x, value)
+      x <<- add_orcid_icons(x, value)
     } else {
       x <<- set_symbols(x, .cols[key], value)
     }
@@ -192,7 +192,15 @@ set_symbols <- function(x, col, symbols) {
   x
 }
 
-set_orcid_icons <- function(x, orcid) {
-  x[predot(orcid)] <- make_orcid_link(x[[orcid]])
-  x
+add_orcid_icons <- function(data, orcid) {
+  attrs <- attributes(orcid)
+  data[predot(attrs$var)] <- make_orcid_icon(data[[attrs$var]], attrs)
+  data
+}
+
+add_orcid_links <- function(data, orcid, compact = FALSE) {
+  .col <- predot(orcid)
+  links <- make_orcid_link(data[[orcid]], compact)
+  data[.col] <- paste0(data[[.col]], links)
+  data
 }

@@ -133,7 +133,7 @@ check_duplicates <- function(x, ..., arg = caller_arg(x)) {
 }
 
 vector_types <- c(
-  "character", "double", "integer",
+  "character", "double", "integer", "numeric",
   "logical", "complex", "raw", "list"
 )
 
@@ -171,6 +171,8 @@ check_vector <- function(
 check_list <- partial(check_vector, type = "list")
 
 check_character <- partial(check_vector, type = "character")
+
+check_num <- partial(check_vector, type = "numeric")
 
 check_df <- function(x, ..., arg = caller_arg(x)) {
   if (!missing(x) && inherits(x, c("data.frame", "tbl_df"))) {
@@ -310,4 +312,18 @@ check_plm_agt <- function(x, ..., arg = caller_arg(x)) {
     return(invisible(NULL))
   }
   abort_check("a <plm_agt> object", ..., arg = arg)
+}
+
+is_icon <- function(x) {
+  inherits(x, "plm_icon")
+}
+
+check_orcid_icon <- function(x, ..., arg = caller_arg(x)) {
+  if (!missing(x) && is_icon(x)) {
+    return(invisible(NULL))
+  }
+  abort_check(..., msg = c(
+    glue("Invalid `{arg}` input."),
+    i = "Use `orcid()` to set the ORCID icon."
+  ))
 }
