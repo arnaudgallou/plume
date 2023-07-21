@@ -8,11 +8,12 @@
       author:
         - id: aut1
           name:
-            given: Aa
-            family: Xx
-          email: a@x.foo
+            given: Zip
+            family: Zap
+          orcid: 0000-0000-0000-0001
+          email: zipzap@test.tst
           phone: '00'
-          note: a
+          note: a, c
           attribute:
             corresponding: true
           affiliations:
@@ -20,18 +21,19 @@
             - ref: aff2
         - id: aut2
           name:
-            given: Cc-Ca
-            family: Zz
-          email: c@z.foo
+            given: Ric
+            family: Rac
+          orcid: 0000-0000-0000-0002
+          email: ricrac@test.tst
           attribute:
             corresponding: false
           affiliations:
             - ref: aff3
         - id: aut3
           name:
-            given: Bb
-            family: Yy
-          email: b@y.foo
+            given: Pim-Pam
+            family: Pom
+          email: pimpampom@test.tst
           note: b
           attribute:
             corresponding: false
@@ -42,65 +44,9 @@
         - id: aff1
           name: a
         - id: aff2
-          name: d
-        - id: aff3
           name: b
-        - id: aff4
-          name: c
-      ---
-      
-      ```{r}
-      #| echo: false
-      x <- 1
-      ```
-
----
-
-    Code
-      read_test_file(tmp_file)
-    Output
-      ---
-      title: test
-      author:
-        - id: aut1
-          name:
-            given: Cc-Ca
-            family: Zz
-          email: c@z.foo
-          attribute:
-            corresponding: true
-          affiliations:
-            - ref: aff1
-        - id: aut2
-          name:
-            given: Bb
-            family: Yy
-          email: b@y.foo
-          note: b
-          attribute:
-            corresponding: false
-          affiliations:
-            - ref: aff2
-            - ref: aff3
-        - id: aut3
-          name:
-            given: Aa
-            family: Xx
-          email: a@x.foo
-          phone: '00'
-          note: a
-          attribute:
-            corresponding: false
-          affiliations:
-            - ref: aff3
-            - ref: aff4
-      affiliations:
-        - id: aff1
-          name: b
-        - id: aff2
-          name: c
         - id: aff3
-          name: a
+          name: c
         - id: aff4
           name: d
       ---
@@ -120,13 +66,46 @@
       author:
         - id: aut1
           name:
-            given: Cc-Ca
-            family: Zz
-          email: c@z.foo
+            given: Pim-Pam
+            family: Pom
+          email: pimpampom@test.tst
+          note: b
+          attribute:
+            corresponding: true
           affiliations:
             - ref: aff1
+            - ref: aff2
+        - id: aut2
+          name:
+            given: Ric
+            family: Rac
+          orcid: 0000-0000-0000-0002
+          email: ricrac@test.tst
+          attribute:
+            corresponding: false
+          affiliations:
+            - ref: aff3
+        - id: aut3
+          name:
+            given: Zip
+            family: Zap
+          orcid: 0000-0000-0000-0001
+          email: zipzap@test.tst
+          phone: '00'
+          note: a, c
+          attribute:
+            corresponding: false
+          affiliations:
+            - ref: aff2
+            - ref: aff4
       affiliations:
         - id: aff1
+          name: d
+        - id: aff2
+          name: a
+        - id: aff3
+          name: c
+        - id: aff4
           name: b
       ---
       
@@ -184,27 +163,6 @@
             family: Z
           metadata:
             meta-foo: Bar
-      affiliations: {}
-      ---
-      
-      ```{r}
-      #| echo: false
-      x <- 1
-      ```
-
----
-
-    Code
-      read_test_file(tmp_file)
-    Output
-      ---
-      title: test
-      author:
-        - id: aut1
-          name:
-            given: X
-            family: Z
-          note: a, b
       affiliations: {}
       ---
       

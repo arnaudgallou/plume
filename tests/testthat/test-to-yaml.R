@@ -11,12 +11,8 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
   aut$to_yaml(tmp_file)
   expect_snapshot(read_test_file(tmp_file))
 
-  aut <- PlumeQuarto$new(df[c(2, 3, 1), ])
+  aut <- PlumeQuarto$new(df[c(3, 2, 1), ])
   aut$set_corresponding_authors(1)
-  aut$to_yaml(tmp_file)
-  expect_snapshot(read_test_file(tmp_file))
-
-  aut <- PlumeQuarto$new(df[2, ])
   aut$to_yaml(tmp_file)
   expect_snapshot(read_test_file(tmp_file))
 
@@ -34,15 +30,6 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
     family_name = "Z",
     `meta-foo` = "Bar",
     check.names = FALSE
-  ))
-  aut$to_yaml(tmp_file)
-  expect_snapshot(read_test_file(tmp_file))
-
-  aut <- PlumeQuarto$new(data.frame(
-    given_name = "X",
-    family_name = "Z",
-    note1 = "a",
-    note2 = "b"
   ))
   aut$to_yaml(tmp_file)
   expect_snapshot(read_test_file(tmp_file))

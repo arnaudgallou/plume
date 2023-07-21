@@ -10,7 +10,7 @@
       
       <!-- plume contributions: start -->
       
-      a: A.X., C.-C.Z. and B.Y.; d: A.X.
+      a: Z.Z., R.R. and P.-P.P.; b: Z.Z.
       
       <!-- plume contributions: end -->
       
@@ -28,7 +28,7 @@
       
       <!-- plume contributions: start -->
       
-      A.X., C.-C.Z. and B.Y. a; A.X. d
+      Z.Z., R.R. and P.-P.P. a; Z.Z. b
       
       <!-- plume contributions: end -->
       

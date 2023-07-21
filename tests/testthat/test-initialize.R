@@ -37,7 +37,7 @@ test_that("initialize() makes proper initials and literal names", {
 })
 
 test_that("`affiliation`, `role` and `note` columns are nestable", {
-  aut <- Plume$new(cbind(basic_df(), data.frame(note2 = "")))
+  aut <- Plume$new(basic_df())
 
   get_nested_cols <- function(x) {
     names(x)[sapply(x, is.list)]
@@ -48,7 +48,7 @@ test_that("`affiliation`, `role` and `note` columns are nestable", {
 })
 
 test_that("single nestables don't nest", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(data.frame(given_name = "X", family_name = "Y", note = "a"))
   expect_false(is_nested(aut$plume, "note"))
 })
 

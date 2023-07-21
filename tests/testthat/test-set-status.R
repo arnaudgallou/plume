@@ -19,7 +19,7 @@ test_that("sets status to selected authors", {
   }, c(TRUE, FALSE, TRUE))
 
   expect_equal({
-    aut$set_corresponding_authors("Aa", by = "given_name")
+    aut$set_corresponding_authors(zip, by = "given_name")
     aut$plume$corresponding
   }, c(TRUE, FALSE, FALSE))
 
@@ -41,7 +41,7 @@ test_that("sets status to selected authors", {
   }, c(TRUE, FALSE, TRUE))
 
   expect_equal({
-    aut$set_equal_contributor("Aa", by = "given_name")
+    aut$set_equal_contributor(zip, by = "given_name")
     aut$plume$equal_contributor
   }, c(TRUE, FALSE, FALSE))
 
@@ -63,7 +63,7 @@ test_that("sets status to selected authors", {
   }, c(TRUE, FALSE, TRUE))
 
   expect_equal({
-    aut$set_deceased("Aa", by = "given_name")
+    aut$set_deceased(zip, by = "given_name")
     aut$plume$deceased
   }, c(TRUE, FALSE, FALSE))
 })

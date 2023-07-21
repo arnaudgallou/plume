@@ -20,7 +20,7 @@ test_that("get_author_list() returns author list", {
 
   .a <- c("1,2", "3", "1,4")
   .c <- c("\\*", "", "\\*")
-  .n <- c("†", "", "‡")
+  .n <- c("†,‡", "", "§")
 
   expect_equal(
     aut$get_author_list(format = "a"),
@@ -82,7 +82,7 @@ test_that("get_author_list() returns author list", {
 
   .a <- c("a,b", "c", "a,d")
   .c <- c("†", "", "†")
-  .n <- c("1", "", "2")
+  .n <- c("1,2", "", "3")
 
   expect_equal(
     aut$get_author_list(format = "anc"),

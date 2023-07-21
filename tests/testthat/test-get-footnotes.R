@@ -29,8 +29,8 @@ test_that("get_affiliations()/get_notes() return affiliations/notes", {
     paste0("^", letters[ids], "^", affiliations)
   )
 
-  notes <- condense(df$note)
-  symbols <- c("†", "‡")
+  notes <- condense(t(df[grep("note", names(df))]))
+  symbols <- c("†", "‡", "§")
 
   expect_equal(
     aut$get_notes(),

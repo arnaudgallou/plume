@@ -1,17 +1,23 @@
 basic_df <- function() {
-  given_names <- c("Aa", "Cc-Ca", "Bb")
-  family_names <- c("Xx", "Zz", "Yy")
+  given_names <- c("Zip", "Ric", "Pim-Pam")
+  family_names <- c("Zap", "Rac", "Pom")
   data.frame(
     given_name = given_names,
     family_name = family_names,
     literal_name = paste(given_names, family_names),
-    affiliation = letters[1:3],
-    affiliation2 = c("d", NA, "a"),
+    affiliation = c("a", "c", "d"),
+    affiliation2 = c("b", NA, "a"),
     role = rep("a", 3),
-    role2 = c("d", NA, NA),
+    role2 = c("b", NA, NA),
     note = c("a", NA, "b"),
-    email = paste0(c("a@x", "c@z", "b@y"), ".foo"),
-    phone = c("00", NA, NA)
+    note2 = c("c", NA, NA),
+    email = paste0(c("zipzap", "ricrac", "pimpampom"), "@test.tst"),
+    phone = c("00", NA, NA),
+    orcid = c(
+      "0000-0000-0000-0001",
+      "0000-0000-0000-0002",
+      NA
+    )
   )
 }
 
