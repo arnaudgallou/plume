@@ -34,5 +34,6 @@ read_test_file <- function(file) {
 }
 
 scrub_icon_path <- function(x) {
-    sub("(?<=\\()\\/.+\\/(?=[\\w-]+\\.(?:pdf|svg)\\))", "", x, perl = TRUE)
+  path_regex <- "(?<=\\()(?:[A-Z]:)?\\/.+\\/(?=[\\w-]+\\.(?:pdf|svg)\\))"
+  sub(path_regex, "", x, perl = TRUE)
 }
