@@ -32,7 +32,6 @@ with Quarto's author and affiliations
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_contributions"><a href='../../plume/html/Plume.html#method-Plume-get_contributions'><code>plume::Plume$get_contributions()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_notes"><a href='../../plume/html/Plume.html#method-Plume-get_notes'><code>plume::Plume$get_notes()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_orcids"><a href='../../plume/html/Plume.html#method-Plume-get_orcids'><code>plume::Plume$get_orcids()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_symbols"><a href='../../plume/html/Plume.html#method-Plume-get_symbols'><code>plume::Plume$get_symbols()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="initialize"><a href='../../plume/html/Plume.html#method-Plume-initialize'><code>plume::Plume$initialize()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="set_corresponding_authors"><a href='../../plume/html/Plume.html#method-Plume-set_corresponding_authors'><code>plume::Plume$set_corresponding_authors()</code></a></li>
 </ul>

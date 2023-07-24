@@ -20,7 +20,6 @@ Class generating author lists and other author-related information.
 \item \href{#method-Plume-get_notes}{\code{Plume$get_notes()}}
 \item \href{#method-Plume-get_contact_details}{\code{Plume$get_contact_details()}}
 \item \href{#method-Plume-get_contributions}{\code{Plume$get_contributions()}}
-\item \href{#method-Plume-get_symbols}{\code{Plume$get_symbols()}}
 \item \href{#method-Plume-clone}{\code{Plume$clone()}}
 }
 }
@@ -291,15 +290,6 @@ if more than one item is associated to a role or author.}
 \subsection{Returns}{
 A character vector.
 }
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Plume-get_symbols"></a>}}
-\if{latex}{\out{\hypertarget{method-Plume-get_symbols}{}}}
-\subsection{Method \code{get_symbols()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$get_symbols()}\if{html}{\out{</div>}}
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-clone"></a>}}
