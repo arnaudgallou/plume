@@ -33,7 +33,7 @@ add_group_ids <- function(data, cols) {
   data
 }
 
-set_suffixes <- function(data, cols, symbols) {
+add_suffixes <- function(data, cols, symbols) {
   .cols <- predot(cols)
   iwalk(symbols[names(cols)], \(value, key) {
     if (is.null(value)) {
@@ -42,13 +42,13 @@ set_suffixes <- function(data, cols, symbols) {
     if (key == "orcid") {
       data <<- add_orcid_icons(data, value)
     } else {
-      data <<- set_symbols(data, .cols[key], value)
+      data <<- add_symbols(data, .cols[key], value)
     }
   })
   data
 }
 
-set_symbols <- function(data, col, symbols) {
+add_symbols <- function(data, col, symbols) {
   if (is.null(symbols)) {
     return(data)
   }

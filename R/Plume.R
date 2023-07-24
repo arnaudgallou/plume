@@ -260,7 +260,7 @@ Plume <- R6Class(
       out <- unnest(private$plume, cols = all_of(cols))
       out <- add_group_ids(out, vars)
       symbols <- list_assign(private$symbols, orcid = private$orcid_icon)
-      out <- set_suffixes(out, vars, symbols)
+      out <- add_suffixes(out, vars, symbols)
       grp_vars <- private$get_names("id", "literal_name", use_keys = FALSE)
       .cols <- predot(cols)
       out <- summarise(out, across(all_of(.cols), bind), .by = all_of(grp_vars))
@@ -278,7 +278,7 @@ Plume <- R6Class(
       }
       out <- add_group_ids(out, col)
       .col <- predot(col)
-      out <- set_symbols(out, .col, private$symbols[[var]])
+      out <- add_symbols(out, .col, private$symbols[[var]])
       out <- distinct(out, .data[[col]], .data[[.col]])
       if (superscript) {
         out <- mutate(out, !!.col := wrap(.data[[.col]], "^"))

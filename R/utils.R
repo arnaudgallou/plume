@@ -46,7 +46,7 @@ drop_na.default <- function(data, ...) {
   data[is_not_na(data)]
 }
 
-vector_arrange <- function(x) {
+vec_arrange <- function(x) {
   x[order(nchar(x), x)]
 }
 
@@ -61,7 +61,7 @@ collapse <- function(x, sep = "") {
 bind <- function(x, sep = ",", arrange = TRUE) {
   out <- condense(x)
   if (arrange) {
-    out <- vector_arrange(out)
+    out <- vec_arrange(out)
   }
   collapse(out, sep)
 }
