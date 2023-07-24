@@ -1,9 +1,8 @@
 test_that("sequences of characters are properly generated", {
   df <- data.frame(given_name = "X", family_name = "Y", affiliation = 1:55)
-  aut <- Plume$new(df)
+  aut <- Plume$new(df, symbols = list(affiliation = letters))
 
   .h <- paste0("X Y", c("a", "b", "c", "d", "e", "f"))
-  aut$symbols$affiliation <- letters
 
   expect_equal(head(aut$get_author_list("a")), .h)
   expect_equal(
@@ -11,7 +10,7 @@ test_that("sequences of characters are properly generated", {
     paste0("X Y", c("xx", "yy", "zz", "aaa", "bbb", "ccc"))
   )
 
-  aut$symbols$affiliation <- sequential(letters)
+  aut <- Plume$new(df, symbols = list(affiliation = sequential(letters)))
 
   expect_equal(head(aut$get_author_list("a")), .h)
   expect_equal(

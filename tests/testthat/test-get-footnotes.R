@@ -22,7 +22,7 @@ test_that("get_affiliations()/get_notes() return affiliations/notes", {
     paste0(ids, ": ", affiliations)
   )
 
-  aut$symbols$affiliation <- letters
+  aut <- Plume$new(df, symbols = list(affiliation = letters))
 
   expect_equal(
     aut$get_affiliations(),

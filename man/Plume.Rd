@@ -9,16 +9,6 @@ Class generating author lists and other author-related information.
 \section{Super classes}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{Plume}
 }
-\section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{by}}{Default variable used to assign status to authors.}
-
-\item{\code{symbols}}{Symbols suffixing author names used to link authors to
-affiliations, notes and other metadata.}
-}
-\if{html}{\out{</div>}}
-}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -30,12 +20,14 @@ affiliations, notes and other metadata.}
 \item \href{#method-Plume-get_notes}{\code{Plume$get_notes()}}
 \item \href{#method-Plume-get_contact_details}{\code{Plume$get_contact_details()}}
 \item \href{#method-Plume-get_contributions}{\code{Plume$get_contributions()}}
+\item \href{#method-Plume-get_symbols}{\code{Plume$get_symbols()}}
 \item \href{#method-Plume-clone}{\code{Plume$clone()}}
 }
 }
 \if{html}{\out{
 <details open><summary>Inherited methods</summary>
 <ul>
+<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></li>
 </ul>
 </details>
@@ -299,6 +291,15 @@ if more than one item is associated to a role or author.}
 \subsection{Returns}{
 A character vector.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Plume-get_symbols"></a>}}
+\if{latex}{\out{\hypertarget{method-Plume-get_symbols}{}}}
+\subsection{Method \code{get_symbols()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Plume$get_symbols()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-clone"></a>}}

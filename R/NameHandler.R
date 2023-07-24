@@ -3,27 +3,27 @@
 NameHandler <- R6Class(
   classname = "NameHandler",
   public = list(
-    names = NULL,
-
     initialize = function(names) {
       check_list(names, allow_duplicates = FALSE)
-      self$names <- names
+      private$names <- names
     }
   ),
 
   private = list(
+    names = NULL,
+
     get_names = function(..., use_keys = TRUE) {
       dots <- c(...)
       nms <- if (is.list(dots)) unlist(dots) else dots
-      unlist(self$names[nms], use.names = use_keys)
+      unlist(private$names[nms], use.names = use_keys)
     },
 
     set_names = function(x) {
       if (any(lengths(x)) > 1L) {
         x <- map(x, 1L)
       }
-      if (!all(x %in% self$names)) {
-        self$names <- supplant(self$names, x)
+      if (!all(x %in% private$names)) {
+        private$names <- supplant(private$names, x)
       }
     }
   )

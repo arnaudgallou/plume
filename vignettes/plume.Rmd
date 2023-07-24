@@ -287,7 +287,8 @@ cat(aut$get_orcids(compact = TRUE, icon = FALSE, sep = ": "), sep = "\n\n")
 Default symbols are:
 
 ```{r}
-str(aut$symbols)
+#| echo: false
+str(plume:::default_symbols)
 ```
 
 You can change symbols when creating a `plume` object using the parameter `symbols`.
