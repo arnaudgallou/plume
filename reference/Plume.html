@@ -66,19 +66,6 @@
     <p><code><a href="NameHandler.html">plume::NameHandler</a></code> -&gt; <code><a href="PlumeHandler.html">plume::PlumeHandler</a></code> -&gt; <code>Plume</code></p>
     </div>
     <div class="section level2">
-    <h2 id="public-fields">Public fields<a class="anchor" aria-label="anchor" href="#public-fields"></a></h2>
-    <p></p><div class="r6-fields"><dl><dt><code>by</code></dt>
-<dd><p>Default variable used to assign status to authors.</p></dd>
-
-
-<dt><code>symbols</code></dt>
-<dd><p>Symbols suffixing author names used to link authors to
-affiliations, notes and other metadata.</p></dd>
-
-
-</dl><p></p></div>
-    </div>
-    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
     
 <div class="section">
@@ -92,8 +79,10 @@ affiliations, notes and other metadata.</p></dd>
 <li><p><a href="#method-Plume-get_notes"><code>Plume$get_notes()</code></a></p></li>
 <li><p><a href="#method-Plume-get_contact_details"><code>Plume$get_contact_details()</code></a></p></li>
 <li><p><a href="#method-Plume-get_contributions"><code>Plume$get_contributions()</code></a></p></li>
+<li><p><a href="#method-Plume-get_symbols"><code>Plume$get_symbols()</code></a></p></li>
 <li><p><a href="#method-Plume-clone"><code>Plume$clone()</code></a></p></li>
-</ul></div><p><details open><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href="PlumeHandler.html#method-print"><code>plume::PlumeHandler$print()</code></a></span></li>
+</ul></div><p><details open><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href="PlumeHandler.html#method-get_plume"><code>plume::PlumeHandler$get_plume()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href="PlumeHandler.html#method-print"><code>plume::PlumeHandler$print()</code></a></span></li>
 </ul></details></p><hr><a id="method-Plume-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Create a <code>Plume</code> object.</p><div class="section">
@@ -391,10 +380,19 @@ if more than one item is associated to a role or author.</p></dd>
 <p>A character vector.</p>
 </div>
 
+</div><p></p><hr><a id="method-Plume-get_symbols"></a><div class="section">
+<h3 id="method-get-symbols-">Method <code>get_symbols()</code><a class="anchor" aria-label="anchor" href="#method-get-symbols-"></a></h3>
+
+<div class="section">
+<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_symbols</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
 </div><p></p><hr><a id="method-Plume-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
+<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
