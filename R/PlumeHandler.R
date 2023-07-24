@@ -35,8 +35,6 @@ PlumeHandler <- R6Class(
   classname = "PlumeHandler",
   inherit = NameHandler,
   public = list(
-    plume = NULL,
-
     initialize = function(
         data,
         names,
@@ -52,7 +50,7 @@ PlumeHandler <- R6Class(
         interword_spacing
       ))
       super$initialize(flatten(private$plume_names))
-      self$plume <- as_tibble(data)
+      private$plume <- as_tibble(data)
       private$initials_given_name <- initials_given_name
       private$family_name_first <- family_name_first
       if (!interword_spacing) {
@@ -67,11 +65,16 @@ PlumeHandler <- R6Class(
     },
 
     print = function() {
-      print(self$plume)
+      print(private$plume)
+    },
+
+    get_plume = function() {
+      private$plume
     }
   ),
 
   private = list(
+    plume = NULL,
     plume_names = default_names,
     plume_keys = map(default_names, names),
     initials_given_name = NULL,
@@ -91,7 +94,7 @@ PlumeHandler <- R6Class(
     build = function() {
       private$mold()
       private$make_author_names()
-      self$plume <- rowid_to_column(self$plume, var = self$names$id)
+      private$plume <- rowid_to_column(private$plume, var = private$names$id)
     },
 
     mold = function(...) {
@@ -99,8 +102,8 @@ PlumeHandler <- R6Class(
       primary <- private$get_names(keys$primary, use_keys = FALSE)
       secondary <- private$get_names(keys$secondary, use_keys = FALSE)
       nestable <- private$get_names(keys$nestable)
-      self$plume <- select(
-        self$plume,
+      private$plume <- select(
+        private$plume,
         all_of(primary),
         any_of(secondary),
         starts_with(nestable),
@@ -110,20 +113,21 @@ PlumeHandler <- R6Class(
 
     nest = function(col) {
       out <- pivot_longer(
-        self$plume,
+        private$plume,
         cols = starts_with(col),
         values_to = col,
         names_to = NULL
       )
-      self$plume <- nest(out, !!col := any_of(col))
+      private$plume <- nest(out, !!col := any_of(col))
     },
 
     make_author_names = function() {
       if (private$initials_given_name) {
-        self$plume <- mutate(self$plume, !!self$names$given_name := make_initials(
-          .data[[self$names$given_name]],
-          dot = TRUE
-        ))
+        given_name <- private$names$given_name
+        private$plume <- mutate(
+          private$plume,
+          !!given_name := make_initials(.data[[given_name]], dot = TRUE)
+        )
       }
       private$make_literals()
       if (any(has_uppercase(private$get("literal_name")))) {
@@ -136,41 +140,45 @@ PlumeHandler <- R6Class(
       if (private$family_name_first) {
         nominal <- rev(nominal)
       }
-      self$plume <- mutate(self$plume, !!self$names$literal_name := paste(
-        !!!syms(nominal),
-        sep = private$interword_spacing
-      ), .after = all_of(self$names$family_name))
+      private$plume <- mutate(
+        private$plume, !!private$names$literal_name := paste(
+          !!!syms(nominal),
+          sep = private$interword_spacing
+        ), .after = all_of(private$names$family_name)
+      )
     },
 
     make_initials = function() {
-      self$plume <- mutate(
-        self$plume,
-        !!self$names$initials := make_initials(.data[[self$names$literal_name]]),
-        .after = all_of(self$names$literal_name)
+      private$plume <- mutate(
+        private$plume,
+        !!private$names$initials := make_initials(
+          .data[[private$names$literal_name]]
+        ),
+        .after = all_of(private$names$literal_name)
       )
     },
 
     sanitise = function() {
-      self$plume <- mutate(self$plume, across(
+      private$plume <- mutate(private$plume, across(
         \(x) any(is_blank(x)),
         blank_to_na
       ))
     },
 
     get = function(col) {
-      col <- self$names[[col]]
-      self$plume[[col]]
+      col <- private$names[[col]]
+      private$plume[[col]]
     },
 
     is_nestable = function(col) {
-      private$has_col(col) && col_count(self$plume, col) > 1L
+      private$has_col(col) && col_count(private$plume, col) > 1L
     },
 
     has_col = function(col) {
       if (any(has_metachr(col))) {
         col <- regex(col)
       }
-      has_name(self$plume, col)
+      has_name(private$plume, col)
     },
 
     check_col = function(x, ...) {
@@ -184,7 +192,7 @@ PlumeHandler <- R6Class(
 
     check_authors = function() {
       nominal <- private$get_names("given_name", "family_name")
-      authors <- select(self$plume, all_of(nominal))
+      authors <- select(private$plume, all_of(nominal))
       authors <- reduce(authors, \(x, y) {
         if_else(is_void(x) | is_void(y), NA, 1L)
       })

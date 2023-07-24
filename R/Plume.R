@@ -1,3 +1,9 @@
+default_symbols <- list(
+  affiliation = NULL,
+  corresponding = "\\*",
+  note = c("\u2020", "\u2021", "\u00a7", "\u00b6", "\u0023", "\\*\\*")
+)
+
 #' @title Plume class
 #' @description Class generating author lists and other author-related information.
 #' @export
@@ -5,17 +11,6 @@ Plume <- R6Class(
   classname = "Plume",
   inherit = PlumeHandler,
   public = list(
-    #' @field by Default variable used to assign status to authors.
-    by = "id",
-
-    #' @field symbols Symbols suffixing author names used to link authors to
-    #'   affiliations, notes and other metadata.
-    symbols = list(
-      affiliation = NULL,
-      corresponding = "\\*",
-      note = c("\u2020", "\u2021", "\u00a7", "\u00b6", "\u0023", "\\*\\*")
-    ),
-
     #' @description Create a `Plume` object.
     #' @param data A data frame or tibble containing author-related data.
     #' @param names A vector of column names.
@@ -55,12 +50,12 @@ Plume <- R6Class(
       check_orcid_icon(orcid_icon)
       if (!is.null(by)) {
         private$check_col(by)
-        self$by <- self$names[[by]]
+        private$by <- private$names[[by]]
       }
       if (!is.null(symbols)) {
-        self$symbols <- supplant(self$symbols, symbols)
+        private$symbols <- supplant(private$symbols, symbols)
       }
-      private$orcid_icon <- structure(orcid_icon, var = self$names$orcid)
+      private$orcid_icon <- structure(orcid_icon, var = private$names$orcid)
     },
 
     #' @description Set corresponding authors.
@@ -111,14 +106,15 @@ Plume <- R6Class(
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
       check_args("bool", list(compact, icon))
       check_string(sep)
-      orcid <- self$names$orcid
+      orcid <- private$names$orcid
       private$check_col(orcid)
-      out <- drop_na(self$plume, orcid)
+      out <- drop_na(private$plume, orcid)
       if (icon) {
         out <- add_orcid_icons(out, private$orcid_icon)
       }
       out <- add_orcid_links(out, orcid, compact)
-      out <- collapse_cols(out, c(self$names$literal_name, predot(orcid)), sep)
+      cols <- c(private$names$literal_name, predot(orcid))
+      out <- collapse_cols(out, cols, sep)
       new_plm(out)
     },
 
@@ -157,7 +153,7 @@ Plume <- R6Class(
       check_glue(format, allowed = c("name", "details"))
       check_args("bool", list(email, phone, fax, url))
       check_string(sep, allow_empty = FALSE)
-      corresponding <- self$names$corresponding
+      corresponding <- private$names$corresponding
       private$check_col(corresponding, bullets = c(
         i = "Did you forget to assign corresponding authors?",
         i = "Use `set_corresponding_authors()` to set corresponding authors."
@@ -168,8 +164,8 @@ Plume <- R6Class(
       }
       cols <- private$get_names(args, use_keys = FALSE)
       private$check_col(cols)
-      out <- filter(self$plume, corresponding & not_na_any(cols))
-      dict <- list(details = cols, name = self$names$literal_name)
+      out <- filter(private$plume, corresponding & not_na_any(cols))
+      dict <- list(details = cols, name = private$names$literal_name)
       dissolve(out, dict, partial(collapse_cols, sep = sep))
       new_plm(glue(format))
     },
@@ -197,7 +193,7 @@ Plume <- R6Class(
         divider = NULL,
         sep_last = NULL
     ) {
-      role <- self$names$role
+      role <- private$names$role
       private$check_col(role)
       check_args("bool", list(
         role_first,
@@ -207,14 +203,14 @@ Plume <- R6Class(
         literal_names
       ))
       check_args("string", list(sep_last, divider), allow_null = TRUE)
-      out <- unnest_drop(self$plume, role)
+      out <- unnest_drop(private$plume, role)
       if (is_empty(out)) {
         return()
       }
-      initials <- self$names$initials
+      initials <- private$names$initials
       has_initials <- private$has_col(initials)
       if (!has_initials || literal_names) {
-        authors <- self$names$literal_name
+        authors <- private$names$literal_name
       } else {
         authors <- initials
       }
@@ -236,11 +232,13 @@ Plume <- R6Class(
   ),
 
   private = list(
+    by = "id",
+    symbols = default_symbols,
     orcid_icon = NULL,
 
     set_status = function(col, ..., by) {
       if (missing(by)) {
-        by <- self$by
+        by <- private$by
       } else {
         check_string(by, allow_empty = FALSE)
       }
@@ -250,7 +248,7 @@ Plume <- R6Class(
       } else {
         value <- expr(true_if(includes(.data[[by]], exprs(...))))
       }
-      self$plume <- mutate(self$plume, !!self$names[[col]] := !!value)
+      private$plume <- mutate(private$plume, !!private$names[[col]] := !!value)
       invisible(self)
     },
 
@@ -259,9 +257,9 @@ Plume <- R6Class(
       vars <- private$get_names(dict)
       cols <- unname(vars)
       private$check_col(cols)
-      out <- unnest(self$plume, cols = all_of(cols))
+      out <- unnest(private$plume, cols = all_of(cols))
       out <- add_group_ids(out, vars)
-      symbols <- list_assign(self$symbols, orcid = private$orcid_icon)
+      symbols <- list_assign(private$symbols, orcid = private$orcid_icon)
       out <- set_suffixes(out, vars, symbols)
       grp_vars <- private$get_names("id", "literal_name", use_keys = FALSE)
       .cols <- predot(cols)
@@ -270,17 +268,17 @@ Plume <- R6Class(
     },
 
     get_footnotes = function(var, sep, superscript) {
-      col <- self$names[[var]]
+      col <- private$names[[var]]
       private$check_col(col)
       check_string(sep)
       check_bool(superscript)
-      out <- unnest_drop(self$plume, col)
+      out <- unnest_drop(private$plume, col)
       if (is_empty(out)) {
         return()
       }
       out <- add_group_ids(out, col)
       .col <- predot(col)
-      out <- set_symbols(out, .col, self$symbols[[var]])
+      out <- set_symbols(out, .col, private$symbols[[var]])
       out <- distinct(out, .data[[col]], .data[[.col]])
       if (superscript) {
         out <- mutate(out, !!.col := wrap(.data[[.col]], "^"))
@@ -295,7 +293,7 @@ Plume <- R6Class(
       } else {
         divider <- divider %||% ": "
       }
-      role <- self$names$role
+      role <- private$names$role
       format <- c(role, authors)
       if (!role_first) {
         format <- rev(format)

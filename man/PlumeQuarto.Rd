@@ -24,12 +24,15 @@ with Quarto's author and affiliations
 \if{html}{\out{
 <details><summary>Inherited methods</summary>
 <ul>
+<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_affiliations"><a href='../../plume/html/Plume.html#method-Plume-get_affiliations'><code>plume::Plume$get_affiliations()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_author_list"><a href='../../plume/html/Plume.html#method-Plume-get_author_list'><code>plume::Plume$get_author_list()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_contact_details"><a href='../../plume/html/Plume.html#method-Plume-get_contact_details'><code>plume::Plume$get_contact_details()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_contributions"><a href='../../plume/html/Plume.html#method-Plume-get_contributions'><code>plume::Plume$get_contributions()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_notes"><a href='../../plume/html/Plume.html#method-Plume-get_notes'><code>plume::Plume$get_notes()</code></a></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_orcids"><a href='../../plume/html/Plume.html#method-Plume-get_orcids'><code>plume::Plume$get_orcids()</code></a></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_symbols"><a href='../../plume/html/Plume.html#method-Plume-get_symbols'><code>plume::Plume$get_symbols()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="initialize"><a href='../../plume/html/Plume.html#method-Plume-initialize'><code>plume::Plume$initialize()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="set_corresponding_authors"><a href='../../plume/html/Plume.html#method-Plume-set_corresponding_authors'><code>plume::Plume$set_corresponding_authors()</code></a></li>
 </ul>

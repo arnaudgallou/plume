@@ -78,10 +78,16 @@ test_that("get_author_list() returns author list", {
     affix_to_authors("^", .a, .hats, .c, .hats, .n, "^")
   )
 
-  aut$symbols <- list(affiliation = letters, corresponding = "†", note = NULL)
+  # overrides default symbols
+  aut <- Plume$new(df, symbols = list(
+    affiliation = letters,
+    corresponding = "#",
+    note = NULL
+  ))
+  aut$set_corresponding_authors(1, 3)
 
   .a <- c("a,b", "c", "a,d")
-  .c <- c("†", "", "†")
+  .c <- c("#", "", "#")
   .n <- c("1,2", "", "3")
 
   expect_equal(
@@ -107,8 +113,9 @@ test_that("get_author_list() makes ORCID icons", {
 # Errors ----
 
 test_that("get_author_list() gives meaningful error messages", {
-  aut <- Plume$new(basic_df())
-  aut$plume$orcid <- c("0000", NA, NA)
+  df <- basic_df()
+  df["orcid"] <- c(NA, "0000", NA)
+  aut <- Plume$new(df)
 
   expect_snapshot({
     (expect_error(

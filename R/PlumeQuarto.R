@@ -78,19 +78,19 @@ PlumeQuarto <- R6Class(
     },
 
     author_notes = function() {
-      col <- self$names$note
+      col <- private$names$note
       if (!private$has_col(col)) {
         return()
       }
-      if (!is_nested(self$plume, col)) {
+      if (!is_nested(private$plume, col)) {
         return(private$get("note"))
       }
-      out <- unnest(self$plume, cols = all_of(col))
+      out <- unnest(private$plume, cols = all_of(col))
       out <- summarise(out, `_` = if_not_na(
         .data[[col]],
         bind(.data[[col]], sep = ", ", arrange = FALSE),
         all = TRUE
-      ), .by = all_of(self$names$id))
+      ), .by = all_of(private$names$id))
       out[["_"]]
     },
 
@@ -106,12 +106,12 @@ PlumeQuarto <- R6Class(
     },
 
     author_affiliations = function() {
-      col <- self$names$affiliation
+      col <- private$names$affiliation
       if (!private$has_col(col)) {
         return()
       }
       .col <- predot(col)
-      out <- unnest(self$plume, cols = all_of(col))
+      out <- unnest(private$plume, cols = all_of(col))
       out <- add_group_ids(out, col)
       out <- mutate(out, !!.col := if_not_na(
         .data[[.col]],
@@ -119,13 +119,13 @@ PlumeQuarto <- R6Class(
       ))
       out <- summarise(out, `_` = list(
         tibble(ref = sort(!!sym(.col)))
-      ), .by = all_of(self$names$id))
+      ), .by = all_of(private$names$id))
       out[["_"]]
     },
 
     author_metadata = function() {
       if (private$has_col(paste0("^", private$meta_prefix))) {
-        select(self$plume, starts_with(private$meta_prefix))
+        select(private$plume, starts_with(private$meta_prefix))
       }
     },
 
