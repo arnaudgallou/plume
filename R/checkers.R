@@ -56,7 +56,7 @@ are_dots_all <- function(...) {
 
 search <- function(x, callback, na_rm = TRUE, n = 1) {
   if (na_rm) {
-    x <- drop_na(x)
+    x <- vec_drop_na(x)
   }
   have_passed <- !callback(x)
   if (all(have_passed)) {

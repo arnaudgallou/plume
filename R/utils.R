@@ -42,8 +42,8 @@ make_initials <- function(x, dot = FALSE) {
   out
 }
 
-drop_na.default <- function(data, ...) {
-  data[is_not_na(data)]
+vec_drop_na <- function(x, ...) {
+  x[is_not_na(x)]
 }
 
 vec_arrange <- function(x) {
@@ -51,7 +51,7 @@ vec_arrange <- function(x) {
 }
 
 condense <- function(x) {
-  drop_na(unique(x))
+  vec_drop_na(unique(x))
 }
 
 collapse <- function(x, sep = "") {

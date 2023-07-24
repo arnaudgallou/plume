@@ -12,7 +12,7 @@ collapse_cols <- function(data, cols, sep) {
     return(data[[cols]])
   }
   rows <- itemise_rows(data, cols)
-  map_vec(rows, \(row) collapse(drop_na(row), sep))
+  map_vec(rows, \(row) collapse(vec_drop_na(row), sep))
 }
 
 dissolve <- function(data, dict, callback, env = caller_env()) {
