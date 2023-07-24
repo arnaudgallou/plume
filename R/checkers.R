@@ -181,6 +181,16 @@ check_df <- function(x, ..., arg = caller_arg(x)) {
   abort_check("a data frame or tibble", ..., arg = arg)
 }
 
+is_stringish <- function(x, allow_empty, allow_null) {
+  if (is_string(x) && (allow_empty || !is_string(x, ""))) {
+    return(TRUE)
+  }
+  if (allow_null && is.null(x)) {
+    return(TRUE)
+  }
+  FALSE
+}
+
 check_string <- function(
     x,
     allow_empty = TRUE,
@@ -198,16 +208,6 @@ check_string <- function(
     }
   }
   abort_check(paste("a", adj, "string"), ..., arg = arg)
-}
-
-is_stringish <- function(x, allow_empty, allow_null) {
-  if (is_string(x) && (allow_empty || !is_string(x, ""))) {
-    return(TRUE)
-  }
-  if (allow_null && is.null(x)) {
-    return(TRUE)
-  }
-  FALSE
 }
 
 check_bool <- function(x, allow_null = FALSE, ..., arg = caller_arg(x)) {

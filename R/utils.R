@@ -1,8 +1,8 @@
-flatten <- partial(list_flatten, name_spec = "{inner}")
-
-col_count <- function(x, name) {
-  length(grep(name, names(x)))
+unique.list <- function(x, ...) {
+  unique(unlist(x, use.names = FALSE), ...)
 }
+
+flatten <- partial(list_flatten, name_spec = "{inner}")
 
 includes <- function(x, y, ignore_case = TRUE) {
   out <- list(x = x, y = y)
@@ -42,6 +42,22 @@ make_initials <- function(x, dot = FALSE) {
   out
 }
 
+drop_na.default <- function(data, ...) {
+  data[is_not_na(data)]
+}
+
+vector_arrange <- function(x) {
+  x[order(nchar(x), x)]
+}
+
+condense <- function(x) {
+  drop_na(unique(x))
+}
+
+collapse <- function(x, sep = "") {
+  paste(x, collapse = sep)
+}
+
 bind <- function(x, sep = ",", arrange = TRUE) {
   out <- condense(x)
   if (arrange) {
@@ -60,43 +76,8 @@ arg_names_true <- function() {
   names(args_true)
 }
 
-drop_na.default <- function(data, ...) {
-  data[is_not_na(data)]
-}
-
-itemise_rows <- function(data, cols) {
-  out <- map(data[cols], as.character)
-  list_transpose(out)
-}
-
-collapse <- function(x, sep = "") {
-  paste(x, collapse = sep)
-}
-
-collapse_cols <- function(data, cols, sep) {
-  if (length(cols) == 1L) {
-    return(data[[cols]])
-  }
-  rows <- itemise_rows(data, cols)
-  map_vec(rows, \(row) collapse(drop_na(row), sep))
-}
-
-dissolve <- function(data, dict, callback, env = caller_env()) {
-  iwalk(dict, \(value, key) {
-    assign(key, callback(data, value), envir = env)
-  })
-}
-
 extract_glue_exprs <- function(x) {
   string_extract_all(x, "(?<=\\{)[^}]+")
-}
-
-unique.list <- function(x, ...) {
-  unique(unlist(x, use.names = FALSE), ...)
-}
-
-vector_arrange <- function(x) {
-  x[order(nchar(x), x)]
 }
 
 group_id <- function(x) {
@@ -112,10 +93,6 @@ predot <- function(name) {
 
 propagate_na <- function(x, from) {
   replace(x, is.na(from), NA)
-}
-
-condense <- function(x) {
-  drop_na(unique(x))
 }
 
 supplant <- function(old, new) {
@@ -153,54 +130,4 @@ get_eol <- function() {
 unstructure <- function(x) {
   attributes(x) <- NULL
   x
-}
-
-unnest_drop <- function(x, cols) {
-  x <- unnest(x, cols = all_of(cols))
-  drop_na(x, all_of(cols))
-}
-
-add_group_ids <- function(x, cols) {
-  for (col in cols) {
-    x[predot(col)] <- group_id(x[[col]])
-  }
-  x
-}
-
-set_suffixes <- function(x, cols, symbols) {
-  .cols <- predot(cols)
-  iwalk(symbols[names(cols)], \(value, key) {
-    if (is.null(value)) {
-      return()
-    }
-    if (key == "orcid") {
-      x <<- add_orcid_icons(x, value)
-    } else {
-      x <<- set_symbols(x, .cols[key], value)
-    }
-  })
-  x
-}
-
-set_symbols <- function(x, col, symbols) {
-  if (is.null(symbols)) {
-    return(x)
-  }
-  values <- x[[col]]
-  symbols <- seq_symbols(symbols,  values)
-  x[col] <- symbols[values]
-  x
-}
-
-add_orcid_icons <- function(data, orcid) {
-  attrs <- attributes(orcid)
-  data[predot(attrs$var)] <- make_orcid_icon(data[[attrs$var]], attrs)
-  data
-}
-
-add_orcid_links <- function(data, orcid, compact = FALSE) {
-  .col <- predot(orcid)
-  links <- make_orcid_link(data[[orcid]], compact)
-  data[.col] <- paste0(data[[.col]], links)
-  data
 }

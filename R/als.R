@@ -12,6 +12,10 @@ als_extract_mark <- function(format, key) {
   mark
 }
 
+als_sanitise <- function(x) {
+  string_remove_all(x, "([,^])\\K\\1+")
+}
+
 als_parse <- function(format) {
   format <- als_sanitise(format)
   keys <- als_extract_keys(format)
@@ -33,10 +37,6 @@ als_join <- function(elts, marks) {
     paste0(mark, elt)
   })
   collapse(out)
-}
-
-als_sanitise <- function(x) {
-  string_remove_all(x, "([,^])\\K\\1+")
 }
 
 als_clean <- function(x) {
