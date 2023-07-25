@@ -3,15 +3,15 @@ is_schema_up_to_date <- function(current, new) {
   identical(current, new)
 }
 
-json_update <- function(text, json) {
-  out <- yaml.load(text)
-  if (is.null(out)) {
+json_update <- function(x, json) {
+  x <- yaml.load(x)
+  if (is.null(x)) {
     return(json)
   }
-  if (is_schema_up_to_date(out, json)) {
+  if (is_schema_up_to_date(x, json)) {
     return()
   }
-  list_assign(out, !!!json)
+  list_assign(x, !!!json)
 }
 
 as_json <- function(x) {
@@ -19,9 +19,9 @@ as_json <- function(x) {
   parse_json(x)
 }
 
-separate_yaml_header <- function(text) {
+separate_yaml_header <- function(x) {
   # use of stringr to preserve a match at the end of the string
-  stringr::str_split(text, "(?:^|\\R)-{3}(?:\\R|$)")[[1]]
+  stringr::str_split(x, "(?:^|\\R)-{3}(?:\\R|$)")[[1]]
 }
 
 as_verbatim_lgl <- function(x) {
