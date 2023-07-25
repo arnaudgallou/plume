@@ -42,7 +42,7 @@ yaml_inject <- function(lines, replacement) {
 }
 
 has_yaml <- function(x) {
-  string_detect(x, "(?s)^\\R*\\K---\\R.*\\B---(?=\\R|$)")
+  string_detect(x, "(?s)^\\R*---\\R.*\\B---(?:\\R|$)")
 }
 
 check_has_yaml <- function(x) {
