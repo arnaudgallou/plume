@@ -120,7 +120,7 @@
 <span><span class="co">#&gt; 1     1 Denis          Diderot     Denis Dider… DD       dide… 0000… 00 0… born…</span></span>
 <span><span class="co">#&gt; 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… 0000… &lt;NA&gt;  &lt;NA&gt; </span></span>
 <span><span class="co">#&gt; 3     3 François-Marie Arouet      François-Ma… F-MA     arou… &lt;NA&gt;  &lt;NA&gt;  also…</span></span>
-<span><span class="co">#&gt; 4     4 Jean           Le Rond d'… Jean Le Ron… JLRA     alem… 0000… &lt;NA&gt;  born…</span></span>
+<span><span class="co">#&gt; 4     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… 0000… &lt;NA&gt;  born…</span></span>
 <span><span class="co">#&gt; # ℹ 2 more variables: affiliation &lt;list&gt;, role &lt;list&gt;</span></span></code></pre></div>
 <p><code>PlumeQuarto</code> lets you push author metadata in the YAML header of any <code>.qmd</code> files using <code>to_yaml()</code>.</p>
 <p>Consider the following example:</p>
@@ -212,8 +212,8 @@
 <span><span class="co">#&gt; ^§^born in 1717 in Paris</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Writing: D.D., J.-J.R., F.-M.A. and J.L.R.A.</span></span>
-<span><span class="co">#&gt; Supervision: D.D. and J.L.R.A.</span></span>
+<span><span class="co">#&gt; Writing: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
+<span><span class="co">#&gt; Supervision: D.D. and J.L.R.d'A.</span></span>
 <span></span>
 <span><span class="va">aut_v</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
@@ -226,8 +226,8 @@
 <span><span class="co">#&gt; Jean Le Rond d'Alembert^a,c^</span></span>
 <span></span>
 <span><span class="va">aut_v</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>role_first <span class="op">=</span> <span class="cn">FALSE</span>, name_list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.A. contributed to the Encyclopédie</span></span>
-<span><span class="co">#&gt; D.D. and J.L.R.A. supervised the project</span></span></code></pre></div>
+<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie</span></span>
+<span><span class="co">#&gt; D.D. and J.L.R.d'A. supervised the project</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
