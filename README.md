@@ -60,7 +60,7 @@ aut
 #> 1     1 Denis          Diderot     Denis Dider… DD       dide… 0000… 00 0… born…
 #> 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… 0000… <NA>  <NA> 
 #> 3     3 François-Marie Arouet      François-Ma… F-MA     arou… <NA>  <NA>  also…
-#> 4     4 Jean           Le Rond d'… Jean Le Ron… JLRA     alem… 0000… <NA>  born…
+#> 4     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… 0000… <NA>  born…
 #> # ℹ 2 more variables: affiliation <list>, role <list>
 ```
 
@@ -162,8 +162,8 @@ aut$get_notes()
 #> ^§^born in 1717 in Paris
 
 aut$get_contributions()
-#> Writing: D.D., J.-J.R., F.-M.A. and J.L.R.A.
-#> Supervision: D.D. and J.L.R.A.
+#> Writing: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.
+#> Supervision: D.D. and J.L.R.d'A.
 
 aut_v <- Plume$new(
   encyclopedists,
@@ -176,8 +176,8 @@ aut_v$get_author_list(format = "^a^") |> enumerate(last = ",\n")
 #> Jean Le Rond d'Alembert^a,c^
 
 aut_v$get_contributions(role_first = FALSE, name_list = TRUE)
-#> D.D., J.-J.R., F.-M.A. and J.L.R.A. contributed to the Encyclopédie
-#> D.D. and J.L.R.A. supervised the project
+#> D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie
+#> D.D. and J.L.R.d'A. supervised the project
 ```
 
 ## Acknowledgements
