@@ -6,8 +6,7 @@ test_that("get_contributions() return authors' contributions", {
 
   df_roles <- select(df, starts_with("role"))
 
-  literal_names <- paste0(df$given_name, df$family_name)
-  initials <- make_initials(literal_names)
+  initials <- make_initials(df$literal_name)
   list_initials <- list(initials, initials[1])
 
   roles <- condense(c(df_roles))
