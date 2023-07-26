@@ -26,14 +26,20 @@ test_that("initialize() ignores variables with the same name as internal ones", 
 })
 
 test_that("initialize() makes proper initials and literal names", {
-  df <- basic_df()
+  df <- data.frame(
+    given_name = c("Zip", "ric", "Pim-Pam", "Tic", "Fip", "12"),
+    family_name = c("Zap", "rac", "Pom", "tac Toc", "A'Fop", "34")
+  )
   aut <- Plume$new(df)
 
-  literal_names <- df$literal_name
-  initials <- make_initials(literal_names)
-
-  expect_equal(aut$get_plume()$initials, initials)
-  expect_equal(aut$get_plume()$literal_name, literal_names)
+  expect_equal(
+    aut$get_plume()$literal_name,
+    paste(df$given_name, df$family_name)
+  )
+  expect_equal(
+    aut$get_plume()$initials,
+    c("ZZ", "rr", "P-PP", "TtT", "FA'F", "13")
+  )
 })
 
 test_that("`affiliation`, `role` and `note` columns are nestable", {
