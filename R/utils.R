@@ -31,11 +31,11 @@ not_na_any <- function(cols) {
 }
 
 dot <- function(x) {
-  string_replace_all(x, "(?<=\\pL)", ".")
+  string_replace_all(x, "(*UCP)(?<=\\w(?!\\p{Po}))", ".")
 }
 
 make_initials <- function(x, dot = FALSE) {
-  out <- string_remove_all(x, "[^\\p{Lu}-]+")
+  out <- string_remove_all(x, "(*UCP)\\B\\w+|\\s+")
   if (dot) {
     out <- dot(out)
   }
