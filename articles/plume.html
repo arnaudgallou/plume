@@ -127,7 +127,7 @@ input data. The input data must have at least two columns named
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot     Denis Dider… DD       dide… 0000… 00 0… born…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… 0000… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet      François-Ma… F-MA     arou… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    also…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'… Jean Le Ron… JLRA     alem… 0000… <span style="color: #BB0000;">NA</span>    born…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… 0000… <span style="color: #BB0000;">NA</span>    born…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation &lt;list&gt;, role &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -208,7 +208,7 @@ replacements.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis       Dide… Denis Dide… DD        diderot… 0000… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacqu… Rous… Jean-Jacqu… J-JR      roussea… 0000… <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-M… Arou… François-M… F-MA      arouet@… <span style="color: #BB0000;">NA</span>    dit … <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean        Le R… Jean Le Ro… JLRA      alember… 0000… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean        Le R… Jean Le Ro… JLRd'A    alember… 0000… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: role_v &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -315,7 +315,7 @@ the <code>by</code> parameter.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot            Denis Diderot   DD       TRUE         </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau           Jean-Jacques R… J-JR     TRUE         </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet             François-Marie… F-MA     FALSE        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRA     FALSE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRd'A   FALSE</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="va">arouet</span>, by <span class="op">=</span> <span class="st">"family_name"</span><span class="op">)</span></span>
 <span><span class="va">aut</span></span>
@@ -325,7 +325,7 @@ the <code>by</code> parameter.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot            Denis Diderot   DD       FALSE        </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau           Jean-Jacques R… J-JR     FALSE        </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet             François-Marie… F-MA     TRUE         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRA     FALSE</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRd'A   FALSE</span></span></code></pre></div>
 <p>Use the <code>"all"</code> keyword to assign <code>TRUE</code> to all
 authors.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -337,7 +337,7 @@ authors.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot            Denis Diderot   DD       TRUE         </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau           Jean-Jacques R… J-JR     TRUE         </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet             François-Marie… F-MA     TRUE         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRA     TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRd'A   TRUE</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-author-information">Getting author information<a class="anchor" aria-label="anchor" href="#getting-author-information"></a>
@@ -430,8 +430,8 @@ the <code>get_contributions()</code> method.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_n"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Writing: D.D., J.-J.R., F.-M.A. and J.L.R.A.</span></span>
-<span><span class="co">#&gt; Supervision: D.D. and J.L.R.A.</span></span>
+<span><span class="co">#&gt; Writing: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
+<span><span class="co">#&gt; Supervision: D.D. and J.L.R.d'A.</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>role_first <span class="op">=</span> <span class="cn">FALSE</span>, literal_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Denis Diderot: Writing and Supervision</span></span>
@@ -441,15 +441,15 @@ the <code>get_contributions()</code> method.</p>
 <span></span>
 <span><span class="va">aut_v</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_v"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">aut_v</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>role_first <span class="op">=</span> <span class="cn">FALSE</span>, name_list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.A. contributed to the Encyclopédie</span></span>
-<span><span class="co">#&gt; D.D. and J.L.R.A. supervised the project</span></span></code></pre></div>
+<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie</span></span>
+<span><span class="co">#&gt; D.D. and J.L.R.d'A. supervised the project</span></span></code></pre></div>
 <p>By default, <code>get_contributions()</code> lists contributors in
 the order they’re defined. You can arrange contributors in alphabetical
 order with <code>alphabetical_order = TRUE</code>.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>alphabetical_order <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Writing: D.D., F.-M.A., J.-J.R. and J.L.R.A.</span></span>
-<span><span class="co">#&gt; Supervision: D.D. and J.L.R.A.</span></span></code></pre></div>
+<span><span class="co">#&gt; Writing: D.D., F.-M.A., J.-J.R. and J.L.R.d'A.</span></span>
+<span><span class="co">#&gt; Supervision: D.D. and J.L.R.d'A.</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="orcids">ORCIDs<a class="anchor" aria-label="anchor" href="#orcids"></a>
