@@ -4,13 +4,15 @@
 \alias{plm_template}
 \title{Create a table template for plume classes}
 \usage{
-plm_template(minimal = TRUE)
+plm_template(minimal = TRUE, credit_roles = FALSE)
 }
 \arguments{
 \item{minimal}{If \code{TRUE}, returns an empty tibble with the following columns:
 \code{given_name}, \code{family_name}, \code{email}, \code{orcid}, \code{affiliation}, \code{role} and
 \code{note}. Otherwise the function returns a template with all columns that can
 be supplied to plume classes.}
+
+\item{credit_roles}{Should \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
 }
 \value{
 An empty tibble.

@@ -58,6 +58,21 @@ test_that("single nestables don't nest", {
   expect_false(is_nested(aut$get_plume(), "note"))
 })
 
+test_that("`credit_roles = TRUE` handles CRediT roles", {
+  aut <- Plume$new(data.frame(
+    given_name = "X",
+    family_name = "Y",
+    supervision = 1,
+    writing = 1,
+    editing = NA
+  ), credit_roles = TRUE)
+
+  expect_equal(
+    sort(unlist(aut$get_plume()$role, use.names = FALSE)),
+    sort(c("Supervision", "Writing - original draft", NA))
+  )
+})
+
 test_that("`initials_given_name = TRUE` turns given names into initials", {
   df <- basic_df()
   aut <- Plume$new(df, initials_given_name = TRUE)
@@ -163,6 +178,9 @@ test_that("initialize() gives meaningful error messages", {
     ))
     (expect_error(
       Plume$new(df, family_name_first = 1)
+    ))
+    (expect_error(
+      Plume$new(df, credit_roles = 1)
     ))
     (expect_error(
       Plume$new(df, interword_spacing = 1)

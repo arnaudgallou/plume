@@ -27,7 +27,6 @@ default_names <- list(
   )
 )
 
-
 #' @title PlumeHandler class
 #' @description Internal class processing and shaping tabular data into a `plume`
 #'   object.
@@ -40,6 +39,7 @@ PlumeHandler <- R6Class(
         names,
         initials_given_name,
         family_name_first,
+        credit_roles,
         interword_spacing
     ) {
       check_df(data)
@@ -47,6 +47,7 @@ PlumeHandler <- R6Class(
       check_args("bool", list(
         initials_given_name,
         family_name_first,
+        credit_roles,
         interword_spacing
       ))
       super$initialize(flatten(private$plume_names))
@@ -56,6 +57,7 @@ PlumeHandler <- R6Class(
       if (!interword_spacing) {
         private$interword_spacing <- ""
       }
+      private$crt <- credit_roles
       if (!is.null(names)) {
         private$set_names(names)
       }
@@ -79,6 +81,7 @@ PlumeHandler <- R6Class(
     plume_keys = map(default_names, names),
     initials_given_name = NULL,
     family_name_first = NULL,
+    crt = NULL,
     interword_spacing = " ",
 
     mount = function() {
@@ -94,6 +97,9 @@ PlumeHandler <- R6Class(
     build = function() {
       private$mold()
       private$make_author_names()
+      if (private$crt) {
+        private$crt_process()
+      }
       private$plume <- rowid_to_column(private$plume, var = private$names$id)
     },
 
@@ -101,12 +107,13 @@ PlumeHandler <- R6Class(
       keys <- private$plume_keys
       primary <- private$get_names(keys$primary, use_keys = FALSE)
       secondary <- private$get_names(keys$secondary, use_keys = FALSE)
-      nestable <- private$get_names(keys$nestable)
+      nestables <- private$get_nestables()
       private$plume <- select(
         private$plume,
         all_of(primary),
         any_of(secondary),
-        starts_with(nestable),
+        starts_with(nestables),
+        if (private$crt) any_of(names(.names$protected$crt)),
         ...
       )
     },
@@ -119,6 +126,19 @@ PlumeHandler <- R6Class(
         names_to = NULL
       )
       private$plume <- nest(out, !!col := any_of(col))
+    },
+
+    get_nestables = function() {
+      nestables <- private$get_names(private$plume_keys$nestable)
+      if (!private$crt) {
+        return(nestables)
+      }
+      nestables[names(nestables) != "role"]
+    },
+
+    crt_process = function() {
+      out <- crt_assign(private$plume)
+      private$plume <- crt_rename(out, prefix = private$names$role)
     },
 
     make_author_names = function() {

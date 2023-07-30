@@ -2,7 +2,7 @@
 #'   and Quarto.
 #' @keywords internal
 #' @importFrom dplyr distinct filter arrange select dense_rank
-#' @importFrom dplyr mutate summarise across
+#' @importFrom dplyr mutate summarise across rename
 #' @importFrom dplyr if_else if_any
 #' @importFrom tidyr drop_na pivot_longer nest unnest expand_grid
 #' @importFrom tidyselect all_of any_of starts_with
