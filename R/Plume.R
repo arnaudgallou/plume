@@ -23,6 +23,7 @@ Plume <- R6Class(
     #'   authors' status in all methods. By default, uses authors' ids.
     #' @param initials_given_name Should the initials of given names be used?
     #' @param family_name_first Should literal names show family names first.
+    #' @param credit_roles Should the `r link("crt")` be used?
     #' @param interword_spacing Should literal names use spacing? This parameter
     #'   is only useful for people writing in languages that don't separate words
     #'   with a space such as Chinese or Japanese.
@@ -35,6 +36,7 @@ Plume <- R6Class(
         by = NULL,
         initials_given_name = FALSE,
         family_name_first = FALSE,
+        credit_roles = FALSE,
         interword_spacing = TRUE,
         orcid_icon = orcid()
     ) {
@@ -43,6 +45,7 @@ Plume <- R6Class(
         names,
         initials_given_name,
         family_name_first,
+        credit_roles,
         interword_spacing
       )
       check_list(symbols, force_names = TRUE)

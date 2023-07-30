@@ -70,3 +70,19 @@ add_orcid_links <- function(data, orcid, compact = FALSE) {
   data[.col] <- paste0(data[[.col]], links)
   data
 }
+
+crt_assign <- function(data) {
+  iwalk(.names$protected$crt, \(value, key) {
+    if (!has_name(data, key)) {
+      return()
+    }
+    data[key] <<- if_else(data[[key]] == 1L, value, NA)
+  })
+  data
+}
+
+crt_rename <- function(data, prefix) {
+  vars <- names(.names$protected$crt)
+  new_names <- paste(prefix, vars, sep = "_")
+  rename(data, any_of(set_names(vars, new_names)))
+}

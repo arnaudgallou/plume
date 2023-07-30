@@ -105,11 +105,19 @@
       Caused by error:
       ! `family_name_first` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(Plume$new(df, interword_spacing = 1)))
+      (expect_error(Plume$new(df, credit_roles = 1)))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 3.
+      Caused by error:
+      ! `credit_roles` must be `TRUE` or `FALSE`.
+    Code
+      (expect_error(Plume$new(df, interword_spacing = 1)))
+    Output
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 4.
       Caused by error:
       ! `interword_spacing` must be `TRUE` or `FALSE`.
 

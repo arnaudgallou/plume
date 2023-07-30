@@ -35,6 +35,7 @@ object.
   names,
   initials_given_name,
   family_name_first,
+  credit_roles,
   interword_spacing
 )}\if{html}{\out{</div>}}
 }
