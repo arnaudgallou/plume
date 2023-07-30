@@ -10,6 +10,8 @@
 
 * `$new()` and `plm_template()` gain a new parameter `credit_roles` to facilitate the use of the [Contributor Roles Taxonomy](https://credit.niso.org).
 
+* Fixed issues when pushing metadata to empty YAML headers (#9).
+
 * `PlumeQuarto` now handles roles via the `roles` YAML key (#5).
 
 * New method `get_orcids()` that returns authors' ORCID.
