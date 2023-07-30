@@ -28,6 +28,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/plume-workflow.html">plume workflow</a>
+    <a class="dropdown-item" href="../articles/using-credit-roles.html">Using CRediT roles</a>
     <a class="dropdown-item" href="../articles/working-in-other-languages.html">Working in other languages</a>
     <a class="dropdown-item" href="../articles/comprehensive-affiliation-schema.html">Comprehensive affiliation schema</a>
   </div>
@@ -59,11 +60,13 @@
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
 <div class="section level3">
 <h3 id="documentation-improvements-development-version">Documentation improvements<a class="anchor" aria-label="anchor" href="#documentation-improvements-development-version"></a></h3>
-<ul><li>New <code><a href="../articles/plume-workflow.html">vignette("plume-workflow")</a></code> which describes how to use plume and <a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a> to manage author metadata.</li>
+<ul><li><p>New <code><a href="../articles/using-credit-roles.html">vignette("using-credit-roles")</a></code> which describes how to work with the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a> in plume.</p></li>
+<li><p>New <code><a href="../articles/plume-workflow.html">vignette("plume-workflow")</a></code> which describes how to use plume and <a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a> to manage author metadata.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
-<ul><li><p>Fixed issues when pushing metadata to empty YAML headers (<a href="https://github.com/arnaudgallou/plume/issues/9" class="external-link">#9</a>).</p></li>
+<ul><li><p><code>$new()</code> and <code><a href="../reference/plm_template.html">plm_template()</a></code> gain a new parameter <code>credit_roles</code> to facilitate the use of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>.</p></li>
+<li><p>Fixed issues when pushing metadata to empty YAML headers (<a href="https://github.com/arnaudgallou/plume/issues/9" class="external-link">#9</a>).</p></li>
 <li><p><code>PlumeQuarto</code> now handles roles via the <code>roles</code> YAML key (<a href="https://github.com/arnaudgallou/plume/issues/5" class="external-link">#5</a>).</p></li>
 <li><p>New method <code>get_orcids()</code> that returns authors’ ORCID.</p></li>
 <li><p>Phone numbers are now set using the variable and attribute <code>phone</code> (<a href="https://github.com/arnaudgallou/plume/issues/4" class="external-link">#4</a>).</p></li>

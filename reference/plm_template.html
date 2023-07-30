@@ -32,6 +32,7 @@ data."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathj
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/plume-workflow.html">plume workflow</a>
+    <a class="dropdown-item" href="../articles/using-credit-roles.html">Using CRediT roles</a>
     <a class="dropdown-item" href="../articles/working-in-other-languages.html">Working in other languages</a>
     <a class="dropdown-item" href="../articles/comprehensive-affiliation-schema.html">Comprehensive affiliation schema</a>
   </div>
@@ -68,7 +69,7 @@ data.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plm_template</span><span class="op">(</span>minimal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plm_template</span><span class="op">(</span>minimal <span class="op">=</span> <span class="cn">TRUE</span>, credit_roles <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -78,6 +79,10 @@ data.</p>
 <code>given_name</code>, <code>family_name</code>, <code>email</code>, <code>orcid</code>, <code>affiliation</code>, <code>role</code> and
 <code>note</code>. Otherwise the function returns a template with all columns that can
 be supplied to plume classes.</p></dd>
+
+
+<dt>credit_roles</dt>
+<dd><p>Should <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a> be used?</p></dd>
 
 </dl></div>
     <div class="section level2">
