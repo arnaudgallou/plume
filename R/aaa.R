@@ -23,7 +23,9 @@
   crt = c("Contributor Roles Taxonomy", "https://credit.niso.org")
 )
 
+# nocov start
 link <- function(id) {
   els <- .links[[id]]
   md_link(els[2], els[1])
 }
+# nocov end
