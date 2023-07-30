@@ -1,0 +1,45 @@
+---
+title: "Using CRediT roles"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using CRediT roles}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(plume)
+```
+
+plume implements a simple solution to work with the `r plume:::link("crt")` (CRediT).
+
+First, create a table using `plm_template(credit_roles = TRUE)` to ensure the table has all the appropriate columns. CRediT columns are standardised and can't be changed so it's important that they're properly named.
+
+Use a `1` to assign a role to a specific contributor and leave it blank otherwise. All contributions should normally be used. For the purpose of the example, I selected just a few columns here.
+
+```{r}
+#| echo: false
+tbl_credit <- encyclopedists |> 
+  dplyr::select(given_name, family_name) |> 
+  dplyr::mutate(
+    conceptualization = c(1, NA, NA, NA),
+    analysis = rep(1, 4),
+    supervision = c(1, NA, NA, 1),
+    methodology = rep(1, 4),
+    writing = rep(1, 4)
+  )
+
+tbl_credit
+```
+
+Once the data set is ready, simply use `credit_roles = TRUE` when creating your `plume` object. plume will process and format the roles automatically.
+
+```{r}
+aut <- Plume$new(tbl_credit, credit_roles = TRUE)
+aut$get_contributions()
+```
+

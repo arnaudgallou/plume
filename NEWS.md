@@ -2,11 +2,13 @@
 
 ## Documentation improvements
 
+* New `vignette("using-credit-roles")` which describes how to work with the [Contributor Roles Taxonomy](https://credit.niso.org) in plume.
+
 * New `vignette("plume-workflow")` which describes how to use plume and [googlesheets4](https://googlesheets4.tidyverse.org) to manage author metadata.
 
 ## Minor improvements and bug fixes
 
-* `$new()` and `plm_template()` gain a new parameter `credit_roles` to facilitate the use of the [Contributor Roles Taxonomy](https://credit.niso.org). 
+* `$new()` and `plm_template()` gain a new parameter `credit_roles` to facilitate the use of the [Contributor Roles Taxonomy](https://credit.niso.org).
 
 * `PlumeQuarto` now handles roles via the `roles` YAML key (#5).
 

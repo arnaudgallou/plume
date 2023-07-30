@@ -26,6 +26,7 @@ articles:
     contents:
       - plume
       - plume-workflow
+      - using-credit-roles
       - working-in-other-languages
       - comprehensive-affiliation-schema
 development:
