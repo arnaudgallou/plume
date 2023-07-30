@@ -17,7 +17,7 @@
             - a
             - b
           note: a, c
-          attribute:
+          attributes:
             corresponding: true
           affiliations:
             - ref: aff1
@@ -30,7 +30,7 @@
           email: ricrac@test.tst
           roles:
             - a
-          attribute:
+          attributes:
             corresponding: false
           affiliations:
             - ref: aff3
@@ -42,7 +42,7 @@
           roles:
             - a
           note: b
-          attribute:
+          attributes:
             corresponding: false
           affiliations:
             - ref: aff1
@@ -79,7 +79,7 @@
           roles:
             - a
           note: b
-          attribute:
+          attributes:
             corresponding: true
           affiliations:
             - ref: aff1
@@ -92,7 +92,7 @@
           email: ricrac@test.tst
           roles:
             - a
-          attribute:
+          attributes:
             corresponding: false
           affiliations:
             - ref: aff3
@@ -107,7 +107,7 @@
             - a
             - b
           note: a, c
-          attribute:
+          attributes:
             corresponding: false
           affiliations:
             - ref: aff2

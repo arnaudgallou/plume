@@ -72,7 +72,7 @@ PlumeQuarto <- R6Class(
         url = private$get("url"),
         roles = private$author_roles(),
         note = private$author_notes(),
-        attribute = private$author_attributes(),
+        attributes = private$author_attributes(),
         affiliations = private$author_affiliations(),
         metadata = private$author_metadata()
       )

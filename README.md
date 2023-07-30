@@ -94,7 +94,7 @@ aut$to_yaml("file.qmd")
           - writing
           - supervision
         note: born in 1713 in Langres
-        attribute:
+        attributes:
           corresponding: true
         affiliations:
           - ref: aff1
@@ -106,7 +106,7 @@ aut$to_yaml("file.qmd")
         email: rousseau@encyclopediste.fr
         roles:
           - writing
-        attribute:
+        attributes:
           corresponding: false
         affiliations:
           - ref: aff2
@@ -118,7 +118,7 @@ aut$to_yaml("file.qmd")
         roles:
           - writing
         note: also known as Voltaire
-        attribute:
+        attributes:
           corresponding: false
         affiliations:
           - ref: aff2
@@ -132,7 +132,7 @@ aut$to_yaml("file.qmd")
           - writing
           - supervision
         note: born in 1717 in Paris
-        attribute:
+        attributes:
           corresponding: true
         affiliations:
           - ref: aff1
