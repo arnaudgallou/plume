@@ -63,10 +63,10 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
-<ul><li><p>New method <code>get_orcids()</code> that returns authors’ ORCID.</p></li>
+<ul><li><p><code>PlumeQuarto</code> now handles roles via the <code>roles</code> YAML key (<a href="https://github.com/arnaudgallou/plume/issues/5" class="external-link">#5</a>).</p></li>
+<li><p>New method <code>get_orcids()</code> that returns authors’ ORCID.</p></li>
 <li><p>Phone numbers are now set using the variable and attribute <code>phone</code> (<a href="https://github.com/arnaudgallou/plume/issues/4" class="external-link">#4</a>).</p></li>
 <li><p>plume methods now print outputs in the same way.</p></li>
-<li><p>New function <code><a href="../reference/plm_push.html">plm_push()</a></code> that can be used to insert author information into a Quarto document from a separate R script.</p></li>
 <li><p><code>get_author_list()</code> now accepts <code>format = ""</code> to return author names only. This is equivalent to <code>format = NULL</code> (<a href="https://github.com/arnaudgallou/plume/issues/3" class="external-link">#3</a>).</p></li>
 <li><p>plume classes now error when a given or family name is <code>NA</code> or a blank string.</p></li>
 <li><p>Blank and empty strings are now converted to <code>NA</code> when creating a plume object (<a href="https://github.com/arnaudgallou/plume/issues/2" class="external-link">#2</a>).</p></li>
