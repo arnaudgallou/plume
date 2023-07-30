@@ -6,6 +6,8 @@
 
 ## Minor improvements and bug fixes
 
+* `PlumeQuarto` now handles roles via the `roles` YAML key (#5).
+
 * New method `get_orcids()` that returns authors' ORCID.
 
 * Phone numbers are now set using the variable and attribute `phone` (#4).

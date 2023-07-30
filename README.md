@@ -52,8 +52,7 @@ encyclopedists
 #> 4 Jean       Le Rond d'… alem… <NA>  0000… Writing Superv… contri… superv… born…
 #> # ℹ 2 more variables: affiliation1 <chr>, affiliation2 <chr>
 
-aut <- PlumeQuarto$new(encyclopedists)
-aut
+Plume$new(encyclopedists)
 #> # A tibble: 4 × 11
 #>      id given_name     family_name literal_name initials email orcid phone note 
 #>   <int> <chr>          <chr>       <chr>        <chr>    <chr> <chr> <chr> <chr>
@@ -76,6 +75,7 @@ Consider the following example:
     Qui scribit bis legit
 
 ``` r
+aut <- PlumeQuarto$new(encyclopedists, names = c(role = "role_n"))
 aut$set_corresponding_authors(1, 4)
 aut$to_yaml("file.qmd")
 ```
@@ -90,6 +90,9 @@ aut$to_yaml("file.qmd")
         orcid: 0000-0000-0000-0001
         email: diderot@encyclopediste.fr
         phone: 00 00 00 01
+        roles:
+          - writing
+          - supervision
         note: born in 1713 in Langres
         attribute:
           corresponding: true
@@ -101,6 +104,8 @@ aut$to_yaml("file.qmd")
           family: Rousseau
         orcid: 0000-0000-0000-0002
         email: rousseau@encyclopediste.fr
+        roles:
+          - writing
         attribute:
           corresponding: false
         affiliations:
@@ -110,6 +115,8 @@ aut$to_yaml("file.qmd")
           given: François-Marie
           family: Arouet
         email: arouet@encyclopediste.fr
+        roles:
+          - writing
         note: also known as Voltaire
         attribute:
           corresponding: false
@@ -121,6 +128,9 @@ aut$to_yaml("file.qmd")
           family: Le Rond d'Alembert
         orcid: 0000-0000-0000-0003
         email: alembert@encyclopediste.fr
+        roles:
+          - writing
+          - supervision
         note: born in 1717 in Paris
         attribute:
           corresponding: true

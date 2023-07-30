@@ -13,6 +13,9 @@
           orcid: 0000-0000-0000-0001
           email: zipzap@test.tst
           phone: '00'
+          roles:
+            - a
+            - b
           note: a, c
           attribute:
             corresponding: true
@@ -25,6 +28,8 @@
             family: Rac
           orcid: 0000-0000-0000-0002
           email: ricrac@test.tst
+          roles:
+            - a
           attribute:
             corresponding: false
           affiliations:
@@ -34,6 +39,8 @@
             given: Pim-Pam
             family: Pom
           email: pimpampom@test.tst
+          roles:
+            - a
           note: b
           attribute:
             corresponding: false
@@ -69,6 +76,8 @@
             given: Pim-Pam
             family: Pom
           email: pimpampom@test.tst
+          roles:
+            - a
           note: b
           attribute:
             corresponding: true
@@ -81,6 +90,8 @@
             family: Rac
           orcid: 0000-0000-0000-0002
           email: ricrac@test.tst
+          roles:
+            - a
           attribute:
             corresponding: false
           affiliations:
@@ -92,6 +103,9 @@
           orcid: 0000-0000-0000-0001
           email: zipzap@test.tst
           phone: '00'
+          roles:
+            - a
+            - b
           note: a, c
           attribute:
             corresponding: false
