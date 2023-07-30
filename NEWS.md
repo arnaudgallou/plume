@@ -6,13 +6,13 @@
 
 ## Minor improvements and bug fixes
 
+* `PlumeQuarto` now handles roles via the `roles` YAML key (#5).
+
 * New method `get_orcids()` that returns authors' ORCID.
 
 * Phone numbers are now set using the variable and attribute `phone` (#4).
 
 * plume methods now print outputs in the same way.
-
-* New function `plm_push()` that can be used to insert author information into a Quarto document from a separate R script.
 
 * `get_author_list()` now accepts `format = ""` to return author names only. This is equivalent to `format = NULL` (#3).
 

@@ -70,11 +70,26 @@ PlumeQuarto <- R6Class(
         phone = private$get("phone"),
         fax = private$get("fax"),
         url = private$get("url"),
+        roles = private$author_roles(),
         note = private$author_notes(),
         attribute = private$author_attributes(),
         affiliations = private$author_affiliations(),
         metadata = private$author_metadata()
       )
+    },
+
+    author_roles = function() {
+      col <- private$names$role
+      if (!private$has_col(col)) {
+        return()
+      }
+      out <- unnest_drop(private$plume, cols = all_of(col))
+      out <- summarise(
+        out,
+        `_` = list(tolower(.data[[col]])),
+        .by = all_of(private$names$id)
+      )
+      out[["_"]]
     },
 
     author_notes = function() {

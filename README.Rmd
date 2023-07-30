@@ -48,8 +48,7 @@ library(plume)
 
 encyclopedists
 
-aut <- PlumeQuarto$new(encyclopedists)
-aut
+Plume$new(encyclopedists)
 ```
 
 ```{r, include = FALSE}
@@ -68,11 +67,13 @@ cat(readr::read_file(tmp))
 ```
 
 ```{r, eval = FALSE}
+aut <- PlumeQuarto$new(encyclopedists, names = c(role = "role_n"))
 aut$set_corresponding_authors(1, 4)
 aut$to_yaml("file.qmd")
 ```
 
 ```{r, echo = FALSE, comment = ""}
+aut <- PlumeQuarto$new(encyclopedists, names = c(role = "role_n"))
 aut$set_corresponding_authors(1, 4)
 aut$to_yaml(tmp)
 cat(readr::read_file(tmp))

@@ -87,19 +87,15 @@ To modify author data, simply edit the spreadsheet. All author information in th
 
 If you use `PlumeQuarto` to inject author information in a Quarto document, you'll have to pass the data from a separate R script.
 
-Use `plm_push()` to insert data not handled by Quarto's author schema such as author contributions.
-
 ```{r, eval = FALSE}
 library(googlesheets4)
 library(plume)
 
 tbl_authors <- gs4_find("encyclopédie") |> read_sheet()
-file <- "my_file.qmd"
 
 aut <- PlumeQuarto$new(tbl_authors)
 aut$set_corresponding_authors(1)
-aut$to_yaml(file)
-aut$get_contributions() |> plm_push(file, where = "## Contributions")
+aut$to_yaml("file.qmd")
 ```
 
 Remember to run the script everytime the spreadsheet is updated to implement the changes in your document.
