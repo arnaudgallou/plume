@@ -13,7 +13,6 @@ reference:
     contents:
       - enumerate
       - orcid
-      - plm_push
       - plm_template
       - sequential
       - set_default_names
