@@ -21,7 +21,7 @@ as_json <- function(x) {
 
 separate_yaml_header <- function(x) {
   # use of stringr to preserve a match at the end of the string
-  stringr::str_split(x, "(?:^|\\R)-{3}(?:\\R|$)")[[1]]
+  stringr::str_split(x, "(?m:^|\\R)-{3}(?:\\R|$)")[[1]]
 }
 
 as_verbatim_lgl <- function(x) {

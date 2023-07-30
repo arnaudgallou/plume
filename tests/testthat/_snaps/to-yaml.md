@@ -169,7 +169,6 @@
       read_test_file(tmp_file)
     Output
       ---
-      title: test
       author:
         - id: aut1
           name:
@@ -179,11 +178,6 @@
             meta-foo: Bar
       affiliations: {}
       ---
-      
-      ```{r}
-      #| echo: false
-      x <- 1
-      ```
 
 # to_yaml() gives meaningful error messages
 

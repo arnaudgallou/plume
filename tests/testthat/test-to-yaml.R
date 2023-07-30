@@ -25,6 +25,9 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
   aut$to_yaml(tmp_file)
   expect_snapshot(read_test_file(tmp_file))
 
+  # to ensure that metadata can be pushed to empty YAML headers
+  tmp_file <- withr::local_tempfile(lines = "---\n---", fileext = ".qmd")
+
   aut <- PlumeQuarto$new(data.frame(
     given_name = "X",
     family_name = "Z",
@@ -32,6 +35,7 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
     check.names = FALSE
   ))
   aut$to_yaml(tmp_file)
+
   expect_snapshot(read_test_file(tmp_file))
 })
 

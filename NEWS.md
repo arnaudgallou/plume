@@ -6,6 +6,8 @@
 
 ## Minor improvements and bug fixes
 
+* Fixed issues when pushing metadata to empty YAML headers (#9).
+
 * `PlumeQuarto` now handles roles via the `roles` YAML key (#5).
 
 * New method `get_orcids()` that returns authors' ORCID.
