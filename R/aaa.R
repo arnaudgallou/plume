@@ -13,8 +13,8 @@
       supervision = "Supervision",
       validation = "Validation",
       visualization = "Visualization",
-      editing = "Writing - review & editing",
-      writing = "Writing - original draft"
+      writing = "Writing - original draft",
+      editing = "Writing - review & editing"
     )
   )
 )
