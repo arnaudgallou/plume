@@ -10,81 +10,35 @@ with Quarto's author and affiliations
 \href{https://quarto.org/docs/journals/authors.html}{schemas}.
 }
 \section{Super classes}{
-\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:Plume]{plume::Plume}} -> \code{PlumeQuarto}
+\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterQuarto]{plume::StatusSetterQuarto}} -> \code{PlumeQuarto}
 }
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-PlumeQuarto-set_equal_contributor}{\code{PlumeQuarto$set_equal_contributor()}}
-\item \href{#method-PlumeQuarto-set_deceased}{\code{PlumeQuarto$set_deceased()}}
+\item \href{#method-PlumeQuarto-new}{\code{PlumeQuarto$new()}}
 \item \href{#method-PlumeQuarto-to_yaml}{\code{PlumeQuarto$to_yaml()}}
 \item \href{#method-PlumeQuarto-clone}{\code{PlumeQuarto$clone()}}
 }
 }
 \if{html}{\out{
-<details><summary>Inherited methods</summary>
+<details open><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_affiliations"><a href='../../plume/html/Plume.html#method-Plume-get_affiliations'><code>plume::Plume$get_affiliations()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_author_list"><a href='../../plume/html/Plume.html#method-Plume-get_author_list'><code>plume::Plume$get_author_list()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_contact_details"><a href='../../plume/html/Plume.html#method-Plume-get_contact_details'><code>plume::Plume$get_contact_details()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_contributions"><a href='../../plume/html/Plume.html#method-Plume-get_contributions'><code>plume::Plume$get_contributions()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_notes"><a href='../../plume/html/Plume.html#method-Plume-get_notes'><code>plume::Plume$get_notes()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="get_orcids"><a href='../../plume/html/Plume.html#method-Plume-get_orcids'><code>plume::Plume$get_orcids()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="initialize"><a href='../../plume/html/Plume.html#method-Plume-initialize'><code>plume::Plume$initialize()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="Plume" data-id="set_corresponding_authors"><a href='../../plume/html/Plume.html#method-Plume-set_corresponding_authors'><code>plume::Plume$set_corresponding_authors()</code></a></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>plume::StatusSetter$set_corresponding_authors()</code></a></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterQuarto" data-id="set_deceased"><a href='../../plume/html/StatusSetterQuarto.html#method-StatusSetterQuarto-set_deceased'><code>plume::StatusSetterQuarto$set_deceased()</code></a></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterQuarto" data-id="set_equal_contributor"><a href='../../plume/html/StatusSetterQuarto.html#method-StatusSetterQuarto-set_equal_contributor'><code>plume::StatusSetterQuarto$set_equal_contributor()</code></a></li>
 </ul>
 </details>
 }}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-PlumeQuarto-set_equal_contributor"></a>}}
-\if{latex}{\out{\hypertarget{method-PlumeQuarto-set_equal_contributor}{}}}
-\subsection{Method \code{set_equal_contributor()}}{
-Set equal contributors.
+\if{html}{\out{<a id="method-PlumeQuarto-new"></a>}}
+\if{latex}{\out{\hypertarget{method-PlumeQuarto-new}{}}}
+\subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$set_equal_contributor(..., by)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$new(data, names = NULL, by = NULL, credit_roles = FALSE)}\if{html}{\out{</div>}}
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{Values in the column defined by \code{by} used to specify which
-authors are equal contributors. Matching of values is case-insensitive.
-Use \code{"all"} to assign equal contribution to all authors.}
-
-\item{\code{by}}{Variable used to specify which authors are equal contributors.
-By default, uses authors' ids.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-The class instance.
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-PlumeQuarto-set_deceased"></a>}}
-\if{latex}{\out{\hypertarget{method-PlumeQuarto-set_deceased}{}}}
-\subsection{Method \code{set_deceased()}}{
-Set deceased authors.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$set_deceased(..., by)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{Values in the column defined by \code{by} used to specify whether
-an author is deceased or not. Matching of values is case-insensitive.}
-
-\item{\code{by}}{Variable used to specify whether an author is deceased or not.
-By default, uses authors' ids.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-The class instance.
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PlumeQuarto-to_yaml"></a>}}

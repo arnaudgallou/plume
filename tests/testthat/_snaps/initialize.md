@@ -52,17 +52,23 @@
       Error:
       ! `names` must have unique input names.
     Code
-      (expect_error(Plume$new(df, by = 1)))
+      (expect_error(PlumeQuarto$new(df, by = 1)))
     Output
       <error/rlang_error>
       Error:
       ! `by` must be a character string.
     Code
-      (expect_error(Plume$new(df, by = "")))
+      (expect_error(PlumeQuarto$new(df, by = "")))
     Output
       <error/rlang_error>
       Error:
       ! `by` must be a non-empty string.
+    Code
+      (expect_error(PlumeQuarto$new(df, by = "foo")))
+    Output
+      <error/rlang_error>
+      Error:
+      ! Column `foo` doesn't exist.
     Code
       (expect_error(Plume$new(df, symbols = c(note = letters))))
     Output
@@ -82,12 +88,6 @@
       Error:
       ! Invalid `orcid_icon` input.
       i Use `orcid()` to set the ORCID icon.
-    Code
-      (expect_error(Plume$new(df, by = "foo")))
-    Output
-      <error/rlang_error>
-      Error:
-      ! Column `foo` doesn't exist.
     Code
       (expect_error(Plume$new(df, initials_given_name = 1)))
     Output

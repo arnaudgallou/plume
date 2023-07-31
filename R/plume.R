@@ -9,7 +9,7 @@ default_symbols <- list(
 #' @export
 Plume <- R6Class(
   classname = "Plume",
-  inherit = PlumeHandler,
+  inherit = StatusSetter,
   public = list(
     #' @description Create a `Plume` object.
     #' @param data A data frame or tibble containing author-related data.
@@ -19,8 +19,6 @@ Plume <- R6Class(
     #'   `"corresponding"` and `"note"`. By default, uses digits for affiliations,
     #'   `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`, `"¶"`, `"#"`,
     #'   `"**"` for notes. Set a key to `NULL` to use numerals.
-    #' @param by A character string defining the default variable used to assign
-    #'   authors' status in all methods. By default, uses authors' ids.
     #' @param initials_given_name Should the initials of given names be used?
     #' @param family_name_first Should literal names show family names first.
     #' @param credit_roles Should the `r link("crt")` be used?
@@ -33,7 +31,6 @@ Plume <- R6Class(
         data,
         names = NULL,
         symbols = NULL,
-        by = NULL,
         initials_given_name = FALSE,
         family_name_first = FALSE,
         credit_roles = FALSE,
@@ -49,27 +46,11 @@ Plume <- R6Class(
         interword_spacing
       )
       check_list(symbols, force_names = TRUE)
-      check_string(by, allow_empty = FALSE, allow_null = TRUE)
       check_orcid_icon(orcid_icon)
-      if (!is.null(by)) {
-        private$check_col(by)
-        private$by <- private$names[[by]]
-      }
       if (!is.null(symbols)) {
         private$symbols <- supplant(private$symbols, symbols)
       }
       private$orcid_icon <- structure(orcid_icon, var = private$names$orcid)
-    },
-
-    #' @description Set corresponding authors.
-    #' @param ... Values in the column defined by `by` used to specify corresponding
-    #'   authors. Matching of values is case-insensitive. Use `"all"` to assign
-    #'   `TRUE` to all authors.
-    #' @param by Variable used to set corresponding authors. By default, uses
-    #'   authors' ids.
-    #' @return The class instance.
-    set_corresponding_authors = function(..., by) {
-      private$set_status("corresponding", ..., by = by)
     },
 
     #' @description Get author list.
@@ -235,25 +216,8 @@ Plume <- R6Class(
   ),
 
   private = list(
-    by = "id",
     symbols = default_symbols,
     orcid_icon = NULL,
-
-    set_status = function(col, ..., by) {
-      if (missing(by)) {
-        by <- private$by
-      } else {
-        check_string(by, allow_empty = FALSE)
-      }
-      private$check_col(by)
-      if (are_dots_all(...)) {
-        value <- TRUE
-      } else {
-        value <- expr(true_if(includes(.data[[by]], exprs(...))))
-      }
-      private$plume <- mutate(private$plume, !!private$names[[col]] := !!value)
-      invisible(self)
-    },
 
     get_author_list_suffixes = function(format) {
       dict <- get_key_dict(format)

@@ -6,27 +6,10 @@
 #' @export
 PlumeQuarto <- R6Class(
   classname = "PlumeQuarto",
-  inherit = Plume,
+  inherit = StatusSetterQuarto,
   public = list(
-    #' @description Set equal contributors.
-    #' @param ... Values in the column defined by `by` used to specify which
-    #'   authors are equal contributors. Matching of values is case-insensitive.
-    #'   Use `"all"` to assign equal contribution to all authors.
-    #' @param by Variable used to specify which authors are equal contributors.
-    #'   By default, uses authors' ids.
-    #' @return The class instance.
-    set_equal_contributor = function(..., by) {
-      private$set_status("equal_contributor", ..., by = by)
-    },
-
-    #' @description Set deceased authors.
-    #' @param ... Values in the column defined by `by` used to specify whether
-    #'   an author is deceased or not. Matching of values is case-insensitive.
-    #' @param by Variable used to specify whether an author is deceased or not.
-    #'   By default, uses authors' ids.
-    #' @return The class instance.
-    set_deceased = function(..., by) {
-      private$set_status("deceased", ..., by = by)
+    initialize = function(data, names = NULL, by = NULL, credit_roles = FALSE) {
+      super$initialize(data, names, by, credit_roles)
     },
 
     #' @description Push or update author information in a YAML header.

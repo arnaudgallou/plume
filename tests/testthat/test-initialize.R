@@ -104,7 +104,7 @@ test_that("`interword_spacing = FALSE` binds given and family names", {
 })
 
 test_that("`by` overrides default `by` value", {
-  aut <- Plume$new(basic_df(), by = "initials")
+  aut <- PlumeQuarto$new(basic_df(), by = "initials")
   aut$set_corresponding_authors(zz)
   expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
 })
@@ -156,10 +156,13 @@ test_that("initialize() gives meaningful error messages", {
       Plume$new(df, names = c(given_name = "prénom", given_name = "nom"))
     ))
     (expect_error(
-      Plume$new(df, by = 1)
+      PlumeQuarto$new(df, by = 1)
     ))
     (expect_error(
-      Plume$new(df, by = "")
+      PlumeQuarto$new(df, by = "")
+    ))
+    (expect_error(
+      PlumeQuarto$new(df, by = "foo")
     ))
     (expect_error(
       Plume$new(df, symbols = c(note = letters))
@@ -169,9 +172,6 @@ test_that("initialize() gives meaningful error messages", {
     ))
     (expect_error(
       Plume$new(df, orcid_icon = NULL)
-    ))
-    (expect_error(
-      Plume$new(df, by = "foo")
     ))
     (expect_error(
       Plume$new(df, initials_given_name = 1)

@@ -33,10 +33,10 @@ object.
 \if{html}{\out{<div class="r">}}\preformatted{PlumeHandler$new(
   data,
   names,
-  initials_given_name,
-  family_name_first,
-  credit_roles,
-  interword_spacing
+  initials_given_name = FALSE,
+  family_name_first = FALSE,
+  credit_roles = FALSE,
+  interword_spacing = TRUE
 )}\if{html}{\out{</div>}}
 }
 
