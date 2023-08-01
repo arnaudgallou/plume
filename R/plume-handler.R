@@ -125,7 +125,7 @@ PlumeHandler <- R6Class(
     },
 
     get_vars = function() {
-      nestables <- private$get_names("nestable")
+      nestables <- private$get_names("nestable", use_keys = TRUE)
       if (private$crt) {
         nestables <- nestables[names(nestables) != "role"]
       }

@@ -1,16 +1,28 @@
 test_that("initialize() builds a plume dataset", {
-  df_en <- data.frame(given_name = "X", family_name = "Y", email = "@")
-  nms_en <- c("id", "given_name", "family_name", "literal_name", "initials", "email")
-  aut <- Plume$new(df_en)
+  aut <- Plume$new(basic_df())
+  nms_en <- c(
+    "id", "initials", "given_name", "family_name", "literal_name",
+    "affiliation", "role", "note", "email", "phone", "orcid"
+  )
 
   expect_true(tibble::is_tibble(aut$get_plume()))
-  expect_named(aut$get_plume(), nms_en)
+  expect_named(aut$get_plume(), nms_en, ignore.order = TRUE)
 
-  df_fr <- data.frame(prénom = "X", nom = "Y", courriel = "@")
-  nms_fr <- c("id", "prénom", "nom", "nom_complet", "initiales", "courriel")
-  aut <- Plume$new(df_fr, names = setNames(nms_fr, nms_en))
+  nms_fr <- c(
+    "id", "initiales", "prénom", "nom", "nom_complet", "affiliation",
+    "role", "note", "courriel", "téléphone", "orcid"
+  )
+  nms_new <- setNames(nms_en, nms_fr)[-c(1:2)]
+  aut <- Plume$new(
+    dplyr::rename(basic_df(), tidyselect::all_of(nms_new)),
+    names = setNames(nms_fr, nms_en)
+  )
 
-  expect_named(aut$get_plume(), nms_fr)
+  expect_named(aut$get_plume(), nms_fr, ignore.order = TRUE)
+
+  # ensure that `credit_roles = TRUE` preserves nestables
+  aut <- Plume$new(basic_df(), credit_roles = TRUE)
+  expect_named(aut$get_plume(), nms_en[nms_en != "role"], ignore.order = TRUE)
 })
 
 test_that("initialize() ignores unknown variables", {
