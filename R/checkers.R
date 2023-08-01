@@ -221,7 +221,7 @@ check_args <- function(type, x, ...) {
   # ensure that x is a list to preserve element types
   check_list(x)
   fn <- paste0("check_", type)
-  dots <- dots_list(...)
+  dots <- c(...)
   walk2(x, expr_to_string(x), \(item, arg) {
     do.call(fn, c(list(item, arg = arg, call = caller_user()), dots))
   })
