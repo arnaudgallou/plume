@@ -13,8 +13,8 @@
 #' @importFrom readr read_file write_lines
 #' @importFrom rlang %||% := abort
 #' @importFrom rlang expr exprs sym syms
-#' @importFrom rlang dots_n dots_list
-#' @importFrom rlang have_name is_named is_string is_bool is_true
+#' @importFrom rlang dots_n
+#' @importFrom rlang is_named is_string is_bool is_true
 #' @importFrom rlang caller_env caller_arg
 #' @importFrom glue glue glue_collapse
 #' @importFrom vctrs vec_group_id vec_duplicate_any vec_restore
