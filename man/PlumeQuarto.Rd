@@ -36,7 +36,13 @@ with Quarto's author and affiliations
 \if{latex}{\out{\hypertarget{method-PlumeQuarto-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$new(data, names = NULL, by = NULL, credit_roles = FALSE)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$new(
+  data,
+  names = NULL,
+  credit_roles = FALSE,
+  initials_given_name = FALSE,
+  by = NULL
+)}\if{html}{\out{</div>}}
 }
 
 }

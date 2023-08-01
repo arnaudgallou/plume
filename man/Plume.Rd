@@ -41,9 +41,9 @@ Create a \code{Plume} object.
   data,
   names = NULL,
   symbols = NULL,
+  credit_roles = FALSE,
   initials_given_name = FALSE,
   family_name_first = FALSE,
-  credit_roles = FALSE,
   interword_spacing = TRUE,
   orcid_icon = orcid()
 )}\if{html}{\out{</div>}}
@@ -62,11 +62,11 @@ authors to metadata. Valid keys are \code{"affiliation"},
 \code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"}, \code{"¶"}, \code{"#"},
 \code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
 
+\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
+
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 
 \item{\code{family_name_first}}{Should literal names show family names first.}
-
-\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
 
 \item{\code{interword_spacing}}{Should literal names use spacing? This parameter
 is only useful for people writing in languages that don't separate words

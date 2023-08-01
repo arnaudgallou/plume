@@ -93,7 +93,7 @@
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
-      i In index: 1.
+      i In index: 2.
       Caused by error:
       ! `initials_given_name` must be `TRUE` or `FALSE`.
     Code
@@ -101,7 +101,7 @@
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
-      i In index: 2.
+      i In index: 3.
       Caused by error:
       ! `family_name_first` must be `TRUE` or `FALSE`.
     Code
@@ -109,7 +109,7 @@
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
-      i In index: 3.
+      i In index: 1.
       Caused by error:
       ! `credit_roles` must be `TRUE` or `FALSE`.
     Code

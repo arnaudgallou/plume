@@ -43,8 +43,8 @@ StatusSetterQuarto <- R6Class(
   classname = "StatusSetterQuarto",
   inherit = StatusSetter,
   public = list(
-    initialize = function(data, names, by, credit_roles) {
-      super$initialize(data, names, credit_roles)
+    initialize = function(data, names, credit_roles, initials_given_name, by) {
+      super$initialize(data, names, credit_roles, initials_given_name)
       check_string(by, allow_empty = FALSE, allow_null = TRUE)
       if (!is.null(by)) {
         private$check_col(by)

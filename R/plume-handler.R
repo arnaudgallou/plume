@@ -37,17 +37,17 @@ PlumeHandler <- R6Class(
     initialize = function(
         data,
         names,
-        initials_given_name = FALSE,
+        credit_roles,
+        initials_given_name,
         family_name_first = FALSE,
-        credit_roles = FALSE,
         interword_spacing = TRUE
     ) {
       check_df(data)
       check_character(names, force_names = TRUE, allow_duplicates = FALSE)
       check_args("bool", list(
+        credit_roles,
         initials_given_name,
         family_name_first,
-        credit_roles,
         interword_spacing
       ))
       super$initialize(private$plume_names)

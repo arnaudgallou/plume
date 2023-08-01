@@ -31,18 +31,18 @@ Plume <- R6Class(
         data,
         names = NULL,
         symbols = NULL,
+        credit_roles = FALSE,
         initials_given_name = FALSE,
         family_name_first = FALSE,
-        credit_roles = FALSE,
         interword_spacing = TRUE,
         orcid_icon = orcid()
     ) {
       super$initialize(
         data,
         names,
+        credit_roles,
         initials_given_name,
         family_name_first,
-        credit_roles,
         interword_spacing
       )
       check_list(symbols, force_names = TRUE)

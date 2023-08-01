@@ -32,7 +32,7 @@ Class extending StatusSetter for PlumeQuarto
 \if{latex}{\out{\hypertarget{method-StatusSetterQuarto-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterQuarto$new(data, names, by, credit_roles)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterQuarto$new(data, names, credit_roles, initials_given_name, by)}\if{html}{\out{</div>}}
 }
 
 }

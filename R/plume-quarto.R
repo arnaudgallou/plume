@@ -8,8 +8,14 @@ PlumeQuarto <- R6Class(
   classname = "PlumeQuarto",
   inherit = StatusSetterQuarto,
   public = list(
-    initialize = function(data, names = NULL, by = NULL, credit_roles = FALSE) {
-      super$initialize(data, names, by, credit_roles)
+    initialize = function(
+        data,
+        names = NULL,
+        credit_roles = FALSE,
+        initials_given_name = FALSE,
+        by = NULL
+    ) {
+      super$initialize(data, names, credit_roles, initials_given_name, by)
     },
 
     #' @description Push or update author information in a YAML header.
