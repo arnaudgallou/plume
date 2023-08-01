@@ -146,7 +146,7 @@ Plume <- R6Class(
       if (is_empty(args)) {
         return()
       }
-      cols <- private$get_names(args, use_keys = FALSE)
+      cols <- private$get_names(args)
       private$check_col(cols)
       out <- filter(private$plume, corresponding & not_na_any(cols))
       dict <- list(details = cols, name = private$names$literal_name)
@@ -220,15 +220,15 @@ Plume <- R6Class(
     orcid_icon = NULL,
 
     get_author_list_suffixes = function(format) {
-      dict <- get_key_dict(format)
-      vars <- private$get_names(dict)
+      key_set <- get_key_set(format)
+      vars <- private$get_names(key_set, use_keys = TRUE)
       cols <- unname(vars)
       private$check_col(cols)
       out <- unnest(private$plume, cols = all_of(cols))
       out <- add_group_ids(out, vars)
       symbols <- list_assign(private$symbols, orcid = private$orcid_icon)
       out <- add_suffixes(out, vars, symbols)
-      grp_vars <- private$get_names("id", "literal_name", use_keys = FALSE)
+      grp_vars <- private$get_names("id", "literal_name")
       .cols <- predot(cols)
       out <- summarise(out, across(all_of(.cols), bind), .by = all_of(grp_vars))
       als_make(out, .cols, format)
@@ -277,13 +277,13 @@ Plume <- R6Class(
   )
 )
 
-get_key_dict <- function(format) {
-  dict <- list(
+get_key_set <- function(format) {
+  set <- c(
     a = "affiliation",
     c = "corresponding",
     n = "note",
     o = "orcid"
   )
   keys <- als_extract_keys(format)
-  dict[keys]
+  set[keys]
 }
