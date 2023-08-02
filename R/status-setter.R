@@ -1,5 +1,5 @@
 #' @title StatusSetter class
-#' @description Class setting authors' status
+#' @description Internal class that manages authors' status.
 StatusSetter <- R6Class(
   classname = "StatusSetter",
   inherit = PlumeHandler,
@@ -38,7 +38,7 @@ StatusSetter <- R6Class(
 )
 
 #' @title StatusSetterQuarto class
-#' @description Class extending StatusSetter for PlumeQuarto
+#' @description Internal class extending `StatusSetter` for `PlumeQuarto`.
 StatusSetterQuarto <- R6Class(
   classname = "StatusSetterQuarto",
   inherit = StatusSetter,

@@ -1,13 +1,16 @@
 #' @title PlumeQuarto class
-#' @description Class extending `Plume` that allows you to push or update author
-#'   metadata in the YAML header of a `.qmd` file. The generated YAML complies
-#'   with Quarto's author and affiliations
-#'   [schemas](https://quarto.org/docs/journals/authors.html).
+#' @description Class that pushes or updates author metadata in a Quarto file.
 #' @export
 PlumeQuarto <- R6Class(
   classname = "PlumeQuarto",
   inherit = StatusSetterQuarto,
   public = list(
+    #' @description Create a `PlumeQuarto` object.
+    #' @param data A data frame or tibble containing author-related data.
+    #' @param names A vector of column names.
+    #' @param credit_roles Should the `r link("crt")` be used?
+    #' @param initials_given_name Should the initials of given names be used?
+    #' @return A `PlumeQuarto` object.
     initialize = function(
         data,
         names = NULL,
@@ -18,7 +21,9 @@ PlumeQuarto <- R6Class(
       super$initialize(data, names, credit_roles, initials_given_name, by)
     },
 
-    #' @description Push or update author information in a YAML header.
+    #' @description Push or update author information in a YAML header. The
+    #'   generated YAML complies with Quarto's author and affiliations
+    #'   [schemas](https://quarto.org/docs/journals/authors.html).
     #' @param file A `.qmd` file.
     #' @details
     #' If missing, `to_yaml()` pushes author information into a YAML header. If

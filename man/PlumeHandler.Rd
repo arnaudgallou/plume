@@ -4,8 +4,8 @@
 \alias{PlumeHandler}
 \title{PlumeHandler class}
 \description{
-Internal class processing and shaping tabular data into a \code{plume}
-object.
+Internal class processing and shaping tabular data into a
+\code{plume} object.
 }
 \section{Super class}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{PlumeHandler}

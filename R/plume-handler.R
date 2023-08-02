@@ -28,8 +28,8 @@ default_names <- list(
 )
 
 #' @title PlumeHandler class
-#' @description Internal class processing and shaping tabular data into a `plume`
-#'   object.
+#' @description Internal class processing and shaping tabular data into a
+#'   `plume` object.
 PlumeHandler <- R6Class(
   classname = "PlumeHandler",
   inherit = NameHandler,

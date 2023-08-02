@@ -4,7 +4,7 @@
 \alias{StatusSetter}
 \title{StatusSetter class}
 \description{
-Class setting authors' status
+Internal class that manages authors' status.
 }
 \section{Super classes}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{StatusSetter}

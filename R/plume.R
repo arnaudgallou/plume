@@ -5,7 +5,8 @@ default_symbols <- list(
 )
 
 #' @title Plume class
-#' @description Class generating author lists and other author-related information.
+#' @description Class that generates author lists and other author-related
+#'   information as character strings.
 #' @export
 Plume <- R6Class(
   classname = "Plume",
@@ -14,17 +15,17 @@ Plume <- R6Class(
     #' @description Create a `Plume` object.
     #' @param data A data frame or tibble containing author-related data.
     #' @param names A vector of column names.
-    #' @param symbols A list of keys and values defining the symbols used to link
-    #'   authors to metadata. Valid keys are `"affiliation"`,
-    #'   `"corresponding"` and `"note"`. By default, uses digits for affiliations,
-    #'   `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`, `"¶"`, `"#"`,
-    #'   `"**"` for notes. Set a key to `NULL` to use numerals.
+    #' @param symbols A list of keys and values defining the symbols used to
+    #'   link authors to metadata. Valid keys are `"affiliation"`,
+    #'   `"corresponding"` and `"note"`. By default, uses digits for
+    #'   affiliations, `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`,
+    #'   `"¶"`, `"#"`, `"**"` for notes. Set a key to `NULL` to use numerals.
+    #' @param credit_roles Should the `r link("crt")` be used?
     #' @param initials_given_name Should the initials of given names be used?
     #' @param family_name_first Should literal names show family names first.
-    #' @param credit_roles Should the `r link("crt")` be used?
     #' @param interword_spacing Should literal names use spacing? This parameter
-    #'   is only useful for people writing in languages that don't separate words
-    #'   with a space such as Chinese or Japanese.
+    #'   is only useful for people writing in languages that don't separate
+    #'   words with a space such as Chinese or Japanese.
     #' @param orcid_icon The ORCID icon, as defined by [`orcid()`], to be used.
     #' @return A `Plume` object.
     initialize = function(
@@ -157,8 +158,8 @@ Plume <- R6Class(
     #' @description Get authors' contributions.
     #' @param role_first If `TRUE`, displays roles first and authors second. If
     #'   `FALSE`, roles follow authors.
-    #' @param name_list Should all authors with the same role be listed together?
-    #'   Only applies when `role_first = FALSE`.
+    #' @param name_list Should all authors with the same role be listed
+    #'   together? Only applies when `role_first = FALSE`.
     #' @param alphabetical_order Should authors be listed in alphabetical order?
     #'   By default, lists authors in the order they are defined.
     #' @param dotted_initials Should initials be dot-separated?

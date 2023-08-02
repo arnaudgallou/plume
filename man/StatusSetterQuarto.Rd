@@ -4,7 +4,7 @@
 \alias{StatusSetterQuarto}
 \title{StatusSetterQuarto class}
 \description{
-Class extending StatusSetter for PlumeQuarto
+Internal class extending \code{StatusSetter} for \code{PlumeQuarto}.
 }
 \section{Super classes}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{StatusSetterQuarto}

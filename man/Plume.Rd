@@ -4,7 +4,8 @@
 \alias{Plume}
 \title{Plume class}
 \description{
-Class generating author lists and other author-related information.
+Class that generates author lists and other author-related
+information as character strings.
 }
 \section{Super classes}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{Plume}
@@ -56,11 +57,11 @@ Create a \code{Plume} object.
 
 \item{\code{names}}{A vector of column names.}
 
-\item{\code{symbols}}{A list of keys and values defining the symbols used to link
-authors to metadata. Valid keys are \code{"affiliation"},
-\code{"corresponding"} and \code{"note"}. By default, uses digits for affiliations,
-\code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"}, \code{"¶"}, \code{"#"},
-\code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
+\item{\code{symbols}}{A list of keys and values defining the symbols used to
+link authors to metadata. Valid keys are \code{"affiliation"},
+\code{"corresponding"} and \code{"note"}. By default, uses digits for
+affiliations, \code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"},
+\code{"¶"}, \code{"#"}, \code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
 
 \item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
 
@@ -69,8 +70,8 @@ authors to metadata. Valid keys are \code{"affiliation"},
 \item{\code{family_name_first}}{Should literal names show family names first.}
 
 \item{\code{interword_spacing}}{Should literal names use spacing? This parameter
-is only useful for people writing in languages that don't separate words
-with a space such as Chinese or Japanese.}
+is only useful for people writing in languages that don't separate
+words with a space such as Chinese or Japanese.}
 
 \item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=orcid]{orcid()}}, to be used.}
 }
@@ -243,8 +244,8 @@ Get authors' contributions.
 \item{\code{role_first}}{If \code{TRUE}, displays roles first and authors second. If
 \code{FALSE}, roles follow authors.}
 
-\item{\code{name_list}}{Should all authors with the same role be listed together?
-Only applies when \code{role_first = FALSE}.}
+\item{\code{name_list}}{Should all authors with the same role be listed
+together? Only applies when \code{role_first = FALSE}.}
 
 \item{\code{alphabetical_order}}{Should authors be listed in alphabetical order?
 By default, lists authors in the order they are defined.}

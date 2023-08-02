@@ -4,10 +4,7 @@
 \alias{PlumeQuarto}
 \title{PlumeQuarto class}
 \description{
-Class extending \code{Plume} that allows you to push or update author
-metadata in the YAML header of a \code{.qmd} file. The generated YAML complies
-with Quarto's author and affiliations
-\href{https://quarto.org/docs/journals/authors.html}{schemas}.
+Class that pushes or updates author metadata in a Quarto file.
 }
 \section{Super classes}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterQuarto]{plume::StatusSetterQuarto}} -> \code{PlumeQuarto}
@@ -35,6 +32,7 @@ with Quarto's author and affiliations
 \if{html}{\out{<a id="method-PlumeQuarto-new"></a>}}
 \if{latex}{\out{\hypertarget{method-PlumeQuarto-new}{}}}
 \subsection{Method \code{new()}}{
+Create a \code{PlumeQuarto} object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$new(
   data,
@@ -45,12 +43,30 @@ with Quarto's author and affiliations
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{A data frame or tibble containing author-related data.}
+
+\item{\code{names}}{A vector of column names.}
+
+\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
+
+\item{\code{initials_given_name}}{Should the initials of given names be used?}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{PlumeQuarto} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PlumeQuarto-to_yaml"></a>}}
 \if{latex}{\out{\hypertarget{method-PlumeQuarto-to_yaml}{}}}
 \subsection{Method \code{to_yaml()}}{
-Push or update author information in a YAML header.
+Push or update author information in a YAML header. The
+generated YAML complies with Quarto's author and affiliations
+\href{https://quarto.org/docs/journals/authors.html}{schemas}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$to_yaml(file)}\if{html}{\out{</div>}}
 }
