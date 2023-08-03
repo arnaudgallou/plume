@@ -53,6 +53,9 @@ Create a \code{PlumeQuarto} object.
 \item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
+
+\item{\code{by}}{A character string defining the default variable used to assign
+authors' status in all \verb{set_*} methods. By default, uses authors' id.}
 }
 \if{html}{\out{</div>}}
 }

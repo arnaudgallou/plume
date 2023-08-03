@@ -10,6 +10,8 @@ PlumeQuarto <- R6Class(
     #' @param names A vector of column names.
     #' @param credit_roles Should the `r link("crt")` be used?
     #' @param initials_given_name Should the initials of given names be used?
+    #' @param by A character string defining the default variable used to assign
+    #'   authors' status in all `set_*` methods. By default, uses authors' id.
     #' @return A `PlumeQuarto` object.
     initialize = function(
         data,
