@@ -20,6 +20,17 @@ test_that("initialize() builds a plume dataset", {
 
   expect_named(aut$get_plume(), nms_fr, ignore.order = TRUE)
 
+  # ensure that `Plume` drops `PlumeQuarto`-specific variables
+  df <- data.frame(given_name = "X", family_name = "Y", dropping_particle = "o")
+
+  aut <- Plume$new(df)
+  nms <- c("id", "given_name", "family_name", "literal_name", "initials")
+  expect_named(aut$get_plume(), nms)
+
+  aut <- PlumeQuarto$new(df)
+  nms <- c(nms, "dropping_particle")
+  expect_named(aut$get_plume(), nms)
+
   # ensure that `credit_roles = TRUE` preserves nestables
   aut <- Plume$new(basic_df(), credit_roles = TRUE)
   expect_named(aut$get_plume(), nms_en[nms_en != "role"], ignore.order = TRUE)
