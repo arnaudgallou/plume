@@ -5,20 +5,30 @@
 #' @param minimal If `TRUE`, returns an empty tibble with the following columns:
 #'   `given_name`, `family_name`, `email`, `orcid`, `affiliation`, `role` and
 #'   `note`. Otherwise the function returns a template with all columns that can
-#'   be supplied to plume classes.
+#'   be supplied to plume classes that are not `PlumeQuarto`-specific.
 #' @param credit_roles Should `r link("crt")` be used?
 #' @return An empty tibble.
 #' @export
 plm_template <- function(minimal = TRUE, credit_roles = FALSE) {
   check_args("bool", list(minimal, credit_roles))
-  vars <- list_assign(default_names, nestable = get_nestables(credit_roles))
-  to_ignore <- vars$internal
-  if (minimal) {
-    to_ignore <- c(to_ignore, "phone", "fax", "url", "dropping_particle", "number")
-  }
-  vars <- flatten(vars)
-  vars <- vars[!vars %in% to_ignore]
+  vars <- get_template_vars(minimal, credit_roles)
   tibble(!!!vars, .rows = 0)
+}
+
+get_template_vars <- function(minimal, credit_roles) {
+  vars <- list_assign(default_names, nestables = get_nestables(credit_roles))
+  to_ignore <- get_ignored_vars(vars, minimal)
+  vars <- flatten(vars)
+  vars[!vars %in% to_ignore]
+}
+
+get_ignored_vars <- function(vars, minimal) {
+  to_ignore <- vars$internals
+  if (!minimal) {
+    return(to_ignore)
+  }
+  secondaries <- vars$secondaries
+  c(to_ignore, secondaries[!secondaries %in% c("email", "orcid")])
 }
 
 get_nestables <- function(crt) {

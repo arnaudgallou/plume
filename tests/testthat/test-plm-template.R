@@ -17,7 +17,7 @@ test_that("plm_template() returns a table template", {
     ignore.order = TRUE
   )
 
-  nms_all <- c(nms_minimal, "dropping_particle", "number", "phone", "fax", "url")
+  nms_all <- c(nms_minimal, "phone", "fax", "url")
 
   expect_named(plm_template(minimal = FALSE), nms_all, ignore.order = TRUE)
 })

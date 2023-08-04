@@ -1,26 +1,22 @@
 default_names <- list(
-  internal = list(
+  internals = list(
     id = "id",
     initials = "initials",
     literal_name = "literal_name",
-    corresponding = "corresponding",
-    deceased = "deceased",
-    equal_contributor = "equal_contributor"
+    corresponding = "corresponding"
   ),
-  primary = list(
+  primaries = list(
     given_name = "given_name",
     family_name = "family_name"
   ),
-  secondary = list(
-    number = "number",
-    dropping_particle = "dropping_particle",
+  secondaries = list(
     email = "email",
     orcid = "orcid",
     phone = "phone",
     fax = "fax",
     url = "url"
   ),
-  nestable = list(
+  nestables = list(
     affiliation = "affiliation",
     role = "role",
     note = "note"
@@ -28,8 +24,8 @@ default_names <- list(
 )
 
 #' @title PlumeHandler class
-#' @description Internal class processing and shaping tabular data into a `plume`
-#'   object.
+#' @description Internal class processing and shaping tabular data into a
+#'   `plume` object.
 PlumeHandler <- R6Class(
   classname = "PlumeHandler",
   inherit = NameHandler,
@@ -37,20 +33,20 @@ PlumeHandler <- R6Class(
     initialize = function(
         data,
         names,
-        initials_given_name,
-        family_name_first,
         credit_roles,
-        interword_spacing
+        initials_given_name,
+        family_name_first = FALSE,
+        interword_spacing = TRUE
     ) {
       check_df(data)
       check_character(names, force_names = TRUE, allow_duplicates = FALSE)
       check_args("bool", list(
+        credit_roles,
         initials_given_name,
         family_name_first,
-        credit_roles,
         interword_spacing
       ))
-      super$initialize(flatten(private$plume_names))
+      super$initialize(private$plume_names)
       private$plume <- as_tibble(data)
       private$initials_given_name <- initials_given_name
       private$family_name_first <- family_name_first
@@ -61,7 +57,7 @@ PlumeHandler <- R6Class(
       if (!is.null(names)) {
         private$set_names(names)
       }
-      private$check_col(private$get_names(private$plume_keys$primary))
+      private$check_col(private$get_names("primaries"))
       private$check_authors()
       private$mount()
     },
@@ -78,7 +74,6 @@ PlumeHandler <- R6Class(
   private = list(
     plume = NULL,
     plume_names = default_names,
-    plume_keys = map(default_names, names),
     initials_given_name = NULL,
     family_name_first = NULL,
     crt = NULL,
@@ -87,7 +82,7 @@ PlumeHandler <- R6Class(
     mount = function() {
       private$build()
       private$sanitise()
-      for (col in private$get_names(private$plume_keys$nestable)) {
+      for (col in private$get_names("nestables")) {
         if (private$is_nestable(paste0("^", col))) {
           private$nest(col)
         }
@@ -104,15 +99,12 @@ PlumeHandler <- R6Class(
     },
 
     mold = function(...) {
-      keys <- private$plume_keys
-      primary <- private$get_names(keys$primary, use_keys = FALSE)
-      secondary <- private$get_names(keys$secondary, use_keys = FALSE)
-      nestables <- private$get_nestables()
+      vars <- private$get_vars()
       private$plume <- select(
         private$plume,
-        all_of(primary),
-        any_of(secondary),
-        starts_with(nestables),
+        all_of(vars$primaries),
+        any_of(vars$secondaries),
+        starts_with(vars$nestables),
         if (private$crt) any_of(names(.names$protected$crt)),
         ...
       )
@@ -128,12 +120,16 @@ PlumeHandler <- R6Class(
       private$plume <- nest(out, !!col := any_of(col))
     },
 
-    get_nestables = function() {
-      nestables <- private$get_names(private$plume_keys$nestable)
-      if (!private$crt) {
-        return(nestables)
+    get_vars = function() {
+      nestables <- private$get_names("nestables", use_keys = TRUE)
+      if (private$crt) {
+        nestables <- nestables[names(nestables) != "role"]
       }
-      nestables[names(nestables) != "role"]
+      list(
+        primaries = private$get_names("primaries"),
+        secondaries = private$get_names("secondaries"),
+        nestables = nestables
+      )
     },
 
     crt_process = function() {
@@ -156,7 +152,7 @@ PlumeHandler <- R6Class(
     },
 
     make_literals = function() {
-      nominal <- private$get_names("given_name", "family_name")
+      nominal <- private$get_names("primaries")
       if (private$family_name_first) {
         nominal <- rev(nominal)
       }
@@ -211,7 +207,7 @@ PlumeHandler <- R6Class(
     },
 
     check_authors = function() {
-      nominal <- private$get_names("given_name", "family_name")
+      nominal <- private$get_names("primaries")
       authors <- select(private$plume, all_of(nominal))
       authors <- reduce(authors, \(x, y) {
         if_else(is_void(x) | is_void(y), NA, 1L)

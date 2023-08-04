@@ -5,16 +5,22 @@ NameHandler <- R6Class(
   public = list(
     initialize = function(names) {
       check_list(names, allow_duplicates = FALSE)
-      private$names <- names
+      private$keys <- map(names, base::names)
+      private$names <- flatten(names)
     }
   ),
 
   private = list(
+    keys = NULL,
     names = NULL,
 
-    get_names = function(..., use_keys = TRUE) {
+    get_names = function(..., use_keys = FALSE) {
       dots <- c(...)
-      nms <- if (is.list(dots)) unlist(dots) else dots
+      if (length(dots) == 1L && dots %in% names(private$keys)) {
+        nms <- private$keys[[dots]]
+      } else {
+        nms <- dots
+      }
       unlist(private$names[nms], use.names = use_keys)
     },
 

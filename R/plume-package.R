@@ -10,6 +10,7 @@
 #' @importFrom purrr set_names partial reduce
 #' @importFrom purrr map map_vec map2_vec iwalk walk2
 #' @importFrom purrr list_rbind list_flatten list_transpose list_assign
+#' @importFrom purrr list_modify
 #' @importFrom readr read_file write_lines
 #' @importFrom rlang %||% := abort
 #' @importFrom rlang expr exprs sym syms

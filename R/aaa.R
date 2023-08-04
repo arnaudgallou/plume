@@ -2,7 +2,7 @@
   protected = list(
     crt = list(
       conceptualization = "Conceptualization",
-      curation = "Data curation",
+      data_curation = "Data curation",
       analysis = "Formal analysis",
       funding = "Funding acquisition",
       investigation = "Investigation",

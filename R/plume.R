@@ -5,71 +5,53 @@ default_symbols <- list(
 )
 
 #' @title Plume class
-#' @description Class generating author lists and other author-related information.
+#' @description Class that generates author lists and other author-related
+#'   information as character strings.
 #' @export
 Plume <- R6Class(
   classname = "Plume",
-  inherit = PlumeHandler,
+  inherit = StatusSetter,
   public = list(
     #' @description Create a `Plume` object.
     #' @param data A data frame or tibble containing author-related data.
     #' @param names A vector of column names.
-    #' @param symbols A list of keys and values defining the symbols used to link
-    #'   authors to metadata. Valid keys are `"affiliation"`,
-    #'   `"corresponding"` and `"note"`. By default, uses digits for affiliations,
-    #'   `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`, `"¶"`, `"#"`,
-    #'   `"**"` for notes. Set a key to `NULL` to use numerals.
-    #' @param by A character string defining the default variable used to assign
-    #'   authors' status in all methods. By default, uses authors' ids.
+    #' @param symbols A list of keys and values defining the symbols used to
+    #'   link authors to metadata. Valid keys are `"affiliation"`,
+    #'   `"corresponding"` and `"note"`. By default, uses digits for
+    #'   affiliations, `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`,
+    #'   `"¶"`, `"#"`, `"**"` for notes. Set a key to `NULL` to use numerals.
+    #' @param credit_roles Should the `r link("crt")` be used?
     #' @param initials_given_name Should the initials of given names be used?
     #' @param family_name_first Should literal names show family names first.
-    #' @param credit_roles Should the `r link("crt")` be used?
     #' @param interword_spacing Should literal names use spacing? This parameter
-    #'   is only useful for people writing in languages that don't separate words
-    #'   with a space such as Chinese or Japanese.
+    #'   is only useful for people writing in languages that don't separate
+    #'   words with a space such as Chinese or Japanese.
     #' @param orcid_icon The ORCID icon, as defined by [`orcid()`], to be used.
     #' @return A `Plume` object.
     initialize = function(
         data,
         names = NULL,
         symbols = NULL,
-        by = NULL,
+        credit_roles = FALSE,
         initials_given_name = FALSE,
         family_name_first = FALSE,
-        credit_roles = FALSE,
         interword_spacing = TRUE,
         orcid_icon = orcid()
     ) {
       super$initialize(
         data,
         names,
+        credit_roles,
         initials_given_name,
         family_name_first,
-        credit_roles,
         interword_spacing
       )
       check_list(symbols, force_names = TRUE)
-      check_string(by, allow_empty = FALSE, allow_null = TRUE)
       check_orcid_icon(orcid_icon)
-      if (!is.null(by)) {
-        private$check_col(by)
-        private$by <- private$names[[by]]
-      }
       if (!is.null(symbols)) {
         private$symbols <- supplant(private$symbols, symbols)
       }
       private$orcid_icon <- structure(orcid_icon, var = private$names$orcid)
-    },
-
-    #' @description Set corresponding authors.
-    #' @param ... Values in the column defined by `by` used to specify corresponding
-    #'   authors. Matching of values is case-insensitive. Use `"all"` to assign
-    #'   `TRUE` to all authors.
-    #' @param by Variable used to set corresponding authors. By default, uses
-    #'   authors' ids.
-    #' @return The class instance.
-    set_corresponding_authors = function(..., by) {
-      private$set_status("corresponding", ..., by = by)
     },
 
     #' @description Get author list.
@@ -165,7 +147,7 @@ Plume <- R6Class(
       if (is_empty(args)) {
         return()
       }
-      cols <- private$get_names(args, use_keys = FALSE)
+      cols <- private$get_names(args)
       private$check_col(cols)
       out <- filter(private$plume, corresponding & not_na_any(cols))
       dict <- list(details = cols, name = private$names$literal_name)
@@ -176,8 +158,8 @@ Plume <- R6Class(
     #' @description Get authors' contributions.
     #' @param role_first If `TRUE`, displays roles first and authors second. If
     #'   `FALSE`, roles follow authors.
-    #' @param name_list Should all authors with the same role be listed together?
-    #'   Only applies when `role_first = FALSE`.
+    #' @param name_list Should all authors with the same role be listed
+    #'   together? Only applies when `role_first = FALSE`.
     #' @param alphabetical_order Should authors be listed in alphabetical order?
     #'   By default, lists authors in the order they are defined.
     #' @param dotted_initials Should initials be dot-separated?
@@ -235,36 +217,19 @@ Plume <- R6Class(
   ),
 
   private = list(
-    by = "id",
     symbols = default_symbols,
     orcid_icon = NULL,
 
-    set_status = function(col, ..., by) {
-      if (missing(by)) {
-        by <- private$by
-      } else {
-        check_string(by, allow_empty = FALSE)
-      }
-      private$check_col(by)
-      if (are_dots_all(...)) {
-        value <- TRUE
-      } else {
-        value <- expr(true_if(includes(.data[[by]], exprs(...))))
-      }
-      private$plume <- mutate(private$plume, !!private$names[[col]] := !!value)
-      invisible(self)
-    },
-
     get_author_list_suffixes = function(format) {
-      dict <- get_key_dict(format)
-      vars <- private$get_names(dict)
+      key_set <- get_key_set(format)
+      vars <- private$get_names(key_set, use_keys = TRUE)
       cols <- unname(vars)
       private$check_col(cols)
       out <- unnest(private$plume, cols = all_of(cols))
       out <- add_group_ids(out, vars)
       symbols <- list_assign(private$symbols, orcid = private$orcid_icon)
       out <- add_suffixes(out, vars, symbols)
-      grp_vars <- private$get_names("id", "literal_name", use_keys = FALSE)
+      grp_vars <- private$get_names("id", "literal_name")
       .cols <- predot(cols)
       out <- summarise(out, across(all_of(.cols), bind), .by = all_of(grp_vars))
       als_make(out, .cols, format)
@@ -313,13 +278,13 @@ Plume <- R6Class(
   )
 )
 
-get_key_dict <- function(format) {
-  dict <- list(
+get_key_set <- function(format) {
+  set <- c(
     a = "affiliation",
     c = "corresponding",
     n = "note",
     o = "orcid"
   )
   keys <- als_extract_keys(format)
-  dict[keys]
+  set[keys]
 }

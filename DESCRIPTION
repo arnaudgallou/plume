@@ -30,6 +30,8 @@ Imports:
     yaml (>= 2.3.5)
 Suggests: 
     covr,
+    fontawesome,
+    gt,
     rmarkdown,
     testthat,
     waldo (>= 0.3.0),

@@ -4,16 +4,16 @@
 \alias{Plume}
 \title{Plume class}
 \description{
-Class generating author lists and other author-related information.
+Class that generates author lists and other author-related
+information as character strings.
 }
 \section{Super classes}{
-\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{Plume}
+\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{Plume}
 }
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-Plume-new}{\code{Plume$new()}}
-\item \href{#method-Plume-set_corresponding_authors}{\code{Plume$set_corresponding_authors()}}
 \item \href{#method-Plume-get_author_list}{\code{Plume$get_author_list()}}
 \item \href{#method-Plume-get_orcids}{\code{Plume$get_orcids()}}
 \item \href{#method-Plume-get_affiliations}{\code{Plume$get_affiliations()}}
@@ -28,6 +28,7 @@ Class generating author lists and other author-related information.
 <ul>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>plume::StatusSetter$set_corresponding_authors()</code></a></li>
 </ul>
 </details>
 }}
@@ -41,10 +42,9 @@ Create a \code{Plume} object.
   data,
   names = NULL,
   symbols = NULL,
-  by = NULL,
+  credit_roles = FALSE,
   initials_given_name = FALSE,
   family_name_first = FALSE,
-  credit_roles = FALSE,
   interword_spacing = TRUE,
   orcid_icon = orcid()
 )}\if{html}{\out{</div>}}
@@ -57,24 +57,21 @@ Create a \code{Plume} object.
 
 \item{\code{names}}{A vector of column names.}
 
-\item{\code{symbols}}{A list of keys and values defining the symbols used to link
-authors to metadata. Valid keys are \code{"affiliation"},
-\code{"corresponding"} and \code{"note"}. By default, uses digits for affiliations,
-\code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"}, \code{"¶"}, \code{"#"},
-\code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
+\item{\code{symbols}}{A list of keys and values defining the symbols used to
+link authors to metadata. Valid keys are \code{"affiliation"},
+\code{"corresponding"} and \code{"note"}. By default, uses digits for
+affiliations, \code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"},
+\code{"¶"}, \code{"#"}, \code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
 
-\item{\code{by}}{A character string defining the default variable used to assign
-authors' status in all methods. By default, uses authors' ids.}
+\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 
 \item{\code{family_name_first}}{Should literal names show family names first.}
 
-\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
-
 \item{\code{interword_spacing}}{Should literal names use spacing? This parameter
-is only useful for people writing in languages that don't separate words
-with a space such as Chinese or Japanese.}
+is only useful for people writing in languages that don't separate
+words with a space such as Chinese or Japanese.}
 
 \item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=orcid]{orcid()}}, to be used.}
 }
@@ -82,31 +79,6 @@ with a space such as Chinese or Japanese.}
 }
 \subsection{Returns}{
 A \code{Plume} object.
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Plume-set_corresponding_authors"></a>}}
-\if{latex}{\out{\hypertarget{method-Plume-set_corresponding_authors}{}}}
-\subsection{Method \code{set_corresponding_authors()}}{
-Set corresponding authors.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$set_corresponding_authors(..., by)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{Values in the column defined by \code{by} used to specify corresponding
-authors. Matching of values is case-insensitive. Use \code{"all"} to assign
-\code{TRUE} to all authors.}
-
-\item{\code{by}}{Variable used to set corresponding authors. By default, uses
-authors' ids.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-The class instance.
 }
 }
 \if{html}{\out{<hr>}}
@@ -272,8 +244,8 @@ Get authors' contributions.
 \item{\code{role_first}}{If \code{TRUE}, displays roles first and authors second. If
 \code{FALSE}, roles follow authors.}
 
-\item{\code{name_list}}{Should all authors with the same role be listed together?
-Only applies when \code{role_first = FALSE}.}
+\item{\code{name_list}}{Should all authors with the same role be listed
+together? Only applies when \code{role_first = FALSE}.}
 
 \item{\code{alphabetical_order}}{Should authors be listed in alphabetical order?
 By default, lists authors in the order they are defined.}

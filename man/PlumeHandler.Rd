@@ -4,8 +4,8 @@
 \alias{PlumeHandler}
 \title{PlumeHandler class}
 \description{
-Internal class processing and shaping tabular data into a \code{plume}
-object.
+Internal class processing and shaping tabular data into a
+\code{plume} object.
 }
 \section{Super class}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{PlumeHandler}
@@ -33,10 +33,10 @@ object.
 \if{html}{\out{<div class="r">}}\preformatted{PlumeHandler$new(
   data,
   names,
-  initials_given_name,
-  family_name_first,
   credit_roles,
-  interword_spacing
+  initials_given_name,
+  family_name_first = FALSE,
+  interword_spacing = TRUE
 )}\if{html}{\out{</div>}}
 }
 

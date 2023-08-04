@@ -1,35 +1,44 @@
+default_names_quarto <- list_modify(
+  default_names,
+  internals = list(
+    deceased = "deceased",
+    equal_contributor = "equal_contributor"
+  ),
+  secondaries = list(
+    number = "number",
+    dropping_particle = "dropping_particle",
+    acknowledgements = "acknowledgements"
+  )
+)
+
 #' @title PlumeQuarto class
-#' @description Class extending `Plume` that allows you to push or update author
-#'   metadata in the YAML header of a `.qmd` file. The generated YAML complies
-#'   with Quarto's author and affiliations
-#'   [schemas](https://quarto.org/docs/journals/authors.html).
+#' @description Class that pushes or updates author metadata in a Quarto file.
 #' @export
 PlumeQuarto <- R6Class(
   classname = "PlumeQuarto",
-  inherit = Plume,
+  inherit = StatusSetterQuarto,
   public = list(
-    #' @description Set equal contributors.
-    #' @param ... Values in the column defined by `by` used to specify which
-    #'   authors are equal contributors. Matching of values is case-insensitive.
-    #'   Use `"all"` to assign equal contribution to all authors.
-    #' @param by Variable used to specify which authors are equal contributors.
-    #'   By default, uses authors' ids.
-    #' @return The class instance.
-    set_equal_contributor = function(..., by) {
-      private$set_status("equal_contributor", ..., by = by)
+    #' @description Create a `PlumeQuarto` object.
+    #' @param data A data frame or tibble containing author-related data.
+    #' @param names A vector of column names.
+    #' @param credit_roles Should the `r link("crt")` be used?
+    #' @param initials_given_name Should the initials of given names be used?
+    #' @param by A character string defining the default variable used to assign
+    #'   authors' status in all `set_*` methods. By default, uses authors' id.
+    #' @return A `PlumeQuarto` object.
+    initialize = function(
+        data,
+        names = NULL,
+        credit_roles = FALSE,
+        initials_given_name = FALSE,
+        by = NULL
+    ) {
+      super$initialize(data, names, credit_roles, initials_given_name, by)
     },
 
-    #' @description Set deceased authors.
-    #' @param ... Values in the column defined by `by` used to specify whether
-    #'   an author is deceased or not. Matching of values is case-insensitive.
-    #' @param by Variable used to specify whether an author is deceased or not.
-    #'   By default, uses authors' ids.
-    #' @return The class instance.
-    set_deceased = function(..., by) {
-      private$set_status("deceased", ..., by = by)
-    },
-
-    #' @description Push or update author information in a YAML header.
+    #' @description Push or update author information in a YAML header. The
+    #'   generated YAML complies with Quarto's author and affiliations
+    #'   [schemas](https://quarto.org/docs/journals/authors.html).
     #' @param file A `.qmd` file.
     #' @details
     #' If missing, `to_yaml()` pushes author information into a YAML header. If
@@ -43,6 +52,7 @@ PlumeQuarto <- R6Class(
   ),
 
   private = list(
+    plume_names = default_names_quarto,
     meta_prefix = "meta-",
 
     mold = function(...) {
@@ -72,6 +82,7 @@ PlumeQuarto <- R6Class(
         url = private$get("url"),
         roles = private$author_roles(),
         note = private$author_notes(),
+        acknowledgements = private$get("acknowledgements"),
         attributes = private$author_attributes(),
         affiliations = private$author_affiliations(),
         metadata = private$author_metadata()
