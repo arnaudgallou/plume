@@ -1,3 +1,16 @@
+default_names_quarto <- list_modify(
+  default_names,
+  internals = list(
+    deceased = "deceased",
+    equal_contributor = "equal_contributor"
+  ),
+  secondaries = list(
+    number = "number",
+    dropping_particle = "dropping_particle",
+    acknowledgements = "acknowledgements"
+  )
+)
+
 #' @title PlumeQuarto class
 #' @description Class that pushes or updates author metadata in a Quarto file.
 #' @export
@@ -39,6 +52,7 @@ PlumeQuarto <- R6Class(
   ),
 
   private = list(
+    plume_names = default_names_quarto,
     meta_prefix = "meta-",
 
     mold = function(...) {
@@ -68,6 +82,7 @@ PlumeQuarto <- R6Class(
         url = private$get("url"),
         roles = private$author_roles(),
         note = private$author_notes(),
+        acknowledgements = private$get("acknowledgements"),
         attributes = private$author_attributes(),
         affiliations = private$author_affiliations(),
         metadata = private$author_metadata()

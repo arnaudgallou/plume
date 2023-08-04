@@ -4,11 +4,13 @@
 \alias{set_default_names}
 \title{Set new default names to a plume subclass}
 \usage{
-set_default_names(...)
+set_default_names(..., .plume_quarto = FALSE)
 }
 \arguments{
 \item{...}{Key-value pairs where keys are old names and values their respective
 replacements.}
+
+\item{.plume_quarto}{Are you setting new names for \code{\link{PlumeQuarto}}?}
 }
 \value{
 A named list.
@@ -21,5 +23,8 @@ subclass, e.g. to set default names to a language other than English. See
 \details{
 Available names are:
 
-\code{id}, \code{initials}, \code{literal_name}, \code{corresponding}, \code{deceased}, \code{equal_contributor}, \code{given_name}, \code{family_name}, \code{number}, \code{dropping_particle}, \code{email}, \code{orcid}, \code{phone}, \code{fax}, \code{url}, \code{affiliation}, \code{role}, \code{note}
+\code{id}, \code{initials}, \code{literal_name}, \code{corresponding}, \code{given_name}, \code{family_name}, \code{email}, \code{orcid}, \code{phone}, \code{fax}, \code{url}, \code{affiliation}, \code{role}, \code{note}.
+
+Using \code{.plume_quarto = TRUE} adds \code{deceased}, \code{equal_contributor}, \code{number},
+\code{dropping_particle} and \code{acknowledgements}.
 }

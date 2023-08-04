@@ -4,13 +4,17 @@
 #'   `vignette("working-in-other-languages")` for more details.
 #' @param ... Key-value pairs where keys are old names and values their respective
 #'   replacements.
+#' @param .plume_quarto Are you setting new names for [`PlumeQuarto`]?
 #' @details
 #' Available names are:
 #'
-#' `r wrap(unlist(map(default_names, names)), "\x60")`
+#' `r wrap(unlist(map(default_names, names)), "\x60")`.
+#'
+#' Using `.plume_quarto = TRUE` adds `deceased`, `equal_contributor`, `number`,
+#' `dropping_particle` and `acknowledgements`.
 #' @return A named list.
 #' @export
-set_default_names <- function(...) {
+set_default_names <- function(..., .plume_quarto = FALSE) {
   dots <- c(...)
   check_character(
     dots,
@@ -19,7 +23,8 @@ set_default_names <- function(...) {
     msg = "`...` inputs must be character vectors.",
     arg = "..."
   )
-  nms <- default_names
+  check_bool(.plume_quarto)
+  nms <- if (.plume_quarto) default_names_quarto else default_names
   for (i in seq_along(nms)) {
     nms[[i]] <- supplant(nms[[i]], dots)
   }

@@ -12,6 +12,7 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 options(str = strOptions(vec.len = 9))
 library(plume)
 library(readr)
+library(gt)
 ```
 
 The goal of the plume package is to make the handling and formatting of author data for scientific writing in R Markdown and Quarto easy and (almost) painless.
@@ -34,34 +35,62 @@ Plume$new(encyclopedists)
 
 ## Default variables
 
-The default variables handled by plume classes are organised into five categories:
-
-```{r, echo = FALSE, results = "asis"}
-plume_keys <- lapply(plume:::default_names, names)
+```{r, echo = FALSE}
+make_table_vars <- function(category, protected = FALSE) {
+  vars <- list(
+    Plume = plume:::default_names,
+    PlumeQuarto = plume:::default_names_quarto,
+    protected = plume:::.names$protected
+  )
+  type <- if (protected) "protected" else "PlumeQuarto"
+  tibble::tibble(
+    name = names(vars[[type]][[category]]),
+    Plume = ifelse(name %in% unlist(vars$Plume) | protected, 1, 0),
+    PlumeQuarto = 1
+  ) |>
+    gt() |>
+    text_case_match(
+      "1" ~ fontawesome::fa("check"),
+      .default = "",
+      .locations = cells_body(tidyselect::starts_with("Plume"))
+    ) |>
+    cols_label(name = "Name") |>
+    cols_align(align = "center", columns = tidyselect::starts_with("Plume")) |>
+    cols_width(name ~ pct(50)) |>
+    opt_row_striping()
+}
 ```
 
-**Primary**: variables required to create a `plume` object.
+The default variables handled by plume classes are organised into six categories:
 
-```{r, echo = FALSE, results = "asis"}
-cat(paste("*", plume:::wrap(plume_keys$primary, "`")), sep = "\n\n")
+**Primaries**: variables required to create a `plume` object.
+
+```{r, echo = FALSE}
+make_table_vars("primaries")
 ```
 
-**Secondary**: optional variables that can be provided in the input data.
+**Secondaries**: optional variables that can be provided in the input data.
 
-```{r, echo = FALSE, results = "asis"}
-cat(paste("*", plume:::wrap(plume_keys$secondary, "`")), sep = "\n\n")
+```{r, echo = FALSE}
+make_table_vars("secondaries")
 ```
 
-**Nestable**: optional variables that can be provided in the input data. These variables differ from the `secondary` variables in that they can be used to pass multiple independent values to authors. Nestable variables must start with the same prefix. E.g. `affiliation_1`, `affiliation_2`, ..., `affiliation_n` to pass several affiliations to authors.
+**Nestables**: optional variables that can be provided in the input data. These variables differ from the `secondary` variables in that they can be used to pass multiple independent values to authors. Nestable variables must start with the same prefix. E.g. `affiliation_1`, `affiliation_2`, ..., `affiliation_n` to pass several affiliations to authors.
 
-```{r, echo = FALSE, results = "asis"}
-cat(paste("*", plume:::wrap(plume_keys$nestable, "`")), sep = "\n\n")
+```{r, echo = FALSE}
+make_table_vars("nestables")
 ```
 
-**Internal**: variables created internally. These variables don't need to be provided in the input data and are ignored if supplied. You shouldn't worry much about these variables unless you want to customise names or extend plume classes with new default names.
+**Internals**: variables created internally. These variables don't need to be provided in the input data and are ignored if supplied. You shouldn't worry much about these variables unless you want to customise names or extend plume classes with new default names.
 
-```{r, echo = FALSE, results = "asis"}
-cat(paste("*", plume:::wrap(plume_keys$internal, "`")), sep = "\n\n")
+```{r, echo = FALSE}
+make_table_vars("internals")
+```
+
+**Constants**: these names are standardised and must be provided as is.
+
+```{r, echo = FALSE}
+make_table_vars("crt", protected = TRUE)
 ```
 
 **Meta**: `PlumeQuarto`-specific variables used to pass extra information that doesn't fit in other categories. Meta columns must start with the prefix `meta-` and are followed by a custom name (e.g. `meta-extra_info`). You should only use these variables to pass data that are template specific. See Quarto's [arbitrary-metadata](quarto.org/docs/journals/authors.html#arbitrary-metadata) section for details.

@@ -24,4 +24,10 @@
       <error/rlang_error>
       Error:
       ! `...` must have unique input names.
+    Code
+      (expect_error(set_default_names(.plume_quarto = 1)))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `.plume_quarto` must be `TRUE` or `FALSE`.
 
