@@ -8,6 +8,14 @@
 
 ## Minor improvements and bug fixes
 
+* R6 classes have been overhauled for a better separation of concerns (#5, #12).
+
+  * `$set_*` methods have been moved to their own classes.
+  
+  * `PlumeQuarto` now only does what it is designed for: injecting author metadata into the YAML header of Quarto files. This means that `PlumeQuarto` can no longer generate author information as character strings.
+
+  * `Plume` now drops variables that are `PlumeQuarto`-specific. `Plume`'s constructor also lost the `by` parameter as it was only used in `$set_corresponding_authors()`.
+
 * `$new()` and `plm_template()` gain a new parameter `credit_roles` to facilitate the use of the [Contributor Roles Taxonomy](https://credit.niso.org).
 
 * Fixed issues when pushing metadata to empty YAML headers (#9).
