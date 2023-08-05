@@ -3,49 +3,31 @@ test_that("set_default_names() sets new plume names", {
     initials = "initiales",
     literal_name = "nom_complet",
     corresponding = "correspondant",
-    deceased = "décédé",
-    equal_contributor = "contribution_égale",
     given_name = "prénom",
     family_name = "nom",
-    number = "numéro",
-    dropping_particle = "particule_délaissée",
     email = "courriel",
-    phone = "téléphone",
-    acknowledgements = "remerciements",
+    phone = "téléphone"
+  )
+
+  expect_snapshot(str(nms))
+
+  nms <- set_default_names(
+    equal_contributor = "contribution_égale",
+    .plume_quarto = FALSE
+  )
+
+  expect_null(nms$internals$equal_contributor)
+
+  nms <- set_default_names(
+    equal_contributor = "contribution_égale",
     .plume_quarto = TRUE
   )
 
-  new_nms <- list(
-    internals = list(
-      id = "id",
-      initials = "initiales",
-      literal_name = "nom_complet",
-      corresponding = "correspondant",
-      deceased = "décédé",
-      equal_contributor = "contribution_égale"
-    ),
-    primaries = list(
-      given_name = "prénom",
-      family_name = "nom"
-    ),
-    secondaries = list(
-      email = "courriel",
-      orcid = "orcid",
-      phone = "téléphone",
-      fax = "fax",
-      url = "url",
-      number = "numéro",
-      dropping_particle = "particule_délaissée",
-      acknowledgements = "remerciements"
-    ),
-    nestables = list(
-      affiliation = "affiliation",
-      role = "role",
-      note = "note"
-    )
-  )
+  expect_equal(nms$internals$equal_contributor, "contribution_égale")
 
-  expect_equal(nms, new_nms)
+  nms <- set_default_names(foo = "foo", bar = "bar")
+
+  expect_equal(nms, default_names)
 })
 
 # Errors ----
