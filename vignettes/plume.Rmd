@@ -8,7 +8,10 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 options(str = strOptions(vec.len = 9))
 library(plume)
 library(readr)
@@ -75,10 +78,16 @@ make_table_vars("primaries")
 make_table_vars("secondaries")
 ```
 
-**Nestables**: optional variables that can be provided in the input data. These variables differ from the `secondary` variables in that they can be used to pass multiple independent values to authors. Nestable variables must start with the same prefix. E.g. `affiliation_1`, `affiliation_2`, ..., `affiliation_n` to pass several affiliations to authors.
+**Nestables**: optional variables that can be provided in the input data to pass multiple independent values to authors. Nestable variables must start with the same prefix. E.g. `affiliation_1`, `affiliation_2`, ..., `affiliation_n` to pass several affiliations to authors.
 
 ```{r, echo = FALSE}
 make_table_vars("nestables")
+```
+
+**Constants**: optional names that can be provided in the input data. These names are standardised and must be provided as is.
+
+```{r, echo = FALSE}
+make_table_vars("crt", protected = TRUE)
 ```
 
 **Internals**: variables created internally. These variables don't need to be provided in the input data and are ignored if supplied. You shouldn't worry much about these variables unless you want to customise names or extend plume classes with new default names.
@@ -87,13 +96,7 @@ make_table_vars("nestables")
 make_table_vars("internals")
 ```
 
-**Constants**: these names are standardised and must be provided as is.
-
-```{r, echo = FALSE}
-make_table_vars("crt", protected = TRUE)
-```
-
-**Meta**: `PlumeQuarto`-specific variables used to pass extra information that doesn't fit in other categories. Meta columns must start with the prefix `meta-` and are followed by a custom name (e.g. `meta-extra_info`). You should only use these variables to pass data that are template specific. See Quarto's [arbitrary-metadata](quarto.org/docs/journals/authors.html#arbitrary-metadata) section for details.
+**Meta**: `PlumeQuarto`-specific variables used to pass extra information that doesn't fit in other categories. Meta columns must start with the prefix `meta-` and are followed by a custom name (e.g. `meta-extra_info`). You should only use these variables to pass data that are template specific. See Quarto's [arbitrary-metadata](https://quarto.org/docs/journals/authors.html#arbitrary-metadata) section for details.
 
 ## Using custom names
 
@@ -115,32 +118,38 @@ Plume$new(
 
 ## Pushing data into a YAML header
 
-`PlumeQuarto` allows you to inject author metadata directly into the YAML header of a `.qmd` file.
+`PlumeQuarto` allows you to inject author metadata directly into the YAML header of `.qmd` files.
 
-Consider the following `.qmd` file:
+Consider the following Quarto document:
 
 ```{r, include = FALSE}
-tmp <- withr::local_tempfile(
+tmp_file <- withr::local_tempfile(
   lines = "---\ntitle: Encyclopédie\n---\n\nQui scribit bis legit",
   fileext = ".qmd"
 )
 ```
 
 ```{r, echo = FALSE, comment = ""}
-cat(read_file(tmp))
+cat(read_file(tmp_file))
 ```
 
 You can push information from the input data into the YAML header using the `to_yaml()` method.
 
 ```{r, eval = FALSE}
-aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 1, 4))
+aut <- PlumeQuarto$new(
+  dplyr::slice(encyclopedists, 1, 4),
+  names = c(role = "role_n")
+)
 aut$to_yaml("file.qmd")
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 1, 4))
-aut$to_yaml(tmp)
-cat(read_file(tmp))
+aut <- PlumeQuarto$new(
+  dplyr::slice(encyclopedists, 1, 4),
+  names = c(role = "role_n")
+)
+aut$to_yaml(tmp_file)
+cat(read_file(tmp_file))
 ```
 
 Authors are listed in the order they're defined in the input data.
@@ -148,14 +157,20 @@ Authors are listed in the order they're defined in the input data.
 If the YAML header already has an `author` and `affiliations` keys, `to_yaml()` replaces old values with new ones.
 
 ```{r, eval = FALSE}
-aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 2))
+aut <- PlumeQuarto$new(
+  dplyr::slice(encyclopedists, 2),
+  names = c(role = "role_n")
+)
 aut$to_yaml("file.qmd")
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 2))
-aut$to_yaml(tmp)
-cat(read_file(tmp))
+aut <- PlumeQuarto$new(
+  dplyr::slice(encyclopedists, 2),
+  names = c(role = "role_n")
+)
+aut$to_yaml(tmp_file)
+cat(read_file(tmp_file))
 ```
 
 ## Assigning status to authors
@@ -275,42 +290,15 @@ aut$get_contributions(alphabetical_order = TRUE)
 
 `get_orcids()` returns authors with their respective ORCID.
 
-::: super_chunk
 ```{r}
-#| eval: false
-aut$get_orcids()
+aut$get_orcids(compact = FALSE, icon = FALSE)
 ```
-
-::: super_chunk-output
-```{r}
-#| echo: false
-#| results: asis
-cat(aut$get_orcids(), sep = "\n\n")
-```
-:::
-:::
-
-::: super_chunk
-```{r}
-#| eval: false
-aut$get_orcids(compact = TRUE, icon = FALSE, sep = ": ")
-```
-
-::: super_chunk-output
-```{r}
-#| echo: false
-#| results: asis
-cat(aut$get_orcids(compact = TRUE, icon = FALSE, sep = ": "), sep = "\n\n")
-```
-:::
-:::
 
 ## Symbols
 
 Default symbols are:
 
-```{r}
-#| echo: false
+```{r, echo = FALSE}
 str(plume:::default_symbols)
 ```
 
@@ -337,12 +325,11 @@ By default, plume repeats elements when all elements in a vector are consumed. U
 
 ## Outputting as markdown content
 
-To output author data as markdown content, use the chunk option `results: "asis"` in combination with `cat()`.
+To output author data as markdown content, use the chunk option `results: asis` in combination with `cat()`.
 
 ````{verbatim}
 ```{r}
-#| results: "asis"
-
+#| results: asis
 aut$get_contributions() |> cat(sep = "; ")
 ```
 ````

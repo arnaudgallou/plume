@@ -17,14 +17,13 @@ library(plume)
 
 plume implements a simple solution to work with the `r plume:::link("crt")` (CRediT).
 
-First, create a table using `plm_template(credit_roles = TRUE)` to ensure the table has all the appropriate columns. CRediT columns are standardised and can't be changed so it's important that they're properly named.
+First, create a table using `plm_template(credit_roles = TRUE)` to ensure the table has all the appropriate columns.
 
-Use a `1` to assign a role to a specific contributor and leave it blank otherwise. All contributions should normally be used. For the purpose of the example, I selected just a few columns here.
+Then, simply assign a role to a specific contributor with a `1` and leave it blank otherwise. For the purpose of this example, I selected just a few roles. You should normally use all contributions, as recommended by the official CRediT's documentation.
 
-```{r}
-#| echo: false
-tbl_credit <- encyclopedists |> 
-  dplyr::select(given_name, family_name) |> 
+```{r, echo = FALSE}
+tbl_credit <- encyclopedists |>
+  dplyr::select(given_name, family_name) |>
   dplyr::mutate(
     conceptualization = c(1, NA, NA, NA),
     analysis = rep(1, 4),
@@ -36,10 +35,9 @@ tbl_credit <- encyclopedists |>
 tbl_credit
 ```
 
-Once the data set is ready, simply use `credit_roles = TRUE` when creating your `plume` object. plume will process and format the roles automatically.
+Once the data set is ready, use `credit_roles = TRUE` when creating your `plume` object. plume will process and format the roles automatically.
 
 ```{r}
 aut <- Plume$new(tbl_credit, credit_roles = TRUE)
 aut$get_contributions()
 ```
-

@@ -8,34 +8,33 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 library(plume)
 ```
 
 If you work in a language other than English, you can extend plume classes with default names in your desired language. plume provides `set_default_names()` to help you set new default names.
 
-E.g. to extend `PlumeQuarto` with default names in French:
+E.g. to extend `Plume` with default names in French:
 
 ```{r}
-PlumeQuartoFr <- R6::R6Class(
-  classname = "PlumeQuartoFr",
-  inherit = PlumeQuarto,
+PlumeFr <- R6::R6Class(
+  classname = "PlumeFr",
+  inherit = Plume,
   private = list(
     plume_names = set_default_names(
       initials = "initiales",
       literal_name = "nom_complet",
       corresponding = "correspondant",
-      deceased = "décédé",
-      equal_contributor = "contribution_égale",
       given_name = "prénom",
       family_name = "nom",
-      dropping_particle = "particule_délaissée",
       email = "courriel",
-      phone = "téléphone",
-      number = "numéro"
+      phone = "téléphone"
     )
   )
 )
 
-PlumeQuartoFr$new(encyclopedists_fr)
+PlumeFr$new(encyclopedists_fr)
 ```
