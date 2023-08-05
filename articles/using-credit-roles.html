@@ -90,11 +90,12 @@
 (CRediT).</p>
 <p>First, create a table using
 <code>plm_template(credit_roles = TRUE)</code> to ensure the table has
-all the appropriate columns. CRediT columns are standardised and can’t
-be changed so it’s important that they’re properly named.</p>
-<p>Use a <code>1</code> to assign a role to a specific contributor and
-leave it blank otherwise. All contributions should normally be used. For
-the purpose of the example, I selected just a few columns here.</p>
+all the appropriate columns.</p>
+<p>Then, simply assign a role to a specific contributor with a
+<code>1</code> and leave it blank otherwise. For the purpose of this
+example, I selected just a few roles. You should normally use all
+contributions, as recommended by the official CRediT’s
+documentation.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 7</span></span></span>
 <span><span class="co">#&gt;   given_name     family_name  conceptualization analysis supervision methodology</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -103,9 +104,9 @@ the purpose of the example, I selected just a few columns here.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-Marie Arouet                      <span style="color: #BB0000;">NA</span>        1          <span style="color: #BB0000;">NA</span>           1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'A…                <span style="color: #BB0000;">NA</span>        1           1           1</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: writing &lt;dbl&gt;</span></span></span></code></pre>
-<p>Once the data set is ready, simply use
-<code>credit_roles = TRUE</code> when creating your <code>plume</code>
-object. plume will process and format the roles automatically.</p>
+<p>Once the data set is ready, use <code>credit_roles = TRUE</code> when
+creating your <code>plume</code> object. plume will process and format
+the roles automatically.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">tbl_credit</span>, credit_roles <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
