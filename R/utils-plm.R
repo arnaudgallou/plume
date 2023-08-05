@@ -1,7 +1,7 @@
 #' @export
-print.plm <- function(x, ...) {
+print.plm <- function(x, ...,  sep = "\n") {
   if (length(x) > 0L) {
-    cat(x, ..., sep = "\n")
+    cat(x, ..., sep = sep)
   }
   invisible(x)
 }
