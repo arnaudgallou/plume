@@ -14,23 +14,23 @@ coverage](https://codecov.io/gh/arnaudgallou/plume/branch/main/graph/badge.svg)]
 
 plume provides tools for handling and generating author-related
 information for scientific writing in R Markdown and Quarto. The package
-implements two `R6` classes:
+implements two R6 classes:
+
+- `PlumeQuarto`: class that allows you to push or update author metadata
+  in the YAML header of Quarto files. The generated YAML complies with
+  Quarto’s [author and affiliations
+  schemas](https://quarto.org/docs/journals/authors.html).
 
 - `Plume`: class that generates author lists and other author-related
-  information from tabular data.
-
-- `PlumeQuarto`: class extending `Plume` that allows you to push or
-  update author metadata in the YAML header of a Quarto file. The
-  generated YAML complies with [Quarto’s author and affiliations
-  schemas](https://quarto.org/docs/journals/authors.html).
+  information as character strings.
 
 ## Installation
 
 You can install the development version of plume from GitHub with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("arnaudgallou/plume")
+# install.packages("pak")
+pak::pak("arnaudgallou/plume")
 ```
 
 ## Usage
@@ -64,7 +64,7 @@ Plume$new(encyclopedists)
 ```
 
 `PlumeQuarto` lets you push author metadata in the YAML header of any
-`.qmd` files using `to_yaml()`.
+`.qmd` file using the `to_yaml()` method.
 
 Consider the following example:
 
@@ -148,7 +148,7 @@ aut$to_yaml("file.qmd")
 
     Qui scribit bis legit
 
-You can also generate author information as character strings:
+Alternatively, you can generate author information as character strings.
 
 ``` r
 aut <- Plume$new(encyclopedists, names = c(role = "role_n"))
