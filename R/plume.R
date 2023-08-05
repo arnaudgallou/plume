@@ -80,7 +80,7 @@ Plume <- R6Class(
         suffixes <- private$get_author_list_suffixes(format)
         out <- paste0(authors, suffixes)
       }
-      new_plm(out)
+      as_plm(out)
     },
 
     #' @description Get authors' ORCID.
@@ -100,7 +100,7 @@ Plume <- R6Class(
       out <- add_orcid_links(out, orcid, compact)
       cols <- c(private$names$literal_name, predot(orcid))
       out <- collapse_cols(out, cols, sep)
-      new_plm(out)
+      as_plm(out)
     },
 
     #' @description Get authors' affiliations.
@@ -152,7 +152,7 @@ Plume <- R6Class(
       out <- filter(private$plume, corresponding & not_na_any(cols))
       dict <- list(details = cols, name = private$names$literal_name)
       dissolve(out, dict, partial(collapse_cols, sep = sep))
-      new_plm(glue(format))
+      as_plm(glue(format))
     },
 
     #' @description Get authors' contributions.
@@ -212,7 +212,7 @@ Plume <- R6Class(
         last = sep_last
       ), .by = all_of(pars$grp_var))
       out <- collapse_cols(out, pars$format, sep = pars$divider)
-      new_plm(out)
+      as_plm(out)
     }
   ),
 
@@ -252,7 +252,7 @@ Plume <- R6Class(
         out <- mutate(out, !!.col := wrap(.data[[.col]], "^"))
       }
       out <- collapse_cols(out, c(.col, col), sep)
-      new_plm(out)
+      as_plm(out)
     },
 
     contribution_pars = function(role_first, name_list, authors, divider) {

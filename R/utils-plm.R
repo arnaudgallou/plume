@@ -6,8 +6,8 @@ print.plm <- function(x, ...) {
   invisible(x)
 }
 
-new_plm <- function(x, ..., class = character()) {
-  structure(x, ..., class = c(class, "plm", "character"))
+as_plm <- function(x) {
+  structure(x, class = c("plm", "character"))
 }
 
 compare_proxy.plm <- function(x, path = "x") {
