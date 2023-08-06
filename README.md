@@ -185,7 +185,7 @@ aut_v$get_author_list(format = "^a^") |> enumerate(last = ",\n")
 #> Denis Diderot^a^, Jean-Jacques Rousseau^b^, François-Marie Arouet^b^,
 #> Jean Le Rond d'Alembert^a,c^
 
-aut_v$get_contributions(role_first = FALSE, name_list = TRUE)
+aut_v$get_contributions(roles_first = FALSE, name_list = TRUE)
 #> D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie
 #> D.D. and J.L.R.d'A. supervised the project
 ```

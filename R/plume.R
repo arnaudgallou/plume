@@ -156,10 +156,10 @@ Plume <- R6Class(
     },
 
     #' @description Get authors' contributions.
-    #' @param role_first If `TRUE`, displays roles first and authors second. If
+    #' @param roles_first If `TRUE`, displays roles first and authors second. If
     #'   `FALSE`, roles follow authors.
     #' @param name_list Should all authors with the same role be listed
-    #'   together? Only applies when `role_first = FALSE`.
+    #'   together? Only applies when `roles_first = FALSE`.
     #' @param alphabetical_order Should authors be listed in alphabetical order?
     #'   By default, lists authors in the order they are defined.
     #' @param dotted_initials Should initials be dot-separated?
@@ -170,7 +170,7 @@ Plume <- R6Class(
     #'   if more than one item is associated to a role or author.
     #' @return A character vector.
     get_contributions = function(
-        role_first = TRUE,
+        roles_first = TRUE,
         name_list = FALSE,
         alphabetical_order = FALSE,
         dotted_initials = TRUE,
@@ -181,7 +181,7 @@ Plume <- R6Class(
       role <- private$names$role
       private$check_col(role)
       check_args("bool", list(
-        role_first,
+        roles_first,
         name_list,
         alphabetical_order,
         dotted_initials,
@@ -199,7 +199,7 @@ Plume <- R6Class(
       } else {
         authors <- initials
       }
-      pars <- private$contribution_pars(role_first, name_list, authors, divider)
+      pars <- private$contribution_pars(roles_first, name_list, authors, divider)
       if (has_initials && dotted_initials && !literal_names) {
         out <- mutate(out, !!authors := dot(.data[[authors]]))
       }
@@ -255,18 +255,18 @@ Plume <- R6Class(
       as_plm(out)
     },
 
-    contribution_pars = function(role_first, name_list, authors, divider) {
-      if (!role_first && name_list) {
+    contribution_pars = function(roles_first, name_list, authors, divider) {
+      if (!roles_first && name_list) {
         divider <- " "
       } else {
         divider <- divider %||% ": "
       }
       role <- private$names$role
       format <- c(role, authors)
-      if (!role_first) {
+      if (!roles_first) {
         format <- rev(format)
       }
-      if (role_first || name_list) {
+      if (roles_first || name_list) {
         grp_var <- role
         var <- authors
       } else {

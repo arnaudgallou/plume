@@ -228,7 +228,7 @@ A character vector.
 Get authors' contributions.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Plume$get_contributions(
-  role_first = TRUE,
+  roles_first = TRUE,
   name_list = FALSE,
   alphabetical_order = FALSE,
   dotted_initials = TRUE,
@@ -241,11 +241,11 @@ Get authors' contributions.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{role_first}}{If \code{TRUE}, displays roles first and authors second. If
+\item{\code{roles_first}}{If \code{TRUE}, displays roles first and authors second. If
 \code{FALSE}, roles follow authors.}
 
 \item{\code{name_list}}{Should all authors with the same role be listed
-together? Only applies when \code{role_first = FALSE}.}
+together? Only applies when \code{roles_first = FALSE}.}
 
 \item{\code{alphabetical_order}}{Should authors be listed in alphabetical order?
 By default, lists authors in the order they are defined.}

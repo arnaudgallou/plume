@@ -29,7 +29,7 @@ test_that("get_contributions() return authors' contributions", {
   )
   expect_equal(
     aut$get_contributions(
-      role_first = FALSE,
+      roles_first = FALSE,
       name_list = TRUE,
       dotted_initials = FALSE
     ),
@@ -56,7 +56,7 @@ test_that("get_contributions() return authors' contributions", {
   })
 
   expect_equal(
-    aut$get_contributions(role_first = FALSE, literal_names = TRUE),
+    aut$get_contributions(roles_first = FALSE, literal_names = TRUE),
     paste0(literal_names, ": ", roles)
   )
 })
@@ -68,7 +68,7 @@ test_that("get_contributions() gives meaningful error messages", {
 
   expect_snapshot({
     (expect_error(
-      aut$get_contributions(role_first = "")
+      aut$get_contributions(roles_first = "")
     ))
     (expect_error(
       aut$get_contributions(name_list = "")
