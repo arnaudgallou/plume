@@ -266,7 +266,7 @@ Plume <- R6Class(
       if (!roles_first) {
         format <- rev(format)
       }
-      if (roles_first || !by_author) {
+      if (!by_author) {
         grp_var <- role
         var <- authors
       } else {
