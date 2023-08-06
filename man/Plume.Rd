@@ -244,8 +244,7 @@ Get authors' contributions.
 \item{\code{roles_first}}{If \code{TRUE}, displays roles first and authors second. If
 \code{FALSE}, roles follow authors.}
 
-\item{\code{by_author}}{Should roles be grouped by author? Only applies when
-\code{roles_first = FALSE}.}
+\item{\code{by_author}}{Should roles be grouped by author?}
 
 \item{\code{alphabetical_order}}{Should authors be listed in alphabetical order?
 By default, lists authors in the order they are defined.}

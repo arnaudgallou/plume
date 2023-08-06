@@ -158,8 +158,7 @@ Plume <- R6Class(
     #' @description Get authors' contributions.
     #' @param roles_first If `TRUE`, displays roles first and authors second. If
     #'   `FALSE`, roles follow authors.
-    #' @param by_author Should roles be grouped by author? Only applies when
-    #'   `roles_first = FALSE`.
+    #' @param by_author Should roles be grouped by author?
     #' @param alphabetical_order Should authors be listed in alphabetical order?
     #'   By default, lists authors in the order they are defined.
     #' @param dotted_initials Should initials be dot-separated?
