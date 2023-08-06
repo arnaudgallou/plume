@@ -229,7 +229,7 @@ Get authors' contributions.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Plume$get_contributions(
   roles_first = TRUE,
-  name_list = FALSE,
+  by_author = TRUE,
   alphabetical_order = FALSE,
   dotted_initials = TRUE,
   literal_names = FALSE,
@@ -244,8 +244,8 @@ Get authors' contributions.
 \item{\code{roles_first}}{If \code{TRUE}, displays roles first and authors second. If
 \code{FALSE}, roles follow authors.}
 
-\item{\code{name_list}}{Should all authors with the same role be listed
-together? Only applies when \code{roles_first = FALSE}.}
+\item{\code{by_author}}{Should roles be grouped by author? Only applies when
+\code{roles_first = FALSE}.}
 
 \item{\code{alphabetical_order}}{Should authors be listed in alphabetical order?
 By default, lists authors in the order they are defined.}
@@ -255,7 +255,7 @@ By default, lists authors in the order they are defined.}
 \item{\code{literal_names}}{Should literal names be used?}
 
 \item{\code{divider}}{Separator used to separate role items and authors when
-\code{name_list = FALSE}. Uses \code{": "} by default.}
+\code{by_author = FALSE}. Uses \code{": "} by default.}
 
 \item{\code{sep_last}}{Separator used to separate the last two roles or authors
 if more than one item is associated to a role or author.}

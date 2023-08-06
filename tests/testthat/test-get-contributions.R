@@ -30,7 +30,7 @@ test_that("get_contributions() return authors' contributions", {
   expect_equal(
     aut$get_contributions(
       roles_first = FALSE,
-      name_list = TRUE,
+      by_author = FALSE,
       dotted_initials = FALSE
     ),
     paste0(contributors, " ", roles)
@@ -71,7 +71,7 @@ test_that("get_contributions() gives meaningful error messages", {
       aut$get_contributions(roles_first = "")
     ))
     (expect_error(
-      aut$get_contributions(name_list = "")
+      aut$get_contributions(by_author = "")
     ))
     (expect_error(
       aut$get_contributions(alphabetical_order = "")

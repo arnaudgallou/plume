@@ -101,7 +101,7 @@ aut_v <- Plume$new(
 
 aut_v$get_author_list(format = "^a^") |> enumerate(last = ",\n")
 
-aut_v$get_contributions(roles_first = FALSE, name_list = TRUE)
+aut_v$get_contributions(roles_first = FALSE, by_author = TRUE)
 ```
 
 ## Acknowledgements

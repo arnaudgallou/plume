@@ -277,7 +277,7 @@ aut$get_contributions()
 aut$get_contributions(roles_first = FALSE, literal_names = TRUE)
 
 aut_v <- Plume$new(encyclopedists, names = c(role = "role_v"))
-aut_v$get_contributions(roles_first = FALSE, name_list = TRUE)
+aut_v$get_contributions(roles_first = FALSE, by_author = TRUE)
 ```
 
 By default, `get_contributions()` lists contributors in the order they're defined. You can arrange contributors in alphabetical order with `alphabetical_order = TRUE`.
