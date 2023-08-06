@@ -303,26 +303,25 @@ passed to the variable <code>details</code>. By default, only <code>email</code>
 <p>Get authors' contributions.</p><div class="section">
 <h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span></span>
-<span>  role_first <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  name_list <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  roles_first <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  by_author <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  alphabetical_order <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  dotted_initials <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  literal_names <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  divider <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  divider <span class="op">=</span> <span class="st">": "</span>,</span>
 <span>  sep_last <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>role_first</code></dt>
+<p></p><div class="arguments"><dl><dt><code>roles_first</code></dt>
 <dd><p>If <code>TRUE</code>, displays roles first and authors second. If
 <code>FALSE</code>, roles follow authors.</p></dd>
 
 
-<dt><code>name_list</code></dt>
-<dd><p>Should all authors with the same role be listed
-together? Only applies when <code>role_first = FALSE</code>.</p></dd>
+<dt><code>by_author</code></dt>
+<dd><p>Should roles be grouped by author?</p></dd>
 
 
 <dt><code>alphabetical_order</code></dt>
@@ -339,8 +338,8 @@ By default, lists authors in the order they are defined.</p></dd>
 
 
 <dt><code>divider</code></dt>
-<dd><p>Separator used to separate role items and authors when
-<code>name_list = FALSE</code>. Uses <code>": "</code> by default.</p></dd>
+<dd><p>Separator used to separate roles and authors. Uses <code>": "</code>
+by default.</p></dd>
 
 
 <dt><code>sep_last</code></dt>
