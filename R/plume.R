@@ -170,7 +170,7 @@ Plume <- R6Class(
     #' @return A character vector.
     get_contributions = function(
         roles_first = TRUE,
-        by_author = TRUE,
+        by_author = FALSE,
         alphabetical_order = FALSE,
         dotted_initials = TRUE,
         literal_names = FALSE,

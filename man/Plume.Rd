@@ -229,7 +229,7 @@ Get authors' contributions.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Plume$get_contributions(
   roles_first = TRUE,
-  by_author = TRUE,
+  by_author = FALSE,
   alphabetical_order = FALSE,
   dotted_initials = TRUE,
   literal_names = FALSE,
