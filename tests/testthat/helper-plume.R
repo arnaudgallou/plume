@@ -5,6 +5,7 @@ basic_df <- function() {
     given_name = given_names,
     family_name = family_names,
     literal_name = paste(given_names, family_names),
+    initials = c("ZZ", "RR", "P-PP"),
     affiliation = c("a", "c", "d"),
     affiliation2 = c("b", NA, "a"),
     role = rep("a", 3),
