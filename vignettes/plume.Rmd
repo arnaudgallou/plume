@@ -274,10 +274,14 @@ plume provides a convenient way to generate contribution lists using the `get_co
 aut <- Plume$new(encyclopedists, names = c(role = "role_n"))
 aut$get_contributions()
 
-aut$get_contributions(roles_first = FALSE, literal_names = TRUE)
+aut$get_contributions(
+  roles_first = FALSE,
+  by_author = TRUE,
+  literal_names = TRUE
+)
 
 aut_v <- Plume$new(encyclopedists, names = c(role = "role_v"))
-aut_v$get_contributions(roles_first = FALSE, by_author = TRUE)
+aut_v$get_contributions(roles_first = FALSE, divider = " ")
 ```
 
 By default, `get_contributions()` lists contributors in the order they're defined. You can arrange contributors in alphabetical order with `alphabetical_order = TRUE`.

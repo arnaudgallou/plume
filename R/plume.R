@@ -163,8 +163,8 @@ Plume <- R6Class(
     #'   By default, lists authors in the order they are defined.
     #' @param dotted_initials Should initials be dot-separated?
     #' @param literal_names Should literal names be used?
-    #' @param divider Separator used to separate role items and authors when
-    #'   `by_author = FALSE`. Uses `": "` by default.
+    #' @param divider Separator used to separate roles and authors. Uses `": "`
+    #'   by default.
     #' @param sep_last Separator used to separate the last two roles or authors
     #'   if more than one item is associated to a role or author.
     #' @return A character vector.
@@ -174,7 +174,7 @@ Plume <- R6Class(
         alphabetical_order = FALSE,
         dotted_initials = TRUE,
         literal_names = FALSE,
-        divider = NULL,
+        divider = ": ",
         sep_last = NULL
     ) {
       role <- private$names$role
@@ -186,7 +186,8 @@ Plume <- R6Class(
         dotted_initials,
         literal_names
       ))
-      check_args("string", list(sep_last, divider), allow_null = TRUE)
+      check_string(divider)
+      check_string(sep_last, allow_null = TRUE)
       out <- unnest_drop(private$plume, role)
       if (is_empty(out)) {
         return()
@@ -198,7 +199,7 @@ Plume <- R6Class(
       } else {
         authors <- initials
       }
-      pars <- private$contribution_pars(roles_first, by_author, authors, divider)
+      pars <- private$contribution_pars(roles_first, by_author, authors)
       if (has_initials && dotted_initials && !literal_names) {
         out <- mutate(out, !!authors := dot(.data[[authors]]))
       }
@@ -210,7 +211,7 @@ Plume <- R6Class(
         .data[[pars$var]],
         last = sep_last
       ), .by = all_of(pars$grp_var))
-      out <- collapse_cols(out, pars$format, sep = pars$divider)
+      out <- collapse_cols(out, pars$format, sep = divider)
       as_plm(out)
     }
   ),
@@ -254,12 +255,7 @@ Plume <- R6Class(
       as_plm(out)
     },
 
-    contribution_pars = function(roles_first, by_author, authors, divider) {
-      if (!roles_first && !by_author) {
-        divider <- " "
-      } else {
-        divider <- divider %||% ": "
-      }
+    contribution_pars = function(roles_first, by_author, authors) {
       role <- private$names$role
       format <- c(role, authors)
       if (!roles_first) {
@@ -272,7 +268,7 @@ Plume <- R6Class(
         grp_var <- authors
         var <- role
       }
-      list(divider = divider, grp_var = grp_var, var = var, format = format)
+      list(grp_var = grp_var, var = var, format = format)
     }
   )
 )

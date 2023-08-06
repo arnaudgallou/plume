@@ -27,7 +27,7 @@ test_that("get_contributions() return authors' contributions", {
 
   expect_equal(
     aut$get_contributions(roles_first = FALSE, by_author = FALSE),
-    paste0(contributors, " ", roles)
+    paste0(contributors, ": ", roles)
   )
   expect_equal(
     aut$get_contributions(roles_first = TRUE, by_author = FALSE),
@@ -37,8 +37,8 @@ test_that("get_contributions() return authors' contributions", {
   # other arguments
 
   expect_equal(
-    aut$get_contributions(by_author = FALSE, divider = " - "),
-    paste0(roles, " - ", contributors)
+    aut$get_contributions(by_author = FALSE, divider = " "),
+    paste0(roles, " ", contributors)
   )
 
   contributors <- lapply(list_initials, \(x) enumerate(sort(x)))

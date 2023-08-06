@@ -43,17 +43,13 @@
     Code
       (expect_error(aut$get_contributions(sep_last = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `sep_last` must be a character string.
     Code
       (expect_error(aut$get_contributions(divider = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 2.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `divider` must be a character string.
 
