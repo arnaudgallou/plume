@@ -195,11 +195,12 @@ Plume <- R6Class(
       if (pars$has_initials && dotted_initials && !literal_names) {
         out <- mutate(out, !!pars$author := dot(.data[[pars$author]]))
       }
-      if (alphabetical_order) {
-        out <- arrange(out, .data[[pars$var]])
-      }
       out <- summarise(out, !!pars$var := enumerate(
-        .data[[pars$var]],
+        if (!by_author && alphabetical_order) {
+          sort(.data[[pars$var]])
+        } else {
+          .data[[pars$var]]
+        },
         last = sep_last
       ), .by = all_of(pars$grp_var))
       out <- collapse_cols(out, pars$format, sep = divider)

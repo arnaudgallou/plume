@@ -1,7 +1,7 @@
 #' @description A tool for handling and printing author information in R Markdown
 #'   and Quarto.
 #' @keywords internal
-#' @importFrom dplyr distinct filter arrange select dense_rank
+#' @importFrom dplyr distinct filter select dense_rank
 #' @importFrom dplyr mutate summarise across rename
 #' @importFrom dplyr if_else if_any
 #' @importFrom tidyr drop_na pivot_longer nest unnest expand_grid

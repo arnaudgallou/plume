@@ -8,6 +8,8 @@
 
 ## Minor improvements and bug fixes
 
+* Fixed an issue with `$get_contributions(alphabetical_order = TRUE)` that also reordered roles and contribution items (#18).
+
 * R6 classes have been overhauled for a better separation of concerns (#5, #12).
 
   * `$set_*` methods have been moved to their own classes.

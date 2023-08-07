@@ -72,6 +72,24 @@ test_that("get_contributions() return authors' contributions", {
   )
 })
 
+test_that("get_contributions() rearranges authors only (#18)", {
+  aut <- Plume$new(data.frame(
+    given_name = c("Zip", "Pim"),
+    family_name = c("Zap", "Pam"),
+    role_1 = c("z", NA),
+    role_2 = c("a", "a")
+  ))
+
+  expect_equal(
+    aut$get_contributions(alphabetical_order = TRUE),
+    c("z: Z.Z.", "a: P.P. and Z.Z.")
+  )
+  expect_equal(
+    aut$get_contributions(by_author = TRUE, alphabetical_order = TRUE),
+    c("z and a: Z.Z.", "a: P.P.")
+  )
+})
+
 # Errors ----
 
 test_that("get_contributions() gives meaningful error messages", {
