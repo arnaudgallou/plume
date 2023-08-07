@@ -175,7 +175,7 @@ Plume <- R6Class(
         dotted_initials = TRUE,
         literal_names = FALSE,
         divider = ": ",
-        sep_last = NULL
+        sep_last = " and "
     ) {
       role <- private$names$role
       private$check_col(role)
@@ -186,27 +186,18 @@ Plume <- R6Class(
         dotted_initials,
         literal_names
       ))
-      check_string(divider)
-      check_string(sep_last, allow_null = TRUE)
+      check_args("string", list(divider, sep_last))
       out <- unnest_drop(private$plume, role)
       if (is_empty(out)) {
         return()
       }
-      initials <- private$names$initials
-      has_initials <- private$has_col(initials)
-      if (!has_initials || literal_names) {
-        authors <- private$names$literal_name
-      } else {
-        authors <- initials
-      }
-      pars <- private$contribution_pars(roles_first, by_author, authors)
-      if (has_initials && dotted_initials && !literal_names) {
-        out <- mutate(out, !!authors := dot(.data[[authors]]))
+      pars <- private$contribution_pars(roles_first, by_author, literal_names)
+      if (pars$has_initials && dotted_initials && !literal_names) {
+        out <- mutate(out, !!pars$author := dot(.data[[pars$author]]))
       }
       if (alphabetical_order) {
         out <- arrange(out, .data[[pars$var]])
       }
-      sep_last <- sep_last %||% " and "
       out <- summarise(out, !!pars$var := enumerate(
         .data[[pars$var]],
         last = sep_last
@@ -255,20 +246,33 @@ Plume <- R6Class(
       as_plm(out)
     },
 
-    contribution_pars = function(roles_first, by_author, authors) {
+    contribution_pars = function(roles_first, by_author, literal_names) {
+      initials <- private$names$initials
+      has_initials <- private$has_col(initials)
+      if (!has_initials || literal_names) {
+        author <- private$names$literal_name
+      } else {
+        author <- initials
+      }
       role <- private$names$role
-      format <- c(role, authors)
+      format <- c(role, author)
       if (!roles_first) {
         format <- rev(format)
       }
-      if (!by_author) {
-        grp_var <- role
-        var <- authors
-      } else {
-        grp_var <- authors
+      if (by_author) {
+        grp_var <- author
         var <- role
+      } else {
+        grp_var <- role
+        var <- author
       }
-      list(grp_var = grp_var, var = var, format = format)
+      list(
+        has_initials = has_initials,
+        author = author,
+        grp_var = grp_var,
+        var = var,
+        format = format
+      )
     }
   )
 )

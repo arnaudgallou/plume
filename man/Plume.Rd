@@ -234,7 +234,7 @@ Get authors' contributions.
   dotted_initials = TRUE,
   literal_names = FALSE,
   divider = ": ",
-  sep_last = NULL
+  sep_last = " and "
 )}\if{html}{\out{</div>}}
 }
 
