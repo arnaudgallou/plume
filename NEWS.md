@@ -8,6 +8,8 @@
 
 ## Minor improvements and bug fixes
 
+* `$get_contributions()` now handles namesakes (#15).
+
 * Fixed an issue with `$get_contributions(alphabetical_order = TRUE)` that also reordered roles and contribution items (#18).
 
 * R6 classes have been overhauled for a better separation of concerns (#5, #12).

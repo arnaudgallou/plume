@@ -261,7 +261,7 @@ Plume <- R6Class(
         format <- rev(format)
       }
       if (by_author) {
-        grp_var <- author
+        grp_var <- c(author, private$names$id)
         var <- role
       } else {
         grp_var <- role
