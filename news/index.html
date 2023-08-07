@@ -65,7 +65,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
-<ul><li>
+<ul><li><p>Fixed an issue with <code>$get_contributions(alphabetical_order = TRUE)</code> that also reordered roles and contribution items (<a href="https://github.com/arnaudgallou/plume/issues/18" class="external-link">#18</a>).</p></li>
+<li>
 <p>R6 classes have been overhauled for a better separation of concerns (<a href="https://github.com/arnaudgallou/plume/issues/5" class="external-link">#5</a>, <a href="https://github.com/arnaudgallou/plume/issues/12" class="external-link">#12</a>).</p>
 <ul><li><p><code>$set_*</code> methods have been moved to their own classes.</p></li>
 <li><p><code>PlumeQuarto</code> now only does what it is designed for: injecting author metadata into the YAML header of Quarto files. This means that <code>PlumeQuarto</code> can no longer generate author information as character strings.</p></li>
