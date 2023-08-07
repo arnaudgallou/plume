@@ -90,6 +90,24 @@ test_that("get_contributions() rearranges authors only (#18)", {
   )
 })
 
+test_that("get_contributions() handles namesakes (#15)", {
+  aut <- Plume$new(data.frame(
+    given_name = c("Zip", "Zip"),
+    family_name = c("Zap", "Zap"),
+    role_1 = c("a", NA),
+    role_2 = c("b", "b")
+  ))
+
+  expect_equal(
+    aut$get_contributions(roles_first = FALSE),
+    c("Z.Z.: a", "Z.Z. and Z.Z.: b")
+  )
+  expect_equal(
+    aut$get_contributions(roles_first = FALSE, by_author = TRUE),
+    c("Z.Z.: a and b", "Z.Z.: b")
+  )
+})
+
 # Errors ----
 
 test_that("get_contributions() gives meaningful error messages", {
