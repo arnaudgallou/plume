@@ -2,7 +2,9 @@ unique.list <- function(x, ...) {
   unique(unlist(x, use.names = FALSE), ...)
 }
 
-flatten <- partial(list_flatten, name_spec = "{inner}")
+selfname <- function(x) {
+  set_names(x, x)
+}
 
 includes <- function(x, y, ignore_case = TRUE) {
   out <- list(x = x, y = y)
@@ -93,15 +95,6 @@ predot <- function(name) {
 
 propagate_na <- function(x, from) {
   replace(x, is.na(from), NA)
-}
-
-supplant <- function(old, new) {
-  new <- new[names(new) %in% names(old)]
-  if (identical(new, old)) {
-    return(old)
-  }
-  indexes <- match(names(new), names(old))
-  replace(old, indexes, new)
 }
 
 to_chr_class <- function(x, negate = FALSE) {

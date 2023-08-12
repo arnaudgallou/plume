@@ -49,9 +49,9 @@ Plume <- R6Class(
       check_list(symbols, force_names = TRUE)
       check_orcid_icon(orcid_icon)
       if (!is.null(symbols)) {
-        private$symbols <- supplant(private$symbols, symbols)
+        private$symbols <- list_replace(private$symbols, symbols)
       }
-      private$orcid_icon <- structure(orcid_icon, var = private$names$orcid)
+      private$orcid_icon <- structure(orcid_icon, var = private$pick("orcid"))
     },
 
     #' @description Get author list.
@@ -91,14 +91,14 @@ Plume <- R6Class(
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
       check_args("bool", list(compact, icon))
       check_string(sep)
-      orcid <- private$names$orcid
+      orcid <- private$pick("orcid")
       private$check_col(orcid)
       out <- drop_na(private$plume, orcid)
       if (icon) {
         out <- add_orcid_icons(out, private$orcid_icon)
       }
       out <- add_orcid_links(out, orcid, compact)
-      cols <- c(private$names$literal_name, predot(orcid))
+      cols <- c(private$pick("literal_name"), predot(orcid))
       out <- collapse_cols(out, cols, sep)
       as_plm(out)
     },
@@ -138,7 +138,7 @@ Plume <- R6Class(
       check_glue(format, allowed = c("name", "details"))
       check_args("bool", list(email, phone, fax, url))
       check_string(sep, allow_empty = FALSE)
-      corresponding <- private$names$corresponding
+      corresponding <- private$pick("corresponding")
       private$check_col(corresponding, bullets = c(
         i = "Did you forget to assign corresponding authors?",
         i = "Use `set_corresponding_authors()` to set corresponding authors."
@@ -147,10 +147,10 @@ Plume <- R6Class(
       if (is_empty(args)) {
         return()
       }
-      cols <- private$get_names(args)
+      cols <- private$pick(args)
       private$check_col(cols)
       out <- filter(private$plume, corresponding & not_na_any(cols))
-      dict <- list(details = cols, name = private$names$literal_name)
+      dict <- list(details = cols, name = private$pick("literal_name"))
       dissolve(out, dict, partial(collapse_cols, sep = sep))
       as_plm(glue(format))
     },
@@ -177,7 +177,7 @@ Plume <- R6Class(
         divider = ": ",
         sep_last = " and "
     ) {
-      role <- private$names$role
+      role <- private$pick("role")
       private$check_col(role)
       check_args("bool", list(
         roles_first,
@@ -214,21 +214,21 @@ Plume <- R6Class(
 
     get_author_list_suffixes = function(format) {
       key_set <- get_key_set(format)
-      vars <- private$get_names(key_set, use_keys = TRUE)
+      vars <- private$pick(key_set, use_keys = TRUE)
       cols <- unname(vars)
       private$check_col(cols)
       out <- unnest(private$plume, cols = all_of(cols))
       out <- add_group_ids(out, vars)
       symbols <- list_assign(private$symbols, orcid = private$orcid_icon)
       out <- add_suffixes(out, vars, symbols)
-      grp_vars <- private$get_names("id", "literal_name")
+      grp_vars <- private$pick("id", "literal_name")
       .cols <- predot(cols)
       out <- summarise(out, across(all_of(.cols), bind), .by = all_of(grp_vars))
       als_make(out, .cols, format)
     },
 
     get_footnotes = function(var, sep, superscript) {
-      col <- private$names[[var]]
+      col <- private$pick(var)
       private$check_col(col)
       check_string(sep)
       check_bool(superscript)
@@ -248,20 +248,20 @@ Plume <- R6Class(
     },
 
     contribution_pars = function(roles_first, by_author, literal_names) {
-      initials <- private$names$initials
+      initials <- private$pick("initials")
       has_initials <- private$has_col(initials)
       if (!has_initials || literal_names) {
-        author <- private$names$literal_name
+        author <- private$pick("literal_name")
       } else {
         author <- initials
       }
-      role <- private$names$role
+      role <- private$pick("role")
       format <- c(role, author)
       if (!roles_first) {
         format <- rev(format)
       }
       if (by_author) {
-        grp_var <- c(author, private$names$id)
+        grp_var <- c(author, private$pick("id"))
         var <- role
       } else {
         grp_var <- role

@@ -90,7 +90,7 @@ PlumeQuarto <- R6Class(
     },
 
     author_roles = function() {
-      col <- private$names$role
+      col <- private$pick("role")
       if (!private$has_col(col)) {
         return()
       }
@@ -98,13 +98,13 @@ PlumeQuarto <- R6Class(
       out <- summarise(
         out,
         `_` = list(tolower(.data[[col]])),
-        .by = all_of(private$names$id)
+        .by = all_of(private$pick("id"))
       )
       out[["_"]]
     },
 
     author_notes = function() {
-      col <- private$names$note
+      col <- private$pick("note")
       if (!private$has_col(col)) {
         return()
       }
@@ -116,7 +116,7 @@ PlumeQuarto <- R6Class(
         .data[[col]],
         bind(.data[[col]], sep = ", ", arrange = FALSE),
         all = TRUE
-      ), .by = all_of(private$names$id))
+      ), .by = all_of(private$pick("id")))
       out[["_"]]
     },
 
@@ -132,7 +132,7 @@ PlumeQuarto <- R6Class(
     },
 
     author_affiliations = function() {
-      col <- private$names$affiliation
+      col <- private$pick("affiliation")
       if (!private$has_col(col)) {
         return()
       }
@@ -145,7 +145,7 @@ PlumeQuarto <- R6Class(
       ))
       out <- summarise(out, `_` = list(
         tibble(ref = sort(!!sym(.col)))
-      ), .by = all_of(private$names$id))
+      ), .by = all_of(private$pick("id")))
       out[["_"]]
     },
 

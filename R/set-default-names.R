@@ -25,8 +25,5 @@ set_default_names <- function(..., .plume_quarto = FALSE) {
   )
   check_bool(.plume_quarto)
   nms <- if (.plume_quarto) default_names_quarto else default_names
-  for (i in seq_along(nms)) {
-    nms[[i]] <- supplant(nms[[i]], dots)
-  }
-  nms
+  list_replace(nms, dots)
 }

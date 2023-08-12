@@ -57,7 +57,7 @@ PlumeHandler <- R6Class(
       if (!is.null(names)) {
         private$set_names(names)
       }
-      private$check_col(private$get_names("primaries"))
+      private$check_col(private$pick("primaries"))
       private$check_authors()
       private$mount()
     },
@@ -82,7 +82,7 @@ PlumeHandler <- R6Class(
     mount = function() {
       private$build()
       private$sanitise()
-      for (col in private$get_names("nestables")) {
+      for (col in private$pick("nestables")) {
         if (private$is_nestable(paste0("^", col))) {
           private$nest(col)
         }
@@ -95,7 +95,7 @@ PlumeHandler <- R6Class(
       if (private$crt) {
         private$crt_process()
       }
-      private$plume <- rowid_to_column(private$plume, var = private$names$id)
+      private$plume <- rowid_to_column(private$plume, var = private$pick("id"))
     },
 
     mold = function(...) {
@@ -121,25 +121,25 @@ PlumeHandler <- R6Class(
     },
 
     get_vars = function() {
-      nestables <- private$get_names("nestables", use_keys = TRUE)
+      nestables <- private$pick("nestables", use_keys = TRUE)
       if (private$crt) {
         nestables <- nestables[names(nestables) != "role"]
       }
       list(
-        primaries = private$get_names("primaries"),
-        secondaries = private$get_names("secondaries"),
+        primaries = private$pick("primaries"),
+        secondaries = private$pick("secondaries", "orcid"),
         nestables = nestables
       )
     },
 
     crt_process = function() {
       out <- crt_assign(private$plume)
-      private$plume <- crt_rename(out, prefix = private$names$role)
+      private$plume <- crt_rename(out, prefix = private$pick("role"))
     },
 
     make_author_names = function() {
       if (private$initials_given_name) {
-        given_name <- private$names$given_name
+        given_name <- private$pick("given_name")
         private$plume <- mutate(
           private$plume,
           !!given_name := make_initials(.data[[given_name]], dot = TRUE)
@@ -152,25 +152,26 @@ PlumeHandler <- R6Class(
     },
 
     make_literals = function() {
-      nominal <- private$get_names("primaries")
+      nominal <- private$pick("primaries")
       if (private$family_name_first) {
         nominal <- rev(nominal)
       }
       private$plume <- mutate(
-        private$plume, !!private$names$literal_name := paste(
+        private$plume, !!private$pick("literal_name") := paste(
           !!!syms(nominal),
           sep = private$interword_spacing
-        ), .after = all_of(private$names$family_name)
+        ), .after = all_of(private$pick("family_name"))
       )
     },
 
     make_initials = function() {
+      literal_name <- private$pick("literal_name")
       private$plume <- mutate(
         private$plume,
-        !!private$names$initials := make_initials(
-          .data[[private$names$literal_name]]
+        !!private$pick("initials") := make_initials(
+          .data[[literal_name]]
         ),
-        .after = all_of(private$names$literal_name)
+        .after = all_of(literal_name)
       )
     },
 
@@ -182,7 +183,7 @@ PlumeHandler <- R6Class(
     },
 
     get = function(col) {
-      col <- private$names[[col]]
+      col <- private$pick(col)
       private$plume[[col]]
     },
 
@@ -207,7 +208,7 @@ PlumeHandler <- R6Class(
     },
 
     check_authors = function() {
-      nominal <- private$get_names("primaries")
+      nominal <- private$pick("primaries")
       authors <- select(private$plume, all_of(nominal))
       authors <- reduce(authors, \(x, y) {
         if_else(is_void(x) | is_void(y), NA, 1L)
