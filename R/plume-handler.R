@@ -1,28 +1,3 @@
-default_names <- list(
-  internals = list(
-    id = "id",
-    initials = "initials",
-    literal_name = "literal_name",
-    corresponding = "corresponding"
-  ),
-  primaries = list(
-    given_name = "given_name",
-    family_name = "family_name"
-  ),
-  secondaries = list(
-    email = "email",
-    orcid = "orcid",
-    phone = "phone",
-    fax = "fax",
-    url = "url"
-  ),
-  nestables = list(
-    affiliation = "affiliation",
-    role = "role",
-    note = "note"
-  )
-)
-
 #' @title PlumeHandler class
 #' @description Internal class processing and shaping tabular data into a
 #'   `plume` object.
@@ -73,7 +48,7 @@ PlumeHandler <- R6Class(
 
   private = list(
     plume = NULL,
-    plume_names = default_names,
+    plume_names = .names,
     initials_given_name = NULL,
     family_name_first = NULL,
     crt = NULL,

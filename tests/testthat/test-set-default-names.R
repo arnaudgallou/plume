@@ -23,11 +23,11 @@ test_that("set_default_names() sets new plume names", {
     .plume_quarto = TRUE
   )
 
-  expect_equal(nms$internals$equal_contributor, "contribution_égale")
+  expect_equal(nms$public$internals$equal_contributor, "contribution_égale")
 
-  nms <- set_default_names(foo = "foo", bar = "bar")
+  nms <- set_default_names(foo = "foo", analysis = "bar")
 
-  expect_equal(nms, default_names)
+  expect_equal(nms, .names)
 })
 
 # Errors ----

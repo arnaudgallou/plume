@@ -1,4 +1,28 @@
 .names <- list(
+  public = list(
+    internals = list(
+      id = "id",
+      initials = "initials",
+      literal_name = "literal_name",
+      corresponding = "corresponding"
+    ),
+    primaries = list(
+      given_name = "given_name",
+      family_name = "family_name"
+    ),
+    secondaries = list(
+      email = "email",
+      orcid = "orcid",
+      phone = "phone",
+      fax = "fax",
+      url = "url"
+    ),
+    nestables = list(
+      affiliation = "affiliation",
+      role = "role",
+      note = "note"
+    )
+  ),
   protected = list(
     crt = list(
       conceptualization = "Conceptualization",

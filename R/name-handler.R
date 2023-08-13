@@ -5,7 +5,7 @@ NameHandler <- R6Class(
   public = list(
     initialize = function(names) {
       check_list(names, allow_duplicates = FALSE)
-      private$names <- c(names, .names)
+      private$names <- names
     }
   ),
 
