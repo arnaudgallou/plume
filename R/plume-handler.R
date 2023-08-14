@@ -96,9 +96,9 @@ PlumeHandler <- R6Class(
     },
 
     get_vars = function() {
-      nestables <- private$pick("nestables", use_keys = TRUE)
-      if (private$crt) {
-        nestables <- nestables[names(nestables) != "role"]
+      nestables <- private$pick("affiliation", "note")
+      if (!private$crt) {
+        nestables <- c(nestables, private$pick("role"))
       }
       list(
         primaries = private$pick("primaries"),
@@ -131,22 +131,19 @@ PlumeHandler <- R6Class(
       if (private$family_name_first) {
         nominal <- rev(nominal)
       }
-      private$plume <- mutate(
-        private$plume, !!private$pick("literal_name") := paste(
-          !!!syms(nominal),
-          sep = private$interword_spacing
-        ), .after = all_of(private$pick("family_name"))
-      )
+      vars <- private$pick("literal_name", "family_name", squash = FALSE)
+      private$plume <- mutate(private$plume, !!vars$literal_name := paste(
+        !!!syms(nominal),
+        sep = private$interword_spacing
+      ), .after = all_of(vars$family_name))
     },
 
     make_initials = function() {
-      literal_name <- private$pick("literal_name")
+      vars <- private$pick("literal_name", "initials", squash = FALSE)
       private$plume <- mutate(
         private$plume,
-        !!private$pick("initials") := make_initials(
-          .data[[literal_name]]
-        ),
-        .after = all_of(literal_name)
+        !!vars$initials := make_initials(.data[[vars$literal_name]]),
+        .after = all_of(vars$literal_name)
       )
     },
 

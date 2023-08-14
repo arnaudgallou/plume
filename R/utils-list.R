@@ -1,12 +1,12 @@
-list_fetch_all <- function(x, ..., use_keys) {
+list_fetch_all <- function(x, ..., squash) {
   out <- c()
   for (name in c(...)) {
-    out <- append(out, list_fetch(x, name, use_keys))
+    out <- append(out, list_fetch(x, name, squash))
   }
   out
 }
 
-list_fetch <- function(x, name, use_keys) {
+list_fetch <- function(x, name, squash) {
   out <- c()
   for (i in names(x)) {
     x_i <- x[[i]]
@@ -15,10 +15,13 @@ list_fetch <- function(x, name, use_keys) {
     } else if (i == name) {
       out <- if (length(x_i) > 1L) x_i else x[i]
     } else if (is.list(x_i)) {
-      out <- list_fetch(x_i, name, use_keys)
+      out <- list_fetch(x_i, name, squash)
     }
   }
-  unlist(out, use.names = use_keys)
+  if (squash) {
+    return(unlist(out, use.names = FALSE))
+  }
+  out
 }
 
 list_replace <- function(x, y) {

@@ -12,8 +12,8 @@ NameHandler <- R6Class(
   private = list(
     names = NULL,
 
-    pick = function(..., use_keys = FALSE) {
-      list_fetch_all(private$names, ..., use_keys = use_keys)
+    pick = function(..., squash = TRUE) {
+      list_fetch_all(private$names, ..., squash = squash)
     },
 
     set_names = function(x) {

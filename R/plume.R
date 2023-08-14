@@ -91,14 +91,14 @@ Plume <- R6Class(
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
       check_args("bool", list(compact, icon))
       check_string(sep)
-      orcid <- private$pick("orcid")
-      private$check_col(orcid)
-      out <- drop_na(private$plume, orcid)
+      vars <- private$pick("orcid", "literal_name", squash = FALSE)
+      private$check_col(vars$orcid)
+      out <- drop_na(private$plume, vars$orcid)
       if (icon) {
         out <- add_orcid_icons(out, private$orcid_icon)
       }
-      out <- add_orcid_links(out, orcid, compact)
-      cols <- c(private$pick("literal_name"), predot(orcid))
+      out <- add_orcid_links(out, vars$orcid, compact)
+      cols <- c(vars$literal_name, predot(vars$orcid))
       out <- collapse_cols(out, cols, sep)
       as_plm(out)
     },
@@ -138,8 +138,8 @@ Plume <- R6Class(
       check_glue(format, allowed = c("name", "details"))
       check_args("bool", list(email, phone, fax, url))
       check_string(sep, allow_empty = FALSE)
-      corresponding <- private$pick("corresponding")
-      private$check_col(corresponding, bullets = c(
+      vars <- private$pick("corresponding", "literal_name", squash = FALSE)
+      private$check_col(vars$corresponding, bullets = c(
         i = "Did you forget to assign corresponding authors?",
         i = "Use `set_corresponding_authors()` to set corresponding authors."
       ))
@@ -149,8 +149,11 @@ Plume <- R6Class(
       }
       cols <- private$pick(args)
       private$check_col(cols)
-      out <- filter(private$plume, corresponding & not_na_any(cols))
-      dict <- list(details = cols, name = private$pick("literal_name"))
+      out <- filter(
+        private$plume,
+        .data[[vars$corresponding]] & not_na_any(cols)
+      )
+      dict <- list(details = cols, name = vars$literal_name)
       dissolve(out, dict, partial(collapse_cols, sep = sep))
       as_plm(glue(format))
     },
@@ -214,7 +217,7 @@ Plume <- R6Class(
 
     get_author_list_suffixes = function(format) {
       key_set <- get_key_set(format)
-      vars <- private$pick(key_set, use_keys = TRUE)
+      vars <- unlist(private$pick(key_set, squash = FALSE))
       cols <- unname(vars)
       private$check_col(cols)
       out <- unnest(private$plume, cols = all_of(cols))
@@ -248,23 +251,25 @@ Plume <- R6Class(
     },
 
     contribution_pars = function(roles_first, by_author, literal_names) {
-      initials <- private$pick("initials")
-      has_initials <- private$has_col(initials)
+      vars <- private$pick(
+        "initials", "literal_name", "role", "id",
+        squash = FALSE
+      )
+      has_initials <- private$has_col(vars$initials)
       if (!has_initials || literal_names) {
-        author <- private$pick("literal_name")
+        author <- vars$literal_name
       } else {
-        author <- initials
+        author <- vars$initials
       }
-      role <- private$pick("role")
-      format <- c(role, author)
+      format <- c(vars$role, author)
       if (!roles_first) {
         format <- rev(format)
       }
       if (by_author) {
-        grp_var <- c(author, private$pick("id"))
-        var <- role
+        grp_var <- c(author, vars$id)
+        var <- vars$role
       } else {
-        grp_var <- role
+        grp_var <- vars$role
         var <- author
       }
       list(
