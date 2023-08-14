@@ -9,8 +9,7 @@
 #' @importFrom tibble tibble as_tibble_row as_tibble rowid_to_column
 #' @importFrom purrr set_names partial reduce
 #' @importFrom purrr map map_vec map2_vec iwalk walk2
-#' @importFrom purrr list_rbind list_flatten list_transpose list_assign
-#' @importFrom purrr list_modify
+#' @importFrom purrr list_rbind list_transpose list_assign list_modify
 #' @importFrom readr read_file write_lines
 #' @importFrom rlang %||% := abort
 #' @importFrom rlang expr exprs sym syms

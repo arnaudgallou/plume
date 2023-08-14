@@ -31,7 +31,7 @@ StatusSetter <- R6Class(
       } else {
         value <- expr(true_if(includes(.data[[by]], exprs(...))))
       }
-      private$plume <- mutate(private$plume, !!private$names[[col]] := !!value)
+      private$plume <- mutate(private$plume, !!private$pick(col) := !!value)
       invisible(self)
     }
   )
@@ -48,7 +48,7 @@ StatusSetterQuarto <- R6Class(
       check_string(by, allow_empty = FALSE, allow_null = TRUE)
       if (!is.null(by)) {
         private$check_col(by)
-        private$by <- private$names[[by]]
+        private$by <- private$pick(by)
       }
     },
 

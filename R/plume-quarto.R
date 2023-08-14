@@ -1,5 +1,4 @@
-default_names_quarto <- list_modify(
-  default_names,
+.names_quarto <- list_modify(.names, public = list(
   internals = list(
     deceased = "deceased",
     equal_contributor = "equal_contributor"
@@ -9,7 +8,7 @@ default_names_quarto <- list_modify(
     dropping_particle = "dropping_particle",
     acknowledgements = "acknowledgements"
   )
-)
+))
 
 #' @title PlumeQuarto class
 #' @description Class that pushes or updates author metadata in a Quarto file.
@@ -34,6 +33,7 @@ PlumeQuarto <- R6Class(
         by = NULL
     ) {
       super$initialize(data, names, credit_roles, initials_given_name, by)
+      private$id <- private$pick("id")
     },
 
     #' @description Push or update author information in a YAML header. The
@@ -52,8 +52,9 @@ PlumeQuarto <- R6Class(
   ),
 
   private = list(
-    plume_names = default_names_quarto,
+    plume_names = .names_quarto,
     meta_prefix = "meta-",
+    id = NULL,
 
     mold = function(...) {
       super$mold(starts_with(private$meta_prefix), ...)
@@ -90,7 +91,7 @@ PlumeQuarto <- R6Class(
     },
 
     author_roles = function() {
-      col <- private$names$role
+      col <- private$pick("role")
       if (!private$has_col(col)) {
         return()
       }
@@ -98,13 +99,13 @@ PlumeQuarto <- R6Class(
       out <- summarise(
         out,
         `_` = list(tolower(.data[[col]])),
-        .by = all_of(private$names$id)
+        .by = all_of(private$id)
       )
       out[["_"]]
     },
 
     author_notes = function() {
-      col <- private$names$note
+      col <- private$pick("note")
       if (!private$has_col(col)) {
         return()
       }
@@ -116,7 +117,7 @@ PlumeQuarto <- R6Class(
         .data[[col]],
         bind(.data[[col]], sep = ", ", arrange = FALSE),
         all = TRUE
-      ), .by = all_of(private$names$id))
+      ), .by = all_of(private$id))
       out[["_"]]
     },
 
@@ -132,7 +133,7 @@ PlumeQuarto <- R6Class(
     },
 
     author_affiliations = function() {
-      col <- private$names$affiliation
+      col <- private$pick("affiliation")
       if (!private$has_col(col)) {
         return()
       }
@@ -145,7 +146,7 @@ PlumeQuarto <- R6Class(
       ))
       out <- summarise(out, `_` = list(
         tibble(ref = sort(!!sym(.col)))
-      ), .by = all_of(private$names$id))
+      ), .by = all_of(private$id))
       out[["_"]]
     },
 

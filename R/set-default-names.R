@@ -8,7 +8,7 @@
 #' @details
 #' Available names are:
 #'
-#' `r wrap(unlist(map(default_names, names)), "\x60")`.
+#' `r wrap(unlist(.names$public), "\x60")`.
 #'
 #' Using `.plume_quarto = TRUE` adds `deceased`, `equal_contributor`, `number`,
 #' `dropping_particle` and `acknowledgements`.
@@ -24,9 +24,6 @@ set_default_names <- function(..., .plume_quarto = FALSE) {
     arg = "..."
   )
   check_bool(.plume_quarto)
-  nms <- if (.plume_quarto) default_names_quarto else default_names
-  for (i in seq_along(nms)) {
-    nms[[i]] <- supplant(nms[[i]], dots)
-  }
-  nms
+  nms <- if (.plume_quarto) .names_quarto else .names
+  list_replace(nms, dots)
 }

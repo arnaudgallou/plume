@@ -16,10 +16,11 @@ plm_template <- function(minimal = TRUE, credit_roles = FALSE) {
 }
 
 get_template_vars <- function(minimal, credit_roles) {
-  vars <- list_assign(default_names, nestables = get_nestables(credit_roles))
+  vars <- list_assign(.names$public, nestables = get_nestables(credit_roles))
   to_ignore <- get_ignored_vars(vars, minimal)
-  vars <- flatten(vars)
-  vars[!vars %in% to_ignore]
+  vars <- unlist(vars, use.names = FALSE)
+  vars <- vars[!vars %in% to_ignore]
+  selfname(vars)
 }
 
 get_ignored_vars <- function(vars, minimal) {
@@ -35,7 +36,7 @@ get_nestables <- function(crt) {
   names_crt <- if (crt) names(.names$protected$crt)
   role <- if (!crt) "role"
   vars <- c(seq_names("affiliation", role, n = 2), names_crt, "note")
-  set_names(as.list(vars), vars)
+  as.list(selfname(vars))
 }
 
 seq_names <- function(..., n) {
