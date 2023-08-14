@@ -39,16 +39,30 @@ Plume$new(encyclopedists)
 ## Default variables
 
 ```{r, echo = FALSE}
-make_table_vars <- function(category, protected = FALSE) {
-  vars <- list(
-    Plume = plume:::default_names,
-    PlumeQuarto = plume:::default_names_quarto,
-    protected = plume:::.names$protected
-  )
-  type <- if (protected) "protected" else "PlumeQuarto"
+list_keys <- function(x) {
+  out <- c()
+  for (i in names(x)) {
+    x_i <- x[[i]]
+    if (is.list(x_i)) {
+      out <- append(out, list_keys(x_i))
+    } else {
+      out <- append(out, i)
+    }
+  }
+  out
+}
+
+fetch <- plume:::list_fetch
+.names <- plume:::.names
+.names_quarto <- plume:::.names_quarto
+
+make_table_vars <- function(category) {
+  vars_plume <- fetch(.names, category, squash = FALSE)
+  vars_plume_quarto <- fetch(.names_quarto, category, squash = FALSE)
+  keys <- list_keys(vars_plume_quarto)
   tibble::tibble(
-    name = names(vars[[type]][[category]]),
-    Plume = ifelse(name %in% unlist(vars$Plume) | protected, 1, 0),
+    name = keys,
+    Plume = ifelse(unlist(vars_plume_quarto) %in% unlist(vars_plume), 1, 0),
     PlumeQuarto = 1
   ) |>
     gt() |>
@@ -87,7 +101,7 @@ make_table_vars("nestables")
 **Constants**: optional names that can be provided in the input data. These names are standardised and must be provided as is.
 
 ```{r, echo = FALSE}
-make_table_vars("crt", protected = TRUE)
+make_table_vars("protected")
 ```
 
 **Internals**: variables created internally. These variables don't need to be provided in the input data and are ignored if supplied. You shouldn't worry much about these variables unless you want to customise names or extend plume classes with new default names.
