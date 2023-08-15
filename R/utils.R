@@ -44,6 +44,10 @@ make_initials <- function(x, dot = FALSE) {
   out
 }
 
+drop_from <- function(x, ...) {
+  x[!x %in% c(...)]
+}
+
 vec_drop_na <- function(x, ...) {
   x[is_not_na(x)]
 }
