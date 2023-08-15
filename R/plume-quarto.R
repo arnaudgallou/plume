@@ -179,7 +179,7 @@ PlumeQuarto <- R6Class(
 )
 
 affiliation_keys <- c(
-    "number", "name", "department", "address", "city", "region",
+    "number", "name", "department", "address", "city", "region", "state",
     "country", "postal-code", "url", "isni", "ringgold", "ror"
   )
 
