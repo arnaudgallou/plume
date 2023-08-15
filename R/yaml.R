@@ -1,4 +1,4 @@
-is_schema_up_to_date <- function(current, new) {
+schemas_are_up_to_date <- function(current, new) {
   current <- current[c("author", "affiliations")]
   identical(current, new)
 }
@@ -8,7 +8,7 @@ json_update <- function(x, json) {
   if (is.null(x)) {
     return(json)
   }
-  if (is_schema_up_to_date(x, json)) {
+  if (schemas_are_up_to_date(x, json)) {
     return()
   }
   list_assign(x, !!!json)
