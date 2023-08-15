@@ -50,7 +50,7 @@ is_nested <- function(x, item) {
   typeof(x[[item]]) == "list"
 }
 
-are_dots_all <- function(...) {
+dots_equal_all <- function(...) {
   dots_n(...) == 1L && is_string(expr(...)) && ... == "all"
 }
 

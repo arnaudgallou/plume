@@ -26,7 +26,7 @@ StatusSetter <- R6Class(
         check_string(by, allow_empty = FALSE)
       }
       private$check_col(by)
-      if (are_dots_all(...)) {
+      if (dots_equal_all(...)) {
         value <- TRUE
       } else {
         value <- expr(true_if(includes(.data[[by]], exprs(...))))
