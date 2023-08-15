@@ -2,7 +2,7 @@ test_that("get_contributions() return authors' contributions", {
   df <- basic_df()
   aut <- Plume$new(df)
 
-  expect_s3_class(aut$get_contributions(), c("plm_agt", "plm"))
+  expect_s3_class(aut$get_contributions(), "plm")
 
   df_roles <- select(df, starts_with("role"))
   initials <- dot(df$initials)

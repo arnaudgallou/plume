@@ -32,7 +32,7 @@
       Error:
       ! `names` must be a character vector.
     Code
-      (expect_error(Plume$new(df, names = c("prénom"))))
+      (expect_error(Plume$new(df, names = "prénom")))
     Output
       <error/rlang_error>
       Error:

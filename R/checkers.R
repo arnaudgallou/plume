@@ -132,10 +132,7 @@ check_duplicates <- function(x, ..., arg = caller_arg(x)) {
   abort_check(msg = msg, ..., arg = arg)
 }
 
-vec_types <- c(
-  "character", "double", "integer", "numeric",
-  "logical", "complex", "raw", "list"
-)
+vec_types <- c("character", "numeric", "list")
 
 check_vector <- function(
     x,

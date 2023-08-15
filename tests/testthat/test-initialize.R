@@ -12,7 +12,7 @@ test_that("initialize() builds a plume dataset", {
     "id", "initiales", "prénom", "nom", "nom_complet", "affiliation",
     "role", "note", "courriel", "téléphone", "orcid"
   )
-  nms_new <- setNames(nms_en, nms_fr)[-c(1:2)]
+  nms_new <- setNames(nms_en, nms_fr)[-(1:2)]
   aut <- Plume$new(
     dplyr::rename(basic_df(), tidyselect::all_of(nms_new)),
     names = setNames(nms_fr, nms_en)
@@ -170,7 +170,7 @@ test_that("initialize() gives meaningful error messages", {
       Plume$new(df, names = list(given_name = "prénom"))
     ))
     (expect_error(
-      Plume$new(df, names = c("prénom"))
+      Plume$new(df, names = "prénom")
     ))
     (expect_error(
       Plume$new(df, names = c(given_name = "prénom", family_name = "prénom"))
