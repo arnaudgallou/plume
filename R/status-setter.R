@@ -26,12 +26,13 @@ StatusSetter <- R6Class(
         check_string(by, allow_empty = FALSE)
       }
       private$check_col(by)
-      if (dots_equal_all(...)) {
-        value <- TRUE
-      } else {
-        value <- expr(true_if(includes(.data[[by]], exprs(...))))
-      }
-      private$plume <- mutate(private$plume, !!private$pick(col) := !!value)
+      private$plume <- mutate(private$plume, !!private$pick(col) := {
+        if (dots_equal_all(...)) {
+          TRUE
+        } else {
+          true_if(includes(.data[[by]], exprs(...)))
+        }
+      })
       invisible(self)
     }
   )
