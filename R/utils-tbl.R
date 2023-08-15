@@ -59,8 +59,8 @@ add_symbols <- function(data, col, symbols) {
 }
 
 add_orcid_icons <- function(data, orcid) {
-  attrs <- attributes(orcid)
-  data[predot(attrs$var)] <- make_orcid_icon(data[[attrs$var]], attrs)
+  col <- unstructure(orcid)
+  data[predot(col)] <- make_orcid_icon(data[[col]], attributes(orcid))
   data
 }
 

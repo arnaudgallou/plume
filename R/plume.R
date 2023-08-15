@@ -51,7 +51,7 @@ Plume <- R6Class(
       if (!is.null(symbols)) {
         private$symbols <- list_replace(private$symbols, symbols)
       }
-      private$orcid_icon <- structure(orcid_icon, var = private$pick("orcid"))
+      private$orcid_icon <- orcid_icon
     },
 
     #' @description Get author list.
@@ -91,14 +91,13 @@ Plume <- R6Class(
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
       check_args("bool", list(compact, icon))
       check_string(sep)
-      vars <- private$pick("orcid", "literal_name", squash = FALSE)
-      private$check_col(vars$orcid)
-      out <- drop_na(private$plume, vars$orcid)
+      private$check_col("orcid")
+      out <- drop_na(private$plume, "orcid")
       if (icon) {
         out <- add_orcid_icons(out, private$orcid_icon)
       }
-      out <- add_orcid_links(out, vars$orcid, compact)
-      cols <- c(vars$literal_name, predot(vars$orcid))
+      out <- add_orcid_links(out, "orcid", compact)
+      cols <- c(private$pick("literal_name"), predot("orcid"))
       out <- collapse_cols(out, cols, sep)
       as_plm(out)
     },

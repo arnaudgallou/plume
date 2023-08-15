@@ -16,7 +16,8 @@ plm_template <- function(minimal = TRUE, credit_roles = FALSE) {
 }
 
 get_template_vars <- function(minimal, credit_roles) {
-  vars <- list_assign(.names$public, nestables = get_nestables(credit_roles))
+  vars <- list_fetch_all(.names, "public", "orcid", squash = FALSE)
+  vars <- list_assign(vars, nestables = get_nestables(credit_roles))
   to_ignore <- get_ignored_vars(vars, minimal)
   vars <- unlist(vars, use.names = FALSE)
   vars <- vars[!vars %in% to_ignore]
@@ -29,7 +30,7 @@ get_ignored_vars <- function(vars, minimal) {
     return(to_ignore)
   }
   secondaries <- vars$secondaries
-  c(to_ignore, secondaries[!secondaries %in% c("email", "orcid")])
+  c(to_ignore, secondaries[secondaries != "email"])
 }
 
 get_nestables <- function(crt) {

@@ -12,7 +12,6 @@
     ),
     secondaries = list(
       email = "email",
-      orcid = "orcid",
       phone = "phone",
       fax = "fax",
       url = "url"
@@ -24,6 +23,7 @@
     )
   ),
   protected = list(
+    orcid = "orcid",
     crt = list(
       conceptualization = "Conceptualization",
       data_curation = "Data curation",
