@@ -7,8 +7,8 @@
 set_default_names(..., .plume_quarto = FALSE)
 }
 \arguments{
-\item{...}{Key-value pairs where keys are old names and values their respective
-replacements.}
+\item{...}{Key-value pairs where keys are default names and values their
+respective replacements.}
 
 \item{.plume_quarto}{Are you setting new names for \code{\link{PlumeQuarto}}?}
 }
@@ -16,14 +16,14 @@ replacements.}
 A named list.
 }
 \description{
-This helper function allows you to set new default names to a plume
-subclass, e.g. to set default names to a language other than English. See
-\code{vignette("working-in-other-languages")} for more details.
+This helper function allows you to set new default names to a
+plume subclass, e.g. to set default names to a language other than English.
+See \code{vignette("working-in-other-languages")} for more details.
 }
 \details{
 Available names are:
 
-\code{id}, \code{initials}, \code{literal_name}, \code{corresponding}, \code{given_name}, \code{family_name}, \code{email}, \code{orcid}, \code{phone}, \code{fax}, \code{url}, \code{affiliation}, \code{role}, \code{note}.
+\code{id}, \code{initials}, \code{literal_name}, \code{corresponding}, \code{given_name}, \code{family_name}, \code{email}, \code{phone}, \code{fax}, \code{url}, \code{affiliation}, \code{role}, \code{note}, \code{orcid}.
 
 Using \code{.plume_quarto = TRUE} adds \code{deceased}, \code{equal_contributor}, \code{number},
 \code{dropping_particle} and \code{acknowledgements}.

@@ -12,13 +12,13 @@ plm_template(minimal = TRUE, credit_roles = FALSE)
 \code{note}. Otherwise the function returns a template with all columns that can
 be supplied to plume classes that are not \code{PlumeQuarto}-specific.}
 
-\item{credit_roles}{Should \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
+\item{credit_roles}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
 }
 \value{
 An empty tibble.
 }
 \description{
 This helper function allows you to generate an empty
-\code{\link[tibble:tibble]{tibble}} that you can use as a template to supply author
-data.
+\code{\link[tibble:tibble]{tibble}} that you can use as a template to supply
+author data.
 }

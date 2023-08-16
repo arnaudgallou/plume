@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 plume provides tools for handling and generating author-related information for scientific writing in R Markdown and Quarto. The package implements two R6 classes:
 
-- `PlumeQuarto`: class that allows you to push or update author metadata in the YAML header of Quarto files. The generated YAML complies with Quarto's [author and affiliations schemas](https://quarto.org/docs/journals/authors.html).
+- `PlumeQuarto`: class that allows you to push or update author metadata in the YAML header of Quarto files. The generated YAML complies with Quarto's [author and affiliations schemas](https://quarto.org/docs/journals/authors.html). This is the class to use if you work with journal templates.
 
 - `Plume`: class that generates author lists and other author-related information as character strings.
 
@@ -77,7 +77,7 @@ aut$to_yaml(tmp)
 cat(readr::read_file(tmp))
 ```
 
-Alternatively, you can generate author information as character strings.
+Alternatively, you can generate author information as character strings using `Plume`:
 
 ```{r, message = FALSE}
 aut <- Plume$new(encyclopedists, names = c(role = "role_n"))

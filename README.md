@@ -19,7 +19,8 @@ implements two R6 classes:
 - `PlumeQuarto`: class that allows you to push or update author metadata
   in the YAML header of Quarto files. The generated YAML complies with
   Quarto’s [author and affiliations
-  schemas](https://quarto.org/docs/journals/authors.html).
+  schemas](https://quarto.org/docs/journals/authors.html). This is the
+  class to use if you work with journal templates.
 
 - `Plume`: class that generates author lists and other author-related
   information as character strings.
@@ -54,12 +55,12 @@ encyclopedists
 
 Plume$new(encyclopedists)
 #> # A tibble: 4 × 11
-#>      id given_name     family_name literal_name initials email orcid phone note 
+#>      id given_name     family_name literal_name initials email phone orcid note 
 #>   <int> <chr>          <chr>       <chr>        <chr>    <chr> <chr> <chr> <chr>
-#> 1     1 Denis          Diderot     Denis Dider… DD       dide… 0000… 00 0… born…
-#> 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… 0000… <NA>  <NA> 
+#> 1     1 Denis          Diderot     Denis Dider… DD       dide… 00 0… 0000… born…
+#> 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… <NA>  0000… <NA> 
 #> 3     3 François-Marie Arouet      François-Ma… F-MA     arou… <NA>  <NA>  also…
-#> 4     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… 0000… <NA>  born…
+#> 4     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… <NA>  0000… born…
 #> # ℹ 2 more variables: affiliation <list>, role <list>
 ```
 
@@ -148,7 +149,8 @@ aut$to_yaml("file.qmd")
 
     Qui scribit bis legit
 
-Alternatively, you can generate author information as character strings.
+Alternatively, you can generate author information as character strings
+using `Plume`:
 
 ``` r
 aut <- Plume$new(encyclopedists, names = c(role = "role_n"))

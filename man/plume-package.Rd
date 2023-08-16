@@ -4,10 +4,10 @@
 \name{plume-package}
 \alias{plume}
 \alias{plume-package}
-\title{plume: An Author List Handler}
+\title{plume: A Simple Author Handler for Scientific Writing}
 \description{
-A tool for handling and printing author information in R Markdown
-and Quarto.
+Tools to reduce the hassle of handling and formatting author
+information in scientific writing.
 }
 \seealso{
 Useful links:
@@ -19,7 +19,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Arnaud Gallou \email{agallou.gh@gmail.com} (\href{https://orcid.org/0000-0002-1002-4247}{ORCID})
+\strong{Maintainer}: Arnaud Gallou \email{agallou.gh@gmail.com} (\href{https://orcid.org/0000-0002-1002-4247}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}

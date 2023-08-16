@@ -1,12 +1,12 @@
 #' @title Create a table template for plume classes
 #' @description This helper function allows you to generate an empty
-#'   [`tibble`][tibble::tibble()] that you can use as a template to supply author
-#'   data.
+#'   [`tibble`][tibble::tibble()] that you can use as a template to supply
+#'   author data.
 #' @param minimal If `TRUE`, returns an empty tibble with the following columns:
 #'   `given_name`, `family_name`, `email`, `orcid`, `affiliation`, `role` and
 #'   `note`. Otherwise the function returns a template with all columns that can
 #'   be supplied to plume classes that are not `PlumeQuarto`-specific.
-#' @param credit_roles Should `r link("crt")` be used?
+#' @param credit_roles Should the `r link("crt")` be used?
 #' @return An empty tibble.
 #' @export
 plm_template <- function(minimal = TRUE, credit_roles = FALSE) {

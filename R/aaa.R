@@ -44,7 +44,11 @@
 )
 
 .links <- list(
-  crt = c("Contributor Roles Taxonomy", "https://credit.niso.org")
+  crt = c("Contributor Roles Taxonomy", "https://credit.niso.org"),
+  quarto_schemas = c(
+    "author and affiliations schemas",
+    "https://quarto.org/docs/journals/authors.html"
+  )
 )
 
 # nocov start

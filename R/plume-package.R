@@ -1,5 +1,5 @@
-#' @description A tool for handling and printing author information in R Markdown
-#'   and Quarto.
+#' @description Tools to reduce the hassle of handling and formatting author
+#'   information in scientific writing.
 #' @keywords internal
 #' @importFrom dplyr distinct filter select dense_rank
 #' @importFrom dplyr mutate summarise across rename

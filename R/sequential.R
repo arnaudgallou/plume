@@ -1,5 +1,6 @@
-#' @title Control sequencing behaviour of vectors
-#' @description Modifier function used to generate logical sequences of characters.
+#' @title Control the sequencing behaviour of character vectors
+#' @description Modifier function used to generate logical sequences of
+#'   characters.
 #' @param x A character vector.
 #' @examples
 #' aut <- Plume$new(

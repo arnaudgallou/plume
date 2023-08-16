@@ -30,13 +30,13 @@ encyclopedists
 
 ## Creating a `plume` object
 
-plume provides two `R6` classes, namely `Plume` and `PlumeQuarto`. To create a `plume` object, simply write the name of the class you want to use followed by the `new()` method. plume classes take a data frame or tibble as input data. The input data must have at least two columns named `given_name` and `family_name`.
+plume provides two R6 classes, namely `Plume` and `PlumeQuarto`. To create a `plume` object, simply write the name of the class you want to use followed by the `new()` method. plume classes take a data frame or tibble as input data. The input data must have at least two columns named `given_name` and `family_name`.
 
 ```{r}
 Plume$new(encyclopedists)
 ```
 
-## Default variables
+## Available names
 
 ```{r, echo = FALSE}
 list_keys <- function(x) {
@@ -110,7 +110,7 @@ make_table_vars("protected")
 make_table_vars("internals")
 ```
 
-**Meta**: `PlumeQuarto`-specific variables used to pass extra information that doesn't fit in other categories. Meta columns must start with the prefix `meta-` and are followed by a custom name (e.g. `meta-extra_info`). You should only use these variables to pass data that are template specific. See Quarto's [arbitrary-metadata](https://quarto.org/docs/journals/authors.html#arbitrary-metadata) section for details.
+**Meta**: `PlumeQuarto`-specific variables used to pass extra information that doesn't fit in other categories. Meta columns must start with the prefix `meta-` and are followed by a custom name (e.g. `meta-custom_name`). You should only use these variables to pass data that are template specific. See Quarto's [arbitrary-metadata](https://quarto.org/docs/journals/authors.html#arbitrary-metadata) section for details.
 
 ## Using custom names
 
@@ -130,7 +130,7 @@ Plume$new(
 )
 ```
 
-## Pushing data into a YAML header
+## Pushing data into YAML headers
 
 `PlumeQuarto` allows you to inject author metadata directly into the YAML header of `.qmd` files.
 
@@ -147,7 +147,7 @@ tmp_file <- withr::local_tempfile(
 cat(read_file(tmp_file))
 ```
 
-You can push information from the input data into the YAML header using the `to_yaml()` method.
+You can push information from the input data into the YAML header using the `to_yaml()` method:
 
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(
@@ -210,7 +210,7 @@ aut$set_corresponding_authors(dd, "j-jr", by = "initials")
 aut
 ```
 
-Use the `"all"` keyword to assign `TRUE` to all authors.
+Use the `"all"` keyword to assign `TRUE` to all authors:
 
 ```{r}
 aut$set_corresponding_authors("all")
@@ -219,7 +219,7 @@ aut
 
 ## Getting author information
 
-`get_*()` methods format author information into character vectors. This can be useful if you want to output author data in a document without using journal templates, print contributions or simply to generate author information ready to be copy-pasted for other documents.
+`get_*()` methods format author information into character vectors. This is useful if you want to output author data in a document without using journal templates.
 
 ### Author lists
 
@@ -244,7 +244,7 @@ aut$get_author_list(format = "ac") |> enumerate(last = ",\n")
 aut$get_author_list(format = "ca") |> enumerate(last = ",\n")
 ```
 
-In addition, you can use `^` to superscript and `,` to separate symbols.
+In addition, you can use `^` to superscript and `,` to separate symbols:
 
 ```{r}
 aut$set_corresponding_authors(1, 4)
@@ -270,7 +270,7 @@ aut$get_notes(sep = ": ", superscript = FALSE)
 
 ### Contact details
 
-You can get contact details of corresponding authors using the `get_contact_details()` method.
+You can get contact details of corresponding authors using the `get_contact_details()` method:
 
 ```{r}
 aut$get_contact_details()
@@ -298,7 +298,7 @@ aut_v <- Plume$new(encyclopedists, names = c(role = "role_v"))
 aut_v$get_contributions(roles_first = FALSE, divider = " ")
 ```
 
-By default, `get_contributions()` lists contributors in the order they're defined. You can arrange contributors in alphabetical order with `alphabetical_order = TRUE`.
+By default, `get_contributions()` lists contributors in the order they're defined. You can arrange contributors in alphabetical order with `alphabetical_order = TRUE`:
 
 ```{r}
 aut$get_contributions(alphabetical_order = TRUE)
@@ -309,7 +309,7 @@ aut$get_contributions(alphabetical_order = TRUE)
 `get_orcids()` returns authors with their respective ORCID.
 
 ```{r}
-aut$get_orcids(compact = FALSE, icon = FALSE)
+aut$get_orcids(compact = FALSE, icon = FALSE, sep = " ")
 ```
 
 ## Symbols
@@ -322,7 +322,7 @@ str(plume:::default_symbols)
 
 You can change symbols when creating a `plume` object using the parameter `symbols`.
 
-Use `NULL` to display numbers.
+Use `NULL` to display numbers:
 
 ```{r}
 aut <- Plume$new(encyclopedists, symbols = list(affiliation = letters, note = NULL))
@@ -330,7 +330,7 @@ aut <- Plume$new(encyclopedists, symbols = list(affiliation = letters, note = NU
 aut$get_author_list(format = "^a,n^") |> enumerate(last = ",\n")
 ```
 
-Use `NULL` as much as possible for symbols using numerous unique items (typically affiliations). If you have to use letters for a given category that has more unique items than letters, you can control the sequencing behaviour using the `sequential()` modifier, as shown below.
+Use `NULL` as much as possible for symbols using numerous unique items (typically affiliations). If you have to use letters for a given category that has more unique items than letters, you can control the sequencing behaviour using the `sequential()` modifier, as shown below:
 
 ```{r, eval = FALSE}
 Plume$new(
@@ -343,7 +343,7 @@ By default, plume repeats elements when all elements in a vector are consumed. U
 
 ## Outputting as markdown content
 
-To output author data as markdown content, use the chunk option `results: asis` in combination with `cat()`.
+To output author data as markdown content, use the chunk option `results: asis` in combination with `cat()`:
 
 ````{verbatim}
 ```{r}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sequential.R
 \name{sequential}
 \alias{sequential}
-\title{Control sequencing behaviour of vectors}
+\title{Control the sequencing behaviour of character vectors}
 \usage{
 sequential(x)
 }
@@ -10,7 +10,8 @@ sequential(x)
 \item{x}{A character vector.}
 }
 \description{
-Modifier function used to generate logical sequences of characters.
+Modifier function used to generate logical sequences of
+characters.
 }
 \examples{
 aut <- Plume$new(

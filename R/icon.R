@@ -1,7 +1,7 @@
 #' @title ORCID icon
 #' @description Helper function to control the size and colour of the ORCID
 #'   icon.
-#' @param size Size of the icon in pixels.
+#' @param size Size (in pixels) of the icon.
 #' @param bw Should the black and white version of the icon be used?
 #' @export
 orcid <- function(size = 16, bw = FALSE) {
@@ -10,7 +10,7 @@ orcid <- function(size = 16, bw = FALSE) {
   new_icon("orcid", size = size, bw = bw)
 }
 
-#' @export 
+#' @export
 print.plm_icon <- function(x, ...) {
   cat(sprintf("<%s>", x))
 }

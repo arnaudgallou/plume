@@ -53,12 +53,13 @@ Create a \code{Plume} object.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{data}}{A data frame or tibble containing author-related data.}
+\item{\code{data}}{A data frame containing author-related data.}
 
-\item{\code{names}}{A vector of column names.}
+\item{\code{names}}{A vector of key-value pairs specifying custom names to use,
+where keys are default names and values their respective replacements.}
 
-\item{\code{symbols}}{A list of keys and values defining the symbols used to
-link authors to metadata. Valid keys are \code{"affiliation"},
+\item{\code{symbols}}{A list of key-value pairs defining the symbols to use to
+link authors and their metadata. Valid keys are \code{"affiliation"},
 \code{"corresponding"} and \code{"note"}. By default, uses digits for
 affiliations, \code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"},
 \code{"¶"}, \code{"#"}, \code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
@@ -112,7 +113,7 @@ The order of the keys determines the order of symbol types. E.g. \code{"ac"}
 shows affiliation ids first and corresponding author mark second, when
 \code{"ca"} shows corresponding author mark first and affiliation ids second.
 Use \code{","} to separate and \code{"^"} to superscript symbols.
-\code{format = NULL} lists author names without suffixes.
+Use \code{NULL} or an empty string to list author names without suffixes.
 }
 
 \subsection{Returns}{
@@ -140,7 +141,7 @@ Get authors' ORCID.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-Authors' name followed by their respective ORCID.
+A character vector.
 }
 }
 \if{html}{\out{<hr>}}
@@ -247,7 +248,7 @@ Get authors' contributions.
 \item{\code{by_author}}{Should roles be grouped by author?}
 
 \item{\code{alphabetical_order}}{Should authors be listed in alphabetical order?
-By default, lists authors in the order they are defined.}
+By default, lists authors in the order they are defined in the data.}
 
 \item{\code{dotted_initials}}{Should initials be dot-separated?}
 

@@ -4,7 +4,7 @@
 \alias{PlumeQuarto}
 \title{PlumeQuarto class}
 \description{
-Class that pushes or updates author metadata in a Quarto file.
+Class that pushes or updates author metadata in Quarto files.
 }
 \section{Super classes}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterQuarto]{plume::StatusSetterQuarto}} -> \code{PlumeQuarto}
@@ -46,16 +46,17 @@ Create a \code{PlumeQuarto} object.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{data}}{A data frame or tibble containing author-related data.}
+\item{\code{data}}{A data frame containing author-related data.}
 
-\item{\code{names}}{A vector of column names.}
+\item{\code{names}}{A vector of key-value pairs specifying custom names to use,
+where keys are default names and values their respective replacements.}
 
 \item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 
 \item{\code{by}}{A character string defining the default variable used to assign
-authors' status in all \verb{set_*} methods. By default, uses authors' id.}
+authors' status in all \verb{set_*()} methods. By default, uses authors' id.}
 }
 \if{html}{\out{</div>}}
 }
@@ -68,8 +69,7 @@ A \code{PlumeQuarto} object.
 \if{latex}{\out{\hypertarget{method-PlumeQuarto-to_yaml}{}}}
 \subsection{Method \code{to_yaml()}}{
 Push or update author information in a YAML header. The
-generated YAML complies with Quarto's author and affiliations
-\href{https://quarto.org/docs/journals/authors.html}{schemas}.
+generated YAML complies with Quarto'\href{https://quarto.org/docs/journals/authors.html}{author and affiliations schemas})`.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$to_yaml(file)}\if{html}{\out{</div>}}
 }

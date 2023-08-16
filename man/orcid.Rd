@@ -7,7 +7,7 @@
 orcid(size = 16, bw = FALSE)
 }
 \arguments{
-\item{size}{Size of the icon in pixels.}
+\item{size}{Size (in pixels) of the icon.}
 
 \item{bw}{Should the black and white version of the icon be used?}
 }

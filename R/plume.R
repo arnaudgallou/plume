@@ -13,10 +13,11 @@ Plume <- R6Class(
   inherit = StatusSetter,
   public = list(
     #' @description Create a `Plume` object.
-    #' @param data A data frame or tibble containing author-related data.
-    #' @param names A vector of column names.
-    #' @param symbols A list of keys and values defining the symbols used to
-    #'   link authors to metadata. Valid keys are `"affiliation"`,
+    #' @param data A data frame containing author-related data.
+    #' @param names A vector of key-value pairs specifying custom names to use,
+    #'   where keys are default names and values their respective replacements.
+    #' @param symbols A list of key-value pairs defining the symbols to use to
+    #'   link authors and their metadata. Valid keys are `"affiliation"`,
     #'   `"corresponding"` and `"note"`. By default, uses digits for
     #'   affiliations, `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`,
     #'   `"¶"`, `"#"`, `"**"` for notes. Set a key to `NULL` to use numerals.
@@ -69,7 +70,7 @@ Plume <- R6Class(
     #' shows affiliation ids first and corresponding author mark second, when
     #' `"ca"` shows corresponding author mark first and affiliation ids second.
     #' Use `","` to separate and `"^"` to superscript symbols.
-    #' `format = NULL` lists author names without suffixes.
+    #' Use `NULL` or an empty string to list author names without suffixes.
     #' @return A character vector.
     get_author_list = function(format = NULL) {
       check_suffix_format(format, allowed = c("a", "c", "n", "o", "^", ","))
@@ -87,7 +88,7 @@ Plume <- R6Class(
     #' @param compact Should links only display the 16-digit identifier?
     #' @param icon Should the ORCID icon be shown?
     #' @param sep Separator used to separate authors and their respective ORCID.
-    #' @return Authors' name followed by their respective ORCID.
+    #' @return A character vector.
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
       check_args("bool", list(compact, icon))
       check_string(sep)
@@ -162,7 +163,7 @@ Plume <- R6Class(
     #'   `FALSE`, roles follow authors.
     #' @param by_author Should roles be grouped by author?
     #' @param alphabetical_order Should authors be listed in alphabetical order?
-    #'   By default, lists authors in the order they are defined.
+    #'   By default, lists authors in the order they are defined in the data.
     #' @param dotted_initials Should initials be dot-separated?
     #' @param literal_names Should literal names be used?
     #' @param divider Separator used to separate roles and authors. Uses `": "`

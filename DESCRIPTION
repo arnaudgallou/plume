@@ -1,12 +1,12 @@
 Type: Package
 Package: plume
-Title: An Author List Handler
+Title: A Simple Author Handler for Scientific Writing
 Version: 0.1.0
 Authors@R: 
-    person("Arnaud", "Gallou", , "agallou.gh@gmail.com", role = c("aut", "cre"),
+    person("Arnaud", "Gallou", , "agallou.gh@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-1002-4247"))
-Description: A tool for handling and printing author information in
-    R Markdown and Quarto.
+Description: Tools to reduce the hassle of handling and formatting author
+    information in scientific writing.
 License: MIT + file LICENSE
 URL: https://github.com/arnaudgallou/plume,
     https://arnaudgallou.github.io/plume/

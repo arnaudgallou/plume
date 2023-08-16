@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 plume is designed to work with spreadsheets, which makes it easy to store, maintain and share data with co-authors. I recommend using [Google Sheets](https://docs.google.com/spreadsheets/) to take advantage of the R interface provided by the [googlesheets4](https://googlesheets4.tidyverse.org) package.
 
-First, you need to create a spreadsheet. `plm_template()` provides a default template for that purpose.
+First, you'll need to create a spreadsheet. `plm_template()` provides a default template for that purpose.
 
 ```{r eval = FALSE}
 library(googlesheets4)
@@ -45,7 +45,7 @@ read_sheet(gs4_find("encyclopédie"))
 
 ### Plume
 
-If you use `Plume`, put the code directly in your R markdown or Quarto document as shown in the example below.
+If you use `Plume`, put the code directly in your R markdown or Quarto document as shown in the example below:
 
 ````{verbatim}
 ---

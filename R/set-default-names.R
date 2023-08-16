@@ -1,14 +1,14 @@
 #' @title Set new default names to a plume subclass
-#' @description This helper function allows you to set new default names to a plume
-#'   subclass, e.g. to set default names to a language other than English. See
-#'   `vignette("working-in-other-languages")` for more details.
-#' @param ... Key-value pairs where keys are old names and values their respective
-#'   replacements.
+#' @description This helper function allows you to set new default names to a
+#'   plume subclass, e.g. to set default names to a language other than English.
+#'   See `vignette("working-in-other-languages")` for more details.
+#' @param ... Key-value pairs where keys are default names and values their
+#'   respective replacements.
 #' @param .plume_quarto Are you setting new names for [`PlumeQuarto`]?
 #' @details
 #' Available names are:
 #'
-#' `r wrap(unlist(.names$public), "\x60")`.
+#' `r wrap(list_fetch_all(.names, "public", "orcid", squash = TRUE), "\x60")`.
 #'
 #' Using `.plume_quarto = TRUE` adds `deceased`, `equal_contributor`, `number`,
 #' `dropping_particle` and `acknowledgements`.
