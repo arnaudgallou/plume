@@ -69,22 +69,22 @@
 <li><p>Fixed an issue with <code>$get_contributions(alphabetical_order = TRUE)</code> that also reordered roles and contribution items (<a href="https://github.com/arnaudgallou/plume/issues/18" class="external-link">#18</a>).</p></li>
 <li>
 <p>R6 classes have been overhauled for a better separation of concerns (<a href="https://github.com/arnaudgallou/plume/issues/5" class="external-link">#5</a>, <a href="https://github.com/arnaudgallou/plume/issues/12" class="external-link">#12</a>).</p>
-<ul><li><p><code>$set_*</code> methods have been moved to their own classes.</p></li>
+<ul><li><p><code>$set_*()</code> methods have been moved to their own classes.</p></li>
 <li><p><code>PlumeQuarto</code> now only does what it is designed for: injecting author metadata into the YAML header of Quarto files. This means that <code>PlumeQuarto</code> can no longer generate author information as character strings.</p></li>
 <li><p><code>Plume</code> now drops variables that are <code>PlumeQuarto</code>-specific. <code>Plume</code>’s constructor also lost the <code>by</code> parameter as it was only used in <code>$set_corresponding_authors()</code>.</p></li>
 </ul></li>
 <li><p><code>$new()</code> and <code><a href="../reference/plm_template.html">plm_template()</a></code> gain a new parameter <code>credit_roles</code> to facilitate the use of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>.</p></li>
 <li><p>Fixed issues when pushing metadata to empty YAML headers (<a href="https://github.com/arnaudgallou/plume/issues/9" class="external-link">#9</a>).</p></li>
 <li><p><code>PlumeQuarto</code> now handles roles via the <code>roles</code> YAML key (<a href="https://github.com/arnaudgallou/plume/issues/5" class="external-link">#5</a>).</p></li>
-<li><p>New method <code>get_orcids()</code> that returns authors’ ORCID.</p></li>
+<li><p>New method <code>$get_orcids()</code> that returns authors’ ORCID.</p></li>
 <li><p>Phone numbers are now set using the variable and attribute <code>phone</code> (<a href="https://github.com/arnaudgallou/plume/issues/4" class="external-link">#4</a>).</p></li>
 <li><p>plume methods now print outputs in the same way.</p></li>
-<li><p><code>get_author_list()</code> now accepts <code>format = ""</code> to return author names only. This is equivalent to <code>format = NULL</code> (<a href="https://github.com/arnaudgallou/plume/issues/3" class="external-link">#3</a>).</p></li>
+<li><p><code>$get_author_list()</code> now accepts <code>format = ""</code> to return author names only. This is equivalent to <code>format = NULL</code> (<a href="https://github.com/arnaudgallou/plume/issues/3" class="external-link">#3</a>).</p></li>
 <li><p>plume classes now error when a given or family name is <code>NA</code> or a blank string.</p></li>
 <li><p>Blank and empty strings are now converted to <code>NA</code> when creating a plume object (<a href="https://github.com/arnaudgallou/plume/issues/2" class="external-link">#2</a>).</p></li>
-<li><p><code>get_contact_details()</code> now drops corresponding authors with no contact details.</p></li>
-<li><p><code>get_contact_details()</code> has been reworked to bind any combination of contact details properly.</p></li>
-<li><p><code>to_yaml()</code> now outputs verbatim <code>true</code>/<code>false</code> (<a href="https://github.com/arnaudgallou/plume/issues/1" class="external-link">#1</a>).</p></li>
+<li><p><code>$get_contact_details()</code> now drops corresponding authors with no contact details.</p></li>
+<li><p><code>$get_contact_details()</code> has been reworked to bind any combination of contact details properly.</p></li>
+<li><p><code>$to_yaml()</code> now outputs verbatim <code>true</code>/<code>false</code> (<a href="https://github.com/arnaudgallou/plume/issues/1" class="external-link">#1</a>).</p></li>
 </ul></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

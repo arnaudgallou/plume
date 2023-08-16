@@ -105,16 +105,17 @@ information as character strings.</p>
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>data</code></dt>
-<dd><p>A data frame or tibble containing author-related data.</p></dd>
+<dd><p>A data frame containing author-related data.</p></dd>
 
 
 <dt><code>names</code></dt>
-<dd><p>A vector of column names.</p></dd>
+<dd><p>A vector of key-value pairs specifying custom names to use,
+where keys are default names and values their respective replacements.</p></dd>
 
 
 <dt><code>symbols</code></dt>
-<dd><p>A list of keys and values defining the symbols used to
-link authors to metadata. Valid keys are <code>"affiliation"</code>,
+<dd><p>A list of key-value pairs defining the symbols to use to
+link authors and their metadata. Valid keys are <code>"affiliation"</code>,
 <code>"corresponding"</code> and <code>"note"</code>. By default, uses digits for
 affiliations, <code>"*"</code> for corresponding authors and <code>"†"</code>, <code>"‡"</code>, <code>"§"</code>,
 <code>"¶"</code>, <code>"#"</code>, <code>"**"</code> for notes. Set a key to <code>NULL</code> to use numerals.</p></dd>
@@ -176,7 +177,7 @@ using the following keys:</p><ul><li><p><code>a</code> for affiliations</p></li>
 shows affiliation ids first and corresponding author mark second, when
 <code>"ca"</code> shows corresponding author mark first and affiliation ids second.
 Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.
-<code>format = NULL</code> lists author names without suffixes.</p>
+Use <code>NULL</code> or an empty string to list author names without suffixes.</p>
 </div>
 
 <div class="section">
@@ -209,7 +210,7 @@ Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.
 </div>
 <div class="section">
 <h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
-<p>Authors' name followed by their respective ORCID.</p>
+<p>A character vector.</p>
 </div>
 
 </div><p></p><hr><a id="method-Plume-get_affiliations"></a><div class="section">
@@ -326,7 +327,7 @@ passed to the variable <code>details</code>. By default, only <code>email</code>
 
 <dt><code>alphabetical_order</code></dt>
 <dd><p>Should authors be listed in alphabetical order?
-By default, lists authors in the order they are defined.</p></dd>
+By default, lists authors in the order they are defined in the data.</p></dd>
 
 
 <dt><code>dotted_initials</code></dt>

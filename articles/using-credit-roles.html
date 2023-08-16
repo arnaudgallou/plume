@@ -91,28 +91,25 @@
 <p>First, create a table using
 <code>plm_template(credit_roles = TRUE)</code> to ensure the table has
 all the appropriate columns.</p>
-<p>Then, simply assign a role to a specific contributor with a
-<code>1</code> and leave it blank otherwise. For the purpose of this
-example, I selected just a few roles. You should normally use all
-contributions, as recommended by the official CRediT’s
-documentation.</p>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 7</span></span></span>
-<span><span class="co">#&gt;   given_name     family_name  conceptualization analysis supervision methodology</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis          Diderot                      1        1           1           1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau                    <span style="color: #BB0000;">NA</span>        1          <span style="color: #BB0000;">NA</span>           1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-Marie Arouet                      <span style="color: #BB0000;">NA</span>        1          <span style="color: #BB0000;">NA</span>           1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'A…                <span style="color: #BB0000;">NA</span>        1           1           1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: writing &lt;dbl&gt;</span></span></span></code></pre>
+<p>Then, assign roles to specific contributors using <code>1</code> and
+leave it blank otherwise. For the purpose of the example, I only
+selected a few roles. You should normally use all roles, as recommended
+by the official CRediT’s documentation.</p>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 6</span></span></span>
+<span><span class="co">#&gt;   given_name     family_name      conceptualization analysis supervision writing</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis          Diderot                          1        1           1       1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau                        <span style="color: #BB0000;">NA</span>        1          <span style="color: #BB0000;">NA</span>       1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-Marie Arouet                          <span style="color: #BB0000;">NA</span>        1          <span style="color: #BB0000;">NA</span>       1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'Alemb…                <span style="color: #BB0000;">NA</span>        1           1       1</span></span></code></pre>
 <p>Once the data set is ready, use <code>credit_roles = TRUE</code> when
-creating your <code>plume</code> object. plume will process and format
-the roles automatically.</p>
+creating a <code>plume</code> object. plume will process and format the
+roles automatically.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">tbl_credit</span>, credit_roles <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Conceptualization: D.D.</span></span>
 <span><span class="co">#&gt; Formal analysis: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
-<span><span class="co">#&gt; Methodology: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
 <span><span class="co">#&gt; Supervision: D.D. and J.L.R.d'A.</span></span>
 <span><span class="co">#&gt; Writing - original draft: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span></code></pre></div>
   </main>
