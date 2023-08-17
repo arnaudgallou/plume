@@ -34,21 +34,21 @@ author <- tibble::tibble(
 ```
 
 ```{r, include = FALSE}
-aut <- PlumeQuarto$new(author)
-tmp <- withr::local_tempfile(
+tmp_file <- withr::local_tempfile(
   lines = "---\ntitle: Cogito ergo sum\n---",
   fileext = ".qmd"
 )
+aut <- PlumeQuarto$new(author, tmp_file)
 ```
 
 ```{r, eval = FALSE}
-aut <- PlumeQuarto$new(author)
-aut$to_yaml("file.qmd")
+aut <- PlumeQuarto$new(author, file = "file.qmd")
+aut$to_yaml()
 ```
 
 The above will produce the following YAML header:
 
 ```{r, echo = FALSE, comment = ""}
-aut$to_yaml(tmp)
-cat(readr::read_file(tmp))
+aut$to_yaml()
+cat(readr::read_file(tmp_file))
 ```

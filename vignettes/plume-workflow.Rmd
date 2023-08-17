@@ -93,9 +93,9 @@ library(plume)
 
 tbl_authors <- gs4_find("encyclopédie") |> read_sheet()
 
-aut <- PlumeQuarto$new(tbl_authors)
+aut <- PlumeQuarto$new(tbl_authors, file = "file.qmd")
 aut$set_corresponding_authors(1)
-aut$to_yaml("file.qmd")
+aut$to_yaml()
 ```
 
 Remember to run the script everytime the spreadsheet is updated to implement the changes in your document.

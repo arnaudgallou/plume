@@ -76,9 +76,13 @@ Consider the following example:
     Qui scribit bis legit
 
 ``` r
-aut <- PlumeQuarto$new(encyclopedists, names = c(role = "role_n"))
+aut <- PlumeQuarto$new(
+  encyclopedists,
+  file = "file.qmd",
+  names = c(role = "role_n")
+)
 aut$set_corresponding_authors(1, 4)
-aut$to_yaml("file.qmd")
+aut$to_yaml()
 ```
 
     ---

@@ -1,5 +1,5 @@
 test_that("sets status to selected authors", {
-  aut <- PlumeQuarto$new(basic_df())
+  aut <- PlumeQuarto$new(basic_df(), tempfile())
 
   # set_corresponding_authors
 
@@ -71,7 +71,7 @@ test_that("sets status to selected authors", {
 # Errors ----
 
 test_that("set_*() methods give meaningful error messages", {
-  aut <- PlumeQuarto$new(basic_df())
+  aut <- PlumeQuarto$new(basic_df(), tempfile())
 
   expect_snapshot({
     (expect_error(

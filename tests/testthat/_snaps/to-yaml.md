@@ -182,28 +182,34 @@
 # to_yaml() gives meaningful error messages
 
     Code
-      (expect_error(aut$to_yaml(1)))
+      (expect_error(PlumeQuarto$new(basic_df(), file = 1)))
     Output
       <error/rlang_error>
       Error:
       ! `file` must be a character string.
     Code
-      (expect_error(aut$to_yaml("")))
+      (expect_error(PlumeQuarto$new(basic_df(), file = "")))
     Output
       <error/rlang_error>
       Error:
       ! `file` must be a non-empty string.
     Code
-      (expect_error(aut$to_yaml("test.pdf")))
+      (expect_error(PlumeQuarto$new(basic_df(), file = "test.rmd")))
     Output
       <error/rlang_error>
       Error:
       ! `file` must be a `.qmd` file.
+    Code
+      (expect_error(PlumeQuarto$new(basic_df(), file = "~/test.qmd")))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `~/test.qmd` doesn't exist.
 
 ---
 
     Code
-      aut$to_yaml(tmp_file)
+      aut$to_yaml()
     Condition
       Error:
       ! No YAML header found.

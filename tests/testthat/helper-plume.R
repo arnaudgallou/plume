@@ -22,6 +22,14 @@ basic_df <- function() {
   )
 }
 
+tempfile <- function() {
+  withr::local_tempfile(
+    lines = "---\n---",
+    fileext = ".qmd",
+    .local_envir = rlang::caller_env()
+  )
+}
+
 dedent <- function(string) {
   out <- string_trim(string)
   ws_regex <- "(?<=\n) "
