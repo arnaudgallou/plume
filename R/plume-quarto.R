@@ -19,6 +19,7 @@ PlumeQuarto <- R6Class(
   public = list(
     #' @description Create a `PlumeQuarto` object.
     #' @param data A data frame containing author-related data.
+    #' @param file A `.qmd` file to insert author data into.
     #' @param names A vector of key-value pairs specifying custom names to use,
     #'   where keys are default names and values their respective replacements.
     #' @param credit_roles Should the `r link("crt")` be used?
@@ -28,30 +29,32 @@ PlumeQuarto <- R6Class(
     #' @return A `PlumeQuarto` object.
     initialize = function(
         data,
+        file,
         names = NULL,
         credit_roles = FALSE,
         initials_given_name = FALSE,
         by = NULL
     ) {
+      check_file(file, extension = "qmd")
       super$initialize(data, names, credit_roles, initials_given_name, by)
+      private$file <- file
       private$id <- private$pick("id")
     },
 
     #' @description Push or update author information in a YAML header. The
     #'   generated YAML complies with Quarto's `r link("quarto_schemas")`.
-    #' @param file A `.qmd` file.
     #' @details
     #' If missing, `to_yaml()` pushes author information into a YAML header. If
     #' already existing, the function replaces old `author` and `affiliations`
     #' values with the ones provided in the input data.
     #' @return The input `file` invisibly.
-    to_yaml = function(file) {
-      check_file(file, extension = "qmd")
-      yaml_push(file, what = private$get_template())
+    to_yaml = function() {
+      yaml_push(private$file, what = private$get_template())
     }
   ),
 
   private = list(
+    file = NULL,
     plume_names = .names_quarto,
     meta_prefix = "meta-",
     id = NULL,

@@ -152,17 +152,19 @@ You can push information from the input data into the YAML header using the `to_
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 1, 4),
+  file = "file.qmd",
   names = c(role = "role_n")
 )
-aut$to_yaml("file.qmd")
+aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 1, 4),
+  tmp_file,
   names = c(role = "role_n")
 )
-aut$to_yaml(tmp_file)
+aut$to_yaml()
 cat(read_file(tmp_file))
 ```
 
@@ -173,17 +175,19 @@ If the YAML header already has an `author` and `affiliations` keys, `to_yaml()` 
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 2),
+  file = "file.qmd",
   names = c(role = "role_n")
 )
-aut$to_yaml("file.qmd")
+aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 2),
+  tmp_file,
   names = c(role = "role_n")
 )
-aut$to_yaml(tmp_file)
+aut$to_yaml()
 cat(read_file(tmp_file))
 ```
 

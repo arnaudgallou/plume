@@ -52,24 +52,6 @@
       Error:
       ! `names` must have unique input names.
     Code
-      (expect_error(PlumeQuarto$new(df, by = 1)))
-    Output
-      <error/rlang_error>
-      Error:
-      ! `by` must be a character string.
-    Code
-      (expect_error(PlumeQuarto$new(df, by = "")))
-    Output
-      <error/rlang_error>
-      Error:
-      ! `by` must be a non-empty string.
-    Code
-      (expect_error(PlumeQuarto$new(df, by = "foo")))
-    Output
-      <error/rlang_error>
-      Error:
-      ! Column `foo` doesn't exist.
-    Code
       (expect_error(Plume$new(df, symbols = c(note = letters))))
     Output
       <error/rlang_error>
@@ -120,4 +102,22 @@
       i In index: 4.
       Caused by error:
       ! `interword_spacing` must be `TRUE` or `FALSE`.
+    Code
+      (expect_error(PlumeQuarto$new(df, tempfile(), by = 1)))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `by` must be a character string.
+    Code
+      (expect_error(PlumeQuarto$new(df, tempfile(), by = "")))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `by` must be a non-empty string.
+    Code
+      (expect_error(PlumeQuarto$new(df, tempfile(), by = "foo")))
+    Output
+      <error/rlang_error>
+      Error:
+      ! Column `foo` doesn't exist.
 

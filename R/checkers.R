@@ -246,6 +246,22 @@ check_suffix_format <- function(x, allowed, arg = caller_arg(x)) {
   abort_check(what, msg_body = msg_body, arg = arg)
 }
 
+path_is_relative <- function(x) {
+  !string_detect(x, "^(/|[A-Za-z]:|\\\\|~)")
+}
+
+check_path <- function(x, ..., arg = caller_arg(x)) {
+  if (file.exists(x)) {
+    return(invisible(NULL))
+  }
+  if (path_is_relative(x)) {
+    directory <- glue(" in the current directory `{getwd()}`")
+  } else {
+    directory <- ""
+  }
+  abort_check(msg = glue("`{x}` doesn't exist{directory}."))
+}
+
 file_ext <- function(x) {
   string_extract(x, "(?<=\\.)[^.]+$")
 }
@@ -254,6 +270,7 @@ check_file <- function(x, extension, ..., arg = caller_arg(x)) {
   check_string(x, allow_empty = FALSE, arg = arg)
   ext <- file_ext(x)
   if (is_not_na(ext) && includes(ext, extension)) {
+    check_path(x, arg = arg)
     return(invisible(NULL))
   }
   extension <- wrap(predot(extension), "`")

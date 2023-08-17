@@ -50,7 +50,7 @@ Plume$new(encyclopedists)
 ```
 
 ```{r, include = FALSE}
-tmp <- withr::local_tempfile(
+tmp_file <- withr::local_tempfile(
   lines = "---\ntitle: Encyclopédie\n---\n\nQui scribit bis legit",
   fileext = ".qmd"
 )
@@ -61,20 +61,24 @@ tmp <- withr::local_tempfile(
 Consider the following example:
 
 ```{r, echo = FALSE, comment = ""}
-cat(readr::read_file(tmp))
+cat(readr::read_file(tmp_file))
 ```
 
 ```{r, eval = FALSE}
-aut <- PlumeQuarto$new(encyclopedists, names = c(role = "role_n"))
+aut <- PlumeQuarto$new(
+  encyclopedists,
+  file = "file.qmd",
+  names = c(role = "role_n")
+)
 aut$set_corresponding_authors(1, 4)
-aut$to_yaml("file.qmd")
+aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(encyclopedists, names = c(role = "role_n"))
+aut <- PlumeQuarto$new(encyclopedists, tmp_file, names = c(role = "role_n"))
 aut$set_corresponding_authors(1, 4)
-aut$to_yaml(tmp)
-cat(readr::read_file(tmp))
+aut$to_yaml()
+cat(readr::read_file(tmp_file))
 ```
 
 Alternatively, you can generate author information as character strings using `Plume`:
