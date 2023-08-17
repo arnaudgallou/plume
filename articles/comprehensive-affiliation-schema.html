@@ -109,8 +109,8 @@ assign each item to its respective key.</p>
 <span>  affiliation3 <span class="op">=</span> <span class="st">"name=Academia Franekerensis country=The Netherlands city=Franeker"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">author</span><span class="op">)</span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="st">"file.qmd"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">author</span>, file <span class="op">=</span> <span class="st">"file.qmd"</span><span class="op">)</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The above will produce the following YAML header:</p>
 <pre><code>---
 title: Cogito ergo sum
