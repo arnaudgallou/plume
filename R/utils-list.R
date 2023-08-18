@@ -1,13 +1,16 @@
 list_fetch_all <- function(x, ..., squash) {
-  out <- c()
+  out <- list()
   for (name in c(...)) {
-    out <- append(out, list_fetch(x, name, squash))
+    out <- append(out, list_fetch(x, name))
+  }
+  if (squash) {
+    return(unlist(out, use.names = FALSE))
   }
   out
 }
 
-list_fetch <- function(x, name, squash) {
-  out <- c()
+list_fetch <- function(x, name) {
+  out <- NULL
   for (i in names(x)) {
     x_i <- x[[i]]
     if (length(out)) {
@@ -15,11 +18,8 @@ list_fetch <- function(x, name, squash) {
     } else if (i == name) {
       out <- if (length(x_i) > 1L) x_i else x[i]
     } else if (is.list(x_i)) {
-      out <- list_fetch(x_i, name, squash)
+      out <- list_fetch(x_i, name)
     }
-  }
-  if (squash) {
-    return(unlist(out, use.names = FALSE))
   }
   out
 }

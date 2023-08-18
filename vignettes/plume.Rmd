@@ -40,16 +40,17 @@ Plume$new(encyclopedists)
 
 ```{r, echo = FALSE}
 list_keys <- function(x) {
-  out <- c()
-  for (i in names(x)) {
+  nms <- names(x)
+  out <- vector("list", length(x))
+  for (i in seq_along(x)) {
     x_i <- x[[i]]
     if (is.list(x_i)) {
-      out <- append(out, list_keys(x_i))
+      out[[i]] <- list_keys(x_i)
     } else {
-      out <- append(out, i)
+      out[[i]] <- nms[i]
     }
   }
-  out
+  unlist(out)
 }
 
 fetch <- plume:::list_fetch
@@ -57,8 +58,8 @@ fetch <- plume:::list_fetch
 .names_quarto <- plume:::.names_quarto
 
 make_table_vars <- function(category) {
-  vars_plume <- fetch(.names, category, squash = FALSE)
-  vars_plume_quarto <- fetch(.names_quarto, category, squash = FALSE)
+  vars_plume <- fetch(.names, category)
+  vars_plume_quarto <- fetch(.names_quarto, category)
   keys <- list_keys(vars_plume_quarto)
   tibble::tibble(
     name = keys,
