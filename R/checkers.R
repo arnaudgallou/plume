@@ -54,7 +54,7 @@ dots_equal_all <- function(...) {
   dots_n(...) == 1L && is_string(expr(...)) && ... == "all"
 }
 
-search <- function(x, callback, na_rm = TRUE, n = 1) {
+search_ <- function(x, callback, na_rm = TRUE, n = 1) {
   if (na_rm) {
     x <- vec_drop_na(x)
   }
@@ -291,7 +291,7 @@ check_glue <- function(x, allowed, ..., arg = caller_arg(x)) {
     if (all(includes(exprs, allowed, ignore_case = FALSE))) {
       return(invisible(NULL))
     }
-    invalid_expr <- search(exprs, \(expr) !expr %in% allowed)
+    invalid_expr <- search_(exprs, \(expr) !expr %in% allowed)
     allowed_exprs <- wrap(allowed, "`")
     msg <- c(
       glue("Invalid variable `{invalid_expr}`."),
@@ -306,7 +306,7 @@ is_orcid <- function(x) {
 }
 
 check_orcid <- function(x, ..., arg = caller_arg(x)) {
-  invalid_orcid <- search(x, Negate(is_orcid))
+  invalid_orcid <- search_(x, Negate(is_orcid))
   if (is.null(invalid_orcid)) {
     return(invisible(NULL))
   }
