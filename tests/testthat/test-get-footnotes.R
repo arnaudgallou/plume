@@ -1,4 +1,4 @@
-test_that("get_affiliations()/get_notes() return affiliations/notes", {
+test_that("get_affiliations/notes() return affiliations/notes", {
   df <- basic_df()
   aut <- Plume$new(df)
 
@@ -36,6 +36,15 @@ test_that("get_affiliations()/get_notes() return affiliations/notes", {
     aut$get_notes(),
     paste0("^", symbols, "^", notes)
   )
+})
+
+test_that("get_affiliations/notes() returns `NULL` if no affiliations/notes", {
+  aut <- Plume$new(data.frame(
+    given_name = "Zip",
+    family_name = "Zap",
+    note = ""
+  ))
+  expect_null(aut$get_notes())
 })
 
 # Errors ----
