@@ -72,6 +72,15 @@ test_that("get_contributions() return authors' contributions", {
   )
 })
 
+test_that("get_contributions() returns `NULL` if no contributions", {
+  aut <- Plume$new(data.frame(
+    given_name = "Zip",
+    family_name = "Zap",
+    role = ""
+  ))
+  expect_null(aut$get_contributions())
+})
+
 test_that("get_contributions() rearranges authors only (#18)", {
   aut <- Plume$new(data.frame(
     given_name = c("Zip", "Pim"),
