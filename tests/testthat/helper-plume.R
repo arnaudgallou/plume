@@ -31,7 +31,7 @@ tempfile <- function() {
 }
 
 dedent <- function(string) {
-  out <- string_trim(string)
+  out <- trimws(string)
   ws_regex <- "(?<=\n) "
   ws <- string_extract_all(out, paste0(ws_regex, "+"))
   ws_n <- min(nchar(ws))

@@ -117,10 +117,6 @@ recycle <- function(x, to, arg = caller_arg(x)) {
   rep(x, length(to))
 }
 
-string_trim <- function(string) {
-  gsub("^\\s+|\\s+$", "", string)
-}
-
 string_split <- function(string, pattern = "") {
   out <- strsplit(
     string, pattern,
