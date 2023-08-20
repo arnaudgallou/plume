@@ -74,14 +74,14 @@
 <li><p><code>Plume</code> now drops variables that are <code>PlumeQuarto</code>-specific. <code>Plume</code>’s constructor also lost the <code>by</code> parameter as it was only used in <code>$set_corresponding_authors()</code>.</p></li>
 </ul></li>
 <li><p><code>$new()</code> and <code><a href="../reference/plm_template.html">plm_template()</a></code> gain a new parameter <code>credit_roles</code> to facilitate the use of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>.</p></li>
-<li><p>Fixed issues when pushing metadata to empty YAML headers (<a href="https://github.com/arnaudgallou/plume/issues/9" class="external-link">#9</a>).</p></li>
+<li><p><code>$to_yaml()</code> can now push data to empty YAML headers (<a href="https://github.com/arnaudgallou/plume/issues/9" class="external-link">#9</a>).</p></li>
 <li><p><code>PlumeQuarto</code> now handles roles via the <code>roles</code> YAML key (<a href="https://github.com/arnaudgallou/plume/issues/5" class="external-link">#5</a>).</p></li>
 <li><p>New method <code>$get_orcids()</code> that returns authors’ ORCID.</p></li>
 <li><p>Phone numbers are now set using the variable and attribute <code>phone</code> (<a href="https://github.com/arnaudgallou/plume/issues/4" class="external-link">#4</a>).</p></li>
-<li><p>plume methods now print outputs in the same way.</p></li>
+<li><p>plume methods now print outputs in a consistent way.</p></li>
 <li><p><code>$get_author_list()</code> now accepts <code>format = ""</code> to return author names only. This is equivalent to <code>format = NULL</code> (<a href="https://github.com/arnaudgallou/plume/issues/3" class="external-link">#3</a>).</p></li>
 <li><p>plume classes now error when a given or family name is <code>NA</code> or a blank string.</p></li>
-<li><p>Blank and empty strings are now converted to <code>NA</code> when creating a plume object (<a href="https://github.com/arnaudgallou/plume/issues/2" class="external-link">#2</a>).</p></li>
+<li><p>Blank and empty strings are now converted to <code>NA</code> when creating <code>plume</code> objects (<a href="https://github.com/arnaudgallou/plume/issues/2" class="external-link">#2</a>).</p></li>
 <li><p><code>$get_contact_details()</code> now drops corresponding authors with no contact details.</p></li>
 <li><p><code>$get_contact_details()</code> has been reworked to bind any combination of contact details properly.</p></li>
 <li><p><code>$to_yaml()</code> now outputs verbatim <code>true</code>/<code>false</code> (<a href="https://github.com/arnaudgallou/plume/issues/1" class="external-link">#1</a>).</p></li>
