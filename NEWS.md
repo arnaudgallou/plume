@@ -22,7 +22,7 @@
 
 * `$new()` and `plm_template()` gain a new parameter `credit_roles` to facilitate the use of the [Contributor Roles Taxonomy](https://credit.niso.org).
 
-* Fixed issues when pushing metadata to empty YAML headers (#9).
+* `$to_yaml()` can now push data to empty YAML headers (#9).
 
 * `PlumeQuarto` now handles roles via the `roles` YAML key (#5).
 
@@ -30,13 +30,13 @@
 
 * Phone numbers are now set using the variable and attribute `phone` (#4).
 
-* plume methods now print outputs in the same way.
+* plume methods now print outputs in a consistent way.
 
 * `$get_author_list()` now accepts `format = ""` to return author names only. This is equivalent to `format = NULL` (#3).
 
 * plume classes now error when a given or family name is `NA` or a blank string.
 
-* Blank and empty strings are now converted to `NA` when creating a plume object (#2).
+* Blank and empty strings are now converted to `NA` when creating `plume` objects (#2).
 
 * `$get_contact_details()` now drops corresponding authors with no contact details.
 
