@@ -86,8 +86,7 @@ message_body <- function(i) {
     i,
     `1` = "must be",
     `2` = "must have",
-    `3` = "must only contain",
-    abort("index out of bounds.")
+    `3` = "must only contain"
   )
 }
 
@@ -284,9 +283,6 @@ is_glueish <- function(x) {
 check_glue <- function(x, allowed, ..., arg = caller_arg(x)) {
   msg <- NULL
   if (!missing(x) && is_glueish(x)) {
-    if (missing(allowed)) {
-      return(invisible(NULL))
-    }
     exprs <- extract_glue_exprs(x)
     if (all(includes(exprs, allowed, ignore_case = FALSE))) {
       return(invisible(NULL))

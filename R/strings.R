@@ -99,22 +99,10 @@ string_sub <- function(string, start = 1L, end = -1L) {
     end <- start[, 2]
     start <- start[, 1]
   }
-  start <- recycle(start, string)
-  end <- recycle(end, string)
   n <- nchar(string)
   start <- ifelse(start < 0, start + n + 1, start)
   end <- ifelse(end < 0, end + n + 1, end)
   substr(string, start, end)
-}
-
-recycle <- function(x, to, arg = caller_arg(x)) {
-  if (length(x) == length(to)) {
-    return(x)
-  }
-  if (length(x) != 1L) {
-    stop("Can't recycle `", arg, "` to length ", length(to), call. = FALSE)
-  }
-  rep(x, length(to))
 }
 
 string_split <- function(string, pattern = "") {

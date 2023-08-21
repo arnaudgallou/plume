@@ -17,9 +17,6 @@ NameHandler <- R6Class(
     },
 
     set_names = function(x) {
-      if (any(lengths(x)) > 1L) {
-        x <- map(x, 1L)
-      }
       private$names <- list_replace(private$names, x)
     }
   )
