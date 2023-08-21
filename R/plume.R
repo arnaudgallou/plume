@@ -216,7 +216,7 @@ Plume <- R6Class(
     orcid_icon = NULL,
 
     get_author_list_suffixes = function(format) {
-      key_set <- get_key_set(format)
+      key_set <- als_key_set(format)
       vars <- unlist(private$pick(key_set, squash = FALSE))
       cols <- unname(vars)
       private$check_col(cols)
@@ -282,14 +282,3 @@ Plume <- R6Class(
     }
   )
 )
-
-get_key_set <- function(format) {
-  set <- c(
-    a = "affiliation",
-    c = "corresponding",
-    n = "note",
-    o = "orcid"
-  )
-  keys <- als_extract_keys(format)
-  set[keys]
-}

@@ -1,3 +1,14 @@
+als_key_set <- function(format) {
+  set <- c(
+    a = "affiliation",
+    c = "corresponding",
+    n = "note",
+    o = "orcid"
+  )
+  keys <- als_extract_keys(format)
+  set[keys]
+}
+
 als_extract_keys <- function(x) {
   x <- string_split(x)
   x[x %in% letters]
