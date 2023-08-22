@@ -43,5 +43,5 @@
       Caused by error:
       ! Invalid ORCID identifier found: `0000`.
       i ORCID identifiers must have 16 digits, separated by a hyphen every 4 digits.
-      i The last character of the identifier must be a digit or `X`.
+      i The last character of the identifiers must be a digit or `X`.
 

@@ -212,7 +212,7 @@
       aut$to_yaml()
     Condition
       Error:
-      ! No YAML header found.
+      ! No YAML headers found.
       i YAML headers must be at the top of the document.
       i YAML headers must start and end with three hyphens.
 

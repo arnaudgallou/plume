@@ -309,7 +309,7 @@ check_orcid <- function(x, ..., arg = caller_arg(x)) {
   msg <- glue("Invalid ORCID identifier found: `{invalid_orcid}`.")
   abort_check(msg = msg, bullets = c(
     i = "ORCID identifiers must have 16 digits, separated by a hyphen every 4 digits.",
-    i = "The last character of the identifier must be a digit or `X`."
+    i = "The last character of the identifiers must be a digit or `X`."
   ), ..., arg = arg)
 }
 
