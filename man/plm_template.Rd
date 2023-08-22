@@ -22,3 +22,6 @@ This helper function allows you to generate an empty
 \code{\link[tibble:tibble]{tibble}} that you can use as a template to supply
 author data.
 }
+\examples{
+plm_template()
+}

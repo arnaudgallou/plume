@@ -2,13 +2,19 @@
 #' @description Modifier function used to generate logical sequences of
 #'   characters.
 #' @param x A character vector.
+#' @returns A character vector with parent S3 class `sequential`.
 #' @examples
 #' aut <- Plume$new(
-#'   tibble::tibble(given_name = "X", family_name = "Y", affiliation = 1:60),
+#'   tibble::tibble(
+#'     given_name = "X",
+#'     family_name = "Y",
+#'     affiliation = 1:60
+#'   ),
 #'   symbols = list(affiliation = sequential(letters))
 #' )
 #'
-#' aut$get_affiliations(sep = ": ", superscript = FALSE) |> cat(sep = "\n")
+#' aut$get_affiliations(sep = ": ", superscript = FALSE) |> 
+#'   cat(sep = "\n")
 #' @export
 sequential <- function(x) {
   check_character(x, allow_duplicates = FALSE, allow_null = FALSE)

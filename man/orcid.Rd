@@ -11,7 +11,16 @@ orcid(size = 16, bw = FALSE)
 
 \item{bw}{Should the black and white version of the icon be used?}
 }
+\value{
+A plume icon.
+}
 \description{
 Helper function to control the size and colour of the ORCID
 icon.
+}
+\examples{
+\dontrun{
+aut <- Plume$new(encyclopedists, orcid_icon = orcid(bw = TRUE))
+aut$get_orcids()
+}
 }

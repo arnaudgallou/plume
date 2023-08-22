@@ -7,7 +7,9 @@
 #'   `note`. Otherwise the function returns a template with all columns that can
 #'   be supplied to plume classes that are not `PlumeQuarto`-specific.
 #' @param credit_roles Should the `r link("crt")` be used?
-#' @return An empty tibble.
+#' @returns An empty tibble.
+#' @examples
+#' plm_template()
 #' @export
 plm_template <- function(minimal = TRUE, credit_roles = FALSE) {
   check_args("bool", list(minimal, credit_roles))

@@ -18,7 +18,6 @@ A named list.
 \description{
 This helper function allows you to set new default names to a
 plume subclass, e.g. to set default names to a language other than English.
-See \code{vignette("working-in-other-languages")} for more details.
 }
 \details{
 Available names are:
@@ -27,4 +26,25 @@ Available names are:
 
 Using \code{.plume_quarto = TRUE} adds \code{deceased}, \code{equal_contributor}, \code{number},
 \code{dropping_particle} and \code{acknowledgements}.
+}
+\examples{
+\dontrun{
+PlumeFr <- R6::R6Class(
+  classname = "PlumeFr",
+  inherit = Plume,
+  private = list(
+    plume_names = set_default_names(
+      initials = "initiales",
+      literal_name = "nom_complet",
+      corresponding = "correspondant",
+      given_name = "prénom",
+      family_name = "nom",
+      email = "courriel",
+      phone = "téléphone"
+    )
+  )
+)
+
+PlumeFr$new(encyclopedists_fr)
+}
 }

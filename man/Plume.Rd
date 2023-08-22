@@ -7,6 +7,41 @@
 Class that generates author lists and other author-related
 information as character strings.
 }
+\examples{
+# Create a Plume instance
+aut <- Plume$new(encyclopedists, names = c(role = "role_n"))
+
+# Set the desired corresponding authors, using
+# authors' id by default
+aut$set_corresponding_authors(1, 4)
+
+# Getting authors suffixed by affiliation ids
+# and the corresponding author mark:
+aut$get_author_list("^a,c^")
+
+# Or maybe with the corresponding author mark
+# coming before affiliation ids:
+aut$get_author_list("^c,a^")
+
+# Getting more author metadata
+aut$get_affiliations()
+aut$get_contributions()
+
+# Use `symbols` to change the default symbols.
+# E.g. to use letters as affiliation ids:
+aut <- Plume$new(
+  encyclopedists,
+  symbols = list(affiliation = letters)
+)
+
+aut$get_author_list("^a^")
+aut$get_affiliations()
+
+# It is also possible to output contributions in the
+# active voice
+aut <- Plume$new(encyclopedists, names = c(role = "role_v"))
+aut$get_contributions(roles_first = FALSE, divider = " ")
+}
 \section{Super classes}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{Plume}
 }

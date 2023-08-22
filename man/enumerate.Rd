@@ -14,7 +14,14 @@ enumerate(x, sep = ", ", last = " and ")
 \item{last}{Separator used to separate the last two items if \code{x} has at least
 2 items.}
 }
+\value{
+A character string with the same class as \code{x}.
+}
 \description{
 Wrapper around \code{\link[glue:glue_collapse]{glue_collapse()}} using
 \code{sep = ", "} and \code{last = " and "} as default arguments.
+}
+\examples{
+aut <- Plume$new(encyclopedists)
+aut$get_author_list(format = "^a^") |> enumerate()
 }
