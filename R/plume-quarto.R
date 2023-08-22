@@ -14,19 +14,20 @@
 #' @description Class that pushes or updates author metadata in the YAML header
 #'   of Quarto files.
 #' @examples
+#' \dontrun{
 #' # PlumeQuarto requires to work with a Quarto file.
 #' # For the purpose of the example, let's create a temporary
-#' # file with a YAML header containing a title:
+#' # file with a YAML header containing a title
 #' tmp_file <- withr::local_tempfile(
 #'   lines = "---\ntitle: Encyclopédie\n---",
 #'   fileext = ".qmd"
 #' )
 #'
-#' # View the temporary file:
+#' # View the temporary file
 #' cat(readr::read_file(tmp_file))
 #'
 #' # Create a PlumeQuarto instance using the temporary
-#' # file we've just created:
+#' # file we've just created
 #' aut <- PlumeQuarto$new(
 #'   encyclopedists,
 #'   file = tmp_file,
@@ -39,7 +40,7 @@
 #' cat(readr::read_file(tmp_file))
 #'
 #' # Pushing again with new data updates the YAML
-#' # header accordingly:
+#' # header accordingly
 #' aut <- PlumeQuarto$new(
 #'   dplyr::slice(encyclopedists, 2),
 #'   file = tmp_file,
@@ -48,6 +49,7 @@
 #' aut$to_yaml()
 #'
 #' cat(readr::read_file(tmp_file))
+#' }
 #' @export
 PlumeQuarto <- R6Class(
   classname = "PlumeQuarto",
