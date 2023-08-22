@@ -120,10 +120,6 @@ blank_to_na <- function(x) {
   replace(x, is_blank(x), NA)
 }
 
-get_eol <- function() {
-  if (.Platform$OS.type == "unix") "\n" else "\r\n" # nocov
-}
-
 unstructure <- function(x) {
   attributes(x) <- NULL
   x

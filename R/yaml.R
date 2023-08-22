@@ -29,6 +29,10 @@ as_verbatim_lgl <- function(x) {
   structure(x, class = "verbatim")
 }
 
+get_eol <- function() {
+  if (.Platform$OS.type == "unix") "\n" else "\r\n" # nocov
+}
+
 yaml_inject <- function(lines, replacement) {
   eol <- get_eol()
   yaml <- as.yaml(
