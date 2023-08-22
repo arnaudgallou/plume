@@ -322,7 +322,7 @@ aut$get_orcids(compact = FALSE, icon = FALSE, sep = " ")
 Default symbols are:
 
 ```{r, echo = FALSE}
-str(plume:::default_symbols)
+str(plume:::.symbols)
 ```
 
 You can change symbols when creating a `plume` object using the parameter `symbols`.

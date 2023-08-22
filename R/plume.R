@@ -1,4 +1,4 @@
-default_symbols <- list(
+.symbols <- list(
   affiliation = NULL,
   corresponding = "\\*",
   note = c("\u2020", "\u2021", "\u00a7", "\u00b6", "\u0023", "\\*\\*")
@@ -246,7 +246,7 @@ Plume <- R6Class(
   ),
 
   private = list(
-    symbols = default_symbols,
+    symbols = .symbols,
     orcid_icon = NULL,
 
     get_author_list_suffixes = function(format) {
