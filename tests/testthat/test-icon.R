@@ -1,5 +1,4 @@
 test_that("printing a `plm_icon` object returns a formatted output", {
-  aut <- Plume$new(data.frame(given_name = "X", family_name = "Y"))
   expect_output(print(orcid()), "<orcid>")
 })
 
