@@ -47,7 +47,7 @@ is_void <- function(x) {
 }
 
 is_nested <- function(x, item) {
-  typeof(x[[item]]) == "list"
+  is.list(x[[item]])
 }
 
 dots_equal_all <- function(...) {
