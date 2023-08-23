@@ -120,6 +120,22 @@ Plume <- R6Class(
       as_plm(out)
     },
 
+    #' @description Get authors' affiliations.
+    #' @param sep Separator used to separate affiliation ids and affiliations.
+    #' @param superscript Should affiliation ids be superscripted?
+    #' @return A character vector.
+    get_affiliations = function(sep = "", superscript = TRUE) {
+      private$get_footnotes("affiliation", sep, superscript)
+    },
+
+    #' @description Get authors' notes.
+    #' @param sep Separator used to separate note ids and notes.
+    #' @param superscript Should note ids be superscripted?
+    #' @return A character vector.
+    get_notes = function(sep = "", superscript = TRUE) {
+      private$get_footnotes("note", sep, superscript)
+    },
+
     #' @description Get authors' ORCID.
     #' @param compact Should links only display the 16-digit identifier?
     #' @param icon Should the ORCID icon be shown?
@@ -137,22 +153,6 @@ Plume <- R6Class(
       cols <- c(private$pick("literal_name"), predot("orcid"))
       out <- collapse_cols(out, cols, sep)
       as_plm(out)
-    },
-
-    #' @description Get authors' affiliations.
-    #' @param sep Separator used to separate affiliation ids and affiliations.
-    #' @param superscript Should affiliation ids be superscripted?
-    #' @return A character vector.
-    get_affiliations = function(sep = "", superscript = TRUE) {
-      private$get_footnotes("affiliation", sep, superscript)
-    },
-
-    #' @description Get authors' notes.
-    #' @param sep Separator used to separate note ids and notes.
-    #' @param superscript Should note ids be superscripted?
-    #' @return A character vector.
-    get_notes = function(sep = "", superscript = TRUE) {
-      private$get_footnotes("note", sep, superscript)
     },
 
     #' @description Get the contact details of corresponding authors.

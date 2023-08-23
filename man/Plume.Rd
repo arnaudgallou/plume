@@ -52,9 +52,9 @@ aut$get_contributions(roles_first = FALSE, divider = " ")
 \itemize{
 \item \href{#method-Plume-new}{\code{Plume$new()}}
 \item \href{#method-Plume-get_author_list}{\code{Plume$get_author_list()}}
-\item \href{#method-Plume-get_orcids}{\code{Plume$get_orcids()}}
 \item \href{#method-Plume-get_affiliations}{\code{Plume$get_affiliations()}}
 \item \href{#method-Plume-get_notes}{\code{Plume$get_notes()}}
+\item \href{#method-Plume-get_orcids}{\code{Plume$get_orcids()}}
 \item \href{#method-Plume-get_contact_details}{\code{Plume$get_contact_details()}}
 \item \href{#method-Plume-get_contributions}{\code{Plume$get_contributions()}}
 \item \href{#method-Plume-clone}{\code{Plume$clone()}}
@@ -158,30 +158,6 @@ A character vector.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Plume-get_orcids"></a>}}
-\if{latex}{\out{\hypertarget{method-Plume-get_orcids}{}}}
-\subsection{Method \code{get_orcids()}}{
-Get authors' ORCID.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$get_orcids(compact = FALSE, icon = TRUE, sep = "")}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{compact}}{Should links only display the 16-digit identifier?}
-
-\item{\code{icon}}{Should the ORCID icon be shown?}
-
-\item{\code{sep}}{Separator used to separate authors and their respective ORCID.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A character vector.
-}
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-get_affiliations"></a>}}
 \if{latex}{\out{\hypertarget{method-Plume-get_affiliations}{}}}
 \subsection{Method \code{get_affiliations()}}{
@@ -218,6 +194,30 @@ Get authors' notes.
 \item{\code{sep}}{Separator used to separate note ids and notes.}
 
 \item{\code{superscript}}{Should note ids be superscripted?}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A character vector.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Plume-get_orcids"></a>}}
+\if{latex}{\out{\hypertarget{method-Plume-get_orcids}{}}}
+\subsection{Method \code{get_orcids()}}{
+Get authors' ORCID.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Plume$get_orcids(compact = FALSE, icon = TRUE, sep = "")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{compact}}{Should links only display the 16-digit identifier?}
+
+\item{\code{icon}}{Should the ORCID icon be shown?}
+
+\item{\code{sep}}{Separator used to separate authors and their respective ORCID.}
 }
 \if{html}{\out{</div>}}
 }
