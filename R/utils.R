@@ -82,7 +82,7 @@ arg_names_true <- function() {
   names(args_true)
 }
 
-extract_glue_exprs <- function(x) {
+extract_glue_vars <- function(x) {
   string_extract_all(x, "(?<=\\{)[^}]+")
 }
 

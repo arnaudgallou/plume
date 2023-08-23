@@ -283,15 +283,15 @@ is_glueish <- function(x) {
 check_glue <- function(x, allowed, ..., arg = caller_arg(x)) {
   msg <- NULL
   if (!missing(x) && is_glueish(x)) {
-    exprs <- extract_glue_exprs(x)
-    if (all(includes(exprs, allowed, ignore_case = FALSE))) {
+    vars <- extract_glue_vars(x)
+    if (all(includes(vars, allowed, ignore_case = FALSE))) {
       return(invisible(NULL))
     }
-    invalid_expr <- search_(exprs, \(expr) !expr %in% allowed)
-    allowed_exprs <- wrap(allowed, "`")
+    invalid_var <- search_(vars, \(var) !var %in% allowed)
+    allowed_vars <- wrap(allowed, "`")
     msg <- c(
-      glue("Invalid variable `{invalid_expr}`."),
-      i = glue("`format` must use variables {enumerate(allowed_exprs)}.")
+      glue("Invalid variable `{invalid_var}`."),
+      i = glue("`format` must use variables {enumerate(allowed_vars)}.")
     )
   }
   abort_check("a glue specification", msg = msg, ..., arg = arg)
