@@ -10,15 +10,15 @@
           name:
             given: Zip
             family: Zap
-          orcid: 0000-0000-0000-0001
           email: zipzap@test.tst
           phone: '00'
-          roles:
-            - a
-            - b
+          orcid: 0000-0000-0000-0001
           note: a, c
           attributes:
             corresponding: true
+          roles:
+            - a
+            - b
           affiliations:
             - ref: aff1
             - ref: aff2
@@ -26,12 +26,12 @@
           name:
             given: Ric
             family: Rac
-          orcid: 0000-0000-0000-0002
           email: ricrac@test.tst
-          roles:
-            - a
+          orcid: 0000-0000-0000-0002
           attributes:
             corresponding: false
+          roles:
+            - a
           affiliations:
             - ref: aff3
         - id: aut3
@@ -39,11 +39,11 @@
             given: Pim-Pam
             family: Pom
           email: pimpampom@test.tst
-          roles:
-            - a
           note: b
           attributes:
             corresponding: false
+          roles:
+            - a
           affiliations:
             - ref: aff1
             - ref: aff4
@@ -76,11 +76,11 @@
             given: Pim-Pam
             family: Pom
           email: pimpampom@test.tst
-          roles:
-            - a
           note: b
           attributes:
             corresponding: true
+          roles:
+            - a
           affiliations:
             - ref: aff1
             - ref: aff2
@@ -88,27 +88,27 @@
           name:
             given: Ric
             family: Rac
-          orcid: 0000-0000-0000-0002
           email: ricrac@test.tst
-          roles:
-            - a
+          orcid: 0000-0000-0000-0002
           attributes:
             corresponding: false
+          roles:
+            - a
           affiliations:
             - ref: aff3
         - id: aut3
           name:
             given: Zip
             family: Zap
-          orcid: 0000-0000-0000-0001
           email: zipzap@test.tst
           phone: '00'
-          roles:
-            - a
-            - b
+          orcid: 0000-0000-0000-0001
           note: a, c
           attributes:
             corresponding: false
+          roles:
+            - a
+            - b
           affiliations:
             - ref: aff2
             - ref: aff4

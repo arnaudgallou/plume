@@ -117,17 +117,17 @@ PlumeQuarto <- R6Class(
           family = private$get("family_name"),
           `dropping-particle` = private$get("dropping_particle")
         ),
-        orcid = private$get("orcid"),
+        url = private$get("url"),
         email = private$get("email"),
         phone = private$get("phone"),
         fax = private$get("fax"),
-        url = private$get("url"),
-        roles = private$author_roles(),
+        orcid = private$get("orcid"),
         note = private$author_notes(),
         acknowledgements = private$get("acknowledgements"),
         attributes = private$author_attributes(),
-        affiliations = private$author_affiliations(),
-        metadata = private$author_metadata()
+        roles = private$author_roles(),
+        metadata = private$author_metadata(),
+        affiliations = private$author_affiliations()
       )
     },
 
