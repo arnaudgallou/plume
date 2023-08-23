@@ -3,6 +3,9 @@
     Code
       read_rendered_md()
     Output
+      ---
+      title: test
+      ---
       
       ```r
       str(attributes(orcid()))
@@ -42,6 +45,9 @@
     Code
       read_rendered_md()
     Output
+      ---
+      title: test
+      ---
       
       ```r
       str(attributes(orcid()))

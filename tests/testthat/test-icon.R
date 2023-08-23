@@ -13,6 +13,9 @@ test_that("orcid() makes orcid icon metadata", {
 
   withr::with_tempdir({
     tmp_file <- withr::local_tempfile(lines = dedent("
+      ---
+      title: test
+      ---
       ```{r results = 'asis'}
       str(attributes(orcid()))
       str(attributes(orcid(size = 24)))
