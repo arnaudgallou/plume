@@ -77,9 +77,9 @@ information as character strings.</p>
 
 <ul><li><p><a href="#method-Plume-new"><code>Plume$new()</code></a></p></li>
 <li><p><a href="#method-Plume-get_author_list"><code>Plume$get_author_list()</code></a></p></li>
-<li><p><a href="#method-Plume-get_orcids"><code>Plume$get_orcids()</code></a></p></li>
 <li><p><a href="#method-Plume-get_affiliations"><code>Plume$get_affiliations()</code></a></p></li>
 <li><p><a href="#method-Plume-get_notes"><code>Plume$get_notes()</code></a></p></li>
+<li><p><a href="#method-Plume-get_orcids"><code>Plume$get_orcids()</code></a></p></li>
 <li><p><a href="#method-Plume-get_contact_details"><code>Plume$get_contact_details()</code></a></p></li>
 <li><p><a href="#method-Plume-get_contributions"><code>Plume$get_contributions()</code></a></p></li>
 <li><p><a href="#method-Plume-clone"><code>Plume$clone()</code></a></p></li>
@@ -185,43 +185,15 @@ Use <code>NULL</code> or an empty string to list author names without suffixes.<
 <p>A character vector.</p>
 </div>
 
-</div><p></p><hr><a id="method-Plume-get_orcids"></a><div class="section">
-<h3 id="method-get-orcids-">Method <code>get_orcids()</code><a class="anchor" aria-label="anchor" href="#method-get-orcids-"></a></h3>
-<p>Get authors' ORCID.</p><div class="section">
-<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_orcids</span><span class="op">(</span>compact <span class="op">=</span> <span class="cn">FALSE</span>, icon <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>compact</code></dt>
-<dd><p>Should links only display the 16-digit identifier?</p></dd>
-
-
-<dt><code>icon</code></dt>
-<dd><p>Should the ORCID icon be shown?</p></dd>
-
-
-<dt><code>sep</code></dt>
-<dd><p>Separator used to separate authors and their respective ORCID.</p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
-<p>A character vector.</p>
-</div>
-
 </div><p></p><hr><a id="method-Plume-get_affiliations"></a><div class="section">
 <h3 id="method-get-affiliations-">Method <code>get_affiliations()</code><a class="anchor" aria-label="anchor" href="#method-get-affiliations-"></a></h3>
 <p>Get authors' affiliations.</p><div class="section">
-<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_affiliations</span><span class="op">(</span>sep <span class="op">=</span> <span class="st">""</span>, superscript <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>sep</code></dt>
 <dd><p>Separator used to separate affiliation ids and affiliations.</p></dd>
 
@@ -233,25 +205,53 @@ Use <code>NULL</code> or an empty string to list author names without suffixes.<
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
 <p>A character vector.</p>
 </div>
 
 </div><p></p><hr><a id="method-Plume-get_notes"></a><div class="section">
 <h3 id="method-get-notes-">Method <code>get_notes()</code><a class="anchor" aria-label="anchor" href="#method-get-notes-"></a></h3>
 <p>Get authors' notes.</p><div class="section">
-<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_notes</span><span class="op">(</span>sep <span class="op">=</span> <span class="st">""</span>, superscript <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>sep</code></dt>
 <dd><p>Separator used to separate note ids and notes.</p></dd>
 
 
 <dt><code>superscript</code></dt>
 <dd><p>Should note ids be superscripted?</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<p>A character vector.</p>
+</div>
+
+</div><p></p><hr><a id="method-Plume-get_orcids"></a><div class="section">
+<h3 id="method-get-orcids-">Method <code>get_orcids()</code><a class="anchor" aria-label="anchor" href="#method-get-orcids-"></a></h3>
+<p>Get authors' ORCID.</p><div class="section">
+<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_orcids</span><span class="op">(</span>compact <span class="op">=</span> <span class="cn">FALSE</span>, icon <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>compact</code></dt>
+<dd><p>Should links only display the 16-digit identifier?</p></dd>
+
+
+<dt><code>icon</code></dt>
+<dd><p>Should the ORCID icon be shown?</p></dd>
+
+
+<dt><code>sep</code></dt>
+<dd><p>Separator used to separate authors and their respective ORCID.</p></dd>
 
 
 </dl><p></p></div>
@@ -279,7 +279,7 @@ Use <code>NULL</code> or an empty string to list author names without suffixes.<
 <h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>format</code></dt>
 <dd><p>A <code><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></code> specification that uses the
-variables <code>name</code> and <code>details</code>.</p></dd>
+variables <code>name</code> and/or <code>details</code>.</p></dd>
 
 
 <dt><code>email, phone, fax, url</code></dt>
@@ -405,6 +405,7 @@ if more than one item is associated to a role or author.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ^1^Université de Paris</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ^2^Lycée Louis-le-Grand</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ^3^Collège des Quatre-Nations</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Writing: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Supervision: D.D. and J.L.R.d'A.</span>
@@ -421,6 +422,7 @@ if more than one item is associated to a role or author.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Jean-Jacques Rousseau^b^</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> François-Marie Arouet^b^</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Jean Le Rond d'Alembert^a,c^</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_affiliations</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ^a^Université de Paris</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ^b^Lycée Louis-le-Grand</span>
