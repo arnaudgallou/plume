@@ -14,6 +14,7 @@
 #' @returns A named list.
 #' @examples
 #' \dontrun{
+#' # Extending `Plume` with default names in French
 #' PlumeFr <- R6::R6Class(
 #'   classname = "PlumeFr",
 #'   inherit = Plume,

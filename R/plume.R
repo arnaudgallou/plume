@@ -25,6 +25,7 @@
 #'
 #' # Getting more author metadata
 #' aut$get_affiliations()
+#'
 #' aut$get_contributions()
 #'
 #' # Use `symbols` to change the default symbols.
@@ -35,6 +36,7 @@
 #' )
 #'
 #' aut$get_author_list("^a^")
+#'
 #' aut$get_affiliations()
 #'
 #' # It is also possible to output contributions in the
@@ -155,7 +157,7 @@ Plume <- R6Class(
 
     #' @description Get the contact details of corresponding authors.
     #' @param format A [`glue`][glue::glue()] specification that uses the
-    #'   variables `name` and `details`.
+    #'   variables `name` and/or `details`.
     #' @param email,phone,fax,url Arguments equal to `TRUE` are evaluated and
     #'   passed to the variable `details`. By default, only `email` is set to
     #'   `TRUE`.

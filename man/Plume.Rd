@@ -25,6 +25,7 @@ aut$get_author_list("^c,a^")
 
 # Getting more author metadata
 aut$get_affiliations()
+
 aut$get_contributions()
 
 # Use `symbols` to change the default symbols.
@@ -35,6 +36,7 @@ aut <- Plume$new(
 )
 
 aut$get_author_list("^a^")
+
 aut$get_affiliations()
 
 # It is also possible to output contributions in the
@@ -243,7 +245,7 @@ Get the contact details of corresponding authors.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{format}}{A \code{\link[glue:glue]{glue}} specification that uses the
-variables \code{name} and \code{details}.}
+variables \code{name} and/or \code{details}.}
 
 \item{\code{email, phone, fax, url}}{Arguments equal to \code{TRUE} are evaluated and
 passed to the variable \code{details}. By default, only \code{email} is set to

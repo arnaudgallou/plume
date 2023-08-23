@@ -29,6 +29,7 @@ Using \code{.plume_quarto = TRUE} adds \code{deceased}, \code{equal_contributor}
 }
 \examples{
 \dontrun{
+# Extending `Plume` with default names in French
 PlumeFr <- R6::R6Class(
   classname = "PlumeFr",
   inherit = Plume,
