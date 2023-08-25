@@ -175,9 +175,8 @@ values with the ones provided in the input data.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co"># PlumeQuarto requires to work with a Quarto file.</span></span></span>
-<span class="r-in"><span><span class="co"># For the purpose of the example, let's create a temporary</span></span></span>
-<span class="r-in"><span><span class="co"># file with a YAML header containing a title</span></span></span>
+<span class="r-in"><span><span class="co"># Create a simple temporary file with a YAML header</span></span></span>
+<span class="r-in"><span><span class="co"># containing a title</span></span></span>
 <span class="r-in"><span><span class="va">tmp_file</span> <span class="op">&lt;-</span> <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">local_tempfile</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  lines <span class="op">=</span> <span class="st">"---\ntitle: Encyclopédie\n---"</span>,</span></span>
 <span class="r-in"><span>  fileext <span class="op">=</span> <span class="st">".qmd"</span></span></span>
@@ -186,8 +185,8 @@ values with the ones provided in the input data.</p>
 <span class="r-in"><span><span class="co"># View the temporary file</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_file.html" class="external-link">read_file</a></span><span class="op">(</span><span class="va">tmp_file</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Create a PlumeQuarto instance using the temporary</span></span></span>
-<span class="r-in"><span><span class="co"># file we've just created</span></span></span>
+<span class="r-in"><span><span class="co"># Create a PlumeQuarto instance using the temporary file</span></span></span>
+<span class="r-in"><span><span class="co"># you've just created</span></span></span>
 <span class="r-in"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va">PlumeQuarto</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="va">encyclopedists</span>,</span></span>
 <span class="r-in"><span>  file <span class="op">=</span> <span class="va">tmp_file</span>,</span></span>
