@@ -76,7 +76,7 @@ caller_args <- function(n = 2) {
   as.list(caller_env(n))
 }
 
-arg_names_true <- function() {
+get_params_set_to_true <- function() {
   args <- caller_args()
   args_true <- args[map_vec(args, is_true)]
   names(args_true)

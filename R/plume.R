@@ -179,11 +179,11 @@ Plume <- R6Class(
         i = "Did you forget to assign corresponding authors?",
         i = "Use `set_corresponding_authors()` to set corresponding authors."
       ))
-      args <- arg_names_true()
-      if (is_empty(args)) {
+      arg_names <- get_params_set_to_true()
+      if (is_empty(arg_names)) {
         return()
       }
-      cols <- private$pick(args)
+      cols <- private$pick(arg_names)
       private$check_col(cols)
       out <- filter(
         private$plume,
