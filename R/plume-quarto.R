@@ -167,9 +167,10 @@ PlumeQuarto <- R6Class(
         deceased = private$get("deceased"),
         `equal-contributor` = private$get("equal_contributor")
       )
-      if (!is_empty(out)) {
-        out
+      if (is_empty(out)) {
+        return()
       }
+      out
     },
 
     author_affiliations = function() {
@@ -191,9 +192,10 @@ PlumeQuarto <- R6Class(
     },
 
     author_metadata = function() {
-      if (private$has_col(paste0("^", private$meta_prefix))) {
-        select(private$plume, starts_with(private$meta_prefix))
+      if (!private$has_col(paste0("^", private$meta_prefix))) {
+        return()
       }
+      select(private$plume, starts_with(private$meta_prefix))
     },
 
     affiliation_tbl = function() {
@@ -211,9 +213,10 @@ PlumeQuarto <- R6Class(
       })
       out <- list_rbind(out, names_to = "id")
       out <- mutate(out, id = make_affiliation_id(id))
-      if (!is_empty(out)) {
-        out
+      if (is_empty(out)) {
+        return()
       }
+      out
     }
   )
 )
