@@ -92,9 +92,9 @@ group_id <- function(x) {
   dense_rank(out)
 }
 
-predot <- function(name) {
-  name[] <- paste0(".", name)
-  name
+predot <- function(x) {
+  x[] <- paste0(".", x)
+  x
 }
 
 propagate_na <- function(x, from) {
