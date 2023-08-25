@@ -9,9 +9,8 @@ of Quarto files.
 }
 \examples{
 \dontrun{
-# PlumeQuarto requires to work with a Quarto file.
-# For the purpose of the example, let's create a temporary
-# file with a YAML header containing a title
+# Create a simple temporary file with a YAML header
+# containing a title
 tmp_file <- withr::local_tempfile(
   lines = "---\ntitle: Encyclopédie\n---",
   fileext = ".qmd"
@@ -20,8 +19,8 @@ tmp_file <- withr::local_tempfile(
 # View the temporary file
 cat(readr::read_file(tmp_file))
 
-# Create a PlumeQuarto instance using the temporary
-# file we've just created
+# Create a PlumeQuarto instance using the temporary file
+# you've just created
 aut <- PlumeQuarto$new(
   encyclopedists,
   file = tmp_file,

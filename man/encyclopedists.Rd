@@ -32,6 +32,7 @@ English (\code{encyclopedists}) and French (\code{encyclopedists_fr}).
 }
 \examples{
 encyclopedists
+
 encyclopedists_fr
 }
 \keyword{datasets}
