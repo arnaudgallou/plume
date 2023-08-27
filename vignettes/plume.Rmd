@@ -273,6 +273,14 @@ aut$get_affiliations()
 aut$get_notes(sep = ": ", superscript = FALSE)
 ```
 
+### ORCIDs
+
+`get_orcids()` returns authors with their respective ORCID.
+
+```{r}
+aut$get_orcids(compact = FALSE, icon = FALSE, sep = " ")
+```
+
 ### Contact details
 
 You can get contact details of corresponding authors using the `get_contact_details()` method:
@@ -307,14 +315,6 @@ By default, `get_contributions()` lists contributors in the order they're define
 
 ```{r}
 aut$get_contributions(alphabetical_order = TRUE)
-```
-
-### ORCIDs
-
-`get_orcids()` returns authors with their respective ORCID.
-
-```{r}
-aut$get_orcids(compact = FALSE, icon = FALSE, sep = " ")
 ```
 
 ## Symbols
