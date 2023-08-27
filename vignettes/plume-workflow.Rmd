@@ -45,7 +45,7 @@ read_sheet(gs4_find("encyclopédie"))
 
 ### Plume
 
-If you use `Plume`, put the code directly in your R markdown or Quarto document as shown in the example below:
+If you use `Plume`, put the code directly in your R Markdown or Quarto document as shown in the example below:
 
 ````{verbatim}
 ---
