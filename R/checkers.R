@@ -51,7 +51,7 @@ is_nested <- function(x, item) {
 }
 
 dots_equal_all <- function(...) {
-  dots_n(...) == 1L && is_string(expr(...)) && ... == "all"
+  nargs() == 1L && is_string(expr(...)) && ... == "all"
 }
 
 search_ <- function(x, callback, na_rm = TRUE, n = 1) {

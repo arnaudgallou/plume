@@ -13,7 +13,6 @@
 #' @importFrom readr read_file write_lines
 #' @importFrom rlang %||% := abort
 #' @importFrom rlang expr exprs sym syms
-#' @importFrom rlang dots_n
 #' @importFrom rlang is_named is_string is_bool is_true
 #' @importFrom rlang caller_env caller_arg
 #' @importFrom glue glue glue_collapse
