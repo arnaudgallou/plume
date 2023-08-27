@@ -23,7 +23,8 @@ implements two R6 classes:
   class to use if you work with journal templates.
 
 - `Plume`: class that generates author lists and other author-related
-  information as character strings.
+  information as character strings. This is an easy and convenient
+  solution when you don’t need preformatted documents.
 
 ## Installation
 
@@ -92,27 +93,27 @@ aut$to_yaml()
         name:
           given: Denis
           family: Diderot
-        orcid: 0000-0000-0000-0001
         email: diderot@encyclopediste.fr
         phone: 00 00 00 01
-        roles:
-          - writing
-          - supervision
+        orcid: 0000-0000-0000-0001
         note: born in 1713 in Langres
         attributes:
           corresponding: true
+        roles:
+          - writing
+          - supervision
         affiliations:
           - ref: aff1
       - id: aut2
         name:
           given: Jean-Jacques
           family: Rousseau
-        orcid: 0000-0000-0000-0002
         email: rousseau@encyclopediste.fr
-        roles:
-          - writing
+        orcid: 0000-0000-0000-0002
         attributes:
           corresponding: false
+        roles:
+          - writing
         affiliations:
           - ref: aff2
       - id: aut3
@@ -120,25 +121,25 @@ aut$to_yaml()
           given: François-Marie
           family: Arouet
         email: arouet@encyclopediste.fr
-        roles:
-          - writing
         note: also known as Voltaire
         attributes:
           corresponding: false
+        roles:
+          - writing
         affiliations:
           - ref: aff2
       - id: aut4
         name:
           given: Jean
           family: Le Rond d'Alembert
-        orcid: 0000-0000-0000-0003
         email: alembert@encyclopediste.fr
-        roles:
-          - writing
-          - supervision
+        orcid: 0000-0000-0000-0003
         note: born in 1717 in Paris
         attributes:
           corresponding: true
+        roles:
+          - writing
+          - supervision
         affiliations:
           - ref: aff1
           - ref: aff3
