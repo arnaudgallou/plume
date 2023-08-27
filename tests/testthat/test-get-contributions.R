@@ -1,74 +1,48 @@
 test_that("get_contributions() return authors' contributions", {
-  df <- basic_df()
-  aut <- Plume$new(df)
+  aut <- Plume$new(basic_df())
 
   expect_s3_class(aut$get_contributions(), "plm")
 
-  df_roles <- select(df, starts_with("role"))
-  initials <- dot(df$initials)
-  list_initials <- list(initials, initials[1])
-
   # contributors-roles combinations
-
-  roles <- apply(t(df_roles), 2, \(x) enumerate(na.omit(x)))
-  contributors <- initials
 
   expect_equal(
     aut$get_contributions(roles_first = FALSE, by_author = TRUE),
-    paste0(contributors, ": ", roles)
+    c("Z.Z.: a and b", "R.R.: a", "P.-P.P.: a")
   )
   expect_equal(
     aut$get_contributions(roles_first = TRUE, by_author = TRUE),
-    paste0(roles, ": ", contributors)
+    c("a and b: Z.Z.", "a: R.R.", "a: P.-P.P.")
   )
-
-  roles <- condense(c(df_roles))
-  contributors <- lapply(list_initials, enumerate)
-
   expect_equal(
     aut$get_contributions(roles_first = FALSE, by_author = FALSE),
-    paste0(contributors, ": ", roles)
+    c("Z.Z., R.R. and P.-P.P.: a", "Z.Z.: b")
   )
   expect_equal(
     aut$get_contributions(roles_first = TRUE, by_author = FALSE),
-    paste0(roles, ": ", contributors)
+    c("a: Z.Z., R.R. and P.-P.P.", "b: Z.Z.")
   )
 
   # other arguments
 
   expect_equal(
     aut$get_contributions(by_author = FALSE, divider = " "),
-    paste0(roles, " ", contributors)
+    c("a Z.Z., R.R. and P.-P.P.", "b Z.Z.")
   )
-
-  contributors <- lapply(list_initials, \(x) enumerate(sort(x)))
-
   expect_equal(
     aut$get_contributions(by_author = FALSE, alphabetical_order = TRUE),
-    paste0(roles, ": ", contributors)
+    c("a: P.-P.P., R.R. and Z.Z.", "b: Z.Z.")
   )
-
-  contributors <- lapply(list_initials, \(x) enumerate(x, last = " & "))
-
   expect_equal(
     aut$get_contributions(by_author = FALSE, sep_last = " & "),
-    paste0(roles, ": ", contributors)
+    c("a: Z.Z., R.R. & P.-P.P.", "b: Z.Z.")
   )
-
-  list_initials <- list(df$initials, df$initials[1])
-  contributors <- lapply(list_initials, enumerate)
-
   expect_equal(
     aut$get_contributions(by_author = FALSE, dotted_initials = FALSE),
-    paste0(roles, ": ", contributors)
+    c("a: ZZ, RR and P-PP", "b: ZZ")
   )
-
-  list_literal_names <- list(df$literal_name, df$literal_name[1])
-  contributors <- lapply(list_literal_names, enumerate)
-
   expect_equal(
     aut$get_contributions(by_author = FALSE, literal_names = TRUE),
-    paste0(roles, ": ", contributors)
+    c("a: Zip Zap, Ric Rac and Pim-Pam Pom", "b: Zip Zap")
   )
 })
 
