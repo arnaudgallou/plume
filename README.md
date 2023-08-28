@@ -28,7 +28,14 @@ implements two R6 classes:
 
 ## Installation
 
-You can install the development version of plume from GitHub with:
+Install plume from CRAN with:
+
+``` r
+install.packages("plume")
+```
+
+Alternatively, you can install the development version of plume from
+GitHub with:
 
 ``` r
 # install.packages("pak")

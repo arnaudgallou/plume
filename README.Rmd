@@ -30,7 +30,13 @@ plume provides tools for handling and generating author-related information for 
 
 ## Installation
 
-You can install the development version of plume from GitHub with:
+Install plume from CRAN with:
+
+```{r, eval = FALSE}
+install.packages("plume")
+```
+
+Alternatively, you can install the development version of plume from GitHub with:
 
 ```{r, eval = FALSE}
 # install.packages("pak")
