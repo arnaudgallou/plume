@@ -92,7 +92,8 @@ Create a \code{PlumeQuarto} object.
 \item{\code{names}}{A vector of key-value pairs specifying custom names to use,
 where keys are default names and values their respective replacements.}
 
-\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
+\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used? See
+\code{vignette("using-credit-roles")} for details.}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 

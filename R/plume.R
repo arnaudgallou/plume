@@ -57,9 +57,10 @@ Plume <- R6Class(
     #'   `"corresponding"` and `"note"`. By default, uses digits for
     #'   affiliations, `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`,
     #'   `"¶"`, `"#"`, `"**"` for notes. Set a key to `NULL` to use numerals.
-    #' @param credit_roles Should the `r link("crt")` be used?
+    #' @param credit_roles Should the `r link("crt")` be used? See
+    #'   `vignette("using-credit-roles")` for details.
     #' @param initials_given_name Should the initials of given names be used?
-    #' @param family_name_first Should literal names show family names first.
+    #' @param family_name_first Should literal names show family names first?
     #' @param interword_spacing Should literal names use spacing? This parameter
     #'   is only useful for people writing in languages that don't separate
     #'   words with a space such as Chinese or Japanese.

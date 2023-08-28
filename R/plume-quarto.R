@@ -59,7 +59,8 @@ PlumeQuarto <- R6Class(
     #' @param file A `.qmd` file to insert author data into.
     #' @param names A vector of key-value pairs specifying custom names to use,
     #'   where keys are default names and values their respective replacements.
-    #' @param credit_roles Should the `r link("crt")` be used?
+    #' @param credit_roles Should the `r link("crt")` be used? See
+    #'   `vignette("using-credit-roles")` for details.
     #' @param initials_given_name Should the initials of given names be used?
     #' @param by A character string defining the default variable used to assign
     #'   authors' status in all `set_*()` methods. By default, uses authors' id.

@@ -101,11 +101,12 @@ link authors and their metadata. Valid keys are \code{"affiliation"},
 affiliations, \code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"},
 \code{"¶"}, \code{"#"}, \code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
 
-\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used?}
+\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used? See
+\code{vignette("using-credit-roles")} for details.}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 
-\item{\code{family_name_first}}{Should literal names show family names first.}
+\item{\code{family_name_first}}{Should literal names show family names first?}
 
 \item{\code{interword_spacing}}{Should literal names use spacing? This parameter
 is only useful for people writing in languages that don't separate
