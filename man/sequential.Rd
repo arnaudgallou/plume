@@ -26,6 +26,6 @@ aut <- Plume$new(
   symbols = list(affiliation = sequential(letters))
 )
 
-aut$get_affiliations(sep = ": ", superscript = FALSE) |> 
+aut$get_affiliations(sep = ": ", superscript = FALSE) |>
   cat(sep = "\n")
 }
