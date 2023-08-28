@@ -1,3 +1,4 @@
+# stringb functions start
 # modified from https://github.com/hadley/stringb
 
 fixed <- function(x) {
@@ -22,10 +23,6 @@ string_detect <- function(string, pattern) {
     fixed = is_fixed(pattern),
     perl = is_perl(pattern)
   )
-}
-
-string_contain <- function(string, pattern) {
-  string_detect(string, fixed(pattern))
 }
 
 string_extract <- function(string, pattern) {
@@ -90,10 +87,6 @@ string_replace_all <- function(string, pattern, replacement) {
   )
 }
 
-string_remove_all <- function(string, pattern) {
-  string_replace_all(string, pattern, "")
-}
-
 string_sub <- function(string, start = 1L, end = -1L) {
   if (is.matrix(start)) {
     end <- start[, 2]
@@ -103,6 +96,16 @@ string_sub <- function(string, start = 1L, end = -1L) {
   start <- ifelse(start < 0, start + n + 1, start)
   end <- ifelse(end < 0, end + n + 1, end)
   substr(string, start, end)
+}
+
+# stringb functions end
+
+string_remove_all <- function(string, pattern) {
+  string_replace_all(string, pattern, "")
+}
+
+string_contain <- function(string, pattern) {
+  string_detect(string, fixed(pattern))
 }
 
 string_split <- function(string, pattern = "") {
