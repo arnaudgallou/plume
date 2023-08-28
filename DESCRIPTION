@@ -7,7 +7,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-1002-4247"))
 Description: Tools to reduce the hassle of handling and formatting author
     information in scientific writing.
-License: MIT + file LICENSE
+License: GPL (>= 3)
 URL: https://github.com/arnaudgallou/plume,
     https://arnaudgallou.github.io/plume/
 BugReports: https://github.com/arnaudgallou/plume/issues
