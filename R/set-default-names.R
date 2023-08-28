@@ -13,7 +13,6 @@
 #' `dropping_particle` and `acknowledgements`.
 #' @returns A named list.
 #' @examples
-#' \dontrun{
 #' # Extending `Plume` with default names in French
 #' PlumeFr <- R6::R6Class(
 #'   classname = "PlumeFr",
@@ -32,7 +31,6 @@
 #' )
 #'
 #' PlumeFr$new(encyclopedists_fr)
-#' }
 #' @export
 set_default_names <- function(..., .plume_quarto = FALSE) {
   dots <- c(...)
