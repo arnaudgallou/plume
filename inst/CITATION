@@ -2,7 +2,7 @@ citHeader("To cite plume in publications use:")
 
 bibentry(
   bibtype  = "Manual",
-  title    = "plume: An Author List Handler",
+  title    = "A Simple Author Handler for Scientific Writing",
   author   = "Arnaud Gallou",
   year     = "2023",
   url      = "https://github.com/arnaudgallou/plume"
