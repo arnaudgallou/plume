@@ -3,8 +3,6 @@ test_that("printing a `plm_icon` object returns a formatted output", {
 })
 
 test_that("orcid() makes orcid icon metadata", {
-  skip_if_not_installed("knitr")
-
   render <- partial(rmarkdown::render, clean = FALSE, quiet = TRUE)
 
   read_rendered_md <- function() {
