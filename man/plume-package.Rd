@@ -19,7 +19,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Arnaud Gallou \email{agallou.gh@gmail.com} (\href{https://orcid.org/0000-0002-1002-4247}{ORCID}) [copyright holder]
+\strong{Maintainer}: Arnaud Gallou \email{arangacas@gmail.com} (\href{https://orcid.org/0000-0002-1002-4247}{ORCID}) [copyright holder]
 
 Other contributors:
 \itemize{
