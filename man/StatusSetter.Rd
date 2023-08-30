@@ -12,6 +12,7 @@ Internal class that manages authors' status.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
+\item \href{#method-StatusSetter-new}{\code{StatusSetter$new()}}
 \item \href{#method-StatusSetter-set_corresponding_authors}{\code{StatusSetter$set_corresponding_authors()}}
 \item \href{#method-StatusSetter-clone}{\code{StatusSetter$clone()}}
 }
@@ -20,11 +21,19 @@ Internal class that manages authors' status.
 <details open><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="initialize"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-initialize'><code>plume::PlumeHandler$initialize()</code></a></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></li>
 </ul>
 </details>
 }}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-StatusSetter-new"></a>}}
+\if{latex}{\out{\hypertarget{method-StatusSetter-new}{}}}
+\subsection{Method \code{new()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$new(...)}\if{html}{\out{</div>}}
+}
+
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StatusSetter-set_corresponding_authors"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetter-set_corresponding_authors}{}}}
