@@ -4,6 +4,11 @@ StatusSetter <- R6Class(
   classname = "StatusSetter",
   inherit = PlumeHandler,
   public = list(
+    initialize = function(...) {
+      super$initialize(...)
+      private$by <- private$pick("id")
+    },
+
     #' @description Set corresponding authors.
     #' @param ... Values in the column defined by `by` used to specify
     #'   corresponding authors. Matching of values is case-insensitive. Use
@@ -17,7 +22,7 @@ StatusSetter <- R6Class(
   ),
 
   private = list(
-    by = "id",
+    by = NULL,
 
     set_status = function(col, ..., by) {
       if (missing(by)) {
@@ -49,7 +54,7 @@ StatusSetterQuarto <- R6Class(
       check_string(by, allow_empty = FALSE, allow_null = TRUE)
       if (!is.null(by)) {
         private$check_col(by)
-        private$by <- private$pick(by)
+        private$by <- by
       }
     },
 
