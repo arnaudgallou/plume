@@ -74,7 +74,7 @@ PlumeQuarto <- R6Class(
         by = NULL
     ) {
       check_file(file, extension = "qmd")
-      super$initialize(data, names, credit_roles, initials_given_name, by)
+      super$initialize(data, names, credit_roles, initials_given_name, by = by)
       private$file <- file
       private$id <- private$pick("id")
     },
