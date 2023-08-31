@@ -5,5 +5,5 @@ bibentry(
   title    = "A Simple Author Handler for Scientific Writing",
   author   = "Arnaud Gallou",
   year     = "2023",
-  url      = "https://arnaudgallou.github.io/plume"
+  url      = "https://arnaudgallou.github.io/plume/"
 )
