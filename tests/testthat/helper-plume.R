@@ -22,7 +22,7 @@ basic_df <- function() {
   )
 }
 
-tempfile <- function() {
+tempfile_ <- function() {
   withr::local_tempfile(
     lines = "---\n---",
     fileext = ".qmd",

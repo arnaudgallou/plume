@@ -27,7 +27,7 @@ test_that("initialize() builds a plume dataset", {
   nms <- c("id", "given_name", "family_name", "literal_name", "initials")
   expect_named(aut$get_plume(), nms)
 
-  aut <- PlumeQuarto$new(df, tempfile())
+  aut <- PlumeQuarto$new(df, tempfile_())
   nms <- c(nms, "dropping_particle")
   expect_named(aut$get_plume(), nms)
 
@@ -127,7 +127,7 @@ test_that("`interword_spacing = FALSE` binds given and family names", {
 })
 
 test_that("`by` overrides default `by` value", {
-  aut <- PlumeQuarto$new(basic_df(), tempfile(), by = "initials")
+  aut <- PlumeQuarto$new(basic_df(), tempfile_(), by = "initials")
   aut$set_corresponding_authors(zz)
   expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
 })
@@ -200,13 +200,13 @@ test_that("initialize() gives meaningful error messages", {
       Plume$new(df, interword_spacing = 1)
     ))
     (expect_error(
-      PlumeQuarto$new(df, tempfile(), by = 1)
+      PlumeQuarto$new(df, tempfile_(), by = 1)
     ))
     (expect_error(
-      PlumeQuarto$new(df, tempfile(), by = "")
+      PlumeQuarto$new(df, tempfile_(), by = "")
     ))
     (expect_error(
-      PlumeQuarto$new(df, tempfile(), by = "foo")
+      PlumeQuarto$new(df, tempfile_(), by = "foo")
     ))
   })
 })

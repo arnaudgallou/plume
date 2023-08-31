@@ -103,19 +103,19 @@
       Caused by error:
       ! `interword_spacing` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(PlumeQuarto$new(df, tempfile(), by = 1)))
+      (expect_error(PlumeQuarto$new(df, tempfile_(), by = 1)))
     Output
       <error/rlang_error>
       Error:
       ! `by` must be a character string.
     Code
-      (expect_error(PlumeQuarto$new(df, tempfile(), by = "")))
+      (expect_error(PlumeQuarto$new(df, tempfile_(), by = "")))
     Output
       <error/rlang_error>
       Error:
       ! `by` must be a non-empty string.
     Code
-      (expect_error(PlumeQuarto$new(df, tempfile(), by = "foo")))
+      (expect_error(PlumeQuarto$new(df, tempfile_(), by = "foo")))
     Output
       <error/rlang_error>
       Error:
