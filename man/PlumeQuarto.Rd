@@ -58,11 +58,11 @@ cat(readr::read_file(tmp_file))
 \if{html}{\out{
 <details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>plume::StatusSetter$set_corresponding_authors()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterQuarto" data-id="set_deceased"><a href='../../plume/html/StatusSetterQuarto.html#method-StatusSetterQuarto-set_deceased'><code>plume::StatusSetterQuarto$set_deceased()</code></a></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterQuarto" data-id="set_equal_contributor"><a href='../../plume/html/StatusSetterQuarto.html#method-StatusSetterQuarto-set_equal_contributor'><code>plume::StatusSetterQuarto$set_equal_contributor()</code></a></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>plume::StatusSetter$set_corresponding_authors()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterQuarto" data-id="set_deceased"><a href='../../plume/html/StatusSetterQuarto.html#method-StatusSetterQuarto-set_deceased'><code>plume::StatusSetterQuarto$set_deceased()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterQuarto" data-id="set_equal_contributor"><a href='../../plume/html/StatusSetterQuarto.html#method-StatusSetterQuarto-set_equal_contributor'><code>plume::StatusSetterQuarto$set_equal_contributor()</code></a></span></li>
 </ul>
 </details>
 }}
@@ -111,7 +111,7 @@ A \code{PlumeQuarto} object.
 \if{latex}{\out{\hypertarget{method-PlumeQuarto-to_yaml}{}}}
 \subsection{Method \code{to_yaml()}}{
 Push or update author information in a YAML header. The
-generated YAML complies with Quarto'\href{https://quarto.org/docs/journals/authors.html}{author and affiliations schemas})`.
+generated YAML complies with Quarto's \href{https://quarto.org/docs/journals/authors.html}{author and affiliations schemas}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$to_yaml()}\if{html}{\out{</div>}}
 }

@@ -19,12 +19,6 @@ Internal class processing and shaping tabular data into a
 \item \href{#method-PlumeHandler-clone}{\code{PlumeHandler$clone()}}
 }
 }
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
-<ul>
-</ul>
-</details>
-}}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PlumeHandler-new"></a>}}
 \if{latex}{\out{\hypertarget{method-PlumeHandler-new}{}}}
