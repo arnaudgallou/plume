@@ -5,10 +5,7 @@
 #' @param bw Should the black and white version of the icon be used?
 #' @returns A plume icon.
 #' @examples
-#' \dontrun{
 #' aut <- Plume$new(encyclopedists, orcid_icon = orcid(bw = TRUE))
-#' aut$get_orcids()
-#' }
 #' @export
 orcid <- function(size = 16, bw = FALSE) {
   check_num(size, allow_null = FALSE, call = caller_env(0))

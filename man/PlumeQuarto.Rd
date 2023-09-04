@@ -8,7 +8,7 @@ Class that pushes or updates author metadata in the YAML header
 of Quarto files.
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Create a simple temporary file with a YAML header
 # containing a title
 tmp_file <- withr::local_tempfile(
@@ -42,7 +42,7 @@ aut <- PlumeQuarto$new(
 aut$to_yaml()
 
 cat(readr::read_file(tmp_file))
-}
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterQuarto]{plume::StatusSetterQuarto}} -> \code{PlumeQuarto}

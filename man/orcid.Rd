@@ -19,8 +19,5 @@ Helper function to control the size and colour of the ORCID
 icon.
 }
 \examples{
-\dontrun{
 aut <- Plume$new(encyclopedists, orcid_icon = orcid(bw = TRUE))
-aut$get_orcids()
-}
 }
