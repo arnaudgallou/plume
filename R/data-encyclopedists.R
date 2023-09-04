@@ -19,7 +19,7 @@
 #' }
 #' @examples
 #' encyclopedists
-#' 
+#'
 #' encyclopedists_fr
 "encyclopedists"
 
