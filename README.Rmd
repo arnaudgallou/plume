@@ -116,4 +116,10 @@ aut_v$get_contributions(roles_first = FALSE, divider = " ")
 
 ## Acknowledgements
 
-Thanks to [Richard J. Telford](https://github.com/richardjtelford) for his advice that helped me conceive this package.
+Thanks to:
+
+* [Richard J. Telford](https://github.com/richardjtelford) for his advice that helped me conceive this package.
+
+* [Maëlle Salmon](https://github.com/maelle) for helping me deploy the pkgdown site and her advice to simplify my unit tests.
+
+* [Gábor Csárdi](https://github.com/gaborcsardi) for his help with roxygen2 and advice to simplify my unit tests.
