@@ -8,8 +8,11 @@ Authors@R: c(
     person("Hadley", "Wickham", role = "cph",
            comment = "Author of included stringb functions.")
   )
-Description: Tools to reduce the hassle of handling and formatting author
-    information in scientific writing.
+Description: An easy-to-use and flexible tool for handling and formatting
+    author information in scientific writing in R Markdown and Quarto.
+    'plume' provides tools for injecting author metadata in YAML headers
+    as well as generating author and contribution lists (among others) as
+    strings from tabular data.
 License: GPL (>= 3)
 URL: https://github.com/arnaudgallou/plume,
     https://arnaudgallou.github.io/plume/

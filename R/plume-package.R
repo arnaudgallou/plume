@@ -1,5 +1,8 @@
-#' @description Tools to reduce the hassle of handling and formatting author
-#'   information in scientific writing.
+#' @description An easy-to-use and flexible tool for handling and formatting
+#'   author information in scientific writing in R Markdown and Quarto. 'plume'
+#'   provides tools for injecting author metadata in YAML headers as well as
+#'   generating author and contribution lists (among others) as strings from
+#'   tabular data.
 #' @keywords internal
 #' @importFrom dplyr distinct filter select dense_rank
 #' @importFrom dplyr mutate summarise across rename

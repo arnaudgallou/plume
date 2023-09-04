@@ -6,8 +6,11 @@
 \alias{plume-package}
 \title{plume: A Simple Author Handler for Scientific Writing}
 \description{
-Tools to reduce the hassle of handling and formatting author
-information in scientific writing.
+An easy-to-use and flexible tool for handling and formatting
+author information in scientific writing in R Markdown and Quarto. 'plume'
+provides tools for injecting author metadata in YAML headers as well as
+generating author and contribution lists (among others) as strings from
+tabular data.
 }
 \seealso{
 Useful links:
