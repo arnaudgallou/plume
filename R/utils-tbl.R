@@ -34,6 +34,7 @@ add_group_ids <- function(data, cols) {
 }
 
 add_suffixes <- function(data, cols, symbols) {
+  data
   .cols <- predot(cols)
   iwalk(symbols[names(cols)], \(value, key) {
     if (is.null(value)) {
@@ -72,6 +73,7 @@ add_orcid_links <- function(data, orcid, compact = FALSE) {
 }
 
 crt_assign <- function(data) {
+  data
   iwalk(.names$protected$crt, \(value, key) {
     if (!has_name(data, key)) {
       return()
