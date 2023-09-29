@@ -12,9 +12,9 @@ StatusSetter <- R6Class(
     },
 
     #' @description Set corresponding authors.
-    #' @param ... Values in the column defined by `by` used to specify
-    #'   corresponding authors. Matching of values is case-insensitive. Use
-    #'   `everyone()` to assign `TRUE` to all authors.
+    #' @param ... One or more unquoted expressions separated by commas.
+    #'   Expressions matching values in the column defined by `by` determine
+    #'   corresponding authors. Matching of values is case-insensitive.
     #' @param by Variable used to set corresponding authors. By default, uses
     #'   authors' id.
     #' @return The class instance.
@@ -60,9 +60,9 @@ StatusSetterQuarto <- R6Class(
     },
 
     #' @description Set equal contributors.
-    #' @param ... Values in the column defined by `by` used to specify which
-    #'   authors are equal contributors. Matching of values is case-insensitive.
-    #'   Use `everyone()` to assign equal contribution to all authors.
+    #' @param ... One or more unquoted expressions separated by commas.
+    #'   Expressions matching values in the column defined by `by` determine
+    #'   equal contributors. Matching of values is case-insensitive.
     #' @param by Variable used to specify which authors are equal contributors.
     #'   By default, uses authors' id.
     #' @return The class instance.
@@ -71,8 +71,9 @@ StatusSetterQuarto <- R6Class(
     },
 
     #' @description Set deceased authors.
-    #' @param ... Values in the column defined by `by` used to specify whether
-    #'   an author is deceased or not. Matching of values is case-insensitive.
+    #' @param ... One or more unquoted expressions separated by commas.
+    #'   Expressions matching values in the column defined by `by` determine
+    #'   deceased authors. Matching of values is case-insensitive.
     #' @param by Variable used to specify whether an author is deceased or not.
     #'   By default, uses authors' id.
     #' @return The class instance.
@@ -82,14 +83,19 @@ StatusSetterQuarto <- R6Class(
   )
 )
 
-#' @title Plume selectors
-#' @description Helper functions used to assign status to multiple authors at
-#'   once.
+#' @title Select all authors or exclude some from a selection
+#' @description Helper functions used to batch assign status to authors.
 #' @examples
 #' aut <- Plume$new(encyclopedists)
-#' aut$set_corresponding_authors(everyone())
 #'
-#' aut$set_corresponding_authors(everyone_but(jean), by = "given_name")
+#' aut$set_corresponding_authors(everyone())
+#' aut$get_plume() |> dplyr::select(1:3, corresponding)
+#'
+#' aut$set_corresponding_authors(
+#'   everyone_but(jean),
+#'   by = "given_name"
+#' )
+#' aut$get_plume() |> dplyr::select(1:3, corresponding)
 #' @export
 everyone <- function() {
   binder$pull(call = "everyone")

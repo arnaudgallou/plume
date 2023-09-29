@@ -46,9 +46,9 @@ Set corresponding authors.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{...}}{Values in the column defined by \code{by} used to specify
-corresponding authors. Matching of values is case-insensitive. Use
-\code{everyone()} to assign \code{TRUE} to all authors.}
+\item{\code{...}}{One or more unquoted expressions separated by commas.
+Expressions matching values in the column defined by \code{by} determine
+corresponding authors. Matching of values is case-insensitive.}
 
 \item{\code{by}}{Variable used to set corresponding authors. By default, uses
 authors' id.}

@@ -48,9 +48,9 @@ Set equal contributors.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{...}}{Values in the column defined by \code{by} used to specify which
-authors are equal contributors. Matching of values is case-insensitive.
-Use \code{everyone()} to assign equal contribution to all authors.}
+\item{\code{...}}{One or more unquoted expressions separated by commas.
+Expressions matching values in the column defined by \code{by} determine
+equal contributors. Matching of values is case-insensitive.}
 
 \item{\code{by}}{Variable used to specify which authors are equal contributors.
 By default, uses authors' id.}
@@ -73,8 +73,9 @@ Set deceased authors.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{...}}{Values in the column defined by \code{by} used to specify whether
-an author is deceased or not. Matching of values is case-insensitive.}
+\item{\code{...}}{One or more unquoted expressions separated by commas.
+Expressions matching values in the column defined by \code{by} determine
+deceased authors. Matching of values is case-insensitive.}
 
 \item{\code{by}}{Variable used to specify whether an author is deceased or not.
 By default, uses authors' id.}

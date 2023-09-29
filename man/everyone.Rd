@@ -3,7 +3,7 @@
 \name{everyone}
 \alias{everyone}
 \alias{everyone_but}
-\title{Plume selectors}
+\title{Select all authors or exclude some from a selection}
 \usage{
 everyone()
 
@@ -16,12 +16,17 @@ methods are used to set a given status to authors. Matching of values is
 case-insensitive.}
 }
 \description{
-Helper functions used to assign status to multiple authors at
-once.
+Helper functions used to batch assign status to authors.
 }
 \examples{
 aut <- Plume$new(encyclopedists)
-aut$set_corresponding_authors(everyone())
 
-aut$set_corresponding_authors(everyone_but(jean), by = "given_name")
+aut$set_corresponding_authors(everyone())
+aut$get_plume() |> dplyr::select(1:3, corresponding)
+
+aut$set_corresponding_authors(
+  everyone_but(jean),
+  by = "given_name"
+)
+aut$get_plume() |> dplyr::select(1:3, corresponding)
 }
