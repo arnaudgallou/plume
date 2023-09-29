@@ -8,6 +8,8 @@
 
 ## Minor improvements and bug fixes
 
+* Leading and trailing white spaces are now trimmed when creating `plume` objects.
+
 * `$get_contributions()` now handles namesakes (#15).
 
 * `$get_contributions(alphabetical_order = TRUE)` now reorders contributors only (#18).

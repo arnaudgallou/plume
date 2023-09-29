@@ -26,6 +26,10 @@ has_homonyms <- function(x) {
   vec_duplicate_any(names(x))
 }
 
+has_overflowing_ws <- function(x) {
+  string_detect(x, "^\\s|\\s$")
+}
+
 is_empty <- function(x) {
   UseMethod("is_empty")
 }

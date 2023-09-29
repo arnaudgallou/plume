@@ -56,7 +56,6 @@ PlumeHandler <- R6Class(
 
     mount = function() {
       private$build()
-      private$sanitise()
       for (col in private$pick("nestables")) {
         if (private$is_nestable(paste0("^", col))) {
           private$nest(col)
@@ -66,6 +65,7 @@ PlumeHandler <- R6Class(
 
     build = function() {
       private$mold()
+      private$sanitise()
       private$make_author_names()
       if (private$crt) {
         private$crt_process()
@@ -148,10 +148,11 @@ PlumeHandler <- R6Class(
     },
 
     sanitise = function() {
-      private$plume <- mutate(private$plume, across(
-        \(x) any(is_blank(x)),
-        blank_to_na
-      ))
+      private$plume <- mutate(
+        private$plume,
+        across(\(x) any(is_blank(x)), blank_to_na),
+        across(\(x) any(has_overflowing_ws(x)), trimws)
+      )
     },
 
     get = function(col) {

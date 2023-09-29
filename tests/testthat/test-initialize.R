@@ -148,6 +148,21 @@ test_that("initialize() converts blank and empty strings to `NA` (#2)", {
   )
 })
 
+test_that("initialize() trims leading/trailing white spaces", {
+  aut <- Plume$new(data.frame(
+    given_name = "zip\n ",
+    family_name = "zap",
+    email = "  zipzap@email.com ",
+    affiliation = "\n\na",
+    affiliation2 = " b\t"
+  ))
+
+  expect_equal(
+    unlist(aut$get_plume(), use.names = FALSE),
+    c("1", "zip", "zap", "zip zap", "zipzap@email.com", "a", "b")
+  )
+})
+
 # Errors ----
 
 test_that("initialize() gives meaningful error messages", {
