@@ -26,8 +26,6 @@ if_not_na <- function(x, value, ..., all = FALSE) {
   if_else(cnd, NA, value, ...)
 }
 
-is_not_na <- Negate(is.na)
-
 not_na_any <- function(cols) {
   if_any(all_of(cols), is_not_na)
 }
@@ -110,10 +108,6 @@ to_chr_class <- function(x, negate = FALSE) {
 
 wrap <- function(x, value) {
   paste0(value, x, value)
-}
-
-is_blank <- function(x) {
-  string_detect(x, "^\\s*$")
 }
 
 blank_to_na <- function(x) {

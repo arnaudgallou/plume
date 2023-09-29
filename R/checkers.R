@@ -54,6 +54,12 @@ is_nested <- function(x, item) {
   is.list(x[[item]])
 }
 
+is_blank <- function(x) {
+  string_detect(x, "^\\s*$")
+}
+
+is_not_na <- Negate(is.na)
+
 dots_equal_all <- function(...) {
   nargs() == 1L && is_string(expr(...)) && ... == "all"
 }
