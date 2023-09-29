@@ -60,8 +60,8 @@ is_blank <- function(x) {
 
 is_not_na <- Negate(is.na)
 
-dots_equal_all <- function(...) {
-  nargs() == 1L && is_string(expr(...)) && ... == "all"
+dots_are_call <- function(...) {
+  nargs() == 1L && is.call(expr(...))
 }
 
 search_ <- function(x, callback, na_rm = TRUE, n = 1) {

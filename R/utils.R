@@ -43,7 +43,7 @@ make_initials <- function(x, dot = FALSE) {
 }
 
 drop_from <- function(x, ...) {
-  x[!x %in% c(...)]
+  x[!includes(x, c(...))]
 }
 
 vec_drop_na <- function(x, ...) {

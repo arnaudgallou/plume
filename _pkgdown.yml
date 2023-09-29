@@ -14,6 +14,8 @@ reference:
   - title: Helpers
     contents:
       - enumerate
+      - everyone
+      - everyone_but
       - orcid
       - plm_template
       - sequential

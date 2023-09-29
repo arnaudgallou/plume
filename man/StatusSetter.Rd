@@ -48,7 +48,7 @@ Set corresponding authors.
 \describe{
 \item{\code{...}}{Values in the column defined by \code{by} used to specify
 corresponding authors. Matching of values is case-insensitive. Use
-\code{"all"} to assign \code{TRUE} to all authors.}
+\code{everyone()} to assign \code{TRUE} to all authors.}
 
 \item{\code{by}}{Variable used to set corresponding authors. By default, uses
 authors' id.}

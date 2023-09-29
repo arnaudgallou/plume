@@ -55,3 +55,18 @@
       Error:
       ! `by` must be a character string.
 
+# everyone*() selectors error if used in a wrong context
+
+    Code
+      (expect_error(everyone()))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `everyone()` must be used within a `set_*()` method.
+    Code
+      (expect_error(everyone_but()))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `everyone_but()` must be used within a `set_*()` method.
+

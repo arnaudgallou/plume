@@ -8,6 +8,8 @@
 
 ## Minor improvements and bug fixes
 
+* New helpers `everyone()` and `everyone_but()` that allow batch assignments of author status in `$set_*()` methods.
+
 * Leading and trailing white spaces are now trimmed when creating `plume` objects.
 
 * `$get_contributions()` now handles namesakes (#15).

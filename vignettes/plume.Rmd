@@ -215,10 +215,17 @@ aut$set_corresponding_authors(dd, "j-jr", by = "initials")
 aut
 ```
 
-Use the `"all"` keyword to assign `TRUE` to all authors:
+Use `everyone()` to assign `TRUE` to all authors:
 
 ```{r}
-aut$set_corresponding_authors("all")
+aut$set_corresponding_authors(everyone())
+aut
+```
+
+Or its variant `everyone_but()` to assign `TRUE` to all but specific authors:
+
+```{r}
+aut$set_corresponding_authors(everyone_but(jean), by = "given_name")
 aut
 ```
 
@@ -242,7 +249,7 @@ The order of the keys determines the order of symbol categories.
 
 ```{r}
 aut <- Plume$new(encyclopedists)
-aut$set_corresponding_authors("all")
+aut$set_corresponding_authors(everyone())
 
 aut$get_author_list(format = "ac") |> enumerate(last = ",\n")
 
