@@ -78,3 +78,11 @@ test_that("set_*() methods give meaningful error messages", {
     ))
   })
 })
+
+
+test_that("everyone*() selectors error if used in a wrong context", {
+  expect_snapshot({
+    (expect_error(everyone()))
+    (expect_error(everyone_but()))
+  })
+})
