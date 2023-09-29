@@ -18,7 +18,7 @@
       <error/rlang_error>
       Error:
       ! Missing author name found in position 1.
-      i You must supply a given and family names.
+      i All authors must have a given and family name.
     Code
       (expect_error(Plume$new(data.frame(given_name = "x"))))
     Output

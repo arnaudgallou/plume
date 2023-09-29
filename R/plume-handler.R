@@ -192,7 +192,7 @@ PlumeHandler <- R6Class(
       }
       abort_check(msg = c(
         glue("Missing author name found in position {names(missing_author)}."),
-        i = "You must supply a given and family names."
+        i = "All authors must have a given and family name."
       ))
     }
   )
