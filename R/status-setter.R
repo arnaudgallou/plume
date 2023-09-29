@@ -1,3 +1,5 @@
+binder <- ContextBinder$new()
+
 #' @title StatusSetter class
 #' @description Internal class that manages authors' status.
 StatusSetter <- R6Class(
@@ -31,13 +33,12 @@ StatusSetter <- R6Class(
         check_string(by, allow_empty = FALSE)
       }
       private$check_col(by)
-      private$plume <- mutate(private$plume, !!private$pick(col) := {
-        if (dots_equal_all(...)) {
-          TRUE
-        } else {
-          true_if(includes(.data[[by]], exprs(...)))
-        }
-      })
+      binder$bind(private$plume[[by]])
+      dots <- if (dots_are_call(...)) c(...) else exprs(...)
+      private$plume <- mutate(
+        private$plume,
+        !!private$pick(col) := true_if(includes(.data[[by]], dots))
+      )
       invisible(self)
     }
   )
@@ -80,3 +81,26 @@ StatusSetterQuarto <- R6Class(
     }
   )
 )
+
+#' @title Plume selectors
+#' @description Helper functions used to assign status to multiple authors at
+#'   once.
+#' @examples
+#' aut <- Plume$new(encyclopedists)
+#' aut$set_corresponding_authors(everyone())
+#'
+#' aut$set_corresponding_authors(everyone_but(jean), by = "given_name")
+#' @export
+everyone <- function() {
+  binder$pull(call = "everyone")
+}
+
+#' @rdname everyone
+#' @param ... One or more unquoted expressions separated by commas. Expressions
+#'   matching values in the column defined by the `by` parameter of `set_*()`
+#'   methods are used to set a given status to authors. Matching of values is
+#'   case-insensitive.
+#' @export
+everyone_but <- function(...) {
+  binder$pull(call = "everyone_but", ignore = exprs(...))
+}
