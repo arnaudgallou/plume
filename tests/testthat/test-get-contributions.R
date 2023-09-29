@@ -91,6 +91,20 @@ test_that("get_contributions() handles namesakes (#15)", {
   )
 })
 
+test_that("get_contributions() reorders CRediT roles alphabetically", {
+  aut <- Plume$new(data.frame(
+    given_name = c("Zip", "Ric"),
+    family_name = c("Zap", "Rac"),
+    writing = c(1, NA),
+    analysis = c(NA, 1)
+  ), credit_roles = TRUE)
+
+  expect_equal(
+    aut$get_contributions(),
+    c("Formal analysis: R.R.", "Writing - original draft: Z.Z.")
+  )
+})
+
 # Errors ----
 
 test_that("get_contributions() gives meaningful error messages", {

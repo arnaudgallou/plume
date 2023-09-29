@@ -5,7 +5,7 @@
 #'   tabular data.
 #' @keywords internal
 #' @importFrom dplyr distinct filter select dense_rank
-#' @importFrom dplyr mutate summarise across rename
+#' @importFrom dplyr mutate summarise across rename arrange
 #' @importFrom dplyr if_else if_any
 #' @importFrom tidyr drop_na pivot_longer nest unnest expand_grid
 #' @importFrom tidyselect all_of any_of starts_with
