@@ -14,7 +14,7 @@ StatusSetter <- R6Class(
     #' @description Set corresponding authors.
     #' @param ... Values in the column defined by `by` used to specify
     #'   corresponding authors. Matching of values is case-insensitive. Use
-    #'   `"all"` to assign `TRUE` to all authors.
+    #'   `everyone()` to assign `TRUE` to all authors.
     #' @param by Variable used to set corresponding authors. By default, uses
     #'   authors' id.
     #' @return The class instance.
@@ -62,7 +62,7 @@ StatusSetterQuarto <- R6Class(
     #' @description Set equal contributors.
     #' @param ... Values in the column defined by `by` used to specify which
     #'   authors are equal contributors. Matching of values is case-insensitive.
-    #'   Use `"all"` to assign equal contribution to all authors.
+    #'   Use `everyone()` to assign equal contribution to all authors.
     #' @param by Variable used to specify which authors are equal contributors.
     #'   By default, uses authors' id.
     #' @return The class instance.

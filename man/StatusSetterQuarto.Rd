@@ -50,7 +50,7 @@ Set equal contributors.
 \describe{
 \item{\code{...}}{Values in the column defined by \code{by} used to specify which
 authors are equal contributors. Matching of values is case-insensitive.
-Use \code{"all"} to assign equal contribution to all authors.}
+Use \code{everyone()} to assign equal contribution to all authors.}
 
 \item{\code{by}}{Variable used to specify which authors are equal contributors.
 By default, uses authors' id.}
