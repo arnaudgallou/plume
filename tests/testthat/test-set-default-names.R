@@ -16,14 +16,17 @@ test_that("set_default_names() sets new plume names", {
     .plume_quarto = FALSE
   )
 
-  expect_null(nms$internals$equal_contributor)
+  expect_null(list_fetch(nms, "equal_contributor")[[1]])
 
   nms <- set_default_names(
     equal_contributor = "contribution_égale",
     .plume_quarto = TRUE
   )
 
-  expect_equal(nms$public$internals$equal_contributor, "contribution_égale")
+  expect_equal(
+    list_fetch(nms, "equal_contributor")[[1]],
+    "contribution_égale"
+  )
 
   nms <- set_default_names(foo = "foo", analysis = "bar")
 
