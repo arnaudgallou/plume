@@ -120,6 +120,4 @@ Thanks to:
 
 * [Richard J. Telford](https://github.com/richardjtelford) for his advice that helped me conceive this package.
 
-* [Maëlle Salmon](https://github.com/maelle) for helping me deploy the pkgdown site and her advice to simplify my unit tests.
-
-* [Gábor Csárdi](https://github.com/gaborcsardi) for his help with roxygen2 and advice to simplify my unit tests.
+* [Maëlle Salmon](https://github.com/maelle) and [Gábor Csárdi](https://github.com/gaborcsardi) for their help when I was stuck with unit tests, roxygen2 or pkgdown.
