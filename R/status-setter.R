@@ -84,7 +84,11 @@ StatusSetterQuarto <- R6Class(
 )
 
 #' @title Select all authors or exclude some from a selection
-#' @description Helper functions used to batch assign status to authors.
+#' @description Selection helpers that can be used within `set_*()` methods:
+#'
+#'   * [`everyone()`] select all authors.
+#'
+#'   * [`everyone_but()`] select all but specific authors.
 #' @examples
 #' aut <- Plume$new(encyclopedists)
 #'

@@ -16,7 +16,11 @@ methods are used to set a given status to authors. Matching of values is
 case-insensitive.}
 }
 \description{
-Helper functions used to batch assign status to authors.
+Selection helpers that can be used within \verb{set_*()} methods:
+\itemize{
+\item \code{\link[=everyone]{everyone()}} select all authors.
+\item \code{\link[=everyone_but]{everyone_but()}} select all but specific authors.
+}
 }
 \examples{
 aut <- Plume$new(encyclopedists)
