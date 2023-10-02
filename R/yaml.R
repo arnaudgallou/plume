@@ -60,7 +60,7 @@ check_has_yaml <- function(x) {
   ))
 }
 
-yaml_push <- function(file, what) {
+yaml_push <- function(what, file) {
   text <- read_file(file)
   check_has_yaml(text)
   items <- separate_yaml_header(text)

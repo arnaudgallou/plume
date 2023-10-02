@@ -85,7 +85,7 @@ PlumeQuarto <- R6Class(
     #' values with the ones provided in the input data.
     #' @return The input `file` invisibly.
     to_yaml = function() {
-      yaml_push(private$file, what = private$get_template())
+      yaml_push(private$get_template(), file = private$file)
     }
   ),
 
