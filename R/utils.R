@@ -2,10 +2,6 @@ unique.list <- function(x, ...) {
   unique(unlist(x, use.names = FALSE), ...)
 }
 
-selfname <- function(x) {
-  set_names(x, x)
-}
-
 includes <- function(x, y, ignore_case = TRUE) {
   out <- list(x = x, y = y)
   if (ignore_case) {

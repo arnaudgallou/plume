@@ -141,11 +141,9 @@ check_duplicates <- function(x, ..., arg = caller_arg(x)) {
   abort_check(msg = msg, ..., arg = arg)
 }
 
-vec_types <- c("character", "numeric", "list")
-
 check_vector <- function(
     x,
-    type = vec_types,
+    type,
     force_names = FALSE,
     allow_duplicates = TRUE,
     allow_homonyms = FALSE,
@@ -153,7 +151,6 @@ check_vector <- function(
     ...,
     arg = caller_arg(x)
 ) {
-  type <- match.arg(type)
   if (!missing(x)) {
     if (allow_null && is.null(x)) {
       return(invisible(NULL))

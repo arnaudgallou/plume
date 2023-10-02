@@ -23,7 +23,7 @@ get_template_vars <- function(minimal, credit_roles) {
   to_ignore <- get_ignored_vars(vars, minimal)
   vars <- unlist(vars, use.names = FALSE)
   vars <- drop_from(vars, to_ignore)
-  selfname(vars)
+  set_names(vars)
 }
 
 get_ignored_vars <- function(vars, minimal) {
@@ -38,7 +38,7 @@ get_nestables <- function(crt) {
   names_crt <- if (crt) names(.names$protected$crt)
   role <- if (!crt) "role"
   vars <- c(seq_names("affiliation", role, n = 2), names_crt, "note")
-  as.list(selfname(vars))
+  as.list(set_names(vars))
 }
 
 seq_names <- function(..., n) {
