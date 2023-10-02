@@ -68,7 +68,7 @@ PlumeHandler <- R6Class(
       private$sanitise()
       private$make_author_names()
       if (private$crt) {
-        private$crt_process()
+        private$process_crt()
       }
       private$plume <- rowid_to_column(private$plume, var = private$pick("id"))
     },
@@ -107,7 +107,7 @@ PlumeHandler <- R6Class(
       )
     },
 
-    crt_process = function() {
+    process_crt = function() {
       out <- crt_assign(private$plume)
       private$plume <- crt_rename(out, prefix = private$pick("role"))
     },
