@@ -136,24 +136,31 @@ Markdown or Quarto document as shown in the example below:</p>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>library(googlesheets4)</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>library(plume)</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>tbl_authors &lt;- gs4_find("encyclopédie") |&gt; read_sheet()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>tbl_authors &lt;- gs4_find("sheet_name") |&gt; read_sheet()</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>aut &lt;- Plume$new(tbl_authors)</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>aut$set_corresponding_authors(1)</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>```</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>`r aut$get_author_list("^a,^cno")`</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>`r aut$get_author_list("^a,^co")`</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>## Main text</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>Lorem ipsum...</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>## Contributions</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>```{r}</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>#| results: asis</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>aut$get_contributions() |&gt; cat(sep = "; ")</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>```{r}</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>#| results: asis</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>aut$get_affiliations() |&gt; cat(sep = "\n\n")</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>\*Correspondence to: `r aut$get_contact_details()`</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>## Main text</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>Lorem ipsum...</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>## Contributions</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>```{r}</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>#| results: asis</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>aut$get_contributions() |&gt; cat(sep = "; ")</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div>
 <p>To modify author data, simply edit the spreadsheet. All author
 information in the document will update automatically the next time you
 render it.</p>
@@ -168,11 +175,11 @@ script.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/arnaudgallou/plume" class="external-link">plume</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tbl_authors</span> <span class="op">&lt;-</span> <span class="fu">gs4_find</span><span class="op">(</span><span class="st">"encyclopédie"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">read_sheet</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">tbl_authors</span> <span class="op">&lt;-</span> <span class="fu">gs4_find</span><span class="op">(</span><span class="st">"sheet_name"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">read_sheet</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">tbl_authors</span>, file <span class="op">=</span> <span class="st">"file.qmd"</span><span class="op">)</span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">tbl_authors</span>, file <span class="op">=</span> <span class="st">"file.qmd"</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Remember to run the script everytime the spreadsheet is updated to
 implement the changes in your document.</p>
 </div>
