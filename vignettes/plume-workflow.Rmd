@@ -61,13 +61,20 @@ execute:
 library(googlesheets4)
 library(plume)
 
-tbl_authors <- gs4_find("encyclopédie") |> read_sheet()
+tbl_authors <- gs4_find("sheet_name") |> read_sheet()
 
 aut <- Plume$new(tbl_authors)
 aut$set_corresponding_authors(1)
 ```
 
-`r aut$get_author_list("^a,^cno")`
+`r aut$get_author_list("^a,^co")`
+
+```{r}
+#| results: asis
+aut$get_affiliations() |> cat(sep = "\n\n")
+```
+
+\*Correspondence to: `r aut$get_contact_details()`
 
 ## Main text
 
@@ -91,11 +98,11 @@ If you use `PlumeQuarto` to inject author information in a Quarto document, you'
 library(googlesheets4)
 library(plume)
 
-tbl_authors <- gs4_find("encyclopédie") |> read_sheet()
+tbl_authors <- gs4_find("sheet_name") |> read_sheet()
 
-aut <- PlumeQuarto$new(tbl_authors, file = "file.qmd")
-aut$set_corresponding_authors(1)
-aut$to_yaml()
+PlumeQuarto$new(tbl_authors, file = "file.qmd")$
+  set_corresponding_authors(1)$
+  to_yaml()
 ```
 
 Remember to run the script everytime the spreadsheet is updated to implement the changes in your document.
