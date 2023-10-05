@@ -42,7 +42,7 @@ drop_from <- function(x, ...) {
   x[!includes(x, c(...))]
 }
 
-vec_drop_na <- function(x, ...) {
+vec_drop_na <- function(x) {
   x[is_not_na(x)]
 }
 
