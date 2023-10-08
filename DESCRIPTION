@@ -1,7 +1,7 @@
 Type: Package
 Package: plume
 Title: A Simple Author Handler for Scientific Writing
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: c(
     person("Arnaud", "Gallou", , "arangacas@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-1002-4247")),
