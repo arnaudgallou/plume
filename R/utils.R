@@ -10,10 +10,6 @@ includes <- function(x, y, ignore_case = TRUE) {
   out$x %in% out$y
 }
 
-true_if <- function(condition, ...) {
-  if_else(condition, TRUE, FALSE, ...)
-}
-
 if_not_na <- function(x, value, ..., all = FALSE) {
   cnd <- is.na(x)
   if (all) {

@@ -37,7 +37,7 @@ StatusSetter <- R6Class(
       dots <- if (dots_are_call(...)) c(...) else exprs(...)
       private$plume <- mutate(
         private$plume,
-        !!private$pick(col) := true_if(includes(.data[[by]], dots))
+        !!private$pick(col) := includes(.data[[by]], dots)
       )
       invisible(self)
     }
