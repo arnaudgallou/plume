@@ -1,5 +1,9 @@
 # plume (development version)
 
+## Minor improvements and bug fixes
+
+* plume classes now error when a role column contains multiple roles (#28).
+
 # plume 0.1.0
 
 ## Documentation improvements
