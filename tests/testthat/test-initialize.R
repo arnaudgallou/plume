@@ -215,6 +215,13 @@ test_that("initialize() gives meaningful error messages", {
       Plume$new(df, interword_spacing = 1)
     ))
     (expect_error(
+      Plume$new(data.frame(
+        given_name = "x", family_name = "y",
+        role_1 = c("a", ""),
+        role_2 = c("b", "c")
+      ))
+    ))
+    (expect_error(
       PlumeQuarto$new(df, tempfile_(), by = 1)
     ))
     (expect_error(
