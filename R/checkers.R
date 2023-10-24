@@ -76,7 +76,8 @@ search_ <- function(x, callback, na_rm = TRUE, n = 1) {
   if (!is.null(n)) {
     failed <- failed[n]
   }
-  set_names(x[failed], failed)
+  nms <- if (is_named(failed)) names(failed) else failed
+  set_names(x[failed], nms)
 }
 
 is_type <- function(x, type) {

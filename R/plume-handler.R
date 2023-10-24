@@ -66,6 +66,7 @@ PlumeHandler <- R6Class(
     build = function() {
       private$mold()
       private$sanitise()
+      private$check_roles()
       private$make_author_names()
       if (private$crt) {
         private$process_crt()
@@ -193,6 +194,23 @@ PlumeHandler <- R6Class(
       abort_check(msg = c(
         glue("Missing author name found in position {names(missing_author)}."),
         i = "All authors must have a given and family name."
+      ))
+    },
+
+    check_roles = function() {
+      role <- private$pick("role")
+      if (!private$has_col(paste0("^", role))) {
+        return()
+      }
+      roles <- select(private$plume, starts_with(role))
+      roles <- map(roles, \(x) length(condense(x)))
+      multiple_roles <- search_(roles, \(x) x > 1L)
+      if (is.null(multiple_roles)) {
+        return()
+      }
+      abort_check(msg = c(
+        glue("Multiple roles found in column `{names(multiple_roles)}`."),
+        i = "Roles must be unique within a column."
       ))
     }
   )
