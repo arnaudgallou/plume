@@ -1,5 +1,5 @@
 test_that("plm_template() returns a table template", {
-  df <- plm_template(roles = NULL)
+  df <- plm_template(role_cols = NULL)
 
   expect_equal(nrow(df), 0L)
 
@@ -11,12 +11,12 @@ test_that("plm_template() returns a table template", {
 
   expect_named(df, nms_minimal, ignore.order = TRUE)
   expect_named(
-    plm_template(roles = credit_roles()),
+    plm_template(role_cols = credit_roles()),
     nms_minimal_crt,
     ignore.order = TRUE
   )
 
-  df <- plm_template(minimal = FALSE, roles = NULL)
+  df <- plm_template(minimal = FALSE, role_cols = NULL)
   nms_minimal_all <- c(nms_minimal, "phone", "fax", "url")
 
   expect_named(df, nms_minimal_all, ignore.order = TRUE)
@@ -42,10 +42,10 @@ test_that("plm_template() gives meaningful error messages", {
       plm_template(minimal = 1)
     ))
     (expect_error(
-      plm_template(roles = 1)
+      plm_template(role_cols = 1)
     ))
     (expect_error(
-      plm_template(roles = c("foo", "foo"))
+      plm_template(role_cols = c("foo", "foo"))
     ))
     (expect_error(
       plm_template(credit_roles = 1)

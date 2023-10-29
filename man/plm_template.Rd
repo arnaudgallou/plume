@@ -4,7 +4,7 @@
 \alias{plm_template}
 \title{Create a table template for plume classes}
 \usage{
-plm_template(minimal = TRUE, roles = credit_roles(), credit_roles = FALSE)
+plm_template(minimal = TRUE, role_cols = credit_roles(), credit_roles = FALSE)
 }
 \arguments{
 \item{minimal}{If \code{TRUE}, returns an empty tibble with the following columns:
@@ -12,12 +12,12 @@ plm_template(minimal = TRUE, roles = credit_roles(), credit_roles = FALSE)
 Otherwise the function returns a template with all columns that can be
 supplied to plume classes that are not \code{PlumeQuarto}-specific.}
 
-\item{roles}{A vector of names defining role columns to create. If the vector
-contains key-value pairs, columns will be named after the keys.}
+\item{role_cols}{A vector of names defining role columns to create. If the
+vector contains key-value pairs, columns will be named after the keys.}
 
 \item{credit_roles}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
-It is now recommended to use \code{roles = credit_roles()} to use the
+It is now recommended to use \code{role_cols = credit_roles()} to use the
 \href{https://credit.niso.org}{Contributor Roles Taxonomy}.}
 }
 \value{
@@ -31,5 +31,5 @@ author data.
 \examples{
 plm_template()
 
-plm_template(roles = paste0("role_", 1:5))
+plm_template(role_cols = paste0("role_", 1:5))
 }

@@ -236,7 +236,7 @@ PlumeHandler$set("private", "check_param_credit_roles", function() {
   if (!private$crt) {
     return()
   }
-  print_deprecation("credit_roles", caller = "new")
+  print_deprecation("credit_roles", caller = "new", param = "roles")
 })
 
 PlumeHandler$set("private", "check_role_system", function() {

@@ -52,11 +52,11 @@
 )
 
 .deprecations <- list(
-  credit_roles = \(caller) {
+  credit_roles = \(caller, param) {
     lifecycle::deprecate_warn(
       "0.2.0",
       what = glue("{caller}(credit_roles)"),
-      with = I("`roles = credit_roles()`")
+      with = I(glue("`{param} = credit_roles()`"))
     )
   },
   explicit_roles = \() {
