@@ -2,14 +2,14 @@
 
 * New helper `credit_roles()` that returns the 14 contributor roles of the [Contributor Roles Taxonomy](https://credit.niso.org). These are now the default roles used by plume.
 
-* The plume role handling system has been overhauled for better flexibility and ease of use.
+* The plume role handling system has been overhauled for better flexibility and ease of use (#29).
 
-  * Defining explicit roles in the input data or using `credit_roles = TRUE` are now deprecated in favour of defining roles via the `roles` parameter (see below).
+  * Defining roles explicitly in the input data or using `credit_roles = TRUE` are now deprecated in favour of defining role columns and roles via the parameters `role_cols` and `roles`, respectively (see below).
 
-  * plume classes and `plm_template()` gain a new parameter `roles` allowing you to specify roles or role columns using a character vector.
+  * plume classes gain a new parameter `roles` allowing you to specify roles using a character vector.
 
     Rather than:
-  
+
     ```
     # A tibble: 2 × 4
       given_name family_name role_1      role_2
@@ -17,9 +17,9 @@
     1 Zip        Zap         Supervision Writing
     2 Ric        Rac         NA          Writing
     ```
-  
+
     You can now use the following data structure:
-  
+
     ```
     # A tibble: 2 × 4
       given_name family_name role_1 role_2
@@ -27,9 +27,9 @@
     1 Zip        Zap              1      1
     2 Ric        Rac             NA      1
     ```
-  
+
     And speficy roles when creating a `plume` object:
-  
+
     ```
     Plume$new(data, roles = c(role_1 = "Supervision", role_2 = "Writing"))
     ```
