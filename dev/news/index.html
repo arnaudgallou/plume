@@ -58,11 +58,30 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
-<div class="section level3">
-<h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
-<ul><li>plume classes now error when a role column contains multiple roles (<a href="https://github.com/arnaudgallou/plume/issues/28" class="external-link">#28</a>).</li>
+<ul><li><p>New helper <code><a href="../reference/credit_roles.html">credit_roles()</a></code> that returns the 14 contributor roles of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>. These are now the default roles used by plume.</p></li>
+<li>
+<p>The plume role handling system has been overhauled for better flexibility and ease of use.</p>
+<ul><li><p>Defining explicit roles in the input data or using <code>credit_roles = TRUE</code> are now deprecated in favour of defining roles via the <code>roles</code> parameter (see below).</p></li>
+<li>
+<p>plume classes and <code><a href="../reference/plm_template.html">plm_template()</a></code> gain a new parameter <code>roles</code> allowing you to specify roles or role columns using a character vector.</p>
+<p>Rather than:</p>
+<pre><code># A tibble: 2 × 4
+  given_name family_name role_1      role_2
+  &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;
+1 Zip        Zap         Supervision Writing
+2 Ric        Rac         NA          Writing</code></pre>
+<p>You can now use the following data structure:</p>
+<pre><code># A tibble: 2 × 4
+  given_name family_name role_1 role_2
+  &lt;chr&gt;      &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
+1 Zip        Zap              1      1
+2 Ric        Rac             NA      1</code></pre>
+<p>And speficy roles when creating a <code>plume</code> object:</p>
+<pre><code><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">data</span>, roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role_1 <span class="op">=</span> <span class="st">"Supervision"</span>, role_2 <span class="op">=</span> <span class="st">"Writing"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</li>
+</ul></li>
+<li><p>plume classes now error when a role column contains multiple roles (<a href="https://github.com/arnaudgallou/plume/issues/28" class="external-link">#28</a>).</p></li>
 </ul></div>
-</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="plume-010">plume 0.1.0<a class="anchor" aria-label="anchor" href="#plume-010"></a></h2><p class="text-muted">CRAN release: 2023-10-06</p>
 <div class="section level3">

@@ -69,20 +69,27 @@ author data.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plm_template</span><span class="op">(</span>minimal <span class="op">=</span> <span class="cn">TRUE</span>, credit_roles <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plm_template</span><span class="op">(</span>minimal <span class="op">=</span> <span class="cn">TRUE</span>, roles <span class="op">=</span> <span class="fu"><a href="credit_roles.html">credit_roles</a></span><span class="op">(</span><span class="op">)</span>, credit_roles <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>minimal</dt>
 <dd><p>If <code>TRUE</code>, returns an empty tibble with the following columns:
-<code>given_name</code>, <code>family_name</code>, <code>email</code>, <code>orcid</code>, <code>affiliation</code>, <code>role</code> and
-<code>note</code>. Otherwise the function returns a template with all columns that can
-be supplied to plume classes that are not <code>PlumeQuarto</code>-specific.</p></dd>
+<code>given_name</code>, <code>family_name</code>, <code>email</code>, <code>orcid</code>, <code>affiliation</code> and <code>note</code>.
+Otherwise the function returns a template with all columns that can be
+supplied to plume classes that are not <code>PlumeQuarto</code>-specific.</p></dd>
+
+
+<dt>roles</dt>
+<dd><p>A vector of names defining role columns to create. If the vector
+contains key-value pairs, columns will be named after the keys.</p></dd>
 
 
 <dt>credit_roles</dt>
-<dd><p>Should the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a> be used?</p></dd>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p>
+<p>It is now recommended to use <code>roles = credit_roles()</code> to use the
+<a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -95,10 +102,19 @@ be supplied to plume classes that are not <code>PlumeQuarto</code>-specific.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">plm_template</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 9 variables: given_name &lt;chr&gt;, family_name &lt;chr&gt;, email &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;, role_1 &lt;chr&gt;, role_2 &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   note &lt;chr&gt;, orcid &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 21</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 21 variables: given_name &lt;chr&gt;, family_name &lt;chr&gt;, email &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;, note &lt;chr&gt;, orcid &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   conceptualization &lt;chr&gt;, data_curation &lt;chr&gt;, analysis &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   funding &lt;chr&gt;, investigation &lt;chr&gt;, methodology &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   administration &lt;chr&gt;, resources &lt;chr&gt;, software &lt;chr&gt;, supervision &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   validation &lt;chr&gt;, visualization &lt;chr&gt;, writing &lt;chr&gt;, editing &lt;chr&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">plm_template</span><span class="op">(</span>roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"role_"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 12 variables: given_name &lt;chr&gt;, family_name &lt;chr&gt;, email &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;, note &lt;chr&gt;, orcid &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   role_1 &lt;chr&gt;, role_2 &lt;chr&gt;, role_3 &lt;chr&gt;, role_4 &lt;chr&gt;, role_5 &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

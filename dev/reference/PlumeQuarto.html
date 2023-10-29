@@ -91,6 +91,7 @@ of Quarto files.</p>
 <span>  <span class="va">data</span>,</span>
 <span>  <span class="va">file</span>,</span>
 <span>  names <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  roles <span class="op">=</span> <span class="fu"><a href="../reference/credit_roles.html">credit_roles</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  credit_roles <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  initials_given_name <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  by <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -112,9 +113,15 @@ of Quarto files.</p>
 where keys are default names and values their respective replacements.</p></dd>
 
 
+<dt><code>roles</code></dt>
+<dd><p>A vector of key-value pairs defining roles where keys
+identify columns and values describe the actual roles to use.</p></dd>
+
+
 <dt><code>credit_roles</code></dt>
-<dd><p>Should the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a> be used? See
-<code><a href="../articles/using-credit-roles.html">vignette("using-credit-roles")</a></code> for details.</p></dd>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p>
+<p>It is now recommended to use <code>roles = credit_roles()</code> to use the
+<a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>.</p></dd>
 
 
 <dt><code>initials_given_name</code></dt>
