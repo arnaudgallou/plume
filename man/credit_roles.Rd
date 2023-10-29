@@ -4,7 +4,10 @@
 \alias{credit_roles}
 \title{CRediT roles}
 \usage{
-credit_roles()
+credit_roles(oxford_spelling = TRUE)
+}
+\arguments{
+\item{oxford_spelling}{Should the suffix -ize/-ization be used?}
 }
 \value{
 A named vector.

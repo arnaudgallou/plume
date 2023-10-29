@@ -249,7 +249,7 @@ Plume <- R6Class(
         },
         last = sep_last
       ), .by = all_of(pars$grp_var))
-      if (all(private$roles %in% credit_roles()) || private$crt) {
+      if (are_credit_roles(private$roles) || private$crt) {
         out <- arrange(out, role)
       }
       out <- collapse_cols(out, pars$format, sep = divider)
