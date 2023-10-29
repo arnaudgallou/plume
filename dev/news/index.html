@@ -60,10 +60,10 @@
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
 <ul><li><p>New helper <code><a href="../reference/credit_roles.html">credit_roles()</a></code> that returns the 14 contributor roles of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>. These are now the default roles used by plume.</p></li>
 <li>
-<p>The plume role handling system has been overhauled for better flexibility and ease of use.</p>
-<ul><li><p>Defining explicit roles in the input data or using <code>credit_roles = TRUE</code> are now deprecated in favour of defining roles via the <code>roles</code> parameter (see below).</p></li>
+<p>The plume role handling system has been overhauled for better flexibility and ease of use (<a href="https://github.com/arnaudgallou/plume/issues/29" class="external-link">#29</a>).</p>
+<ul><li><p>Defining roles explicitly in the input data or using <code>credit_roles = TRUE</code> are now deprecated in favour of defining role columns and roles via the parameters <code>role_cols</code> and <code>roles</code>, respectively (see below).</p></li>
 <li>
-<p>plume classes and <code><a href="../reference/plm_template.html">plm_template()</a></code> gain a new parameter <code>roles</code> allowing you to specify roles or role columns using a character vector.</p>
+<p>plume classes gain a new parameter <code>roles</code> allowing you to specify roles using a character vector.</p>
 <p>Rather than:</p>
 <pre><code># A tibble: 2 × 4
   given_name family_name role_1      role_2
