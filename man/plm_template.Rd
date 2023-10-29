@@ -30,4 +30,6 @@ author data.
 }
 \examples{
 plm_template()
+
+plm_template(roles = paste0("role_", 1:5))
 }
