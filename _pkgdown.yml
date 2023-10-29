@@ -13,6 +13,7 @@ reference:
       - NameHandler
   - title: Helpers
     contents:
+      - credit_roles
       - enumerate
       - everyone
       - everyone_but

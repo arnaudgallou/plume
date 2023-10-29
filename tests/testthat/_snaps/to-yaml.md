@@ -17,8 +17,8 @@
           attributes:
             corresponding: true
           roles:
-            - a
-            - b
+            - formal analysis
+            - writing - original draft
           affiliations:
             - ref: aff1
             - ref: aff2
@@ -31,7 +31,7 @@
           attributes:
             corresponding: false
           roles:
-            - a
+            - formal analysis
           affiliations:
             - ref: aff3
         - id: aut3
@@ -43,7 +43,7 @@
           attributes:
             corresponding: false
           roles:
-            - a
+            - formal analysis
           affiliations:
             - ref: aff1
             - ref: aff4
@@ -80,7 +80,7 @@
           attributes:
             corresponding: true
           roles:
-            - a
+            - formal analysis
           affiliations:
             - ref: aff1
             - ref: aff2
@@ -93,7 +93,7 @@
           attributes:
             corresponding: false
           roles:
-            - a
+            - formal analysis
           affiliations:
             - ref: aff3
         - id: aut3
@@ -107,8 +107,8 @@
           attributes:
             corresponding: false
           roles:
-            - a
-            - b
+            - formal analysis
+            - writing - original draft
           affiliations:
             - ref: aff2
             - ref: aff4

@@ -8,14 +8,18 @@ test_that("initialize() builds a plume dataset", {
   expect_true(tibble::is_tibble(aut$get_plume()))
   expect_named(aut$get_plume(), nms_en, ignore.order = TRUE)
 
+  df_fr <- set_names(basic_df(), c(
+    "prénom", "nom", "nom_complet", "initiales", "affiliation", "affiliation2",
+    "analyse", "rédaction", "note", "note2", "courriel", "téléphone", "orcid"
+  ))
   nms_fr <- c(
     "id", "initiales", "prénom", "nom", "nom_complet", "affiliation",
     "role", "note", "courriel", "téléphone", "orcid"
   )
-  nms_new <- setNames(nms_en, nms_fr)[-(1:2)]
   aut <- Plume$new(
-    dplyr::rename(basic_df(), tidyselect::all_of(nms_new)),
-    names = setNames(nms_fr, nms_en)
+    df_fr,
+    names = setNames(nms_fr, nms_en),
+    roles = c(analyse = "a", rédaction = "b")
   )
 
   expect_named(aut$get_plume(), nms_fr, ignore.order = TRUE)
@@ -30,10 +34,6 @@ test_that("initialize() builds a plume dataset", {
   aut <- PlumeQuarto$new(df, tempfile_())
   nms <- c(nms, "dropping_particle")
   expect_named(aut$get_plume(), nms)
-
-  # ensure that `credit_roles = TRUE` preserves nestables
-  aut <- Plume$new(basic_df(), credit_roles = TRUE)
-  expect_named(aut$get_plume(), nms_en[nms_en != "role"], ignore.order = TRUE)
 })
 
 test_that("initialize() ignores unknown variables", {
@@ -81,14 +81,14 @@ test_that("single nestables don't nest", {
   expect_false(is_nested(aut$get_plume(), "note"))
 })
 
-test_that("`credit_roles = TRUE` handles CRediT roles", {
+test_that("`roles = credit_roles()` handles CRediT roles", {
   aut <- Plume$new(data.frame(
     given_name = "X",
     family_name = "Y",
     supervision = 1,
     writing = 1,
     editing = NA
-  ), credit_roles = TRUE)
+  ), roles = credit_roles())
 
   expect_equal(
     sort(unlist(aut$get_plume()$role, use.names = FALSE)),
@@ -214,12 +214,25 @@ test_that("initialize() gives meaningful error messages", {
     (expect_error(
       Plume$new(df, interword_spacing = 1)
     ))
-    (expect_error(
+    (expect_error({
+      withr::local_options(lifecycle_verbosity = "quiet")
       Plume$new(data.frame(
         given_name = "x", family_name = "y",
         role_1 = c("a", ""),
         role_2 = c("b", "c")
       ))
+    }))
+    (expect_error(
+      Plume$new(df, roles = 1)
+    ))
+    (expect_error(
+      Plume$new(df, roles = "foo")
+    ))
+    (expect_error(
+      Plume$new(df, roles = c(role = "foo", role = "bar"))
+    ))
+    (expect_error(
+      Plume$new(df, roles = c(role = "foo", role_2 = "foo"))
     ))
     (expect_error(
       PlumeQuarto$new(df, tempfile_(), by = 1)

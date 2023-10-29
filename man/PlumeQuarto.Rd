@@ -76,6 +76,7 @@ Create a \code{PlumeQuarto} object.
   data,
   file,
   names = NULL,
+  roles = credit_roles(),
   credit_roles = FALSE,
   initials_given_name = FALSE,
   by = NULL
@@ -92,8 +93,13 @@ Create a \code{PlumeQuarto} object.
 \item{\code{names}}{A vector of key-value pairs specifying custom names to use,
 where keys are default names and values their respective replacements.}
 
-\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used? See
-\code{vignette("using-credit-roles")} for details.}
+\item{\code{roles}}{A vector of key-value pairs defining roles where keys
+identify columns and values describe the actual roles to use.}
+
+\item{\code{credit_roles}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+It is now recommended to use \code{roles = credit_roles()} to use the
+\href{https://credit.niso.org}{Contributor Roles Taxonomy}.}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 

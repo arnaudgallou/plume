@@ -1,3 +1,12 @@
+# `credit_roles = TRUE` is deprecated
+
+    Code
+      tbl <- plm_template(credit_roles = TRUE)
+    Condition
+      Warning:
+      The `credit_roles` argument of `plm_template()` is deprecated as of plume 0.2.0.
+      i Please use `roles = credit_roles()` instead.
+
 # plm_template() gives meaningful error messages
 
     Code
@@ -8,6 +17,18 @@
       i In index: 1.
       Caused by error:
       ! `minimal` must be `TRUE` or `FALSE`.
+    Code
+      (expect_error(plm_template(roles = 1)))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `roles` must be a character vector.
+    Code
+      (expect_error(plm_template(roles = c("foo", "foo"))))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `roles` must have unique input values.
     Code
       (expect_error(plm_template(credit_roles = 1)))
     Output

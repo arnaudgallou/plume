@@ -27,6 +27,7 @@ Internal class processing and shaping tabular data into a
 \if{html}{\out{<div class="r">}}\preformatted{PlumeHandler$new(
   data,
   names,
+  roles,
   credit_roles,
   initials_given_name,
   family_name_first = FALSE,

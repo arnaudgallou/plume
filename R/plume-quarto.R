@@ -57,8 +57,12 @@ PlumeQuarto <- R6Class(
     #' @param file A `.qmd` file to insert author data into.
     #' @param names A vector of key-value pairs specifying custom names to use,
     #'   where keys are default names and values their respective replacements.
-    #' @param credit_roles Should the `r link("crt")` be used? See
-    #'   `vignette("using-credit-roles")` for details.
+    #' @param roles A vector of key-value pairs defining roles where keys
+    #'   identify columns and values describe the actual roles to use.
+    #' @param credit_roles `r lifecycle::badge("deprecated")`
+    #'
+    #'   It is now recommended to use `roles = credit_roles()` to use the
+    #'   `r link("crt")`.
     #' @param initials_given_name Should the initials of given names be used?
     #' @param by A character string defining the default variable used to assign
     #'   authors' status in all `set_*()` methods. By default, uses authors' id.
@@ -67,12 +71,13 @@ PlumeQuarto <- R6Class(
         data,
         file,
         names = NULL,
+        roles = credit_roles(),
         credit_roles = FALSE,
         initials_given_name = FALSE,
         by = NULL
     ) {
       check_file(file, extension = "qmd")
-      super$initialize(data, names, credit_roles, initials_given_name, by = by)
+      super$initialize(data, names, roles, credit_roles, initials_given_name, by = by)
       private$file <- file
       private$id <- private$pick("id")
     },

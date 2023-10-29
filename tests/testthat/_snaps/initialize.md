@@ -28,28 +28,36 @@
     Code
       (expect_error(Plume$new(df, names = list(given_name = "prénom"))))
     Output
-      <error/rlang_error>
-      Error:
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 1.
+      Caused by error:
       ! `names` must be a character vector.
     Code
       (expect_error(Plume$new(df, names = "prénom")))
     Output
-      <error/rlang_error>
-      Error:
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 1.
+      Caused by error:
       ! All `names` inputs must be named.
     Code
       (expect_error(Plume$new(df, names = c(given_name = "prénom", family_name = "prénom")))
       )
     Output
-      <error/rlang_error>
-      Error:
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 1.
+      Caused by error:
       ! `names` must have unique input values.
     Code
       (expect_error(Plume$new(df, names = c(given_name = "prénom", given_name = "nom")))
       )
     Output
-      <error/rlang_error>
-      Error:
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 1.
+      Caused by error:
       ! `names` must have unique input names.
     Code
       (expect_error(Plume$new(df, symbols = c(note = letters))))
@@ -103,13 +111,48 @@
       Caused by error:
       ! `interword_spacing` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(Plume$new(data.frame(given_name = "x", family_name = "y", role_1 = c(
-        "a", ""), role_2 = c("b", "c")))))
+      (expect_error({
+        withr::local_options(lifecycle_verbosity = "quiet")
+        Plume$new(data.frame(given_name = "x", family_name = "y", role_1 = c("a", ""),
+        role_2 = c("b", "c")))
+      }))
     Output
       <error/rlang_error>
       Error:
       ! Multiple roles found in column `role_2`.
       i Roles must be unique within a column.
+    Code
+      (expect_error(Plume$new(df, roles = 1)))
+    Output
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 2.
+      Caused by error:
+      ! `roles` must be a character vector.
+    Code
+      (expect_error(Plume$new(df, roles = "foo")))
+    Output
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 2.
+      Caused by error:
+      ! All `roles` inputs must be named.
+    Code
+      (expect_error(Plume$new(df, roles = c(role = "foo", role = "bar"))))
+    Output
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 2.
+      Caused by error:
+      ! `roles` must have unique input names.
+    Code
+      (expect_error(Plume$new(df, roles = c(role = "foo", role_2 = "foo"))))
+    Output
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 2.
+      Caused by error:
+      ! `roles` must have unique input values.
     Code
       (expect_error(PlumeQuarto$new(df, tempfile_(), by = 1)))
     Output
