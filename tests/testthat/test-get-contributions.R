@@ -1,5 +1,5 @@
 test_that("get_contributions() return authors' contributions", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(basic_df(), roles = c(analysis = "a", writing = "b"))
 
   expect_s3_class(aut$get_contributions(), "plm")
 
@@ -50,18 +50,21 @@ test_that("get_contributions() returns `NULL` if no contributions", {
   aut <- Plume$new(data.frame(
     given_name = "Zip",
     family_name = "Zap",
-    role = ""
+    analysis = ""
   ))
   expect_null(aut$get_contributions())
 })
 
 test_that("get_contributions() rearranges authors only (#18)", {
-  aut <- Plume$new(data.frame(
-    given_name = c("Zip", "Pim"),
-    family_name = c("Zap", "Pam"),
-    role_1 = c("z", NA),
-    role_2 = c("a", "a")
-  ))
+  aut <- Plume$new(
+    data.frame(
+      given_name = c("Zip", "Pim"),
+      family_name = c("Zap", "Pam"),
+      role_1 = c(1, NA),
+      role_2 = rep(1, 2)
+    ),
+    roles = c(role_1 = "z", role_2 = "a")
+  )
 
   expect_equal(
     aut$get_contributions(alphabetical_order = TRUE),
@@ -74,6 +77,8 @@ test_that("get_contributions() rearranges authors only (#18)", {
 })
 
 test_that("get_contributions() handles namesakes (#15)", {
+  withr::local_options(lifecycle_verbosity = "quiet")
+
   aut <- Plume$new(data.frame(
     given_name = c("Zip", "Zip"),
     family_name = c("Zap", "Zap"),
@@ -97,12 +102,35 @@ test_that("get_contributions() reorders CRediT roles alphabetically", {
     family_name = c("Zap", "Rac"),
     writing = c(1, NA),
     analysis = c(NA, 1)
-  ), credit_roles = TRUE)
+  ), roles = credit_roles())
 
   expect_equal(
     aut$get_contributions(),
     c("Formal analysis: R.R.", "Writing - original draft: Z.Z.")
   )
+})
+
+# Deprecation ----
+
+test_that("Specifying roles inside columns is deprecated", {
+  expect_snapshot({
+    aut <- Plume$new(data.frame(
+      given_name = "Zip",
+      family_name = "Zap",
+      role = "a"
+    ))
+  })
+  expect_equal(aut$get_contributions(), "a: Z.Z.")
+})
+
+test_that("`credit_roles = TRUE` is deprecated", {
+  expect_snapshot({
+    aut <- Plume$new(
+      data.frame(given_name = "Zip", family_name = "Zap", analysis = 1),
+      credit_roles = TRUE
+    )
+  })
+  expect_equal(aut$get_contributions(), "Formal analysis: Z.Z.")
 })
 
 # Errors ----

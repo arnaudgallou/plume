@@ -60,6 +60,10 @@ is_blank <- function(x) {
 
 is_not_na <- Negate(is.na)
 
+are_credit_roles <- function(x) {
+  all(x %in% credit_roles()) || all(x %in% credit_roles(FALSE))
+}
+
 dots_are_call <- function(...) {
   nargs() == 1L && is.call(expr(...))
 }

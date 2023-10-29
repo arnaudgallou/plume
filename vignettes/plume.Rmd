@@ -9,6 +9,7 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  warning = FALSE,
   collapse = TRUE,
   comment = "#>"
 )
@@ -99,6 +100,8 @@ make_table_vars("secondaries")
 make_table_vars("nestables")
 ```
 
+<a name="constants" />
+
 **Constants**: optional names that can be provided in the input data. These names are standardised and must be provided as is.
 
 ```{r, echo = FALSE}
@@ -129,6 +132,32 @@ Plume$new(
     role = "role_v"
   )
 )
+```
+
+## Defining roles and contributors
+
+::: {.alert .alert-warning}
+This feature is currently only available in the development version of plume.
+:::
+
+You can add roles by creating specific role columns in the input data and indicate contributors using a `1`:
+
+```{r, echo = FALSE}
+tibble::tibble(
+  given_name = c("Denis", "Jean-Jacques", "François-Marie", "Jean"),
+  family_name = c("Diderot", "Rousseau", "Arouet", "Le Rond d'Alembert"),
+  supervision = c(1, NA, NA, 1),
+  writing = 1,
+)
+```
+
+plume uses `r plume:::link("crt")` (CRediT) by default (assuming the input data contains the [appropriate columns](#constants)). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys define role columns and values the actual roles to use.
+
+```{r, eval = FALSE}
+Plume$new(data, roles = c(
+  supervision = "supervised the project",
+  writing = "contributed to the Encyclopédie"
+))
 ```
 
 ## Pushing data into YAML headers

@@ -72,9 +72,9 @@ add_orcid_links <- function(data, orcid, compact = FALSE) {
   data
 }
 
-crt_assign <- function(data) {
+assign_roles <- function(data, roles) {
   data
-  iwalk(.names$protected$crt, \(value, key) {
+  iwalk(roles, \(value, key) {
     if (!has_name(data, key)) {
       return()
     }
@@ -83,8 +83,10 @@ crt_assign <- function(data) {
   data
 }
 
-crt_rename <- function(data, prefix) {
-  vars <- names(.names$protected$crt)
-  new_names <- paste(prefix, vars, sep = "_")
-  rename(data, any_of(set_names(vars, new_names)))
+rename_roles <- function(data, roles, key) {
+  nms <- names(roles)
+  if (length(nms) > 1L) {
+    key <- paste(key, seq_along(nms), sep = "_")
+  }
+  rename(data, any_of(set_names(nms, key)))
 }

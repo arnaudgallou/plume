@@ -79,6 +79,7 @@ Create a \code{Plume} object.
   data,
   names = NULL,
   symbols = NULL,
+  roles = credit_roles(),
   credit_roles = FALSE,
   initials_given_name = FALSE,
   family_name_first = FALSE,
@@ -101,8 +102,13 @@ link authors and their metadata. Valid keys are \code{"affiliation"},
 affiliations, \code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"},
 \code{"¶"}, \code{"#"}, \code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
 
-\item{\code{credit_roles}}{Should the \href{https://credit.niso.org}{Contributor Roles Taxonomy} be used? See
-\code{vignette("using-credit-roles")} for details.}
+\item{\code{roles}}{A vector of key-value pairs defining roles where keys
+identify columns and values describe the actual roles to use.}
+
+\item{\code{credit_roles}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+It is now recommended to use \code{roles = credit_roles()} to use the
+\href{https://credit.niso.org}{Contributor Roles Taxonomy}.}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 

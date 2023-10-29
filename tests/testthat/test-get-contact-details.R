@@ -36,7 +36,7 @@ test_that("get_contact_details() returns contact details of corresponding author
 })
 
 test_that("get_contact_details() returns `NULL` if all boolean arguments are `FALSE`", {
-  aut <- Plume$new(encyclopedists)
+  aut <- Plume$new(basic_df())
   aut$set_corresponding_authors(1)
   expect_null(aut$get_contact_details(email = FALSE))
 })
@@ -44,7 +44,7 @@ test_that("get_contact_details() returns `NULL` if all boolean arguments are `FA
 # Errors ----
 
 test_that("get_conctact_details() gives meaningful error messages", {
-  aut <- Plume$new(encyclopedists)
+  aut <- Plume$new(basic_df())
 
   expect_snapshot({
     (expect_error(

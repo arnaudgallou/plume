@@ -57,8 +57,12 @@ Plume <- R6Class(
     #'   `"corresponding"` and `"note"`. By default, uses digits for
     #'   affiliations, `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`,
     #'   `"¶"`, `"#"`, `"**"` for notes. Set a key to `NULL` to use numerals.
-    #' @param credit_roles Should the `r link("crt")` be used? See
-    #'   `vignette("using-credit-roles")` for details.
+    #' @param roles A vector of key-value pairs defining roles where keys
+    #'   identify columns and values describe the actual roles to use.
+    #' @param credit_roles `r lifecycle::badge("deprecated")`
+    #'
+    #'   It is now recommended to use `roles = credit_roles()` to use the
+    #'   `r link("crt")`.
     #' @param initials_given_name Should the initials of given names be used?
     #' @param family_name_first Should literal names show family names first?
     #' @param interword_spacing Should literal names use spacing? This parameter
@@ -70,6 +74,7 @@ Plume <- R6Class(
         data,
         names = NULL,
         symbols = NULL,
+        roles = credit_roles(),
         credit_roles = FALSE,
         initials_given_name = FALSE,
         family_name_first = FALSE,
@@ -79,6 +84,7 @@ Plume <- R6Class(
       super$initialize(
         data,
         names,
+        roles,
         credit_roles,
         initials_given_name,
         family_name_first,
@@ -243,7 +249,7 @@ Plume <- R6Class(
         },
         last = sep_last
       ), .by = all_of(pars$grp_var))
-      if (private$crt) {
+      if (are_credit_roles(private$roles) || private$crt) {
         out <- arrange(out, role)
       }
       out <- collapse_cols(out, pars$format, sep = divider)
