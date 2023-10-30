@@ -6,6 +6,8 @@
 
   * Defining roles explicitly in the input data or using `credit_roles = TRUE` are now deprecated in favour of defining role columns and roles via the parameters `role_cols` and `roles`, respectively (see below).
 
+  * `plm_template()` gains a new parameter `role_cols` to create role columns from a character vector.
+
   * plume classes gain a new parameter `roles` allowing you to specify roles using a character vector.
 
     Rather than:
