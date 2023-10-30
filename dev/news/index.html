@@ -62,6 +62,7 @@
 <li>
 <p>The plume role handling system has been overhauled for better flexibility and ease of use (<a href="https://github.com/arnaudgallou/plume/issues/29" class="external-link">#29</a>).</p>
 <ul><li><p>Defining roles explicitly in the input data or using <code>credit_roles = TRUE</code> are now deprecated in favour of defining role columns and roles via the parameters <code>role_cols</code> and <code>roles</code>, respectively (see below).</p></li>
+<li><p><code><a href="../reference/plm_template.html">plm_template()</a></code> gains a new parameter <code>role_cols</code> to create role columns from a character vector.</p></li>
 <li>
 <p>plume classes gain a new parameter <code>roles</code> allowing you to specify roles using a character vector.</p>
 <p>Rather than:</p>
