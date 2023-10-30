@@ -65,6 +65,14 @@ test_that("initialize() makes proper initials and literal names", {
   )
 })
 
+test_that("ensure that initials drop remaining dots (#31)", {
+  aut <- Plume$new(tibble(
+    given_name = "X Y.",
+    family_name = "Z",
+  ))
+  expect_equal(aut$get_plume()$initials, "XYZ")
+})
+
 test_that("`affiliation`, `role` and `note` columns are nestable", {
   aut <- Plume$new(basic_df())
 

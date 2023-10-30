@@ -27,7 +27,7 @@ dot <- function(x) {
 }
 
 make_initials <- function(x, dot = FALSE) {
-  out <- string_remove_all(x, "(*UCP)\\B\\w+|\\s+")
+  out <- string_remove_all(x, "(*UCP)\\B\\w+|[\\s.]+")
   if (dot) {
     out <- dot(out)
   }
