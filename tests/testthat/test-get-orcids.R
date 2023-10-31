@@ -1,5 +1,5 @@
 test_that("get_orcids() returns authors' ORCID", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(basic_df)
 
   expect_s3_class(aut$get_orcids(), "plm")
 
@@ -12,7 +12,7 @@ test_that("get_orcids() returns authors' ORCID", {
 # Errors ----
 
 test_that("get_orcids() gives meaningful error messages", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(basic_df)
 
   expect_snapshot({
     (expect_error(

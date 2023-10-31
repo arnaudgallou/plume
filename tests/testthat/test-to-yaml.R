@@ -4,35 +4,33 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
     fileext = ".qmd"
   )
 
-  df <- basic_df()
-
-  aut <- PlumeQuarto$new(df, tmp_file)
+  aut <- PlumeQuarto$new(basic_df, tmp_file)
   aut$set_corresponding_authors(1)
   aut$to_yaml()
   expect_snapshot(read_test_file(tmp_file))
 
-  aut <- PlumeQuarto$new(df[c(3, 2, 1), ], tmp_file)
+  aut <- PlumeQuarto$new(basic_df[c(3, 2, 1), ], tmp_file)
   aut$set_corresponding_authors(1)
   aut$to_yaml()
   expect_snapshot(read_test_file(tmp_file))
 
   aut <- PlumeQuarto$new(data.frame(
-    given_name = "X", family_name = "Z",
+    given_name = "Zip", family_name = "Zap",
     affiliation1 = "name=a department=b city=c postal-code=d",
     affiliation2 = "city=e name=f department=g",
     affiliation3 = "h"
   ), tmp_file)
   aut$to_yaml()
   expect_snapshot(read_test_file(tmp_file))
+})
 
-  # to ensure that metadata can be pushed to empty YAML headers
+test_that("to_yaml() pushes data to empty YAML headers", {
   tmp_file <- withr::local_tempfile(lines = "---\n---", fileext = ".qmd")
 
-  aut <- PlumeQuarto$new(data.frame(
-    given_name = "X",
-    family_name = "Z",
-    `meta-foo` = "Bar",
-    check.names = FALSE
+  aut <- PlumeQuarto$new(tibble(
+    given_name = "Zip",
+    family_name = "Zap",
+    `meta-foo` = "bar"
   ), tmp_file)
   aut$to_yaml()
 
@@ -47,7 +45,7 @@ test_that("to_yaml() exits before pushing new header if invalid YAML", {
 
   old <- readr::read_file(tmp_file)
 
-  aut <- PlumeQuarto$new(basic_df(), tmp_file)
+  aut <- PlumeQuarto$new(basic_df, tmp_file)
   try(aut$to_yaml(), silent = TRUE)
 
   new <- readr::read_file(tmp_file)
@@ -60,16 +58,16 @@ test_that("to_yaml() exits before pushing new header if invalid YAML", {
 test_that("to_yaml() gives meaningful error messages", {
   expect_snapshot({
     (expect_error(
-      PlumeQuarto$new(basic_df(), file = 1)
+      PlumeQuarto$new(basic_df, file = 1)
     ))
     (expect_error(
-      PlumeQuarto$new(basic_df(), file = "")
+      PlumeQuarto$new(basic_df, file = "")
     ))
     (expect_error(
-      PlumeQuarto$new(basic_df(), file = "test.rmd")
+      PlumeQuarto$new(basic_df, file = "test.rmd")
     ))
     (expect_error(
-      PlumeQuarto$new(basic_df(), file = "~/test.qmd")
+      PlumeQuarto$new(basic_df, file = "~/test.qmd")
     ))
   })
 
@@ -77,7 +75,7 @@ test_that("to_yaml() gives meaningful error messages", {
     lines = "---\ntitle: test---",
     fileext = ".qmd"
   )
-  aut <- PlumeQuarto$new(basic_df(), tmp_file)
+  aut <- PlumeQuarto$new(basic_df, tmp_file)
 
   expect_snapshot(aut$to_yaml(), error = TRUE)
 })

@@ -26,7 +26,7 @@
       Error:
       ! Column `family_name` doesn't exist.
     Code
-      (expect_error(Plume$new(df, names = list(given_name = "prénom"))))
+      (expect_error(Plume$new(basic_df, names = list(given_name = "prénom"))))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -34,7 +34,7 @@
       Caused by error:
       ! `names` must be a character vector.
     Code
-      (expect_error(Plume$new(df, names = "prénom")))
+      (expect_error(Plume$new(basic_df, names = "prénom")))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -42,7 +42,7 @@
       Caused by error:
       ! All `names` inputs must be named.
     Code
-      (expect_error(Plume$new(df, names = c(given_name = "prénom", family_name = "prénom")))
+      (expect_error(Plume$new(basic_df, names = c(given_name = "prénom", family_name = "prénom")))
       )
     Output
       <error/purrr_error_indexed>
@@ -51,7 +51,7 @@
       Caused by error:
       ! `names` must have unique input values.
     Code
-      (expect_error(Plume$new(df, names = c(given_name = "prénom", given_name = "nom")))
+      (expect_error(Plume$new(basic_df, names = c(given_name = "prénom", given_name = "nom")))
       )
     Output
       <error/purrr_error_indexed>
@@ -60,26 +60,26 @@
       Caused by error:
       ! `names` must have unique input names.
     Code
-      (expect_error(Plume$new(df, symbols = c(note = letters))))
+      (expect_error(Plume$new(basic_df, symbols = c(note = letters))))
     Output
       <error/rlang_error>
       Error:
       ! `symbols` must be a list.
     Code
-      (expect_error(Plume$new(df, symbols = list(note = NULL, note = NULL))))
+      (expect_error(Plume$new(basic_df, symbols = list(note = NULL, note = NULL))))
     Output
       <error/rlang_error>
       Error:
       ! `symbols` must have unique input names.
     Code
-      (expect_error(Plume$new(df, orcid_icon = NULL)))
+      (expect_error(Plume$new(basic_df, orcid_icon = NULL)))
     Output
       <error/rlang_error>
       Error:
       ! Invalid `orcid_icon` input.
       i Use `orcid()` to set the ORCID icon.
     Code
-      (expect_error(Plume$new(df, initials_given_name = 1)))
+      (expect_error(Plume$new(basic_df, initials_given_name = 1)))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -87,7 +87,7 @@
       Caused by error:
       ! `initials_given_name` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(Plume$new(df, family_name_first = 1)))
+      (expect_error(Plume$new(basic_df, family_name_first = 1)))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -95,7 +95,7 @@
       Caused by error:
       ! `family_name_first` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(Plume$new(df, credit_roles = 1)))
+      (expect_error(Plume$new(basic_df, credit_roles = 1)))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -103,7 +103,7 @@
       Caused by error:
       ! `credit_roles` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(Plume$new(df, interword_spacing = 1)))
+      (expect_error(Plume$new(basic_df, interword_spacing = 1)))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -122,7 +122,7 @@
       ! Multiple roles found in column `role_2`.
       i Roles must be unique within a column.
     Code
-      (expect_error(Plume$new(df, roles = 1)))
+      (expect_error(Plume$new(basic_df, roles = 1)))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -130,7 +130,7 @@
       Caused by error:
       ! `roles` must be a character vector.
     Code
-      (expect_error(Plume$new(df, roles = "foo")))
+      (expect_error(Plume$new(basic_df, roles = "foo")))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -138,7 +138,7 @@
       Caused by error:
       ! All `roles` inputs must be named.
     Code
-      (expect_error(Plume$new(df, roles = c(role = "foo", role = "bar"))))
+      (expect_error(Plume$new(basic_df, roles = c(role = "foo", role = "bar"))))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -146,7 +146,7 @@
       Caused by error:
       ! `roles` must have unique input names.
     Code
-      (expect_error(Plume$new(df, roles = c(role = "foo", role_2 = "foo"))))
+      (expect_error(Plume$new(basic_df, roles = c(role = "foo", role_2 = "foo"))))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
@@ -154,19 +154,19 @@
       Caused by error:
       ! `roles` must have unique input values.
     Code
-      (expect_error(PlumeQuarto$new(df, tempfile_(), by = 1)))
+      (expect_error(PlumeQuarto$new(basic_df, tempfile_(), by = 1)))
     Output
       <error/rlang_error>
       Error:
       ! `by` must be a character string.
     Code
-      (expect_error(PlumeQuarto$new(df, tempfile_(), by = "")))
+      (expect_error(PlumeQuarto$new(basic_df, tempfile_(), by = "")))
     Output
       <error/rlang_error>
       Error:
       ! `by` must be a non-empty string.
     Code
-      (expect_error(PlumeQuarto$new(df, tempfile_(), by = "foo")))
+      (expect_error(PlumeQuarto$new(basic_df, tempfile_(), by = "foo")))
     Output
       <error/rlang_error>
       Error:

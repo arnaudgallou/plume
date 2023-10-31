@@ -1,41 +1,25 @@
 test_that("get_affiliations/notes() return affiliations/notes", {
-  df <- basic_df()
-  aut <- Plume$new(df)
+  aut <- Plume$new(basic_df)
 
   expect_s3_class(aut$get_notes(), "plm")
 
-  df_affiliations <- select(df, starts_with("affiliation"))
-
-  affiliations <- condense(c(t(df_affiliations)))
-  ids <- seq_along(affiliations)
-
   expect_equal(
     aut$get_affiliations(),
-    paste0("^", ids, "^", affiliations)
+    c("^1^a", "^2^b", "^3^c", "^4^d")
   )
   expect_equal(
     aut$get_affiliations(superscript = FALSE),
-    paste0(ids, affiliations)
+    c("1a", "2b", "3c", "4d")
   )
   expect_equal(
     aut$get_affiliations(sep = ": ", superscript = FALSE),
-    paste0(ids, ": ", affiliations)
+    c("1: a", "2: b", "3: c", "4: d")
   )
 
-  aut <- Plume$new(df, symbols = list(affiliation = letters))
+  aut <- Plume$new(basic_df, symbols = list(affiliation = letters))
 
-  expect_equal(
-    aut$get_affiliations(),
-    paste0("^", letters[ids], "^", affiliations)
-  )
-
-  notes <- condense(t(df[grep("note", names(df))]))
-  symbols <- c("†", "‡", "§")
-
-  expect_equal(
-    aut$get_notes(),
-    paste0("^", symbols, "^", notes)
-  )
+  expect_equal(aut$get_affiliations(), c("^a^a", "^b^b", "^c^c", "^d^d"))
+  expect_equal(aut$get_notes(), c("^†^a", "^‡^c", "^§^b"))
 })
 
 test_that("get_affiliations/notes() returns `NULL` if no affiliations/notes", {
@@ -50,7 +34,7 @@ test_that("get_affiliations/notes() returns `NULL` if no affiliations/notes", {
 # Errors ----
 
 test_that("get_affiliations() give meaningful error messages", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(basic_df)
 
   expect_snapshot({
     (expect_error(
@@ -63,7 +47,7 @@ test_that("get_affiliations() give meaningful error messages", {
 })
 
 test_that("get_notes() give meaningful error messages", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(basic_df)
 
   expect_snapshot({
     (expect_error(

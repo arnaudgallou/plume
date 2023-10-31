@@ -10,8 +10,8 @@
           name:
             given: Zip
             family: Zap
-          email: zipzap@test.tst
-          phone: '00'
+          email: zipzap@test.com
+          phone: '+1234'
           orcid: 0000-0000-0000-0001
           note: a, c
           attributes:
@@ -26,7 +26,7 @@
           name:
             given: Ric
             family: Rac
-          email: ricrac@test.tst
+          email: ricrac@test.com
           orcid: 0000-0000-0000-0002
           attributes:
             corresponding: false
@@ -38,7 +38,7 @@
           name:
             given: Pim-Pam
             family: Pom
-          email: pimpampom@test.tst
+          email: pimpampom@test.com
           note: b
           attributes:
             corresponding: false
@@ -75,7 +75,7 @@
           name:
             given: Pim-Pam
             family: Pom
-          email: pimpampom@test.tst
+          email: pimpampom@test.com
           note: b
           attributes:
             corresponding: true
@@ -88,7 +88,7 @@
           name:
             given: Ric
             family: Rac
-          email: ricrac@test.tst
+          email: ricrac@test.com
           orcid: 0000-0000-0000-0002
           attributes:
             corresponding: false
@@ -100,8 +100,8 @@
           name:
             given: Zip
             family: Zap
-          email: zipzap@test.tst
-          phone: '00'
+          email: zipzap@test.com
+          phone: '+1234'
           orcid: 0000-0000-0000-0001
           note: a, c
           attributes:
@@ -138,8 +138,8 @@
       author:
         - id: aut1
           name:
-            given: X
-            family: Z
+            given: Zip
+            family: Zap
           affiliations:
             - ref: aff1
             - ref: aff2
@@ -163,7 +163,7 @@
       x <- 1
       ```
 
----
+# to_yaml() pushes data to empty YAML headers
 
     Code
       read_test_file(tmp_file)
@@ -172,35 +172,35 @@
       author:
         - id: aut1
           name:
-            given: X
-            family: Z
+            given: Zip
+            family: Zap
           metadata:
-            meta-foo: Bar
+            meta-foo: bar
       affiliations: {}
       ---
 
 # to_yaml() gives meaningful error messages
 
     Code
-      (expect_error(PlumeQuarto$new(basic_df(), file = 1)))
+      (expect_error(PlumeQuarto$new(basic_df, file = 1)))
     Output
       <error/rlang_error>
       Error:
       ! `file` must be a character string.
     Code
-      (expect_error(PlumeQuarto$new(basic_df(), file = "")))
+      (expect_error(PlumeQuarto$new(basic_df, file = "")))
     Output
       <error/rlang_error>
       Error:
       ! `file` must be a non-empty string.
     Code
-      (expect_error(PlumeQuarto$new(basic_df(), file = "test.rmd")))
+      (expect_error(PlumeQuarto$new(basic_df, file = "test.rmd")))
     Output
       <error/rlang_error>
       Error:
       ! `file` must be a `.qmd` file.
     Code
-      (expect_error(PlumeQuarto$new(basic_df(), file = "~/test.qmd")))
+      (expect_error(PlumeQuarto$new(basic_df, file = "~/test.qmd")))
     Output
       <error/rlang_error>
       Error:

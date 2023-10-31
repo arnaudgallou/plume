@@ -1,14 +1,13 @@
 test_that("initialize() builds a plume dataset", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(basic_df)
   nms_en <- c(
     "id", "initials", "given_name", "family_name", "literal_name",
     "affiliation", "role", "note", "email", "phone", "orcid"
   )
 
-  expect_true(tibble::is_tibble(aut$get_plume()))
   expect_named(aut$get_plume(), nms_en, ignore.order = TRUE)
 
-  df_fr <- set_names(basic_df(), c(
+  df_fr <- set_names(basic_df, c(
     "prénom", "nom", "nom_complet", "initiales", "affiliation", "affiliation2",
     "analyse", "rédaction", "note", "note2", "courriel", "téléphone", "orcid"
   ))
@@ -23,9 +22,15 @@ test_that("initialize() builds a plume dataset", {
   )
 
   expect_named(aut$get_plume(), nms_fr, ignore.order = TRUE)
+})
 
-  # ensure that `Plume` drops `PlumeQuarto`-specific variables
-  df <- data.frame(given_name = "X", family_name = "Y", dropping_particle = "o")
+test_that("objects of class `data.frame` are converted to tibbles", {
+  aut <- Plume$new(data.frame(given_name = "X", family_name = "Y"))
+  expect_true(tibble::is_tibble(aut$get_plume()))
+})
+
+test_that("`Plume` drops `PlumeQuarto`-specific variables", {
+  df <- tibble(given_name = "X", family_name = "Y", dropping_particle = "o")
 
   aut <- Plume$new(df)
   nms <- c("id", "given_name", "family_name", "literal_name", "initials")
@@ -37,44 +42,45 @@ test_that("initialize() builds a plume dataset", {
 })
 
 test_that("initialize() ignores unknown variables", {
-  df <- data.frame(given_name = "X", family_name = "Y", foo = "")
-  aut <- Plume$new(df)
+  aut <- Plume$new(tibble(given_name = "X", family_name = "Y", foo = ""))
   expect_false(has_name(aut$get_plume(), "foo"))
 })
 
+test_that("initialize() makes proper literal names", {
+  aut <- Plume$new(basic_df)
+  expect_equal(
+    aut$get_plume()$literal_name,
+    c("Zip Zap", "Ric Rac", "Pim-Pam Pom")
+  )
+})
+
 test_that("initialize() ignores variables with the same name as internal ones", {
-  df <- data.frame(given_name = "X", family_name = "Y", literal_name = "A B")
-  aut <- Plume$new(df)
+  aut <- Plume$new(data.frame(
+    given_name = "X",
+    family_name = "Y",
+    literal_name = "A B"
+  ))
   expect_equal(aut$get_plume()$literal_name, "X Y")
 })
 
-test_that("initialize() makes proper initials and literal names", {
-  df <- data.frame(
+test_that("initialize() makes proper initials", {
+  aut <- Plume$new(data.frame(
     given_name = c("Zip", "ric", "Pim-Pam", "Tic", "Fip", "12"),
     family_name = c("Zap", "rac", "Pom", "tac Toc", "A'Fop", "34")
-  )
-  aut <- Plume$new(df)
-
-  expect_equal(
-    aut$get_plume()$literal_name,
-    paste(df$given_name, df$family_name)
-  )
+  ))
   expect_equal(
     aut$get_plume()$initials,
     c("ZZ", "rr", "P-PP", "TtT", "FA'F", "13")
   )
 })
 
-test_that("ensure that initials drop remaining dots (#31)", {
-  aut <- Plume$new(tibble(
-    given_name = "X Y.",
-    family_name = "Z",
-  ))
+test_that("initials remove dots (#31)", {
+  aut <- Plume$new(data.frame(given_name = "X Y.", family_name = "Z"))
   expect_equal(aut$get_plume()$initials, "XYZ")
 })
 
 test_that("`affiliation`, `role` and `note` columns are nestable", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(basic_df)
 
   get_nested_cols <- function(x) {
     names(x)[sapply(x, is.list)]
@@ -99,26 +105,26 @@ test_that("`roles = credit_roles()` handles CRediT roles", {
   ), roles = credit_roles())
 
   expect_equal(
-    sort(unlist(aut$get_plume()$role, use.names = FALSE)),
-    sort(c("Supervision", "Writing - original draft", NA))
+    unlist(aut$get_plume()$role, use.names = FALSE),
+    c("Supervision", "Writing - original draft", NA)
   )
 })
 
-test_that("`initials_given_name = TRUE` turns given names into initials", {
-  df <- basic_df()
-  aut <- Plume$new(df, initials_given_name = TRUE)
-  initials <- make_initials(df$given_name, dot = TRUE)
+test_that("`initials_given_name = TRUE` initialises given names", {
+  aut <- Plume$new(basic_df, initials_given_name = TRUE)
 
-  expect_equal(aut$get_plume()$given_name, initials)
-  expect_equal(aut$get_plume()$literal_name, paste(initials, df$family_name))
+  expect_equal(aut$get_plume()$given_name, c("Z.", "R.", "P.-P."))
+  expect_equal(
+    aut$get_plume()$literal_name,
+    c("Z. Zap", "R. Rac", "P.-P. Pom")
+  )
 })
 
 test_that("`family_name_first = TRUE` switches given and family name", {
-  df <- basic_df()
-  aut <- Plume$new(df, family_name_first = TRUE)
+  aut <- Plume$new(basic_df, family_name_first = TRUE)
   expect_equal(
     aut$get_plume()$literal_name,
-    paste(df$family_name, df$given_name)
+    c("Zap Zip", "Rac Ric", "Pom Pim-Pam")
   )
 })
 
@@ -129,13 +135,15 @@ test_that("languages with no capital letters don't use initials", {
 })
 
 test_that("`interword_spacing = FALSE` binds given and family names", {
-  df <- data.frame(given_name = "耳", family_name = "李")
-  aut <- Plume$new(df, interword_spacing = FALSE)
+  aut <- Plume$new(
+    data.frame(given_name = "耳", family_name = "李"),
+    interword_spacing = FALSE
+  )
   expect_equal(aut$get_plume()$literal_name, "耳李")
 })
 
 test_that("`by` overrides default `by` value", {
-  aut <- PlumeQuarto$new(basic_df(), tempfile_(), by = "initials")
+  aut <- PlumeQuarto$new(basic_df, tempfile_(), by = "initials")
   aut$set_corresponding_authors(zz)
   expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
 })
@@ -174,8 +182,6 @@ test_that("initialize() trims leading/trailing white spaces", {
 # Errors ----
 
 test_that("initialize() gives meaningful error messages", {
-  df <- basic_df()
-
   expect_snapshot({
     (expect_error(
       Plume$new(list(x = 1))
@@ -190,37 +196,40 @@ test_that("initialize() gives meaningful error messages", {
       Plume$new(data.frame(given_name = "x"))
     ))
     (expect_error(
-      Plume$new(df, names = list(given_name = "prénom"))
+      Plume$new(basic_df, names = list(given_name = "prénom"))
     ))
     (expect_error(
-      Plume$new(df, names = "prénom")
+      Plume$new(basic_df, names = "prénom")
     ))
     (expect_error(
-      Plume$new(df, names = c(given_name = "prénom", family_name = "prénom"))
+      Plume$new(
+        basic_df,
+        names = c(given_name = "prénom", family_name = "prénom")
+      )
     ))
     (expect_error(
-      Plume$new(df, names = c(given_name = "prénom", given_name = "nom"))
+      Plume$new(basic_df, names = c(given_name = "prénom", given_name = "nom"))
     ))
     (expect_error(
-      Plume$new(df, symbols = c(note = letters))
+      Plume$new(basic_df, symbols = c(note = letters))
     ))
     (expect_error(
-      Plume$new(df, symbols = list(note = NULL, note = NULL))
+      Plume$new(basic_df, symbols = list(note = NULL, note = NULL))
     ))
     (expect_error(
-      Plume$new(df, orcid_icon = NULL)
+      Plume$new(basic_df, orcid_icon = NULL)
     ))
     (expect_error(
-      Plume$new(df, initials_given_name = 1)
+      Plume$new(basic_df, initials_given_name = 1)
     ))
     (expect_error(
-      Plume$new(df, family_name_first = 1)
+      Plume$new(basic_df, family_name_first = 1)
     ))
     (expect_error(
-      Plume$new(df, credit_roles = 1)
+      Plume$new(basic_df, credit_roles = 1)
     ))
     (expect_error(
-      Plume$new(df, interword_spacing = 1)
+      Plume$new(basic_df, interword_spacing = 1)
     ))
     (expect_error({
       withr::local_options(lifecycle_verbosity = "quiet")
@@ -231,25 +240,25 @@ test_that("initialize() gives meaningful error messages", {
       ))
     }))
     (expect_error(
-      Plume$new(df, roles = 1)
+      Plume$new(basic_df, roles = 1)
     ))
     (expect_error(
-      Plume$new(df, roles = "foo")
+      Plume$new(basic_df, roles = "foo")
     ))
     (expect_error(
-      Plume$new(df, roles = c(role = "foo", role = "bar"))
+      Plume$new(basic_df, roles = c(role = "foo", role = "bar"))
     ))
     (expect_error(
-      Plume$new(df, roles = c(role = "foo", role_2 = "foo"))
+      Plume$new(basic_df, roles = c(role = "foo", role_2 = "foo"))
     ))
     (expect_error(
-      PlumeQuarto$new(df, tempfile_(), by = 1)
+      PlumeQuarto$new(basic_df, tempfile_(), by = 1)
     ))
     (expect_error(
-      PlumeQuarto$new(df, tempfile_(), by = "")
+      PlumeQuarto$new(basic_df, tempfile_(), by = "")
     ))
     (expect_error(
-      PlumeQuarto$new(df, tempfile_(), by = "foo")
+      PlumeQuarto$new(basic_df, tempfile_(), by = "foo")
     ))
   })
 })

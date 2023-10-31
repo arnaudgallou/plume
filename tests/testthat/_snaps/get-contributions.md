@@ -1,4 +1,4 @@
-# Specifying roles inside columns is deprecated
+# specifying roles inside columns is deprecated
 
     Code
       aut <- Plume$new(data.frame(given_name = "Zip", family_name = "Zap", role = "a"))

@@ -1,21 +1,19 @@
 test_that("get_author_list() returns author list", {
-  df <- basic_df()
-
-  aut <- Plume$new(df)
+  aut <- Plume$new(basic_df)
   aut$set_corresponding_authors(1, 3)
 
   expect_s3_class(aut$get_author_list(), "plm")
   expect_equal(
     aut$get_author_list(format = NULL),
-    df$literal_name
+    c("Zip Zap", "Ric Rac", "Pim-Pam Pom")
   )
   expect_equal(
     aut$get_author_list(format = ""),
-    df$literal_name
+    c("Zip Zap", "Ric Rac", "Pim-Pam Pom")
   )
 
   affix_to_authors <- function(...) {
-    paste0(basic_df()$literal_name, ...)
+    paste0(basic_df$literal_name, ...)
   }
 
   .a <- c("1,2", "3", "1,4")
@@ -79,7 +77,8 @@ test_that("get_author_list() returns author list", {
   )
 
   # overrides default symbols
-  aut <- Plume$new(df, symbols = list(
+
+  aut <- Plume$new(basic_df, symbols = list(
     affiliation = letters,
     corresponding = "#",
     note = NULL
@@ -96,8 +95,11 @@ test_that("get_author_list() returns author list", {
   )
 
   # using custom names
-  df <- data.frame(given_name = "X", family_name = "Y", aff = "a", aff2 = "b")
-  aut <- Plume$new(df, names = c(affiliation = "aff"))
+
+  aut <- Plume$new(
+    data.frame(given_name = "X", family_name = "Y", aff = "a", aff2 = "b"),
+    names = c(affiliation = "aff")
+  )
 
   expect_equal(
     aut$get_author_list(format = "a"),
@@ -106,16 +108,15 @@ test_that("get_author_list() returns author list", {
 })
 
 test_that("get_author_list() makes ORCID icons", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(basic_df)
   expect_snapshot(aut$get_author_list("o"), transform = scrub_icon_path)
 })
 
 # Errors ----
 
 test_that("get_author_list() gives meaningful error messages", {
-  df <- basic_df()
-  df["orcid"] <- c(NA, "0000", NA)
-  aut <- Plume$new(df)
+  basic_df["orcid"] <- c(NA, "0000", NA)
+  aut <- Plume$new(basic_df)
 
   expect_snapshot({
     (expect_error(

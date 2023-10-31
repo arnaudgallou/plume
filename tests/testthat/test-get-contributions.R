@@ -1,5 +1,5 @@
 test_that("get_contributions() return authors' contributions", {
-  aut <- Plume$new(basic_df(), roles = c(analysis = "a", writing = "b"))
+  aut <- Plume$new(basic_df, roles = c(analysis = "a", writing = "b"))
 
   expect_s3_class(aut$get_contributions(), "plm")
 
@@ -61,7 +61,7 @@ test_that("get_contributions() rearranges authors only (#18)", {
       given_name = c("Zip", "Pim"),
       family_name = c("Zap", "Pam"),
       role_1 = c(1, NA),
-      role_2 = rep(1, 2)
+      role_2 = c(1, 1)
     ),
     roles = c(role_1 = "z", role_2 = "a")
   )
@@ -77,14 +77,15 @@ test_that("get_contributions() rearranges authors only (#18)", {
 })
 
 test_that("get_contributions() handles namesakes (#15)", {
-  withr::local_options(lifecycle_verbosity = "quiet")
-
-  aut <- Plume$new(data.frame(
-    given_name = c("Zip", "Zip"),
-    family_name = c("Zap", "Zap"),
-    role_1 = c("a", NA),
-    role_2 = c("b", "b")
-  ))
+  aut <- Plume$new(
+    data.frame(
+      given_name = c("Zip", "Zip"),
+      family_name = c("Zap", "Zap"),
+      role_1 = c(1, NA),
+      role_2 = c(1, 1)
+    ),
+    roles = c(role_1 = "a", role_2 = "b")
+  )
 
   expect_equal(
     aut$get_contributions(roles_first = FALSE),
@@ -112,7 +113,7 @@ test_that("get_contributions() reorders CRediT roles alphabetically", {
 
 # Deprecation ----
 
-test_that("Specifying roles inside columns is deprecated", {
+test_that("specifying roles inside columns is deprecated", {
   expect_snapshot({
     aut <- Plume$new(data.frame(
       given_name = "Zip",
@@ -136,7 +137,7 @@ test_that("`credit_roles = TRUE` is deprecated", {
 # Errors ----
 
 test_that("get_contributions() gives meaningful error messages", {
-  aut <- Plume$new(basic_df())
+  aut <- Plume$new(basic_df)
 
   expect_snapshot({
     (expect_error(
