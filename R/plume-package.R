@@ -14,7 +14,7 @@
 #' @importFrom purrr list_rbind list_transpose list_assign list_modify
 #' @importFrom readr read_file write_lines
 #' @importFrom rlang %||% := abort
-#' @importFrom rlang expr exprs sym syms
+#' @importFrom rlang expr enexprs sym syms
 #' @importFrom rlang is_named is_string is_bool is_true
 #' @importFrom rlang caller_env caller_arg
 #' @importFrom glue glue glue_collapse

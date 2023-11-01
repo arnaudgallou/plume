@@ -34,7 +34,7 @@ StatusSetter <- R6Class(
       }
       private$check_col(by)
       binder$bind(private$plume[[by]])
-      dots <- if (dots_are_call(...)) c(...) else exprs(...)
+      dots <- if (dots_are_call(...)) c(...) else enexprs(...)
       private$plume <- mutate(
         private$plume,
         !!private$pick(col) := includes(.data[[by]], dots)
@@ -110,5 +110,5 @@ everyone <- function() {
 #'   case-insensitive.
 #' @export
 everyone_but <- function(...) {
-  binder$pull(call = "everyone_but", ignore = exprs(...))
+  binder$pull(call = "everyone_but", ignore = enexprs(...))
 }
