@@ -37,7 +37,7 @@ get_template_vars <- function(minimal, role_cols, credit_roles) {
   vars <- list_assign(vars, roles = role_cols, nestables = get_nestables(credit_roles))
   to_ignore <- get_ignored_vars(vars, minimal)
   vars <- unlist(vars, use.names = FALSE)
-  vars <- drop_from(vars, to_ignore)
+  vars <- discard(vars, to_ignore)
   set_names(vars)
 }
 
@@ -46,7 +46,7 @@ get_ignored_vars <- function(vars, minimal) {
   if (!minimal) {
     return(to_ignore)
   }
-  c(to_ignore, drop_from(vars$secondaries, "email"))
+  c(to_ignore, discard(vars$secondaries, "email"))
 }
 
 get_nestables <- function(crt) {

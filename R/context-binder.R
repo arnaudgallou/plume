@@ -11,7 +11,7 @@ ContextBinder <- R6Class(
       if (missing(ignore)) {
         return(out)
       }
-      drop_from(out, ignore)
+      discard(out, ignore)
     }
   ),
 

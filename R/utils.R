@@ -34,7 +34,7 @@ make_initials <- function(x, dot = FALSE) {
   out
 }
 
-drop_from <- function(x, ...) {
+discard <- function(x, ...) {
   x[!includes(x, c(...))]
 }
 
