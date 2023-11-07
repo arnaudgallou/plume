@@ -65,7 +65,9 @@ StatusSetterPlume <- R6Class(
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by` determine
     #'   lead contributors. Matching of values is case-insensitive.
-    #' @param roles Character vector or roles
+    #'   Alternatively, you can provide a list of key-value pairs where keys
+    #'   define roles and values identify contributors.
+    #' @param roles Roles to assign lead contributors to.
     #' @param by Variable used to specify which authors are equal contributors.
     #'   By default, uses authors' id.
     #' @return The class instance.
