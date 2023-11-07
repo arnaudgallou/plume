@@ -46,6 +46,26 @@ vec_arrange <- function(x) {
   x[order(nchar(x), x)]
 }
 
+vec_match <- function(x, y, ignore_case = TRUE) {
+  if (ignore_case) {
+    x <- tolower(x)
+    y <- tolower(y)
+  }
+  match(x, y)
+}
+
+rank <- function(x, base) {
+  matches <- vec_match(x, base)
+  vec_rank(matches, ties = "dense")
+}
+
+collect_dots <- function(...) {
+  if (are_calls(...)) {
+    return(c(...))
+  }
+  enexprs(...)
+}
+
 condense <- function(x) {
   vec_drop_na(unique(x))
 }

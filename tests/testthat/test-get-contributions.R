@@ -111,6 +111,58 @@ test_that("get_contributions() reorders CRediT roles alphabetically", {
   )
 })
 
+test_that("set_lead_contributors() ranks contributors", {
+  aut <- Plume$new(
+    data.frame(
+      given_name = c("Zip", "Ric", "Pim"),
+      family_name = c("Zap", "Rac", "Pam"),
+      writing = rep(1, 3),
+      analysis = rep(1, 3)
+    ),
+    roles = set_names(c("writing", "analysis"))
+  )
+
+  aut$set_lead_contributors(3, roles = "writing")
+
+  expect_equal(
+    aut$get_contributions(),
+    c("writing: P.P., Z.Z. and R.R.", "analysis: Z.Z., R.R. and P.P.")
+  )
+
+  aut$set_lead_contributors(2, roles = "writing")
+
+  expect_equal(
+    aut$get_contributions(alphabetical_order = TRUE),
+    c("writing: R.R., P.P. and Z.Z.", "analysis: P.P., R.R. and Z.Z.")
+  )
+
+  aut$set_lead_contributors(3, 2, roles = "writing")
+
+  expect_equal(
+    aut$get_contributions(),
+    c("writing: P.P., R.R. and Z.Z.", "analysis: Z.Z., R.R. and P.P.")
+  )
+
+  # multiple roles
+
+  aut$set_lead_contributors(3, roles = c("writing", "analysis"))
+
+  expect_equal(
+    aut$get_contributions(),
+    c("writing: P.P., Z.Z. and R.R.", "analysis: P.P., Z.Z. and R.R.")
+  )
+
+  aut$set_lead_contributors(
+    list(writing = "pp", analysis = "rr"),
+    by = "initials"
+  )
+
+  expect_equal(
+    aut$get_contributions(),
+    c("writing: P.P., Z.Z. and R.R.", "analysis: R.R., Z.Z. and P.P.")
+  )
+})
+
 # Deprecation ----
 
 test_that("specifying roles inside columns is deprecated", {

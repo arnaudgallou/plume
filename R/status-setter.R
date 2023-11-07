@@ -6,9 +6,15 @@ StatusSetter <- R6Class(
   classname = "StatusSetter",
   inherit = PlumeHandler,
   public = list(
-    initialize = function(...) {
+    initialize = function(..., by) {
       super$initialize(...)
-      private$by <- private$pick("id")
+      check_string(by, allow_empty = FALSE, allow_null = TRUE)
+      if (is.null(by)) {
+        private$by <- private$pick("id")
+      } else {
+        private$check_col(by)
+        private$by <- by
+      }
     },
 
     #' @description Set corresponding authors.
@@ -27,18 +33,63 @@ StatusSetter <- R6Class(
     by = NULL,
 
     set_status = function(col, ..., by) {
+      by <- private$snatch_by()
+      binder$bind(private$plume[[by]])
+      private$plume <- mutate(
+        private$plume,
+        !!private$pick(col) := includes(.data[[by]], collect_dots(...))
+      )
+      invisible(self)
+    },
+
+    snatch_by = function() {
+      by <- caller_env(2L)$by
       if (missing(by)) {
         by <- private$by
       } else {
         check_string(by, allow_empty = FALSE)
       }
       private$check_col(by)
-      binder$bind(private$plume[[by]])
-      dots <- if (dots_are_call(...)) c(...) else enexprs(...)
-      private$plume <- mutate(
-        private$plume,
-        !!private$pick(col) := includes(.data[[by]], dots)
-      )
+      by
+    }
+  )
+)
+
+#' @title StatusSetterPlume class
+#' @description Internal class extending `StatusSetter` for `Plume`.
+StatusSetterPlume <- R6Class(
+  classname = "StatusSetterPlume",
+  inherit = StatusSetter,
+  public = list(
+    #' @description Set lead contributors.
+    #' @param ... One or more unquoted expressions separated by commas.
+    #'   Expressions matching values in the column defined by `by` determine
+    #'   lead contributors. Matching of values is case-insensitive.
+    #' @param roles Character vector or roles
+    #' @param by Variable used to specify which authors are equal contributors.
+    #'   By default, uses authors' id.
+    #' @return The class instance.
+    set_lead_contributors = function(..., roles = NULL, by) {
+      if (are_calls(...)) {
+        dots <- c(...)
+        for (key in names(dots)) {
+          private$set_ranks(dots[[key]], roles = key, by = by)
+        }
+      } else {
+        private$set_ranks(..., roles = roles, by = by)
+      }
+    }
+  ),
+
+  private = list(
+    set_ranks = function(..., roles, by) {
+      check_character(roles, allow_duplicates = FALSE)
+      by <- private$snatch_by()
+      vars <- private$pick("role", "contribution_degree", squash = FALSE)
+      roles <- private$roles[roles]
+      out <- unnest(private$plume, col = all_of(vars$role))
+      out <- add_contribution_degrees(out, collect_dots(...), by, roles, vars)
+      private$plume <- nest(out, role = unlist(vars, use.names = FALSE))
       invisible(self)
     }
   )
@@ -46,19 +97,10 @@ StatusSetter <- R6Class(
 
 #' @title StatusSetterQuarto class
 #' @description Internal class extending `StatusSetter` for `PlumeQuarto`.
-StatusSetterQuarto <- R6Class(
+StatusSetterPlumeQuarto <- R6Class(
   classname = "StatusSetterQuarto",
   inherit = StatusSetter,
   public = list(
-    initialize = function(..., by) {
-      super$initialize(...)
-      check_string(by, allow_empty = FALSE, allow_null = TRUE)
-      if (!is.null(by)) {
-        private$check_col(by)
-        private$by <- by
-      }
-    },
-
     #' @description Set equal contributors.
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by` determine

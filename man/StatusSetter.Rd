@@ -30,7 +30,7 @@ Internal class that manages authors' status.
 \if{latex}{\out{\hypertarget{method-StatusSetter-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$new(...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$new(..., by)}\if{html}{\out{</div>}}
 }
 
 }

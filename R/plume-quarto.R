@@ -50,7 +50,7 @@
 #' @export
 PlumeQuarto <- R6Class(
   classname = "PlumeQuarto",
-  inherit = StatusSetterQuarto,
+  inherit = StatusSetterPlumeQuarto,
   public = list(
     #' @description Create a `PlumeQuarto` object.
     #' @param data A data frame containing author-related data.

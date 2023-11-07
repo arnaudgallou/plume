@@ -46,7 +46,7 @@
 #' @export
 Plume <- R6Class(
   classname = "Plume",
-  inherit = StatusSetter,
+  inherit = StatusSetterPlume,
   public = list(
     #' @description Create a `Plume` object.
     #' @param data A data frame containing author-related data.
@@ -79,7 +79,8 @@ Plume <- R6Class(
         initials_given_name = FALSE,
         family_name_first = FALSE,
         interword_spacing = TRUE,
-        orcid_icon = orcid()
+        orcid_icon = orcid(),
+        by = NULL
     ) {
       super$initialize(
         data,
@@ -88,7 +89,8 @@ Plume <- R6Class(
         credit_roles,
         initials_given_name,
         family_name_first,
-        interword_spacing
+        interword_spacing,
+        by = by
       )
       check_list(symbols, force_names = TRUE)
       check_orcid_icon(orcid_icon)
@@ -242,11 +244,7 @@ Plume <- R6Class(
         out <- mutate(out, !!pars$author := dot(.data[[pars$author]]))
       }
       out <- summarise(out, !!pars$var := enumerate(
-        if (!by_author && alphabetical_order) {
-          sort(.data[[pars$var]])
-        } else {
-          .data[[pars$var]]
-        },
+        contribution_items(pars, by_author, alphabetical_order),
         last = sep_last
       ), .by = all_of(pars$grp_var))
       if (are_credit_roles(private$roles) || private$crt) {
@@ -298,7 +296,7 @@ Plume <- R6Class(
 
     contribution_pars = function(roles_first, by_author, literal_names) {
       vars <- private$pick(
-        "initials", "literal_name", "role", "id",
+        "initials", "literal_name", "role", "id", "contribution_degree",
         squash = FALSE
       )
       has_initials <- private$has_col(vars$initials)
@@ -322,9 +320,22 @@ Plume <- R6Class(
         has_initials = has_initials,
         author = author,
         grp_var = grp_var,
+        rank = vars$contribution_degree,
         var = var,
         format = format
       )
     }
   )
 )
+
+contribution_items <- function(pars, by_author, alphabetical_order) {
+  data <- dplyr::pick(any_of(c(pars$var, pars$rank)))
+  cols <- c(
+    if (has_name(data, pars$rank)) pars$rank,
+    if (alphabetical_order) pars$var
+  )
+  if (!is.null(cols) && !by_author) {
+    data <- arrange(data, across(any_of(cols)))
+  }
+  data[[pars$var]]
+}
