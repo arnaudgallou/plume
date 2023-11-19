@@ -153,7 +153,7 @@ test_that("set_main_contributors() ranks contributors", {
   )
 
   aut$set_main_contributors(
-    list(writing = "pp", analysis = "rr"),
+    writing = pp, analysis = rr,
     by = "initials"
   )
 
