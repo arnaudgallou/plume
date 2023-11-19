@@ -61,17 +61,17 @@ StatusSetterPlume <- R6Class(
   classname = "StatusSetterPlume",
   inherit = StatusSetter,
   public = list(
-    #' @description Set lead contributors.
+    #' @description Set main contributors.
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by` determine
-    #'   lead contributors. Matching of values is case-insensitive.
+    #'   main contributors. Matching of values is case-insensitive.
     #'   Alternatively, you can provide a list of key-value pairs where keys
     #'   define roles and values identify contributors.
-    #' @param roles Roles to assign lead contributors to.
+    #' @param roles Roles to assign main contributors to.
     #' @param by Variable used to specify which authors are equal contributors.
     #'   By default, uses authors' id.
     #' @return The class instance.
-    set_lead_contributors = function(..., roles = NULL, by) {
+    set_main_contributors = function(..., roles = NULL, by) {
       if (are_calls(...)) {
         dots <- c(...)
         for (key in names(dots)) {
@@ -87,10 +87,10 @@ StatusSetterPlume <- R6Class(
     set_ranks = function(..., roles, by) {
       check_character(roles, allow_duplicates = FALSE)
       by <- private$snatch_by()
-      vars <- private$pick("role", "contribution_degree", squash = FALSE)
+      vars <- private$pick("role", "contributor_rank", squash = FALSE)
       roles <- private$roles[roles]
       out <- unnest(private$plume, col = all_of(vars$role))
-      out <- add_contribution_degrees(out, collect_dots(...), by, roles, vars)
+      out <- add_contribution_ranks(out, collect_dots(...), by, roles, vars)
       private$plume <- nest(out, !!vars$role := unlist(vars, use.names = FALSE))
       invisible(self)
     }

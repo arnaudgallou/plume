@@ -45,7 +45,7 @@ cat(readr::read_file(tmp_file))
 \dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
-\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterQuarto]{plume::StatusSetterQuarto}} -> \code{PlumeQuarto}
+\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{plume::StatusSetterQuarto} -> \code{PlumeQuarto}
 }
 \section{Methods}{
 \subsection{Public methods}{

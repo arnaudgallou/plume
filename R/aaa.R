@@ -4,8 +4,7 @@
       id = "id",
       initials = "initials",
       literal_name = "literal_name",
-      corresponding = "corresponding",
-      contribution_degree = "contribution_degree"
+      corresponding = "corresponding"
     ),
     primaries = list(
       given_name = "given_name",

@@ -6,11 +6,11 @@
       List of 2
        $ public   :List of 4
         ..$ internals  :List of 5
-        .. ..$ id                 : chr "id"
-        .. ..$ initials           : chr "initiales"
-        .. ..$ literal_name       : chr "nom_complet"
-        .. ..$ corresponding      : chr "correspondant"
-        .. ..$ contribution_degree: chr "contribution_degree"
+        .. ..$ id              : chr "id"
+        .. ..$ initials        : chr "initiales"
+        .. ..$ literal_name    : chr "nom_complet"
+        .. ..$ corresponding   : chr "correspondant"
+        .. ..$ contributor_rank: chr "rang_contributeur"
         ..$ primaries  :List of 2
         .. ..$ given_name : chr "prénom"
         .. ..$ family_name: chr "nom"

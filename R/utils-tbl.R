@@ -72,14 +72,14 @@ add_orcid_links <- function(data, orcid, compact = FALSE) {
   data
 }
 
-add_contribution_degrees <- function(data, base, by, roles, cols) {
+add_contribution_ranks <- function(data, base, by, roles, cols) {
   ranks <- rank(data[[by]], base)
-  data <- col_init(data, cols$contribution_degree)
+  data <- col_init(data, cols$contributor_rank)
   for (role in roles) {
-    data[cols$contribution_degree] <- if_else(
+    data[cols$contributor_rank] <- if_else(
       data[[cols$role]] == role,
       ranks,
-      data[[cols$contribution_degree]]
+      data[[cols$contributor_rank]]
     )
   }
   data

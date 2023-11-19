@@ -66,7 +66,7 @@ aut$get_contributions(roles_first = FALSE, divider = " ")
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>plume::StatusSetter$set_corresponding_authors()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterPlume" data-id="set_lead_contributors"><a href='../../plume/html/StatusSetterPlume.html#method-StatusSetterPlume-set_lead_contributors'><code>plume::StatusSetterPlume$set_lead_contributors()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterPlume" data-id="set_main_contributors"><a href='../../plume/html/StatusSetterPlume.html#method-StatusSetterPlume-set_main_contributors'><code>plume::StatusSetterPlume$set_main_contributors()</code></a></span></li>
 </ul>
 </details>
 }}

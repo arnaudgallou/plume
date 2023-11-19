@@ -55,17 +55,18 @@ list_keys <- function(x) {
 }
 
 fetch <- plume:::list_fetch
-.names <- plume:::.names
+.names_plume <- plume:::.names_plume
 .names_quarto <- plume:::.names_quarto
+.names <- purrr::list_modify(.names_plume, !!!.names_quarto)
 
 make_table_vars <- function(category) {
-  vars_plume <- fetch(.names, category)
+  vars_plume <- fetch(.names_plume, category)
   vars_plume_quarto <- fetch(.names_quarto, category)
-  keys <- list_keys(vars_plume_quarto)
+  vars <- fetch(.names, category)
   tibble::tibble(
-    name = keys,
-    Plume = ifelse(unlist(vars_plume_quarto) %in% unlist(vars_plume), 1, 0),
-    PlumeQuarto = 1
+    name = list_keys(vars),
+    Plume = ifelse(unlist(vars) %in% unlist(vars_plume), 1, 0),
+    PlumeQuarto = ifelse(unlist(vars) %in% unlist(vars_plume_quarto), 1, 0),
   ) |>
     gt() |>
     text_case_match(

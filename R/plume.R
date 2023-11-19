@@ -1,3 +1,7 @@
+.names_plume <- list_modify(.names, public = list(
+  internals = list(contributor_rank = "contributor_rank")
+))
+
 .symbols <- list(
   affiliation = NULL,
   corresponding = "\\*",
@@ -256,6 +260,7 @@ Plume <- R6Class(
   ),
 
   private = list(
+    plume_names = .names_plume,
     symbols = .symbols,
     orcid_icon = NULL,
 
@@ -296,7 +301,7 @@ Plume <- R6Class(
 
     contribution_pars = function(roles_first, by_author, literal_names) {
       vars <- private$pick(
-        "initials", "literal_name", "role", "id", "contribution_degree",
+        "initials", "literal_name", "role", "id", "contributor_rank",
         squash = FALSE
       )
       has_initials <- private$has_col(vars$initials)
@@ -320,7 +325,7 @@ Plume <- R6Class(
         has_initials = has_initials,
         author = author,
         grp_var = grp_var,
-        rank = vars$contribution_degree,
+        rank = vars$contributor_rank,
         var = var,
         format = format
       )

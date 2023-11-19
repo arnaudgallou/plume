@@ -12,7 +12,7 @@ Internal class extending \code{StatusSetter} for \code{Plume}.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-StatusSetterPlume-set_lead_contributors}{\code{StatusSetterPlume$set_lead_contributors()}}
+\item \href{#method-StatusSetterPlume-set_main_contributors}{\code{StatusSetterPlume$set_main_contributors()}}
 \item \href{#method-StatusSetterPlume-clone}{\code{StatusSetterPlume$clone()}}
 }
 }
@@ -27,12 +27,12 @@ Internal class extending \code{StatusSetter} for \code{Plume}.
 </details>
 }}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-StatusSetterPlume-set_lead_contributors"></a>}}
-\if{latex}{\out{\hypertarget{method-StatusSetterPlume-set_lead_contributors}{}}}
-\subsection{Method \code{set_lead_contributors()}}{
-Set lead contributors.
+\if{html}{\out{<a id="method-StatusSetterPlume-set_main_contributors"></a>}}
+\if{latex}{\out{\hypertarget{method-StatusSetterPlume-set_main_contributors}{}}}
+\subsection{Method \code{set_main_contributors()}}{
+Set main contributors.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlume$set_lead_contributors(..., roles = NULL, by)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlume$set_main_contributors(..., roles = NULL, by)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -40,9 +40,11 @@ Set lead contributors.
 \describe{
 \item{\code{...}}{One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by \code{by} determine
-lead contributors. Matching of values is case-insensitive.}
+main contributors. Matching of values is case-insensitive.
+Alternatively, you can provide a list of key-value pairs where keys
+define roles and values identify contributors.}
 
-\item{\code{roles}}{Character vector or roles}
+\item{\code{roles}}{Roles to assign main contributors to.}
 
 \item{\code{by}}{Variable used to specify which authors are equal contributors.
 By default, uses authors' id.}

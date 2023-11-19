@@ -7,7 +7,7 @@
 #' @details
 #' Available names are:
 #'
-#' `r wrap(list_fetch_all(.names, "public", "orcid", squash = TRUE), "\x60")`.
+#' `r wrap(list_fetch_all(.names_plume, "public", "orcid", squash = TRUE), "\x60")`.
 #'
 #' Using `.plume_quarto = TRUE` adds `deceased`, `equal_contributor`, `number`,
 #' `dropping_particle` and `acknowledgements`.
@@ -42,6 +42,6 @@ set_default_names <- function(..., .plume_quarto = FALSE) {
     arg = "..."
   )
   check_bool(.plume_quarto)
-  nms <- if (.plume_quarto) .names_quarto else .names
+  nms <- if (.plume_quarto) .names_quarto else .names_plume
   list_replace(nms, dots)
 }
