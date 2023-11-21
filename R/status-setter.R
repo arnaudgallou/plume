@@ -43,11 +43,13 @@ StatusSetter <- R6Class(
     },
 
     snatch_by = function() {
-      by <- caller_env(2L)$by
+      env <- caller_env(2L)
+      by <- env$by %||% env$.by
       if (missing(by)) {
         by <- private$by
       } else {
-        check_string(by, allow_empty = FALSE)
+        arg <- if (is.null(env$by)) ".by" else "by"
+        check_string(by, allow_empty = FALSE, arg = arg)
       }
       private$check_col(by)
       by
@@ -63,27 +65,27 @@ StatusSetterPlume <- R6Class(
   public = list(
     #' @description Set main contributors.
     #' @param ... One or more unquoted expressions separated by commas.
-    #'   Expressions matching values in the column defined by `by` determine
+    #'   Expressions matching values in the column defined by `.by` determine
     #'   main contributors. Matching of values is case-insensitive.
     #'   Alternatively, you can provide a list of key-value pairs where keys
     #'   define roles and values identify contributors.
-    #' @param roles Roles to assign main contributors to.
-    #' @param by Variable used to specify which authors are equal contributors.
+    #' @param .roles Roles to assign main contributors to.
+    #' @param .by Variable used to specify which authors are equal contributors.
     #'   By default, uses authors' id.
     #' @return The class instance.
-    set_main_contributors = function(..., roles = NULL, by) {
-      private$set_ranks(..., roles = roles, by = by)
+    set_main_contributors = function(..., .roles = NULL, .by) {
+      private$set_ranks(..., .roles = .roles, .by = .by)
     }
   ),
 
   private = list(
-    set_ranks = function(..., roles, by) {
-      check_character(roles, allow_duplicates = FALSE)
+    set_ranks = function(..., .roles, .by) {
+      check_character(.roles, allow_duplicates = FALSE)
       by <- private$snatch_by()
       vars <- private$pick("role", "contributor_rank", squash = FALSE)
       dots <- collect_dots(...)
       if (!is_named(dots)) {
-        dots <- assign_to_names(dots, names = roles)
+        dots <- assign_to_names(dots, names = .roles)
       }
       out <- unnest(private$plume, col = all_of(vars$role))
       out <- add_contribution_ranks(out, dots, private$roles, by, vars)

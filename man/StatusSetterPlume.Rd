@@ -32,21 +32,21 @@ Internal class extending \code{StatusSetter} for \code{Plume}.
 \subsection{Method \code{set_main_contributors()}}{
 Set main contributors.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlume$set_main_contributors(..., roles = NULL, by)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlume$set_main_contributors(..., .roles = NULL, .by)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{One or more unquoted expressions separated by commas.
-Expressions matching values in the column defined by \code{by} determine
+Expressions matching values in the column defined by \code{.by} determine
 main contributors. Matching of values is case-insensitive.
 Alternatively, you can provide a list of key-value pairs where keys
 define roles and values identify contributors.}
 
-\item{\code{roles}}{Roles to assign main contributors to.}
+\item{\code{.roles}}{Roles to assign main contributors to.}
 
-\item{\code{by}}{Variable used to specify which authors are equal contributors.
+\item{\code{.by}}{Variable used to specify which authors are equal contributors.
 By default, uses authors' id.}
 }
 \if{html}{\out{</div>}}
