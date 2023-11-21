@@ -72,27 +72,15 @@ add_orcid_links <- function(data, orcid, compact = FALSE) {
   data
 }
 
-add_contribution_ranks <- function(data, roles, ..., by, cols) {
-  dots <- collect_dots(...)
-  if (is_named(dots)) {
-    for (key in names(dots)) {
-      data <- add_ranks(data, key, dots[[key]], by, cols)
-    }
-    return(data)
-  }
-  add_ranks(data, roles, dots, by, cols)
-}
-
-add_ranks <- function(data, roles, base, by, cols) {
-  ranks <- rank(data[[by]], base)
+add_contribution_ranks <- function(data, values, roles, by, cols) {
   data <- col_init(data, cols$contributor_rank)
-  for (role in roles) {
-    data[cols$contributor_rank] <- if_else(
-      data[[cols$role]] == role,
-      ranks,
+  iwalk(values, \(value, key) {
+    data[cols$contributor_rank] <<- if_else(
+      is_not_na(roles[key]) & data[[cols$role]] == roles[key],
+      rank(data[[by]], value),
       data[[cols$contributor_rank]]
     )
-  }
+  })
   data
 }
 

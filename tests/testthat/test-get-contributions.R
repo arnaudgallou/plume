@@ -119,28 +119,28 @@ test_that("set_main_contributors() ranks contributors", {
       writing = rep(1, 3),
       analysis = rep(1, 3)
     ),
-    roles = set_names(c("writing", "analysis"))
+    roles = c(writing = "Writing", analysis = "Analysis")
   )
 
   aut$set_main_contributors(3, roles = "writing")
 
   expect_equal(
     aut$get_contributions(),
-    c("writing: P.P., Z.Z. and R.R.", "analysis: Z.Z., R.R. and P.P.")
+    c("Writing: P.P., Z.Z. and R.R.", "Analysis: Z.Z., R.R. and P.P.")
   )
 
   aut$set_main_contributors(2, roles = "writing")
 
   expect_equal(
     aut$get_contributions(alphabetical_order = TRUE),
-    c("writing: R.R., P.P. and Z.Z.", "analysis: P.P., R.R. and Z.Z.")
+    c("Writing: R.R., P.P. and Z.Z.", "Analysis: P.P., R.R. and Z.Z.")
   )
 
   aut$set_main_contributors(3, 2, roles = "writing")
 
   expect_equal(
     aut$get_contributions(),
-    c("writing: P.P., R.R. and Z.Z.", "analysis: Z.Z., R.R. and P.P.")
+    c("Writing: P.P., R.R. and Z.Z.", "Analysis: Z.Z., R.R. and P.P.")
   )
 
   # multiple roles
@@ -149,7 +149,7 @@ test_that("set_main_contributors() ranks contributors", {
 
   expect_equal(
     aut$get_contributions(),
-    c("writing: P.P., Z.Z. and R.R.", "analysis: P.P., Z.Z. and R.R.")
+    c("Writing: P.P., Z.Z. and R.R.", "Analysis: P.P., Z.Z. and R.R.")
   )
 
   aut$set_main_contributors(
@@ -159,7 +159,7 @@ test_that("set_main_contributors() ranks contributors", {
 
   expect_equal(
     aut$get_contributions(),
-    c("writing: P.P., Z.Z. and R.R.", "analysis: R.R., Z.Z. and P.P.")
+    c("Writing: P.P., Z.Z. and R.R.", "Analysis: R.R., Z.Z. and P.P.")
   )
 })
 

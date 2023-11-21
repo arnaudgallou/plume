@@ -81,9 +81,12 @@ StatusSetterPlume <- R6Class(
       check_character(roles, allow_duplicates = FALSE)
       by <- private$snatch_by()
       vars <- private$pick("role", "contributor_rank", squash = FALSE)
-      roles <- private$roles[roles]
+      dots <- collect_dots(...)
+      if (!is_named(dots)) {
+        dots <- assign_to_names(dots, names = roles)
+      }
       out <- unnest(private$plume, col = all_of(vars$role))
-      out <- add_contribution_ranks(out, roles, ..., by = by, cols = vars)
+      out <- add_contribution_ranks(out, dots, private$roles, by, vars)
       private$plume <- nest(out, !!vars$role := unlist(vars, use.names = FALSE))
       invisible(self)
     }

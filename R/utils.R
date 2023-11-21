@@ -59,6 +59,11 @@ rank <- function(x, base) {
   vec_rank(matches, ties = "dense")
 }
 
+assign_to_names <- function(x, names) {
+  x <- rep(list(x), length(names))
+  set_names(x, names)
+}
+
 collect_dots <- function(...) {
   if (are_calls(...)) {
     return(c(...))
