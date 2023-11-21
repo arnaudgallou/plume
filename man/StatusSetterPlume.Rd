@@ -30,7 +30,8 @@ Internal class extending \code{StatusSetter} for \code{Plume}.
 \if{html}{\out{<a id="method-StatusSetterPlume-set_main_contributors"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetterPlume-set_main_contributors}{}}}
 \subsection{Method \code{set_main_contributors()}}{
-Set main contributors.
+Force one or more contributors' names to appear first in the
+contribution list.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlume$set_main_contributors(..., .roles = NULL, .by)}\if{html}{\out{</div>}}
 }
@@ -40,9 +41,10 @@ Set main contributors.
 \describe{
 \item{\code{...}}{One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by \code{.by} determine
-main contributors. Matching of values is case-insensitive.
-Alternatively, you can provide a list of key-value pairs where keys
-define roles and values identify contributors.}
+main contributors. Expressions can be named after any given role to set
+different main contributors to different roles at once, in which case
+the \code{roles} parameter will be ignored. Matching of values is case-
+insensitive.}
 
 \item{\code{.roles}}{Roles to assign main contributors to.}
 

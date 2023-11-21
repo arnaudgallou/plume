@@ -224,15 +224,34 @@ cat(read_file(tmp_file))
 
 ## Assigning status to authors
 
-plume provides three methods to set particular status to authors:
+```{r, echo = FALSE}
+set_methods <- tibble::tibble(
+  name = c(
+    "set_corresponding_authors()",
+    "set_main_contributors()",
+    "set_equal_contributor()",
+    "set_deceased()"
+  ),
+  Plume = c(1, 1, 0, 0),
+  PlumeQuarto = c(1, 0, 1, 1)
+)
+```
 
-- `set_corresponding_authors()`
+plume provides `r nrow(set_methods)` methods to set particular status to authors:
 
-- `set_equal_contributor()`
-
-- `set_deceased()`
-
-`set_equal_contributor()` and `set_deceased()` are specific to `PlumeQuarto`. You can specify equal contributors and deceased authors in `Plume` via the `note` variable.
+  ```{r, echo = FALSE}
+set_methods |>
+  gt() |>
+  text_case_match(
+    "1" ~ fontawesome::fa("check"),
+    .default = "",
+    .locations = cells_body(tidyselect::starts_with("Plume"))
+  ) |>
+  cols_label(name = "Name") |>
+  cols_align(align = "center", columns = tidyselect::starts_with("Plume")) |>
+  cols_width(name ~ pct(50)) |>
+  opt_row_striping()
+```
 
 By default, `set_*()` methods assign values by authors' id. You can change this behaviour at the object (in `PlumeQuarto` only) or method level using the `by`/`.by` parameter.
 

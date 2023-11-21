@@ -63,12 +63,14 @@ StatusSetterPlume <- R6Class(
   classname = "StatusSetterPlume",
   inherit = StatusSetter,
   public = list(
-    #' @description Set main contributors.
+    #' @description Force one or more contributors' names to appear first in the
+    #'   contribution list.
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `.by` determine
-    #'   main contributors. Matching of values is case-insensitive.
-    #'   Alternatively, you can provide a list of key-value pairs where keys
-    #'   define roles and values identify contributors.
+    #'   main contributors. Expressions can be named after any given role to set
+    #'   different main contributors to different roles at once, in which case
+    #'   the `roles` parameter will be ignored. Matching of values is case-
+    #'   insensitive.
     #' @param .roles Roles to assign main contributors to.
     #' @param .by Variable used to specify which authors are equal contributors.
     #'   By default, uses authors' id.
