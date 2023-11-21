@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors' names to appear first in the contribution list for any given role. `Plume`'s contructor also regains the parameter `by` to set the default `by`/`.by` value used in all `set_*()` methods.
+
 * New helper `credit_roles()` that returns the 14 contributor roles of the [Contributor Roles Taxonomy](https://credit.niso.org). These are now the default roles used by plume.
 
 * The plume role handling system has been overhauled for better flexibility and ease of use (#29).
