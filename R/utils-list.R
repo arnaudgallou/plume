@@ -1,10 +1,10 @@
 list_fetch_all <- function(x, ..., squash) {
   out <- list()
   for (name in c(...)) {
-    out <- append(out, list_fetch(x, name))
+    out <- c(out, list_fetch(x, name))
   }
   if (squash) {
-    return(unlist(out, use.names = FALSE))
+    return(squash(out))
   }
   out
 }

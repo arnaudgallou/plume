@@ -280,7 +280,7 @@ file_ext <- function(x) {
 check_file <- function(x, extension, ..., arg = caller_arg(x)) {
   check_string(x, allow_empty = FALSE, arg = arg)
   ext <- file_ext(x)
-  if (is_not_na(ext) && includes(ext, extension)) {
+  if (is_not_na(ext) && vec_in(ext, extension)) {
     check_path(x, arg = arg)
     return(invisible(NULL))
   }
@@ -296,7 +296,7 @@ check_glue <- function(x, allowed, ..., arg = caller_arg(x)) {
   msg <- NULL
   if (!missing(x) && is_glueish(x)) {
     vars <- extract_glue_vars(x)
-    if (all(includes(vars, allowed, ignore_case = FALSE))) {
+    if (all(vec_in(vars, allowed, ignore_case = FALSE))) {
       return(invisible(NULL))
     }
     invalid_var <- search_(vars, \(var) !var %in% allowed)

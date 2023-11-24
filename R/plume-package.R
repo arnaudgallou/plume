@@ -6,14 +6,14 @@
 #' @importFrom dplyr distinct filter select dense_rank
 #' @importFrom dplyr mutate summarise across rename arrange
 #' @importFrom dplyr if_else if_any
-#' @importFrom tidyr drop_na pivot_longer nest unnest expand_grid
+#' @importFrom tidyr drop_na pivot_longer nest unnest
 #' @importFrom tidyselect all_of any_of starts_with
 #' @importFrom tibble tibble as_tibble_row as_tibble rowid_to_column
-#' @importFrom purrr set_names partial reduce
+#' @importFrom purrr partial reduce
 #' @importFrom purrr map map_vec map2_vec iwalk walk2
 #' @importFrom purrr list_rbind list_transpose list_assign list_modify
 #' @importFrom readr read_file write_lines
-#' @importFrom rlang %||% := abort
+#' @importFrom rlang %||% := abort set_names
 #' @importFrom rlang expr enexprs sym syms
 #' @importFrom rlang is_named is_string is_bool is_true
 #' @importFrom rlang caller_env caller_arg

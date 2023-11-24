@@ -196,7 +196,7 @@ PlumeQuarto <- R6Class(
     },
 
     author_metadata = function() {
-      if (!private$has_col(paste0("^", private$meta_prefix))) {
+      if (!private$has_col(begins_with(private$meta_prefix))) {
         return()
       }
       select(private$plume, starts_with(private$meta_prefix))

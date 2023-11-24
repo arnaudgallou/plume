@@ -1,13 +1,13 @@
 unique.list <- function(x, ...) {
-  unique(unlist(x, use.names = FALSE), ...)
+  unique(squash(x), ...)
 }
 
-includes <- function(x, y, ignore_case = TRUE) {
-  out <- list(x = x, y = y)
-  if (ignore_case) {
-    out <- map(out, tolower)
-  }
-  out$x %in% out$y
+squash <- function(x) {
+  unlist(x, use.names = FALSE)
+}
+
+begins_with <- function(x) {
+  paste0("^", x)
 }
 
 if_not_na <- function(x, value, ..., all = FALSE) {
@@ -35,7 +35,7 @@ make_initials <- function(x, dot = FALSE) {
 }
 
 discard <- function(x, ...) {
-  x[!includes(x, c(...))]
+  x[!vec_in(x, c(...))]
 }
 
 vec_drop_na <- function(x) {
@@ -44,6 +44,14 @@ vec_drop_na <- function(x) {
 
 vec_arrange <- function(x) {
   x[order(nchar(x), x)]
+}
+
+vec_in <- function(x, y, ignore_case = TRUE) {
+  if (ignore_case) {
+    x <- tolower(x)
+    y <- tolower(y)
+  }
+  x %in% y
 }
 
 condense <- function(x) {

@@ -67,7 +67,7 @@ PlumeHandler <- R6Class(
     mount = function() {
       private$build()
       for (col in private$pick("nestables")) {
-        if (private$is_nestable(paste0("^", col))) {
+        if (private$is_nestable(begins_with(col))) {
           private$nest(col)
         }
       }
@@ -91,7 +91,7 @@ PlumeHandler <- R6Class(
         all_of(vars$primaries),
         any_of(c(vars$secondaries, names(private$roles))),
         starts_with(vars$nestables),
-        if (private$crt) any_of(names(.names$protected$crt)),
+        if (private$crt) any_of(names(list_fetch(.names, "crt"))),
         ...
       )
     },
@@ -215,7 +215,7 @@ PlumeHandler <- R6Class(
 
     check_roles = function() {
       role <- private$pick("role")
-      if (!private$has_col(paste0("^", role))) {
+      if (!private$has_col(begins_with(role))) {
         return()
       }
       roles <- select(private$plume, starts_with(role))
@@ -241,7 +241,7 @@ PlumeHandler$set("private", "check_param_credit_roles", function() {
 
 PlumeHandler$set("private", "check_role_system", function() {
   var <- private$pick("role")
-  if (!private$has_col(paste0("^", var))) {
+  if (!private$has_col(begins_with(var))) {
     return()
   }
   roles <- select(private$plume, starts_with(var))
