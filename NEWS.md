@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `plm_template()` now returns role columns as numeric type (#26).
+
 * New helper `credit_roles()` that returns the 14 contributor roles of the [Contributor Roles Taxonomy](https://credit.niso.org). These are now the default roles used by plume.
 
 * The plume role handling system has been overhauled for better flexibility and ease of use (#29).
