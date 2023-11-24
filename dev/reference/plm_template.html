@@ -103,18 +103,18 @@ vector contains key-value pairs, columns will be named after the keys.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">plm_template</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 21</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 21 variables: given_name &lt;chr&gt;, family_name &lt;chr&gt;, email &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;, note &lt;chr&gt;, orcid &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   conceptualization &lt;chr&gt;, data_curation &lt;chr&gt;, analysis &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   funding &lt;chr&gt;, investigation &lt;chr&gt;, methodology &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   administration &lt;chr&gt;, resources &lt;chr&gt;, software &lt;chr&gt;, supervision &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   validation &lt;chr&gt;, visualization &lt;chr&gt;, writing &lt;chr&gt;, editing &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 21 variables: given_name &lt;chr&gt;, family_name &lt;chr&gt;, orcid &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   email &lt;chr&gt;, affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;, note &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   conceptualization &lt;dbl&gt;, data_curation &lt;dbl&gt;, analysis &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   funding &lt;dbl&gt;, investigation &lt;dbl&gt;, methodology &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   administration &lt;dbl&gt;, resources &lt;dbl&gt;, software &lt;dbl&gt;, supervision &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   validation &lt;dbl&gt;, visualization &lt;dbl&gt;, writing &lt;dbl&gt;, editing &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">plm_template</span><span class="op">(</span>role_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"role_"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 12 variables: given_name &lt;chr&gt;, family_name &lt;chr&gt;, email &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;, note &lt;chr&gt;, orcid &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   role_1 &lt;chr&gt;, role_2 &lt;chr&gt;, role_3 &lt;chr&gt;, role_4 &lt;chr&gt;, role_5 &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 12 variables: given_name &lt;chr&gt;, family_name &lt;chr&gt;, orcid &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   email &lt;chr&gt;, affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;, note &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   role_1 &lt;dbl&gt;, role_2 &lt;dbl&gt;, role_3 &lt;dbl&gt;, role_4 &lt;dbl&gt;, role_5 &lt;dbl&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
