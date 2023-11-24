@@ -23,35 +23,35 @@ plm_template <- function(minimal = TRUE, role_cols = credit_roles(), credit_role
   check_character(role_cols, allow_duplicates = FALSE)
   if (credit_roles) {
     print_deprecation("credit_roles", "plm_template", param = "role_cols")
-    role_cols <- NULL
+    role_cols <- credit_roles()
   }
-  vars <- get_template_vars(minimal, role_cols, credit_roles)
-  tibble(!!!vars, .rows = 0)
+  vars <- get_template_vars(minimal, role_cols)
+  build_template(vars)
 }
 
-get_template_vars <- function(minimal, role_cols, credit_roles) {
+build_template <- function(vars) {
+  out <- tibble(!!!vars$cols, !!!vars$role_cols, .rows = 0)
+  mutate(out, across(all_of(vars$role_cols), as.numeric))
+}
+
+get_template_vars <- function(minimal, role_cols) {
+  vars <- list_fetch_all(.names, "primaries", "orcid", squash = FALSE)
+  vars <- c(vars, get_secondaries(minimal), get_nestables())
   if (is_named(role_cols)) {
     role_cols <- names(role_cols)
   }
-  vars <- list_fetch_all(.names, "public", "orcid", squash = FALSE)
-  vars <- list_assign(vars, roles = role_cols, nestables = get_nestables(credit_roles))
-  to_ignore <- get_ignored_vars(vars, minimal)
-  vars <- unlist(vars, use.names = FALSE)
-  vars <- discard(vars, to_ignore)
-  set_names(vars)
+  list(cols = vars, role_cols = if (!is.null(role_cols)) set_names(role_cols))
 }
 
-get_ignored_vars <- function(vars, minimal) {
-  to_ignore <- vars$internals
-  if (!minimal) {
-    return(to_ignore)
+get_secondaries <- function(minimal) {
+  if (minimal) {
+    return(list(email = "email"))
   }
-  c(to_ignore, discard(vars$secondaries, "email"))
+  list_fetch(.names, "secondaries")
 }
 
-get_nestables <- function(crt) {
-  names_crt <- if (crt) names(.names$protected$crt)
-  vars <- c(seq_names("affiliation", n = 2), names_crt, "note")
+get_nestables <- function() {
+  vars <- c(seq_names("affiliation", n = 2), "note")
   as.list(set_names(vars))
 }
 

@@ -22,6 +22,18 @@ test_that("plm_template() returns a table template", {
   expect_named(df, nms_minimal_all, ignore.order = TRUE)
 })
 
+test_that("role columns are of type numeric", {
+  get_numeric_cols <- function(tbl) {
+    names(tbl)[sapply(tbl, is.numeric)]
+  }
+
+  df <- plm_template(role_cols = c("foo"))
+  expect_equal(get_numeric_cols(df), "foo")
+
+  df <- plm_template(role_cols = c(a = "foo"))
+  expect_equal(get_numeric_cols(df), "a")
+})
+
 # Deprecation ----
 
 test_that("`credit_roles = TRUE` is deprecated", {
