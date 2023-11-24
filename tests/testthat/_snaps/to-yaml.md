@@ -179,6 +179,22 @@
       affiliations: {}
       ---
 
+# to_yaml() preserves line breaks preceding `---` (#37)
+
+    Code
+      read_test_file(tmp_file)
+    Output
+      ---
+      author:
+        - id: aut1
+          name:
+            given: Zip
+            family: Zap
+      affiliations: {}
+      ---
+      Lorem ipsum
+      ---
+
 # to_yaml() gives meaningful error messages
 
     Code

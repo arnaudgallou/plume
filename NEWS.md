@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$to_yaml()` now preserves line breaks preceding leading or isolated `---` (#37).
+
 * `plm_template()` now returns role columns as numeric type (#26).
 
 * New helper `credit_roles()` that returns the 14 contributor roles of the [Contributor Roles Taxonomy](https://credit.niso.org). These are now the default roles used by plume.

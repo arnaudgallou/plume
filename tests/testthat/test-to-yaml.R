@@ -53,6 +53,21 @@ test_that("to_yaml() exits before pushing new header if invalid YAML", {
   expect_equal(old, new)
 })
 
+test_that("to_yaml() preserves line breaks preceding `---` (#37)", {
+  tmp_file <- withr::local_tempfile(
+    lines = "---\n---\nLorem ipsum\n---",
+    fileext = ".qmd"
+  )
+
+  aut <- PlumeQuarto$new(
+    data.frame(given_name = "Zip", family_name = "Zap"),
+    tmp_file
+  )
+  aut$to_yaml()
+
+  expect_snapshot(read_test_file(tmp_file))
+})
+
 # Errors ----
 
 test_that("to_yaml() gives meaningful error messages", {
