@@ -22,4 +22,5 @@
 #' @importFrom jsonlite toJSON parse_json
 #' @importFrom yaml yaml.load as.yaml
 #' @importFrom R6 R6Class
+#' @importFrom lifecycle deprecated
 "_PACKAGE"
