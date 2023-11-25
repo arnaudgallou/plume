@@ -42,6 +42,8 @@
     Plume$new(data, roles = c(role_1 = "Supervision", role_2 = "Writing"))
     ```
 
+  * The `using-credit-roles` vignette was removed as it is no longer needed.
+
 * plume classes now error when a role column contains multiple roles (#28).
 
 # plume 0.1.0
