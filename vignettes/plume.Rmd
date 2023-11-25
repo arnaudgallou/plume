@@ -128,17 +128,12 @@ Plume$new(
     family_name = "nom",
     literal_name = "nom_complet",
     email = "courriel",
-    initials = "initiales",
-    role = "role_v"
+    initials = "initiales"
   )
 )
 ```
 
 ## Defining roles and contributors
-
-::: {.alert .alert-warning}
-This feature is currently only available in the development version of plume.
-:::
 
 You can add roles by creating specific role columns in the input data and indicate contributors using a `1`:
 
@@ -156,7 +151,7 @@ plume uses `r plume:::link("crt")` (CRediT) by default (assuming the input data 
 ```{r, eval = FALSE}
 Plume$new(data, roles = c(
   supervision = "supervised the project",
-  writing = "contributed to the Encyclopédie"
+  writing = "contributed to the writing"
 ))
 ```
 
@@ -182,18 +177,13 @@ You can push information from the input data into the YAML header using the `to_
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 1, 4),
-  file = "file.qmd",
-  names = c(role = "role_n")
+  file = "file.qmd"
 )
 aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(
-  dplyr::slice(encyclopedists, 1, 4),
-  tmp_file,
-  names = c(role = "role_n")
-)
+aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 1, 4), tmp_file)
 aut$to_yaml()
 cat(read_file(tmp_file))
 ```
@@ -205,18 +195,13 @@ If the YAML header already has an `author` and `affiliations` keys, `to_yaml()` 
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 2),
-  file = "file.qmd",
-  names = c(role = "role_n")
+  file = "file.qmd"
 )
 aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(
-  dplyr::slice(encyclopedists, 2),
-  tmp_file,
-  names = c(role = "role_n")
-)
+aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 2), tmp_file)
 aut$to_yaml()
 cat(read_file(tmp_file))
 ```
@@ -334,7 +319,6 @@ aut$get_contact_details(format = "{name}: {details}")
 plume provides a convenient way to generate contribution lists using the `get_contributions()` method.
 
 ```{r}
-aut <- Plume$new(encyclopedists, names = c(role = "role_n"))
 aut$get_contributions()
 
 aut$get_contributions(
@@ -343,8 +327,11 @@ aut$get_contributions(
   literal_names = TRUE
 )
 
-aut_v <- Plume$new(encyclopedists, names = c(role = "role_v"))
-aut_v$get_contributions(roles_first = FALSE, divider = " ")
+aut2 <- Plume$new(encyclopedists, roles = c(
+  supervision = "supervised the project",
+  writing = "contributed to the Encyclopédie"
+))
+aut2$get_contributions(roles_first = FALSE, divider = " ")
 ```
 
 By default, `get_contributions()` lists contributors in the order they're defined. You can arrange contributors in alphabetical order with `alphabetical_order = TRUE`:

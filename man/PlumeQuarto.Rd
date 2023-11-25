@@ -23,8 +23,7 @@ cat(readr::read_file(tmp_file))
 # you've just created
 aut <- PlumeQuarto$new(
   encyclopedists,
-  file = tmp_file,
-  names = c(role = "role_n")
+  file = tmp_file
 )
 
 # And push author data to the YAML header
@@ -36,8 +35,7 @@ cat(readr::read_file(tmp_file))
 # header accordingly
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 2),
-  file = tmp_file,
-  names = c(role = "role_n")
+  file = tmp_file
 )
 aut$to_yaml()
 

@@ -13,8 +13,8 @@
 #'   \item{phone,téléphone}{authors' phone numbers}
 #'   \item{orcid}{authors' ORCID}
 #'   \item{affiliation}{authors' affiliations}
-#'   \item{role_n}{authors' roles written as nouns}
-#'   \item{role_v}{authors' roles written as active verbs}
+#'   \item{supervision}{authors that supervised the project}
+#'   \item{writing,rédaction}{authors involved in the writing}
 #'   \item{note}{special notes about authors}
 #' }
 #' @examples
