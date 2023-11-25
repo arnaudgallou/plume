@@ -75,15 +75,14 @@ cat(readr::read_file(tmp_file))
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(
   encyclopedists,
-  file = "file.qmd",
-  names = c(role = "role_n")
+  file = "file.qmd"
 )
 aut$set_corresponding_authors(1, 4)
 aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(encyclopedists, tmp_file, names = c(role = "role_n"))
+aut <- PlumeQuarto$new(encyclopedists, tmp_file)
 aut$set_corresponding_authors(1, 4)
 aut$to_yaml()
 cat(readr::read_file(tmp_file))
@@ -92,7 +91,7 @@ cat(readr::read_file(tmp_file))
 Alternatively, you can generate author information as character strings using `Plume`:
 
 ```{r, message = FALSE}
-aut <- Plume$new(encyclopedists, names = c(role = "role_n"))
+aut <- Plume$new(encyclopedists)
 aut$set_corresponding_authors(diderot, by = "family_name")
 
 aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
@@ -105,15 +104,18 @@ aut$get_notes()
 
 aut$get_contributions()
 
-aut_v <- Plume$new(
+aut2 <- Plume$new(
   encyclopedists,
-  names = c(role = "role_v"),
+  roles = c(
+    supervision = "supervised the project",
+    writing = "contributed to the Encyclopédie"
+  ),
   symbols = list(affiliation = letters)
 )
 
-aut_v$get_author_list(format = "^a^") |> enumerate(last = ",\n")
+aut2$get_author_list(format = "^a^") |> enumerate(last = ",\n")
 
-aut_v$get_contributions(roles_first = FALSE, divider = " ")
+aut2$get_contributions(roles_first = FALSE, divider = " ")
 ```
 
 ## Acknowledgements

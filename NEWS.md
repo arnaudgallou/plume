@@ -1,5 +1,7 @@
 # plume (development version)
 
+* Updated the `encyclopedists` and `encyclopedists_fr` data to use the new role column system (#39).
+
 * `$to_yaml()` now preserves line breaks preceding leading or isolated `---` (#37).
 
 * `plm_template()` now returns role columns as numeric type (#26).

@@ -9,7 +9,7 @@ information as character strings.
 }
 \examples{
 # Create a Plume instance
-aut <- Plume$new(encyclopedists, names = c(role = "role_n"))
+aut <- Plume$new(encyclopedists)
 
 # Set the desired corresponding authors, using
 # authors' id by default
@@ -41,7 +41,10 @@ aut$get_affiliations()
 
 # It is also possible to output contributions in the
 # active voice
-aut <- Plume$new(encyclopedists, names = c(role = "role_v"))
+aut <- Plume$new(encyclopedists, roles = c(
+  supervision = "supervised the project",
+  writing = "contributed to the Encyclopédie"
+))
 aut$get_contributions(roles_first = FALSE, divider = " ")
 }
 \section{Super classes}{
