@@ -114,13 +114,13 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/arnaudgallou/plume" class="external-link">plume</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">encyclopedists</span></span>
-<span><span class="co">#&gt; # A tibble: 4 × 12</span></span>
-<span><span class="co">#&gt;   given_name family_name email phone orcid role_n1 role_n2 role_v1 role_v2 note </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 Denis      Diderot     dide… 00 0… 0000… Writing Superv… contri… superv… born…</span></span>
-<span><span class="co">#&gt; 2 Jean-Jacq… Rousseau    rous… &lt;NA&gt;  0000… Writing &lt;NA&gt;    contri… &lt;NA&gt;    &lt;NA&gt; </span></span>
-<span><span class="co">#&gt; 3 François-… Arouet      arou… &lt;NA&gt;  &lt;NA&gt;  Writing &lt;NA&gt;    contri… &lt;NA&gt;    also…</span></span>
-<span><span class="co">#&gt; 4 Jean       Le Rond d'… alem… &lt;NA&gt;  0000… Writing Superv… contri… superv… born…</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 10</span></span>
+<span><span class="co">#&gt;   given_name     family_name        email  phone orcid supervision writing note </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;              &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 Denis          Diderot            dider… 00 0… 0000…           1       1 born…</span></span>
+<span><span class="co">#&gt; 2 Jean-Jacques   Rousseau           rouss… &lt;NA&gt;  0000…          NA       1 &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 3 François-Marie Arouet             aroue… &lt;NA&gt;  &lt;NA&gt;           NA       1 also…</span></span>
+<span><span class="co">#&gt; 4 Jean           Le Rond d'Alembert alemb… &lt;NA&gt;  0000…           1       1 born…</span></span>
 <span><span class="co">#&gt; # ℹ 2 more variables: affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span>
 <span></span>
 <span><span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
@@ -142,8 +142,7 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
-<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span>,</span>
-<span>  names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_n"</span><span class="op">)</span></span>
+<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -161,8 +160,8 @@
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> true</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    roles<span class="sc">:</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> supervision</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> supervision</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff1</span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut2</span>
@@ -174,7 +173,7 @@
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> false</span>
 <span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    roles<span class="sc">:</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff2</span>
 <span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut3</span>
@@ -186,7 +185,7 @@
 <span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
 <span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> false</span>
 <span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    roles<span class="sc">:</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
 <span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
 <span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff2</span>
 <span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut4</span>
@@ -199,8 +198,8 @@
 <span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="st">    attributes:</span></span>
 <span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="st">      corresponding: true</span></span>
 <span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="st">    roles:</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="st">      - writing</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="st">      - supervision</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="st">      - supervision</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="st">      - writing - original draft</span></span>
 <span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="st">    affiliations:</span></span>
 <span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="st">      - ref: aff1</span></span>
 <span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="st">      - ref: aff3</span></span>
@@ -216,7 +215,7 @@
 <span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="st">Qui scribit bis legit</span></span></code></pre></div>
 <p>Alternatively, you can generate author information as character strings using <code>Plume</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_n"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="va">diderot</span>, by <span class="op">=</span> <span class="st">"family_name"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"^a,^cn"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
@@ -237,22 +236,25 @@
 <span><span class="co">#&gt; ^§^born in 1717 in Paris</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Writing: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
 <span><span class="co">#&gt; Supervision: D.D. and J.L.R.d'A.</span></span>
+<span><span class="co">#&gt; Writing - original draft: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
 <span></span>
-<span><span class="va">aut_v</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span><span class="va">aut2</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
-<span>  names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_v"</span><span class="op">)</span>,</span>
+<span>  roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    supervision <span class="op">=</span> <span class="st">"supervised the project"</span>,</span>
+<span>    writing <span class="op">=</span> <span class="st">"contributed to the Encyclopédie"</span></span>
+<span>  <span class="op">)</span>,</span>
 <span>  symbols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="va">letters</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">aut_v</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"^a^"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
+<span><span class="va">aut2</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"^a^"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Denis Diderot^a^, Jean-Jacques Rousseau^b^, François-Marie Arouet^b^,</span></span>
 <span><span class="co">#&gt; Jean Le Rond d'Alembert^a,c^</span></span>
 <span></span>
-<span><span class="va">aut_v</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>roles_first <span class="op">=</span> <span class="cn">FALSE</span>, divider <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
-<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie</span></span>
-<span><span class="co">#&gt; D.D. and J.L.R.d'A. supervised the project</span></span></code></pre></div>
+<span><span class="va">aut2</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>roles_first <span class="op">=</span> <span class="cn">FALSE</span>, divider <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
+<span><span class="co">#&gt; D.D. and J.L.R.d'A. supervised the project</span></span>
+<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>

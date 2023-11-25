@@ -109,23 +109,14 @@ classes with default names in your desired language. plume provides
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">PlumeFr</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists_fr</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Defining explicit roles in the input data was deprecated in plume 0.2.0.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use the `roles` argument of `new()` instead.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> See</span></span>
-<span><span class="co">#&gt;   &lt;https://arnaudgallou.github.io/plume/articles/plume.html#defining-roles-and-contributors&gt;.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">plume</span> package.</span></span>
-<span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/arnaudgallou/plume/issues&gt;</span>.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 11</span></span></span>
-<span><span class="co">#&gt;      id prénom        nom   nom_complet initiales courriel téléphone orcid note </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis         Dide… Denis Dide… DD        diderot… 00 00 00… 0000… né e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques  Rous… Jean-Jacqu… J-JR      roussea… <span style="color: #BB0000;">NA</span>        0000… <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Mar… Arou… François-M… F-MA      arouet@… <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>    dit …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean          Le R… Jean Le Ro… JLRd'A    alember… <span style="color: #BB0000;">NA</span>        0000… né e…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation &lt;list&gt;, role &lt;list&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt;      id prénom  nom   nom_complet initiales courriel téléphone orcid role  note </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis   Dide… Denis Dide… DD        diderot… 00 00 00… 0000… Supe… né e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-J… Rous… Jean-Jacqu… J-JR      roussea… <span style="color: #BB0000;">NA</span>        0000… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 Franço… Arou… François-M… F-MA      arouet@… <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    dit …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean    Le R… Jean Le Ro… JLRd'A    alember… <span style="color: #BB0000;">NA</span>        0000… Supe… né e…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: affiliation &lt;list&gt;</span></span></span></code></pre></div>
   </main>
 </div>
 

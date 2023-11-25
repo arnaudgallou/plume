@@ -103,13 +103,13 @@ custom variable names. Both data sets are documented in
 <code><a href="../reference/encyclopedists.html">?encyclopedists</a></code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">encyclopedists</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 12</span></span></span>
-<span><span class="co">#&gt;   given_name family_name email phone orcid role_n1 role_n2 role_v1 role_v2 note </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis      Diderot     dide… 00 0… 0000… Writing Superv… contri… superv… born…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacq… Rousseau    rous… <span style="color: #BB0000;">NA</span>    0000… Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-… Arouet      arou… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    Writing <span style="color: #BB0000;">NA</span>      contri… <span style="color: #BB0000;">NA</span>      also…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean       Le Rond d'… alem… <span style="color: #BB0000;">NA</span>    0000… Writing Superv… contri… superv… born…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 10</span></span></span>
+<span><span class="co">#&gt;   given_name     family_name        email  phone orcid supervision writing note </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Denis          Diderot            dider… 00 0… 0000…           1       1 born…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau           rouss… <span style="color: #BB0000;">NA</span>    0000…          <span style="color: #BB0000;">NA</span>       1 <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> François-Marie Arouet             aroue… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>       1 also…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'Alembert alemb… <span style="color: #BB0000;">NA</span>    0000…           1       1 born…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -139,23 +139,23 @@ input data. The input data must have at least two columns named
 categories:</p>
 <p><strong>Primaries</strong>: variables required to create a
 <code>plume</code> object.</p>
-<div id="fyzhhfvnwp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fyzhhfvnwp table {
+<div id="rtpzozgqso" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rtpzozgqso table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fyzhhfvnwp thead, #fyzhhfvnwp tbody, #fyzhhfvnwp tfoot, #fyzhhfvnwp tr, #fyzhhfvnwp td, #fyzhhfvnwp th {
+#rtpzozgqso thead, #rtpzozgqso tbody, #rtpzozgqso tfoot, #rtpzozgqso tr, #rtpzozgqso td, #rtpzozgqso th {
   border-style: none;
 }
 
-#fyzhhfvnwp p {
+#rtpzozgqso p {
   margin: 0;
   padding: 0;
 }
 
-#fyzhhfvnwp .gt_table {
+#rtpzozgqso .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -181,12 +181,12 @@ categories:</p>
   border-left-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_caption {
+#rtpzozgqso .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fyzhhfvnwp .gt_title {
+#rtpzozgqso .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -198,7 +198,7 @@ categories:</p>
   border-bottom-width: 0;
 }
 
-#fyzhhfvnwp .gt_subtitle {
+#rtpzozgqso .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -210,7 +210,7 @@ categories:</p>
   border-top-width: 0;
 }
 
-#fyzhhfvnwp .gt_heading {
+#rtpzozgqso .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -222,13 +222,13 @@ categories:</p>
   border-right-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_bottom_border {
+#rtpzozgqso .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_col_headings {
+#rtpzozgqso .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -243,7 +243,7 @@ categories:</p>
   border-right-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_col_heading {
+#rtpzozgqso .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -263,7 +263,7 @@ categories:</p>
   overflow-x: hidden;
 }
 
-#fyzhhfvnwp .gt_column_spanner_outer {
+#rtpzozgqso .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -275,15 +275,15 @@ categories:</p>
   padding-right: 4px;
 }
 
-#fyzhhfvnwp .gt_column_spanner_outer:first-child {
+#rtpzozgqso .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fyzhhfvnwp .gt_column_spanner_outer:last-child {
+#rtpzozgqso .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fyzhhfvnwp .gt_column_spanner {
+#rtpzozgqso .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -295,11 +295,11 @@ categories:</p>
   width: 100%;
 }
 
-#fyzhhfvnwp .gt_spanner_row {
+#rtpzozgqso .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fyzhhfvnwp .gt_group_heading {
+#rtpzozgqso .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -325,7 +325,7 @@ categories:</p>
   text-align: left;
 }
 
-#fyzhhfvnwp .gt_empty_group_heading {
+#rtpzozgqso .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -340,15 +340,15 @@ categories:</p>
   vertical-align: middle;
 }
 
-#fyzhhfvnwp .gt_from_md > :first-child {
+#rtpzozgqso .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fyzhhfvnwp .gt_from_md > :last-child {
+#rtpzozgqso .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fyzhhfvnwp .gt_row {
+#rtpzozgqso .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -367,7 +367,7 @@ categories:</p>
   overflow-x: hidden;
 }
 
-#fyzhhfvnwp .gt_stub {
+#rtpzozgqso .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -380,7 +380,7 @@ categories:</p>
   padding-right: 5px;
 }
 
-#fyzhhfvnwp .gt_stub_row_group {
+#rtpzozgqso .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -394,15 +394,15 @@ categories:</p>
   vertical-align: top;
 }
 
-#fyzhhfvnwp .gt_row_group_first td {
+#rtpzozgqso .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fyzhhfvnwp .gt_row_group_first th {
+#rtpzozgqso .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fyzhhfvnwp .gt_summary_row {
+#rtpzozgqso .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -412,16 +412,16 @@ categories:</p>
   padding-right: 5px;
 }
 
-#fyzhhfvnwp .gt_first_summary_row {
+#rtpzozgqso .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_first_summary_row.thick {
+#rtpzozgqso .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fyzhhfvnwp .gt_last_summary_row {
+#rtpzozgqso .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -431,7 +431,7 @@ categories:</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_grand_summary_row {
+#rtpzozgqso .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -441,7 +441,7 @@ categories:</p>
   padding-right: 5px;
 }
 
-#fyzhhfvnwp .gt_first_grand_summary_row {
+#rtpzozgqso .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -451,7 +451,7 @@ categories:</p>
   border-top-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_last_grand_summary_row_top {
+#rtpzozgqso .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -461,11 +461,11 @@ categories:</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_striped {
+#rtpzozgqso .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fyzhhfvnwp .gt_table_body {
+#rtpzozgqso .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -474,7 +474,7 @@ categories:</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_footnotes {
+#rtpzozgqso .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -488,7 +488,7 @@ categories:</p>
   border-right-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_footnote {
+#rtpzozgqso .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -497,7 +497,7 @@ categories:</p>
   padding-right: 5px;
 }
 
-#fyzhhfvnwp .gt_sourcenotes {
+#rtpzozgqso .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -511,7 +511,7 @@ categories:</p>
   border-right-color: #D3D3D3;
 }
 
-#fyzhhfvnwp .gt_sourcenote {
+#rtpzozgqso .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -519,63 +519,63 @@ categories:</p>
   padding-right: 5px;
 }
 
-#fyzhhfvnwp .gt_left {
+#rtpzozgqso .gt_left {
   text-align: left;
 }
 
-#fyzhhfvnwp .gt_center {
+#rtpzozgqso .gt_center {
   text-align: center;
 }
 
-#fyzhhfvnwp .gt_right {
+#rtpzozgqso .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fyzhhfvnwp .gt_font_normal {
+#rtpzozgqso .gt_font_normal {
   font-weight: normal;
 }
 
-#fyzhhfvnwp .gt_font_bold {
+#rtpzozgqso .gt_font_bold {
   font-weight: bold;
 }
 
-#fyzhhfvnwp .gt_font_italic {
+#rtpzozgqso .gt_font_italic {
   font-style: italic;
 }
 
-#fyzhhfvnwp .gt_super {
+#rtpzozgqso .gt_super {
   font-size: 65%;
 }
 
-#fyzhhfvnwp .gt_footnote_marks {
+#rtpzozgqso .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fyzhhfvnwp .gt_asterisk {
+#rtpzozgqso .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fyzhhfvnwp .gt_indent_1 {
+#rtpzozgqso .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fyzhhfvnwp .gt_indent_2 {
+#rtpzozgqso .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fyzhhfvnwp .gt_indent_3 {
+#rtpzozgqso .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fyzhhfvnwp .gt_indent_4 {
+#rtpzozgqso .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fyzhhfvnwp .gt_indent_5 {
+#rtpzozgqso .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -606,23 +606,23 @@ categories:</p>
 </div>
 <p><strong>Secondaries</strong>: optional variables that can be provided
 in the input data.</p>
-<div id="ppczouwtkz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ppczouwtkz table {
+<div id="htwwhmacfk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#htwwhmacfk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ppczouwtkz thead, #ppczouwtkz tbody, #ppczouwtkz tfoot, #ppczouwtkz tr, #ppczouwtkz td, #ppczouwtkz th {
+#htwwhmacfk thead, #htwwhmacfk tbody, #htwwhmacfk tfoot, #htwwhmacfk tr, #htwwhmacfk td, #htwwhmacfk th {
   border-style: none;
 }
 
-#ppczouwtkz p {
+#htwwhmacfk p {
   margin: 0;
   padding: 0;
 }
 
-#ppczouwtkz .gt_table {
+#htwwhmacfk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -648,12 +648,12 @@ in the input data.</p>
   border-left-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_caption {
+#htwwhmacfk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ppczouwtkz .gt_title {
+#htwwhmacfk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -665,7 +665,7 @@ in the input data.</p>
   border-bottom-width: 0;
 }
 
-#ppczouwtkz .gt_subtitle {
+#htwwhmacfk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -677,7 +677,7 @@ in the input data.</p>
   border-top-width: 0;
 }
 
-#ppczouwtkz .gt_heading {
+#htwwhmacfk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -689,13 +689,13 @@ in the input data.</p>
   border-right-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_bottom_border {
+#htwwhmacfk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_col_headings {
+#htwwhmacfk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -710,7 +710,7 @@ in the input data.</p>
   border-right-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_col_heading {
+#htwwhmacfk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -730,7 +730,7 @@ in the input data.</p>
   overflow-x: hidden;
 }
 
-#ppczouwtkz .gt_column_spanner_outer {
+#htwwhmacfk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -742,15 +742,15 @@ in the input data.</p>
   padding-right: 4px;
 }
 
-#ppczouwtkz .gt_column_spanner_outer:first-child {
+#htwwhmacfk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ppczouwtkz .gt_column_spanner_outer:last-child {
+#htwwhmacfk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ppczouwtkz .gt_column_spanner {
+#htwwhmacfk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -762,11 +762,11 @@ in the input data.</p>
   width: 100%;
 }
 
-#ppczouwtkz .gt_spanner_row {
+#htwwhmacfk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ppczouwtkz .gt_group_heading {
+#htwwhmacfk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -792,7 +792,7 @@ in the input data.</p>
   text-align: left;
 }
 
-#ppczouwtkz .gt_empty_group_heading {
+#htwwhmacfk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -807,15 +807,15 @@ in the input data.</p>
   vertical-align: middle;
 }
 
-#ppczouwtkz .gt_from_md > :first-child {
+#htwwhmacfk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ppczouwtkz .gt_from_md > :last-child {
+#htwwhmacfk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ppczouwtkz .gt_row {
+#htwwhmacfk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -834,7 +834,7 @@ in the input data.</p>
   overflow-x: hidden;
 }
 
-#ppczouwtkz .gt_stub {
+#htwwhmacfk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -847,7 +847,7 @@ in the input data.</p>
   padding-right: 5px;
 }
 
-#ppczouwtkz .gt_stub_row_group {
+#htwwhmacfk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -861,15 +861,15 @@ in the input data.</p>
   vertical-align: top;
 }
 
-#ppczouwtkz .gt_row_group_first td {
+#htwwhmacfk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ppczouwtkz .gt_row_group_first th {
+#htwwhmacfk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ppczouwtkz .gt_summary_row {
+#htwwhmacfk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -879,16 +879,16 @@ in the input data.</p>
   padding-right: 5px;
 }
 
-#ppczouwtkz .gt_first_summary_row {
+#htwwhmacfk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_first_summary_row.thick {
+#htwwhmacfk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ppczouwtkz .gt_last_summary_row {
+#htwwhmacfk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -898,7 +898,7 @@ in the input data.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_grand_summary_row {
+#htwwhmacfk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -908,7 +908,7 @@ in the input data.</p>
   padding-right: 5px;
 }
 
-#ppczouwtkz .gt_first_grand_summary_row {
+#htwwhmacfk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -918,7 +918,7 @@ in the input data.</p>
   border-top-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_last_grand_summary_row_top {
+#htwwhmacfk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -928,11 +928,11 @@ in the input data.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_striped {
+#htwwhmacfk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ppczouwtkz .gt_table_body {
+#htwwhmacfk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -941,7 +941,7 @@ in the input data.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_footnotes {
+#htwwhmacfk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -955,7 +955,7 @@ in the input data.</p>
   border-right-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_footnote {
+#htwwhmacfk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -964,7 +964,7 @@ in the input data.</p>
   padding-right: 5px;
 }
 
-#ppczouwtkz .gt_sourcenotes {
+#htwwhmacfk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -978,7 +978,7 @@ in the input data.</p>
   border-right-color: #D3D3D3;
 }
 
-#ppczouwtkz .gt_sourcenote {
+#htwwhmacfk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -986,63 +986,63 @@ in the input data.</p>
   padding-right: 5px;
 }
 
-#ppczouwtkz .gt_left {
+#htwwhmacfk .gt_left {
   text-align: left;
 }
 
-#ppczouwtkz .gt_center {
+#htwwhmacfk .gt_center {
   text-align: center;
 }
 
-#ppczouwtkz .gt_right {
+#htwwhmacfk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ppczouwtkz .gt_font_normal {
+#htwwhmacfk .gt_font_normal {
   font-weight: normal;
 }
 
-#ppczouwtkz .gt_font_bold {
+#htwwhmacfk .gt_font_bold {
   font-weight: bold;
 }
 
-#ppczouwtkz .gt_font_italic {
+#htwwhmacfk .gt_font_italic {
   font-style: italic;
 }
 
-#ppczouwtkz .gt_super {
+#htwwhmacfk .gt_super {
   font-size: 65%;
 }
 
-#ppczouwtkz .gt_footnote_marks {
+#htwwhmacfk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ppczouwtkz .gt_asterisk {
+#htwwhmacfk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ppczouwtkz .gt_indent_1 {
+#htwwhmacfk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ppczouwtkz .gt_indent_2 {
+#htwwhmacfk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ppczouwtkz .gt_indent_3 {
+#htwwhmacfk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ppczouwtkz .gt_indent_4 {
+#htwwhmacfk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ppczouwtkz .gt_indent_5 {
+#htwwhmacfk .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1101,23 +1101,23 @@ in the input data to pass multiple independent values to authors.
 Nestable variables must start with the same prefix. E.g.
 <code>affiliation_1</code>, <code>affiliation_2</code>, …,
 <code>affiliation_n</code> to pass several affiliations to authors.</p>
-<div id="avulludiuv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#avulludiuv table {
+<div id="ogsranuohf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ogsranuohf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#avulludiuv thead, #avulludiuv tbody, #avulludiuv tfoot, #avulludiuv tr, #avulludiuv td, #avulludiuv th {
+#ogsranuohf thead, #ogsranuohf tbody, #ogsranuohf tfoot, #ogsranuohf tr, #ogsranuohf td, #ogsranuohf th {
   border-style: none;
 }
 
-#avulludiuv p {
+#ogsranuohf p {
   margin: 0;
   padding: 0;
 }
 
-#avulludiuv .gt_table {
+#ogsranuohf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1143,12 +1143,12 @@ Nestable variables must start with the same prefix. E.g.
   border-left-color: #D3D3D3;
 }
 
-#avulludiuv .gt_caption {
+#ogsranuohf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#avulludiuv .gt_title {
+#ogsranuohf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1160,7 +1160,7 @@ Nestable variables must start with the same prefix. E.g.
   border-bottom-width: 0;
 }
 
-#avulludiuv .gt_subtitle {
+#ogsranuohf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1172,7 +1172,7 @@ Nestable variables must start with the same prefix. E.g.
   border-top-width: 0;
 }
 
-#avulludiuv .gt_heading {
+#ogsranuohf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1184,13 +1184,13 @@ Nestable variables must start with the same prefix. E.g.
   border-right-color: #D3D3D3;
 }
 
-#avulludiuv .gt_bottom_border {
+#ogsranuohf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#avulludiuv .gt_col_headings {
+#ogsranuohf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1205,7 +1205,7 @@ Nestable variables must start with the same prefix. E.g.
   border-right-color: #D3D3D3;
 }
 
-#avulludiuv .gt_col_heading {
+#ogsranuohf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1225,7 +1225,7 @@ Nestable variables must start with the same prefix. E.g.
   overflow-x: hidden;
 }
 
-#avulludiuv .gt_column_spanner_outer {
+#ogsranuohf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1237,15 +1237,15 @@ Nestable variables must start with the same prefix. E.g.
   padding-right: 4px;
 }
 
-#avulludiuv .gt_column_spanner_outer:first-child {
+#ogsranuohf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#avulludiuv .gt_column_spanner_outer:last-child {
+#ogsranuohf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#avulludiuv .gt_column_spanner {
+#ogsranuohf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1257,11 +1257,11 @@ Nestable variables must start with the same prefix. E.g.
   width: 100%;
 }
 
-#avulludiuv .gt_spanner_row {
+#ogsranuohf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#avulludiuv .gt_group_heading {
+#ogsranuohf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1287,7 +1287,7 @@ Nestable variables must start with the same prefix. E.g.
   text-align: left;
 }
 
-#avulludiuv .gt_empty_group_heading {
+#ogsranuohf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1302,15 +1302,15 @@ Nestable variables must start with the same prefix. E.g.
   vertical-align: middle;
 }
 
-#avulludiuv .gt_from_md > :first-child {
+#ogsranuohf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#avulludiuv .gt_from_md > :last-child {
+#ogsranuohf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#avulludiuv .gt_row {
+#ogsranuohf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1329,7 +1329,7 @@ Nestable variables must start with the same prefix. E.g.
   overflow-x: hidden;
 }
 
-#avulludiuv .gt_stub {
+#ogsranuohf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1342,7 +1342,7 @@ Nestable variables must start with the same prefix. E.g.
   padding-right: 5px;
 }
 
-#avulludiuv .gt_stub_row_group {
+#ogsranuohf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1356,15 +1356,15 @@ Nestable variables must start with the same prefix. E.g.
   vertical-align: top;
 }
 
-#avulludiuv .gt_row_group_first td {
+#ogsranuohf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#avulludiuv .gt_row_group_first th {
+#ogsranuohf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#avulludiuv .gt_summary_row {
+#ogsranuohf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1374,16 +1374,16 @@ Nestable variables must start with the same prefix. E.g.
   padding-right: 5px;
 }
 
-#avulludiuv .gt_first_summary_row {
+#ogsranuohf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#avulludiuv .gt_first_summary_row.thick {
+#ogsranuohf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#avulludiuv .gt_last_summary_row {
+#ogsranuohf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1393,7 +1393,7 @@ Nestable variables must start with the same prefix. E.g.
   border-bottom-color: #D3D3D3;
 }
 
-#avulludiuv .gt_grand_summary_row {
+#ogsranuohf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1403,7 +1403,7 @@ Nestable variables must start with the same prefix. E.g.
   padding-right: 5px;
 }
 
-#avulludiuv .gt_first_grand_summary_row {
+#ogsranuohf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1413,7 +1413,7 @@ Nestable variables must start with the same prefix. E.g.
   border-top-color: #D3D3D3;
 }
 
-#avulludiuv .gt_last_grand_summary_row_top {
+#ogsranuohf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1423,11 +1423,11 @@ Nestable variables must start with the same prefix. E.g.
   border-bottom-color: #D3D3D3;
 }
 
-#avulludiuv .gt_striped {
+#ogsranuohf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#avulludiuv .gt_table_body {
+#ogsranuohf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1436,7 +1436,7 @@ Nestable variables must start with the same prefix. E.g.
   border-bottom-color: #D3D3D3;
 }
 
-#avulludiuv .gt_footnotes {
+#ogsranuohf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1450,7 +1450,7 @@ Nestable variables must start with the same prefix. E.g.
   border-right-color: #D3D3D3;
 }
 
-#avulludiuv .gt_footnote {
+#ogsranuohf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1459,7 +1459,7 @@ Nestable variables must start with the same prefix. E.g.
   padding-right: 5px;
 }
 
-#avulludiuv .gt_sourcenotes {
+#ogsranuohf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1473,7 +1473,7 @@ Nestable variables must start with the same prefix. E.g.
   border-right-color: #D3D3D3;
 }
 
-#avulludiuv .gt_sourcenote {
+#ogsranuohf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1481,63 +1481,63 @@ Nestable variables must start with the same prefix. E.g.
   padding-right: 5px;
 }
 
-#avulludiuv .gt_left {
+#ogsranuohf .gt_left {
   text-align: left;
 }
 
-#avulludiuv .gt_center {
+#ogsranuohf .gt_center {
   text-align: center;
 }
 
-#avulludiuv .gt_right {
+#ogsranuohf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#avulludiuv .gt_font_normal {
+#ogsranuohf .gt_font_normal {
   font-weight: normal;
 }
 
-#avulludiuv .gt_font_bold {
+#ogsranuohf .gt_font_bold {
   font-weight: bold;
 }
 
-#avulludiuv .gt_font_italic {
+#ogsranuohf .gt_font_italic {
   font-style: italic;
 }
 
-#avulludiuv .gt_super {
+#ogsranuohf .gt_super {
   font-size: 65%;
 }
 
-#avulludiuv .gt_footnote_marks {
+#ogsranuohf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#avulludiuv .gt_asterisk {
+#ogsranuohf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#avulludiuv .gt_indent_1 {
+#ogsranuohf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#avulludiuv .gt_indent_2 {
+#ogsranuohf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#avulludiuv .gt_indent_3 {
+#ogsranuohf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#avulludiuv .gt_indent_4 {
+#ogsranuohf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#avulludiuv .gt_indent_5 {
+#ogsranuohf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1575,23 +1575,23 @@ Nestable variables must start with the same prefix. E.g.
 <p><strong>Constants</strong>: optional names that can be provided in
 the input data. These names are standardised and must be provided as
 is.</p>
-<div id="jrjuvsoghw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jrjuvsoghw table {
+<div id="wmprhgnyvp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wmprhgnyvp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jrjuvsoghw thead, #jrjuvsoghw tbody, #jrjuvsoghw tfoot, #jrjuvsoghw tr, #jrjuvsoghw td, #jrjuvsoghw th {
+#wmprhgnyvp thead, #wmprhgnyvp tbody, #wmprhgnyvp tfoot, #wmprhgnyvp tr, #wmprhgnyvp td, #wmprhgnyvp th {
   border-style: none;
 }
 
-#jrjuvsoghw p {
+#wmprhgnyvp p {
   margin: 0;
   padding: 0;
 }
 
-#jrjuvsoghw .gt_table {
+#wmprhgnyvp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1617,12 +1617,12 @@ is.</p>
   border-left-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_caption {
+#wmprhgnyvp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jrjuvsoghw .gt_title {
+#wmprhgnyvp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1634,7 +1634,7 @@ is.</p>
   border-bottom-width: 0;
 }
 
-#jrjuvsoghw .gt_subtitle {
+#wmprhgnyvp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1646,7 +1646,7 @@ is.</p>
   border-top-width: 0;
 }
 
-#jrjuvsoghw .gt_heading {
+#wmprhgnyvp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1658,13 +1658,13 @@ is.</p>
   border-right-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_bottom_border {
+#wmprhgnyvp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_col_headings {
+#wmprhgnyvp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1679,7 +1679,7 @@ is.</p>
   border-right-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_col_heading {
+#wmprhgnyvp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1699,7 +1699,7 @@ is.</p>
   overflow-x: hidden;
 }
 
-#jrjuvsoghw .gt_column_spanner_outer {
+#wmprhgnyvp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1711,15 +1711,15 @@ is.</p>
   padding-right: 4px;
 }
 
-#jrjuvsoghw .gt_column_spanner_outer:first-child {
+#wmprhgnyvp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jrjuvsoghw .gt_column_spanner_outer:last-child {
+#wmprhgnyvp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jrjuvsoghw .gt_column_spanner {
+#wmprhgnyvp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1731,11 +1731,11 @@ is.</p>
   width: 100%;
 }
 
-#jrjuvsoghw .gt_spanner_row {
+#wmprhgnyvp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jrjuvsoghw .gt_group_heading {
+#wmprhgnyvp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1761,7 +1761,7 @@ is.</p>
   text-align: left;
 }
 
-#jrjuvsoghw .gt_empty_group_heading {
+#wmprhgnyvp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1776,15 +1776,15 @@ is.</p>
   vertical-align: middle;
 }
 
-#jrjuvsoghw .gt_from_md > :first-child {
+#wmprhgnyvp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jrjuvsoghw .gt_from_md > :last-child {
+#wmprhgnyvp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jrjuvsoghw .gt_row {
+#wmprhgnyvp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1803,7 +1803,7 @@ is.</p>
   overflow-x: hidden;
 }
 
-#jrjuvsoghw .gt_stub {
+#wmprhgnyvp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1816,7 +1816,7 @@ is.</p>
   padding-right: 5px;
 }
 
-#jrjuvsoghw .gt_stub_row_group {
+#wmprhgnyvp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1830,15 +1830,15 @@ is.</p>
   vertical-align: top;
 }
 
-#jrjuvsoghw .gt_row_group_first td {
+#wmprhgnyvp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jrjuvsoghw .gt_row_group_first th {
+#wmprhgnyvp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jrjuvsoghw .gt_summary_row {
+#wmprhgnyvp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1848,16 +1848,16 @@ is.</p>
   padding-right: 5px;
 }
 
-#jrjuvsoghw .gt_first_summary_row {
+#wmprhgnyvp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_first_summary_row.thick {
+#wmprhgnyvp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jrjuvsoghw .gt_last_summary_row {
+#wmprhgnyvp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1867,7 +1867,7 @@ is.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_grand_summary_row {
+#wmprhgnyvp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1877,7 +1877,7 @@ is.</p>
   padding-right: 5px;
 }
 
-#jrjuvsoghw .gt_first_grand_summary_row {
+#wmprhgnyvp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1887,7 +1887,7 @@ is.</p>
   border-top-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_last_grand_summary_row_top {
+#wmprhgnyvp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1897,11 +1897,11 @@ is.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_striped {
+#wmprhgnyvp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jrjuvsoghw .gt_table_body {
+#wmprhgnyvp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1910,7 +1910,7 @@ is.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_footnotes {
+#wmprhgnyvp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1924,7 +1924,7 @@ is.</p>
   border-right-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_footnote {
+#wmprhgnyvp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1933,7 +1933,7 @@ is.</p>
   padding-right: 5px;
 }
 
-#jrjuvsoghw .gt_sourcenotes {
+#wmprhgnyvp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1947,7 +1947,7 @@ is.</p>
   border-right-color: #D3D3D3;
 }
 
-#jrjuvsoghw .gt_sourcenote {
+#wmprhgnyvp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1955,63 +1955,63 @@ is.</p>
   padding-right: 5px;
 }
 
-#jrjuvsoghw .gt_left {
+#wmprhgnyvp .gt_left {
   text-align: left;
 }
 
-#jrjuvsoghw .gt_center {
+#wmprhgnyvp .gt_center {
   text-align: center;
 }
 
-#jrjuvsoghw .gt_right {
+#wmprhgnyvp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jrjuvsoghw .gt_font_normal {
+#wmprhgnyvp .gt_font_normal {
   font-weight: normal;
 }
 
-#jrjuvsoghw .gt_font_bold {
+#wmprhgnyvp .gt_font_bold {
   font-weight: bold;
 }
 
-#jrjuvsoghw .gt_font_italic {
+#wmprhgnyvp .gt_font_italic {
   font-style: italic;
 }
 
-#jrjuvsoghw .gt_super {
+#wmprhgnyvp .gt_super {
   font-size: 65%;
 }
 
-#jrjuvsoghw .gt_footnote_marks {
+#wmprhgnyvp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jrjuvsoghw .gt_asterisk {
+#wmprhgnyvp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jrjuvsoghw .gt_indent_1 {
+#wmprhgnyvp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jrjuvsoghw .gt_indent_2 {
+#wmprhgnyvp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jrjuvsoghw .gt_indent_3 {
+#wmprhgnyvp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jrjuvsoghw .gt_indent_4 {
+#wmprhgnyvp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jrjuvsoghw .gt_indent_5 {
+#wmprhgnyvp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2109,23 +2109,23 @@ is.</p>
 variables don’t need to be provided in the input data and are ignored if
 supplied. You shouldn’t worry much about these variables unless you want
 to customise names or extend plume classes with new default names.</p>
-<div id="byfpsaefrg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#byfpsaefrg table {
+<div id="ydlgvxszyp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ydlgvxszyp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#byfpsaefrg thead, #byfpsaefrg tbody, #byfpsaefrg tfoot, #byfpsaefrg tr, #byfpsaefrg td, #byfpsaefrg th {
+#ydlgvxszyp thead, #ydlgvxszyp tbody, #ydlgvxszyp tfoot, #ydlgvxszyp tr, #ydlgvxszyp td, #ydlgvxszyp th {
   border-style: none;
 }
 
-#byfpsaefrg p {
+#ydlgvxszyp p {
   margin: 0;
   padding: 0;
 }
 
-#byfpsaefrg .gt_table {
+#ydlgvxszyp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2151,12 +2151,12 @@ to customise names or extend plume classes with new default names.</p>
   border-left-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_caption {
+#ydlgvxszyp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#byfpsaefrg .gt_title {
+#ydlgvxszyp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2168,7 +2168,7 @@ to customise names or extend plume classes with new default names.</p>
   border-bottom-width: 0;
 }
 
-#byfpsaefrg .gt_subtitle {
+#ydlgvxszyp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2180,7 +2180,7 @@ to customise names or extend plume classes with new default names.</p>
   border-top-width: 0;
 }
 
-#byfpsaefrg .gt_heading {
+#ydlgvxszyp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2192,13 +2192,13 @@ to customise names or extend plume classes with new default names.</p>
   border-right-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_bottom_border {
+#ydlgvxszyp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_col_headings {
+#ydlgvxszyp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2213,7 +2213,7 @@ to customise names or extend plume classes with new default names.</p>
   border-right-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_col_heading {
+#ydlgvxszyp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2233,7 +2233,7 @@ to customise names or extend plume classes with new default names.</p>
   overflow-x: hidden;
 }
 
-#byfpsaefrg .gt_column_spanner_outer {
+#ydlgvxszyp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2245,15 +2245,15 @@ to customise names or extend plume classes with new default names.</p>
   padding-right: 4px;
 }
 
-#byfpsaefrg .gt_column_spanner_outer:first-child {
+#ydlgvxszyp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#byfpsaefrg .gt_column_spanner_outer:last-child {
+#ydlgvxszyp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#byfpsaefrg .gt_column_spanner {
+#ydlgvxszyp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2265,11 +2265,11 @@ to customise names or extend plume classes with new default names.</p>
   width: 100%;
 }
 
-#byfpsaefrg .gt_spanner_row {
+#ydlgvxszyp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#byfpsaefrg .gt_group_heading {
+#ydlgvxszyp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2295,7 +2295,7 @@ to customise names or extend plume classes with new default names.</p>
   text-align: left;
 }
 
-#byfpsaefrg .gt_empty_group_heading {
+#ydlgvxszyp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2310,15 +2310,15 @@ to customise names or extend plume classes with new default names.</p>
   vertical-align: middle;
 }
 
-#byfpsaefrg .gt_from_md > :first-child {
+#ydlgvxszyp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#byfpsaefrg .gt_from_md > :last-child {
+#ydlgvxszyp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#byfpsaefrg .gt_row {
+#ydlgvxszyp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2337,7 +2337,7 @@ to customise names or extend plume classes with new default names.</p>
   overflow-x: hidden;
 }
 
-#byfpsaefrg .gt_stub {
+#ydlgvxszyp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2350,7 +2350,7 @@ to customise names or extend plume classes with new default names.</p>
   padding-right: 5px;
 }
 
-#byfpsaefrg .gt_stub_row_group {
+#ydlgvxszyp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2364,15 +2364,15 @@ to customise names or extend plume classes with new default names.</p>
   vertical-align: top;
 }
 
-#byfpsaefrg .gt_row_group_first td {
+#ydlgvxszyp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#byfpsaefrg .gt_row_group_first th {
+#ydlgvxszyp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#byfpsaefrg .gt_summary_row {
+#ydlgvxszyp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2382,16 +2382,16 @@ to customise names or extend plume classes with new default names.</p>
   padding-right: 5px;
 }
 
-#byfpsaefrg .gt_first_summary_row {
+#ydlgvxszyp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_first_summary_row.thick {
+#ydlgvxszyp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#byfpsaefrg .gt_last_summary_row {
+#ydlgvxszyp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2401,7 +2401,7 @@ to customise names or extend plume classes with new default names.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_grand_summary_row {
+#ydlgvxszyp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2411,7 +2411,7 @@ to customise names or extend plume classes with new default names.</p>
   padding-right: 5px;
 }
 
-#byfpsaefrg .gt_first_grand_summary_row {
+#ydlgvxszyp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2421,7 +2421,7 @@ to customise names or extend plume classes with new default names.</p>
   border-top-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_last_grand_summary_row_top {
+#ydlgvxszyp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2431,11 +2431,11 @@ to customise names or extend plume classes with new default names.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_striped {
+#ydlgvxszyp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#byfpsaefrg .gt_table_body {
+#ydlgvxszyp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2444,7 +2444,7 @@ to customise names or extend plume classes with new default names.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_footnotes {
+#ydlgvxszyp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2458,7 +2458,7 @@ to customise names or extend plume classes with new default names.</p>
   border-right-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_footnote {
+#ydlgvxszyp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2467,7 +2467,7 @@ to customise names or extend plume classes with new default names.</p>
   padding-right: 5px;
 }
 
-#byfpsaefrg .gt_sourcenotes {
+#ydlgvxszyp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2481,7 +2481,7 @@ to customise names or extend plume classes with new default names.</p>
   border-right-color: #D3D3D3;
 }
 
-#byfpsaefrg .gt_sourcenote {
+#ydlgvxszyp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2489,63 +2489,63 @@ to customise names or extend plume classes with new default names.</p>
   padding-right: 5px;
 }
 
-#byfpsaefrg .gt_left {
+#ydlgvxszyp .gt_left {
   text-align: left;
 }
 
-#byfpsaefrg .gt_center {
+#ydlgvxszyp .gt_center {
   text-align: center;
 }
 
-#byfpsaefrg .gt_right {
+#ydlgvxszyp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#byfpsaefrg .gt_font_normal {
+#ydlgvxszyp .gt_font_normal {
   font-weight: normal;
 }
 
-#byfpsaefrg .gt_font_bold {
+#ydlgvxszyp .gt_font_bold {
   font-weight: bold;
 }
 
-#byfpsaefrg .gt_font_italic {
+#ydlgvxszyp .gt_font_italic {
   font-style: italic;
 }
 
-#byfpsaefrg .gt_super {
+#ydlgvxszyp .gt_super {
   font-size: 65%;
 }
 
-#byfpsaefrg .gt_footnote_marks {
+#ydlgvxszyp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#byfpsaefrg .gt_asterisk {
+#ydlgvxszyp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#byfpsaefrg .gt_indent_1 {
+#ydlgvxszyp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#byfpsaefrg .gt_indent_2 {
+#ydlgvxszyp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#byfpsaefrg .gt_indent_3 {
+#ydlgvxszyp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#byfpsaefrg .gt_indent_4 {
+#ydlgvxszyp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#byfpsaefrg .gt_indent_5 {
+#ydlgvxszyp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2617,26 +2617,21 @@ replacements.</p>
 <span>    family_name <span class="op">=</span> <span class="st">"nom"</span>,</span>
 <span>    literal_name <span class="op">=</span> <span class="st">"nom_complet"</span>,</span>
 <span>    email <span class="op">=</span> <span class="st">"courriel"</span>,</span>
-<span>    initials <span class="op">=</span> <span class="st">"initiales"</span>,</span>
-<span>    role <span class="op">=</span> <span class="st">"role_v"</span></span>
+<span>    initials <span class="op">=</span> <span class="st">"initiales"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 10</span></span></span>
-<span><span class="co">#&gt;      id prénom      nom   nom_complet initiales courriel orcid note  affiliation</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis       Dide… Denis Dide… DD        diderot… 0000… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacqu… Rous… Jean-Jacqu… J-JR      roussea… 0000… <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-M… Arou… François-M… F-MA      arouet@… <span style="color: #BB0000;">NA</span>    dit … <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean        Le R… Jean Le Ro… JLRd'A    alember… 0000… né e… <span style="color: #949494;">&lt;tibble&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: role_v &lt;list&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt;      id prénom         nom      nom_complet initiales courriel orcid role  note </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis          Diderot  Denis Dide… DD        diderot… 0000… Supe… né e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-Jacques   Rousseau Jean-Jacqu… J-JR      roussea… 0000… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 François-Marie Arouet   François-M… F-MA      arouet@… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    dit …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond… Jean Le Ro… JLRd'A    alember… 0000… Supe… né e…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: affiliation &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="defining-roles-and-contributors">Defining roles and contributors<a class="anchor" aria-label="anchor" href="#defining-roles-and-contributors"></a>
 </h2>
-<div class="alert alert-warning">
-<p>This feature is currently only available in the development version
-of plume.</p>
-</div>
 <p>You can add roles by creating specific role columns in the input data
 and indicate contributors using a <code>1</code>:</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
@@ -2656,7 +2651,7 @@ actual roles to use.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">data</span>, roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>  supervision <span class="op">=</span> <span class="st">"supervised the project"</span>,</span>
-<span>  writing <span class="op">=</span> <span class="st">"contributed to the Encyclopédie"</span></span>
+<span>  writing <span class="op">=</span> <span class="st">"contributed to the writing"</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -2675,8 +2670,7 @@ using the <code>to_yaml()</code> method:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">encyclopedists</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span>,</span>
-<span>  names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_n"</span><span class="op">)</span></span>
+<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>---
@@ -2691,8 +2685,8 @@ author:
     orcid: 0000-0000-0000-0001
     note: born in 1713 in Langres
     roles:
-      - writing
       - supervision
+      - writing - original draft
     affiliations:
       - ref: aff1
   - id: aut2
@@ -2703,8 +2697,8 @@ author:
     orcid: 0000-0000-0000-0003
     note: born in 1717 in Paris
     roles:
-      - writing
       - supervision
+      - writing - original draft
     affiliations:
       - ref: aff1
       - ref: aff2
@@ -2724,8 +2718,7 @@ values with new ones.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">encyclopedists</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span>,</span>
-<span>  names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_n"</span><span class="op">)</span></span>
+<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>---
@@ -2738,7 +2731,7 @@ author:
     email: rousseau@encyclopediste.fr
     orcid: 0000-0000-0000-0002
     roles:
-      - writing
+      - writing - original draft
     affiliations:
       - ref: aff1
 affiliations:
@@ -2901,32 +2894,34 @@ ORCID.</p>
 <p>plume provides a convenient way to generate contribution lists using
 the <code>get_contributions()</code> method.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_n"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Writing: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
+<code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Supervision: D.D. and J.L.R.d'A.</span></span>
+<span><span class="co">#&gt; Writing - original draft: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span></span>
 <span>  roles_first <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  by_author <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  literal_names <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Denis Diderot: Writing and Supervision</span></span>
-<span><span class="co">#&gt; Jean-Jacques Rousseau: Writing</span></span>
-<span><span class="co">#&gt; François-Marie Arouet: Writing</span></span>
-<span><span class="co">#&gt; Jean Le Rond d'Alembert: Writing and Supervision</span></span>
+<span><span class="co">#&gt; Denis Diderot: Supervision and Writing - original draft</span></span>
+<span><span class="co">#&gt; Jean Le Rond d'Alembert: Supervision and Writing - original draft</span></span>
+<span><span class="co">#&gt; Jean-Jacques Rousseau: Writing - original draft</span></span>
+<span><span class="co">#&gt; François-Marie Arouet: Writing - original draft</span></span>
 <span></span>
-<span><span class="va">aut_v</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_v"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">aut_v</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>roles_first <span class="op">=</span> <span class="cn">FALSE</span>, divider <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
-<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie</span></span>
-<span><span class="co">#&gt; D.D. and J.L.R.d'A. supervised the project</span></span></code></pre></div>
+<span><span class="va">aut2</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  supervision <span class="op">=</span> <span class="st">"supervised the project"</span>,</span>
+<span>  writing <span class="op">=</span> <span class="st">"contributed to the Encyclopédie"</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">aut2</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>roles_first <span class="op">=</span> <span class="cn">FALSE</span>, divider <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
+<span><span class="co">#&gt; D.D. and J.L.R.d'A. supervised the project</span></span>
+<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie</span></span></code></pre></div>
 <p>By default, <code>get_contributions()</code> lists contributors in
 the order they’re defined. You can arrange contributors in alphabetical
 order with <code>alphabetical_order = TRUE</code>:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>alphabetical_order <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Writing: D.D., F.-M.A., J.-J.R. and J.L.R.d'A.</span></span>
-<span><span class="co">#&gt; Supervision: D.D. and J.L.R.d'A.</span></span></code></pre></div>
+<span><span class="co">#&gt; Supervision: D.D. and J.L.R.d'A.</span></span>
+<span><span class="co">#&gt; Writing - original draft: D.D., F.-M.A., J.-J.R. and J.L.R.d'A.</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
