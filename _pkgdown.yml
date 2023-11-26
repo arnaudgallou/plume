@@ -9,6 +9,7 @@ reference:
       - StatusSetterPlumeQuarto
       - Plume
       - StatusSetterPlume
+      - StatusSetter
       - PlumeHandler
       - NameHandler
   - title: Helpers
