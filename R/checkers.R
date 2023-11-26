@@ -64,8 +64,8 @@ are_credit_roles <- function(x) {
   all(x %in% credit_roles()) || all(x %in% credit_roles(FALSE))
 }
 
-dots_are_call <- function(...) {
-  nargs() == 1L && is.call(expr(...))
+are_calls <- function(...) {
+  all(map_vec(enexprs(...), is.call))
 }
 
 search_ <- function(x, callback, na_rm = TRUE, n = 1) {

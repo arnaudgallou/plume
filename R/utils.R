@@ -54,6 +54,31 @@ vec_in <- function(x, y, ignore_case = TRUE) {
   x %in% y
 }
 
+vec_match <- function(x, y, ignore_case = TRUE) {
+  if (ignore_case) {
+    x <- tolower(x)
+    y <- tolower(y)
+  }
+  match(x, y)
+}
+
+rank <- function(x, base) {
+  matches <- vec_match(x, base)
+  vec_rank(matches, ties = "dense")
+}
+
+assign_to_names <- function(x, names) {
+  x <- rep(list(x), length(names))
+  set_names(x, names)
+}
+
+collect_dots <- function(...) {
+  if (are_calls(...)) {
+    return(c(...))
+  }
+  enexprs(...)
+}
+
 condense <- function(x) {
   vec_drop_na(unique(x))
 }

@@ -6,8 +6,9 @@ reference:
   - title: Classes
     contents:
       - PlumeQuarto
-      - StatusSetterQuarto
+      - StatusSetterPlumeQuarto
       - Plume
+      - StatusSetterPlume
       - StatusSetter
       - PlumeHandler
       - NameHandler
