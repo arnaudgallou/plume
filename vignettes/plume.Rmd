@@ -54,29 +54,37 @@ list_keys <- function(x) {
   unlist(out)
 }
 
+build_table <- function(data) {
+  gt(data) |>
+  text_case_match(
+    "TRUE" ~ fontawesome::fa("check"),
+    .default = "",
+    .locations = cells_body(tidyselect::starts_with("Plume"))
+  ) |>
+  cols_label(name = "Name") |>
+  cols_align(align = "center", columns = tidyselect::starts_with("Plume")) |>
+  cols_width(name ~ pct(50)) |>
+  opt_row_striping()
+}
+
 fetch <- plume:::list_fetch
-.names <- plume:::.names
+.names_plume <- plume:::.names_plume
 .names_quarto <- plume:::.names_quarto
+.names_all <- purrr::list_modify(.names_plume, !!!.names_quarto)
+
+are_within <- function(x, y) {
+  unlist(y) %in% unlist(x)
+}
 
 make_table_vars <- function(category) {
-  vars_plume <- fetch(.names, category)
+  vars_plume <- fetch(.names_plume, category)
   vars_plume_quarto <- fetch(.names_quarto, category)
-  keys <- list_keys(vars_plume_quarto)
-  tibble::tibble(
-    name = keys,
-    Plume = ifelse(unlist(vars_plume_quarto) %in% unlist(vars_plume), 1, 0),
-    PlumeQuarto = 1
-  ) |>
-    gt() |>
-    text_case_match(
-      "1" ~ fontawesome::fa("check"),
-      .default = "",
-      .locations = cells_body(tidyselect::starts_with("Plume"))
-    ) |>
-    cols_label(name = "Name") |>
-    cols_align(align = "center", columns = tidyselect::starts_with("Plume")) |>
-    cols_width(name ~ pct(50)) |>
-    opt_row_striping()
+  vars <- fetch(.names_all, category)
+  build_table(tibble::tibble(
+    name = list_keys(vars),
+    Plume = are_within(vars_plume, vars),
+    PlumeQuarto = are_within(vars_plume_quarto, vars),
+  ))
 }
 ```
 
@@ -208,17 +216,26 @@ cat(read_file(tmp_file))
 
 ## Assigning status to authors
 
-plume provides three methods to set particular status to authors:
+```{r, echo = FALSE}
+ status_methods <- tibble::tibble(
+   name = c(
+     "set_corresponding_authors()",
+     "set_main_contributors()",
+     "set_equal_contributor()",
+     "set_deceased()"
+   ),
+   Plume = as.logical(c(1, 1, 0, 0)),
+   PlumeQuarto = as.logical(c(1, 0, 1, 1)),
+ )
+```
 
-- `set_corresponding_authors()`
+plume provides `r nrow(status_methods)` methods to set particular status to authors:
 
-- `set_equal_contributor()`
+```{r, echo = FALSE}
+build_table(status_methods)
+```
 
-- `set_deceased()`
-
-`set_equal_contributor()` and `set_deceased()` are specific to `PlumeQuarto`. You can specify equal contributors and deceased authors in `Plume` via the `note` variable.
-
-By default, `set_*()` methods assign values by authors' id. You can change this behaviour at the object (in `PlumeQuarto` only) or method level using the `by` parameter.
+By default, `set_*()` methods assign values by authors' id. You can change this behaviour at the object or method level using the `by`/`.by` parameters.
 
 Note that these methods are case insensitive.
 
@@ -335,6 +352,26 @@ aut2$get_contributions(roles_first = FALSE, divider = " ")
 ```
 
 By default, `get_contributions()` lists contributors in the order they're defined. You can arrange contributors in alphabetical order with `alphabetical_order = TRUE`:
+
+```{r}
+aut$get_contributions(alphabetical_order = TRUE)
+```
+
+It's possible to force one or more contributors to appear first in any given role using the `set_main_contributors()` method:
+
+```{r}
+aut$set_main_contributors(supervision = 4, writing = c(3, 2))
+aut$get_contributions()
+```
+
+You can easily assign the same main contributors across multiple roles using the `.roles` parameter:
+
+```{r}
+aut$set_main_contributors(jean, .roles = c("supervision", "writing"), .by = "given_name")
+aut$get_contributions()
+```
+
+Note that main contributors have the priority over the `alphabetical_order` parameter:
 
 ```{r}
 aut$get_contributions(alphabetical_order = TRUE)
