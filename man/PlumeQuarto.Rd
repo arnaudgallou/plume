@@ -43,7 +43,7 @@ cat(readr::read_file(tmp_file))
 \dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
-\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{plume::StatusSetterQuarto} -> \code{PlumeQuarto}
+\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterPlumeQuarto]{plume::StatusSetterPlumeQuarto}} -> \code{PlumeQuarto}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -59,8 +59,8 @@ cat(readr::read_file(tmp_file))
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>plume::StatusSetter$set_corresponding_authors()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterQuarto" data-id="set_deceased"><a href='../../plume/html/StatusSetterQuarto.html#method-StatusSetterQuarto-set_deceased'><code>plume::StatusSetterQuarto$set_deceased()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterQuarto" data-id="set_equal_contributor"><a href='../../plume/html/StatusSetterQuarto.html#method-StatusSetterQuarto-set_equal_contributor'><code>plume::StatusSetterQuarto$set_equal_contributor()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterPlumeQuarto" data-id="set_deceased"><a href='../../plume/html/StatusSetterPlumeQuarto.html#method-StatusSetterPlumeQuarto-set_deceased'><code>plume::StatusSetterPlumeQuarto$set_deceased()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterPlumeQuarto" data-id="set_equal_contributor"><a href='../../plume/html/StatusSetterPlumeQuarto.html#method-StatusSetterPlumeQuarto-set_equal_contributor'><code>plume::StatusSetterPlumeQuarto$set_equal_contributor()</code></a></span></li>
 </ul>
 </details>
 }}

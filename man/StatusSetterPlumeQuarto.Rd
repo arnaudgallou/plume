@@ -7,14 +7,14 @@
 Internal class extending \code{StatusSetter} for \code{PlumeQuarto}.
 }
 \section{Super classes}{
-\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{StatusSetterQuarto}
+\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{StatusSetterPlumeQuarto}
 }
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-StatusSetterQuarto-set_equal_contributor}{\code{StatusSetterPlumeQuarto$set_equal_contributor()}}
-\item \href{#method-StatusSetterQuarto-set_deceased}{\code{StatusSetterPlumeQuarto$set_deceased()}}
-\item \href{#method-StatusSetterQuarto-clone}{\code{StatusSetterPlumeQuarto$clone()}}
+\item \href{#method-StatusSetterPlumeQuarto-set_equal_contributor}{\code{StatusSetterPlumeQuarto$set_equal_contributor()}}
+\item \href{#method-StatusSetterPlumeQuarto-set_deceased}{\code{StatusSetterPlumeQuarto$set_deceased()}}
+\item \href{#method-StatusSetterPlumeQuarto-clone}{\code{StatusSetterPlumeQuarto$clone()}}
 }
 }
 \if{html}{\out{
@@ -28,8 +28,8 @@ Internal class extending \code{StatusSetter} for \code{PlumeQuarto}.
 </details>
 }}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-StatusSetterQuarto-set_equal_contributor"></a>}}
-\if{latex}{\out{\hypertarget{method-StatusSetterQuarto-set_equal_contributor}{}}}
+\if{html}{\out{<a id="method-StatusSetterPlumeQuarto-set_equal_contributor"></a>}}
+\if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-set_equal_contributor}{}}}
 \subsection{Method \code{set_equal_contributor()}}{
 Set equal contributors.
 \subsection{Usage}{
@@ -53,8 +53,8 @@ The class instance.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-StatusSetterQuarto-set_deceased"></a>}}
-\if{latex}{\out{\hypertarget{method-StatusSetterQuarto-set_deceased}{}}}
+\if{html}{\out{<a id="method-StatusSetterPlumeQuarto-set_deceased"></a>}}
+\if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-set_deceased}{}}}
 \subsection{Method \code{set_deceased()}}{
 Set deceased authors.
 \subsection{Usage}{
@@ -78,8 +78,8 @@ The class instance.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-StatusSetterQuarto-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-StatusSetterQuarto-clone}{}}}
+\if{html}{\out{<a id="method-StatusSetterPlumeQuarto-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
