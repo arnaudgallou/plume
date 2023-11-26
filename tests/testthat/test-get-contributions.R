@@ -111,6 +111,51 @@ test_that("get_contributions() reorders CRediT roles alphabetically", {
   )
 })
 
+test_that("set_main_contributors() ranks contributors", {
+  aut <- Plume$new(
+    data.frame(
+      given_name = c("C", "B", "A"),
+      family_name = c("C", "B", "A"),
+      writing = rep(1, 3),
+      analysis = rep(1, 3)
+    ),
+    roles = c(writing = "Writing", analysis = "Analysis")
+  )
+
+  aut$set_main_contributors(3, 2, .roles = "writing")
+  expect_equal(
+    aut$get_contributions(),
+    c("Writing: A.A., B.B. and C.C.", "Analysis: C.C., B.B. and A.A.")
+  )
+
+  aut$set_main_contributors(2, .roles = "writing")
+  expect_equal(
+    aut$get_contributions(alphabetical_order = TRUE),
+    c("Writing: B.B., A.A. and C.C.", "Analysis: A.A., B.B. and C.C.")
+  )
+
+  aut$set_main_contributors(3, .roles = c("writing", "analysis", "test"))
+  expect_equal(
+    aut$get_contributions(),
+    c("Writing: A.A., C.C. and B.B.", "Analysis: A.A., C.C. and B.B.")
+  )
+
+  aut$set_main_contributors(writing = aa, analysis = bb, .by = "initials")
+  expect_equal(
+    aut$get_contributions(),
+    c("Writing: A.A., C.C. and B.B.", "Analysis: B.B., C.C. and A.A.")
+  )
+
+  aut$set_main_contributors(
+    writing = c(aa, bb), analysis = bb,
+    .by = "initials"
+  )
+  expect_equal(
+    aut$get_contributions(),
+    c("Writing: A.A., B.B. and C.C.", "Analysis: B.B., C.C. and A.A.")
+  )
+})
+
 # Deprecation ----
 
 test_that("specifying roles inside columns is deprecated", {

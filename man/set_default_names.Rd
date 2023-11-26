@@ -22,7 +22,7 @@ plume subclass, e.g. to set default names to a language other than English.
 \details{
 Available names are:
 
-\code{id}, \code{initials}, \code{literal_name}, \code{corresponding}, \code{given_name}, \code{family_name}, \code{email}, \code{phone}, \code{fax}, \code{url}, \code{affiliation}, \code{role}, \code{note}, \code{orcid}.
+\code{id}, \code{initials}, \code{literal_name}, \code{corresponding}, \code{contributor_rank}, \code{given_name}, \code{family_name}, \code{email}, \code{phone}, \code{fax}, \code{url}, \code{affiliation}, \code{role}, \code{note}, \code{orcid}.
 
 Using \code{.plume_quarto = TRUE} adds \code{deceased}, \code{equal_contributor}, \code{number},
 \code{dropping_particle} and \code{acknowledgements}.
