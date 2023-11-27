@@ -18,6 +18,7 @@ credit_roles <- function(oxford_spelling = TRUE) {
 }
 
 full_rename <- function(x, pattern, replacement) {
-  names(x) <- string_replace(names(x), pattern, replacement)
-  string_replace(x, pattern, replacement)
+  names(x) <- str_replace(names(x), pattern, replacement)
+  x[] <- str_replace(x, pattern, replacement)
+  x
 }

@@ -29,9 +29,9 @@ tempfile_ <- function() {
 dedent <- function(string) {
   out <- trimws(string)
   ws_regex <- "(?<=\n) "
-  ws <- string_extract_all(out, paste0(ws_regex, "+"))
+  ws <- str_extract_all(out, paste0(ws_regex, "+"), simplify = TRUE)
   ws_n <- min(nchar(ws))
-  string_remove_all(out, paste0(ws_regex, "{", ws_n, "}"))
+  str_remove_all(out, paste0(ws_regex, "{", ws_n, "}"))
 }
 
 read_test_file <- function(file) {

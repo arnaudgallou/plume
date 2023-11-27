@@ -1,9 +1,9 @@
 has_uppercase <- function(x) {
-  string_detect(x, "\\p{Lu}")
+  str_detect(x, "\\p{Lu}")
 }
 
 detect_name <- function(x, name) {
-  string_detect(names(x), name)
+  str_detect(names(x), name)
 }
 
 has_name <- function(x, name) {
@@ -14,12 +14,12 @@ has_name.default <- function(x, name) {
   name %in% names(x)
 }
 
-has_name.regex <- function(x, name) {
+has_name.stringr_regex <- function(x, name) {
   any(detect_name(x, name))
 }
 
 has_metachr <- function(x) {
-  string_detect(x, r"{[\\\[\](){}|?$^*+]}")
+  str_detect(x, r"{[\\\[\](){}|?$^*+]}")
 }
 
 has_homonyms <- function(x) {
@@ -27,7 +27,7 @@ has_homonyms <- function(x) {
 }
 
 has_overflowing_ws <- function(x) {
-  string_detect(x, "^\\s|\\s$")
+  str_detect(x, "^\\s|\\s$")
 }
 
 is_empty <- function(x) {
@@ -55,7 +55,7 @@ is_nested <- function(x, item) {
 }
 
 is_blank <- function(x) {
-  string_detect(x, "^\\s*$")
+  str_detect(x, "^\\s*$")
 }
 
 is_not_na <- Negate(is.na)
@@ -258,7 +258,7 @@ check_suffix_format <- function(x, allowed, arg = caller_arg(x)) {
 }
 
 path_is_relative <- function(x) {
-  !string_detect(x, "^(/|[A-Za-z]:|\\\\|~)")
+  !str_detect(x, "^(/|[A-Za-z]:|\\\\|~)")
 }
 
 check_path <- function(x, ..., arg = caller_arg(x)) {
@@ -274,7 +274,7 @@ check_path <- function(x, ..., arg = caller_arg(x)) {
 }
 
 file_ext <- function(x) {
-  string_extract(x, "(?<=\\.)[^.]+$")
+  str_extract(x, "(?<=\\.)[^.]+$")
 }
 
 check_file <- function(x, extension, ..., arg = caller_arg(x)) {
@@ -289,7 +289,7 @@ check_file <- function(x, extension, ..., arg = caller_arg(x)) {
 }
 
 is_glueish <- function(x) {
-  is_string(x) && string_detect(x, "{[^}]+}")
+  is_string(x) && str_detect(x, "\\{[^}]+\\}")
 }
 
 check_glue <- function(x, allowed, ..., arg = caller_arg(x)) {
@@ -310,7 +310,7 @@ check_glue <- function(x, allowed, ..., arg = caller_arg(x)) {
 }
 
 is_orcid <- function(x) {
-  string_detect(x, "^(?:\\d{4}-){3}\\d{3}(?:\\d|X)$")
+  str_detect(x, "^(?:\\d{4}-){3}\\d{3}(?:\\d|X)$")
 }
 
 check_orcid <- function(x, ..., arg = caller_arg(x)) {
