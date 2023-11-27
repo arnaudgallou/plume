@@ -234,8 +234,8 @@ parse_affiliation <- function(x) {
   }
   keys <- collapse(affiliation_keys, sep = "|")
   keys_regex <- paste0("\\b(?i:", keys, ")")
-  nms <- string_extract_all(x, sprintf("%s(?==)", keys_regex))
-  els <- string_split(x, sprintf("\\s*%s=\\s*", keys_regex))[-1]
+  nms <- str_extract_all(x, sprintf("%s(?==)", keys_regex), simplify = TRUE)
+  els <- str_split_1(x, sprintf("\\s*%s=\\s*", keys_regex))[-1]
   set_names(els, tolower(nms))
 }
 
@@ -244,5 +244,5 @@ make_affiliation_id <- function(x) {
 }
 
 has_affiliation_sep <- function(x) {
-  string_contain(x, "=")
+  str_contain(x, "=")
 }

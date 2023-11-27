@@ -250,7 +250,7 @@ PlumeHandler$set("private", "check_role_system", function() {
     return()
   }
   roles <- select(private$plume, starts_with(var))
-  have_explicit_roles <- map_vec(roles, \(role) any(string_detect(role, "\\D")))
+  have_explicit_roles <- map_vec(roles, \(role) any(str_detect(role, "\\D")))
   if (!all(have_explicit_roles)) {
     return()
   }

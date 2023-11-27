@@ -19,6 +19,8 @@
 #' @importFrom rlang caller_env caller_arg
 #' @importFrom glue glue glue_collapse
 #' @importFrom vctrs vec_group_id vec_duplicate_any vec_restore vec_rank
+#' @importFrom stringr str_split_1 str_remove_all str_replace str_replace_all
+#' @importFrom stringr str_extract str_extract_all fixed regex
 #' @importFrom jsonlite toJSON parse_json
 #' @importFrom yaml yaml.load as.yaml
 #' @importFrom R6 R6Class

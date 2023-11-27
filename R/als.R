@@ -10,13 +10,13 @@ als_key_set <- function(format) {
 }
 
 als_extract_keys <- function(x) {
-  x <- string_split(x)
+  x <- str_split_1(x, "")
   x[x %in% letters]
 }
 
 als_extract_mark <- function(format, key) {
   mark_regex <- paste0("[,^]{1,2}(?=", key, ")")
-  mark <- string_extract(format, mark_regex)
+  mark <- str_extract(format, mark_regex)
   if (is.na(mark)) {
     return("")
   }
@@ -24,7 +24,7 @@ als_extract_mark <- function(format, key) {
 }
 
 als_sanitise <- function(x) {
-  string_remove_all(x, "([,^])\\K\\1+")
+  str_remove_all(x, "(?<=([,^]))\\1+")
 }
 
 als_parse <- function(format) {
@@ -40,7 +40,7 @@ als_parse <- function(format) {
 
 als_join <- function(elts, marks) {
   out <- map2_vec(elts, marks, \(elt, mark) {
-    if (is_blank(elt) & string_contain(mark, "^")) {
+    if (is_blank(elt) & str_contain(mark, "^")) {
       return("^")
     } else if (is_blank(elt)) {
       return(elt)
@@ -52,7 +52,7 @@ als_join <- function(elts, marks) {
 
 als_clean <- function(x) {
   for (pattern in c("(?<=^|\\^),|,$", "\\^{2}")) {
-    x <- string_remove_all(x, pattern)
+    x <- str_remove_all(x, pattern)
   }
   x
 }

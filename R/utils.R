@@ -23,11 +23,11 @@ not_na_any <- function(cols) {
 }
 
 dot <- function(x) {
-  string_replace_all(x, "(?<=[\\pL\\pN](?!\\p{Po}))", ".")
+  str_replace_all(x, "(?<=[\\p{L}\\p{N}](?!\\p{Po}))", ".")
 }
 
 make_initials <- function(x, dot = FALSE) {
-  out <- string_remove_all(x, "(*UCP)\\B\\w+|[\\s.]+")
+  out <- str_remove_all(x, "\\B\\w+|[\\s.]+")
   if (dot) {
     out <- dot(out)
   }
@@ -106,7 +106,7 @@ get_params_set_to_true <- function() {
 }
 
 extract_glue_vars <- function(x) {
-  string_extract_all(x, "(?<=\\{\\b)[^}]+")
+  str_extract_all(x, "(?<=\\{\\b)[^}]+", simplify = TRUE)
 }
 
 group_id <- function(x) {
@@ -127,8 +127,17 @@ propagate_na <- function(x, from) {
 to_chr_class <- function(x, negate = FALSE) {
   neg <- if (negate) "^" else ""
   x <- collapse(x)
-  x <- string_replace(x, r"{([-\\\[\]])}", r"{\\\1}")
+  x <- str_replace(x, r"{([-\\\[\]])}", r"{\\\1}")
   paste0("[", neg, x, "]")
+}
+
+str_contain <- function(string, pattern) {
+  str_detect(string, fixed(pattern))
+}
+
+str_detect <- function(string, pattern) {
+  out <- stringr::str_detect(string, pattern)
+  replace(out, is.na(string), FALSE)
 }
 
 wrap <- function(x, value) {
