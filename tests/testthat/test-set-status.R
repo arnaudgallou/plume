@@ -9,7 +9,7 @@ test_that("sets status to selected authors", {
   }, rep(TRUE, 3))
 
   expect_equal({
-    aut$set_corresponding_authors(everyone_but(ric), by = "given_name")
+    aut$set_corresponding_authors(everyone_but(ric), .by = "given_name")
     aut$get_plume()$corresponding
   }, c(TRUE, FALSE, TRUE))
 
@@ -24,23 +24,33 @@ test_that("sets status to selected authors", {
   }, c(TRUE, FALSE, TRUE))
 
   expect_equal({
-    aut$set_corresponding_authors(zip, by = "given_name")
+    aut$set_corresponding_authors(zip, .by = "given_name")
     aut$get_plume()$corresponding
   }, c(TRUE, FALSE, FALSE))
 
   # set_equal_contributor
 
   expect_equal({
-    aut$set_equal_contributor(zip, by = "given_name")
+    aut$set_equal_contributor(zip, .by = "given_name")
     aut$get_plume()$equal_contributor
   }, c(TRUE, FALSE, FALSE))
 
   # set_deceased
 
   expect_equal({
-    aut$set_deceased(zip, by = "given_name")
+    aut$set_deceased(zip, .by = "given_name")
     aut$get_plume()$deceased
   }, c(TRUE, FALSE, FALSE))
+})
+
+# Deprecation ----
+
+test_that("the `by` parameter is deprecated", {
+  expect_snapshot({
+    aut <- Plume$new(basic_df)
+    aut$set_corresponding_authors(zip, by = "given_name")
+  })
+  expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
 })
 
 # Errors ----
@@ -50,31 +60,31 @@ test_that("set_*() methods give meaningful error messages", {
 
   expect_snapshot({
     (expect_error(
-      aut$set_corresponding_authors(a, by = "foo")
+      aut$set_corresponding_authors(a, .by = "foo")
     ))
     (expect_error(
-      aut$set_corresponding_authors(a, by = "")
+      aut$set_corresponding_authors(a, .by = "")
     ))
     (expect_error(
-      aut$set_corresponding_authors(a, by = 1)
+      aut$set_corresponding_authors(a, .by = 1)
     ))
     (expect_error(
-      aut$set_equal_contributor(a, by = "foo")
+      aut$set_equal_contributor(a, .by = "foo")
     ))
     (expect_error(
-      aut$set_equal_contributor(a, by = "")
+      aut$set_equal_contributor(a, .by = "")
     ))
     (expect_error(
-      aut$set_equal_contributor(a, by = 1)
+      aut$set_equal_contributor(a, .by = 1)
     ))
     (expect_error(
-      aut$set_deceased(a, by = "foo")
+      aut$set_deceased(a, .by = "foo")
     ))
     (expect_error(
-      aut$set_deceased(a, by = "")
+      aut$set_deceased(a, .by = "")
     ))
     (expect_error(
-      aut$set_deceased(a, by = 1)
+      aut$set_deceased(a, .by = 1)
     ))
   })
 })

@@ -92,7 +92,7 @@ Alternatively, you can generate author information as character strings using `P
 
 ```{r, message = FALSE}
 aut <- Plume$new(encyclopedists)
-aut$set_corresponding_authors(diderot, by = "family_name")
+aut$set_corresponding_authors(diderot, .by = "family_name")
 
 aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
 
