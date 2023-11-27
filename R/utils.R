@@ -106,7 +106,7 @@ get_params_set_to_true <- function() {
 }
 
 extract_glue_vars <- function(x) {
-  string_extract_all(x, "(?<=\\{)[^}]+")
+  string_extract_all(x, "(?<=\\{\\b)[^}]+")
 }
 
 group_id <- function(x) {

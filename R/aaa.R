@@ -77,7 +77,7 @@
 # nocov start
 link <- function(id) {
   els <- .links[[id]]
-  md_link(els[2], els[1])
+  md_link(els[[2]], els[[1]])
 }
 
 print_deprecation <- function(id, ...) {

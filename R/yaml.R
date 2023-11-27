@@ -65,7 +65,7 @@ yaml_push <- function(what, file) {
   check_has_yaml(text)
   items <- separate_yaml_header(text)
   json <- as_json(what)
-  json <- json_update(items[2], json)
+  json <- json_update(items[[2]], json)
   if (is.null(json)) {
     return(invisible(NULL))
   }

@@ -233,7 +233,7 @@ parse_affiliation <- function(x) {
     return(set_names(x, "name"))
   }
   keys <- collapse(affiliation_keys, sep = "|")
-  keys_regex <- paste0("\\b(?:", keys, ")")
+  keys_regex <- paste0("\\b(?i:", keys, ")")
   nms <- string_extract_all(x, sprintf("%s(?==)", keys_regex))
   els <- string_split(x, sprintf("\\s*%s=\\s*", keys_regex))[-1]
   set_names(els, tolower(nms))

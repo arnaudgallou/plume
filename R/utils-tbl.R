@@ -43,7 +43,7 @@ add_suffixes <- function(data, cols, symbols) {
     if (key == "orcid") {
       data <<- add_orcid_icons(data, value)
     } else {
-      data <<- add_symbols(data, .cols[key], value)
+      data <<- add_symbols(data, .cols[[key]], value)
     }
   })
   data

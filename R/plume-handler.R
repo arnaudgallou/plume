@@ -71,7 +71,7 @@ PlumeHandler <- R6Class(
     mount = function() {
       private$build()
       for (col in private$pick("nestables")) {
-        if (private$is_nestable(begins_with(col))) {
+        if (private$is_nestable(col)) {
           private$nest(col)
         }
       }
@@ -141,13 +141,13 @@ PlumeHandler <- R6Class(
           !!given_name := make_initials(.data[[given_name]], dot = TRUE)
         )
       }
-      private$make_literals()
+      private$make_literal_names()
       if (any(has_uppercase(private$get("literal_name")))) {
         private$make_initials()
       }
     },
 
-    make_literals = function() {
+    make_literal_names = function() {
       nominal <- private$pick("primaries")
       if (private$family_name_first) {
         nominal <- rev(nominal)
@@ -182,6 +182,7 @@ PlumeHandler <- R6Class(
     },
 
     is_nestable = function(col) {
+      col <- begins_with(col)
       private$has_col(col) && col_count(private$plume, col) > 1L
     },
 
