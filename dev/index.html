@@ -215,7 +215,7 @@
 <p>Alternatively, you can generate author information as character strings using <code>Plume</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="va">diderot</span>, by <span class="op">=</span> <span class="st">"family_name"</span><span class="op">)</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="va">diderot</span>, .by <span class="op">=</span> <span class="st">"family_name"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"^a,^cn"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Denis Diderot^1,^\*†, Jean-Jacques Rousseau^2^, François-Marie Arouet^2^‡,</span></span>
