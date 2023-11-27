@@ -17,7 +17,7 @@ test_that("initialize() builds a plume dataset", {
   )
   aut <- Plume$new(
     df_fr,
-    names = setNames(nms_fr, nms_en),
+    names = set_names(nms_fr, nms_en),
     roles = c(analyse = "a", rédaction = "b")
   )
 
@@ -30,7 +30,7 @@ test_that("objects of class `data.frame` are converted to tibbles", {
 })
 
 test_that("`Plume` drops `PlumeQuarto`-specific variables", {
-  df <- tibble(given_name = "X", family_name = "Y", dropping_particle = "o")
+  df <- data.frame(given_name = "X", family_name = "Y", dropping_particle = "o")
 
   aut <- Plume$new(df)
   nms <- c("id", "given_name", "family_name", "literal_name", "initials")
@@ -42,7 +42,7 @@ test_that("`Plume` drops `PlumeQuarto`-specific variables", {
 })
 
 test_that("initialize() ignores unknown variables", {
-  aut <- Plume$new(tibble(given_name = "X", family_name = "Y", foo = ""))
+  aut <- Plume$new(data.frame(given_name = "X", family_name = "Y", foo = ""))
   expect_false(has_name(aut$get_plume(), "foo"))
 })
 
