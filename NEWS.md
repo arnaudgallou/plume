@@ -1,5 +1,7 @@
 # plume (development version)
 
+* Removed stringb dependency in favour of stringr (#42).
+
 * The `by` parameter in `$set_*()` methods is now deprecated in favour of `.by` (#41).
 
 * `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors to appear first in the contribution list for any given role. `Plume`'s contructor also regains the parameter `by` to set the default `by`/`.by` value used in all `set_*()` methods.
