@@ -52,6 +52,10 @@ PlumeHandler <- R6Class(
 
     get_plume = function() {
       private$plume
+    },
+
+    get_roles = function() {
+      private$roles
     }
   ),
 
