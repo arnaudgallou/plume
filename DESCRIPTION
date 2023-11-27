@@ -2,12 +2,9 @@ Type: Package
 Package: plume
 Title: A Simple Author Handler for Scientific Writing
 Version: 0.1.0.9000
-Authors@R: c(
+Authors@R: 
     person("Arnaud", "Gallou", , "arangacas@gmail.com", role = c("aut", "cre", "cph"),
-           comment = c(ORCID = "0000-0002-1002-4247")),
-    person("Hadley", "Wickham", role = "cph",
-           comment = "Author of included stringb functions.")
-  )
+           comment = c(ORCID = "0000-0002-1002-4247"))
 Description: Handles and formats author information in scientific writing
     in 'R Markdown' and 'Quarto'. 'plume' provides easy-to-use and
     flexible tools for injecting author metadata in 'YAML' headers as well

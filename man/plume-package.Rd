@@ -23,10 +23,5 @@ Useful links:
 \author{
 \strong{Maintainer}: Arnaud Gallou \email{arangacas@gmail.com} (\href{https://orcid.org/0000-0002-1002-4247}{ORCID}) [copyright holder]
 
-Other contributors:
-\itemize{
-  \item Hadley Wickham (Author of included stringb functions.) [copyright holder]
-}
-
 }
 \keyword{internal}
