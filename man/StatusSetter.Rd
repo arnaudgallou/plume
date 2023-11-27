@@ -40,7 +40,7 @@ Internal class that manages authors' status.
 \subsection{Method \code{set_corresponding_authors()}}{
 Set corresponding authors.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$set_corresponding_authors(..., by)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$set_corresponding_authors(..., .by, by = deprecated())}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -50,8 +50,12 @@ Set corresponding authors.
 Expressions matching values in the column defined by \code{by} determine
 corresponding authors. Matching of values is case-insensitive.}
 
-\item{\code{by}}{Variable used to set corresponding authors. By default, uses
+\item{\code{.by}}{Variable used to set corresponding authors. By default, uses
 authors' id.}
+
+\item{\code{by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Please use the \code{.by} parameter instead.}
 }
 \if{html}{\out{</div>}}
 }

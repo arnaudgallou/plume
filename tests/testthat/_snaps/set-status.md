@@ -1,59 +1,69 @@
+# the `by` parameter is deprecated
+
+    Code
+      aut <- Plume$new(basic_df)
+      aut$set_corresponding_authors(zip, by = "given_name")
+    Condition
+      Warning:
+      The `by` argument of `set_corresponding_author()` is deprecated as of plume 0.2.0.
+      i Please use the `.by` argument instead.
+
 # set_*() methods give meaningful error messages
 
     Code
-      (expect_error(aut$set_corresponding_authors(a, by = "foo")))
+      (expect_error(aut$set_corresponding_authors(a, .by = "foo")))
     Output
       <error/rlang_error>
       Error:
       ! Column `foo` doesn't exist.
     Code
-      (expect_error(aut$set_corresponding_authors(a, by = "")))
+      (expect_error(aut$set_corresponding_authors(a, .by = "")))
     Output
       <error/rlang_error>
       Error:
-      ! `by` must be a non-empty string.
+      ! `.by` must be a non-empty string.
     Code
-      (expect_error(aut$set_corresponding_authors(a, by = 1)))
+      (expect_error(aut$set_corresponding_authors(a, .by = 1)))
     Output
       <error/rlang_error>
       Error:
-      ! `by` must be a character string.
+      ! `.by` must be a character string.
     Code
-      (expect_error(aut$set_equal_contributor(a, by = "foo")))
+      (expect_error(aut$set_equal_contributor(a, .by = "foo")))
     Output
       <error/rlang_error>
       Error:
       ! Column `foo` doesn't exist.
     Code
-      (expect_error(aut$set_equal_contributor(a, by = "")))
+      (expect_error(aut$set_equal_contributor(a, .by = "")))
     Output
       <error/rlang_error>
       Error:
-      ! `by` must be a non-empty string.
+      ! `.by` must be a non-empty string.
     Code
-      (expect_error(aut$set_equal_contributor(a, by = 1)))
+      (expect_error(aut$set_equal_contributor(a, .by = 1)))
     Output
       <error/rlang_error>
       Error:
-      ! `by` must be a character string.
+      ! `.by` must be a character string.
     Code
-      (expect_error(aut$set_deceased(a, by = "foo")))
+      (expect_error(aut$set_deceased(a, .by = "foo")))
     Output
       <error/rlang_error>
       Error:
       ! Column `foo` doesn't exist.
     Code
-      (expect_error(aut$set_deceased(a, by = "")))
+      (expect_error(aut$set_deceased(a, .by = "")))
     Output
       <error/rlang_error>
       Error:
-      ! `by` must be a non-empty string.
+      ! `.by` must be a non-empty string.
     Code
-      (expect_error(aut$set_deceased(a, by = 1)))
+      (expect_error(aut$set_deceased(a, .by = 1)))
     Output
       <error/rlang_error>
       Error:
-      ! `by` must be a character string.
+      ! `.by` must be a character string.
 
 # everyone*() selectors error if used in a wrong context
 

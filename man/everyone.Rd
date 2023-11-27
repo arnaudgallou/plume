@@ -30,7 +30,7 @@ aut$get_plume() |> dplyr::select(1:3, corresponding)
 
 aut$set_corresponding_authors(
   everyone_but(jean),
-  by = "given_name"
+  .by = "given_name"
 )
 aut$get_plume() |> dplyr::select(1:3, corresponding)
 }

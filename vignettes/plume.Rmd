@@ -242,7 +242,7 @@ Note that these methods are case insensitive.
 ```{r}
 aut <- Plume$new(dplyr::select(encyclopedists, given_name, family_name))
 
-aut$set_corresponding_authors(dd, "j-jr", by = "initials")
+aut$set_corresponding_authors(dd, "j-jr", .by = "initials")
 aut
 ```
 
@@ -256,7 +256,7 @@ aut
 Or its variant `everyone_but()` to assign `TRUE` to all but specific authors:
 
 ```{r}
-aut$set_corresponding_authors(everyone_but(jean), by = "given_name")
+aut$set_corresponding_authors(everyone_but(jean), .by = "given_name")
 aut
 ```
 

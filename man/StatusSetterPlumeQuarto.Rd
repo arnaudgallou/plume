@@ -33,7 +33,7 @@ Internal class extending \code{StatusSetter} for \code{PlumeQuarto}.
 \subsection{Method \code{set_equal_contributor()}}{
 Set equal contributors.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_equal_contributor(..., by)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_equal_contributor(..., .by, by = deprecated())}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -43,8 +43,12 @@ Set equal contributors.
 Expressions matching values in the column defined by \code{by} determine
 equal contributors. Matching of values is case-insensitive.}
 
-\item{\code{by}}{Variable used to specify which authors are equal contributors.
+\item{\code{.by}}{Variable used to specify which authors are equal contributors.
 By default, uses authors' id.}
+
+\item{\code{by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Please use the \code{.by} parameter instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -58,7 +62,7 @@ The class instance.
 \subsection{Method \code{set_deceased()}}{
 Set deceased authors.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_deceased(..., by)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_deceased(..., .by, by = deprecated())}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -68,8 +72,12 @@ Set deceased authors.
 Expressions matching values in the column defined by \code{by} determine
 deceased authors. Matching of values is case-insensitive.}
 
-\item{\code{by}}{Variable used to specify whether an author is deceased or not.
+\item{\code{.by}}{Variable used to specify whether an author is deceased or not.
 By default, uses authors' id.}
+
+\item{\code{by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Please use the \code{.by} parameter instead.}
 }
 \if{html}{\out{</div>}}
 }

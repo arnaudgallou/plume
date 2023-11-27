@@ -167,7 +167,7 @@ using `Plume`:
 
 ``` r
 aut <- Plume$new(encyclopedists)
-aut$set_corresponding_authors(diderot, by = "family_name")
+aut$set_corresponding_authors(diderot, .by = "family_name")
 
 aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
 #> Denis Diderot^1,^\*†, Jean-Jacques Rousseau^2^, François-Marie Arouet^2^‡,

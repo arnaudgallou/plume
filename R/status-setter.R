@@ -21,19 +21,28 @@ StatusSetter <- R6Class(
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by` determine
     #'   corresponding authors. Matching of values is case-insensitive.
-    #' @param by Variable used to set corresponding authors. By default, uses
+    #' @param .by Variable used to set corresponding authors. By default, uses
     #'   authors' id.
+    #' @param by `r lifecycle::badge("deprecated")`
+    #'
+    #'   Please use the `.by` parameter instead.
     #' @return The class instance.
-    set_corresponding_authors = function(..., by) {
-      private$set_status("corresponding", ..., by = by)
+    set_corresponding_authors = function(..., .by, by = deprecated()) {
+      private$set_status("corresponding", ..., .by = .by, by = by)
     }
   ),
 
   private = list(
     by = NULL,
 
-    set_status = function(col, ..., by) {
-      by <- private$snatch_by()
+    set_status = function(col, ..., .by, by) {
+      if (lifecycle::is_present(by)) {
+        call <- if (col == "corresponding") "corresponding_author" else col
+        call <- glue("set_{call}")
+        lifecycle::deprecate_warn("0.2.0", glue("{call}(by)"), glue("{call}(.by)"))
+        .by <- by
+      }
+      by <- private$process_by(.by)
       binder$bind(private$plume[[by]])
       private$plume <- mutate(
         private$plume,
@@ -42,14 +51,11 @@ StatusSetter <- R6Class(
       invisible(self)
     },
 
-    snatch_by = function() {
-      env <- caller_env(2L)
-      by <- env$by %||% env$.by
+    process_by = function(by) {
       if (missing(by)) {
         by <- private$by
       } else {
-        arg <- if (is.null(env$by)) ".by" else "by"
-        check_string(by, allow_empty = FALSE, arg = arg)
+        check_string(by, allow_empty = FALSE, arg = ".by")
       }
       private$check_col(by)
       by
@@ -83,7 +89,7 @@ StatusSetterPlume <- R6Class(
   private = list(
     set_ranks = function(..., .roles, .by) {
       check_character(.roles, allow_duplicates = FALSE)
-      by <- private$snatch_by()
+      by <- private$process_by(.by)
       vars <- private$pick("role", "contributor_rank", squash = FALSE)
       dots <- collect_dots(...)
       if (!is_named(dots)) {
@@ -107,22 +113,28 @@ StatusSetterPlumeQuarto <- R6Class(
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by` determine
     #'   equal contributors. Matching of values is case-insensitive.
-    #' @param by Variable used to specify which authors are equal contributors.
+    #' @param .by Variable used to specify which authors are equal contributors.
     #'   By default, uses authors' id.
+    #' @param by `r lifecycle::badge("deprecated")`
+    #'
+    #'   Please use the `.by` parameter instead.
     #' @return The class instance.
-    set_equal_contributor = function(..., by) {
-      private$set_status("equal_contributor", ..., by = by)
+    set_equal_contributor = function(..., .by, by = deprecated()) {
+      private$set_status("equal_contributor", ..., .by = .by, by = by)
     },
 
     #' @description Set deceased authors.
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by` determine
     #'   deceased authors. Matching of values is case-insensitive.
-    #' @param by Variable used to specify whether an author is deceased or not.
+    #' @param .by Variable used to specify whether an author is deceased or not.
     #'   By default, uses authors' id.
+    #' @param by `r lifecycle::badge("deprecated")`
+    #'
+    #'   Please use the `.by` parameter instead.
     #' @return The class instance.
-    set_deceased = function(..., by) {
-      private$set_status("deceased", ..., by = by)
+    set_deceased = function(..., .by, by = deprecated()) {
+      private$set_status("deceased", ..., .by = .by, by = by)
     }
   )
 )
@@ -139,7 +151,7 @@ StatusSetterPlumeQuarto <- R6Class(
 #'
 #' aut$set_corresponding_authors(
 #'   everyone_but(jean),
-#'   by = "given_name"
+#'   .by = "given_name"
 #' )
 #' aut$get_plume() |> dplyr::select(1:3, corresponding)
 #' @export
