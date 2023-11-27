@@ -16,6 +16,7 @@ Internal class processing and shaping tabular data into a
 \item \href{#method-PlumeHandler-new}{\code{PlumeHandler$new()}}
 \item \href{#method-PlumeHandler-print}{\code{PlumeHandler$print()}}
 \item \href{#method-PlumeHandler-get_plume}{\code{PlumeHandler$get_plume()}}
+\item \href{#method-PlumeHandler-get_roles}{\code{PlumeHandler$get_roles()}}
 \item \href{#method-PlumeHandler-clone}{\code{PlumeHandler$clone()}}
 }
 }
@@ -51,6 +52,15 @@ Internal class processing and shaping tabular data into a
 \subsection{Method \code{get_plume()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeHandler$get_plume()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-PlumeHandler-get_roles"></a>}}
+\if{latex}{\out{\hypertarget{method-PlumeHandler-get_roles}{}}}
+\subsection{Method \code{get_roles()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{PlumeHandler$get_roles()}\if{html}{\out{</div>}}
 }
 
 }
