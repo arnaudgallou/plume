@@ -5,13 +5,9 @@ ContextBinder <- R6Class(
       private$clear(caller_env())
     },
 
-    pull = function(call, ignore) {
-      private$check_context(call)
-      out <- private$data
-      if (missing(ignore)) {
-        return(out)
-      }
-      discard(out, ignore)
+    pull = function() {
+      private$check_context()
+      private$data
     }
   ),
 
@@ -23,11 +19,12 @@ ContextBinder <- R6Class(
       do.call(on.exit, list(expr), envir = env)
     },
 
-    check_context = function(call) {
+    check_context = function() {
+      caller <- deparse(rlang::caller_call(2))
       if (!is.null(private$data)) {
         return(invisible(NULL))
       }
-      msg <- glue("`{call}()` must be used within a `set_*()` method.")
+      msg <- glue("`{caller}` must be used within a *status setter* method.")
       abort_check(msg = msg)
     }
   )

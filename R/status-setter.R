@@ -156,7 +156,7 @@ StatusSetterPlumeQuarto <- R6Class(
 #' aut$get_plume() |> dplyr::select(1:3, corresponding)
 #' @export
 everyone <- function() {
-  binder$pull(call = "everyone")
+  binder$pull()
 }
 
 #' @rdname everyone
@@ -166,5 +166,6 @@ everyone <- function() {
 #'   case-insensitive.
 #' @export
 everyone_but <- function(...) {
-  binder$pull(call = "everyone_but", ignore = enexprs(...))
+  out <- binder$pull()
+  discard(out, enexprs(...))
 }

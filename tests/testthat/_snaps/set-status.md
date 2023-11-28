@@ -72,11 +72,11 @@
     Output
       <error/rlang_error>
       Error:
-      ! `everyone()` must be used within a `set_*()` method.
+      ! `everyone()` must be used within a *status setter* method.
     Code
       (expect_error(everyone_but()))
     Output
       <error/rlang_error>
       Error:
-      ! `everyone_but()` must be used within a `set_*()` method.
+      ! `everyone_but()` must be used within a *status setter* method.
 
