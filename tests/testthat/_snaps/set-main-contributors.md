@@ -1,6 +1,12 @@
 # set_ranks() gives meaningful error messages
 
     Code
+      (expect_error(aut$set_main_contributors()))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `...` must not be empty
+    Code
       (expect_error(aut$set_main_contributors(1, .roles = 1)))
     Output
       <error/rlang_error>

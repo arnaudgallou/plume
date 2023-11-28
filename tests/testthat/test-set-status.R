@@ -69,6 +69,9 @@ test_that("set_*() methods give meaningful error messages", {
 
   expect_snapshot({
     (expect_error(
+      aut$set_corresponding_authors()
+    ))
+    (expect_error(
       aut$set_corresponding_authors(a, .by = "foo")
     ))
     (expect_error(

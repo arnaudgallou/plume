@@ -38,10 +38,11 @@ test_that("set_default_names() sets new plume names", {
 
 test_that("set_default_names() gives meaningful error messages", {
   expect_snapshot({
+    (expect_error(set_default_names()))
     (expect_error(set_default_names(1)))
     (expect_error(set_default_names("a")))
     (expect_error(set_default_names(x = "a", y = "a")))
     (expect_error(set_default_names(x = "a", x = "b")))
-    (expect_error(set_default_names(.plume_quarto = 1)))
+    (expect_error(set_default_names(given_name = "nom", .plume_quarto = 1)))
   })
 })

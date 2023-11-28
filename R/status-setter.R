@@ -36,6 +36,7 @@ StatusSetter <- R6Class(
     by = NULL,
 
     set_status = function(col, ..., .by, by) {
+      check_dots_not_empty()
       if (lifecycle::is_present(by)) {
         call <- if (col == "corresponding") "corresponding_author" else col
         call <- glue("set_{call}")
@@ -89,6 +90,7 @@ StatusSetterPlume <- R6Class(
 
   private = list(
     set_ranks = function(..., .roles, .by) {
+      check_dots_not_empty()
       check_character(.roles, allow_duplicates = FALSE)
       by <- private$process_by(.by)
       vars <- private$pick("role", "contributor_rank", squash = FALSE)

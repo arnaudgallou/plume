@@ -126,6 +126,14 @@ abort_check <- function(
   abort(msg, ..., call = call)
 }
 
+check_dots_not_empty <- function() {
+  dots <- substitute(...(), caller_env())
+  if (!is.null(dots)) {
+    return(invisible(NULL))
+  }
+  abort_check(msg = "`...` must not be empty")
+}
+
 check_named <- function(x, allow_homonyms = FALSE, ..., arg = caller_arg(x)) {
   if (is_named(x) && (allow_homonyms || !has_homonyms(x))) {
     return(invisible(NULL))

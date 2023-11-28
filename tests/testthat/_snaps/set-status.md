@@ -21,6 +21,12 @@
 # set_*() methods give meaningful error messages
 
     Code
+      (expect_error(aut$set_corresponding_authors()))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `...` must not be empty
+    Code
       (expect_error(aut$set_corresponding_authors(a, .by = "foo")))
     Output
       <error/rlang_error>

@@ -44,6 +44,12 @@
 # set_default_names() gives meaningful error messages
 
     Code
+      (expect_error(set_default_names()))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `...` must not be empty
+    Code
       (expect_error(set_default_names(1)))
     Output
       <error/rlang_error>
@@ -68,7 +74,7 @@
       Error:
       ! `...` must have unique input names.
     Code
-      (expect_error(set_default_names(.plume_quarto = 1)))
+      (expect_error(set_default_names(given_name = "nom", .plume_quarto = 1)))
     Output
       <error/rlang_error>
       Error:

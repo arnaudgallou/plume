@@ -29,6 +29,7 @@ test_that("set_ranks() gives meaningful error messages", {
   aut <- Plume$new(basic_df)
 
   expect_snapshot({
+    (expect_error(aut$set_main_contributors()))
     (expect_error(aut$set_main_contributors(1, .roles = 1)))
     (expect_error(aut$set_main_contributors(1, .roles = c("x", "x"))))
     (expect_error(aut$set_main_contributors(1, .by = 1)))

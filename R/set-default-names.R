@@ -33,6 +33,7 @@
 #' PlumeFr$new(encyclopedists_fr)
 #' @export
 set_default_names <- function(..., .plume_quarto = FALSE) {
+  check_dots_not_empty()
   dots <- c(...)
   check_character(
     dots,
