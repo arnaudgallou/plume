@@ -8,6 +8,16 @@
       The `by` argument of `set_corresponding_author()` is deprecated as of plume 0.2.0.
       i Please use the `.by` argument instead.
 
+# set_equal_contributor() is deprecated
+
+    Code
+      aut <- PlumeQuarto$new(basic_df, tempfile_())
+      aut$set_equal_contributor(1, 3)
+    Condition
+      Warning:
+      `set_equal_contributor()` was deprecated in plume 0.2.0.
+      i Please use `set_cofirst_authors()` instead.
+
 # set_*() methods give meaningful error messages
 
     Code
@@ -29,19 +39,19 @@
       Error:
       ! `.by` must be a character string.
     Code
-      (expect_error(aut$set_equal_contributor(a, .by = "foo")))
+      (expect_error(aut$set_cofirst_authors(a, .by = "foo")))
     Output
       <error/rlang_error>
       Error:
       ! Column `foo` doesn't exist.
     Code
-      (expect_error(aut$set_equal_contributor(a, .by = "")))
+      (expect_error(aut$set_cofirst_authors(a, .by = "")))
     Output
       <error/rlang_error>
       Error:
       ! `.by` must be a non-empty string.
     Code
-      (expect_error(aut$set_equal_contributor(a, .by = 1)))
+      (expect_error(aut$set_cofirst_authors(a, .by = 1)))
     Output
       <error/rlang_error>
       Error:
