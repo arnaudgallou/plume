@@ -109,6 +109,17 @@ StatusSetterPlumeQuarto <- R6Class(
   classname = "StatusSetterPlumeQuarto",
   inherit = StatusSetter,
   public = list(
+    #' @description Set co-first authors.
+    #' @param ... One or more unquoted expressions separated by commas.
+    #'   Expressions matching values in the column defined by `by`/`.by`
+    #'   determine co-first authors. Matching of values is case-insensitive.
+    #' @param .by Variable used to specify which authors contributed equally to
+    #'   the work. By default, uses authors' id.
+    #' @return The class instance.
+    set_cofirst_authors = function(..., .by) {
+      private$set_status("equal_contributor", ..., .by = .by)
+    },
+
     #' @description Set equal contributors.
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by` determine
@@ -120,6 +131,11 @@ StatusSetterPlumeQuarto <- R6Class(
     #'   Please use the `.by` parameter instead.
     #' @return The class instance.
     set_equal_contributor = function(..., .by, by = deprecated()) {
+      lifecycle::deprecate_warn(
+        "0.2.0",
+        "set_equal_contributor()",
+        "set_cofirst_authors()"
+      )
       private$set_status("equal_contributor", ..., .by = .by, by = by)
     },
 

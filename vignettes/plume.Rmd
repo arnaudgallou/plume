@@ -221,7 +221,7 @@ cat(read_file(tmp_file))
    name = c(
      "set_corresponding_authors()",
      "set_main_contributors()",
-     "set_equal_contributor()",
+     "set_cofirst_authors()",
      "set_deceased()"
    ),
    Plume = as.logical(c(1, 1, 0, 0)),

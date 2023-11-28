@@ -12,6 +12,7 @@ Internal class extending \code{StatusSetter} for \code{PlumeQuarto}.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
+\item \href{#method-StatusSetterPlumeQuarto-set_cofirst_authors}{\code{StatusSetterPlumeQuarto$set_cofirst_authors()}}
 \item \href{#method-StatusSetterPlumeQuarto-set_equal_contributor}{\code{StatusSetterPlumeQuarto$set_equal_contributor()}}
 \item \href{#method-StatusSetterPlumeQuarto-set_deceased}{\code{StatusSetterPlumeQuarto$set_deceased()}}
 \item \href{#method-StatusSetterPlumeQuarto-clone}{\code{StatusSetterPlumeQuarto$clone()}}
@@ -28,6 +29,31 @@ Internal class extending \code{StatusSetter} for \code{PlumeQuarto}.
 </ul>
 </details>
 }}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-StatusSetterPlumeQuarto-set_cofirst_authors"></a>}}
+\if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-set_cofirst_authors}{}}}
+\subsection{Method \code{set_cofirst_authors()}}{
+Set co-first authors.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_cofirst_authors(..., .by)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{One or more unquoted expressions separated by commas.
+Expressions matching values in the column defined by \code{by}/\code{.by}
+determine co-first authors. Matching of values is case-insensitive.}
+
+\item{\code{.by}}{Variable used to specify which authors contributed equally to
+the work. By default, uses authors' id.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The class instance.
+}
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StatusSetterPlumeQuarto-set_equal_contributor"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-set_equal_contributor}{}}}

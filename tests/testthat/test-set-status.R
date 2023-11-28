@@ -29,10 +29,10 @@ test_that("sets status to selected authors", {
     aut$get_plume()$corresponding
   }, c(TRUE, FALSE, FALSE))
 
-  # set_equal_contributor
+  # set_cofirst_authors
 
   expect_equal({
-    aut$set_equal_contributor(zip, .by = "given_name")
+    aut$set_cofirst_authors(zip, .by = "given_name")
     aut$get_plume()$equal_contributor
   }, c(TRUE, FALSE, FALSE))
 
@@ -54,6 +54,14 @@ test_that("the `by` parameter is deprecated", {
   expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
 })
 
+test_that("set_equal_contributor() is deprecated", {
+  expect_snapshot({
+    aut <- PlumeQuarto$new(basic_df, tempfile_())
+    aut$set_equal_contributor(1, 3)
+  })
+  expect_equal(aut$get_plume()$equal_contributor, c(TRUE, FALSE, TRUE))
+})
+
 # Errors ----
 
 test_that("set_*() methods give meaningful error messages", {
@@ -70,13 +78,13 @@ test_that("set_*() methods give meaningful error messages", {
       aut$set_corresponding_authors(a, .by = 1)
     ))
     (expect_error(
-      aut$set_equal_contributor(a, .by = "foo")
+      aut$set_cofirst_authors(a, .by = "foo")
     ))
     (expect_error(
-      aut$set_equal_contributor(a, .by = "")
+      aut$set_cofirst_authors(a, .by = "")
     ))
     (expect_error(
-      aut$set_equal_contributor(a, .by = 1)
+      aut$set_cofirst_authors(a, .by = 1)
     ))
     (expect_error(
       aut$set_deceased(a, .by = "foo")
