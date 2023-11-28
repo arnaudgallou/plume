@@ -1,5 +1,7 @@
 # plume (development version)
 
+* Deprecated `$set_equal_contributor()` in favour of `$set_cofirst_authors()` to avoid confusion with contributors assigned to specific roles (#45).
+
 * Deprecated `everyone_but()` as this function is not necessary since not more than a couple of authors should normally be given a particular status (#44).
 
 * Removed stringb dependency in favour of stringr (#42).
