@@ -75,6 +75,9 @@
       ! `everyone()` must be used within a *status setter* method.
     Code
       (expect_error(everyone_but()))
+    Condition
+      Warning:
+      `everyone_but()` was deprecated in plume 0.2.0.
     Output
       <error/rlang_error>
       Error:
