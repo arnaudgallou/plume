@@ -77,7 +77,8 @@ StatusSetterPlume <- R6Class(
     #'   set different main contributors to different roles at once, in which
     #'   case the `.roles` parameter will be ignored. Matching of values is
     #'   case-insensitive.
-    #' @param .roles Roles to assign main contributors to.
+    #' @param .roles Roles to assign main contributors to. If `.roles` is a
+    #'   named vector, only the names will be used.
     #' @param .by Variable used to specify which authors are equal contributors.
     #'   By default, uses authors' id.
     #' @return The class instance.
@@ -93,7 +94,7 @@ StatusSetterPlume <- R6Class(
       vars <- private$pick("role", "contributor_rank", squash = FALSE)
       dots <- collect_dots(...)
       if (!is_named(dots)) {
-        dots <- assign_to_names(dots, names = .roles)
+        dots <- recycle_to_names(dots, nms = .roles)
       }
       out <- unnest(private$plume, col = all_of(vars$role))
       out <- add_contribution_ranks(out, dots, private$roles, by, vars)

@@ -357,10 +357,10 @@ aut$set_main_contributors(supervision = 4, writing = c(3, 2))
 aut$get_contributions()
 ```
 
-You can easily assign the same main contributors across multiple roles using the `.roles` parameter:
+You can easily assign the same main contributors across multiple roles using the `.roles` parameter. E.g. to set a main contributor to all roles:
 
 ```{r}
-aut$set_main_contributors(jean, .roles = c("supervision", "writing"), .by = "given_name")
+aut$set_main_contributors(jean, .roles = aut$get_roles(), .by = "given_name")
 aut$get_contributions()
 ```
 

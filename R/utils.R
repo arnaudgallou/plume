@@ -67,9 +67,12 @@ rank <- function(x, base) {
   vec_rank(matches, ties = "dense")
 }
 
-assign_to_names <- function(x, names) {
-  x <- rep(list(x), length(names))
-  set_names(x, names)
+recycle_to_names <- function(x, nms) {
+  if (is_named(nms)) {
+    nms <- names(nms)
+  }
+  x <- rep(list(x), length(nms))
+  set_names(x, nms)
 }
 
 collect_dots <- function(...) {
