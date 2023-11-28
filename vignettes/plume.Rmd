@@ -253,13 +253,6 @@ aut$set_corresponding_authors(everyone())
 aut
 ```
 
-Or its variant `everyone_but()` to assign `TRUE` to all but specific authors:
-
-```{r}
-aut$set_corresponding_authors(everyone_but(jean), .by = "given_name")
-aut
-```
-
 ## Getting author information
 
 `get_*()` methods format author information into character vectors. This is useful if you want to output author data in a document without using journal templates.
