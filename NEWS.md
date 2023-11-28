@@ -1,5 +1,7 @@
 # plume (development version)
 
+* Deprecated `everyone_but()` as this function is not necessary since not more than a couple of authors should normally be given a particular status (#44).
+
 * Removed stringb dependency in favour of stringr (#42).
 
 * The `by` parameter in `$set_*()` methods is now deprecated in favour of `.by` (#41).
