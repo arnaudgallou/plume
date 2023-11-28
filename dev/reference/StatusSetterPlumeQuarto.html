@@ -71,7 +71,8 @@
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
-<ul><li><p><a href="#method-StatusSetterPlumeQuarto-set_equal_contributor"><code>StatusSetterPlumeQuarto$set_equal_contributor()</code></a></p></li>
+<ul><li><p><a href="#method-StatusSetterPlumeQuarto-set_cofirst_authors"><code>StatusSetterPlumeQuarto$set_cofirst_authors()</code></a></p></li>
+<li><p><a href="#method-StatusSetterPlumeQuarto-set_equal_contributor"><code>StatusSetterPlumeQuarto$set_equal_contributor()</code></a></p></li>
 <li><p><a href="#method-StatusSetterPlumeQuarto-set_deceased"><code>StatusSetterPlumeQuarto$set_deceased()</code></a></p></li>
 <li><p><a href="#method-StatusSetterPlumeQuarto-clone"><code>StatusSetterPlumeQuarto$clone()</code></a></p></li>
 </ul></div><p><details open><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href="PlumeHandler.html#method-get_plume"><code>plume::PlumeHandler$get_plume()</code></a></span></li>
@@ -79,15 +80,42 @@
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href="PlumeHandler.html#method-print"><code>plume::PlumeHandler$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="initialize"><a href="StatusSetter.html#method-initialize"><code>plume::StatusSetter$initialize()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href="StatusSetter.html#method-set_corresponding_authors"><code>plume::StatusSetter$set_corresponding_authors()</code></a></span></li>
-</ul></details></p><hr><a id="method-StatusSetterPlumeQuarto-set_equal_contributor"></a><div class="section">
-<h3 id="method-set-equal-contributor-">Method <code>set_equal_contributor()</code><a class="anchor" aria-label="anchor" href="#method-set-equal-contributor-"></a></h3>
-<p>Set equal contributors.</p><div class="section">
+</ul></details></p><hr><a id="method-StatusSetterPlumeQuarto-set_cofirst_authors"></a><div class="section">
+<h3 id="method-set-cofirst-authors-">Method <code>set_cofirst_authors()</code><a class="anchor" aria-label="anchor" href="#method-set-cofirst-authors-"></a></h3>
+<p>Set co-first authors.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">StatusSetterPlumeQuarto</span><span class="op">$</span><span class="fu">set_equal_contributor</span><span class="op">(</span><span class="va">...</span>, <span class="va">.by</span>, by <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">StatusSetterPlumeQuarto</span><span class="op">$</span><span class="fu">set_cofirst_authors</span><span class="op">(</span><span class="va">...</span>, <span class="va">.by</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>One or more unquoted expressions separated by commas.
+Expressions matching values in the column defined by <code>by</code>/<code>.by</code>
+determine co-first authors. Matching of values is case-insensitive.</p></dd>
+
+
+<dt><code>.by</code></dt>
+<dd><p>Variable used to specify which authors contributed equally to
+the work. By default, uses authors' id.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>The class instance.</p>
+</div>
+
+</div><p></p><hr><a id="method-StatusSetterPlumeQuarto-set_equal_contributor"></a><div class="section">
+<h3 id="method-set-equal-contributor-">Method <code>set_equal_contributor()</code><a class="anchor" aria-label="anchor" href="#method-set-equal-contributor-"></a></h3>
+<p>Set equal contributors.</p><div class="section">
+<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">StatusSetterPlumeQuarto</span><span class="op">$</span><span class="fu">set_equal_contributor</span><span class="op">(</span><span class="va">...</span>, <span class="va">.by</span>, by <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by <code>by</code> determine
@@ -107,19 +135,19 @@ By default, uses authors' id.</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
 <p>The class instance.</p>
 </div>
 
 </div><p></p><hr><a id="method-StatusSetterPlumeQuarto-set_deceased"></a><div class="section">
 <h3 id="method-set-deceased-">Method <code>set_deceased()</code><a class="anchor" aria-label="anchor" href="#method-set-deceased-"></a></h3>
 <p>Set deceased authors.</p><div class="section">
-<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">StatusSetterPlumeQuarto</span><span class="op">$</span><span class="fu">set_deceased</span><span class="op">(</span><span class="va">...</span>, <span class="va">.by</span>, by <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by <code>by</code> determine
@@ -139,19 +167,19 @@ By default, uses authors' id.</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
+<h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
 <p>The class instance.</p>
 </div>
 
 </div><p></p><hr><a id="method-StatusSetterPlumeQuarto-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">StatusSetterPlumeQuarto</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

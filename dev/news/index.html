@@ -57,7 +57,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
-<ul><li><p>Deprecated <code><a href="../reference/everyone.html">everyone_but()</a></code> as this function is not necessary since not more than a couple of authors should normally be given a particular status (<a href="https://github.com/arnaudgallou/plume/issues/44" class="external-link">#44</a>).</p></li>
+<ul><li><p>Deprecated <code>$set_equal_contributor()</code> in favour of <code>$set_cofirst_authors()</code> to avoid confusion with contributors assigned to specific roles (<a href="https://github.com/arnaudgallou/plume/issues/45" class="external-link">#45</a>).</p></li>
+<li><p>Deprecated <code><a href="../reference/everyone.html">everyone_but()</a></code> as this function is not necessary since not more than a couple of authors should normally be given a particular status (<a href="https://github.com/arnaudgallou/plume/issues/44" class="external-link">#44</a>).</p></li>
 <li><p>Removed stringb dependency in favour of stringr (<a href="https://github.com/arnaudgallou/plume/issues/42" class="external-link">#42</a>).</p></li>
 <li><p>The <code>by</code> parameter in <code>$set_*()</code> methods is now deprecated in favour of <code>.by</code> (<a href="https://github.com/arnaudgallou/plume/issues/41" class="external-link">#41</a>).</p></li>
 <li><p><code>Plume</code> gains a new method <code>$set_main_contributors()</code> that allows you to force one or more contributors to appear first in the contribution list for any given role. <code>Plume</code>’s contructor also regains the parameter <code>by</code> to set the default <code>by</code>/<code>.by</code> value used in all <code>set_*()</code> methods.</p></li>
