@@ -78,7 +78,7 @@ English (<code>encyclopedists</code>) and French (<code>encyclopedists_fr</code>
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>A tibble with 4 rows and 12 variables:</p><dl><dt>given_name,prénom</dt>
+    <p>A tibble with 4 rows and 10 variables:</p><dl><dt>given_name,prénom</dt>
 <dd><p>authors' given names</p></dd>
 
 <dt>family_name,nom</dt>
@@ -93,7 +93,7 @@ English (<code>encyclopedists</code>) and French (<code>encyclopedists_fr</code>
 <dt>orcid</dt>
 <dd><p>authors' ORCID</p></dd>
 
-<dt>affiliation</dt>
+<dt>affiliation_1,affiliation_2</dt>
 <dd><p>authors' affiliations</p></dd>
 
 <dt>supervision</dt>
@@ -114,21 +114,21 @@ English (<code>encyclopedists</code>) and French (<code>encyclopedists_fr</code>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   given_name     family_name        email  phone orcid supervision writing note </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Denis          Diderot            dider… 00 0… 0000…           1       1 born…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Denis          Diderot            dider… +1234 0000…           1       1 born…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau           rouss… <span style="color: #BB0000;">NA</span>    0000…          <span style="color: #BB0000;">NA</span>       1 <span style="color: #BB0000;">NA</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> François-Marie Arouet             aroue… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>       1 also…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Jean           Le Rond d'Alembert alemb… <span style="color: #BB0000;">NA</span>    0000…           1       1 born…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">encyclopedists_fr</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   prénom nom   courriel téléphone orcid supervision rédaction note  affiliation1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Denis  Dide… diderot… 00 00 00… 0000…           1         1 né e… Université …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Jean-… Rous… roussea… <span style="color: #BB0000;">NA</span>        0000…          <span style="color: #BB0000;">NA</span>         1 <span style="color: #BB0000;">NA</span>    Lycée Louis…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Franç… Arou… arouet@… <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>         1 dit … Lycée Louis…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Jean   Le R… alember… <span style="color: #BB0000;">NA</span>        0000…           1         1 né e… Université …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: affiliation2 &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   prénom         nom        courriel téléphone orcid supervision rédaction note </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Denis          Diderot    diderot… +1234     0000…           1         1 né e…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Jean-Jacques   Rousseau   roussea… <span style="color: #BB0000;">NA</span>        0000…          <span style="color: #BB0000;">NA</span>         1 <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> François-Marie Arouet     arouet@… <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>         1 dit …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Jean           Le Rond d… alember… <span style="color: #BB0000;">NA</span>        0000…           1         1 né e…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
