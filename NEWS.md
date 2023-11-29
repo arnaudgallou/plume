@@ -10,7 +10,7 @@
 
 * `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors to appear first in the contribution list for any given role. `Plume`'s contructor also regains the parameter `by` to set the default `by`/`.by` value used in all `set_*()` methods.
 
-* Updated the `encyclopedists` and `encyclopedists_fr` data to use the new role column system (#39).
+* Updated the `encyclopedists` and `encyclopedists_fr` data to use the new role column system (#39). Column names have also been homogenised (#46).
 
 * `$to_yaml()` now preserves line breaks preceding leading or isolated `---` (#37).
 

@@ -57,17 +57,17 @@ encyclopedists
 #> # A tibble: 4 × 10
 #>   given_name     family_name        email  phone orcid supervision writing note 
 #>   <chr>          <chr>              <chr>  <chr> <chr>       <dbl>   <dbl> <chr>
-#> 1 Denis          Diderot            dider… 00 0… 0000…           1       1 born…
+#> 1 Denis          Diderot            dider… +1234 0000…           1       1 born…
 #> 2 Jean-Jacques   Rousseau           rouss… <NA>  0000…          NA       1 <NA> 
 #> 3 François-Marie Arouet             aroue… <NA>  <NA>           NA       1 also…
 #> 4 Jean           Le Rond d'Alembert alemb… <NA>  0000…           1       1 born…
-#> # ℹ 2 more variables: affiliation1 <chr>, affiliation2 <chr>
+#> # ℹ 2 more variables: affiliation_1 <chr>, affiliation_2 <chr>
 
 Plume$new(encyclopedists)
 #> # A tibble: 4 × 11
 #>      id given_name     family_name literal_name initials email phone orcid note 
 #>   <int> <chr>          <chr>       <chr>        <chr>    <chr> <chr> <chr> <chr>
-#> 1     1 Denis          Diderot     Denis Dider… DD       dide… 00 0… 0000… born…
+#> 1     1 Denis          Diderot     Denis Dider… DD       dide… +1234 0000… born…
 #> 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… <NA>  0000… <NA> 
 #> 3     3 François-Marie Arouet      François-Ma… F-MA     arou… <NA>  <NA>  also…
 #> 4     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… <NA>  0000… born…
@@ -102,7 +102,7 @@ aut$to_yaml()
           given: Denis
           family: Diderot
         email: diderot@encyclopediste.fr
-        phone: 00 00 00 01
+        phone: '+1234'
         orcid: 0000-0000-0000-0001
         note: born in 1713 in Langres
         attributes:
