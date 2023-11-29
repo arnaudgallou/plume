@@ -1,30 +1,18 @@
 # plume (development version)
 
-* Deprecated `$set_equal_contributor()` in favour of `$set_cofirst_authors()` to avoid confusion with contributors assigned to specific roles (#45).
+## New features
 
-* Deprecated `everyone_but()` as this function is not necessary since not more than a couple of authors should normally be given a particular status (#44).
-
-* Removed stringb dependency in favour of stringr (#42).
-
-* The `by` parameter in `$set_*()` methods is now deprecated in favour of `.by` (#41).
-
-* `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors to appear first in the contribution list for any given role. `Plume`'s contructor also regains the parameter `by` to set the default `by`/`.by` value used in all `set_*()` methods.
-
-* Updated the `encyclopedists` and `encyclopedists_fr` data to use the new role column system (#39). Column names have also been homogenised (#46).
-
-* `$to_yaml()` now preserves line breaks preceding leading or isolated `---` (#37).
-
-* `plm_template()` now returns role columns as numeric type (#26).
+* `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors to appear first in the contribution list for any given role. `Plume`'s contructor also regains the parameter `by` to set the default `by`/`.by` value used in all `$set_*()` methods (#40).
 
 * New helper `credit_roles()` that returns the 14 contributor roles of the [Contributor Roles Taxonomy](https://credit.niso.org). These are now the default roles used by plume.
 
-* The plume role handling system has been overhauled for better flexibility and ease of use (#29).
+<a name="new_role_system" />
 
-  * Defining roles explicitly in the input data or using `credit_roles = TRUE` are now deprecated in favour of defining role columns and roles via the parameters `role_cols` and `roles`, respectively (see below).
+* The plume role handling system has been overhauled for better flexibility and ease of use (#29).
 
   * `plm_template()` gains a new parameter `role_cols` to create role columns from a character vector.
 
-  * plume classes gain a new parameter `roles` allowing you to specify roles using a character vector.
+  * plume classes gain a new parameter `roles` allowing you to specify roles using a named character vector.
 
     Rather than:
 
@@ -52,7 +40,31 @@
     Plume$new(data, roles = c(role_1 = "Supervision", role_2 = "Writing"))
     ```
 
-  * The `using-credit-roles` vignette was removed as it is no longer needed.
+## Lifecycle changes
+
+* `$set_equal_contributor()` is now deprecated in favour of `$set_cofirst_authors()` due to the ambiguous name of the method (#45).
+
+* `everyone_but()` is now deprecated as this function is not necessary since not more than a couple of authors should normally be given a particular status (#44).
+
+* The `by` parameter in `$set_*()` methods is now deprecated in favour of `.by` for consistency purposes (#41).
+
+* Defining roles explicitly in the input data or using `credit_roles = TRUE` are now deprecated in favour of defining role columns and roles via the parameters `role_cols` and `roles`, respectively (see details about the [new role handling system](#new_role_system) above).
+
+## Documentation changes
+
+* The `using-credit-roles` vignette was removed as it is no longer needed.
+
+## Minor improvements and bug fixes
+
+* Removed stringb dependency in favour of stringr (#42).
+
+* Updated the `encyclopedists` and `encyclopedists_fr` data to use the new role column system (#39). Column names have also been homogenised (#46).
+
+* `$to_yaml()` now preserves line breaks preceding leading or isolated `---` (#37).
+
+* `plm_template()` now returns role columns as numeric type (#26).
+
+* Initials now drop dots present in author names (#31).
 
 * plume classes now error when a role column contains multiple roles (#28).
 
