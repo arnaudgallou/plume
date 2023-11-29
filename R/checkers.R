@@ -131,7 +131,7 @@ check_dots_not_empty <- function() {
   if (!is.null(dots)) {
     return(invisible(NULL))
   }
-  abort_check(msg = "`...` must not be empty")
+  abort_check(msg = "`...` must not be empty.")
 }
 
 check_named <- function(x, allow_homonyms = FALSE, ..., arg = caller_arg(x)) {
@@ -308,10 +308,10 @@ check_glue <- function(x, allowed, ..., arg = caller_arg(x)) {
       return(invisible(NULL))
     }
     invalid_var <- search_(vars, \(var) !var %in% allowed)
-    allowed_vars <- wrap(allowed, "`")
+    allowed_vars <- enumerate(wrap(allowed, "`"), last = " and/or ")
     msg <- c(
       glue("Invalid variable `{invalid_var}`."),
-      i = glue("`format` must use variables {enumerate(allowed_vars)}.")
+      i = glue("`format` must use variables {allowed_vars}.")
     )
   }
   abort_check("a glue specification", msg = msg, ..., arg = arg)

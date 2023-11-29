@@ -5,7 +5,7 @@
     Output
       <error/rlang_error>
       Error:
-      ! `...` must not be empty
+      ! `...` must not be empty.
     Code
       (expect_error(aut$set_main_contributors(1, .roles = 1)))
     Output

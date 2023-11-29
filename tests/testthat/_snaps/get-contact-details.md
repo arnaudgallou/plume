@@ -24,7 +24,7 @@
       <error/rlang_error>
       Error:
       ! Invalid variable `foo`.
-      i `format` must use variables `name` and `details`.
+      i `format` must use variables `name` and/or `details`.
     Code
       (expect_error(aut$get_contact_details()))
     Output

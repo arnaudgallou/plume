@@ -48,7 +48,7 @@
     Output
       <error/rlang_error>
       Error:
-      ! `...` must not be empty
+      ! `...` must not be empty.
     Code
       (expect_error(set_default_names(1)))
     Output

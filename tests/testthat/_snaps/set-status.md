@@ -25,7 +25,7 @@
     Output
       <error/rlang_error>
       Error:
-      ! `...` must not be empty
+      ! `...` must not be empty.
     Code
       (expect_error(aut$set_corresponding_authors(a, .by = "foo")))
     Output
