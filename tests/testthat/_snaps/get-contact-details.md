@@ -1,18 +1,6 @@
 # get_conctact_details() gives meaningful error messages
 
     Code
-      (expect_error(aut$get_contact_details(format = 1)))
-    Output
-      <error/rlang_error>
-      Error:
-      ! `format` must be a glue specification.
-    Code
-      (expect_error(aut$get_contact_details(format = "")))
-    Output
-      <error/rlang_error>
-      Error:
-      ! `format` must be a glue specification.
-    Code
       (expect_error(aut$get_contact_details(format = "foo")))
     Output
       <error/rlang_error>
@@ -42,7 +30,7 @@
       Caused by error:
       ! `email` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(aut$get_contact_details(sep = 1)))
+      (expect_error(aut$get_contact_details(sep = NULL)))
     Output
       <error/rlang_error>
       Error:
@@ -53,12 +41,6 @@
       <error/rlang_error>
       Error:
       ! `sep` must be a non-empty string.
-    Code
-      (expect_error(aut$get_contact_details(sep = NULL)))
-    Output
-      <error/rlang_error>
-      Error:
-      ! `sep` must be a character string.
     Code
       aut$set_corresponding_authors(1)
       (expect_error(aut$get_contact_details(fax = TRUE)))

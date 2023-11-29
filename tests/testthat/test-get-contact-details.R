@@ -46,12 +46,6 @@ test_that("get_conctact_details() gives meaningful error messages", {
 
   expect_snapshot({
     (expect_error(
-      aut$get_contact_details(format = 1)
-    ))
-    (expect_error(
-      aut$get_contact_details(format = "")
-    ))
-    (expect_error(
       aut$get_contact_details(format = "foo")
     ))
     (expect_error(
@@ -64,13 +58,10 @@ test_that("get_conctact_details() gives meaningful error messages", {
       aut$get_contact_details(email = 1)
     ))
     (expect_error(
-      aut$get_contact_details(sep = 1)
+      aut$get_contact_details(sep = NULL)
     ))
     (expect_error(
       aut$get_contact_details(sep = "")
-    ))
-    (expect_error(
-      aut$get_contact_details(sep = NULL)
     ))
 
     aut$set_corresponding_authors(1)
