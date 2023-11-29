@@ -109,7 +109,7 @@ affiliations, \code{"*"} for corresponding authors and \code{"†"}, \code{"‡"
 \code{"¶"}, \code{"#"}, \code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
 
 \item{\code{roles}}{A vector of key-value pairs defining roles where keys
-identify columns and values describe the actual roles to use.}
+identify role columns and values describe the actual roles to use.}
 
 \item{\code{credit_roles}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
@@ -125,6 +125,10 @@ is only useful for people writing in languages that don't separate
 words with a space such as Chinese or Japanese.}
 
 \item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=orcid]{orcid()}}, to be used.}
+
+\item{\code{by}}{A character string defining the default variable used to assign
+specific metadata to authors in all \verb{set_*()} methods. By default, uses
+authors' id.}
 }
 \if{html}{\out{</div>}}
 }

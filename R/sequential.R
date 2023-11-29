@@ -13,8 +13,7 @@
 #'   symbols = list(affiliation = sequential(letters))
 #' )
 #'
-#' aut$get_affiliations(sep = ": ", superscript = FALSE) |>
-#'   cat(sep = "\n")
+#' aut$get_affiliations(sep = ": ", superscript = FALSE)
 #' @export
 sequential <- function(x) {
   check_character(x, allow_duplicates = FALSE, allow_null = FALSE)

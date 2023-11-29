@@ -44,12 +44,13 @@ contribution list.
 Expressions matching values in the column defined by \code{by}/\code{.by}
 determine main contributors. Expressions can be named after any role to
 set different main contributors to different roles at once, in which
-case the \code{.roles} parameter will be ignored. Matching of values is
+case the \code{.roles} parameter is ignored. Matching of values is
 case-insensitive.}
 
-\item{\code{.roles}}{Roles to assign main contributors to.}
+\item{\code{.roles}}{Roles to assign main contributors to. If \code{.roles} is a
+named vector, only the names will be used.}
 
-\item{\code{.by}}{Variable used to specify which authors are equal contributors.
+\item{\code{.by}}{Variable used to specify which authors are main contributors.
 By default, uses authors' id.}
 }
 \if{html}{\out{</div>}}

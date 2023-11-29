@@ -11,7 +11,7 @@
 ))
 
 #' @title PlumeQuarto class
-#' @description Class that pushes or updates author metadata in the YAML header
+#' @description Class that pushes author metadata in the YAML header
 #'   of Quarto files.
 #' @examplesIf interactive()
 #' # Create a simple temporary file with a YAML header
@@ -63,7 +63,8 @@ PlumeQuarto <- R6Class(
     #'   `r link("crt")`.
     #' @param initials_given_name Should the initials of given names be used?
     #' @param by A character string defining the default variable used to assign
-    #'   authors' status in all `set_*()` methods. By default, uses authors' id.
+    #'   specific metadata to authors in all `set_*()` methods. By default, uses
+    #'   authors' id.
     #' @return A `PlumeQuarto` object.
     initialize = function(
         data,

@@ -19,8 +19,9 @@ StatusSetter <- R6Class(
 
     #' @description Set corresponding authors.
     #' @param ... One or more unquoted expressions separated by commas.
-    #'   Expressions matching values in the column defined by `by` determine
-    #'   corresponding authors. Matching of values is case-insensitive.
+    #'   Expressions matching values in the column defined by `by`/`.by`
+    #'   determine corresponding authors. Matching of values is case-
+    #'   insensitive.
     #' @param .by Variable used to set corresponding authors. By default, uses
     #'   authors' id.
     #' @param by `r lifecycle::badge("deprecated")`
@@ -76,11 +77,11 @@ StatusSetterPlume <- R6Class(
     #'   Expressions matching values in the column defined by `by`/`.by`
     #'   determine main contributors. Expressions can be named after any role to
     #'   set different main contributors to different roles at once, in which
-    #'   case the `.roles` parameter will be ignored. Matching of values is
+    #'   case the `.roles` parameter is ignored. Matching of values is
     #'   case-insensitive.
     #' @param .roles Roles to assign main contributors to. If `.roles` is a
     #'   named vector, only the names will be used.
-    #' @param .by Variable used to specify which authors are equal contributors.
+    #' @param .by Variable used to specify which authors are main contributors.
     #'   By default, uses authors' id.
     #' @return The class instance.
     set_main_contributors = function(..., .roles = NULL, .by) {
@@ -123,10 +124,12 @@ StatusSetterPlumeQuarto <- R6Class(
       private$set_status("equal_contributor", ..., .by = .by)
     },
 
-    #' @description Set equal contributors.
+    #' @description `r lifecycle::badge("deprecated")`
+    #'
+    #'   This method has been deprecated in favour of `set_cofirst_authors()`.
     #' @param ... One or more unquoted expressions separated by commas.
-    #'   Expressions matching values in the column defined by `by` determine
-    #'   equal contributors. Matching of values is case-insensitive.
+    #'   Expressions matching values in the column defined by `by`/`.by`
+    #'   determine equal contributors. Matching of values is case-insensitive.
     #' @param .by Variable used to specify which authors are equal contributors.
     #'   By default, uses authors' id.
     #' @param by `r lifecycle::badge("deprecated")`
@@ -144,8 +147,8 @@ StatusSetterPlumeQuarto <- R6Class(
 
     #' @description Set deceased authors.
     #' @param ... One or more unquoted expressions separated by commas.
-    #'   Expressions matching values in the column defined by `by` determine
-    #'   deceased authors. Matching of values is case-insensitive.
+    #'   Expressions matching values in the column defined by `by`/`.by`
+    #'   determine deceased authors. Matching of values is case-insensitive.
     #' @param .by Variable used to specify whether an author is deceased or not.
     #'   By default, uses authors' id.
     #' @param by `r lifecycle::badge("deprecated")`

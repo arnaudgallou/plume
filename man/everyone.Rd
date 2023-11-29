@@ -11,9 +11,9 @@ everyone_but(...)
 }
 \arguments{
 \item{...}{One or more unquoted expressions separated by commas. Expressions
-matching values in the column defined by the \code{by} parameter of \verb{set_*()}
-methods are used to set a given status to authors. Matching of values is
-case-insensitive.}
+matching values in the column defined by the \code{by}/\code{.by} parameters of
+\verb{set_*()} methods are used to set a given status to authors. Matching of
+values is case-insensitive.}
 }
 \description{
 Selection helpers to use in conjonction with status setter

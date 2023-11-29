@@ -4,7 +4,7 @@
 \alias{PlumeQuarto}
 \title{PlumeQuarto class}
 \description{
-Class that pushes or updates author metadata in the YAML header
+Class that pushes author metadata in the YAML header
 of Quarto files.
 }
 \examples{
@@ -104,7 +104,8 @@ It is now recommended to use \code{roles = credit_roles()} to use the
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 
 \item{\code{by}}{A character string defining the default variable used to assign
-authors' status in all \verb{set_*()} methods. By default, uses authors' id.}
+specific metadata to authors in all \verb{set_*()} methods. By default, uses
+authors' id.}
 }
 \if{html}{\out{</div>}}
 }

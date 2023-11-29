@@ -19,7 +19,7 @@ library(readr)
 library(gt)
 ```
 
-The goal of the plume package is to make the handling and formatting of author data for scientific writing in R Markdown and Quarto easy and (almost) painless.
+The goal of the plume package is to make the handling and formatting of author data for scientific writing in R Markdown and Quarto easy and painless.
 
 ## Example data
 
@@ -31,7 +31,7 @@ encyclopedists
 
 ## Creating a `plume` object
 
-plume provides two R6 classes, namely `Plume` and `PlumeQuarto`. To create a `plume` object, simply write the name of the class you want to use followed by the `new()` method. plume classes take a data frame or tibble as input data. The input data must have at least two columns named `given_name` and `family_name`.
+plume provides two R6 classes, namely `Plume` and `PlumeQuarto`. To create a `plume` object, simply write the name of the class you want to use followed by the `new()` method. plume classes take a data frame or tibble as input data. The input data must have at least two columns, one for given names and another for family names.
 
 ```{r}
 Plume$new(encyclopedists)
@@ -143,7 +143,7 @@ Plume$new(
 
 ## Defining roles and contributors
 
-You can add roles by creating specific role columns in the input data and indicate contributors using a `1`:
+You can add roles by creating specific role columns in the input data and indicate contributors using `1`:
 
 ```{r, echo = FALSE}
 tibble::tibble(
@@ -255,7 +255,7 @@ aut
 
 ## Getting author information
 
-`get_*()` methods format author information into character vectors. This is useful if you want to output author data in a document without using journal templates.
+`get_*()` methods (available through the `Plume` class) format author information as character vectors. This is useful if you want to output author data in a document without using journal templates.
 
 ### Author lists
 
@@ -350,21 +350,21 @@ By default, `get_contributions()` lists contributors in the order they're define
 aut$get_contributions(alphabetical_order = TRUE)
 ```
 
-It's possible to force one or more contributors to appear first in any given role using the `set_main_contributors()` method:
+It's possible to force one or more contributors to appear first in any given role by setting main contributors:
 
 ```{r}
 aut$set_main_contributors(supervision = 4, writing = c(3, 2))
 aut$get_contributions()
 ```
 
-You can easily assign the same main contributors across multiple roles using the `.roles` parameter. E.g. to set a main contributor to all roles:
+You can assign the same main contributors across multiple roles using the `.roles` parameter. E.g. to set a main contributor across all roles:
 
 ```{r}
 aut$set_main_contributors(jean, .roles = aut$get_roles(), .by = "given_name")
 aut$get_contributions()
 ```
 
-Note that main contributors have the priority over the `alphabetical_order` parameter:
+Note that main contributors have the priority over the alphabetical ordering:
 
 ```{r}
 aut$get_contributions(alphabetical_order = TRUE)

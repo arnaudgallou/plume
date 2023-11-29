@@ -58,7 +58,9 @@ The class instance.
 \if{html}{\out{<a id="method-StatusSetterPlumeQuarto-set_equal_contributor"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-set_equal_contributor}{}}}
 \subsection{Method \code{set_equal_contributor()}}{
-Set equal contributors.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+This method has been deprecated in favour of \code{set_cofirst_authors()}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_equal_contributor(..., .by, by = deprecated())}\if{html}{\out{</div>}}
 }
@@ -67,8 +69,8 @@ Set equal contributors.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{One or more unquoted expressions separated by commas.
-Expressions matching values in the column defined by \code{by} determine
-equal contributors. Matching of values is case-insensitive.}
+Expressions matching values in the column defined by \code{by}/\code{.by}
+determine equal contributors. Matching of values is case-insensitive.}
 
 \item{\code{.by}}{Variable used to specify which authors are equal contributors.
 By default, uses authors' id.}
@@ -96,8 +98,8 @@ Set deceased authors.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{One or more unquoted expressions separated by commas.
-Expressions matching values in the column defined by \code{by} determine
-deceased authors. Matching of values is case-insensitive.}
+Expressions matching values in the column defined by \code{by}/\code{.by}
+determine deceased authors. Matching of values is case-insensitive.}
 
 \item{\code{.by}}{Variable used to specify whether an author is deceased or not.
 By default, uses authors' id.}

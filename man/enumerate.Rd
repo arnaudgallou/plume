@@ -23,5 +23,5 @@ Wrapper around \code{\link[glue:glue_collapse]{glue_collapse()}} using
 }
 \examples{
 aut <- Plume$new(encyclopedists)
-aut$get_author_list(format = "^a^") |> enumerate()
+aut$get_author_list() |> enumerate()
 }

@@ -8,7 +8,7 @@
 #' @returns A character string with the same class as `x`.
 #' @examples
 #' aut <- Plume$new(encyclopedists)
-#' aut$get_author_list(format = "^a^") |> enumerate()
+#' aut$get_author_list() |> enumerate()
 #' @export
 enumerate <- function(x, sep = ", ", last = " and ") {
   out <- glue_collapse(x, sep = sep, last = last)

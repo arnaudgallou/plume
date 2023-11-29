@@ -19,9 +19,9 @@ everyone <- function() {
 #' @rdname everyone
 #' @keywords internal
 #' @param ... One or more unquoted expressions separated by commas. Expressions
-#'   matching values in the column defined by the `by` parameter of `set_*()`
-#'   methods are used to set a given status to authors. Matching of values is
-#'   case-insensitive.
+#'   matching values in the column defined by the `by`/`.by` parameters of
+#'   `set_*()` methods are used to set a given status to authors. Matching of
+#'   values is case-insensitive.
 #' @export
 everyone_but <- function(...) {
   lifecycle::deprecate_warn("0.2.0", "everyone_but()")

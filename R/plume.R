@@ -65,7 +65,7 @@ Plume <- R6Class(
     #'   affiliations, `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`,
     #'   `"¶"`, `"#"`, `"**"` for notes. Set a key to `NULL` to use numerals.
     #' @param roles A vector of key-value pairs defining roles where keys
-    #'   identify columns and values describe the actual roles to use.
+    #'   identify role columns and values describe the actual roles to use.
     #' @param credit_roles `r lifecycle::badge("deprecated")`
     #'
     #'   It is now recommended to use `roles = credit_roles()` to use the
@@ -76,6 +76,9 @@ Plume <- R6Class(
     #'   is only useful for people writing in languages that don't separate
     #'   words with a space such as Chinese or Japanese.
     #' @param orcid_icon The ORCID icon, as defined by [`orcid()`], to be used.
+    #' @param by A character string defining the default variable used to assign
+    #'   specific metadata to authors in all `set_*()` methods. By default, uses
+    #'   authors' id.
     #' @return A `Plume` object.
     initialize = function(
         data,
