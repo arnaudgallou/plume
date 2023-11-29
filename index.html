@@ -12,8 +12,8 @@
     from tabular data.">
 <title>A Simple Author Handler for Scientific Writing • plume</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="A Simple Author Handler for Scientific Writing">
 <meta property="og:description" content="Handles and formats author information in scientific writing
@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">plume</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,6 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="articles/plume-workflow.html">plume workflow</a>
-    <a class="dropdown-item" href="articles/using-credit-roles.html">Using CRediT roles</a>
     <a class="dropdown-item" href="articles/working-in-other-languages.html">Working in other languages</a>
     <a class="dropdown-item" href="articles/comprehensive-affiliation-schema.html">Comprehensive affiliation schema</a>
   </div>
@@ -90,7 +89,7 @@
 </h2>
 <p>plume provides tools for handling and generating author-related information for scientific writing in R Markdown and Quarto. The package implements two R6 classes:</p>
 <ul>
-<li><p><code>PlumeQuarto</code>: class that allows you to push or update author metadata in the YAML header of Quarto files. The generated YAML complies with Quarto’s <a href="https://quarto.org/docs/journals/authors.html" class="external-link">author and affiliations schemas</a>. This is the class to use if you work with journal templates.</p></li>
+<li><p><code>PlumeQuarto</code>: class that allows you to push author metadata in the YAML header of Quarto files. The generated YAML complies with Quarto’s <a href="https://quarto.org/docs/journals/authors.html" class="external-link">author and affiliations schemas</a>. This is the class to use if you work with journal templates.</p></li>
 <li><p><code>Plume</code>: class that generates author lists and other author-related information as character strings. This is an easy and convenient solution when you don’t need preformatted documents.</p></li>
 </ul>
 </div>
@@ -113,20 +112,20 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/arnaudgallou/plume" class="external-link">plume</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">encyclopedists</span></span>
-<span><span class="co">#&gt; # A tibble: 4 × 12</span></span>
-<span><span class="co">#&gt;   given_name family_name email phone orcid role_n1 role_n2 role_v1 role_v2 note </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 Denis      Diderot     dide… 00 0… 0000… Writing Superv… contri… superv… born…</span></span>
-<span><span class="co">#&gt; 2 Jean-Jacq… Rousseau    rous… &lt;NA&gt;  0000… Writing &lt;NA&gt;    contri… &lt;NA&gt;    &lt;NA&gt; </span></span>
-<span><span class="co">#&gt; 3 François-… Arouet      arou… &lt;NA&gt;  &lt;NA&gt;  Writing &lt;NA&gt;    contri… &lt;NA&gt;    also…</span></span>
-<span><span class="co">#&gt; 4 Jean       Le Rond d'… alem… &lt;NA&gt;  0000… Writing Superv… contri… superv… born…</span></span>
-<span><span class="co">#&gt; # ℹ 2 more variables: affiliation1 &lt;chr&gt;, affiliation2 &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 10</span></span>
+<span><span class="co">#&gt;   given_name     family_name        email  phone orcid supervision writing note </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;              &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 Denis          Diderot            dider… +1234 0000…           1       1 born…</span></span>
+<span><span class="co">#&gt; 2 Jean-Jacques   Rousseau           rouss… &lt;NA&gt;  0000…          NA       1 &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 3 François-Marie Arouet             aroue… &lt;NA&gt;  &lt;NA&gt;           NA       1 also…</span></span>
+<span><span class="co">#&gt; 4 Jean           Le Rond d'Alembert alemb… &lt;NA&gt;  0000…           1       1 born…</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;</span></span>
 <span></span>
 <span><span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 11</span></span>
 <span><span class="co">#&gt;      id given_name     family_name literal_name initials email phone orcid note </span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1     1 Denis          Diderot     Denis Dider… DD       dide… 00 0… 0000… born…</span></span>
+<span><span class="co">#&gt; 1     1 Denis          Diderot     Denis Dider… DD       dide… +1234 0000… born…</span></span>
 <span><span class="co">#&gt; 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… &lt;NA&gt;  0000… &lt;NA&gt; </span></span>
 <span><span class="co">#&gt; 3     3 François-Marie Arouet      François-Ma… F-MA     arou… &lt;NA&gt;  &lt;NA&gt;  also…</span></span>
 <span><span class="co">#&gt; 4     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… &lt;NA&gt;  0000… born…</span></span>
@@ -141,8 +140,7 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
-<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span>,</span>
-<span>  names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_n"</span><span class="op">)</span></span>
+<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -154,14 +152,14 @@
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      given<span class="sc">:</span> Denis</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      family<span class="sc">:</span> Diderot</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    email<span class="sc">:</span> diderot<span class="sc">@</span>encyclopediste.fr</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    phone<span class="sc">:</span> <span class="dv">00</span> <span class="dv">00</span> <span class="dv">00</span> <span class="dv">01</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    phone<span class="sc">:</span> <span class="st">'+1234'</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    orcid<span class="sc">:</span> <span class="dv">0000-0000-0000-0001</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    note<span class="sc">:</span> born <span class="cf">in</span> <span class="dv">1713</span> <span class="cf">in</span> Langres</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> true</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    roles<span class="sc">:</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> supervision</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> supervision</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff1</span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut2</span>
@@ -173,7 +171,7 @@
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> false</span>
 <span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    roles<span class="sc">:</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff2</span>
 <span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut3</span>
@@ -185,7 +183,7 @@
 <span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
 <span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> false</span>
 <span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    roles<span class="sc">:</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
 <span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
 <span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff2</span>
 <span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut4</span>
@@ -198,8 +196,8 @@
 <span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="st">    attributes:</span></span>
 <span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="st">      corresponding: true</span></span>
 <span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="st">    roles:</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="st">      - writing</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="st">      - supervision</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="st">      - supervision</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="st">      - writing - original draft</span></span>
 <span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="st">    affiliations:</span></span>
 <span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="st">      - ref: aff1</span></span>
 <span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="st">      - ref: aff3</span></span>
@@ -215,8 +213,8 @@
 <span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="st">Qui scribit bis legit</span></span></code></pre></div>
 <p>Alternatively, you can generate author information as character strings using <code>Plume</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_n"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="va">diderot</span>, by <span class="op">=</span> <span class="st">"family_name"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="va">diderot</span>, .by <span class="op">=</span> <span class="st">"family_name"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"^a,^cn"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Denis Diderot^1,^\*†, Jean-Jacques Rousseau^2^, François-Marie Arouet^2^‡,</span></span>
@@ -236,22 +234,25 @@
 <span><span class="co">#&gt; ^§^born in 1717 in Paris</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Writing: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
 <span><span class="co">#&gt; Supervision: D.D. and J.L.R.d'A.</span></span>
+<span><span class="co">#&gt; Writing - original draft: D.D., J.-J.R., F.-M.A. and J.L.R.d'A.</span></span>
 <span></span>
-<span><span class="va">aut_v</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span><span class="va">aut2</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
-<span>  names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role <span class="op">=</span> <span class="st">"role_v"</span><span class="op">)</span>,</span>
+<span>  roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    supervision <span class="op">=</span> <span class="st">"supervised the project"</span>,</span>
+<span>    writing <span class="op">=</span> <span class="st">"contributed to the Encyclopédie"</span></span>
+<span>  <span class="op">)</span>,</span>
 <span>  symbols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="va">letters</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">aut_v</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"^a^"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
+<span><span class="va">aut2</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"^a^"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Denis Diderot^a^, Jean-Jacques Rousseau^b^, François-Marie Arouet^b^,</span></span>
 <span><span class="co">#&gt; Jean Le Rond d'Alembert^a,c^</span></span>
 <span></span>
-<span><span class="va">aut_v</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>roles_first <span class="op">=</span> <span class="cn">FALSE</span>, divider <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
-<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie</span></span>
-<span><span class="co">#&gt; D.D. and J.L.R.d'A. supervised the project</span></span></code></pre></div>
+<span><span class="va">aut2</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>roles_first <span class="op">=</span> <span class="cn">FALSE</span>, divider <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
+<span><span class="co">#&gt; D.D. and J.L.R.d'A. supervised the project</span></span>
+<span><span class="co">#&gt; D.D., J.-J.R., F.-M.A. and J.L.R.d'A. contributed to the Encyclopédie</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
@@ -292,7 +293,6 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Arnaud Gallou <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-1002-4247" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
