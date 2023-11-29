@@ -6,14 +6,14 @@
 \alias{encyclopedists_fr}
 \title{Famous encyclopedists}
 \format{
-A tibble with 4 rows and 12 variables:
+A tibble with 4 rows and 10 variables:
 \describe{
 \item{given_name,prénom}{authors' given names}
 \item{family_name,nom}{authors' family names}
 \item{email,courriel}{authors' email addresses}
 \item{phone,téléphone}{authors' phone numbers}
 \item{orcid}{authors' ORCID}
-\item{affiliation}{authors' affiliations}
+\item{affiliation_1,affiliation_2}{authors' affiliations}
 \item{supervision}{authors that supervised the project}
 \item{writing,rédaction}{authors involved in the writing}
 \item{note}{special notes about authors}
