@@ -126,7 +126,7 @@ affiliations, <code>"*"</code> for corresponding authors and <code>"†"</code>,
 
 <dt><code>roles</code></dt>
 <dd><p>A vector of key-value pairs defining roles where keys
-identify columns and values describe the actual roles to use.</p></dd>
+identify role columns and values describe the actual roles to use.</p></dd>
 
 
 <dt><code>credit_roles</code></dt>
@@ -151,6 +151,12 @@ words with a space such as Chinese or Japanese.</p></dd>
 
 <dt><code>orcid_icon</code></dt>
 <dd><p>The ORCID icon, as defined by <code><a href="orcid.html">orcid()</a></code>, to be used.</p></dd>
+
+
+<dt><code>by</code></dt>
+<dd><p>A character string defining the default variable used to assign
+specific metadata to authors in all <code>set_*()</code> methods. By default, uses
+authors' id.</p></dd>
 
 
 </dl><p></p></div>

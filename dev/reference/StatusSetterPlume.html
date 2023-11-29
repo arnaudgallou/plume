@@ -93,16 +93,17 @@ contribution list.</p><div class="section">
 Expressions matching values in the column defined by <code>by</code>/<code>.by</code>
 determine main contributors. Expressions can be named after any role to
 set different main contributors to different roles at once, in which
-case the <code>.roles</code> parameter will be ignored. Matching of values is
+case the <code>.roles</code> parameter is ignored. Matching of values is
 case-insensitive.</p></dd>
 
 
 <dt><code>.roles</code></dt>
-<dd><p>Roles to assign main contributors to.</p></dd>
+<dd><p>Roles to assign main contributors to. If <code>.roles</code> is a
+named vector, only the names will be used.</p></dd>
 
 
 <dt><code>.by</code></dt>
-<dd><p>Variable used to specify which authors are equal contributors.
+<dd><p>Variable used to specify which authors are main contributors.
 By default, uses authors' id.</p></dd>
 
 
