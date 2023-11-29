@@ -57,21 +57,16 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
-<ul><li><p>Deprecated <code>$set_equal_contributor()</code> in favour of <code>$set_cofirst_authors()</code> to avoid confusion with contributors assigned to specific roles (<a href="https://github.com/arnaudgallou/plume/issues/45" class="external-link">#45</a>).</p></li>
-<li><p>Deprecated <code><a href="../reference/everyone.html">everyone_but()</a></code> as this function is not necessary since not more than a couple of authors should normally be given a particular status (<a href="https://github.com/arnaudgallou/plume/issues/44" class="external-link">#44</a>).</p></li>
-<li><p>Removed stringb dependency in favour of stringr (<a href="https://github.com/arnaudgallou/plume/issues/42" class="external-link">#42</a>).</p></li>
-<li><p>The <code>by</code> parameter in <code>$set_*()</code> methods is now deprecated in favour of <code>.by</code> (<a href="https://github.com/arnaudgallou/plume/issues/41" class="external-link">#41</a>).</p></li>
-<li><p><code>Plume</code> gains a new method <code>$set_main_contributors()</code> that allows you to force one or more contributors to appear first in the contribution list for any given role. <code>Plume</code>’s contructor also regains the parameter <code>by</code> to set the default <code>by</code>/<code>.by</code> value used in all <code>set_*()</code> methods.</p></li>
-<li><p>Updated the <code>encyclopedists</code> and <code>encyclopedists_fr</code> data to use the new role column system (<a href="https://github.com/arnaudgallou/plume/issues/39" class="external-link">#39</a>). Column names have also been homogenised (<a href="https://github.com/arnaudgallou/plume/issues/46" class="external-link">#46</a>).</p></li>
-<li><p><code>$to_yaml()</code> now preserves line breaks preceding leading or isolated <code>---</code> (<a href="https://github.com/arnaudgallou/plume/issues/37" class="external-link">#37</a>).</p></li>
-<li><p><code><a href="../reference/plm_template.html">plm_template()</a></code> now returns role columns as numeric type (<a href="https://github.com/arnaudgallou/plume/issues/26" class="external-link">#26</a>).</p></li>
+<div class="section level3">
+<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li><p><code>Plume</code> gains a new method <code>$set_main_contributors()</code> that allows you to force one or more contributors to appear first in the contribution list for any given role. <code>Plume</code>’s contructor also regains the parameter <code>by</code> to set the default <code>by</code>/<code>.by</code> value used in all <code>$set_*()</code> methods (<a href="https://github.com/arnaudgallou/plume/issues/40" class="external-link">#40</a>).</p></li>
 <li><p>New helper <code><a href="../reference/credit_roles.html">credit_roles()</a></code> that returns the 14 contributor roles of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>. These are now the default roles used by plume.</p></li>
-<li>
+</ul><p><a name="new_role_system"></a></p>
+<ul><li>
 <p>The plume role handling system has been overhauled for better flexibility and ease of use (<a href="https://github.com/arnaudgallou/plume/issues/29" class="external-link">#29</a>).</p>
-<ul><li><p>Defining roles explicitly in the input data or using <code>credit_roles = TRUE</code> are now deprecated in favour of defining role columns and roles via the parameters <code>role_cols</code> and <code>roles</code>, respectively (see below).</p></li>
-<li><p><code><a href="../reference/plm_template.html">plm_template()</a></code> gains a new parameter <code>role_cols</code> to create role columns from a character vector.</p></li>
+<ul><li><p><code><a href="../reference/plm_template.html">plm_template()</a></code> gains a new parameter <code>role_cols</code> to create role columns from a character vector.</p></li>
 <li>
-<p>plume classes gain a new parameter <code>roles</code> allowing you to specify roles using a character vector.</p>
+<p>plume classes gain a new parameter <code>roles</code> allowing you to specify roles using a named character vector.</p>
 <p>Rather than:</p>
 <pre><code># A tibble: 2 × 4
   given_name family_name role_1      role_2
@@ -87,10 +82,29 @@
 <p>And speficy roles when creating a <code>plume</code> object:</p>
 <pre><code><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">data</span>, roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role_1 <span class="op">=</span> <span class="st">"Supervision"</span>, role_2 <span class="op">=</span> <span class="st">"Writing"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </li>
-<li><p>The <code>using-credit-roles</code> vignette was removed as it is no longer needed.</p></li>
 </ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="lifecycle-changes-development-version">Lifecycle changes<a class="anchor" aria-label="anchor" href="#lifecycle-changes-development-version"></a></h3>
+<ul><li><p><code>$set_equal_contributor()</code> is now deprecated in favour of <code>$set_cofirst_authors()</code> due to the ambiguous name of the method (<a href="https://github.com/arnaudgallou/plume/issues/45" class="external-link">#45</a>).</p></li>
+<li><p><code><a href="../reference/everyone.html">everyone_but()</a></code> is now deprecated as this function is not necessary since not more than a couple of authors should normally be given a particular status (<a href="https://github.com/arnaudgallou/plume/issues/44" class="external-link">#44</a>).</p></li>
+<li><p>The <code>by</code> parameter in <code>$set_*()</code> methods is now deprecated in favour of <code>.by</code> for consistency purposes (<a href="https://github.com/arnaudgallou/plume/issues/41" class="external-link">#41</a>).</p></li>
+<li><p>Defining roles explicitly in the input data or using <code>credit_roles = TRUE</code> are now deprecated in favour of defining role columns and roles via the parameters <code>role_cols</code> and <code>roles</code>, respectively (see details about the <a href="#new_role_system">new role handling system</a> above).</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-changes-development-version">Documentation changes<a class="anchor" aria-label="anchor" href="#documentation-changes-development-version"></a></h3>
+<ul><li>The <code>using-credit-roles</code> vignette was removed as it is no longer needed.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
+<ul><li><p>Removed stringb dependency in favour of stringr (<a href="https://github.com/arnaudgallou/plume/issues/42" class="external-link">#42</a>).</p></li>
+<li><p>Updated the <code>encyclopedists</code> and <code>encyclopedists_fr</code> data to use the new role column system (<a href="https://github.com/arnaudgallou/plume/issues/39" class="external-link">#39</a>). Column names have also been homogenised (<a href="https://github.com/arnaudgallou/plume/issues/46" class="external-link">#46</a>).</p></li>
+<li><p><code>$to_yaml()</code> now preserves line breaks preceding leading or isolated <code>---</code> (<a href="https://github.com/arnaudgallou/plume/issues/37" class="external-link">#37</a>).</p></li>
+<li><p><code><a href="../reference/plm_template.html">plm_template()</a></code> now returns role columns as numeric type (<a href="https://github.com/arnaudgallou/plume/issues/26" class="external-link">#26</a>).</p></li>
+<li><p>Initials now drop dots present in author names (<a href="https://github.com/arnaudgallou/plume/issues/31" class="external-link">#31</a>).</p></li>
 <li><p>plume classes now error when a role column contains multiple roles (<a href="https://github.com/arnaudgallou/plume/issues/28" class="external-link">#28</a>).</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="plume-010">plume 0.1.0<a class="anchor" aria-label="anchor" href="#plume-010"></a></h2><p class="text-muted">CRAN release: 2023-10-06</p>
 <div class="section level3">
