@@ -26,21 +26,17 @@ plm_template <- function(minimal = TRUE, role_cols = credit_roles(), credit_role
     role_cols <- credit_roles()
   }
   vars <- get_template_vars(minimal, role_cols)
-  build_template(vars)
-}
-
-build_template <- function(vars) {
-  out <- tibble(!!!vars$cols, !!!vars$role_cols, .rows = 0)
-  mutate(out, across(all_of(vars$role_cols), as.numeric))
+  tibble(!!!vars, .rows = 0)
 }
 
 get_template_vars <- function(minimal, role_cols) {
   vars <- list_fetch_all(.names, "primaries", "orcid", squash = FALSE)
   vars <- c(vars, get_secondaries(minimal), get_nestables())
+  vars <- recycle_to_names(NA_character_, vars)
   if (is_named(role_cols)) {
     role_cols <- names(role_cols)
   }
-  list(cols = vars, role_cols = if (!is.null(role_cols)) set_names(role_cols))
+  c(vars, if (!is.null(role_cols)) recycle_to_names(NA_real_, role_cols))
 }
 
 get_secondaries <- function(minimal) {
