@@ -154,13 +154,52 @@ tibble::tibble(
 )
 ```
 
-plume uses `r plume:::link("crt")` (CRediT) by default (assuming the input data contains the [appropriate columns](#constants)). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys define role columns and values the actual roles to use.
+plume uses the `r plume:::link("crt")` (CRediT) by default (assuming the input data contains the [appropriate columns](#constants)). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys define role columns and values the actual roles to use.
 
 ```{r, eval = FALSE}
 Plume$new(data, roles = c(
   supervision = "supervised the project",
   writing = "contributed to the writing"
 ))
+```
+
+## Assigning status to authors
+
+```{r, echo = FALSE}
+ status_methods <- tibble::tibble(
+   name = c(
+     "set_corresponding_authors()",
+     "set_main_contributors()",
+     "set_cofirst_authors()",
+     "set_deceased()"
+   ),
+   Plume = as.logical(c(1, 1, 0, 0)),
+   PlumeQuarto = as.logical(c(1, 0, 1, 1)),
+ )
+```
+
+plume provides `r nrow(status_methods)` methods to set particular status to authors:
+
+```{r, echo = FALSE}
+build_table(status_methods)
+```
+
+By default, `set_*()` methods assign values by authors' id. You can change this behaviour at the object or method level using the `by`/`.by` parameters.
+
+Note that these methods are case insensitive.
+
+```{r}
+aut <- Plume$new(dplyr::select(encyclopedists, given_name, family_name))
+
+aut$set_corresponding_authors(dd, "j-jr", .by = "initials")
+aut
+```
+
+Use `everyone()` to assign `TRUE` to all authors:
+
+```{r}
+aut$set_corresponding_authors(everyone())
+aut
 ```
 
 ## Pushing data into YAML headers
@@ -212,45 +251,6 @@ aut$to_yaml()
 aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 2), tmp_file)
 aut$to_yaml()
 cat(read_file(tmp_file))
-```
-
-## Assigning status to authors
-
-```{r, echo = FALSE}
- status_methods <- tibble::tibble(
-   name = c(
-     "set_corresponding_authors()",
-     "set_main_contributors()",
-     "set_cofirst_authors()",
-     "set_deceased()"
-   ),
-   Plume = as.logical(c(1, 1, 0, 0)),
-   PlumeQuarto = as.logical(c(1, 0, 1, 1)),
- )
-```
-
-plume provides `r nrow(status_methods)` methods to set particular status to authors:
-
-```{r, echo = FALSE}
-build_table(status_methods)
-```
-
-By default, `set_*()` methods assign values by authors' id. You can change this behaviour at the object or method level using the `by`/`.by` parameters.
-
-Note that these methods are case insensitive.
-
-```{r}
-aut <- Plume$new(dplyr::select(encyclopedists, given_name, family_name))
-
-aut$set_corresponding_authors(dd, "j-jr", .by = "initials")
-aut
-```
-
-Use `everyone()` to assign `TRUE` to all authors:
-
-```{r}
-aut$set_corresponding_authors(everyone())
-aut
 ```
 
 ## Getting author information
