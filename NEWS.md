@@ -2,15 +2,13 @@
 
 ## New features
 
-* `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors to appear first in the contribution list for any given role. `Plume`'s contructor also regains the parameter `by` to set the default `by`/`.by` value used in all `$set_*()` methods (#40).
+* `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors to appear first in the contribution list for any given role. Because of this new method, `Plume`'s contructor regained the parameter `by` to set the default `by`/`.by` value used in all `$set_*()` methods (#40).
 
 * New helper `credit_roles()` that returns the 14 contributor roles of the [Contributor Roles Taxonomy](https://credit.niso.org). These are now the default roles used by plume.
 
 <a name="new_role_system" />
 
 * The plume role handling system has been overhauled for better flexibility and ease of use (#29).
-
-  * `plm_template()` gains a new parameter `role_cols` to create role columns from a character vector.
 
   * plume classes gain a new parameter `roles` allowing you to specify roles using a named character vector.
 
@@ -40,6 +38,8 @@
     Plume$new(data, roles = c(role_1 = "Supervision", role_2 = "Writing"))
     ```
 
+  * `plm_template()` gains a new parameter `role_cols` to create role columns from a character vector.
+
 ## Lifecycle changes
 
 * `$set_equal_contributor()` is now deprecated in favour of `$set_cofirst_authors()` due to the ambiguous name of the method (#45).
@@ -58,7 +58,7 @@
 
 * Removed stringb dependency in favour of stringr (#42).
 
-* Updated the `encyclopedists` and `encyclopedists_fr` data to use the new role column system (#39). Column names have also been homogenised (#46).
+* Updated the `encyclopedists` and `encyclopedists_fr` data to comply with the new role column system (#39). Column names have also been homogenised (#46).
 
 * `$to_yaml()` now preserves line breaks preceding leading or isolated `---` (#37).
 
