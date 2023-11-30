@@ -59,13 +59,12 @@
 <h2 class="pkg-version" data-toc-text="0.2.0" id="plume-020">plume 0.2.0<a class="anchor" aria-label="anchor" href="#plume-020"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-2-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-2-0"></a></h3>
-<ul><li><p><code>Plume</code> gains a new method <code>$set_main_contributors()</code> that allows you to force one or more contributors to appear first in the contribution list for any given role. <code>Plume</code>’s contructor also regains the parameter <code>by</code> to set the default <code>by</code>/<code>.by</code> value used in all <code>$set_*()</code> methods (<a href="https://github.com/arnaudgallou/plume/issues/40" class="external-link">#40</a>).</p></li>
+<ul><li><p><code>Plume</code> gains a new method <code>$set_main_contributors()</code> that allows you to force one or more contributors to appear first in the contribution list for any given role. Because of this new method, <code>Plume</code>’s contructor regained the parameter <code>by</code> to set the default <code>by</code>/<code>.by</code> value used in all <code>$set_*()</code> methods (<a href="https://github.com/arnaudgallou/plume/issues/40" class="external-link">#40</a>).</p></li>
 <li><p>New helper <code><a href="../reference/credit_roles.html">credit_roles()</a></code> that returns the 14 contributor roles of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>. These are now the default roles used by plume.</p></li>
 </ul><p><a name="new_role_system"></a></p>
 <ul><li>
 <p>The plume role handling system has been overhauled for better flexibility and ease of use (<a href="https://github.com/arnaudgallou/plume/issues/29" class="external-link">#29</a>).</p>
-<ul><li><p><code><a href="../reference/plm_template.html">plm_template()</a></code> gains a new parameter <code>role_cols</code> to create role columns from a character vector.</p></li>
-<li>
+<ul><li>
 <p>plume classes gain a new parameter <code>roles</code> allowing you to specify roles using a named character vector.</p>
 <p>Rather than:</p>
 <pre><code># A tibble: 2 × 4
@@ -82,6 +81,7 @@
 <p>And speficy roles when creating a <code>plume</code> object:</p>
 <pre><code><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">data</span>, roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role_1 <span class="op">=</span> <span class="st">"Supervision"</span>, role_2 <span class="op">=</span> <span class="st">"Writing"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </li>
+<li><p><code><a href="../reference/plm_template.html">plm_template()</a></code> gains a new parameter <code>role_cols</code> to create role columns from a character vector.</p></li>
 </ul></li>
 </ul></div>
 <div class="section level3">
@@ -98,7 +98,7 @@
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-0-2-0">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-0-2-0"></a></h3>
 <ul><li><p>Removed stringb dependency in favour of stringr (<a href="https://github.com/arnaudgallou/plume/issues/42" class="external-link">#42</a>).</p></li>
-<li><p>Updated the <code>encyclopedists</code> and <code>encyclopedists_fr</code> data to use the new role column system (<a href="https://github.com/arnaudgallou/plume/issues/39" class="external-link">#39</a>). Column names have also been homogenised (<a href="https://github.com/arnaudgallou/plume/issues/46" class="external-link">#46</a>).</p></li>
+<li><p>Updated the <code>encyclopedists</code> and <code>encyclopedists_fr</code> data to comply with the new role column system (<a href="https://github.com/arnaudgallou/plume/issues/39" class="external-link">#39</a>). Column names have also been homogenised (<a href="https://github.com/arnaudgallou/plume/issues/46" class="external-link">#46</a>).</p></li>
 <li><p><code>$to_yaml()</code> now preserves line breaks preceding leading or isolated <code>---</code> (<a href="https://github.com/arnaudgallou/plume/issues/37" class="external-link">#37</a>).</p></li>
 <li><p><code><a href="../reference/plm_template.html">plm_template()</a></code> now returns role columns as numeric type (<a href="https://github.com/arnaudgallou/plume/issues/26" class="external-link">#26</a>).</p></li>
 <li><p>Initials now drop dots present in author names (<a href="https://github.com/arnaudgallou/plume/issues/31" class="external-link">#31</a>).</p></li>
