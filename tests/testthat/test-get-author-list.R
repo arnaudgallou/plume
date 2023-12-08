@@ -4,11 +4,11 @@ test_that("get_author_list() returns author list", {
 
   expect_s3_class(aut$get_author_list(), "plm")
   expect_equal(
-    aut$get_author_list(format = NULL),
+    aut$get_author_list(NULL),
     c("Zip Zap", "Ric Rac", "Pim-Pam Pom")
   )
   expect_equal(
-    aut$get_author_list(format = ""),
+    aut$get_author_list(""),
     c("Zip Zap", "Ric Rac", "Pim-Pam Pom")
   )
 
@@ -21,58 +21,58 @@ test_that("get_author_list() returns author list", {
   .n <- c("†,‡", "", "§")
 
   expect_equal(
-    aut$get_author_list(format = "a"),
+    aut$get_author_list("a"),
     affix_to_authors(.a)
   )
   expect_equal(
-    aut$get_author_list(format = "c"),
+    aut$get_author_list("c"),
     affix_to_authors(.c)
   )
   expect_equal(
-    aut$get_author_list(format = "n"),
+    aut$get_author_list("n"),
     affix_to_authors(.n)
   )
   expect_equal(
-    aut$get_author_list(format = "anc"),
+    aut$get_author_list("anc"),
     affix_to_authors(.a, .n, .c)
   )
   expect_equal(
-    aut$get_author_list(format = "acn"),
-    affix_to_authors(.a, .c, .n)
+    aut$get_author_list("can"),
+    affix_to_authors(.c, .a, .n)
   )
   expect_equal(
-    aut$get_author_list(format = "^ac^n"),
+    aut$get_author_list("^ac^n"),
     affix_to_authors("^", .a, .c, "^", .n)
   )
 
   .seps <- c(",", "", ",")
 
   expect_equal(
-    aut$get_author_list(format = "a,c"),
+    aut$get_author_list("a,c"),
     affix_to_authors(.a, .seps, .c)
   )
   expect_equal(
-    aut$get_author_list(format = "^a,^c"),
+    aut$get_author_list("^a,^c"),
     affix_to_authors("^", .a, .seps, "^", .c)
   )
 
   expect_equal(
-    aut$get_author_list(format = "a,,c"),
+    aut$get_author_list("a,,c"),
     affix_to_authors(.a, .seps, .c)
   )
   expect_equal(
-    aut$get_author_list(format = ",ac,"),
+    aut$get_author_list(",ac,"),
     affix_to_authors(.a, .c)
   )
   expect_equal(
-    aut$get_author_list(format = "^^ac^^"),
+    aut$get_author_list("^^ac^^"),
     affix_to_authors("^", .a, .c, "^")
   )
 
   .hats <- c("^", "", "^")
 
   expect_equal(
-    aut$get_author_list(format = "^a^c^n^"),
+    aut$get_author_list("^a^c^n^"),
     affix_to_authors("^", .a, .hats, .c, .hats, .n, "^")
   )
 
@@ -90,7 +90,7 @@ test_that("get_author_list() returns author list", {
   .n <- c("1,2", "", "3")
 
   expect_equal(
-    aut$get_author_list(format = "anc"),
+    aut$get_author_list("anc"),
     affix_to_authors(.a, .n, .c)
   )
 
@@ -102,7 +102,7 @@ test_that("get_author_list() returns author list", {
   )
 
   expect_equal(
-    aut$get_author_list(format = "a"),
+    aut$get_author_list("a"),
     "X Y1,2"
   )
 })
@@ -110,6 +110,19 @@ test_that("get_author_list() returns author list", {
 test_that("get_author_list() makes ORCID icons", {
   aut <- Plume$new(basic_df)
   expect_snapshot(aut$get_author_list("o"), transform = scrub_icon_path)
+})
+
+# Deprecation ----
+
+test_that("`format` is deprecated", {
+  aut <- Plume$new(basic_df)
+  expect_snapshot({
+    author_list <- aut$get_author_list(format = "a")
+  })
+  expect_equal(author_list, paste0(
+    c("Zip Zap", "Ric Rac", "Pim-Pam Pom"),
+    c("1,2", "3", "1,4")
+  ))
 })
 
 # Errors ----
@@ -120,19 +133,19 @@ test_that("get_author_list() gives meaningful error messages", {
 
   expect_snapshot({
     (expect_error(
-      aut$get_author_list(format = 1)
+      aut$get_author_list(1)
     ))
     (expect_error(
-      aut$get_author_list(format = "anca")
+      aut$get_author_list("anca")
     ))
     (expect_error(
-      aut$get_author_list(format = "az")
+      aut$get_author_list("az")
     ))
     (expect_error(
-      aut$get_author_list(format = "ac")
+      aut$get_author_list("ac")
     ))
     (expect_error(
-      aut$get_author_list(format = "o")
+      aut$get_author_list("o")
     ))
   })
 })

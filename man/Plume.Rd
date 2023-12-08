@@ -142,19 +142,23 @@ A \code{Plume} object.
 \subsection{Method \code{get_author_list()}}{
 Get author list.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$get_author_list(format = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Plume$get_author_list(suffix = NULL, format = deprecated())}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{format}}{A character string defining the format of symbols suffixing
+\item{\code{suffix}}{A character string defining the format of symbols suffixing
 author names. See details.}
+
+\item{\code{format}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Please use the parameter \code{suffix} instead.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Details}{
-\code{format} lets you choose which symbol categories to suffix authors with,
+\code{suffix} lets you choose which symbol categories to suffix authors with,
 using the following keys:
 \itemize{
 \item \code{a} for affiliations

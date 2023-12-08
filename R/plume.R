@@ -111,10 +111,13 @@ Plume <- R6Class(
     },
 
     #' @description Get author list.
-    #' @param format A character string defining the format of symbols suffixing
+    #' @param suffix A character string defining the format of symbols suffixing
     #'   author names. See details.
+    #' @param format `r lifecycle::badge("deprecated")`
+    #'
+    #'   Please use the parameter `suffix` instead.
     #' @details
-    #' `format` lets you choose which symbol categories to suffix authors with,
+    #' `suffix` lets you choose which symbol categories to suffix authors with,
     #' using the following keys:
     #' * `a` for affiliations
     #' * `c` for corresponding authors
@@ -127,13 +130,17 @@ Plume <- R6Class(
     #' Use `","` to separate and `"^"` to superscript symbols.
     #' Use `NULL` or an empty string to list author names without suffixes.
     #' @return A character vector.
-    get_author_list = function(format = NULL) {
-      check_suffix_format(format, allowed = c("a", "c", "n", "o", "^", ","))
+    get_author_list = function(suffix = NULL, format = deprecated()) {
+      if (lifecycle::is_present(format)) {
+        lifecycle::deprecate_warn("0.2.0", "get_author_list(format)", "get_author_list(suffix)")
+        suffix <- format
+      }
       authors <- private$get("literal_name")
-      if (is_empty(format)) {
+      if (is_empty(suffix)) {
         out <- authors
       } else {
-        suffixes <- private$get_author_list_suffixes(format)
+        check_suffix_format(suffix)
+        suffixes <- private$get_author_list_suffixes(suffix)
         out <- paste0(authors, suffixes)
       }
       as_plm(out)
