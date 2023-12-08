@@ -100,7 +100,7 @@ Plume <- R6Class(
         initials_given_name,
         family_name_first,
         interword_spacing,
-        by = NULL
+        by = by
       )
       check_list(symbols, force_names = TRUE)
       check_orcid_icon(orcid_icon)
