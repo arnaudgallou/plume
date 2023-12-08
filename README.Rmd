@@ -94,7 +94,7 @@ Alternatively, you can generate author information as character strings using `P
 aut <- Plume$new(encyclopedists)
 aut$set_corresponding_authors(diderot, .by = "family_name")
 
-aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
+aut$get_author_list(suffix = "^a,^cn") |> enumerate(last = ",\n")
 
 aut$get_contact_details()
 
@@ -113,7 +113,7 @@ aut2 <- Plume$new(
   symbols = list(affiliation = letters)
 )
 
-aut2$get_author_list(format = "^a^") |> enumerate(last = ",\n")
+aut2$get_author_list("^a^") |> enumerate(last = ",\n")
 
 aut2$get_contributions(roles_first = FALSE, divider = " ")
 ```

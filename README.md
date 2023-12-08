@@ -169,7 +169,7 @@ using `Plume`:
 aut <- Plume$new(encyclopedists)
 aut$set_corresponding_authors(diderot, .by = "family_name")
 
-aut$get_author_list(format = "^a,^cn") |> enumerate(last = ",\n")
+aut$get_author_list(suffix = "^a,^cn") |> enumerate(last = ",\n")
 #> Denis Diderot^1,^\*†, Jean-Jacques Rousseau^2^, François-Marie Arouet^2^‡,
 #> Jean Le Rond d'Alembert^1,3^§
 
@@ -199,7 +199,7 @@ aut2 <- Plume$new(
   symbols = list(affiliation = letters)
 )
 
-aut2$get_author_list(format = "^a^") |> enumerate(last = ",\n")
+aut2$get_author_list("^a^") |> enumerate(last = ",\n")
 #> Denis Diderot^a^, Jean-Jacques Rousseau^b^, François-Marie Arouet^b^,
 #> Jean Le Rond d'Alembert^a,c^
 

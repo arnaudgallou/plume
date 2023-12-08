@@ -243,11 +243,12 @@ check_args <- function(type, x, ...) {
   })
 }
 
-check_suffix_format <- function(x, allowed, arg = caller_arg(x)) {
+check_suffix_format <- function(x, arg = caller_arg(x)) {
   check_string(x, allow_null = TRUE, arg = arg)
   if (is.null(x)) {
     return(invisible(NULL))
   }
+  allowed <- c("a", "c", "n", "o", "^", ",")
   pattern <- to_chr_class(allowed, negate = TRUE)
   keys <- als_extract_keys(x)
   has_dup_keys <- vec_duplicate_any(keys)
