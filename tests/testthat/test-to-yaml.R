@@ -93,4 +93,11 @@ test_that("to_yaml() gives meaningful error messages", {
   aut <- PlumeQuarto$new(basic_df, tmp_file)
 
   expect_snapshot(aut$to_yaml(), error = TRUE)
+
+  aut <- PlumeQuarto$new(
+    data.frame(given_name = "X", family_name = "Y", orcid = "0000"),
+    tempfile_()
+  )
+
+  expect_snapshot(aut$to_yaml(), error = TRUE)
 })

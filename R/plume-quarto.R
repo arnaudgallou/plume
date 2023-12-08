@@ -123,7 +123,7 @@ PlumeQuarto <- R6Class(
         email = private$get("email"),
         phone = private$get("phone"),
         fax = private$get("fax"),
-        orcid = private$get("orcid"),
+        orcid = private$author_orcid(),
         note = private$author_notes(),
         acknowledgements = private$get("acknowledgements"),
         attributes = private$author_attributes(),
@@ -131,6 +131,14 @@ PlumeQuarto <- R6Class(
         metadata = private$author_metadata(),
         affiliations = private$author_affiliations()
       )
+    },
+
+    author_orcid = function() {
+      out <- private$get("orcid")
+      if (!is.null(out)) {
+        check_orcid(out)
+      }
+      out
     },
 
     author_roles = function() {

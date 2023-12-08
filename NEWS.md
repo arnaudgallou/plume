@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$to_yaml()` now throws an error when invalid ORCID identifiers are found.
+
 * `Plume`'s parameter `by` is now working properly (#48).
 
 * The `format` parameter of `$get_author_list()` is now deprecated in favour of the less ambiguous parameter `suffix` (#47).
