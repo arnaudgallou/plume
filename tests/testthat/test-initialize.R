@@ -143,6 +143,10 @@ test_that("`interword_spacing = FALSE` binds given and family names", {
 })
 
 test_that("`by` overrides default `by` value", {
+  aut <- Plume$new(basic_df, by = "initials")
+  aut$set_corresponding_authors(zz)
+  expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
+
   aut <- PlumeQuarto$new(basic_df, tempfile_(), by = "initials")
   aut$set_corresponding_authors(zz)
   expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))

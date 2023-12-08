@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `Plume`'s parameter `by` is now working properly (#48).
+
 * The `format` parameter of `$get_author_list()` is now deprecated in favour of the less ambiguous parameter `suffix` (#47).
 
 # plume 0.2.0
