@@ -68,11 +68,9 @@ are_calls <- function(...) {
   all(map_vec(enexprs(...), is.call))
 }
 
-search_ <- function(x, callback, na_rm = TRUE, n = 1) {
-  if (na_rm) {
-    x <- vec_drop_na(x)
-  }
-  have_passed <- !callback(x)
+search_ <- function(x, callback, n = 1) {
+  x <- vec_drop_na(x)
+  have_passed <- if (missing(callback)) !x else !callback(x)
   if (all(have_passed)) {
     return()
   }

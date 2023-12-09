@@ -139,7 +139,6 @@ Plume <- R6Class(
       if (is_empty(suffix)) {
         out <- authors
       } else {
-        check_suffix_format(suffix)
         suffixes <- private$get_author_list_suffixes(suffix)
         out <- paste0(authors, suffixes)
       }
@@ -278,6 +277,7 @@ Plume <- R6Class(
     orcid_icon = NULL,
 
     get_author_list_suffixes = function(format) {
+      check_suffix_format(format, arg = "suffix")
       key_set <- als_key_set(format)
       vars <- unlist(private$pick(key_set, squash = FALSE))
       cols <- unname(vars)

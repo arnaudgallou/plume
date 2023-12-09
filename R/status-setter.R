@@ -58,8 +58,8 @@ StatusSetter <- R6Class(
         by <- private$by
       } else {
         check_string(by, allow_empty = FALSE, arg = ".by")
+        private$check_col(by)
       }
-      private$check_col(by)
       by
     }
   )

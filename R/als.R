@@ -10,8 +10,7 @@ als_key_set <- function(format) {
 }
 
 als_extract_keys <- function(x) {
-  x <- str_split_1(x, "")
-  x[x %in% letters]
+  str_extract_all(x, "[a-z]")[[1]]
 }
 
 als_extract_mark <- function(format, key) {
@@ -38,14 +37,14 @@ als_parse <- function(format) {
   )
 }
 
-als_join <- function(elts, marks) {
-  out <- map2_vec(elts, marks, \(elt, mark) {
-    if (is_blank(elt) & str_contain(mark, "^")) {
+als_join <- function(x, marks) {
+  out <- map2_vec(x, marks, \(item, mark) {
+    if (is_blank(item) & str_contain(mark, "^")) {
       return("^")
-    } else if (is_blank(elt)) {
-      return(elt)
+    } else if (is_blank(item)) {
+      return(item)
     }
-    paste0(mark, elt)
+    paste0(mark, item)
   })
   collapse(out)
 }

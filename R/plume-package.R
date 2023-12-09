@@ -16,7 +16,7 @@
 #' @importFrom rlang %||% := abort set_names
 #' @importFrom rlang enexprs sym syms
 #' @importFrom rlang is_named is_string is_bool is_true
-#' @importFrom rlang caller_env caller_arg
+#' @importFrom rlang caller_env current_env caller_arg
 #' @importFrom glue glue glue_collapse
 #' @importFrom vctrs vec_group_id vec_duplicate_any vec_restore vec_rank
 #' @importFrom stringr str_split_1 str_remove_all str_replace str_replace_all

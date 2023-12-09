@@ -70,9 +70,9 @@ PlumeHandler <- R6Class(
 
     mount = function() {
       private$build()
-      for (col in private$pick("nestables")) {
-        if (private$is_nestable(col)) {
-          private$nest(col)
+      for (var in private$pick("nestables")) {
+        if (private$is_nestable(var)) {
+          private$nest(var)
         }
       }
     },
@@ -177,13 +177,12 @@ PlumeHandler <- R6Class(
     },
 
     get = function(col) {
-      col <- private$pick(col)
-      private$plume[[col]]
+      private$plume[[private$pick(col)]]
     },
 
-    is_nestable = function(col) {
-      col <- begins_with(col)
-      private$has_col(col) && col_count(private$plume, col) > 1L
+    is_nestable = function(var) {
+      var <- begins_with(var)
+      private$has_col(var) && col_count(private$plume, var) > 1L
     },
 
     has_col = function(col) {
@@ -205,15 +204,13 @@ PlumeHandler <- R6Class(
     check_authors = function() {
       nominal <- private$pick("primaries")
       authors <- select(private$plume, all_of(nominal))
-      authors <- reduce(authors, \(x, y) {
-        if_else(is_void(x) | is_void(y), NA, 1L)
-      })
-      missing_author <- search_(authors, is.na, na_rm = FALSE)
-      if (is.null(missing_author)) {
+      missing_name <- reduce(authors, \(x, y) is_void(x) | is_void(y))
+      missing_name <- search_(missing_name)
+      if (is.null(missing_name)) {
         return()
       }
       abort_check(msg = c(
-        glue("Missing author name found in position {names(missing_author)}."),
+        glue("Missing author name found in position {names(missing_name)}."),
         i = "All authors must have a given and family name."
       ))
     },

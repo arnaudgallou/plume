@@ -27,7 +27,7 @@ test_that("role columns are of type numeric", {
     names(tbl)[sapply(tbl, is.numeric)]
   }
 
-  df <- plm_template(role_cols = c("foo"))
+  df <- plm_template(role_cols = "foo")
   expect_equal(get_numeric_cols(df), "foo")
 
   df <- plm_template(role_cols = c(a = "foo"))
