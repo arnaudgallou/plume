@@ -1,4 +1,4 @@
-# plume (development version)
+# plume 0.2.1
 
 * Fixed `$get_contributions()` wrongly reordering authors when using CRediT roles and `by_author = TRUE` (#50).
 
