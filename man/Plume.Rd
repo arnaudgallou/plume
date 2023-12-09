@@ -293,6 +293,7 @@ Get authors' contributions.
   dotted_initials = TRUE,
   literal_names = FALSE,
   divider = ": ",
+  sep = ", ",
   sep_last = " and "
 )}\if{html}{\out{</div>}}
 }
@@ -314,6 +315,8 @@ By default, lists authors in the order they are defined in the data.}
 
 \item{\code{divider}}{Separator used to separate roles and authors. Uses \code{": "}
 by default.}
+
+\item{\code{sep}}{Separator used to separate roles or authors.}
 
 \item{\code{sep_last}}{Separator used to separate the last two roles or authors
 if more than one item is associated to a role or author.}

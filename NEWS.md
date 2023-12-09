@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$get_contributions()` gains a new parameter `sep` that allows for finer control of how to separate contributors or roles (#49).
+
 * `$to_yaml()` now throws an error when invalid ORCID identifiers are found.
 
 * `Plume`'s parameter `by` is now working properly (#48).

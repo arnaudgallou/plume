@@ -33,6 +33,10 @@ test_that("get_contributions() return authors' contributions", {
     c("a: P.-P.P., R.R. and Z.Z.", "b: Z.Z.")
   )
   expect_equal(
+    aut$get_contributions(by_author = FALSE, sep = "; "),
+    c("a: Z.Z.; R.R. and P.-P.P.", "b: Z.Z.")
+  )
+  expect_equal(
     aut$get_contributions(by_author = FALSE, sep_last = " & "),
     c("a: Z.Z., R.R. & P.-P.P.", "b: Z.Z.")
   )

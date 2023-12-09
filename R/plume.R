@@ -229,6 +229,7 @@ Plume <- R6Class(
     #' @param literal_names Should literal names be used?
     #' @param divider Separator used to separate roles and authors. Uses `": "`
     #'   by default.
+    #' @param sep Separator used to separate roles or authors.
     #' @param sep_last Separator used to separate the last two roles or authors
     #'   if more than one item is associated to a role or author.
     #' @return A character vector.
@@ -239,6 +240,7 @@ Plume <- R6Class(
         dotted_initials = TRUE,
         literal_names = FALSE,
         divider = ": ",
+        sep = ", ",
         sep_last = " and "
     ) {
       role <- private$pick("role")
@@ -261,6 +263,7 @@ Plume <- R6Class(
       }
       out <- summarise(out, !!pars$var := enumerate(
         contribution_items(pars, by_author, alphabetical_order),
+        sep = sep,
         last = sep_last
       ), .by = all_of(pars$grp_var))
       if (are_credit_roles(private$roles) || private$crt) {
