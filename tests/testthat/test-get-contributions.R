@@ -115,6 +115,19 @@ test_that("get_contributions() reorders CRediT roles alphabetically", {
   )
 })
 
+test_that("author order is preserved when using CRediT and `by_author` (#50)", {
+  aut <- Plume$new(data.frame(
+    given_name = c("Z", "A"),
+    family_name = c("Z", "A"),
+    writing = c(1, NA),
+    analysis = c(NA, 1)
+  ))
+  expect_equal(
+    aut$get_contributions(roles_first = FALSE, by_author = TRUE),
+    c("Z.Z.: Writing - original draft", "A.A.: Formal analysis")
+  )
+})
+
 test_that("set_main_contributors() ranks contributors", {
   aut <- Plume$new(
     data.frame(
