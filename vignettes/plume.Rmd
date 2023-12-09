@@ -154,7 +154,7 @@ tibble::tibble(
 )
 ```
 
-plume uses the `r plume:::link("crt")` (CRediT) by default (assuming the input data contains the [appropriate columns](#constants)). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys define role columns and values the actual roles to use.
+plume uses the `r plume:::link("crt")` (CRediT) by default (assuming the input data contains the [appropriate columns](#constants)). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys identify role columns and values define the actual roles to use.
 
 ```{r, eval = FALSE}
 Plume$new(data, roles = c(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/status-setter.R
 \name{StatusSetterPlumeQuarto}
 \alias{StatusSetterPlumeQuarto}
-\title{StatusSetterQuarto class}
+\title{StatusSetterPlumeQuarto class}
 \description{
 Internal class extending \code{StatusSetter} for \code{PlumeQuarto}.
 }

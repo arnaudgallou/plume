@@ -107,7 +107,7 @@ StatusSetterPlume <- R6Class(
   )
 )
 
-#' @title StatusSetterQuarto class
+#' @title StatusSetterPlumeQuarto class
 #' @description Internal class extending `StatusSetter` for `PlumeQuarto`.
 StatusSetterPlumeQuarto <- R6Class(
   classname = "StatusSetterPlumeQuarto",
