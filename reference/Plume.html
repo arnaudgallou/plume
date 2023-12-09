@@ -12,7 +12,7 @@ information as character strings."><!-- mathjax --><script src="https://cdnjs.cl
     
     <a class="navbar-brand me-2" href="../index.html">plume</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,21 +170,26 @@ authors' id.</p></dd>
 <h3 id="method-get-author-list-">Method <code>get_author_list()</code><a class="anchor" aria-label="anchor" href="#method-get-author-list-"></a></h3>
 <p>Get author list.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>format <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>suffix <span class="op">=</span> <span class="cn">NULL</span>, format <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>format</code></dt>
+<p></p><div class="arguments"><dl><dt><code>suffix</code></dt>
 <dd><p>A character string defining the format of symbols suffixing
 author names. See details.</p></dd>
+
+
+<dt><code>format</code></dt>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p>
+<p>Please use the parameter <code>suffix</code> instead.</p></dd>
 
 
 </dl><p></p></div>
 </div>
 <div class="section">
 <h4 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h4>
-<p><code>format</code> lets you choose which symbol categories to suffix authors with,
+<p><code>suffix</code> lets you choose which symbol categories to suffix authors with,
 using the following keys:</p><ul><li><p><code>a</code> for affiliations</p></li>
 <li><p><code>c</code> for corresponding authors</p></li>
 <li><p><code>n</code> for notes</p></li>
@@ -326,6 +331,7 @@ passed to the variable <code>details</code>. By default, only <code>email</code>
 <span>  dotted_initials <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  literal_names <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  divider <span class="op">=</span> <span class="st">": "</span>,</span>
+<span>  sep <span class="op">=</span> <span class="st">", "</span>,</span>
 <span>  sep_last <span class="op">=</span> <span class="st">" and "</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -357,6 +363,10 @@ By default, lists authors in the order they are defined in the data.</p></dd>
 <dt><code>divider</code></dt>
 <dd><p>Separator used to separate roles and authors. Uses <code>": "</code>
 by default.</p></dd>
+
+
+<dt><code>sep</code></dt>
+<dd><p>Separator used to separate roles or authors.</p></dd>
 
 
 <dt><code>sep_last</code></dt>
