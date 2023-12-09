@@ -57,7 +57,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
-<ul><li><p><code>$get_contributions()</code> gains a new parameter <code>sep</code> that allows for finer control of how to separate contributors or roles (<a href="https://github.com/arnaudgallou/plume/issues/49" class="external-link">#49</a>).</p></li>
+<ul><li><p>Fixed <code>$get_contributions()</code> wrongly reordering authors when using CRediT roles and <code>by_author = TRUE</code> (<a href="https://github.com/arnaudgallou/plume/issues/50" class="external-link">#50</a>).</p></li>
+<li><p><code>$get_contributions()</code> gains a new parameter <code>sep</code> that allows for finer control of how to separate contributors or roles (<a href="https://github.com/arnaudgallou/plume/issues/49" class="external-link">#49</a>).</p></li>
 <li><p><code>$to_yaml()</code> now throws an error when invalid ORCID identifiers are found.</p></li>
 <li><p><code>Plume</code>’s parameter <code>by</code> is now working properly (<a href="https://github.com/arnaudgallou/plume/issues/48" class="external-link">#48</a>).</p></li>
 <li><p>The <code>format</code> parameter of <code>$get_author_list()</code> is now deprecated in favour of the less ambiguous parameter <code>suffix</code> (<a href="https://github.com/arnaudgallou/plume/issues/47" class="external-link">#47</a>).</p></li>
