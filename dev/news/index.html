@@ -57,9 +57,10 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
-</div>
+<ul><li>The order of <code>$get_affiliations()</code>/<code>$get_notes()</code> parameters have been switched for consistency purposes (<a href="https://github.com/arnaudgallou/plume/issues/54" class="external-link">#54</a>).</li>
+</ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.2.1" id="plume-021">plume 0.2.1<a class="anchor" aria-label="anchor" href="#plume-021"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.2.1" id="plume-021">plume 0.2.1<a class="anchor" aria-label="anchor" href="#plume-021"></a></h2><p class="text-muted">CRAN release: 2023-12-09</p>
 <ul><li><p>Fixed <code>$get_contributions()</code> wrongly reordering authors when using CRediT roles and <code>by_author = TRUE</code> (<a href="https://github.com/arnaudgallou/plume/issues/50" class="external-link">#50</a>).</p></li>
 <li><p><code>$get_contributions()</code> gains a new parameter <code>sep</code> that allows for finer control of how to separate contributors or roles (<a href="https://github.com/arnaudgallou/plume/issues/49" class="external-link">#49</a>).</p></li>
 <li><p><code>$to_yaml()</code> now throws an error when invalid ORCID identifiers are found.</p></li>
