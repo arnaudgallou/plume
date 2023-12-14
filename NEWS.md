@@ -1,5 +1,7 @@
 # plume (development version)
 
+* The order of `$get_affiliations()`/`$get_notes()` parameters have been switched for consistency purposes (#54).
+
 # plume 0.2.1
 
 * Fixed `$get_contributions()` wrongly reordering authors when using CRediT roles and `by_author = TRUE` (#50).
