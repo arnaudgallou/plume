@@ -146,19 +146,19 @@ Plume <- R6Class(
     },
 
     #' @description Get authors' affiliations.
-    #' @param sep Separator used to separate affiliation ids and affiliations.
     #' @param superscript Should affiliation ids be superscripted?
+    #' @param sep Separator used to separate affiliation ids and affiliations.
     #' @return A character vector.
-    get_affiliations = function(sep = "", superscript = TRUE) {
-      private$get_footnotes("affiliation", sep, superscript)
+    get_affiliations = function(superscript = TRUE, sep = "") {
+      private$get_footnotes("affiliation", superscript, sep)
     },
 
     #' @description Get authors' notes.
-    #' @param sep Separator used to separate note ids and notes.
     #' @param superscript Should note ids be superscripted?
+    #' @param sep Separator used to separate note ids and notes.
     #' @return A character vector.
-    get_notes = function(sep = "", superscript = TRUE) {
-      private$get_footnotes("note", sep, superscript)
+    get_notes = function(superscript = TRUE, sep = "") {
+      private$get_footnotes("note", superscript, sep)
     },
 
     #' @description Get authors' ORCID.
@@ -295,7 +295,7 @@ Plume <- R6Class(
       als_make(out, .cols, format)
     },
 
-    get_footnotes = function(var, sep, superscript) {
+    get_footnotes = function(var, superscript, sep) {
       col <- private$pick(var)
       private$check_col(col)
       check_string(sep)
