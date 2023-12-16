@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$get_contributions()` now throws the correct error if you pass a wrong argument to he `sep` parameter (#55).
+
 * The order of `$get_affiliations()`/`$get_notes()` parameters have been switched for consistency purposes (#54).
 
 # plume 0.2.1

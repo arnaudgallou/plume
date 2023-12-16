@@ -218,6 +218,9 @@ test_that("get_contributions() gives meaningful error messages", {
       aut$get_contributions(literal_names = "")
     ))
     (expect_error(
+      aut$get_contributions(sep = 1)
+    ))
+    (expect_error(
       aut$get_contributions(sep_last = 1)
     ))
     (expect_error(
