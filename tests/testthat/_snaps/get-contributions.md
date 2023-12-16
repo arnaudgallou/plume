@@ -61,11 +61,19 @@
       Caused by error:
       ! `literal_names` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(aut$get_contributions(sep_last = 1)))
+      (expect_error(aut$get_contributions(sep = 1)))
     Output
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      Caused by error:
+      ! `sep` must be a character string.
+    Code
+      (expect_error(aut$get_contributions(sep_last = 1)))
+    Output
+      <error/purrr_error_indexed>
+      Error in `map2()`:
+      i In index: 3.
       Caused by error:
       ! `sep_last` must be a character string.
     Code

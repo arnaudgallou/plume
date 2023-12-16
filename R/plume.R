@@ -252,7 +252,7 @@ Plume <- R6Class(
         dotted_initials,
         literal_names
       ))
-      check_args("string", list(divider, sep_last))
+      check_args("string", list(divider, sep, sep_last))
       out <- unnest_drop(private$plume, role)
       if (is_empty(out)) {
         return()
