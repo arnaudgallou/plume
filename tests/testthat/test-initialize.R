@@ -256,6 +256,18 @@ test_that("initialize() gives meaningful error messages", {
       Plume$new(basic_df, roles = c(role = "foo", role_2 = "foo"))
     ))
     (expect_error(
+      PlumeQuarto$new(basic_df, file = 1)
+    ))
+    (expect_error(
+      PlumeQuarto$new(basic_df, file = "")
+    ))
+    (expect_error(
+      PlumeQuarto$new(basic_df, file = "test.rmd")
+    ))
+    (expect_error(
+      PlumeQuarto$new(basic_df, file = "~/test.qmd")
+    ))
+    (expect_error(
       PlumeQuarto$new(basic_df, tempfile_(), by = 1)
     ))
     (expect_error(

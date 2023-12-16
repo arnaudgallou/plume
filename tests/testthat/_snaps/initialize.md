@@ -154,6 +154,30 @@
       Caused by error:
       ! `roles` must have unique input values.
     Code
+      (expect_error(PlumeQuarto$new(basic_df, file = 1)))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `file` must be a character string.
+    Code
+      (expect_error(PlumeQuarto$new(basic_df, file = "")))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `file` must be a non-empty string.
+    Code
+      (expect_error(PlumeQuarto$new(basic_df, file = "test.rmd")))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `file` must be a `.qmd` file.
+    Code
+      (expect_error(PlumeQuarto$new(basic_df, file = "~/test.qmd")))
+    Output
+      <error/rlang_error>
+      Error:
+      ! `~/test.qmd` doesn't exist.
+    Code
       (expect_error(PlumeQuarto$new(basic_df, tempfile_(), by = 1)))
     Output
       <error/rlang_error>

@@ -70,22 +70,7 @@ test_that("to_yaml() preserves line breaks preceding `---` (#37)", {
 
 # Errors ----
 
-test_that("to_yaml() gives meaningful error messages", {
-  expect_snapshot({
-    (expect_error(
-      PlumeQuarto$new(basic_df, file = 1)
-    ))
-    (expect_error(
-      PlumeQuarto$new(basic_df, file = "")
-    ))
-    (expect_error(
-      PlumeQuarto$new(basic_df, file = "test.rmd")
-    ))
-    (expect_error(
-      PlumeQuarto$new(basic_df, file = "~/test.qmd")
-    ))
-  })
-
+test_that("to_yaml() errors if no YAML headers is found", {
   tmp_file <- withr::local_tempfile(
     lines = "---\ntitle: test---",
     fileext = ".qmd"
@@ -93,11 +78,12 @@ test_that("to_yaml() gives meaningful error messages", {
   aut <- PlumeQuarto$new(basic_df, tmp_file)
 
   expect_snapshot(aut$to_yaml(), error = TRUE)
+})
 
+test_that("to_yaml() errors if an invalid ORCID identifier is found ", {
   aut <- PlumeQuarto$new(
     data.frame(given_name = "X", family_name = "Y", orcid = "0000"),
     tempfile_()
   )
-
   expect_snapshot(aut$to_yaml(), error = TRUE)
 })
