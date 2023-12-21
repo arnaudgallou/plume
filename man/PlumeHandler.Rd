@@ -7,8 +7,9 @@
 Internal class processing and shaping tabular data into a
 \code{plume} object.
 }
+\keyword{internal}
 \section{Super class}{
-\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{PlumeHandler}
+\code{plume::NameHandler} -> \code{PlumeHandler}
 }
 \section{Methods}{
 \subsection{Public methods}{

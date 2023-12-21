@@ -6,18 +6,12 @@ reference:
   - title: Classes
     contents:
       - PlumeQuarto
-      - StatusSetterPlumeQuarto
       - Plume
-      - StatusSetterPlume
-      - StatusSetter
-      - PlumeHandler
-      - NameHandler
   - title: Helpers
     contents:
       - credit_roles
       - enumerate
       - everyone
-      - everyone_but
       - orcid
       - plm_template
       - sequential
