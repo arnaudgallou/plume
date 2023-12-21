@@ -6,8 +6,9 @@
 \description{
 Internal class extending \code{StatusSetter} for \code{Plume}.
 }
+\keyword{internal}
 \section{Super classes}{
-\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{StatusSetterPlume}
+\code{plume::NameHandler} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{StatusSetterPlume}
 }
 \section{Methods}{
 \subsection{Public methods}{

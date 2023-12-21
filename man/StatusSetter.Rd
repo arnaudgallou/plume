@@ -6,8 +6,9 @@
 \description{
 Internal class that manages authors' status.
 }
+\keyword{internal}
 \section{Super classes}{
-\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{StatusSetter}
+\code{plume::NameHandler} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{StatusSetter}
 }
 \section{Methods}{
 \subsection{Public methods}{

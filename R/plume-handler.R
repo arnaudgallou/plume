@@ -1,6 +1,7 @@
 #' @title PlumeHandler class
 #' @description Internal class processing and shaping tabular data into a
 #'   `plume` object.
+#' @keywords internal
 PlumeHandler <- R6Class(
   classname = "PlumeHandler",
   inherit = NameHandler,

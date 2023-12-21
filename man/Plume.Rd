@@ -48,7 +48,7 @@ aut <- Plume$new(encyclopedists, roles = c(
 aut$get_contributions(roles_first = FALSE, divider = " ")
 }
 \section{Super classes}{
-\code{\link[plume:NameHandler]{plume::NameHandler}} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterPlume]{plume::StatusSetterPlume}} -> \code{Plume}
+\code{plume::NameHandler} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterPlume]{plume::StatusSetterPlume}} -> \code{Plume}
 }
 \section{Methods}{
 \subsection{Public methods}{

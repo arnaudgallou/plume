@@ -2,6 +2,7 @@ binder <- ContextBinder$new()
 
 #' @title StatusSetter class
 #' @description Internal class that manages authors' status.
+#' @keywords internal
 StatusSetter <- R6Class(
   classname = "StatusSetter",
   inherit = PlumeHandler,
@@ -67,6 +68,7 @@ StatusSetter <- R6Class(
 
 #' @title StatusSetterPlume class
 #' @description Internal class extending `StatusSetter` for `Plume`.
+#' @keywords internal
 StatusSetterPlume <- R6Class(
   classname = "StatusSetterPlume",
   inherit = StatusSetter,
@@ -109,6 +111,7 @@ StatusSetterPlume <- R6Class(
 
 #' @title StatusSetterPlumeQuarto class
 #' @description Internal class extending `StatusSetter` for `PlumeQuarto`.
+#' @keywords internal
 StatusSetterPlumeQuarto <- R6Class(
   classname = "StatusSetterPlumeQuarto",
   inherit = StatusSetter,
