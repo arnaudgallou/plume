@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `vignette("working-in-other-languages")` has been extended to describe how to overwrite default arguments to match your language better.
+
 * `$get_contributions()` now throws the correct error if you pass a wrong argument to he `sep` parameter (#55).
 
 * The order of `$get_affiliations()`/`$get_notes()` parameters have been switched for consistency purposes (#54).
