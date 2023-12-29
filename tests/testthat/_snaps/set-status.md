@@ -45,6 +45,14 @@
       Error:
       ! `.by` must be a character string.
     Code
+      (expect_error(aut$set_corresponding_authors(x <- y)))
+    Output
+      <error/purrr_error_indexed>
+      Error in `map()`:
+      i In index: 1.
+      Caused by error in `.f()`:
+      ! Cannot evaluate `x <- y` in this context.
+    Code
       (expect_error(aut$set_cofirst_authors(a, .by = "foo")))
     Output
       <error/rlang_error>

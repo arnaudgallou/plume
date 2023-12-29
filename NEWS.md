@@ -1,5 +1,7 @@
 # plume (development version)
 
+* The way `$set_*()` methods handle `...` has been reworked for more consistent results and to ensure the methods work correctly in edge cases (#59, #60).
+
 * `vignette("working-in-other-languages")` has been extended to describe how to overwrite default arguments to match your language better.
 
 * `$get_contributions()` now throws the correct error if you pass a wrong argument to he `sep` parameter (#55).

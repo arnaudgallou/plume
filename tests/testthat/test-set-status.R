@@ -81,6 +81,9 @@ test_that("set_*() methods give meaningful error messages", {
       aut$set_corresponding_authors(a, .by = 1)
     ))
     (expect_error(
+      aut$set_corresponding_authors(x <- y)
+    ))
+    (expect_error(
       aut$set_cofirst_authors(a, .by = "foo")
     ))
     (expect_error(
