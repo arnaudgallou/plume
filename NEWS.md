@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$to_yaml()` now writes author metadata in a separate YAML header if the original YAML header contains strippable meta-information such as comments, custom tags or folded blocks (#56, #61).
+
 * The way `$set_*()` methods handle `...` has been reworked for more consistent results and to ensure the methods work correctly in edge cases (#59, #60).
 
 * `vignette("working-in-other-languages")` has been extended to describe how to overwrite default arguments to match your language better.
