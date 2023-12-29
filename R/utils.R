@@ -75,13 +75,6 @@ recycle_to_names <- function(x, nms) {
   set_names(x, nms)
 }
 
-collect_dots <- function(...) {
-  if (are_calls(...)) {
-    return(c(...))
-  }
-  enexprs(...)
-}
-
 condense <- function(x) {
   vec_drop_na(unique(x))
 }
@@ -96,6 +89,59 @@ bind <- function(x, sep = ",", arrange = TRUE) {
     out <- vec_arrange(out)
   }
   collapse(out, sep)
+}
+
+expr_extract_call <- function(expr) {
+  deparse(expr[[1]])
+}
+
+expr_is <- function(expr, what) {
+  call <- expr_extract_call(expr)
+  if (has_metachr(what)) {
+    return(str_detect(call, what))
+  }
+  identical(call, what)
+}
+
+expr_is_atomic <- function(expr) {
+  expr_is(expr, "c")
+}
+
+expr_is_selector <- function(expr) {
+  expr_is(expr, "^everyone")
+}
+
+expr_type <- function(expr) {
+  if (is.vector(expr) || is.symbol(expr)) {
+    "symbol"
+  } else if (expr_is_atomic(expr)) {
+    "atomic"
+  } else if (expr_is_selector(expr)) {
+    "selector"
+  } else {
+    typeof(expr)
+  }
+}
+
+expr_cases <- function(expr) {
+  switch(
+    expr_type(expr),
+    symbol = as.character(expr),
+    atomic = as.character(expr[-1]),
+    selector = eval(expr),
+    abort(glue("Cannot evaluate `{deparse(expr)}` in this context."))
+  )
+}
+
+collect_dots <- function(..., data = NULL) {
+  if (!is.null(data)) {
+    binder$bind(data)
+  }
+  out <- map(enexprs(...), expr_cases)
+  if (!any(rlang::have_name(out))) {
+    out <- squash(out)
+  }
+  out
 }
 
 caller_args <- function(n = 2) {
