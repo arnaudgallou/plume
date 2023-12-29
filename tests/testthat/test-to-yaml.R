@@ -68,6 +68,31 @@ test_that("to_yaml() preserves line breaks preceding `---` (#37)", {
   expect_snapshot(read_test_file(tmp_file))
 })
 
+test_that("to_yaml() writes in a separate header to preserve strippable data (#56)", {
+  tmp_file <- withr::local_tempfile(
+    lines = dedent("
+      ---
+      title: test # this is a title
+      foo: >
+        Lorem ipsum
+        Vivamus quis
+      ---
+    "),
+    fileext = ".qmd"
+  )
+
+  aut <- PlumeQuarto$new(
+    data.frame(given_name = "Zip", family_name = "Zap"),
+    tmp_file
+  )
+
+  expect_message(
+    aut$to_yaml(),
+    "Writing author metadata in a separate YAML header"
+  )
+  expect_snapshot(read_test_file(tmp_file))
+})
+
 # Errors ----
 
 test_that("to_yaml() errors if no YAML headers is found", {

@@ -59,10 +59,31 @@ check_has_yaml <- function(x) {
   ))
 }
 
+yaml_has_strippable <- function(x) {
+  pattern <- paste(
+    "\\B#(?=(?:[^'\"]*['\"][^'\"]*['\"])*[^'\"]*$)",
+    ":\\s*(?:>|!!?[a-z]+|&)",
+    sep = "|"
+  )
+  str_detect(x, pattern)
+}
+
+add_yaml_header <- function(x) {
+  rlang::inform(c(
+    "Writing author metadata in a separate YAML header.",
+    i = "This happens because the original YAML contained data such as",
+    "  comments, custom tags or folded blocks that would otherwise be lost."
+  ))
+  c("", "", x)
+}
+
 yaml_push <- function(what, file) {
   text <- read_file(file)
   check_has_yaml(text)
   items <- separate_yaml_header(text)
+  if (yaml_has_strippable(items[[2]])) {
+    items <- add_yaml_header(items)
+  }
   json <- as_json(what)
   json <- json_update(items[[2]], json)
   if (is.null(json)) {

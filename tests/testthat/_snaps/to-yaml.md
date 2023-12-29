@@ -195,6 +195,26 @@
       Lorem ipsum
       ---
 
+# to_yaml() writes in a separate header to preserve strippable data (#56)
+
+    Code
+      read_test_file(tmp_file)
+    Output
+      ---
+      author:
+        - id: aut1
+          name:
+            given: Zip
+            family: Zap
+      affiliations: {}
+      ---
+      ---
+      title: test # this is a title
+      foo: >
+        Lorem ipsum
+        Vivamus quis
+      ---
+
 # to_yaml() errors if no YAML headers is found
 
     Code
