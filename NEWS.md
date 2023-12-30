@@ -1,14 +1,18 @@
 # plume (development version)
 
+## Documentation changes
+
+* `vignette("working-in-other-languages")` has been extended to describe how to overwrite default arguments to match your preferred language better.
+
+## Minor improvements and bug fixes
+
 * Clarified error messages by suppressing purrr's wrapper error (#63).
 
 * `$to_yaml()` now writes author metadata in a separate YAML header if the original YAML header contains strippable meta-information such as comments, custom tags or folded blocks (#56, #61).
 
-* The way `$set_*()` methods handle `...` has been reworked for more consistent results and to ensure the methods work correctly in edge cases (#59, #60).
+* The way `$set_*()` methods handle `...` has been overhauled for more consistent results and to ensure the methods work correctly in edge cases (#59, #60).
 
-* `vignette("working-in-other-languages")` has been extended to describe how to overwrite default arguments to match your language better.
-
-* `$get_contributions()` now throws the correct error if you pass a wrong argument to he `sep` parameter (#55).
+* `$get_contributions()` now throws the correct error if you pass a wrong argument to the `sep` parameter (#55).
 
 * The order of `$get_affiliations()`/`$get_notes()` parameters have been switched for consistency purposes (#54).
 
