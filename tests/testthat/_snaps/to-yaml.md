@@ -222,7 +222,7 @@
     Condition
       Error:
       ! No YAML headers found.
-      i YAML headers must be at the top of the document.
+      i YAML headers must be at the beginning of the document.
       i YAML headers must start and end with three hyphens.
 
 # to_yaml() errors if an invalid ORCID identifier is found 

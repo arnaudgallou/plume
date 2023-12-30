@@ -15,6 +15,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: minimal.
       Caused by error:
       ! `minimal` must be `TRUE` or `FALSE`.
     Code
@@ -35,6 +36,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      i With name: credit_roles.
       Caused by error:
       ! `credit_roles` must be `TRUE` or `FALSE`.
 

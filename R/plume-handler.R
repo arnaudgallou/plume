@@ -82,11 +82,11 @@ PlumeHandler <- R6Class(
       private$mold()
       private$sanitise()
       private$check_roles()
-      private$make_author_names()
+      private$add_author_names()
       if (!is.null(private$roles) || private$crt) {
         private$process_roles()
       }
-      private$plume <- rowid_to_column(private$plume, var = private$pick("id"))
+      private$add_ids()
     },
 
     mold = function(...) {
@@ -134,7 +134,7 @@ PlumeHandler <- R6Class(
       private$plume <- rename_roles(out, roles, key = private$pick("role"))
     },
 
-    make_author_names = function() {
+    add_author_names = function() {
       if (private$initials_given_name) {
         given_name <- private$pick("given_name")
         private$plume <- mutate(
@@ -142,13 +142,13 @@ PlumeHandler <- R6Class(
           !!given_name := make_initials(.data[[given_name]], dot = TRUE)
         )
       }
-      private$make_literal_names()
+      private$add_literal_names()
       if (any(has_uppercase(private$get("literal_name")))) {
-        private$make_initials()
+        private$add_initials()
       }
     },
 
-    make_literal_names = function() {
+    add_literal_names = function() {
       nominal <- private$pick("primaries")
       if (private$family_name_first) {
         nominal <- rev(nominal)
@@ -160,13 +160,17 @@ PlumeHandler <- R6Class(
       ), .after = all_of(vars$family_name))
     },
 
-    make_initials = function() {
+    add_initials = function() {
       vars <- private$pick("literal_name", "initials", squash = FALSE)
       private$plume <- mutate(
         private$plume,
         !!vars$initials := make_initials(.data[[vars$literal_name]]),
         .after = all_of(vars$literal_name)
       )
+    },
+
+    add_ids = function() {
+      private$plume <- rowid_to_column(private$plume, var = private$pick("id"))
     },
 
     sanitise = function() {

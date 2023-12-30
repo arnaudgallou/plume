@@ -31,6 +31,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: names.
       Caused by error:
       ! `names` must be a character vector.
     Code
@@ -39,6 +40,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: names.
       Caused by error:
       ! All `names` inputs must be named.
     Code
@@ -48,6 +50,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: names.
       Caused by error:
       ! `names` must have unique input values.
     Code
@@ -57,6 +60,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: names.
       Caused by error:
       ! `names` must have unique input names.
     Code
@@ -84,6 +88,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      i With name: initials_given_name.
       Caused by error:
       ! `initials_given_name` must be `TRUE` or `FALSE`.
     Code
@@ -92,6 +97,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 3.
+      i With name: family_name_first.
       Caused by error:
       ! `family_name_first` must be `TRUE` or `FALSE`.
     Code
@@ -100,6 +106,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: credit_roles.
       Caused by error:
       ! `credit_roles` must be `TRUE` or `FALSE`.
     Code
@@ -108,6 +115,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 4.
+      i With name: interword_spacing.
       Caused by error:
       ! `interword_spacing` must be `TRUE` or `FALSE`.
     Code
@@ -127,6 +135,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      i With name: roles.
       Caused by error:
       ! `roles` must be a character vector.
     Code
@@ -135,6 +144,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      i With name: roles.
       Caused by error:
       ! All `roles` inputs must be named.
     Code
@@ -143,6 +153,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      i With name: roles.
       Caused by error:
       ! `roles` must have unique input names.
     Code
@@ -151,6 +162,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      i With name: roles.
       Caused by error:
       ! `roles` must have unique input values.
     Code

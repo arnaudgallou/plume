@@ -26,6 +26,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: roles_first.
       Caused by error:
       ! `roles_first` must be `TRUE` or `FALSE`.
     Code
@@ -34,6 +35,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      i With name: by_author.
       Caused by error:
       ! `by_author` must be `TRUE` or `FALSE`.
     Code
@@ -42,6 +44,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 3.
+      i With name: alphabetical_order.
       Caused by error:
       ! `alphabetical_order` must be `TRUE` or `FALSE`.
     Code
@@ -50,6 +53,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 4.
+      i With name: dotted_initials.
       Caused by error:
       ! `dotted_initials` must be `TRUE` or `FALSE`.
     Code
@@ -58,6 +62,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 5.
+      i With name: literal_names.
       Caused by error:
       ! `literal_names` must be `TRUE` or `FALSE`.
     Code
@@ -66,6 +71,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      i With name: sep.
       Caused by error:
       ! `sep` must be a character string.
     Code
@@ -74,6 +80,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 3.
+      i With name: sep_last.
       Caused by error:
       ! `sep_last` must be a character string.
     Code
@@ -82,6 +89,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: divider.
       Caused by error:
       ! `divider` must be a character string.
 

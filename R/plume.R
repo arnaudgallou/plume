@@ -280,10 +280,10 @@ Plume <- R6Class(
     orcid_icon = NULL,
 
     get_author_list_suffixes = function(format) {
-      check_suffix_format(format, arg = "suffix")
+      check_suffix_format(format, param = "suffix")
       key_set <- als_key_set(format)
-      vars <- unlist(private$pick(key_set, squash = FALSE))
-      cols <- unname(vars)
+      vars <- private$pick(key_set, squash = FALSE)
+      cols <- squash(vars)
       private$check_col(cols)
       out <- unnest(private$plume, cols = all_of(cols))
       out <- add_group_ids(out, vars)

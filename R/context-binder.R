@@ -20,10 +20,10 @@ ContextBinder <- R6Class(
     },
 
     check_context = function() {
-      caller <- deparse(rlang::caller_call(2))
       if (!is.null(private$data)) {
         return(invisible(NULL))
       }
+      caller <- deparse(rlang::caller_call(2))
       msg <- glue("`{caller}` must be used within a *status setter* method.")
       abort_check(msg = msg)
     }

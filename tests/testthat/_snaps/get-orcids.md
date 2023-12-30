@@ -38,6 +38,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: compact.
       Caused by error:
       ! `compact` must be `TRUE` or `FALSE`.
     Code
@@ -46,6 +47,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 2.
+      i With name: icon.
       Caused by error:
       ! `icon` must be `TRUE` or `FALSE`.
     Code

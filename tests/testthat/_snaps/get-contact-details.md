@@ -27,6 +27,7 @@
       <error/purrr_error_indexed>
       Error in `map2()`:
       i In index: 1.
+      i With name: email.
       Caused by error:
       ! `email` must be `TRUE` or `FALSE`.
     Code

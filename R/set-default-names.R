@@ -40,7 +40,7 @@ set_default_names <- function(..., .plume_quarto = FALSE) {
     force_names = TRUE,
     allow_duplicates = FALSE,
     msg = "`...` inputs must be character vectors.",
-    arg = "..."
+    param = "..."
   )
   check_bool(.plume_quarto)
   nms <- if (.plume_quarto) .names_quarto else .names_plume

@@ -10,7 +10,7 @@
 #' @importFrom tidyselect all_of any_of starts_with
 #' @importFrom tibble tibble as_tibble_row as_tibble rowid_to_column
 #' @importFrom purrr partial reduce
-#' @importFrom purrr map map_vec map2_vec iwalk walk2
+#' @importFrom purrr map map_vec map2_vec iwalk
 #' @importFrom purrr list_rbind list_transpose list_assign list_modify
 #' @importFrom readr read_file write_lines
 #' @importFrom rlang %||% := abort set_names

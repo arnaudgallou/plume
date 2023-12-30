@@ -56,11 +56,10 @@ StatusSetter <- R6Class(
 
     process_by = function(by) {
       if (missing(by)) {
-        by <- private$by
-      } else {
-        check_string(by, allow_empty = FALSE, arg = ".by")
-        private$check_col(by)
+        return(private$by)
       }
+      check_string(by, allow_empty = FALSE, param = ".by")
+      private$check_col(by)
       by
     }
   )
