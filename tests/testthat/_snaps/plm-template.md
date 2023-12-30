@@ -12,11 +12,8 @@
     Code
       (expect_error(plm_template(minimal = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      i With name: minimal.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `minimal` must be `TRUE` or `FALSE`.
     Code
       (expect_error(plm_template(role_cols = 1)))
@@ -33,10 +30,7 @@
     Code
       (expect_error(plm_template(credit_roles = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 2.
-      i With name: credit_roles.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `credit_roles` must be `TRUE` or `FALSE`.
 

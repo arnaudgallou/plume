@@ -45,11 +45,8 @@
     Code
       (expect_error(aut$get_author_list("o")))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      i With name: orcid.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! Invalid ORCID identifier found: `0000`.
       i ORCID identifiers must have 16 digits, separated by a hyphen every 4 digits.
       i The last character of the identifiers must be a digit or `X`.

@@ -36,16 +36,18 @@ add_group_ids <- function(data, cols) {
 add_suffixes <- function(data, cols, symbols) {
   data
   .cols <- predot(cols)
-  iwalk(symbols[names(cols)], \(value, key) {
-    if (is.null(value)) {
-      return()
-    }
-    if (key == "orcid") {
-      data <<- add_orcid_icons(data, value)
-    } else {
-      data <<- add_symbols(data, .cols[[key]], value)
-    }
-  })
+  without_indexed_error(
+    iwalk(symbols[names(cols)], \(value, key) {
+      if (is.null(value)) {
+        return()
+      }
+      if (key == "orcid") {
+        data <<- add_orcid_icons(data, value)
+      } else {
+        data <<- add_symbols(data, .cols[[key]], value)
+      }
+    })
+  )
   data
 }
 

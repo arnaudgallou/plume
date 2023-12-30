@@ -82,6 +82,12 @@ search_ <- function(x, callback, n = 1) {
   set_names(x[failed], nms)
 }
 
+without_indexed_error <- function(expr, ...) {
+  withCallingHandlers(expr, purrr_error_indexed = \(e) {
+    rlang::cnd_signal(e$parent)
+  }, ...)
+}
+
 is_type <- function(x, type) {
   do.call(paste0("is.", type), list(x))
 }
@@ -236,9 +242,11 @@ check_args <- function(type, x, ..., call = caller_user()) {
   check_list(x)
   f <- paste0("check_", type)
   dots <- list(...)
-  iwalk(set_names(x, expr_to_chr(x)), \(arg, param) {
-    do.call(f, c(list(arg, param = param, call = call), dots))
-  })
+  without_indexed_error(
+    iwalk(set_names(x, expr_to_chr(x)), \(arg, param) {
+      do.call(f, c(list(arg, param = param, call = call), dots))
+    })
+  )
 }
 
 check_suffix_format <- function(x, param = caller_arg(x)) {

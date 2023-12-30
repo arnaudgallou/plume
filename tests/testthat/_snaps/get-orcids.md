@@ -35,20 +35,14 @@
     Code
       (expect_error(aut$get_orcids(compact = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      i With name: compact.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `compact` must be `TRUE` or `FALSE`.
     Code
       (expect_error(aut$get_orcids(icon = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 2.
-      i With name: icon.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `icon` must be `TRUE` or `FALSE`.
     Code
       (expect_error(aut$get_orcids(sep = 1)))
