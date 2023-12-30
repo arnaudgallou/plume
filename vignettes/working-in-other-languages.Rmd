@@ -35,7 +35,9 @@ PlumeFr <- R6::R6Class(
     )
   )
 )
+```
 
+```{r}
 PlumeFr$new(encyclopedists_fr)
 ```
 
@@ -57,7 +59,9 @@ PlumeFr$set("public", "get_contributions", function(
     literal_names, divider, sep, sep_last
   )
 })
+```
 
+```{r}
 aut <- PlumeFr$new(
   encyclopedists_fr,
   roles = c(supervision = "Supervision", rédaction = "Rédaction")
