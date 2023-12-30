@@ -28,40 +28,28 @@
     Code
       (expect_error(Plume$new(basic_df, names = list(given_name = "prénom"))))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      i With name: names.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `names` must be a character vector.
     Code
       (expect_error(Plume$new(basic_df, names = "prénom")))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      i With name: names.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! All `names` inputs must be named.
     Code
       (expect_error(Plume$new(basic_df, names = c(given_name = "prénom", family_name = "prénom")))
       )
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      i With name: names.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `names` must have unique input values.
     Code
       (expect_error(Plume$new(basic_df, names = c(given_name = "prénom", given_name = "nom")))
       )
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      i With name: names.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `names` must have unique input names.
     Code
       (expect_error(Plume$new(basic_df, symbols = c(note = letters))))
@@ -85,38 +73,26 @@
     Code
       (expect_error(Plume$new(basic_df, initials_given_name = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 2.
-      i With name: initials_given_name.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `initials_given_name` must be `TRUE` or `FALSE`.
     Code
       (expect_error(Plume$new(basic_df, family_name_first = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 3.
-      i With name: family_name_first.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `family_name_first` must be `TRUE` or `FALSE`.
     Code
       (expect_error(Plume$new(basic_df, credit_roles = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      i With name: credit_roles.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `credit_roles` must be `TRUE` or `FALSE`.
     Code
       (expect_error(Plume$new(basic_df, interword_spacing = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 4.
-      i With name: interword_spacing.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `interword_spacing` must be `TRUE` or `FALSE`.
     Code
       (expect_error({
@@ -132,38 +108,26 @@
     Code
       (expect_error(Plume$new(basic_df, roles = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 2.
-      i With name: roles.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `roles` must be a character vector.
     Code
       (expect_error(Plume$new(basic_df, roles = "foo")))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 2.
-      i With name: roles.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! All `roles` inputs must be named.
     Code
       (expect_error(Plume$new(basic_df, roles = c(role = "foo", role = "bar"))))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 2.
-      i With name: roles.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `roles` must have unique input names.
     Code
       (expect_error(Plume$new(basic_df, roles = c(role = "foo", role_2 = "foo"))))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 2.
-      i With name: roles.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `roles` must have unique input values.
     Code
       (expect_error(PlumeQuarto$new(basic_df, file = 1)))

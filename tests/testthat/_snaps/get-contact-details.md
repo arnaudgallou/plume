@@ -24,11 +24,8 @@
     Code
       (expect_error(aut$get_contact_details(email = 1)))
     Output
-      <error/purrr_error_indexed>
-      Error in `map2()`:
-      i In index: 1.
-      i With name: email.
-      Caused by error:
+      <error/rlang_error>
+      Error:
       ! `email` must be `TRUE` or `FALSE`.
     Code
       (expect_error(aut$get_contact_details(sep = NULL)))

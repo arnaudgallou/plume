@@ -137,7 +137,7 @@ collect_dots <- function(..., data = NULL) {
   if (!is.null(data)) {
     binder$bind(data)
   }
-  out <- map(enexprs(...), expr_cases)
+  out <- without_indexed_error(map(enexprs(...), expr_cases))
   if (!any(rlang::have_name(out))) {
     out <- squash(out)
   }
