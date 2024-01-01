@@ -129,7 +129,10 @@ expr_cases <- function(expr) {
     symbol = as.character(expr),
     atomic = as.character(expr[-1]),
     selector = eval(expr),
-    abort(glue("Cannot evaluate `{deparse(expr)}` in this context."))
+    abort(
+      glue("Can't match elements with `{deparse(expr)}`."),
+      call = caller_env(5)
+    )
   )
 }
 

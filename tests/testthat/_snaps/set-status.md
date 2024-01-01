@@ -48,8 +48,8 @@
       (expect_error(aut$set_corresponding_authors(x <- y)))
     Output
       <error/rlang_error>
-      Error in `.f()`:
-      ! Cannot evaluate `x <- y` in this context.
+      Error in `aut$set_corresponding_authors()`:
+      ! Can't match elements with `x <- y`.
     Code
       (expect_error(aut$set_cofirst_authors(a, .by = "foo")))
     Output
