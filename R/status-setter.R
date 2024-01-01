@@ -46,7 +46,8 @@ StatusSetter <- R6Class(
         .by <- by
       }
       by <- private$process_by(.by)
-      dots <- collect_dots(..., data = private$plume[[by]])
+      binder$bind(private$plume[[by]])
+      dots <- collect_dots(...)
       private$plume <- mutate(
         private$plume,
         !!private$pick(col) := vec_in(.data[[by]], dots)

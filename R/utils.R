@@ -133,10 +133,7 @@ expr_cases <- function(expr) {
   )
 }
 
-collect_dots <- function(..., data = NULL) {
-  if (!is.null(data)) {
-    binder$bind(data)
-  }
+collect_dots <- function(...) {
   out <- without_indexed_error(map(enexprs(...), expr_cases))
   if (!any(rlang::have_name(out))) {
     out <- squash(out)
