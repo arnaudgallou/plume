@@ -69,9 +69,9 @@ yaml_has_strippable <- function(x) {
 }
 
 add_yaml_header <- function(x) {
-  rlang::inform(c(
+  rlang::warn(c(
     "Writing author metadata in a separate YAML header.",
-    i = "This happens because the original YAML contained data such as",
+    i = "This happens because the original YAML contained information such as",
     "  comments, custom tags or folded blocks that would otherwise be lost."
   ))
   c("", "", x)

@@ -86,7 +86,7 @@ test_that("to_yaml() writes in a separate header to preserve strippable data (#5
     tmp_file
   )
 
-  expect_message(
+  expect_warning(
     aut$to_yaml(),
     "Writing author metadata in a separate YAML header"
   )
