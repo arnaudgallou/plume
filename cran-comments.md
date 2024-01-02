@@ -1,2 +1,1 @@
-This is a minor release with a few improvements and bug fixes.
-The CRAN check result error related to unavailable pandoc should now be fixed.
+This patch release fixes a few bugs and the CRAN check result error related to unavailable pandoc.
