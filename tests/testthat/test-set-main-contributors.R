@@ -12,14 +12,19 @@ test_that("set_main_contributors() ranks contributors", {
   aut <- Plume$new(basic_df)
   aut$set_main_contributors(2, 3, .roles = "analysis")
 
-  pull_contributor_ranks <- function(data) {
-    out <- unnest(data, cols = role)
-    dplyr::pull(out)
-  }
+  expect_equal(
+    pull_nested_var(aut, "role", "contributor_rank"),
+    c(3, NA, 1, NA, 2, NA)
+  )
+})
+
+test_that("`.roles` is ignored if at least one expression is named", {
+  aut <- Plume$new(basic_df)
+  aut$set_main_contributors(analysis = 3, 1, .roles = c("analysis", "writing"))
 
   expect_equal(
-    pull_contributor_ranks(aut$get_plume()),
-    c(3, NA, 1, NA, 2, NA)
+    pull_nested_var(aut, "role", "contributor_rank"),
+    c(2, NA, 2, NA, 1, NA)
   )
 })
 

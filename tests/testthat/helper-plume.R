@@ -42,3 +42,8 @@ scrub_icon_path <- function(x) {
   path_regex <- "(?<=\\()(?:[A-Z]:)?\\/.+\\/(?=[\\w-]+\\.(?:pdf|svg)\\))"
   sub(path_regex, "", x, perl = TRUE)
 }
+
+pull_nested_var <- function(cls, nested_var, pull) {
+  out <- unnest(cls$get_plume(), cols = all_of(nested_var))
+  out[[pull]]
+}

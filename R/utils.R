@@ -138,10 +138,10 @@ expr_cases <- function(expr) {
 
 collect_dots <- function(...) {
   out <- without_indexed_error(map(enexprs(...), expr_cases))
-  if (!any(rlang::have_name(out))) {
-    out <- squash(out)
+  if (any_is_named(out)) {
+    return(out)
   }
-  out
+  squash(out)
 }
 
 caller_args <- function(n = 2) {

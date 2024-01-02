@@ -98,7 +98,7 @@ StatusSetterPlume <- R6Class(
       by <- private$process_by(.by)
       vars <- private$pick("role", "contributor_rank", squash = FALSE)
       dots <- collect_dots(...)
-      if (!is_named(dots)) {
+      if (!any_is_named(dots)) {
         dots <- recycle_to_names(dots, nms = .roles)
       }
       out <- unnest(private$plume, col = all_of(vars$role))
