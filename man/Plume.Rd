@@ -313,8 +313,7 @@ By default, lists authors in the order they are defined in the data.}
 
 \item{\code{literal_names}}{Should literal names be used?}
 
-\item{\code{divider}}{Separator used to separate roles and authors. Uses \code{": "}
-by default.}
+\item{\code{divider}}{Separator used to separate roles from authors.}
 
 \item{\code{sep}}{Separator used to separate roles or authors.}
 

@@ -227,8 +227,7 @@ Plume <- R6Class(
     #'   By default, lists authors in the order they are defined in the data.
     #' @param dotted_initials Should initials be dot-separated?
     #' @param literal_names Should literal names be used?
-    #' @param divider Separator used to separate roles and authors. Uses `": "`
-    #'   by default.
+    #' @param divider Separator used to separate roles from authors.
     #' @param sep Separator used to separate roles or authors.
     #' @param sep_last Separator used to separate the last two roles or authors
     #'   if more than one item is associated to a role or author.
