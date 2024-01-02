@@ -1,3 +1,2 @@
-## R CMD check results
-
-0 errors | 0 warnings | 0 notes
+This is a minor release with a few improvements and bug fixes.
+The CRAN check result error related to unavailable pandoc should now be fixed.
