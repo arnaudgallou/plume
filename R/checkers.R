@@ -26,6 +26,10 @@ has_homonyms <- function(x) {
   vec_duplicate_any(names(x))
 }
 
+any_is_named <- function(x) {
+  any(rlang::have_name(x))
+}
+
 has_overflowing_ws <- function(x) {
   str_detect(x, "^\\s|\\s$")
 }
