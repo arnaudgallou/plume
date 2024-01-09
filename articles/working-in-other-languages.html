@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">plume</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,9 +104,9 @@ classes with default names in your desired language. plume provides
 <span>      phone <span class="op">=</span> <span class="st">"téléphone"</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">PlumeFr</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists_fr</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">PlumeFr</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists_fr</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 11</span></span></span>
 <span><span class="co">#&gt;      id prénom  nom   nom_complet initiales courriel téléphone orcid role  note </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
@@ -115,6 +115,36 @@ classes with default names in your desired language. plume provides
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 Franço… Arou… François-M… F-MA      arouet@… <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    dit …</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean    Le R… Jean Le Ro… JLRd'A    alember… <span style="color: #BB0000;">NA</span>        0000… Supe… né e…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: affiliation &lt;list&gt;</span></span></span></code></pre></div>
+<p>You can also overwrite the default arguments of some methods to match
+your language. I recommend doing it in the <code>public</code> argument
+of the class definition. For the purpose of this example, I’ll use the
+<code>set()</code> method instead. For example, to change
+<code>divider</code> and <code>sep_last</code> to <code>:</code> and
+<code>et</code> in <code>get_contributions()</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">PlumeFr</span><span class="op">$</span><span class="fu">set</span><span class="op">(</span><span class="st">"public"</span>, <span class="st">"get_contributions"</span>, <span class="kw">function</span><span class="op">(</span></span>
+<span>  <span class="va">roles_first</span> <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">by_author</span> <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">alphabetical_order</span> <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">dotted_initials</span> <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">literal_names</span> <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">divider</span> <span class="op">=</span> <span class="st">" : "</span>,</span>
+<span>  <span class="va">sep</span> <span class="op">=</span> <span class="st">", "</span>,</span>
+<span>  <span class="va">sep_last</span> <span class="op">=</span> <span class="st">" et "</span></span>
+<span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">super</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span></span>
+<span>    <span class="va">roles_first</span>, <span class="va">by_author</span>, <span class="va">alphabetical_order</span>, <span class="va">dotted_initials</span>,</span>
+<span>    <span class="va">literal_names</span>, <span class="va">divider</span>, <span class="va">sep</span>, <span class="va">sep_last</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va">PlumeFr</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  <span class="va">encyclopedists_fr</span>,</span>
+<span>  roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>supervision <span class="op">=</span> <span class="st">"Supervision"</span>, rédaction <span class="op">=</span> <span class="st">"Rédaction"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Supervision : D.D. et J.L.R.d'A.</span></span>
+<span><span class="co">#&gt; Rédaction : D.D., J.-J.R., F.-M.A. et J.L.R.d'A.</span></span></code></pre></div>
   </main>
 </div>
 

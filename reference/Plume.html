@@ -12,7 +12,7 @@ information as character strings."><!-- mathjax --><script src="https://cdnjs.cl
     
     <a class="navbar-brand me-2" href="../index.html">plume</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@ information as character strings.</p>
 
     <div class="section level2">
     <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
-    <p><code><a href="NameHandler.html">plume::NameHandler</a></code> -&gt; <code><a href="PlumeHandler.html">plume::PlumeHandler</a></code> -&gt; <code><a href="StatusSetter.html">plume::StatusSetter</a></code> -&gt; <code><a href="StatusSetterPlume.html">plume::StatusSetterPlume</a></code> -&gt; <code>Plume</code></p>
+    <p><code>plume::NameHandler</code> -&gt; <code><a href="PlumeHandler.html">plume::PlumeHandler</a></code> -&gt; <code><a href="StatusSetter.html">plume::StatusSetter</a></code> -&gt; <code><a href="StatusSetterPlume.html">plume::StatusSetterPlume</a></code> -&gt; <code>Plume</code></p>
     </div>
     <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
@@ -210,17 +210,17 @@ Use <code>NULL</code> or an empty string to list author names without suffixes.<
 <h3 id="method-get-affiliations-">Method <code>get_affiliations()</code><a class="anchor" aria-label="anchor" href="#method-get-affiliations-"></a></h3>
 <p>Get authors' affiliations.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_affiliations</span><span class="op">(</span>sep <span class="op">=</span> <span class="st">""</span>, superscript <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_affiliations</span><span class="op">(</span>superscript <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>sep</code></dt>
-<dd><p>Separator used to separate affiliation ids and affiliations.</p></dd>
-
-
-<dt><code>superscript</code></dt>
+<p></p><div class="arguments"><dl><dt><code>superscript</code></dt>
 <dd><p>Should affiliation ids be superscripted?</p></dd>
+
+
+<dt><code>sep</code></dt>
+<dd><p>Separator used to separate affiliation ids and affiliations.</p></dd>
 
 
 </dl><p></p></div>
@@ -234,17 +234,17 @@ Use <code>NULL</code> or an empty string to list author names without suffixes.<
 <h3 id="method-get-notes-">Method <code>get_notes()</code><a class="anchor" aria-label="anchor" href="#method-get-notes-"></a></h3>
 <p>Get authors' notes.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_notes</span><span class="op">(</span>sep <span class="op">=</span> <span class="st">""</span>, superscript <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_notes</span><span class="op">(</span>superscript <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>sep</code></dt>
-<dd><p>Separator used to separate note ids and notes.</p></dd>
-
-
-<dt><code>superscript</code></dt>
+<p></p><div class="arguments"><dl><dt><code>superscript</code></dt>
 <dd><p>Should note ids be superscripted?</p></dd>
+
+
+<dt><code>sep</code></dt>
+<dd><p>Separator used to separate note ids and notes.</p></dd>
 
 
 </dl><p></p></div>
@@ -361,8 +361,7 @@ By default, lists authors in the order they are defined in the data.</p></dd>
 
 
 <dt><code>divider</code></dt>
-<dd><p>Separator used to separate roles and authors. Uses <code>": "</code>
-by default.</p></dd>
+<dd><p>Separator used to separate roles from authors.</p></dd>
 
 
 <dt><code>sep</code></dt>
