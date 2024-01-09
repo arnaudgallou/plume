@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">plume</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.2.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,13 +57,16 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.2" id="plume-022">plume 0.2.2<a class="anchor" aria-label="anchor" href="#plume-022"></a></h2>
 <div class="section level3">
-<h3 id="documentation-changes-development-version">Documentation changes<a class="anchor" aria-label="anchor" href="#documentation-changes-development-version"></a></h3>
+<h3 id="documentation-changes-0-2-2">Documentation changes<a class="anchor" aria-label="anchor" href="#documentation-changes-0-2-2"></a></h3>
 <ul><li>
 <code><a href="../articles/working-in-other-languages.html">vignette("working-in-other-languages")</a></code> has been extended to describe how to overwrite default arguments to match your preferred language better.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
+<h3 id="minor-improvements-and-bug-fixes-0-2-2">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-0-2-2"></a></h3>
 <ul><li><p>Clarified error messages by suppressing purrr’s wrapper error (<a href="https://github.com/arnaudgallou/plume/issues/63" class="external-link">#63</a>).</p></li>
 <li><p><code>$to_yaml()</code> now writes author metadata in a separate YAML header if the original YAML header contains strippable meta-information such as comments, custom tags or folded blocks (<a href="https://github.com/arnaudgallou/plume/issues/56" class="external-link">#56</a>, <a href="https://github.com/arnaudgallou/plume/issues/61" class="external-link">#61</a>).</p></li>
 <li><p>The way <code>$set_*()</code> methods handle <code>...</code> has been overhauled for more consistent results and to ensure the methods work correctly in edge cases (<a href="https://github.com/arnaudgallou/plume/issues/59" class="external-link">#59</a>, <a href="https://github.com/arnaudgallou/plume/issues/60" class="external-link">#60</a>).</p></li>
