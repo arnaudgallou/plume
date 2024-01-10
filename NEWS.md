@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$to_yaml()` now only adds authors' id in multi-authored documents (#66).
+
 # plume 0.2.2
 
 ## Documentation changes
