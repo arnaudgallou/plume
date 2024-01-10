@@ -112,7 +112,7 @@ PlumeQuarto <- R6Class(
 
     author_tbl = function() {
       tibble(
-        id = paste0("aut", private$get("id")),
+        id = private$author_ids(),
         number = private$get("number"),
         name = tibble(
           given = private$get("given_name"),
@@ -131,6 +131,14 @@ PlumeQuarto <- R6Class(
         metadata = private$author_metadata(),
         affiliations = private$author_affiliations()
       )
+    },
+
+    author_ids = function() {
+      ids <- private$get("id")
+      if (length(ids) == 1L) {
+        return()
+      }
+      paste0("aut", ids)
     },
 
     author_orcid = function() {

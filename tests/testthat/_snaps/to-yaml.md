@@ -136,8 +136,7 @@
       ---
       title: test
       author:
-        - id: aut1
-          name:
+        - name:
             given: Zip
             family: Zap
           affiliations:
@@ -170,8 +169,7 @@
     Output
       ---
       author:
-        - id: aut1
-          name:
+        - name:
             given: Zip
             family: Zap
           metadata:
@@ -186,8 +184,7 @@
     Output
       ---
       author:
-        - id: aut1
-          name:
+        - name:
             given: Zip
             family: Zap
       affiliations: {}
@@ -202,8 +199,7 @@
     Output
       ---
       author:
-        - id: aut1
-          name:
+        - name:
             given: Zip
             family: Zap
       affiliations: {}
