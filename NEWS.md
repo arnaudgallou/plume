@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$to_yaml()` now only adds the `affiliations` schema if there is at least one affiliation (#67).
+
 * `$to_yaml()` now only adds authors' id in multi-authored documents (#66).
 
 # plume 0.2.2
