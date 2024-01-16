@@ -24,6 +24,26 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
   expect_snapshot(read_test_file(tmp_file))
 })
 
+test_that("to_yaml() doesn't add the `affiliations` schema if there're no affiliations", {
+  tmp_file <- withr::local_tempfile(
+    lines = dedent("
+      ---
+      affiliations:
+        - name: a
+      ---
+    "),
+    fileext = ".qmd"
+  )
+
+  aut <- PlumeQuarto$new(
+    data.frame(given_name = "Zip", family_name = "Zap"),
+    tmp_file
+  )
+  aut$to_yaml()
+
+  expect_snapshot(read_test_file(tmp_file))
+})
+
 test_that("to_yaml() pushes data to empty YAML headers", {
   tmp_file <- withr::local_tempfile(lines = "---\n---", fileext = ".qmd")
 

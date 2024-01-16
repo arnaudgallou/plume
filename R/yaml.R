@@ -32,10 +32,13 @@ get_eol <- function() {
   if (.Platform$OS.type == "unix") "\n" else "\r\n" # nocov
 }
 
-yaml_inject <- function(lines, replacement) {
+yaml_inject <- function(x, lines) {
   eol <- get_eol()
+  if (is_empty(x$affiliations)) {
+    x$affiliations <- NULL
+  }
   yaml <- as.yaml(
-    replacement,
+    x,
     line.sep = eol,
     indent.mapping.sequence = TRUE,
     handlers = list(logical = as_verbatim_lgl)
@@ -89,6 +92,6 @@ yaml_push <- function(what, file) {
   if (is.null(json)) {
     return(invisible(NULL))
   }
-  lines <- yaml_inject(items, json)
+  lines <- yaml_inject(json, items)
   write_lines(lines, file = file, sep = "")
 }
