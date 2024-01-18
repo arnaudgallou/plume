@@ -98,8 +98,8 @@ StatusSetterPlume <- R6Class(
       by <- private$process_by(.by)
       vars <- private$pick("role", "contributor_rank", squash = FALSE)
       dots <- collect_dots(...)
-      if (!any_is_named(dots)) {
-        dots <- recycle_to_names(dots, nms = .roles)
+      if (!(is.null(.roles) && is_named(dots))) {
+        dots <- propagate_names(dots, nms = .roles)
       }
       out <- unnest(private$plume, col = all_of(vars$role))
       out <- add_contribution_ranks(out, dots, private$roles, by, vars)

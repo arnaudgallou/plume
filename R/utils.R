@@ -75,6 +75,17 @@ recycle_to_names <- function(x, nms) {
   set_names(x, nms)
 }
 
+propagate_names <- function(x, nms) {
+  if (is_named(nms)) {
+    nms <- names(nms)
+  }
+  nms <- nms[!nms %in% names(x)]
+  named <- have_name(x)
+  items <- list(x[named], squash(x[!named]))
+  items[[2]] <- recycle_to_names(items[[2]], nms)
+  unlist(items, recursive = FALSE)
+}
+
 condense <- function(x) {
   vec_drop_na(unique(x))
 }
