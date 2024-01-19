@@ -57,7 +57,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
-<ul><li><p><code>$to_yaml()</code> now only adds the <code>affiliations</code> schema if there is at least one affiliation (<a href="https://github.com/arnaudgallou/plume/issues/67" class="external-link">#67</a>).</p></li>
+<ul><li><p>The <code>.roles</code> parameter in <code>set_main_contributors()</code> now always applies roles that are not already set to unnamed expressions. This allows you to set the same main contributors across all but a few specific roles in a single call (<a href="https://github.com/arnaudgallou/plume/issues/65" class="external-link">#65</a>).</p></li>
+<li><p><code>$to_yaml()</code> now only adds the <code>affiliations</code> schema if there is at least one affiliation (<a href="https://github.com/arnaudgallou/plume/issues/67" class="external-link">#67</a>).</p></li>
 <li><p><code>$to_yaml()</code> now only adds authors’ id in multi-authored documents (<a href="https://github.com/arnaudgallou/plume/issues/66" class="external-link">#66</a>).</p></li>
 </ul></div>
     <div class="section level2">
