@@ -25,8 +25,14 @@ test_that("`.roles` applies to any unnamed expression (#65)", {
     analysis = 1,
     writing = 1
   ))
-  aut$set_main_contributors(analysis = 3, 2, 3, .roles = "writing")
 
+  aut$set_main_contributors(analysis = 3, 2, 3, .roles = "writing")
+  expect_equal(
+    pull_nested_var(aut, "role", "contributor_rank"),
+    c(2, 3, 2, 1, 1, 2)
+  )
+
+  aut$set_main_contributors(analysis = 3, 2, 3, .roles = c(writing = "foo"))
   expect_equal(
     pull_nested_var(aut, "role", "contributor_rank"),
     c(2, 3, 2, 1, 1, 2)
