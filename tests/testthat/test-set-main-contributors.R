@@ -18,9 +18,30 @@ test_that("set_main_contributors() ranks contributors", {
   )
 })
 
-test_that("`.roles` is ignored if at least one expression is named", {
+test_that("`.roles` applies to any unnamed expression (#65)", {
+  aut <- Plume$new(data.frame(
+    given_name = LETTERS[1:3],
+    family_name = LETTERS[1:3],
+    analysis = 1,
+    writing = 1
+  ))
+
+  aut$set_main_contributors(analysis = 3, 2, 3, .roles = "writing")
+  expect_equal(
+    pull_nested_var(aut, "role", "contributor_rank"),
+    c(2, 3, 2, 1, 1, 2)
+  )
+
+  aut$set_main_contributors(analysis = 3, 2, 3, .roles = c(writing = "foo"))
+  expect_equal(
+    pull_nested_var(aut, "role", "contributor_rank"),
+    c(2, 3, 2, 1, 1, 2)
+  )
+})
+
+test_that("named expressions have the priority over `.roles`", {
   aut <- Plume$new(basic_df)
-  aut$set_main_contributors(analysis = 3, 1, .roles = c("analysis", "writing"))
+  aut$set_main_contributors(analysis = 3, 2, .roles = "analysis")
 
   expect_equal(
     pull_nested_var(aut, "role", "contributor_rank"),

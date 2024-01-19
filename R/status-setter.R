@@ -79,8 +79,8 @@ StatusSetterPlume <- R6Class(
     #'   Expressions matching values in the column defined by `by`/`.by`
     #'   determine main contributors. Expressions can be named after any role to
     #'   set different main contributors to different roles at once, in which
-    #'   case the `.roles` parameter is ignored. Matching of values is
-    #'   case-insensitive.
+    #'   case the `.roles` parameter only applies roles that are not already set
+    #'   to unnamed expressions. Matching of values is case-insensitive.
     #' @param .roles Roles to assign main contributors to. If `.roles` is a
     #'   named vector, only the names will be used.
     #' @param .by Variable used to specify which authors are main contributors.
@@ -98,8 +98,8 @@ StatusSetterPlume <- R6Class(
       by <- private$process_by(.by)
       vars <- private$pick("role", "contributor_rank", squash = FALSE)
       dots <- collect_dots(...)
-      if (!any_is_named(dots)) {
-        dots <- recycle_to_names(dots, nms = .roles)
+      if (!(is.null(.roles) && is_named(dots))) {
+        dots <- propagate_names(dots, nms = .roles)
       }
       out <- unnest(private$plume, col = all_of(vars$role))
       out <- add_contribution_ranks(out, dots, private$roles, by, vars)

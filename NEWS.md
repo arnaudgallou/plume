@@ -1,5 +1,7 @@
 # plume (development version)
 
+* The `.roles` parameter in `set_main_contributors()` now always applies roles that are not already set to unnamed expressions. This allows you to set the same main contributors across all but a few specific roles in a single call (#65).
+
 * `$to_yaml()` now only adds the `affiliations` schema if there is at least one affiliation (#67).
 
 * `$to_yaml()` now only adds authors' id in multi-authored documents (#66).
