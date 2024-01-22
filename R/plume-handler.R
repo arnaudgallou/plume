@@ -202,8 +202,9 @@ PlumeHandler <- R6Class(
       if (is.null(missing_col)) {
         return()
       }
+      bullets <- .col_bullets[[names(missing_col)]]
       msg <- glue("Column `{missing_col}` doesn't exist.")
-      abort_check(msg = msg, ...)
+      abort_check(msg = msg, bullets = bullets, ...)
     },
 
     check_authors = function() {

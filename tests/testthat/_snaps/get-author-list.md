@@ -42,6 +42,8 @@
       <error/rlang_error>
       Error:
       ! Column `corresponding` doesn't exist.
+      i Did you forget to assign corresponding authors?
+      i Use `set_corresponding_authors()` to set corresponding authors.
     Code
       (expect_error(aut$get_author_list("o")))
     Output

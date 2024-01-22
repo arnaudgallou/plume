@@ -43,6 +43,13 @@
   )
 )
 
+.col_bullets <- list(
+  corresponding = c(
+    i = "Did you forget to assign corresponding authors?",
+    i = "Use `set_corresponding_authors()` to set corresponding authors."
+  )
+)
+
 .links <- list(
   crt = c("Contributor Roles Taxonomy", "https://credit.niso.org"),
   quarto_schemas = c(
