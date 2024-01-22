@@ -82,8 +82,11 @@ search_ <- function(x, callback, n = 1) {
   if (!is.null(n)) {
     failed <- failed[n]
   }
-  nms <- if (is_named(failed)) names(failed) else failed
-  set_names(x[failed], nms)
+  out <- x[failed]
+  if (is_named(x)) {
+    return(out)
+  }
+  set_names(out, failed)
 }
 
 without_indexed_error <- function(expr, ...) {
