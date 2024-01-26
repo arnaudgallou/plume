@@ -1,5 +1,7 @@
 # plume (development version)
 
+* Fixed `PlumeQuarto`'s example no longer working with `withr` 3.0.0 due to a wrong usage of `local_tempfile()` (#70).
+
 * `$get_author_list()` now throws a more informative error if corresponding authors have not been set (#69).
 
 * The `.roles` parameter in `set_main_contributors()` now always applies roles that are not already set to unnamed expressions. This allows you to set the same main contributors across all but a few specific roles in a single call (#65).

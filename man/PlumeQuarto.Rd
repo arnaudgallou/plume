@@ -8,13 +8,10 @@ Class that pushes author metadata in the YAML header
 of Quarto files.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Create a simple temporary file with a YAML header
 # containing a title
-tmp_file <- withr::local_tempfile(
-  lines = "---\ntitle: Encyclopédie\n---",
-  fileext = ".qmd"
-)
+tmp_file <- tempfile(fileext = ".qmd")
+readr::write_lines("---\ntitle: Encyclopédie\n---", tmp_file)
 
 # View the temporary file
 cat(readr::read_file(tmp_file))
@@ -40,7 +37,9 @@ aut <- PlumeQuarto$new(
 aut$to_yaml()
 
 cat(readr::read_file(tmp_file))
-\dontshow{\}) # examplesIf}
+
+# Clean up the temporary file
+unlink(tmp_file)
 }
 \section{Super classes}{
 \code{plume::NameHandler} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterPlumeQuarto]{plume::StatusSetterPlumeQuarto}} -> \code{PlumeQuarto}
