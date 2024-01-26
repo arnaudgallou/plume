@@ -294,8 +294,8 @@ Plume <- R6Class(
     get_footnotes = function(var, superscript, sep) {
       col <- private$pick(var)
       private$check_col(col)
-      check_string(sep)
       check_bool(superscript)
+      check_string(sep)
       out <- unnest_drop(private$plume, col)
       if (is_empty(out)) {
         return()

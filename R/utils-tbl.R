@@ -67,7 +67,7 @@ add_orcid_icons <- function(data, orcid) {
   data
 }
 
-add_orcid_links <- function(data, orcid, compact = FALSE) {
+add_orcid_links <- function(data, orcid, compact) {
   .col <- predot(orcid)
   links <- make_orcid_link(data[[orcid]], compact)
   data[.col] <- paste0(data[[.col]], links)

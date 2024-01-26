@@ -136,11 +136,7 @@ PlumeHandler <- R6Class(
 
     add_author_names = function() {
       if (private$initials_given_name) {
-        given_name <- private$pick("given_name")
-        private$plume <- mutate(
-          private$plume,
-          !!given_name := make_initials(.data[[given_name]], dot = TRUE)
-        )
+        private$make_initials("given_name", dot = TRUE)
       }
       private$add_literal_names()
       if (any(has_uppercase(private$get("literal_name")))) {
@@ -161,11 +157,18 @@ PlumeHandler <- R6Class(
     },
 
     add_initials = function() {
-      vars <- private$pick("literal_name", "initials", squash = FALSE)
+      private$make_initials("literal_name", name = private$pick("initials"))
+    },
+
+    make_initials = function(col, name, dot = FALSE) {
+      col <- private$pick(col)
+      if (missing(name)) {
+        name <- col
+      }
       private$plume <- mutate(
         private$plume,
-        !!vars$initials := make_initials(.data[[vars$literal_name]]),
-        .after = all_of(vars$literal_name)
+        !!name := make_initials(.data[[col]], dot = dot),
+        .after = any_of(col)
       )
     },
 

@@ -1,6 +1,6 @@
 list_fetch_all <- function(x, ..., squash) {
   out <- list()
-  for (name in c(...)) {
+  for (name in unique(c(...))) {
     out <- c(out, list_fetch(x, name))
   }
   if (squash) {

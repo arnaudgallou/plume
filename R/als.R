@@ -39,9 +39,10 @@ als_parse <- function(format) {
 
 als_join <- function(x, marks) {
   out <- map2_vec(x, marks, \(item, mark) {
-    if (is_blank(item) & str_contain(mark, "^")) {
+    if (is_blank(item) && str_contain(mark, "^")) {
       return("^")
-    } else if (is_blank(item)) {
+    }
+    if (is_blank(item)) {
       return(item)
     }
     paste0(mark, item)

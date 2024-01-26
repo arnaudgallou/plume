@@ -149,7 +149,7 @@ expr_cases <- function(expr) {
 
 collect_dots <- function(...) {
   out <- without_indexed_error(map(enexprs(...), expr_cases))
-  if (any_is_named(out)) {
+  if (any(have_name(out))) {
     return(out)
   }
   squash(out)
