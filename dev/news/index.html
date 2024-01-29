@@ -60,9 +60,9 @@
 <ul><li><p><code>$new(initials_given_name = TRUE)</code> no longer makes initials if names are written in a script that doesn’t use letter cases (<a href="https://github.com/arnaudgallou/plume/issues/73" class="external-link">#73</a>).</p></li>
 <li><p>Fixed <code>PlumeQuarto</code>’s example no longer working with <code>withr</code> 3.0.0 due to a wrong usage of <code>local_tempfile()</code> (<a href="https://github.com/arnaudgallou/plume/issues/70" class="external-link">#70</a>).</p></li>
 <li><p><code>$get_author_list()</code> now throws a more informative error if corresponding authors have not been set (<a href="https://github.com/arnaudgallou/plume/issues/69" class="external-link">#69</a>).</p></li>
-<li><p>The <code>.roles</code> parameter in <code>set_main_contributors()</code> now always applies roles that are not already set to unnamed expressions. This allows you to set the same main contributors across all but a few specific roles in a single call (<a href="https://github.com/arnaudgallou/plume/issues/65" class="external-link">#65</a>).</p></li>
+<li><p>The <code>.roles</code> parameter in <code>$set_main_contributors()</code> now propagates roles that are not already set to any unnamed expression. This allows you to set the same main contributors across all but a few specific roles in a single call (<a href="https://github.com/arnaudgallou/plume/issues/65" class="external-link">#65</a>).</p></li>
 <li><p><code>$to_yaml()</code> now only adds the <code>affiliations</code> schema if there is at least one affiliation (<a href="https://github.com/arnaudgallou/plume/issues/67" class="external-link">#67</a>).</p></li>
-<li><p><code>$to_yaml()</code> now only adds authors’ id in multi-authored documents (<a href="https://github.com/arnaudgallou/plume/issues/66" class="external-link">#66</a>).</p></li>
+<li><p><code>$to_yaml()</code> now only adds authors’ id if there are at least two authors (<a href="https://github.com/arnaudgallou/plume/issues/66" class="external-link">#66</a>).</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.2" id="plume-022">plume 0.2.2<a class="anchor" aria-label="anchor" href="#plume-022"></a></h2><p class="text-muted">CRAN release: 2024-01-09</p>
