@@ -6,11 +6,11 @@
 
 * `$get_author_list()` now throws a more informative error if corresponding authors have not been set (#69).
 
-* The `.roles` parameter in `set_main_contributors()` now always applies roles that are not already set to unnamed expressions. This allows you to set the same main contributors across all but a few specific roles in a single call (#65).
+* The `.roles` parameter in `$set_main_contributors()` now propagates roles that are not already set to any unnamed expression. This allows you to set the same main contributors across all but a few specific roles in a single call (#65).
 
 * `$to_yaml()` now only adds the `affiliations` schema if there is at least one affiliation (#67).
 
-* `$to_yaml()` now only adds authors' id in multi-authored documents (#66).
+* `$to_yaml()` now only adds authors' id if there are at least two authors (#66).
 
 # plume 0.2.2
 
