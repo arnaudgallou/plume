@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$new(initials_given_name = TRUE)` no longer makes initials if names are written in a script that doesn't use letter cases (#73).
+
 * Fixed `PlumeQuarto`'s example no longer working with `withr` 3.0.0 due to a wrong usage of `local_tempfile()` (#70).
 
 * `$get_author_list()` now throws a more informative error if corresponding authors have not been set (#69).
