@@ -2,7 +2,7 @@ Type: Package
 Package: plume
 Title: A Simple Author Handler for Scientific Writing
 Version: 0.2.2.9000
-Authors@R: 
+Authors@R:
     person("Arnaud", "Gallou", , "arangacas@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-1002-4247"))
 Description: Handles and formats author information in scientific writing
@@ -11,8 +11,8 @@ Description: Handles and formats author information in scientific writing
     as generating author and contribution lists (among others) as strings
     from tabular data.
 License: GPL (>= 3)
-URL: https://github.com/arnaudgallou/plume,
-    https://arnaudgallou.github.io/plume/
+URL: https://arnaudgallou.github.io/plume/,
+    https://github.com/arnaudgallou/plume
 BugReports: https://github.com/arnaudgallou/plume/issues
 Depends:
     R (>= 4.1.0)

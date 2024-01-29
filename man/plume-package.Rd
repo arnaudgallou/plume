@@ -14,8 +14,8 @@ author and contribution lists (among others) as strings from tabular data.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/arnaudgallou/plume}
   \item \url{https://arnaudgallou.github.io/plume/}
+  \item \url{https://github.com/arnaudgallou/plume}
   \item Report bugs at \url{https://github.com/arnaudgallou/plume/issues}
 }
 
