@@ -135,11 +135,11 @@ PlumeHandler <- R6Class(
     },
 
     add_author_names = function() {
-      if (private$initials_given_name) {
+      if (private$initials_given_name && private$has_uppercase("given_name")) {
         private$make_initials("given_name", dot = TRUE)
       }
       private$add_literal_names()
-      if (any(has_uppercase(private$get("literal_name")))) {
+      if (private$has_uppercase("literal_name")) {
         private$add_initials()
       }
     },
@@ -191,6 +191,10 @@ PlumeHandler <- R6Class(
     is_nestable = function(var) {
       var <- begins_with(var)
       private$has_col(var) && col_count(private$plume, var) > 1L
+    },
+
+    has_uppercase = function(var) {
+      any(has_uppercase(private$get(var)))
     },
 
     has_col = function(col) {
