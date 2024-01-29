@@ -120,6 +120,14 @@ test_that("`initials_given_name = TRUE` initialises given names", {
   )
 })
 
+test_that("`initials_given_name` doesn't make initials in scripts not using letter cases (#73)", {
+  aut <- Plume$new(
+    data.frame(given_name = "菖蒲", family_name = "佐藤"),
+    initials_given_name = TRUE
+  )
+  expect_equal(aut$get_plume()$given_name, "菖蒲")
+})
+
 test_that("`family_name_first = TRUE` switches given and family name", {
   aut <- Plume$new(basic_df, family_name_first = TRUE)
   expect_equal(
