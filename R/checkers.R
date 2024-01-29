@@ -64,10 +64,6 @@ are_credit_roles <- function(x) {
   all(x %in% credit_roles()) || all(x %in% credit_roles(FALSE))
 }
 
-are_calls <- function(...) {
-  all(map_vec(enexprs(...), is.call))
-}
-
 search_ <- function(x, callback, n = 1) {
   x <- vec_drop_na(x)
   have_passed <- if (missing(callback)) !x else !callback(x)
