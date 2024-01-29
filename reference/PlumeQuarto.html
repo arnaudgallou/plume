@@ -12,7 +12,7 @@ of Quarto files."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
     
     <a class="navbar-brand me-2" href="../index.html">plume</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -184,16 +184,16 @@ values with the ones provided in the input data.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
-<span class="r-in"><span><span class="co"># Create a simple temporary file with a YAML header</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create a simple temporary file with a YAML header</span></span></span>
 <span class="r-in"><span><span class="co"># containing a title</span></span></span>
-<span class="r-in"><span><span class="va">tmp_file</span> <span class="op">&lt;-</span> <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">local_tempfile</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  lines <span class="op">=</span> <span class="st">"---\ntitle: Encyclopédie\n---"</span>,</span></span>
-<span class="r-in"><span>  fileext <span class="op">=</span> <span class="st">".qmd"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">tmp_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".qmd"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_lines.html" class="external-link">write_lines</a></span><span class="op">(</span><span class="st">"---\ntitle: Encyclopédie\n---"</span>, <span class="va">tmp_file</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># View the temporary file</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_file.html" class="external-link">read_file</a></span><span class="op">(</span><span class="va">tmp_file</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> title: Encyclopédie</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create a PlumeQuarto instance using the temporary file</span></span></span>
 <span class="r-in"><span><span class="co"># you've just created</span></span></span>
@@ -206,6 +206,63 @@ values with the ones provided in the input data.</p>
 <span class="r-in"><span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_file.html" class="external-link">read_file</a></span><span class="op">(</span><span class="va">tmp_file</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> title: Encyclopédie</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> author:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   - id: aut1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       given: Denis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       family: Diderot</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     email: diderot@encyclopediste.fr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     phone: '+1234'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     orcid: 0000-0000-0000-0001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     note: born in 1713 in Langres</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     roles:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - supervision</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - writing - original draft</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     affiliations:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - ref: aff1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   - id: aut2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       given: Jean-Jacques</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       family: Rousseau</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     email: rousseau@encyclopediste.fr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     orcid: 0000-0000-0000-0002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     roles:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - writing - original draft</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     affiliations:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - ref: aff2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   - id: aut3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       given: François-Marie</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       family: Arouet</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     email: arouet@encyclopediste.fr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     note: also known as Voltaire</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     roles:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - writing - original draft</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     affiliations:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - ref: aff2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   - id: aut4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       given: Jean</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       family: Le Rond d'Alembert</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     email: alembert@encyclopediste.fr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     orcid: 0000-0000-0000-0003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     note: born in 1717 in Paris</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     roles:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - supervision</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - writing - original draft</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     affiliations:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - ref: aff1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - ref: aff3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> affiliations:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   - id: aff1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name: Université de Paris</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   - id: aff2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name: Lycée Louis-le-Grand</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   - id: aff3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name: Collège des Quatre-Nations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Pushing again with new data updates the YAML</span></span></span>
 <span class="r-in"><span><span class="co"># header accordingly</span></span></span>
@@ -216,7 +273,25 @@ values with the ones provided in the input data.</p>
 <span class="r-in"><span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_file.html" class="external-link">read_file</a></span><span class="op">(</span><span class="va">tmp_file</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> title: Encyclopédie</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> author:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   - name:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       given: Jean-Jacques</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       family: Rousseau</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     email: rousseau@encyclopediste.fr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     orcid: 0000-0000-0000-0002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     roles:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - writing - original draft</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     affiliations:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - ref: aff1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> affiliations:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   - id: aff1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     name: Lycée Louis-le-Grand</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Clean up the temporary file</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">tmp_file</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
