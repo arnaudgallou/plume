@@ -1,9 +1,0 @@
-citHeader("To cite plume in publications use:")
-
-bibentry(
-  bibtype  = "Manual",
-  title    = "A Simple Author Handler for Scientific Writing",
-  author   = "Arnaud Gallou",
-  year     = "2023",
-  url      = "https://arnaudgallou.github.io/plume/"
-)
