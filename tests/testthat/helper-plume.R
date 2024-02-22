@@ -27,11 +27,9 @@ tempfile_ <- function() {
 }
 
 dedent <- function(string) {
-  out <- trimws(string)
-  ws_regex <- "(?<=\n) "
-  ws <- str_extract_all(out, paste0(ws_regex, "+"), simplify = TRUE)
-  ws_n <- min(nchar(ws))
-  str_remove_all(out, paste0(ws_regex, "{", ws_n, "}"))
+  indent <- sub("(?s)\\S*\n(\\s*).+", "\\1", string, perl = TRUE)
+  out <- gsub(paste0("(?m)^", indent), "", string, perl = TRUE)
+  trimws(out)
 }
 
 read_test_file <- function(file) {

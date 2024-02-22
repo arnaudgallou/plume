@@ -53,7 +53,7 @@ has_yaml <- function(x) {
 
 check_has_yaml <- function(x) {
   if (has_yaml(x)) {
-    return(invisible(NULL))
+    return(invisible())
   }
   abort_check(msg = c(
     "No YAML headers found.",
@@ -90,7 +90,7 @@ yaml_push <- function(what, file) {
   json <- as_json(what)
   json <- json_update(items[[2]], json)
   if (is.null(json)) {
-    return(invisible(NULL))
+    return(invisible())
   }
   lines <- yaml_inject(json, items)
   write_lines(lines, file = file, sep = "")

@@ -68,13 +68,13 @@ PlumeQuarto <- R6Class(
     #'   authors' id.
     #' @return A `PlumeQuarto` object.
     initialize = function(
-        data,
-        file,
-        names = NULL,
-        roles = credit_roles(),
-        credit_roles = FALSE,
-        initials_given_name = FALSE,
-        by = NULL
+      data,
+      file,
+      names = NULL,
+      roles = credit_roles(),
+      credit_roles = FALSE,
+      initials_given_name = FALSE,
+      by = NULL
     ) {
       check_file(file, extension = "qmd")
       super$initialize(data, names, roles, credit_roles, initials_given_name, by = by)
@@ -124,7 +124,7 @@ PlumeQuarto <- R6Class(
         email = private$get("email"),
         phone = private$get("phone"),
         fax = private$get("fax"),
-        orcid = private$author_orcid(),
+        orcid = private$author_orcids(),
         note = private$author_notes(),
         acknowledgements = private$get("acknowledgements"),
         attributes = private$author_attributes(),
@@ -142,7 +142,7 @@ PlumeQuarto <- R6Class(
       paste0("aut", ids)
     },
 
-    author_orcid = function() {
+    author_orcids = function() {
       out <- private$get("orcid")
       if (!is.null(out)) {
         check_orcid(out)

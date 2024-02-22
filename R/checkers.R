@@ -64,21 +64,18 @@ are_credit_roles <- function(x) {
   all(x %in% credit_roles()) || all(x %in% credit_roles(FALSE))
 }
 
-search_ <- function(x, callback, n = 1) {
+search_ <- function(x, callback) {
   x <- vec_drop_na(x)
   have_passed <- if (missing(callback)) !x else !callback(x)
   if (all(have_passed)) {
     return()
   }
-  failed <- which(!have_passed)
-  if (!is.null(n)) {
-    failed <- failed[n]
-  }
+  failed <- which(!have_passed)[[1]]
   out <- x[failed]
-  if (is_named(x)) {
-    return(out)
+  if (!is_named(x)) {
+    out <- set_names(out, failed)
   }
-  set_names(out, failed)
+  out
 }
 
 without_indexed_error <- function(expr, ...) {
@@ -109,13 +106,13 @@ message_error <- function(param, body, what) {
 }
 
 abort_check <- function(
-    what,
-    msg = NULL,
-    bullets = NULL,
-    ...,
-    msg_body = 1,
-    param,
-    call = caller_user()
+  what,
+  msg = NULL,
+  bullets = NULL,
+  ...,
+  msg_body = 1,
+  param,
+  call = caller_user()
 ) {
   msg_body <- message_body(msg_body)
   msg <- msg %||% message_error(param, msg_body, what)
@@ -128,14 +125,14 @@ abort_check <- function(
 check_dots_not_empty <- function() {
   dots <- substitute(...(), caller_env())
   if (!is.null(dots)) {
-    return(invisible(NULL))
+    return(invisible())
   }
   abort_check(msg = "`...` must not be empty.")
 }
 
 check_named <- function(x, allow_homonyms = FALSE, ..., param = caller_arg(x)) {
   if (is_named(x) && (allow_homonyms || !has_homonyms(x))) {
-    return(invisible(NULL))
+    return(invisible())
   }
   if (is_named(x) && !allow_homonyms && has_homonyms(x)) {
     msg <- "`{param}` must have unique input names."
@@ -147,25 +144,25 @@ check_named <- function(x, allow_homonyms = FALSE, ..., param = caller_arg(x)) {
 
 check_duplicates <- function(x, ..., param = caller_arg(x)) {
   if (!vec_duplicate_any(x)) {
-    return(invisible(NULL))
+    return(invisible())
   }
   msg <- glue("`{param}` must have unique input values.")
   abort_check(msg = msg, ..., param = param)
 }
 
 check_vector <- function(
-    x,
-    type,
-    force_names = FALSE,
-    allow_duplicates = TRUE,
-    allow_homonyms = FALSE,
-    allow_null = TRUE,
-    ...,
-    param = caller_arg(x)
+  x,
+  type,
+  force_names = FALSE,
+  allow_duplicates = TRUE,
+  allow_homonyms = FALSE,
+  allow_null = TRUE,
+  ...,
+  param = caller_arg(x)
 ) {
   if (!missing(x)) {
     if (allow_null && is.null(x)) {
-      return(invisible(NULL))
+      return(invisible())
     }
     if (is_type(x, type)) {
       if (force_names) {
@@ -174,7 +171,7 @@ check_vector <- function(
       if (!allow_duplicates) {
         check_duplicates(x, param = param)
       }
-      return(invisible(NULL))
+      return(invisible())
     }
   }
   if (type != "list") {
@@ -191,7 +188,7 @@ check_num <- partial(check_vector, type = "numeric")
 
 check_df <- function(x, ..., param = caller_arg(x)) {
   if (!missing(x) && inherits(x, c("data.frame", "tbl_df"))) {
-    return(invisible(NULL))
+    return(invisible())
   }
   abort_check("a data frame or tibble", ..., param = param)
 }
@@ -207,16 +204,16 @@ is_stringish <- function(x, allow_empty, allow_null) {
 }
 
 check_string <- function(
-    x,
-    allow_empty = TRUE,
-    allow_null = FALSE,
-    ...,
-    param = caller_arg(x)
+  x,
+  allow_empty = TRUE,
+  allow_null = FALSE,
+  ...,
+  param = caller_arg(x)
 ) {
   adj <- "character"
   if (!missing(x)) {
     if (is_stringish(x, allow_empty, allow_null)) {
-      return(invisible(NULL))
+      return(invisible())
     }
     if (is_string(x)) {
       adj <- "non-empty"
@@ -227,7 +224,7 @@ check_string <- function(
 
 check_bool <- function(x, allow_null = FALSE, ..., param = caller_arg(x)) {
   if (!missing(x) && (is_bool(x) || allow_null && is.null(x))) {
-    return(invisible(NULL))
+    return(invisible())
   }
   abort_check("`TRUE` or `FALSE`", ..., param = param)
 }
@@ -251,14 +248,14 @@ check_args <- function(type, x, ..., call = caller_user()) {
 check_suffix_format <- function(x, param = caller_arg(x)) {
   check_string(x, allow_null = TRUE, param = param)
   if (is.null(x)) {
-    return(invisible(NULL))
+    return(invisible())
   }
   allowed <- c("a", "c", "n", "o", "^", ",")
   pattern <- to_chr_class(allowed, negate = TRUE)
   keys <- als_extract_keys(x)
   has_dup_keys <- vec_duplicate_any(keys)
   if (!(has_dup_keys || grepl(pattern, x))) {
-    return(invisible(NULL))
+    return(invisible())
   }
   if (has_dup_keys) {
     what <- "unique keys"
@@ -277,7 +274,7 @@ path_is_relative <- function(x) {
 
 check_path <- function(x, ..., param = caller_arg(x)) {
   if (file.exists(x)) {
-    return(invisible(NULL))
+    return(invisible())
   }
   if (path_is_relative(x)) {
     directory <- glue(" in the current directory `{getwd()}`")
@@ -296,7 +293,7 @@ check_file <- function(x, extension, ..., param = caller_arg(x)) {
   ext <- file_ext(x)
   if (is_not_na(ext) && vec_in(ext, extension)) {
     check_path(x, param = param)
-    return(invisible(NULL))
+    return(invisible())
   }
   extension <- wrap(predot(extension), "`")
   abort_check(paste("a", extension, "file"), ..., param = param)
@@ -311,7 +308,7 @@ check_glue <- function(x, allowed, ..., param = caller_arg(x)) {
   if (!missing(x) && is_glueish(x)) {
     vars <- extract_glue_vars(x)
     if (all(vec_in(vars, allowed, ignore_case = FALSE))) {
-      return(invisible(NULL))
+      return(invisible())
     }
     invalid_var <- search_(vars, \(var) !var %in% allowed)
     allowed_vars <- enumerate(wrap(allowed, "`"), last = " and/or ")
@@ -330,10 +327,10 @@ is_orcid <- function(x) {
 check_orcid <- function(x, ..., param = caller_arg(x)) {
   invalid_orcid <- search_(x, Negate(is_orcid))
   if (is.null(invalid_orcid)) {
-    return(invisible(NULL))
+    return(invisible())
   }
-  msg <- glue("Invalid ORCID identifier found: `{invalid_orcid}`.")
-  abort_check(msg = msg, bullets = c(
+  abort_check(msg = c(
+    glue("Invalid ORCID identifier found: `{invalid_orcid}`."),
     i = "ORCID identifiers must have 16 digits, separated by a hyphen every 4 digits.",
     i = "The last character of the identifiers must be a digit or `X`."
   ), ..., param = param)
@@ -345,7 +342,7 @@ is_icon <- function(x) {
 
 check_orcid_icon <- function(x, ..., param = caller_arg(x)) {
   if (!missing(x) && is_icon(x)) {
-    return(invisible(NULL))
+    return(invisible())
   }
   abort_check(..., msg = c(
     glue("Invalid `{param}` input."),

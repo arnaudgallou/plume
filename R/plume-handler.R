@@ -7,13 +7,13 @@ PlumeHandler <- R6Class(
   inherit = NameHandler,
   public = list(
     initialize = function(
-        data,
-        names,
-        roles,
-        credit_roles,
-        initials_given_name,
-        family_name_first = FALSE,
-        interword_spacing = TRUE
+      data,
+      names,
+      roles,
+      credit_roles,
+      initials_given_name,
+      family_name_first = FALSE,
+      interword_spacing = TRUE
     ) {
       check_df(data)
       check_args(
@@ -135,13 +135,11 @@ PlumeHandler <- R6Class(
     },
 
     add_author_names = function() {
-      if (private$initials_given_name && private$has_uppercase("given_name")) {
+      if (private$initials_given_name) {
         private$make_initials("given_name", dot = TRUE)
       }
       private$add_literal_names()
-      if (private$has_uppercase("literal_name")) {
-        private$add_initials()
-      }
+      private$add_initials()
     },
 
     add_literal_names = function() {
@@ -162,6 +160,9 @@ PlumeHandler <- R6Class(
 
     make_initials = function(col, name, dot = FALSE) {
       col <- private$pick(col)
+      if (!private$has_uppercase(col)) {
+        return()
+      }
       if (missing(name)) {
         name <- col
       }
@@ -194,7 +195,7 @@ PlumeHandler <- R6Class(
     },
 
     has_uppercase = function(var) {
-      any(has_uppercase(private$get(var)))
+      any(has_uppercase(private$plume[[var]]))
     },
 
     has_col = function(col) {

@@ -81,16 +81,16 @@ Plume <- R6Class(
     #'   authors' id.
     #' @return A `Plume` object.
     initialize = function(
-        data,
-        names = NULL,
-        symbols = NULL,
-        roles = credit_roles(),
-        credit_roles = FALSE,
-        initials_given_name = FALSE,
-        family_name_first = FALSE,
-        interword_spacing = TRUE,
-        orcid_icon = orcid(),
-        by = NULL
+      data,
+      names = NULL,
+      symbols = NULL,
+      roles = credit_roles(),
+      credit_roles = FALSE,
+      initials_given_name = FALSE,
+      family_name_first = FALSE,
+      interword_spacing = TRUE,
+      orcid_icon = orcid(),
+      by = NULL
     ) {
       super$initialize(
         data,
@@ -189,12 +189,12 @@ Plume <- R6Class(
     #' @param sep Separator used to separate `details` items.
     #' @return A character vector.
     get_contact_details = function(
-        format = "{details} ({name})",
-        email = TRUE,
-        phone = FALSE,
-        fax = FALSE,
-        url = FALSE,
-        sep = ", "
+      format = "{details} ({name})",
+      email = TRUE,
+      phone = FALSE,
+      fax = FALSE,
+      url = FALSE,
+      sep = ", "
     ) {
       check_glue(format, allowed = c("name", "details"))
       check_args("bool", list(email, phone, fax, url))
@@ -230,14 +230,14 @@ Plume <- R6Class(
     #'   if more than one item is associated to a role or author.
     #' @return A character vector.
     get_contributions = function(
-        roles_first = TRUE,
-        by_author = FALSE,
-        alphabetical_order = FALSE,
-        dotted_initials = TRUE,
-        literal_names = FALSE,
-        divider = ": ",
-        sep = ", ",
-        sep_last = " and "
+      roles_first = TRUE,
+      by_author = FALSE,
+      alphabetical_order = FALSE,
+      dotted_initials = TRUE,
+      literal_names = FALSE,
+      divider = ": ",
+      sep = ", ",
+      sep_last = " and "
     ) {
       role <- private$pick("role")
       private$check_col(role)
@@ -254,7 +254,7 @@ Plume <- R6Class(
         return()
       }
       pars <- private$contribution_pars(roles_first, by_author, literal_names)
-      if (pars$has_initials && dotted_initials && !literal_names) {
+      if (dotted_initials && pars$has_initials && !literal_names) {
         out <- mutate(out, !!pars$author := dot(.data[[pars$author]]))
       }
       out <- summarise(out, !!pars$var := enumerate(
