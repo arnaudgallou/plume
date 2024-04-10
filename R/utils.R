@@ -119,7 +119,7 @@ expr_is_atomic <- function(expr) {
 }
 
 expr_is_selector <- function(expr) {
-  expr_is(expr, "^everyone")
+  expr_is(expr, "^(?:plume:::?)?everyone")
 }
 
 expr_type <- function(expr) {
