@@ -133,11 +133,11 @@
 <span><span class="co">#&gt; # ℹ 2 more variables: affiliation &lt;list&gt;, role &lt;list&gt;</span></span></code></pre></div>
 <p><code>PlumeQuarto</code> lets you push author metadata in the YAML header of any <code>.qmd</code> file using the <code>to_yaml()</code> method.</p>
 <p>Consider the following example:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Encyclopédie</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>Qui scribit bis legit</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>title<span class="sc">:</span> Encyclopédie</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>Qui scribit bis legit</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
@@ -145,73 +145,73 @@
 <span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Encyclopédie</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut1</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    name<span class="sc">:</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      given<span class="sc">:</span> Denis</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      family<span class="sc">:</span> Diderot</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    email<span class="sc">:</span> diderot<span class="sc">@</span>encyclopediste.fr</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    phone<span class="sc">:</span> <span class="st">'+1234'</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    orcid<span class="sc">:</span> <span class="dv">0000-0000-0000-0001</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    note<span class="sc">:</span> born <span class="cf">in</span> <span class="dv">1713</span> <span class="cf">in</span> Langres</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> true</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    roles<span class="sc">:</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> supervision</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff1</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut2</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    name<span class="sc">:</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      given<span class="sc">:</span> Jean<span class="sc">-</span>Jacques</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>      family<span class="sc">:</span> Rousseau</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    email<span class="sc">:</span> rousseau<span class="sc">@</span>encyclopediste.fr</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    orcid<span class="sc">:</span> <span class="dv">0000-0000-0000-0002</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> false</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    roles<span class="sc">:</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff2</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut3</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    name<span class="sc">:</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>      given<span class="sc">:</span> François<span class="sc">-</span>Marie</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>      family<span class="sc">:</span> Arouet</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    email<span class="sc">:</span> arouet<span class="sc">@</span>encyclopediste.fr</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    note<span class="sc">:</span> also known as Voltaire</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>      corresponding<span class="sc">:</span> false</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    roles<span class="sc">:</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff2</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut4</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    name<span class="sc">:</span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>      given<span class="sc">:</span> Jean</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>      family<span class="sc">:</span> Le Rond d<span class="st">'Alembert</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="st">    email: alembert@encyclopediste.fr</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="st">    orcid: 0000-0000-0000-0003</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="st">    note: born in 1717 in Paris</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="st">    attributes:</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="st">      corresponding: true</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="st">    roles:</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="st">      - supervision</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="st">      - writing - original draft</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="st">    affiliations:</span></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="st">      - ref: aff1</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="st">      - ref: aff3</span></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="st">affiliations:</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="st">  - id: aff1</span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="st">    name: Université de Paris</span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="st">  - id: aff2</span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="st">    name: Lycée Louis-le-Grand</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="st">  - id: aff3</span></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="st">    name: Collège des Quatre-Nations</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="st">---</span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="st">Qui scribit bis legit</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>title<span class="sc">:</span> Encyclopédie</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>author<span class="sc">:</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut1</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>    name<span class="sc">:</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>      given<span class="sc">:</span> Denis</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>      family<span class="sc">:</span> Diderot</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>    email<span class="sc">:</span> diderot<span class="sc">@</span>encyclopediste.fr</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>    phone<span class="sc">:</span> <span class="st">'+1234'</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>    orcid<span class="sc">:</span> <span class="dv">0000-0000-0000-0001</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>    note<span class="sc">:</span> born <span class="cf">in</span> <span class="dv">1713</span> <span class="cf">in</span> Langres</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>      corresponding<span class="sc">:</span> true</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>    roles<span class="sc">:</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>      <span class="sc">-</span> supervision</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff1</span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut2</span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>    name<span class="sc">:</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>      given<span class="sc">:</span> Jean<span class="sc">-</span>Jacques</span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>      family<span class="sc">:</span> Rousseau</span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a>    email<span class="sc">:</span> rousseau<span class="sc">@</span>encyclopediste.fr</span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a>    orcid<span class="sc">:</span> <span class="dv">0000-0000-0000-0002</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a>      corresponding<span class="sc">:</span> false</span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a>    roles<span class="sc">:</span></span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff2</span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut3</span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a>    name<span class="sc">:</span></span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a>      given<span class="sc">:</span> François<span class="sc">-</span>Marie</span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a>      family<span class="sc">:</span> Arouet</span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a>    email<span class="sc">:</span> arouet<span class="sc">@</span>encyclopediste.fr</span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a>    note<span class="sc">:</span> also known as Voltaire</span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a>    attributes<span class="sc">:</span></span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a>      corresponding<span class="sc">:</span> false</span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a>    roles<span class="sc">:</span></span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a>      <span class="sc">-</span> writing <span class="sc">-</span> original draft</span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a>    affiliations<span class="sc">:</span></span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a>      <span class="sc">-</span> ref<span class="sc">:</span> aff2</span>
+<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a>  <span class="sc">-</span> id<span class="sc">:</span> aut4</span>
+<span id="cb6-44"><a href="#cb6-44" tabindex="-1"></a>    name<span class="sc">:</span></span>
+<span id="cb6-45"><a href="#cb6-45" tabindex="-1"></a>      given<span class="sc">:</span> Jean</span>
+<span id="cb6-46"><a href="#cb6-46" tabindex="-1"></a>      family<span class="sc">:</span> Le Rond d<span class="st">'Alembert</span></span>
+<span id="cb6-47"><a href="#cb6-47" tabindex="-1"></a><span class="st">    email: alembert@encyclopediste.fr</span></span>
+<span id="cb6-48"><a href="#cb6-48" tabindex="-1"></a><span class="st">    orcid: 0000-0000-0000-0003</span></span>
+<span id="cb6-49"><a href="#cb6-49" tabindex="-1"></a><span class="st">    note: born in 1717 in Paris</span></span>
+<span id="cb6-50"><a href="#cb6-50" tabindex="-1"></a><span class="st">    attributes:</span></span>
+<span id="cb6-51"><a href="#cb6-51" tabindex="-1"></a><span class="st">      corresponding: true</span></span>
+<span id="cb6-52"><a href="#cb6-52" tabindex="-1"></a><span class="st">    roles:</span></span>
+<span id="cb6-53"><a href="#cb6-53" tabindex="-1"></a><span class="st">      - supervision</span></span>
+<span id="cb6-54"><a href="#cb6-54" tabindex="-1"></a><span class="st">      - writing - original draft</span></span>
+<span id="cb6-55"><a href="#cb6-55" tabindex="-1"></a><span class="st">    affiliations:</span></span>
+<span id="cb6-56"><a href="#cb6-56" tabindex="-1"></a><span class="st">      - ref: aff1</span></span>
+<span id="cb6-57"><a href="#cb6-57" tabindex="-1"></a><span class="st">      - ref: aff3</span></span>
+<span id="cb6-58"><a href="#cb6-58" tabindex="-1"></a><span class="st">affiliations:</span></span>
+<span id="cb6-59"><a href="#cb6-59" tabindex="-1"></a><span class="st">  - id: aff1</span></span>
+<span id="cb6-60"><a href="#cb6-60" tabindex="-1"></a><span class="st">    name: Université de Paris</span></span>
+<span id="cb6-61"><a href="#cb6-61" tabindex="-1"></a><span class="st">  - id: aff2</span></span>
+<span id="cb6-62"><a href="#cb6-62" tabindex="-1"></a><span class="st">    name: Lycée Louis-le-Grand</span></span>
+<span id="cb6-63"><a href="#cb6-63" tabindex="-1"></a><span class="st">  - id: aff3</span></span>
+<span id="cb6-64"><a href="#cb6-64" tabindex="-1"></a><span class="st">    name: Collège des Quatre-Nations</span></span>
+<span id="cb6-65"><a href="#cb6-65" tabindex="-1"></a><span class="st">---</span></span>
+<span id="cb6-66"><a href="#cb6-66" tabindex="-1"></a></span>
+<span id="cb6-67"><a href="#cb6-67" tabindex="-1"></a><span class="st">Qui scribit bis legit</span></span></code></pre></div>
 <p>Alternatively, you can generate author information as character strings using <code>Plume</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>

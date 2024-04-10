@@ -1,4 +1,4 @@
-pandoc: 2.19.2
+pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
@@ -6,7 +6,7 @@ articles:
   plume-workflow: plume-workflow.html
   plume: plume.html
   working-in-other-languages: working-in-other-languages.html
-last_built: 2024-02-22T18:49Z
+last_built: 2024-04-10T20:44Z
 urls:
   reference: https://arnaudgallou.github.io/plume/reference
   article: https://arnaudgallou.github.io/plume/articles
