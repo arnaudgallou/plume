@@ -9,6 +9,11 @@ test_that("sets status to selected authors", {
   }, rep(TRUE, 3))
 
   expect_equal({
+    aut$set_corresponding_authors(plume::everyone())
+    aut$get_plume()$corresponding
+  }, rep(TRUE, 3))
+
+  expect_equal({
     withr::local_options(lifecycle_verbosity = "quiet")
     aut$set_corresponding_authors(everyone_but(ric), .by = "given_name")
     aut$get_plume()$corresponding
