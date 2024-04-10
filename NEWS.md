@@ -1,5 +1,7 @@
 # plume (development version)
 
+* Fixed selection helpers not working when imported explicitly with `::` (#76).
+
 # plume 0.2.3
 
 * `$new(initials_given_name = TRUE)` no longer makes initials if names are written in a script that doesn't use letter cases (#73).
