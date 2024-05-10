@@ -1,3 +1,5 @@
+# plume (development version)
+
 # plume 0.2.4
 
 * Tweak some examples in the vignettes and expand the `Contributions` section in `vignette("plume")`.
