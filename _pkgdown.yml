@@ -2,6 +2,10 @@ url: https://arnaudgallou.github.io/plume/
 template:
   bootstrap: 5
   package: cygne
+  includes:
+    after_body: >
+      <script data-goatcounter="https://arangacas.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 reference:
   - title: Classes
     contents:
