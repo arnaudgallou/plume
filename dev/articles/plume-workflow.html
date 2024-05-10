@@ -100,11 +100,11 @@ purpose.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">gs4_create</span><span class="op">(</span></span>
-<span>  name <span class="op">=</span> <span class="st">"encyclopédie"</span>,</span>
+<span>  name <span class="op">=</span> <span class="st">"authors"</span>,</span>
 <span>  sheets <span class="op">=</span> <span class="fu"><a href="../reference/plm_template.html">plm_template</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>The above will create a sheet named <code>encyclopédie</code> with
-the columns defined by <code><a href="../reference/plm_template.html">plm_template()</a></code>.</p>
+<p>The above will create a sheet named <code>authors</code> with the
+columns defined by <code><a href="../reference/plm_template.html">plm_template()</a></code>.</p>
 <p>Enter your information and share the sheet with your collaborators so
 they can add theirs too.</p>
 <p>Note that if it’s the first time you use googlesheets4, you’ll need
@@ -113,7 +113,7 @@ more about googlesheets4 authentication <a href="https://googlesheets4.tidyverse
 <p>Once the sheet is online, use <code>read_sheet()</code> to read it in
 R.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">read_sheet</span><span class="op">(</span><span class="fu">gs4_find</span><span class="op">(</span><span class="st">"encyclopédie"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">read_sheet</span><span class="op">(</span><span class="fu">gs4_find</span><span class="op">(</span><span class="st">"authors"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="set-up">Set up<a class="anchor" aria-label="anchor" href="#set-up"></a>
@@ -136,7 +136,7 @@ Markdown or Quarto document as shown in the example below:</p>
 <span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>library(googlesheets4)</span>
 <span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>library(plume)</span>
 <span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>tbl_authors &lt;- gs4_find("sheet_name") |&gt; read_sheet()</span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>tbl_authors &lt;- read_sheet(gs4_find("sheet_name"))</span>
 <span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a></span>
 <span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>aut &lt;- Plume$new(tbl_authors)</span>
 <span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a>aut$set_corresponding_authors(1)</span>
@@ -175,11 +175,11 @@ script.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://arnaudgallou.github.io/plume/">plume</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tbl_authors</span> <span class="op">&lt;-</span> <span class="fu">gs4_find</span><span class="op">(</span><span class="st">"sheet_name"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">read_sheet</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">tbl_authors</span> <span class="op">&lt;-</span> <span class="fu">read_sheet</span><span class="op">(</span><span class="fu">gs4_find</span><span class="op">(</span><span class="st">"sheet_name"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">tbl_authors</span>, file <span class="op">=</span> <span class="st">"file.qmd"</span><span class="op">)</span><span class="op">$</span></span>
-<span>  <span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">$</span></span>
-<span>  <span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">tbl_authors</span>, file <span class="op">=</span> <span class="st">"file.qmd"</span><span class="op">)</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Remember to run the script everytime the spreadsheet is updated to
 implement the changes in your document.</p>
 </div>

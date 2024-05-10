@@ -3279,26 +3279,35 @@ using the following keys:</p>
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fu"><a href="../reference/everyone.html">everyone</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"ac"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Denis Diderot1\*, Jean-Jacques Rousseau2\*, François-Marie Arouet2\*,</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"ac"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Denis Diderot1\*</span></span>
+<span><span class="co">#&gt; Jean-Jacques Rousseau2\*</span></span>
+<span><span class="co">#&gt; François-Marie Arouet2\*</span></span>
 <span><span class="co">#&gt; Jean Le Rond d'Alembert1,3\*</span></span>
 <span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"ca"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Denis Diderot\*1, Jean-Jacques Rousseau\*2, François-Marie Arouet\*2,</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"ca"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Denis Diderot\*1</span></span>
+<span><span class="co">#&gt; Jean-Jacques Rousseau\*2</span></span>
+<span><span class="co">#&gt; François-Marie Arouet\*2</span></span>
 <span><span class="co">#&gt; Jean Le Rond d'Alembert\*1,3</span></span></code></pre></div>
 <p>In addition, you can use <code>^</code> to superscript and
 <code>,</code> to separate symbols:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span><span class="st">"^a,^cn"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Denis Diderot^1,^\*†, Jean-Jacques Rousseau^2^, François-Marie Arouet^2^‡,</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span><span class="st">"^a,^cn"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Denis Diderot^1,^\*†</span></span>
+<span><span class="co">#&gt; Jean-Jacques Rousseau^2^</span></span>
+<span><span class="co">#&gt; François-Marie Arouet^2^‡</span></span>
 <span><span class="co">#&gt; Jean Le Rond d'Alembert^1,3,^\*§</span></span></code></pre></div>
 <p>Use <code>suffix = NULL</code> or <code>suffix = ""</code> to ignore
 suffixes:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>suffix <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/enumerate.html">enumerate</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Denis Diderot, Jean-Jacques Rousseau, François-Marie Arouet and Jean Le Rond d'Alembert</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>suffix <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Denis Diderot</span></span>
+<span><span class="co">#&gt; Jean-Jacques Rousseau</span></span>
+<span><span class="co">#&gt; François-Marie Arouet</span></span>
+<span><span class="co">#&gt; Jean Le Rond d'Alembert</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="affiliations-notes">Affiliations &amp; notes<a class="anchor" aria-label="anchor" href="#affiliations-notes"></a>
@@ -3322,7 +3331,7 @@ authors’ affiliations and notes.</p>
 <p><code>get_orcids()</code> returns authors with their respective
 ORCID.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_orcids</span><span class="op">(</span>compact <span class="op">=</span> <span class="cn">FALSE</span>, icon <span class="op">=</span> <span class="cn">FALSE</span>, sep <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_orcids</span><span class="op">(</span>icon <span class="op">=</span> <span class="cn">FALSE</span>, sep <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Denis Diderot &lt;https://orcid.org/0000-0000-0000-0001&gt;</span></span>
 <span><span class="co">#&gt; Jean-Jacques Rousseau &lt;https://orcid.org/0000-0000-0000-0002&gt;</span></span>
 <span><span class="co">#&gt; Jean Le Rond d'Alembert &lt;https://orcid.org/0000-0000-0000-0003&gt;</span></span></code></pre></div>
@@ -3400,6 +3409,13 @@ ordering:</p>
 <code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span>alphabetical_order <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Supervision: J.L.R.d'A. and D.D.</span></span>
 <span><span class="co">#&gt; Writing - original draft: J.L.R.d'A., D.D., F.-M.A. and J.-J.R.</span></span></code></pre></div>
+<p>The <code>.roles</code> parameter only applies to unnamed
+expressions. This allows you to set the same main contributors across
+all but a few specific roles at once.</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">set_main_contributors</span><span class="op">(</span><span class="fl">4</span>, <span class="fl">3</span>, supervision <span class="op">=</span> <span class="fl">1</span>, .roles <span class="op">=</span> <span class="va">aut</span><span class="op">$</span><span class="fu">get_roles</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Here, authors 4 and 3 are the main contributors in all roles but
+<code>supervision</code>, where author 1 is the main contributor.</p>
 </div>
 </div>
 <div class="section level2">
@@ -3413,18 +3429,23 @@ ordering:</p>
 <p>You can change symbols when creating a <code>plume</code> object
 using the parameter <code>symbols</code>.</p>
 <p>Use <code>NULL</code> to display numbers:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span>, symbols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="va">letters</span>, note <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  <span class="va">encyclopedists</span>,</span>
+<span>  symbols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="va">letters</span>, note <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span><span class="st">"^a,n^"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/enumerate.html">enumerate</a></span><span class="op">(</span>last <span class="op">=</span> <span class="st">",\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Denis Diderot^a,1^, Jean-Jacques Rousseau^b^, François-Marie Arouet^b,2^,</span></span>
+<span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span><span class="st">"^a,n^"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Denis Diderot^a,1^</span></span>
+<span><span class="co">#&gt; Jean-Jacques Rousseau^b^</span></span>
+<span><span class="co">#&gt; François-Marie Arouet^b,2^</span></span>
 <span><span class="co">#&gt; Jean Le Rond d'Alembert^a,c,3^</span></span></code></pre></div>
 <p>Use <code>NULL</code> as much as possible for symbols using numerous
 unique items (typically affiliations). If you have to use letters for a
 given category that has more unique items than letters, you can control
 the sequencing behaviour using the <code><a href="../reference/sequential.html">sequential()</a></code> modifier,
 as shown below:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
 <span>  symbols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="fu"><a href="../reference/sequential.html">sequential</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span><span class="op">)</span></span>
@@ -3439,13 +3460,13 @@ logical sequence of characters
 </h2>
 <p>To output author data as markdown content, use the chunk option
 <code>results: asis</code> in combination with <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code>:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>```{r}</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>#| results: asis</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>aut$get_contributions() |&gt; cat(sep = "; ")</span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>```</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>```{r}</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>#| results: asis</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>aut$get_contributions() |&gt; cat(sep = "; ")</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>```</span></code></pre></div>
 <p>Inline chunks output values “as is” by default and can be used as
 follows:</p>
-<p><code>`r aut$get_contact_details()`</code></p>
+<p><code>`r aut$get_author_list()`</code></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
