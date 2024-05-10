@@ -166,16 +166,16 @@ Plume$new(data, roles = c(
 ## Assigning status to authors
 
 ```{r, echo = FALSE}
- status_methods <- tibble::tibble(
-   name = c(
-     "set_corresponding_authors()",
-     "set_main_contributors()",
-     "set_cofirst_authors()",
-     "set_deceased()"
-   ),
-   Plume = as.logical(c(1, 1, 0, 0)),
-   PlumeQuarto = as.logical(c(1, 0, 1, 1)),
- )
+status_methods <- tibble::tibble(
+  name = c(
+    "set_corresponding_authors()",
+    "set_main_contributors()",
+    "set_cofirst_authors()",
+    "set_deceased()"
+  ),
+  Plume = as.logical(c(1, 1, 0, 0)),
+  PlumeQuarto = as.logical(c(1, 0, 1, 1)),
+)
 ```
 
 plume provides `r nrow(status_methods)` methods to set particular status to authors:
@@ -275,9 +275,9 @@ The order of the keys determines the order of symbol categories.
 aut <- Plume$new(encyclopedists)
 aut$set_corresponding_authors(everyone())
 
-aut$get_author_list(suffix = "ac") |> enumerate(last = ",\n")
+aut$get_author_list(suffix = "ac")
 
-aut$get_author_list(suffix = "ca") |> enumerate(last = ",\n")
+aut$get_author_list(suffix = "ca")
 ```
 
 In addition, you can use `^` to superscript and `,` to separate symbols:
@@ -285,13 +285,13 @@ In addition, you can use `^` to superscript and `,` to separate symbols:
 ```{r}
 aut$set_corresponding_authors(1, 4)
 
-aut$get_author_list("^a,^cn") |> enumerate(last = ",\n")
+aut$get_author_list("^a,^cn")
 ```
 
 Use `suffix = NULL` or `suffix = ""` to ignore suffixes:
 
 ```{r}
-aut$get_author_list(suffix = NULL) |> enumerate()
+aut$get_author_list(suffix = NULL)
 ```
 
 ### Affiliations & notes
@@ -309,7 +309,7 @@ aut$get_notes(sep = ": ", superscript = FALSE)
 `get_orcids()` returns authors with their respective ORCID.
 
 ```{r}
-aut$get_orcids(compact = FALSE, icon = FALSE, sep = " ")
+aut$get_orcids(icon = FALSE, sep = " ")
 ```
 
 ### Contact details
@@ -370,6 +370,14 @@ Note that main contributors have the priority over the alphabetical ordering:
 aut$get_contributions(alphabetical_order = TRUE)
 ```
 
+The `.roles` parameter only applies to unnamed expressions. This allows you to set the same main contributors across all but a few specific roles at once.
+
+```{r, eval = FALSE}
+aut$set_main_contributors(4, 3, supervision = 1, .roles = aut$get_roles())
+```
+
+Here, authors 4 and 3 are the main contributors in all roles but `supervision`, where author 1 is the main contributor.
+
 ## Symbols
 
 Default symbols are:
@@ -383,9 +391,12 @@ You can change symbols when creating a `plume` object using the parameter `symbo
 Use `NULL` to display numbers:
 
 ```{r}
-aut <- Plume$new(encyclopedists, symbols = list(affiliation = letters, note = NULL))
+aut <- Plume$new(
+  encyclopedists,
+  symbols = list(affiliation = letters, note = NULL)
+)
 
-aut$get_author_list("^a,n^") |> enumerate(last = ",\n")
+aut$get_author_list("^a,n^")
 ```
 
 Use `NULL` as much as possible for symbols using numerous unique items (typically affiliations). If you have to use letters for a given category that has more unique items than letters, you can control the sequencing behaviour using the `sequential()` modifier, as shown below:
@@ -412,4 +423,4 @@ aut$get_contributions() |> cat(sep = "; ")
 
 Inline chunks output values "as is" by default and can be used as follows:
 
-`` `r knitr::inline_expr("aut$get_contact_details()")` ``
+`` `r knitr::inline_expr("aut$get_author_list()")` ``

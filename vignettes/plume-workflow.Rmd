@@ -24,12 +24,12 @@ First, you'll need to create a spreadsheet. `plm_template()` provides a default 
 library(googlesheets4)
 
 gs4_create(
-  name = "encyclopédie",
+  name = "authors",
   sheets = plm_template()
 )
 ```
 
-The above will create a sheet named `encyclopédie` with the columns defined by `plm_template()`.
+The above will create a sheet named `authors` with the columns defined by `plm_template()`.
 
 Enter your information and share the sheet with your collaborators so they can add theirs too.
 
@@ -38,7 +38,7 @@ Note that if it's the first time you use googlesheets4, you'll need to grant the
 Once the sheet is online, use `read_sheet()` to read it in R.
 
 ```{r eval = FALSE}
-read_sheet(gs4_find("encyclopédie"))
+read_sheet(gs4_find("authors"))
 ```
 
 ## Set up
@@ -61,7 +61,7 @@ execute:
 library(googlesheets4)
 library(plume)
 
-tbl_authors <- gs4_find("sheet_name") |> read_sheet()
+tbl_authors <- read_sheet(gs4_find("sheet_name"))
 
 aut <- Plume$new(tbl_authors)
 aut$set_corresponding_authors(1)
@@ -98,11 +98,11 @@ If you use `PlumeQuarto` to inject author information in a Quarto document, you'
 library(googlesheets4)
 library(plume)
 
-tbl_authors <- gs4_find("sheet_name") |> read_sheet()
+tbl_authors <- read_sheet(gs4_find("sheet_name"))
 
-PlumeQuarto$new(tbl_authors, file = "file.qmd")$
-  set_corresponding_authors(1)$
-  to_yaml()
+aut <- PlumeQuarto$new(tbl_authors, file = "file.qmd")
+aut$set_corresponding_authors(1)
+aut$to_yaml()
 ```
 
 Remember to run the script everytime the spreadsheet is updated to implement the changes in your document.
