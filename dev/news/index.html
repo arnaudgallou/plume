@@ -57,7 +57,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
-<ul><li>Fixed selection helpers not working when imported explicitly with <code>::</code> (<a href="https://github.com/arnaudgallou/plume/issues/76" class="external-link">#76</a>).</li>
+<ul><li><p>Tweak some examples in the vignettes and expand the <code>Contributions</code> section in <code><a href="../articles/plume.html">vignette("plume")</a></code>.</p></li>
+<li><p>Fixed selection helpers not working when imported explicitly with <code>::</code> (<a href="https://github.com/arnaudgallou/plume/issues/76" class="external-link">#76</a>).</p></li>
+<li><p><code>citation("plume")</code> now generates the complete and up-to-date citation of plume (<a href="https://github.com/arnaudgallou/plume/issues/75" class="external-link">#75</a>).</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="plume-023">plume 0.2.3<a class="anchor" aria-label="anchor" href="#plume-023"></a></h2><p class="text-muted">CRAN release: 2024-01-29</p>
@@ -144,36 +146,7 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="plume-010">plume 0.1.0<a class="anchor" aria-label="anchor" href="#plume-010"></a></h2><p class="text-muted">CRAN release: 2023-10-06</p>
-<div class="section level3">
-<h3 id="documentation-improvements-0-1-0">Documentation improvements<a class="anchor" aria-label="anchor" href="#documentation-improvements-0-1-0"></a></h3>
-<ul><li><p>New <code>vignette("using-credit-roles")</code> which describes how to work with the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a> in plume.</p></li>
-<li><p>New <code><a href="../articles/plume-workflow.html">vignette("plume-workflow")</a></code> which describes how to use plume and <a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a> to manage author metadata.</p></li>
-</ul></div>
-<div class="section level3">
-<h3 id="minor-improvements-and-bug-fixes-0-1-0">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-0-1-0"></a></h3>
-<ul><li><p>New helpers <code><a href="../reference/everyone.html">everyone()</a></code> and <code><a href="../reference/everyone.html">everyone_but()</a></code> to select all authors or exclude some in <code>$set_*()</code> methods.</p></li>
-<li><p>Leading and trailing white spaces are now trimmed when creating <code>plume</code> objects.</p></li>
-<li><p><code>$get_contributions()</code> now handles namesakes (<a href="https://github.com/arnaudgallou/plume/issues/15" class="external-link">#15</a>).</p></li>
-<li><p><code>$get_contributions(alphabetical_order = TRUE)</code> now reorders contributors only (<a href="https://github.com/arnaudgallou/plume/issues/18" class="external-link">#18</a>).</p></li>
-<li>
-<p>R6 classes have been overhauled for a better separation of concerns (<a href="https://github.com/arnaudgallou/plume/issues/5" class="external-link">#5</a>, <a href="https://github.com/arnaudgallou/plume/issues/12" class="external-link">#12</a>).</p>
-<ul><li><p><code>$set_*()</code> methods have been moved to their own classes.</p></li>
-<li><p><code>PlumeQuarto</code> now only does what it is designed for: injecting author metadata into the YAML header of Quarto files. This means that <code>PlumeQuarto</code> can no longer generate author information as character strings.</p></li>
-<li><p><code>Plume</code> now drops variables that are <code>PlumeQuarto</code>-specific. <code>Plume</code>’s constructor also lost the <code>by</code> parameter as it was only used in <code>$set_corresponding_authors()</code>.</p></li>
-</ul></li>
-<li><p><code>$new()</code> and <code><a href="../reference/plm_template.html">plm_template()</a></code> gain a new parameter <code>credit_roles</code> to facilitate the use of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>.</p></li>
-<li><p><code>$to_yaml()</code> can now push data to empty YAML headers (<a href="https://github.com/arnaudgallou/plume/issues/9" class="external-link">#9</a>).</p></li>
-<li><p><code>PlumeQuarto</code> now handles roles via the <code>roles</code> YAML key (<a href="https://github.com/arnaudgallou/plume/issues/5" class="external-link">#5</a>).</p></li>
-<li><p>New method <code>$get_orcids()</code> that returns authors’ ORCID.</p></li>
-<li><p>Phone numbers are now set using the variable and attribute <code>phone</code> (<a href="https://github.com/arnaudgallou/plume/issues/4" class="external-link">#4</a>).</p></li>
-<li><p>plume methods now print outputs in a consistent way.</p></li>
-<li><p><code>$get_author_list()</code> now accepts <code>format = ""</code> to return author names only. This is equivalent to <code>format = NULL</code> (<a href="https://github.com/arnaudgallou/plume/issues/3" class="external-link">#3</a>).</p></li>
-<li><p>plume classes now error when a given or family name is <code>NA</code> or a blank string.</p></li>
-<li><p>Blank and empty strings are now converted to <code>NA</code> when creating <code>plume</code> objects (<a href="https://github.com/arnaudgallou/plume/issues/2" class="external-link">#2</a>).</p></li>
-<li><p><code>$get_contact_details()</code> now drops corresponding authors with no contact details.</p></li>
-<li><p><code>$get_contact_details()</code> has been reworked to bind any combination of contact details properly.</p></li>
-<li><p><code>$to_yaml()</code> now outputs verbatim <code>true</code>/<code>false</code> (<a href="https://github.com/arnaudgallou/plume/issues/1" class="external-link">#1</a>).</p></li>
-</ul></div>
+<p>First release.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
