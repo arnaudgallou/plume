@@ -1,13 +1,12 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   comprehensive-affiliation-schema: comprehensive-affiliation-schema.html
   plume-workflow: plume-workflow.html
   plume: plume.html
   working-in-other-languages: working-in-other-languages.html
-last_built: 2024-05-10T19:57Z
+last_built: 2024-08-15T15:14Z
 urls:
   reference: https://arnaudgallou.github.io/plume/reference
   article: https://arnaudgallou.github.io/plume/articles
-
