@@ -60,6 +60,11 @@ is_blank <- function(x) {
 
 is_not_na <- Negate(is.na)
 
+is_selector <- function(expr) {
+  nms <- c("everyone", "everyone_but")
+  is_call(expr, nms, ns = c("plume", ""))
+}
+
 are_credit_roles <- function(x) {
   all(x %in% credit_roles()) || all(x %in% credit_roles(FALSE))
 }

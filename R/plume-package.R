@@ -40,6 +40,7 @@
 #' @importFrom rlang enexprs
 #' @importFrom rlang have_name
 #' @importFrom rlang is_bool
+#' @importFrom rlang is_call
 #' @importFrom rlang is_named
 #' @importFrom rlang is_string
 #' @importFrom rlang is_true
