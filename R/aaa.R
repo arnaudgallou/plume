@@ -81,7 +81,6 @@
   }
 )
 
-# nocov start
 link <- function(id) {
   els <- .links[[id]]
   md_link(els[[2]], els[[1]])
@@ -90,4 +89,3 @@ link <- function(id) {
 print_deprecation <- function(id, ...) {
   do.call(.deprecations[[id]], list(...))
 }
-# nocov end
