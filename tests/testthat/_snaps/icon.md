@@ -7,7 +7,7 @@
       title: test
       ---
       
-      ```r
+      ``` r
       str(attributes(orcid()))
       ```
       
@@ -18,7 +18,7 @@
        $ style   : chr ""
        $ spacing : chr "\\hspace{3pt}"
       
-      ```r
+      ``` r
       str(attributes(orcid(size = 24)))
       ```
       
@@ -29,7 +29,7 @@
        $ style   : chr ""
        $ spacing : chr "\\hspace{4pt}"
       
-      ```r
+      ``` r
       str(attributes(orcid(bw = TRUE)))
       ```
       
@@ -49,7 +49,7 @@
       title: test
       ---
       
-      ```r
+      ``` r
       str(attributes(orcid()))
       ```
       
@@ -60,7 +60,7 @@
        $ style   : chr " style='margin: 0 4px; vertical-align: baseline'"
        $ spacing : chr ""
       
-      ```r
+      ``` r
       str(attributes(orcid(size = 24)))
       ```
       
@@ -71,7 +71,7 @@
        $ style   : chr " style='margin: 0 6px; vertical-align: baseline'"
        $ spacing : chr ""
       
-      ```r
+      ``` r
       str(attributes(orcid(bw = TRUE)))
       ```
       
