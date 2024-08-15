@@ -102,32 +102,12 @@ bind <- function(x, sep = ",", arrange = TRUE) {
   collapse(out, sep)
 }
 
-expr_extract_call <- function(expr) {
-  deparse(expr[[1]])
-}
-
-expr_is <- function(expr, what) {
-  call <- expr_extract_call(expr)
-  if (has_metachr(what)) {
-    return(str_detect(call, what))
-  }
-  identical(call, what)
-}
-
-expr_is_atomic <- function(expr) {
-  expr_is(expr, "c")
-}
-
-expr_is_selector <- function(expr) {
-  expr_is(expr, "^(?:plume:::?)?everyone")
-}
-
 expr_type <- function(expr) {
   if (is.vector(expr) || is.symbol(expr)) {
     "symbol"
-  } else if (expr_is_atomic(expr)) {
+  } else if (is_call(expr, "c")) {
     "atomic"
-  } else if (expr_is_selector(expr)) {
+  } else if (is_selector(expr)) {
     "selector"
   } else {
     typeof(expr)
