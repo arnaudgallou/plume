@@ -1,14 +1,29 @@
-schemas_are_up_to_date <- function(current, new) {
-  current <- current[c("author", "affiliations")]
-  identical(current, new)
+eol <- function() {
+  if (.Platform$OS.type == "unix") "\n" else "\r\n" # nocov
 }
 
-json_update <- function(x, json) {
-  json <- as_json(json)
-  if (schemas_are_up_to_date(x, json)) {
+as_verbatim_lgl <- function(x) {
+  x <- if_else(x, "true", "false")
+  structure(x, class = "verbatim")
+}
+
+.yaml_args <- list(
+  line.sep = eol(),
+  indent.mapping.sequence = TRUE,
+  handlers = list(logical = as_verbatim_lgl)
+)
+
+schemas_are_up_to_date <- function(old, new) {
+  old <- old[c("author", "affiliations")]
+  identical(old, new)
+}
+
+json_update <- function(old, new) {
+  new <- as_json(new)
+  if (schemas_are_up_to_date(old, new)) {
     return()
   }
-  out <- if (is.null(x)) json else list_assign(x, !!!json)
+  out <- if (is.null(old)) new else list_assign(old, !!!new)
   list_drop_empty(out)
 }
 
@@ -21,25 +36,10 @@ separate_yaml_header <- function(x) {
   str_split_1(x, "(?m:^|\\R\\K)-{3}(?:\\R|$)")
 }
 
-as_verbatim_lgl <- function(x) {
-  x <- if_else(x, "true", "false")
-  structure(x, class = "verbatim")
-}
-
-get_eol <- function() {
-  if (.Platform$OS.type == "unix") "\n" else "\r\n" # nocov
-}
-
 yaml_inject <- function(x, lines) {
-  eol <- get_eol()
-  yaml <- as.yaml(
-    x,
-    line.sep = eol,
-    indent.mapping.sequence = TRUE,
-    handlers = list(logical = as_verbatim_lgl)
-  )
+  yaml <- do.call(as.yaml, c(list(x), .yaml_args))
   out <- replace(lines, 2, yaml)
-  collapse(out, paste0("---", eol))
+  collapse(out, paste0("---", eol()))
 }
 
 has_yaml <- function(x) {
@@ -85,13 +85,7 @@ yaml_push.default <- function(x, file) {
   if (is.null(json)) {
     return(invisible())
   }
-  yaml::write_yaml(
-    json,
-    file,
-    line.sep = get_eol(),
-    indent.mapping.sequence = TRUE,
-    handlers = list(logical = as_verbatim_lgl)
-  )
+  do.call(yaml::write_yaml, c(list(json), file, .yaml_args))
 }
 
 yaml_push.qmd <- function(x, file) {

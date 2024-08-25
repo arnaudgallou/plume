@@ -76,7 +76,7 @@ PlumeQuarto <- R6Class(
       initials_given_name = FALSE,
       by = NULL
     ) {
-      check_file(file, extension = c("qmd", "yml", "yaml"))
+      check_file(file, extensions = c("qmd", "yml", "yaml"))
       super$initialize(data, names, roles, credit_roles, initials_given_name, by = by)
       private$file <- file
       private$id <- private$pick("id")
