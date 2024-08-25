@@ -3204,18 +3204,19 @@ authors:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… JLRd'A   TRUE</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="pushing-data-into-yaml-headers">Pushing data into YAML headers<a class="anchor" aria-label="anchor" href="#pushing-data-into-yaml-headers"></a>
+<h2 id="pushing-data-into-a-yaml-or-quarto-file">Pushing data into a YAML or Quarto file<a class="anchor" aria-label="anchor" href="#pushing-data-into-a-yaml-or-quarto-file"></a>
 </h2>
 <p><code>PlumeQuarto</code> allows you to inject author metadata
-directly into the YAML header of <code>.qmd</code> files.</p>
+directly into YAML files or the YAML header of <code>.qmd</code>
+files.</p>
 <p>Consider the following Quarto document:</p>
 <pre><code>---
 title: Encyclopédie
 ---
 
 Qui scribit bis legit</code></pre>
-<p>You can push information from the input data into the YAML header
-using the <code>to_yaml()</code> method:</p>
+<p>You can push information from the input data into the YAML or Quarto
+file using the <code>to_yaml()</code> method:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">encyclopedists</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span>,</span>
@@ -3261,7 +3262,7 @@ affiliations:
 Qui scribit bis legit</code></pre>
 <p>Authors are listed in the order they’re defined in the input
 data.</p>
-<p>If the YAML header already has an <code>author</code> and
+<p>If the YAML or Quarto file already has an <code>author</code> and
 <code>affiliations</code> keys, <code>to_yaml()</code> replaces old
 values with new ones.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
