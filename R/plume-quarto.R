@@ -76,7 +76,7 @@ PlumeQuarto <- R6Class(
       initials_given_name = FALSE,
       by = NULL
     ) {
-      check_file(file, extension = "qmd")
+      check_file(file, extension = c("qmd", "yml", "yaml"))
       super$initialize(data, names, roles, credit_roles, initials_given_name, by = by)
       private$file <- file
       private$id <- private$pick("id")
@@ -105,10 +105,11 @@ PlumeQuarto <- R6Class(
     },
 
     get_template = function() {
-      list(
+      out <- list(
         author = private$author_tbl(),
         affiliations = private$affiliation_tbl()
       )
+      add_class(out, cls = file_ext(private$file))
     },
 
     author_tbl = function() {

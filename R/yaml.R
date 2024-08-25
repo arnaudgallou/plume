@@ -4,14 +4,12 @@ schemas_are_up_to_date <- function(current, new) {
 }
 
 json_update <- function(x, json) {
-  x <- yaml.load(x)
-  if (is.null(x)) {
-    return(json)
-  }
+  json <- as_json(json)
   if (schemas_are_up_to_date(x, json)) {
     return()
   }
-  list_assign(x, !!!json)
+  out <- if (is.null(x)) json else list_assign(x, !!!json)
+  list_drop_empty(out)
 }
 
 as_json <- function(x) {
@@ -34,9 +32,6 @@ get_eol <- function() {
 
 yaml_inject <- function(x, lines) {
   eol <- get_eol()
-  if (is_empty(x$affiliations)) {
-    x$affiliations <- NULL
-  }
   yaml <- as.yaml(
     x,
     line.sep = eol,
@@ -80,15 +75,34 @@ add_yaml_header <- function(x) {
   c("", "", x)
 }
 
-yaml_push <- function(what, file) {
+yaml_push <- function(x, file) {
+  UseMethod("yaml_push")
+}
+
+yaml_push.default <- function(x, file) {
+  old <- yaml::read_yaml(file)
+  json <- json_update(old, x)
+  if (is.null(json)) {
+    return(invisible())
+  }
+  yaml::write_yaml(
+    json,
+    file,
+    line.sep = get_eol(),
+    indent.mapping.sequence = TRUE,
+    handlers = list(logical = as_verbatim_lgl)
+  )
+}
+
+yaml_push.qmd <- function(x, file) {
   text <- read_file(file)
   check_has_yaml(text)
   items <- separate_yaml_header(text)
   if (yaml_has_strippable(items[[2]])) {
     items <- add_yaml_header(items)
   }
-  json <- as_json(what)
-  json <- json_update(items[[2]], json)
+  old <- yaml.load(items[[2]])
+  json <- json_update(old, x)
   if (is.null(json)) {
     return(invisible())
   }

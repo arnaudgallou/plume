@@ -300,7 +300,7 @@ check_file <- function(x, extension, ..., param = caller_arg(x)) {
     check_path(x, param = param)
     return(invisible())
   }
-  extension <- wrap(predot(extension), "`")
+  extension <- enumerate(wrap(predot(extension), "`"), last = " or ")
   abort_check(paste("a", extension, "file"), ..., param = param)
 }
 
