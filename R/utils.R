@@ -192,3 +192,8 @@ unstructure <- function(x) {
   attributes(x) <- NULL
   x
 }
+
+add_class <- function(x, cls) {
+  class(x) <- c(cls, class(x))
+  x
+}

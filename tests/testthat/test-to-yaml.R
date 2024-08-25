@@ -113,6 +113,21 @@ test_that("to_yaml() writes in a separate header to preserve strippable data (#5
   expect_snapshot(read_test_file(tmp_file))
 })
 
+test_that("to_yaml() can push data into YAML files", {
+  tmp_file <- withr::local_tempfile(
+    lines = "title: foo",
+    fileext = ".yaml"
+  )
+
+  aut <- PlumeQuarto$new(
+    data.frame(given_name = "Zip", family_name = "Zap"),
+    tmp_file
+  )
+  aut$to_yaml()
+
+  expect_snapshot(read_test_file(tmp_file))
+})
+
 # Errors ----
 
 test_that("to_yaml() errors if no YAML headers is found", {

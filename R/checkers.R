@@ -293,15 +293,15 @@ file_ext <- function(x) {
   str_extract(x, "(?<=\\.)[^.]+$")
 }
 
-check_file <- function(x, extension, ..., param = caller_arg(x)) {
+check_file <- function(x, extensions, ..., param = caller_arg(x)) {
   check_string(x, allow_empty = FALSE, param = param)
   ext <- file_ext(x)
-  if (is_not_na(ext) && vec_in(ext, extension)) {
+  if (is_not_na(ext) && vec_in(ext, extensions)) {
     check_path(x, param = param)
     return(invisible())
   }
-  extension <- wrap(predot(extension), "`")
-  abort_check(paste("a", extension, "file"), ..., param = param)
+  extensions <- enumerate(wrap(predot(extensions), "`"), last = " or ")
+  abort_check(paste("a", extensions, "file"), ..., param = param)
 }
 
 is_glueish <- function(x) {

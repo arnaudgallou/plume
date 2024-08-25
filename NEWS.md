@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `PlumeQuarto` now supports `.yml` and `.yaml` files (#82).
+
 # plume 0.2.4
 
 * Tweak some examples in the vignettes and expand the `Contributions` section in `vignette("plume")`.

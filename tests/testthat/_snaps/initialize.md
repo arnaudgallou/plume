@@ -146,7 +146,7 @@
     Output
       <error/rlang_error>
       Error:
-      ! `file` must be a `.qmd` file.
+      ! `file` must be a `.qmd`, `.yml` or `.yaml` file.
     Code
       (expect_error(PlumeQuarto$new(basic_df, file = "~/test.qmd")))
     Output

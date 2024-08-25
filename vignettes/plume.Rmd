@@ -202,9 +202,9 @@ aut$set_corresponding_authors(everyone())
 aut
 ```
 
-## Pushing data into YAML headers
+## Pushing data into a YAML or Quarto file
 
-`PlumeQuarto` allows you to inject author metadata directly into the YAML header of `.qmd` files.
+`PlumeQuarto` allows you to inject author metadata directly into YAML files or the YAML header of `.qmd` files.
 
 Consider the following Quarto document:
 
@@ -219,7 +219,7 @@ tmp_file <- withr::local_tempfile(
 cat(read_file(tmp_file))
 ```
 
-You can push information from the input data into the YAML header using the `to_yaml()` method:
+You can push information from the input data into the YAML or Quarto file using the `to_yaml()` method:
 
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(
@@ -237,7 +237,7 @@ cat(read_file(tmp_file))
 
 Authors are listed in the order they're defined in the input data.
 
-If the YAML header already has an `author` and `affiliations` keys, `to_yaml()` replaces old values with new ones.
+If the YAML or Quarto file already has an `author` and `affiliations` keys, `to_yaml()` replaces old values with new ones.
 
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(

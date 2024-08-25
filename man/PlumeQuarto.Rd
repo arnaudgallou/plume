@@ -4,8 +4,8 @@
 \alias{PlumeQuarto}
 \title{PlumeQuarto class}
 \description{
-Class that pushes author metadata in the YAML header
-of Quarto files.
+Class that pushes author metadata in YAML files or the YAML
+header of Quarto files.
 }
 \examples{
 # Create a simple temporary file with a YAML header
@@ -87,7 +87,7 @@ Create a \code{PlumeQuarto} object.
 \describe{
 \item{\code{data}}{A data frame containing author-related data.}
 
-\item{\code{file}}{A \code{.qmd} file to insert author data into.}
+\item{\code{file}}{A \code{.qmd}, \code{.yml} or \code{.yaml} file to insert author data into.}
 
 \item{\code{names}}{A vector of key-value pairs specifying custom names to use,
 where keys are default names and values their respective replacements.}
@@ -116,16 +116,17 @@ A \code{PlumeQuarto} object.
 \if{html}{\out{<a id="method-PlumeQuarto-to_yaml"></a>}}
 \if{latex}{\out{\hypertarget{method-PlumeQuarto-to_yaml}{}}}
 \subsection{Method \code{to_yaml()}}{
-Push or update author information in a YAML header. The
-generated YAML complies with Quarto's \href{https://quarto.org/docs/journals/authors.html}{author and affiliations schemas}.
+Push or update author information in a YAML file or YAML
+header. The generated YAML complies with Quarto's
+\href{https://quarto.org/docs/journals/authors.html}{author and affiliations schemas}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$to_yaml()}\if{html}{\out{</div>}}
 }
 
 \subsection{Details}{
-If missing, \code{to_yaml()} pushes author information into a YAML header. If
-already existing, the function replaces old \code{author} and \code{affiliations}
-values with the ones provided in the input data.
+If missing, \code{to_yaml()} inserts author information into the desired file.
+Otherwise, the function replaces old \code{author} and \code{affiliations} values
+with the ones provided in the input data.
 }
 
 \subsection{Returns}{
