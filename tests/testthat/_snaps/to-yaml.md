@@ -220,6 +220,17 @@
         Vivamus quis
       ---
 
+# to_yaml() can push data into YAML files
+
+    Code
+      read_test_file(tmp_file)
+    Output
+      title: foo
+      author:
+        - name:
+            given: Zip
+            family: Zap
+
 # to_yaml() errors if no YAML headers is found
 
     Code
