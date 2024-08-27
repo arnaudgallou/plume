@@ -128,6 +128,26 @@ test_that("to_yaml() can push data into YAML files", {
   expect_snapshot(read_test_file(tmp_file))
 })
 
+test_that("to_yaml() properly handles authors with no roles (#81)", {
+  tmp_file <- withr::local_tempfile(
+    lines = "title: foo",
+    fileext = ".yaml"
+  )
+
+  aut <- PlumeQuarto$new(
+    data.frame(
+      given_name = c("A", "B"),
+      family_name = c("A", "B"),
+      writing = c(1, NA),
+      analysis = c(1, NA)
+    ),
+    tmp_file
+  )
+  aut$to_yaml()
+
+  expect_snapshot(read_test_file(tmp_file))
+})
+
 # Errors ----
 
 test_that("to_yaml() errors if no YAML headers is found", {

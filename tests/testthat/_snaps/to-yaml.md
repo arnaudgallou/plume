@@ -231,6 +231,26 @@
             given: Zip
             family: Zap
 
+# to_yaml() properly handles authors with no roles (#81)
+
+    Code
+      read_test_file(tmp_file)
+    Output
+      title: foo
+      author:
+        - id: aut1
+          name:
+            given: A
+            family: A
+          roles:
+            - formal analysis
+            - writing - original draft
+        - id: aut2
+          name:
+            given: B
+            family: B
+          roles: {}
+
 # to_yaml() errors if no YAML headers is found
 
     Code

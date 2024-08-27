@@ -157,12 +157,12 @@ PlumeQuarto <- R6Class(
       if (!private$has_col(col)) {
         return()
       }
-      out <- unnest_drop(private$plume, cols = all_of(col))
-      out <- summarise(
-        out,
-        `_` = list(tolower(.data[[col]])),
-        .by = all_of(private$id)
-      )
+      out <- unnest(private$plume, cols = all_of(col))
+      out <- summarise(out, `_` = if_not_na(
+        .data[[col]],
+        as_role_list(.data[[col]]),
+        all = TRUE
+      ), .by = all_of(private$id))
       out[["_"]]
     },
 
@@ -242,6 +242,10 @@ PlumeQuarto <- R6Class(
     }
   )
 )
+
+as_role_list <- function(x) {
+  list(tolower(vec_drop_na(x)))
+}
 
 affiliation_keys <- c(
   "number", "name", "department", "address", "city", "region", "state",
