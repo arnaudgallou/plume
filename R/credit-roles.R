@@ -14,11 +14,12 @@ credit_roles <- function(oxford_spelling = TRUE) {
   if (oxford_spelling) {
     return(out)
   }
-  full_replace(out, "ization", "isation")
+  ise(out)
 }
 
-full_replace <- function(x, pattern, replacement) {
-  names(x) <- str_replace(names(x), pattern, replacement)
-  x[] <- str_replace(x, pattern, replacement)
+ise <- function(x) {
+  pattern <- "(?<=[iy])z(?=(?:e|ation)$)"
+  names(x) <- str_replace(names(x), pattern, "s")
+  x[] <- str_replace(x, pattern, "s")
   x
 }

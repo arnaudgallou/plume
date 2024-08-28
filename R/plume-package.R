@@ -70,7 +70,5 @@
 #' @importFrom vctrs vec_group_id
 #' @importFrom vctrs vec_rank
 #' @importFrom vctrs vec_restore
-#' @importFrom yaml as.yaml
-#' @importFrom yaml yaml.load
 ## usethis namespace: end
 NULL

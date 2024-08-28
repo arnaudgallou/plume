@@ -2,15 +2,10 @@ eol <- function() {
   if (.Platform$OS.type == "unix") "\n" else "\r\n" # nocov
 }
 
-as_verbatim_lgl <- function(x) {
-  x <- if_else(x, "true", "false")
-  structure(x, class = "verbatim")
-}
-
 .yaml_args <- list(
   line.sep = eol(),
   indent.mapping.sequence = TRUE,
-  handlers = list(logical = as_verbatim_lgl)
+  handlers = list(logical = yaml::verbatim_logical)
 )
 
 schemas_are_up_to_date <- function(old, new) {
@@ -37,8 +32,8 @@ separate_yaml_header <- function(x) {
 }
 
 yaml_inject <- function(x, lines) {
-  yaml <- do.call(as.yaml, c(list(x), .yaml_args))
-  out <- replace(lines, 2, yaml)
+  yaml <- do.call(yaml::as.yaml, c(list(x), .yaml_args))
+  out <- replace(lines, 2L, yaml)
   collapse(out, paste0("---", eol()))
 }
 
@@ -95,7 +90,7 @@ yaml_push.qmd <- function(x, file) {
   if (yaml_has_strippable(items[[2]])) {
     items <- add_yaml_header(items)
   }
-  old <- yaml.load(items[[2]])
+  old <- yaml::yaml.load(items[[2]])
   json <- json_update(old, x)
   if (is.null(json)) {
     return(invisible())

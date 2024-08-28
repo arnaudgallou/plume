@@ -135,7 +135,7 @@ Plume <- R6Class(
         lifecycle::deprecate_warn("0.2.0", "get_author_list(format)", "get_author_list(suffix)")
         suffix <- format
       }
-      authors <- private$get("literal_name")
+      authors <- private$pull("literal_name")
       if (is_empty(suffix)) {
         out <- authors
       } else {
