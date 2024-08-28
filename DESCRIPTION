@@ -31,7 +31,7 @@ Imports:
     tidyr (>= 1.1.0),
     tidyselect (>= 1.0.0),
     vctrs (>= 0.3.0),
-    yaml (>= 2.3.5)
+    yaml (>= 2.3.8)
 Suggests:
     covr,
     fontawesome,
