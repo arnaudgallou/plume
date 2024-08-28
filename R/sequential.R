@@ -44,12 +44,12 @@ seq_vector <- function(x, n) {
 }
 
 seq_vector.default <- function(x, n) {
-  out <- map(seq(n), \(i) strrep(x, i))
+  out <- map(seq_len(n), \(i) strrep(x, i))
   unlist(out)
 }
 
 seq_vector.sequential <- function(x, n) {
-  out <- map(seq(n - 1), \(i) c("", x))
+  out <- map(seq_len(n - 1L), \(i) c("", x))
   out <- c(out, list(x))
   out <- set_names(out, seq_along(out))
   out <- vctrs::vec_expand_grid(!!!out)

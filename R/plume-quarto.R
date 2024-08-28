@@ -98,11 +98,11 @@ PlumeQuarto <- R6Class(
   private = list(
     file = NULL,
     plume_names = .names_quarto,
-    meta_prefix = "meta-",
+    meta_key = "meta-",
     id = NULL,
 
     mold = function(...) {
-      super$mold(starts_with(private$meta_prefix), ...)
+      super$mold(starts_with(private$meta_key), ...)
     },
 
     get_template = function() {
@@ -116,19 +116,19 @@ PlumeQuarto <- R6Class(
     author_tbl = function() {
       tibble(
         id = private$author_ids(),
-        number = private$get("number"),
+        number = private$pull("number"),
         name = tibble(
-          given = private$get("given_name"),
-          family = private$get("family_name"),
-          `dropping-particle` = private$get("dropping_particle")
+          given = private$pull("given_name"),
+          family = private$pull("family_name"),
+          `dropping-particle` = private$pull("dropping_particle")
         ),
-        url = private$get("url"),
-        email = private$get("email"),
-        phone = private$get("phone"),
-        fax = private$get("fax"),
+        url = private$pull("url"),
+        email = private$pull("email"),
+        phone = private$pull("phone"),
+        fax = private$pull("fax"),
         orcid = private$author_orcids(),
         note = private$author_notes(),
-        acknowledgements = private$get("acknowledgements"),
+        acknowledgements = private$pull("acknowledgements"),
         attributes = private$author_attributes(),
         roles = private$author_roles(),
         metadata = private$author_metadata(),
@@ -137,7 +137,7 @@ PlumeQuarto <- R6Class(
     },
 
     author_ids = function() {
-      ids <- private$get("id")
+      ids <- private$pull("id")
       if (length(ids) == 1L) {
         return()
       }
@@ -145,7 +145,7 @@ PlumeQuarto <- R6Class(
     },
 
     author_orcids = function() {
-      out <- private$get("orcid")
+      out <- private$pull("orcid")
       if (!is.null(out)) {
         check_orcid(out)
       }
@@ -153,41 +153,35 @@ PlumeQuarto <- R6Class(
     },
 
     author_roles = function() {
-      col <- private$pick("role")
-      if (!private$has_col(col)) {
-        return()
-      }
-      out <- unnest(private$plume, cols = all_of(col))
-      out <- summarise(out, `_` = if_not_na(
-        .data[[col]],
-        as_role_list(.data[[col]]),
-        all = TRUE
-      ), .by = all_of(private$id))
-      out[["_"]]
+      private$pull_nestable("role", as_role_list)
     },
 
     author_notes = function() {
-      col <- private$pick("note")
+      private$pull_nestable("note", \(x) bind(x, sep = ", ", arrange = FALSE))
+    },
+
+    pull_nestable = function(var, callback) {
+      col <- private$pick(var)
       if (!private$has_col(col)) {
         return()
       }
       if (!is_nested(private$plume, col)) {
-        return(private$get("note"))
+        return(private$pull(var))
       }
       out <- unnest(private$plume, cols = all_of(col))
       out <- summarise(out, `_` = if_not_na(
         .data[[col]],
-        bind(.data[[col]], sep = ", ", arrange = FALSE),
+        callback(.data[[col]]),
         all = TRUE
-      ), .by = all_of(private$id))
+      ), .by = private$id)
       out[["_"]]
     },
 
     author_attributes = function() {
       out <- tibble(
-        corresponding = private$get("corresponding"),
-        deceased = private$get("deceased"),
-        `equal-contributor` = private$get("equal_contributor")
+        corresponding = private$pull("corresponding"),
+        deceased = private$pull("deceased"),
+        `equal-contributor` = private$pull("equal_contributor")
       )
       if (is_empty(out)) {
         return()
@@ -209,19 +203,19 @@ PlumeQuarto <- R6Class(
       ))
       out <- summarise(out, `_` = list(
         tibble(ref = sort(!!sym(.col)))
-      ), .by = all_of(private$id))
+      ), .by = private$id)
       out[["_"]]
     },
 
     author_metadata = function() {
-      if (!private$has_col(begins_with(private$meta_prefix))) {
+      if (!private$has_col(begins_with(private$meta_key))) {
         return()
       }
-      select(private$plume, starts_with(private$meta_prefix))
+      select(private$plume, starts_with(private$meta_key))
     },
 
     affiliation_tbl = function() {
-      affiliations <- private$get("affiliation")
+      affiliations <- private$pull("affiliation")
       if (is.null(affiliations)) {
         return()
       }

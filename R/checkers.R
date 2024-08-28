@@ -115,7 +115,7 @@ abort_check <- function(
   msg = NULL,
   bullets = NULL,
   ...,
-  msg_body = 1,
+  msg_body = 1L,
   param,
   call = caller_user()
 ) {
@@ -264,11 +264,11 @@ check_suffix_format <- function(x, param = caller_arg(x)) {
   }
   if (has_dup_keys) {
     what <- "unique keys"
-    msg_body <- 2
+    msg_body <- 2L
   } else {
     allowed <- wrap(allowed, "`")
     what <- paste("any of", enumerate(allowed, last = " or "))
-    msg_body <- 3
+    msg_body <- 3L
   }
   abort_check(what, msg_body = msg_body, param = param)
 }

@@ -185,7 +185,7 @@ PlumeHandler <- R6Class(
       )
     },
 
-    get = function(col) {
+    pull = function(col) {
       private$plume[[private$pick(col)]]
     },
 

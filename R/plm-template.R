@@ -26,7 +26,7 @@ plm_template <- function(minimal = TRUE, role_cols = credit_roles(), credit_role
     role_cols <- credit_roles()
   }
   vars <- get_template_vars(minimal, role_cols)
-  tibble(!!!vars, .rows = 0)
+  tibble(!!!vars, .rows = 0L)
 }
 
 get_template_vars <- function(minimal, role_cols) {
@@ -47,10 +47,10 @@ get_secondaries <- function(minimal) {
 }
 
 get_nestables <- function() {
-  vars <- c(seq_names("affiliation", n = 2), "note")
+  vars <- c(seq_names("affiliation", n = 2L), "note")
   as.list(set_names(vars))
 }
 
 seq_names <- function(..., n) {
-  paste(rep(c(...), each = n), seq(n), sep = "_")
+  paste(rep(c(...), each = n), seq_len(n), sep = "_")
 }

@@ -81,7 +81,7 @@ icn_get_attrs <- function(x, size, bw, ...) {
   x <- icn_format(x)
   c(
     list(size = round(size), filename = icn_filename(x, bw), ...),
-    icn_buffer(x, margin = round(size / 4))
+    icn_buffer(x, margin = round(size / 4L))
   )
 }
 
