@@ -1,6 +1,6 @@
 # plume (development version)
 
-* `PlumeQuarto` now supports authors' `degrees` field (#53).
+* `PlumeQuarto` now supports authors' `degrees` field and the `group` affiliation property (#53).
 
 * `PlumeQuarto` now properly handles authors with no roles (#81).
 
