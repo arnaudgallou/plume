@@ -250,7 +250,7 @@ itemise <- function(x, to_lower = FALSE) {
 
 affiliation_keys <- c(
   "number", "name", "department", "address", "city", "region", "state",
-  "country", "postal-code", "url", "isni", "ringgold", "ror"
+  "country", "postal-code", "url", "isni", "ringgold", "ror", "group"
 )
 
 parse_affiliation <- function(x) {
