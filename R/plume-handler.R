@@ -112,7 +112,7 @@ PlumeHandler <- R6Class(
     },
 
     get_vars = function() {
-      nestables <- private$pick("affiliation", "note")
+      nestables <- private$pick("affiliation", "note", "degree")
       if (!private$crt) {
         nestables <- c(nestables, private$pick("role"))
       }

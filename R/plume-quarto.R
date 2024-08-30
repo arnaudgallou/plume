@@ -7,6 +7,9 @@
     number = "number",
     dropping_particle = "dropping_particle",
     acknowledgements = "acknowledgements"
+  ),
+  nestables = list(
+    degree = "degree"
   )
 ))
 
@@ -128,9 +131,10 @@ PlumeQuarto <- R6Class(
         fax = private$pull("fax"),
         orcid = private$author_orcids(),
         note = private$author_notes(),
+        degrees = private$itemise("degree"),
         acknowledgements = private$pull("acknowledgements"),
         attributes = private$author_attributes(),
-        roles = private$author_roles(),
+        roles = private$itemise("role", to_lower = TRUE),
         metadata = private$author_metadata(),
         affiliations = private$author_affiliations()
       )
@@ -152,8 +156,8 @@ PlumeQuarto <- R6Class(
       out
     },
 
-    author_roles = function() {
-      private$pull_nestable("role", as_role_list)
+    itemise = function(var, to_lower = FALSE) {
+      private$pull_nestable(var, \(x) itemise(x, to_lower))
     },
 
     author_notes = function() {
@@ -237,8 +241,11 @@ PlumeQuarto <- R6Class(
   )
 )
 
-as_role_list <- function(x) {
-  list(tolower(vec_drop_na(x)))
+itemise <- function(x, to_lower = FALSE) {
+  if (to_lower) {
+    x <- tolower(x)
+  }
+  list(vec_drop_na(x))
 }
 
 affiliation_keys <- c(
