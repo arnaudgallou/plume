@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `PlumeQuarto` now supports authors' `degrees` field (#53).
+
 * `PlumeQuarto` now properly handles authors with no roles (#81).
 
 * `PlumeQuarto` now supports `.yml` and `.yaml` files (#82).
