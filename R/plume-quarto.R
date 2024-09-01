@@ -134,7 +134,7 @@ PlumeQuarto <- R6Class(
         degrees = private$itemise("degree"),
         acknowledgements = private$pull("acknowledgements"),
         attributes = private$author_attributes(),
-        roles = private$itemise("role", to_lower = TRUE),
+        roles = private$itemise("role"),
         metadata = private$author_metadata(),
         affiliations = private$author_affiliations()
       )
@@ -156,8 +156,8 @@ PlumeQuarto <- R6Class(
       out
     },
 
-    itemise = function(var, to_lower = FALSE) {
-      private$pull_nestable(var, \(x) itemise(x, to_lower))
+    itemise = function(var) {
+      private$pull_nestable(var, \(x) list(vec_drop_na(x)))
     },
 
     author_notes = function() {
@@ -240,13 +240,6 @@ PlumeQuarto <- R6Class(
     }
   )
 )
-
-itemise <- function(x, to_lower = FALSE) {
-  if (to_lower) {
-    x <- tolower(x)
-  }
-  list(vec_drop_na(x))
-}
 
 affiliation_keys <- c(
   "number", "name", "department", "address", "city", "region", "state",
