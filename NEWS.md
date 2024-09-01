@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `PlumeQuarto` no longer converts roles to lower case (#88).
+
 * `PlumeQuarto` now supports authors' `degrees` field and the `group` affiliation property (#53).
 
 * `PlumeQuarto` now properly handles authors with no roles (#81).

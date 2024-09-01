@@ -17,8 +17,8 @@
           attributes:
             corresponding: true
           roles:
-            - formal analysis
-            - writing - original draft
+            - Formal analysis
+            - Writing - original draft
           affiliations:
             - ref: aff1
             - ref: aff2
@@ -31,7 +31,7 @@
           attributes:
             corresponding: false
           roles:
-            - formal analysis
+            - Formal analysis
           affiliations:
             - ref: aff3
         - id: aut3
@@ -43,7 +43,7 @@
           attributes:
             corresponding: false
           roles:
-            - formal analysis
+            - Formal analysis
           affiliations:
             - ref: aff1
             - ref: aff4
@@ -80,7 +80,7 @@
           attributes:
             corresponding: true
           roles:
-            - formal analysis
+            - Formal analysis
           affiliations:
             - ref: aff1
             - ref: aff2
@@ -93,7 +93,7 @@
           attributes:
             corresponding: false
           roles:
-            - formal analysis
+            - Formal analysis
           affiliations:
             - ref: aff3
         - id: aut3
@@ -107,8 +107,8 @@
           attributes:
             corresponding: false
           roles:
-            - formal analysis
-            - writing - original draft
+            - Formal analysis
+            - Writing - original draft
           affiliations:
             - ref: aff2
             - ref: aff4
@@ -243,8 +243,8 @@
             given: A
             family: A
           roles:
-            - formal analysis
-            - writing - original draft
+            - Formal analysis
+            - Writing - original draft
         - id: aut2
           name:
             given: B
