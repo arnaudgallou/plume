@@ -1,81 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/404.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/articles/comprehensive-affiliation-schema.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/articles/plume-workflow.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/articles/plume.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/articles/working-in-other-languages.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/index.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/Plume.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/PlumeHandler.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/PlumeQuarto.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/StatusSetter.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/StatusSetterPlume.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/StatusSetterPlumeQuarto.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/credit_roles.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/encyclopedists.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/enumerate.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/everyone.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/orcid.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/plm_template.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/plume-package.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/sequential.html</loc>
-  </url>
-  <url>
-    <loc>https://arnaudgallou.github.io/plume/reference/set_default_names.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://arnaudgallou.github.io/plume/404.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/LICENSE.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/articles/comprehensive-affiliation-schema.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/articles/index.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/articles/plume-workflow.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/articles/plume.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/articles/working-in-other-languages.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/authors.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/index.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/news/index.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/Plume.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/PlumeHandler.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/PlumeQuarto.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/StatusSetter.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/StatusSetterPlume.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/StatusSetterPlumeQuarto.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/credit_roles.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/encyclopedists.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/enumerate.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/everyone.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/index.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/orcid.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/plm_template.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/plume-package.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/sequential.html</loc></url>
+<url><loc>https://arnaudgallou.github.io/plume/reference/set_default_names.html</loc></url>
 </urlset>
+
