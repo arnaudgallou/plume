@@ -161,7 +161,7 @@ PlumeQuarto <- R6Class(
     },
 
     author_notes = function() {
-      private$pull_nestable("note", \(x) bind(x, sep = ", ", arrange = FALSE))
+      private$pull_nestable("note", \(x) bind(x, sep = ". ", arrange = FALSE))
     },
 
     pull_nestable = function(var, callback) {

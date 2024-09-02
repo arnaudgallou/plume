@@ -13,7 +13,7 @@
           email: zipzap@test.com
           phone: '+1234'
           orcid: 0000-0000-0000-0001
-          note: a, c
+          note: a. c
           attributes:
             corresponding: true
           roles:
@@ -103,7 +103,7 @@
           email: zipzap@test.com
           phone: '+1234'
           orcid: 0000-0000-0000-0001
-          note: a, c
+          note: a. c
           attributes:
             corresponding: false
           roles:
