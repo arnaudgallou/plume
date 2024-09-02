@@ -18,7 +18,7 @@ credit_roles <- function(oxford_spelling = TRUE) {
 }
 
 ise <- function(x) {
-  pattern <- "(?<=[iy])z(?=(?:e|ation)$)"
+  pattern <- "(?<=i)z(?=ation)"
   names(x) <- str_replace(names(x), pattern, "s")
   x[] <- str_replace(x, pattern, "s")
   x
