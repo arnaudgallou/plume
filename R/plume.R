@@ -1,6 +1,6 @@
 .names_plume <- list_modify(.names, public = list(
-   internals = list(contributor_rank = "contributor_rank")
- ))
+  internals = list(contributor_rank = "contributor_rank")
+))
 
 .symbols <- list(
   affiliation = NULL,
@@ -345,14 +345,14 @@ Plume <- R6Class(
   )
 )
 
- contribution_items <- function(pars, by_author, alphabetical_order) {
-   data <- dplyr::pick(any_of(c(pars$var, pars$rank)))
-   cols <- c(
-     if (has_name(data, pars$rank)) pars$rank,
-     if (alphabetical_order) pars$var
-   )
-   if (!is.null(cols) && !by_author) {
-     data <- arrange(data, across(any_of(cols)))
-   }
-   data[[pars$var]]
- }
+contribution_items <- function(pars, by_author, alphabetical_order) {
+  data <- dplyr::pick(any_of(c(pars$var, pars$rank)))
+  cols <- c(
+    if (has_name(data, pars$rank)) pars$rank,
+    if (alphabetical_order) pars$var
+  )
+  if (!is.null(cols) && !by_author) {
+    data <- arrange(data, across(any_of(cols)))
+  }
+  data[[pars$var]]
+}
