@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$get_author_list(suffix =)` is now slightly more flexible and will try less hard to sanitise author list suffixes (#90).
+
 * `PlumeQuarto` no longer converts roles to lower case (#88).
 
 * `PlumeQuarto` now supports authors' `degrees` field and the `group` affiliation property (#53).
