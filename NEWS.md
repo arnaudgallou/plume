@@ -4,7 +4,7 @@
 
 * `PlumeQuarto` no longer converts roles to lower case (#88).
 
-* `PlumeQuarto` now supports authors' `degrees` field and the `group` affiliation property (#53).
+* `PlumeQuarto` now supports authors' `degrees` and the `group` affiliation property (#53).
 
 * `PlumeQuarto` now properly handles authors with no roles (#81).
 
@@ -12,7 +12,7 @@
 
 # plume 0.2.4
 
-* Tweak some examples in the vignettes and expand the `Contributions` section in `vignette("plume")`.
+* Tweaked some examples in the vignettes and expand the `Contributions` section in `vignette("plume")`.
 
 * Fixed selection helpers not working when imported explicitly with `::` (#76).
 
@@ -66,7 +66,7 @@
 
 ## New features
 
-* `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors to appear first in the contribution list for any given role. Because of this new method, `Plume`'s contructor regained the parameter `by` to set the default `by`/`.by` value used in all `$set_*()` methods (#40).
+* `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors to appear first in the contribution list for any given role. Because of this new method, `Plume`'s contructor gained the parameter `by` to set the default `by`/`.by` value used in all `$set_*()` methods (#40).
 
 * New helper `credit_roles()` that returns the 14 contributor roles of the [Contributor Roles Taxonomy](https://credit.niso.org). These are now the default roles used by plume.
 
@@ -134,4 +134,4 @@
 
 # plume 0.1.0
 
-First release.
+First CRAN release.
