@@ -38,23 +38,21 @@ als_parse <- function(format) {
 }
 
 als_join <- function(x, marks) {
+  prev_item <- vector("character", 1L)
   out <- map2_vec(x, marks, \(item, mark) {
-    if (is_blank(item) && str_contain(mark, "^")) {
+    if (is_empty(item) && str_contain(mark, "^")) {
       return("^")
     }
-    if (is_blank(item)) {
+    if (is_empty(item)) {
       return(item)
     }
+    if (is_empty(prev_item) && str_contain(mark, ",")) {
+      mark <- stringr::str_remove(mark, fixed(","))
+    }
+    prev_item <<- item
     paste0(mark, item)
   })
   collapse(out)
-}
-
-als_clean <- function(x) {
-  for (pattern in c("(?<=^|\\^),|,$", "\\^{2}")) {
-    x <- str_remove_all(x, pattern)
-  }
-  x
 }
 
 als_make <- function(data, cols, format) {
@@ -65,5 +63,5 @@ als_make <- function(data, cols, format) {
   }
   out <- map_vec(rows, \(row) als_join(row, marks$heads))
   out <- paste0(out, marks$tail)
-  als_clean(out)
+  als_sanitise(out)
 }
