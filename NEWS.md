@@ -1,3 +1,5 @@
+# plume (development version)
+
 # plume 0.2.5
 
 * `$get_author_list(suffix =)` is now slightly more flexible and will try less hard to sanitise author list suffixes (#90).
