@@ -4,7 +4,7 @@ template:
   package: cygne
   includes:
     after_body: >
-      <script data-goatcounter="https://arangacas.goatcounter.com/count"
+      <script data-goatcounter="https://gh-plume.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 reference:
   - title: Classes
