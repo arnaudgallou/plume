@@ -201,19 +201,16 @@ Plume <- R6Class(
       check_string(sep, allow_empty = FALSE)
       vars <- private$pick("corresponding", "literal_name", squash = FALSE)
       private$check_col(vars["corresponding"])
-      arg_names <- get_params_set_to_true()
-      if (is_empty(arg_names)) {
+      details <- get_detail_vars()
+      if (is_empty(details)) {
         return()
       }
-      cols <- private$pick(arg_names)
+      cols <- private$pick(details)
       private$check_col(cols)
-      out <- filter(
-        private$plume,
-        .data[[vars$corresponding]] & not_na_any(cols)
-      )
+      data <- filter(private$plume, .data[[vars$corresponding]] & !all_na(cols))
       dict <- list(details = cols, name = vars$literal_name)
-      dissolve(out, dict, partial(collapse_cols, sep = sep))
-      as_plm(glue(format))
+      items <- map(dict, \(item) collapse_cols(data, item, sep))
+      as_plm(glue::glue_data(items, format))
     },
 
     #' @description Get authors' contributions.

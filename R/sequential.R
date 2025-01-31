@@ -17,7 +17,7 @@
 #' @export
 sequential <- function(x) {
   check_character(x, allow_duplicates = FALSE, allow_null = FALSE)
-  structure(x, class = c("sequential", "character"))
+  add_class(x, "sequential")
 }
 
 is_sequential <- function(x) {

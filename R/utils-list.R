@@ -49,7 +49,7 @@ list_replace <- function(x, y) {
 }
 
 list_drop_empty <- function(x) {
-  are_empty <- map_vec(x, \(.x) is_empty(.x))
+  are_empty <- map_vec(x, is_empty.default)
   x[are_empty] <- NULL
   x
 }

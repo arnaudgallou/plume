@@ -7,7 +7,7 @@ print.plm <- function(x, ...,  sep = "\n") {
 }
 
 as_plm <- function(x) {
-  structure(x, class = c("plm", "character"))
+  add_class(x, "plm")
 }
 
 compare_proxy.plm <- function(x, path = "x") {

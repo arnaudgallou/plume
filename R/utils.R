@@ -18,8 +18,8 @@ if_not_na <- function(x, value, ..., all = FALSE) {
   if_else(cnd, NA, value, ...)
 }
 
-not_na_any <- function(cols) {
-  if_any(all_of(cols), is_not_na)
+all_na <- function(cols) {
+  dplyr::if_all(all_of(cols), is.na)
 }
 
 dot <- function(x) {
@@ -139,7 +139,7 @@ caller_args <- function(n = 2) {
   as.list(caller_env(n))
 }
 
-get_params_set_to_true <- function() {
+get_detail_vars <- function() {
   args <- caller_args()
   args_true <- args[map_vec(args, is_true)]
   names(args_true)
@@ -193,7 +193,7 @@ unstructure <- function(x) {
   x
 }
 
-add_class <- function(x, cls) {
-  class(x) <- c(cls, class(x))
+add_class <- function(x, cls, inherit = TRUE) {
+  class(x) <- c(cls, if (inherit) class(x))
   x
 }
