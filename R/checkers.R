@@ -135,11 +135,11 @@ check_dots_not_empty <- function() {
   abort_check(msg = "`...` must not be empty.")
 }
 
-check_named <- function(x, allow_homonyms = FALSE, ..., param = caller_arg(x)) {
-  if (is_named(x) && (allow_homonyms || !has_homonyms(x))) {
+check_named <- function(x, ..., param = caller_arg(x)) {
+  if (is_named(x) && !has_homonyms(x)) {
     return(invisible())
   }
-  if (is_named(x) && !allow_homonyms && has_homonyms(x)) {
+  if (has_homonyms(x)) {
     msg <- "`{param}` must have unique input names."
   } else {
     msg <- "All `{param}` inputs must be named."
@@ -155,25 +155,32 @@ check_duplicates <- function(x, ..., param = caller_arg(x)) {
   abort_check(msg = msg, ..., param = param)
 }
 
-check_vector <- function(
-  x,
-  type,
-  force_names = FALSE,
-  allow_duplicates = TRUE,
-  allow_homonyms = FALSE,
-  allow_null = TRUE,
-  ...,
-  param = caller_arg(x)
-) {
+.allowed_default <- list(
+  null = FALSE,
+  empty = FALSE,
+  duplicates = FALSE,
+  unnamed = FALSE
+)
+
+allow <- function(...) {
+  nms <- c(...)
+  if (is_empty(nms)) {
+    return(.allowed_default)
+  }
+  allowed <- recycle_to_names(TRUE, nms)
+  list_replace(.allowed_default, allowed)
+}
+
+check_vector <- function(x, type, let = allow(), ..., param = caller_arg(x)) {
   if (!missing(x)) {
-    if (allow_null && is.null(x)) {
+    if (let$null && is.null(x)) {
       return(invisible())
     }
     if (is_type(x, type)) {
-      if (force_names) {
-        check_named(x, allow_homonyms = allow_homonyms, param = param)
+      if (!let$unnamed) {
+        check_named(x, param = param)
       }
-      if (!allow_duplicates) {
+      if (!let$duplicates) {
         check_duplicates(x, param = param)
       }
       return(invisible())
@@ -189,7 +196,7 @@ check_list <- partial(check_vector, type = "list")
 
 check_character <- partial(check_vector, type = "character")
 
-check_num <- partial(check_vector, type = "numeric")
+check_num <- partial(check_vector, type = "numeric", let = allow("unnamed"))
 
 check_df <- function(x, ..., param = caller_arg(x)) {
   if (!missing(x) && inherits(x, c("data.frame", "tbl_df"))) {
@@ -198,26 +205,17 @@ check_df <- function(x, ..., param = caller_arg(x)) {
   abort_check("a data frame or tibble", ..., param = param)
 }
 
-is_stringish <- function(x, allow_empty, allow_null) {
+is_stringish <- function(x, allow_empty) {
   if (is_string(x) && (allow_empty || !is_string(x, ""))) {
-    return(TRUE)
-  }
-  if (allow_null && is.null(x)) {
     return(TRUE)
   }
   FALSE
 }
 
-check_string <- function(
-  x,
-  allow_empty = TRUE,
-  allow_null = FALSE,
-  ...,
-  param = caller_arg(x)
-) {
+check_string <- function(x, let = allow(), ..., param = caller_arg(x)) {
   adj <- "character"
   if (!missing(x)) {
-    if (is_stringish(x, allow_empty, allow_null)) {
+    if (is_stringish(x, let$empty) || let$null && is.null(x)) {
       return(invisible())
     }
     if (is_string(x)) {
@@ -240,7 +238,7 @@ expr_to_chr <- function(x, env = caller_env()) {
 
 check_args <- function(type, x, ..., call = caller_user()) {
   # ensure that x is a list to preserve element types
-  check_list(x)
+  check_list(x, allow("unnamed", "duplicates"))
   f <- paste0("check_", type)
   dots <- list(...)
   without_indexed_error(
@@ -251,7 +249,7 @@ check_args <- function(type, x, ..., call = caller_user()) {
 }
 
 check_suffix_format <- function(x, param = caller_arg(x)) {
-  check_string(x, allow_null = TRUE, param = param)
+  check_string(x, allow("null"), param = param)
   if (is.null(x)) {
     return(invisible())
   }
@@ -294,7 +292,7 @@ file_ext <- function(x) {
 }
 
 check_file <- function(x, extensions, ..., param = caller_arg(x)) {
-  check_string(x, allow_empty = FALSE, param = param)
+  check_string(x, param = param)
   ext <- file_ext(x)
   if (is_not_na(ext) && vec_in(ext, extensions)) {
     check_path(x, param = param)

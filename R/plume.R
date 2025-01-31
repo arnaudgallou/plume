@@ -102,7 +102,7 @@ Plume <- R6Class(
         interword_spacing,
         by = by
       )
-      check_list(symbols, force_names = TRUE)
+      check_list(symbols, allow("null"))
       check_orcid_icon(orcid_icon)
       if (!is.null(symbols)) {
         private$symbols <- list_replace(private$symbols, symbols)
@@ -168,7 +168,7 @@ Plume <- R6Class(
     #' @return A character vector.
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
       check_args("bool", list(compact, icon))
-      check_string(sep)
+      check_string(sep, allow("empty"))
       private$check_col("orcid")
       out <- drop_na(private$plume, "orcid")
       if (icon) {
@@ -198,7 +198,7 @@ Plume <- R6Class(
     ) {
       check_glue(format, allowed = c("name", "details"))
       check_args("bool", list(email, phone, fax, url))
-      check_string(sep, allow_empty = FALSE)
+      check_string(sep)
       vars <- private$pick("corresponding", "literal_name", squash = FALSE)
       private$check_col(vars["corresponding"])
       details <- get_detail_vars()
@@ -245,7 +245,7 @@ Plume <- R6Class(
         dotted_initials,
         literal_names
       ))
-      check_args("string", list(divider, sep, sep_last))
+      check_args("string", list(divider, sep, sep_last), allow("empty", "unnamed"))
       out <- unnest_drop(private$plume, role)
       if (is_empty(out)) {
         return()
@@ -292,7 +292,7 @@ Plume <- R6Class(
       col <- private$pick(var)
       private$check_col(col)
       check_bool(superscript)
-      check_string(sep)
+      check_string(sep, allow("null", "empty"))
       out <- unnest_drop(private$plume, col)
       if (is_empty(out)) {
         return()

@@ -37,8 +37,6 @@ set_default_names <- function(..., .plume_quarto = FALSE) {
   dots <- c(...)
   check_character(
     dots,
-    force_names = TRUE,
-    allow_duplicates = FALSE,
     msg = "`...` inputs must be character vectors.",
     param = "..."
   )

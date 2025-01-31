@@ -20,7 +20,7 @@
 #' @export
 plm_template <- function(minimal = TRUE, role_cols = credit_roles(), credit_roles = FALSE) {
   check_args("bool", list(minimal, credit_roles))
-  check_character(role_cols, allow_duplicates = FALSE)
+  check_character(role_cols, allow("null", "unnamed"))
   if (credit_roles) {
     print_deprecation("credit_roles", "plm_template", param = "role_cols")
     role_cols <- credit_roles()

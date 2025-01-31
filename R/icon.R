@@ -8,7 +8,7 @@
 #' aut <- Plume$new(encyclopedists, orcid_icon = orcid(bw = TRUE))
 #' @export
 orcid <- function(size = 16, bw = FALSE) {
-  check_num(size, allow_null = FALSE, call = current_env())
+  check_num(size, call = current_env())
   check_bool(bw, call = current_env())
   new_icon("orcid", size = size, bw = bw)
 }
