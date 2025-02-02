@@ -67,7 +67,7 @@ are_credit_roles <- function(x) {
   all(x %in% credit_roles()) || all(x %in% credit_roles(FALSE))
 }
 
-search_ <- function(x, callback) {
+seek <- function(x, callback) {
   x <- vec_drop_na(x)
   have_passed <- if (missing(callback)) !x else !callback(x)
   if (all(have_passed)) {
@@ -274,7 +274,7 @@ check_glue_vars <- function(x, allowed, ...) {
   if (all(vec_in(vars, allowed, ignore_case = FALSE))) {
     return(invisible())
   }
-  invalid_var <- search_(vars, \(var) !var %in% allowed)
+  invalid_var <- seek(vars, \(var) !var %in% allowed)
   allowed_vars <- format_valid(allowed, last = " and/or ")
   abort(c(
     glue("Invalid variable `{invalid_var}`."),
@@ -287,7 +287,7 @@ is_orcid <- function(x) {
 }
 
 check_orcid <- function(x, ...) {
-  invalid_orcid <- search_(x, Negate(is_orcid))
+  invalid_orcid <- seek(x, Negate(is_orcid))
   if (is.null(invalid_orcid)) {
     return(invisible())
   }

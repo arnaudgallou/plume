@@ -201,7 +201,7 @@ PlumeHandler <- R6Class(
     },
 
     check_col = function(x) {
-      missing_col <- search_(x, Negate(private$has_col))
+      missing_col <- seek(x, Negate(private$has_col))
       if (is.null(missing_col)) {
         return()
       }
@@ -213,7 +213,7 @@ PlumeHandler <- R6Class(
       nominal <- private$pick("primaries")
       authors <- select(private$plume, all_of(nominal))
       missing_name <- reduce(authors, \(x, y) is_void(x) | is_void(y))
-      missing_name <- search_(missing_name)
+      missing_name <- seek(missing_name)
       if (is.null(missing_name)) {
         return()
       }
@@ -230,7 +230,7 @@ PlumeHandler <- R6Class(
       }
       roles <- select(private$plume, starts_with(role))
       roles <- map(roles, \(x) length(condense(x)))
-      multiple_roles <- search_(roles, \(x) x > 1L)
+      multiple_roles <- seek(roles, \(x) x > 1L)
       if (is.null(multiple_roles)) {
         return()
       }
