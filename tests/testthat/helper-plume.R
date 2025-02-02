@@ -18,7 +18,7 @@ basic_df <- tibble(
   ),
 )
 
-tempfile_ <- function() {
+temp_file <- function() {
   withr::local_tempfile(
     lines = "---\n---",
     fileext = ".qmd",

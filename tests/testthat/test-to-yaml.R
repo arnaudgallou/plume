@@ -163,7 +163,7 @@ test_that("to_yaml() errors if no YAML headers is found", {
 test_that("to_yaml() errors if an invalid ORCID identifier is found ", {
   aut <- PlumeQuarto$new(
     data.frame(given_name = "X", family_name = "Y", orcid = "0000"),
-    tempfile_()
+    temp_file()
   )
   expect_snapshot(aut$to_yaml(), error = TRUE)
 })
