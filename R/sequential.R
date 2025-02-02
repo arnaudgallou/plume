@@ -16,8 +16,8 @@
 #' aut$get_affiliations(sep = ": ", superscript = FALSE)
 #' @export
 sequential <- function(x) {
-  check_character(x, allow_duplicates = FALSE, allow_null = FALSE)
-  structure(x, class = c("sequential", "character"))
+  check_character(x, allow("unnamed"))
+  add_class(x, "sequential")
 }
 
 is_sequential <- function(x) {

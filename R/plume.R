@@ -102,7 +102,7 @@ Plume <- R6Class(
         interword_spacing,
         by = by
       )
-      check_list(symbols, force_names = TRUE)
+      check_list(symbols, allow("null"))
       check_orcid_icon(orcid_icon)
       if (!is.null(symbols)) {
         private$symbols <- list_replace(private$symbols, symbols)
@@ -167,8 +167,8 @@ Plume <- R6Class(
     #' @param sep Separator used to separate authors and their respective ORCID.
     #' @return A character vector.
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
-      check_args("bool", list(compact, icon))
-      check_string(sep)
+      check_args("bool", quos(compact, icon))
+      check_string(sep, allow("empty"))
       private$check_col("orcid")
       out <- drop_na(private$plume, "orcid")
       if (icon) {
@@ -197,23 +197,20 @@ Plume <- R6Class(
       sep = ", "
     ) {
       check_glue(format, allowed = c("name", "details"))
-      check_args("bool", list(email, phone, fax, url))
-      check_string(sep, allow_empty = FALSE)
+      check_args("bool", quos(email, phone, fax, url))
+      check_string(sep)
       vars <- private$pick("corresponding", "literal_name", squash = FALSE)
       private$check_col(vars["corresponding"])
-      arg_names <- get_params_set_to_true()
-      if (is_empty(arg_names)) {
+      details <- get_detail_vars()
+      if (is_empty(details)) {
         return()
       }
-      cols <- private$pick(arg_names)
+      cols <- private$pick(details)
       private$check_col(cols)
-      out <- filter(
-        private$plume,
-        .data[[vars$corresponding]] & not_na_any(cols)
-      )
+      data <- filter(private$plume, .data[[vars$corresponding]] & !all_na(cols))
       dict <- list(details = cols, name = vars$literal_name)
-      dissolve(out, dict, partial(collapse_cols, sep = sep))
-      as_plm(glue(format))
+      items <- map(dict, \(item) collapse_cols(data, item, sep))
+      as_plm(glue::glue_data(items, format))
     },
 
     #' @description Get authors' contributions.
@@ -241,15 +238,15 @@ Plume <- R6Class(
     ) {
       role <- private$pick("role")
       private$check_col(role)
-      check_args("bool", list(
+      check_args("bool", quos(
         roles_first,
         by_author,
         alphabetical_order,
         dotted_initials,
         literal_names
       ))
-      check_args("string", list(divider, sep, sep_last))
-      out <- unnest_drop(private$plume, role)
+      check_args("string", quos(divider, sep, sep_last), allow("empty", "unnamed"))
+      out <- unnest_drop_na(private$plume, role)
       if (is_empty(out)) {
         return()
       }
@@ -275,9 +272,9 @@ Plume <- R6Class(
     symbols = .symbols,
     orcid_icon = NULL,
 
-    get_author_list_suffixes = function(format) {
-      check_suffix_format(format, param = "suffix")
-      key_set <- als_key_set(format)
+    get_author_list_suffixes = function(template) {
+      check_als_template(template, arg = "suffix")
+      key_set <- als_key_set(template)
       vars <- private$pick(key_set, squash = FALSE)
       private$check_col(vars)
       cols <- squash(vars)
@@ -288,15 +285,15 @@ Plume <- R6Class(
       grp_vars <- private$pick("id", "literal_name")
       .cols <- predot(cols)
       out <- summarise(out, across(all_of(.cols), bind), .by = all_of(grp_vars))
-      als_make(out, .cols, format)
+      als_make(out, .cols, template)
     },
 
     get_footnotes = function(var, superscript, sep) {
       col <- private$pick(var)
       private$check_col(col)
       check_bool(superscript)
-      check_string(sep)
-      out <- unnest_drop(private$plume, col)
+      check_string(sep, allow("null", "empty"))
+      out <- unnest_drop_na(private$plume, col)
       if (is_empty(out)) {
         return()
       }

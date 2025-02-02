@@ -16,13 +16,8 @@ PlumeHandler <- R6Class(
       interword_spacing = TRUE
     ) {
       check_df(data)
-      check_args(
-        "character",
-        list(names, roles),
-        force_names = TRUE,
-        allow_duplicates = FALSE
-      )
-      check_args("bool", list(
+      check_args("character", quos(names, roles), allow("null"))
+      check_args("bool", quos(
         credit_roles,
         initials_given_name,
         family_name_first,
@@ -205,25 +200,24 @@ PlumeHandler <- R6Class(
       has_name(private$plume, col)
     },
 
-    check_col = function(x, ...) {
-      missing_col <- search_(x, Negate(private$has_col))
+    check_col = function(x) {
+      missing_col <- seek(x, Negate(private$has_col))
       if (is.null(missing_col)) {
         return()
       }
       bullets <- .col_bullets[[names(missing_col)]]
-      msg <- glue("Column `{missing_col}` doesn't exist.")
-      abort_check(msg = msg, bullets = bullets, ...)
+      abort(c(glue("Column `{missing_col}` doesn't exist."), bullets))
     },
 
     check_authors = function() {
       nominal <- private$pick("primaries")
       authors <- select(private$plume, all_of(nominal))
       missing_name <- reduce(authors, \(x, y) is_void(x) | is_void(y))
-      missing_name <- search_(missing_name)
+      missing_name <- seek(missing_name)
       if (is.null(missing_name)) {
         return()
       }
-      abort_check(msg = c(
+      abort(c(
         glue("Missing author name found in position {names(missing_name)}."),
         i = "All authors must have a given and family name."
       ))
@@ -236,11 +230,11 @@ PlumeHandler <- R6Class(
       }
       roles <- select(private$plume, starts_with(role))
       roles <- map(roles, \(x) length(condense(x)))
-      multiple_roles <- search_(roles, \(x) x > 1L)
+      multiple_roles <- seek(roles, \(x) x > 1L)
       if (is.null(multiple_roles)) {
         return()
       }
-      abort_check(msg = c(
+      abort(c(
         glue("Multiple roles found in column `{names(multiple_roles)}`."),
         i = "Roles must be unique within a column."
       ))

@@ -8,7 +8,7 @@
 #' aut <- Plume$new(encyclopedists, orcid_icon = orcid(bw = TRUE))
 #' @export
 orcid <- function(size = 16, bw = FALSE) {
-  check_num(size, allow_null = FALSE, call = current_env())
+  check_num(size, call = current_env())
   check_bool(bw, call = current_env())
   new_icon("orcid", size = size, bw = bw)
 }
@@ -37,11 +37,11 @@ md_image <- function(image, size, style, spacing) {
 }
 
 as_svg <- function(x) {
-  structure(x, class = "svg")
+  add_class(x, "svg", inherit = FALSE)
 }
 
 as_pdf <- function(x) {
-  structure(x, class = "pdf")
+  add_class(x, "pdf", inherit = FALSE)
 }
 
 icn_format <- function(x) {
@@ -79,14 +79,13 @@ icn_buffer.svg <- function(x, margin) {
 
 icn_get_attrs <- function(x, size, bw, ...) {
   x <- icn_format(x)
-  c(
-    list(size = round(size), filename = icn_filename(x, bw), ...),
-    icn_buffer(x, margin = round(size / 4L))
-  )
+  attrs <- list(size = round(size), filename = icn_filename(x, bw), ...)
+  buffer <- icn_buffer(x, margin = round(size / 4L))
+  c(attrs, buffer)
 }
 
 icn_path <- function(file) {
-  system.file(paste0("icons/", file), package = "plume")
+  system.file(file.path("icons", file), package = "plume")
 }
 
 icn_create <- function(attrs) {

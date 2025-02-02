@@ -36,7 +36,7 @@ test_that("`Plume` drops `PlumeQuarto`-specific variables", {
   nms <- c("id", "given_name", "family_name", "literal_name", "initials")
   expect_named(aut$get_plume(), nms)
 
-  aut <- PlumeQuarto$new(df, tempfile_())
+  aut <- PlumeQuarto$new(df, temp_file())
   nms <- c(nms, "dropping_particle")
   expect_named(aut$get_plume(), nms)
 })
@@ -155,7 +155,7 @@ test_that("`by` overrides default `by` value", {
   aut$set_corresponding_authors(zz)
   expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
 
-  aut <- PlumeQuarto$new(basic_df, tempfile_(), by = "initials")
+  aut <- PlumeQuarto$new(basic_df, temp_file(), by = "initials")
   aut$set_corresponding_authors(zz)
   expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
 })
@@ -276,13 +276,13 @@ test_that("initialize() gives meaningful error messages", {
       PlumeQuarto$new(basic_df, file = "~/test.qmd")
     ))
     (expect_error(
-      PlumeQuarto$new(basic_df, tempfile_(), by = 1)
+      PlumeQuarto$new(basic_df, temp_file(), by = 1)
     ))
     (expect_error(
-      PlumeQuarto$new(basic_df, tempfile_(), by = "")
+      PlumeQuarto$new(basic_df, temp_file(), by = "")
     ))
     (expect_error(
-      PlumeQuarto$new(basic_df, tempfile_(), by = "foo")
+      PlumeQuarto$new(basic_df, temp_file(), by = "foo")
     ))
   })
 })

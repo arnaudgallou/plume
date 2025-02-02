@@ -154,19 +154,19 @@
       Error:
       ! `~/test.qmd` doesn't exist.
     Code
-      (expect_error(PlumeQuarto$new(basic_df, tempfile_(), by = 1)))
+      (expect_error(PlumeQuarto$new(basic_df, temp_file(), by = 1)))
     Output
       <error/rlang_error>
       Error:
       ! `by` must be a character string.
     Code
-      (expect_error(PlumeQuarto$new(basic_df, tempfile_(), by = "")))
+      (expect_error(PlumeQuarto$new(basic_df, temp_file(), by = "")))
     Output
       <error/rlang_error>
       Error:
       ! `by` must be a non-empty string.
     Code
-      (expect_error(PlumeQuarto$new(basic_df, tempfile_(), by = "foo")))
+      (expect_error(PlumeQuarto$new(basic_df, temp_file(), by = "foo")))
     Output
       <error/rlang_error>
       Error:

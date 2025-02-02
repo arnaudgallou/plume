@@ -15,13 +15,7 @@ collapse_cols <- function(data, cols, sep) {
   map_vec(rows, \(row) collapse(vec_drop_na(row), sep))
 }
 
-dissolve <- function(data, dict, callback, env = caller_env()) {
-  iwalk(dict, \(value, key) {
-    assign(key, callback(data, value), envir = env)
-  })
-}
-
-unnest_drop <- function(data, cols) {
+unnest_drop_na <- function(data, cols) {
   data <- unnest(data, cols = all_of(cols))
   drop_na(data, all_of(cols))
 }
@@ -41,11 +35,10 @@ add_suffixes <- function(data, cols, symbols) {
       if (is.null(value)) {
         return()
       }
-      if (key == "orcid") {
-        data <<- add_orcid_icons(data, value)
-      } else {
-        data <<- add_symbols(data, .cols[[key]], value)
-      }
+      data <<- switch(key,
+        orcid = add_orcid_icons(data, value),
+        add_symbols(data, .cols[[key]], value)
+      )
     })
   )
   data
@@ -78,7 +71,7 @@ add_contribution_ranks <- function(data, values, roles, by, cols) {
   data <- col_init(data, cols$contributor_rank)
   iwalk(values, \(value, key) {
     data[cols$contributor_rank] <<- if_else(
-      is_not_na(roles[key]) & data[[cols$role]] == roles[key],
+      !is.na(roles[key]) & data[[cols$role]] == roles[key],
       rank(data[[by]], value),
       data[[cols$contributor_rank]]
     )

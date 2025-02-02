@@ -9,7 +9,7 @@ StatusSetter <- R6Class(
   public = list(
     initialize = function(..., by) {
       super$initialize(...)
-      check_string(by, allow_empty = FALSE, allow_null = TRUE)
+      check_string(by, allow("null"))
       if (is.null(by)) {
         private$by <- private$pick("id")
       } else {
@@ -59,7 +59,7 @@ StatusSetter <- R6Class(
       if (missing(by)) {
         return(private$by)
       }
-      check_string(by, allow_empty = FALSE, param = ".by")
+      check_string(by, allow("null"), arg = ".by")
       private$check_col(by)
       by
     }
@@ -94,7 +94,7 @@ StatusSetterPlume <- R6Class(
   private = list(
     set_ranks = function(..., .roles, .by) {
       check_dots_not_empty()
-      check_character(.roles, allow_duplicates = FALSE)
+      check_character(.roles, allow("null", "unnamed"))
       by <- private$process_by(.by)
       vars <- private$pick("role", "contributor_rank", squash = FALSE)
       dots <- collect_dots(...)

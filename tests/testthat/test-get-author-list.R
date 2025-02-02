@@ -136,7 +136,7 @@ test_that("get_author_list() gives meaningful error messages", {
       aut$get_author_list(1)
     ))
     (expect_error(
-      aut$get_author_list("anca")
+      aut$get_author_list("aa")
     ))
     (expect_error(
       aut$get_author_list("az")
