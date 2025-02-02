@@ -272,9 +272,9 @@ Plume <- R6Class(
     symbols = .symbols,
     orcid_icon = NULL,
 
-    get_author_list_suffixes = function(format) {
-      check_suffix_format(format, arg = "suffix")
-      key_set <- als_key_set(format)
+    get_author_list_suffixes = function(template) {
+      check_als_template(template, arg = "suffix")
+      key_set <- als_key_set(template)
       vars <- private$pick(key_set, squash = FALSE)
       private$check_col(vars)
       cols <- squash(vars)
@@ -285,7 +285,7 @@ Plume <- R6Class(
       grp_vars <- private$pick("id", "literal_name")
       .cols <- predot(cols)
       out <- summarise(out, across(all_of(.cols), bind), .by = all_of(grp_vars))
-      als_make(out, .cols, format)
+      als_make(out, .cols, template)
     },
 
     get_footnotes = function(var, superscript, sep) {

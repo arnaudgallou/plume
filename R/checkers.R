@@ -211,7 +211,7 @@ check_args <- function(type, quosures, ..., call = caller_user()) {
   )
 }
 
-check_suffix_format <- function(x, arg = caller_arg(x), ...) {
+check_als_template <- function(x, arg = caller_arg(x), ...) {
   check_string(x, allow("null", "empty"), arg, ...)
   if (is.null(x)) {
     return(invisible())
