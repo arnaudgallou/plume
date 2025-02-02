@@ -167,7 +167,7 @@ Plume <- R6Class(
     #' @param sep Separator used to separate authors and their respective ORCID.
     #' @return A character vector.
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
-      check_args("bool", list(compact, icon))
+      check_args("bool", quos(compact, icon))
       check_string(sep, allow("empty"))
       private$check_col("orcid")
       out <- drop_na(private$plume, "orcid")
@@ -197,7 +197,7 @@ Plume <- R6Class(
       sep = ", "
     ) {
       check_glue(format, allowed = c("name", "details"))
-      check_args("bool", list(email, phone, fax, url))
+      check_args("bool", quos(email, phone, fax, url))
       check_string(sep)
       vars <- private$pick("corresponding", "literal_name", squash = FALSE)
       private$check_col(vars["corresponding"])
@@ -238,14 +238,14 @@ Plume <- R6Class(
     ) {
       role <- private$pick("role")
       private$check_col(role)
-      check_args("bool", list(
+      check_args("bool", quos(
         roles_first,
         by_author,
         alphabetical_order,
         dotted_initials,
         literal_names
       ))
-      check_args("string", list(divider, sep, sep_last), allow("empty", "unnamed"))
+      check_args("string", quos(divider, sep, sep_last), allow("empty", "unnamed"))
       out <- unnest_drop_na(private$plume, role)
       if (is_empty(out)) {
         return()

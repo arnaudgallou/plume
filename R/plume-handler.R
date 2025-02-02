@@ -16,8 +16,8 @@ PlumeHandler <- R6Class(
       interword_spacing = TRUE
     ) {
       check_df(data)
-      check_args("character", list(names, roles), allow("null"))
-      check_args("bool", list(
+      check_args("character", quos(names, roles), allow("null"))
+      check_args("bool", quos(
         credit_roles,
         initials_given_name,
         family_name_first,

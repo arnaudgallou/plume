@@ -201,3 +201,7 @@ add_class <- function(x, cls, inherit = TRUE) {
 split_chars <- function(x) {
   strsplit(x, "", fixed = TRUE)[[1]]
 }
+
+quos <- function(...) {
+  rlang::quos(..., .named = TRUE)
+}

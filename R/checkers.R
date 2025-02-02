@@ -202,17 +202,11 @@ check_string <- function(x, let = allow(), arg = caller_arg(x), ...) {
   check_type(x, asserter, glue("a {type} string"), arg, ...)
 }
 
-expr_to_chr <- function(x, env = caller_env()) {
-  as.character(substitute(x, env = env))[-1]
-}
-
-check_args <- function(type, x, ..., call = caller_user()) {
-  # ensure that x is a list to preserve element types
-  check_list(x, allow("unnamed", "duplicates"))
+check_args <- function(type, quosures, ..., call = caller_user()) {
   fn <- paste0("check_", type)
   without_indexed_error(
-    iwalk(set_names(x, expr_to_chr(x)), \(value, key) {
-      do.call(fn, list(value, arg = key, call = call, ...))
+    iwalk(quosures, \(value, key) {
+      do.call(fn, list(rlang::eval_tidy(value), arg = key, call = call, ...))
     })
   )
 }
