@@ -246,7 +246,7 @@ Plume <- R6Class(
         literal_names
       ))
       check_args("string", list(divider, sep, sep_last), allow("empty", "unnamed"))
-      out <- unnest_drop(private$plume, role)
+      out <- unnest_drop_na(private$plume, role)
       if (is_empty(out)) {
         return()
       }
@@ -293,7 +293,7 @@ Plume <- R6Class(
       private$check_col(col)
       check_bool(superscript)
       check_string(sep, allow("null", "empty"))
-      out <- unnest_drop(private$plume, col)
+      out <- unnest_drop_na(private$plume, col)
       if (is_empty(out)) {
         return()
       }

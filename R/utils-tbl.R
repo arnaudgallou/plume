@@ -15,7 +15,7 @@ collapse_cols <- function(data, cols, sep) {
   map_vec(rows, \(row) collapse(vec_drop_na(row), sep))
 }
 
-unnest_drop <- function(data, cols) {
+unnest_drop_na <- function(data, cols) {
   data <- unnest(data, cols = all_of(cols))
   drop_na(data, all_of(cols))
 }
