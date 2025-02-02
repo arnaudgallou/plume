@@ -58,8 +58,6 @@ is_blank <- function(x) {
   str_detect(x, "^\\s*$")
 }
 
-is_not_na <- Negate(is.na)
-
 is_selector <- function(expr) {
   nms <- c("everyone", "everyone_but")
   is_call(expr, nms, ns = c("plume", ""))

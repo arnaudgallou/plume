@@ -39,7 +39,7 @@ discard <- function(x, ...) {
 }
 
 vec_drop_na <- function(x) {
-  x[is_not_na(x)]
+  x[!is.na(x)]
 }
 
 vec_arrange <- function(x) {

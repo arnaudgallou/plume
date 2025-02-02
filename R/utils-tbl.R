@@ -71,7 +71,7 @@ add_contribution_ranks <- function(data, values, roles, by, cols) {
   data <- col_init(data, cols$contributor_rank)
   iwalk(values, \(value, key) {
     data[cols$contributor_rank] <<- if_else(
-      is_not_na(roles[key]) & data[[cols$role]] == roles[key],
+      !is.na(roles[key]) & data[[cols$role]] == roles[key],
       rank(data[[by]], value),
       data[[cols$contributor_rank]]
     )
