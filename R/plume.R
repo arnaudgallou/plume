@@ -273,7 +273,7 @@ Plume <- R6Class(
     orcid_icon = NULL,
 
     get_author_list_suffixes = function(format) {
-      check_suffix_format(format, param = "suffix")
+      check_suffix_format(format, arg = "suffix")
       key_set <- als_key_set(format)
       vars <- private$pick(key_set, squash = FALSE)
       private$check_col(vars)

@@ -45,7 +45,7 @@ check_has_yaml <- function(x) {
   if (has_yaml(x)) {
     return(invisible())
   }
-  abort_check(msg = c(
+  abort(c(
     "No YAML headers found.",
     i = "YAML headers must be at the beginning of the document.",
     i = "YAML headers must start and end with three hyphens."

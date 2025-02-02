@@ -35,11 +35,7 @@
 set_default_names <- function(..., .plume_quarto = FALSE) {
   check_dots_not_empty()
   dots <- c(...)
-  check_character(
-    dots,
-    msg = "`...` inputs must be character vectors.",
-    param = "..."
-  )
+  check_character(dots, arg = "...")
   check_bool(.plume_quarto)
   nms <- if (.plume_quarto) .names_quarto else .names_plume
   list_replace(nms, dots)

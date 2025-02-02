@@ -59,7 +59,7 @@ StatusSetter <- R6Class(
       if (missing(by)) {
         return(private$by)
       }
-      check_string(by, allow("null"), param = ".by")
+      check_string(by, allow("null"), arg = ".by")
       private$check_col(by)
       by
     }

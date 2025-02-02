@@ -197,3 +197,7 @@ add_class <- function(x, cls, inherit = TRUE) {
   class(x) <- c(cls, if (inherit) class(x))
   x
 }
+
+split_chars <- function(x) {
+  strsplit(x, "", fixed = TRUE)[[1]]
+}

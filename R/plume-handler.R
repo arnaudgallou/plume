@@ -206,8 +206,7 @@ PlumeHandler <- R6Class(
         return()
       }
       bullets <- .col_bullets[[names(missing_col)]]
-      msg <- glue("Column `{missing_col}` doesn't exist.")
-      abort_check(msg = msg, bullets = bullets)
+      abort(c(glue("Column `{missing_col}` doesn't exist."), bullets))
     },
 
     check_authors = function() {
@@ -218,7 +217,7 @@ PlumeHandler <- R6Class(
       if (is.null(missing_name)) {
         return()
       }
-      abort_check(msg = c(
+      abort(c(
         glue("Missing author name found in position {names(missing_name)}."),
         i = "All authors must have a given and family name."
       ))
@@ -235,7 +234,7 @@ PlumeHandler <- R6Class(
       if (is.null(multiple_roles)) {
         return()
       }
-      abort_check(msg = c(
+      abort(c(
         glue("Multiple roles found in column `{names(multiple_roles)}`."),
         i = "Roles must be unique within a column."
       ))

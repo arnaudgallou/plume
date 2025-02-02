@@ -54,7 +54,7 @@
     Output
       <error/rlang_error>
       Error:
-      ! `...` inputs must be character vectors.
+      ! `...` must be a character vector.
     Code
       (expect_error(set_default_names("a")))
     Output
