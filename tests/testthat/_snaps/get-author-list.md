@@ -25,7 +25,7 @@
       Error:
       ! `suffix` must be a character string.
     Code
-      (expect_error(aut$get_author_list("anca")))
+      (expect_error(aut$get_author_list("aa")))
     Output
       <error/rlang_error>
       Error:
