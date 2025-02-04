@@ -164,13 +164,6 @@ propagate_na <- function(x, from) {
   replace(x, is.na(from), NA)
 }
 
-to_chr_class <- function(x, negate = FALSE) {
-  neg <- if (negate) "^" else ""
-  x <- collapse(x)
-  x <- str_replace(x, r"{([-\\\[\]])}", r"{\\\1}")
-  paste0("[", neg, x, "]")
-}
-
 str_contain <- function(string, pattern) {
   str_detect(string, fixed(pattern))
 }
