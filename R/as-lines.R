@@ -1,7 +1,7 @@
 #' @title Print vector elements on multiple lines
 #' @description Thin wrapper around [`cat()`] to display vector elements on
 #'   multiple lines when rendering an R Markdown or Quarto document. This is
-#'   primarily intended to be used with [`Plume`] methods to output each
+#'   primarily intended to be used with [`Plume`]'s methods to output each
 #'   returned element on its own line.
 #' @param ... Objects to print.
 #' @returns `NULL` invisibly.

@@ -15,7 +15,7 @@ as_lines(...)
 \description{
 Thin wrapper around \code{\link[=cat]{cat()}} to display vector elements on
 multiple lines when rendering an R Markdown or Quarto document. This is
-primarily intended to be used with \code{\link{Plume}} methods to output each
+primarily intended to be used with \code{\link{Plume}}'s methods to output each
 returned element on its own line.
 }
 \examples{
