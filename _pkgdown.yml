@@ -13,6 +13,7 @@ reference:
       - Plume
   - title: Helpers
     contents:
+      - as_lines
       - credit_roles
       - enumerate
       - everyone
