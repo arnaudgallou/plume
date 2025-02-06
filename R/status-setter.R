@@ -29,7 +29,7 @@ StatusSetter <- R6Class(
     #'
     #'   Please use the `.by` parameter instead.
     #' @return The class instance.
-    set_corresponding_authors = function(..., .by, by = deprecated()) {
+    set_corresponding_authors = function(..., .by = NULL, by = deprecated()) {
       private$set_status("corresponding", ..., .by = .by, by = by)
     }
   ),
@@ -56,7 +56,7 @@ StatusSetter <- R6Class(
     },
 
     process_by = function(by) {
-      if (missing(by)) {
+      if (is.null(by)) {
         return(private$by)
       }
       check_string(by, allow("null"), arg = ".by")
@@ -86,7 +86,7 @@ StatusSetterPlume <- R6Class(
     #' @param .by Variable used to specify which authors are main contributors.
     #'   By default, uses authors' id.
     #' @return The class instance.
-    set_main_contributors = function(..., .roles = NULL, .by) {
+    set_main_contributors = function(..., .roles = NULL, .by = NULL) {
       private$set_ranks(..., .roles = .roles, .by = .by)
     }
   ),
@@ -123,7 +123,7 @@ StatusSetterPlumeQuarto <- R6Class(
     #' @param .by Variable used to specify which authors contributed equally to
     #'   the work. By default, uses authors' id.
     #' @return The class instance.
-    set_cofirst_authors = function(..., .by) {
+    set_cofirst_authors = function(..., .by = NULL) {
       private$set_status("equal_contributor", ..., .by = .by)
     },
 
@@ -139,7 +139,7 @@ StatusSetterPlumeQuarto <- R6Class(
     #'
     #'   Please use the `.by` parameter instead.
     #' @return The class instance.
-    set_equal_contributor = function(..., .by, by = deprecated()) {
+    set_equal_contributor = function(..., .by = NULL, by = deprecated()) {
       lifecycle::deprecate_warn(
         "0.2.0",
         "set_equal_contributor()",
@@ -158,7 +158,7 @@ StatusSetterPlumeQuarto <- R6Class(
     #'
     #'   Please use the `.by` parameter instead.
     #' @return The class instance.
-    set_deceased = function(..., .by, by = deprecated()) {
+    set_deceased = function(..., .by = NULL, by = deprecated()) {
       private$set_status("deceased", ..., .by = .by, by = by)
     }
   )

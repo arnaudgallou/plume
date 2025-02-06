@@ -35,7 +35,7 @@ Internal class extending \code{StatusSetter} for \code{Plume}.
 Force one or more contributors' names to appear first in the
 contribution list.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlume$set_main_contributors(..., .roles = NULL, .by)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlume$set_main_contributors(..., .roles = NULL, .by = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

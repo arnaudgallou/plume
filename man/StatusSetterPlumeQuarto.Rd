@@ -36,7 +36,7 @@ Internal class extending \code{StatusSetter} for \code{PlumeQuarto}.
 \subsection{Method \code{set_cofirst_authors()}}{
 Set co-first authors.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_cofirst_authors(..., .by)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_cofirst_authors(..., .by = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -63,7 +63,11 @@ The class instance.
 
 This method has been deprecated in favour of \code{set_cofirst_authors()}.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_equal_contributor(..., .by, by = deprecated())}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_equal_contributor(
+  ...,
+  .by = NULL,
+  by = deprecated()
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -92,7 +96,7 @@ The class instance.
 \subsection{Method \code{set_deceased()}}{
 Set deceased authors.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_deceased(..., .by, by = deprecated())}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_deceased(..., .by = NULL, by = deprecated())}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
