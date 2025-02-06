@@ -169,13 +169,14 @@ Plume <- R6Class(
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
       check_args("bool", quos(compact, icon))
       check_string(sep, allow("empty"))
-      private$check_col("orcid")
-      out <- drop_na(private$plume, "orcid")
+      col <- private$pick("orcid")
+      private$check_col(col)
+      out <- drop_na(private$plume, all_of(col))
       if (icon) {
-        out <- add_orcid_icons(out, private$orcid_icon)
+        out <- add_orcid_icons(out, col, private$orcid_icon)
       }
-      out <- add_orcid_links(out, "orcid", compact)
-      cols <- c(private$pick("literal_name"), predot("orcid"))
+      out <- add_orcid_links(out, col, compact)
+      cols <- c(private$pick("literal_name"), predot(col))
       out <- collapse_cols(out, cols, sep)
       as_plm(out)
     },

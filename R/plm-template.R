@@ -30,7 +30,7 @@ plm_template <- function(minimal = TRUE, role_cols = credit_roles(), credit_role
 }
 
 get_template_vars <- function(minimal, role_cols) {
-  vars <- list_fetch_all(.names, "primaries", "orcid", squash = FALSE)
+  vars <- list_fetch_all(.names, "primaries", squash = FALSE)
   vars <- c(vars, get_secondaries(minimal), get_nestables())
   vars <- recycle_to_names(NA_character_, vars)
   if (!is.null(role_cols)) {
@@ -41,7 +41,7 @@ get_template_vars <- function(minimal, role_cols) {
 
 get_secondaries <- function(minimal) {
   if (minimal) {
-    return(list(email = "email"))
+    return(list(orcid = "orcid", email = "email"))
   }
   list_fetch(.names, "secondaries")
 }

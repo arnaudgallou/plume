@@ -36,7 +36,7 @@ add_suffixes <- function(data, cols, symbols) {
         return()
       }
       data <<- switch(key,
-        orcid = add_orcid_icons(data, value),
+        orcid = add_orcid_icons(data, key, value),
         add_symbols(data, .cols[[key]], value)
       )
     })
@@ -54,8 +54,7 @@ add_symbols <- function(data, col, symbols) {
   data
 }
 
-add_orcid_icons <- function(data, orcid) {
-  col <- unstructure(orcid)
+add_orcid_icons <- function(data, col, orcid) {
   data[predot(col)] <- make_orcid_icon(data[[col]], attributes(orcid))
   data
 }

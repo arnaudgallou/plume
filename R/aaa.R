@@ -11,6 +11,7 @@
       family_name = "family_name"
     ),
     secondaries = list(
+      orcid = "orcid",
       email = "email",
       phone = "phone",
       fax = "fax",
@@ -23,7 +24,6 @@
     )
   ),
   protected = list(
-    orcid = "orcid",
     crt = list(
       conceptualization = "Conceptualization",
       data_curation = "Data curation",
