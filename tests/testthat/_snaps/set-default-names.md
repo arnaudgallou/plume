@@ -14,7 +14,8 @@
         ..$ primaries  :List of 2
         .. ..$ given_name : chr "prénom"
         .. ..$ family_name: chr "nom"
-        ..$ secondaries:List of 4
+        ..$ secondaries:List of 5
+        .. ..$ orcid: chr "orcid"
         .. ..$ email: chr "courriel"
         .. ..$ phone: chr "téléphone"
         .. ..$ fax  : chr "fax"
@@ -23,9 +24,8 @@
         .. ..$ affiliation: chr "affiliation"
         .. ..$ role       : chr "role"
         .. ..$ note       : chr "note"
-       $ protected:List of 2
-        ..$ orcid: chr "orcid"
-        ..$ crt  :List of 14
+       $ protected:List of 1
+        ..$ crt:List of 14
         .. ..$ conceptualization: chr "Conceptualization"
         .. ..$ data_curation    : chr "Data curation"
         .. ..$ analysis         : chr "Formal analysis"
