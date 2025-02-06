@@ -42,7 +42,7 @@ Internal class that manages authors' status.
 \subsection{Method \code{set_corresponding_authors()}}{
 Set corresponding authors.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$set_corresponding_authors(..., .by, by = deprecated())}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$set_corresponding_authors(..., .by = NULL, by = deprecated())}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
