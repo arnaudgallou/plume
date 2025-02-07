@@ -1,11 +1,10 @@
 # the `by` parameter is deprecated
 
     Code
-      aut <- Plume$new(basic_df)
       aut$set_corresponding_authors(zip, by = "given_name")
     Condition
-      Warning:
-      The `by` argument of `set_corresponding_author()` is deprecated as of plume 0.2.0.
+      Error:
+      ! The `by` argument of `set_corresponding_author()` was deprecated in plume 0.2.0 and is now defunct.
       i Please use the `.by` argument instead.
 
 # set_equal_contributor() is deprecated

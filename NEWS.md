@@ -12,6 +12,8 @@
 
 * The `format` parameter in `$get_author_list()`, deprecated in 0.2.1, is now defunct.
 
+* The `by` parameter in `$set_*()` methods, deprecated in 0.2.0, is now defunct.
+
 # plume 0.2.5
 
 * `$get_author_list(suffix =)` is now slightly more flexible and will try less hard to sanitise author list suffixes (#90).

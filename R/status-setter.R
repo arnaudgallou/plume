@@ -42,8 +42,11 @@ StatusSetter <- R6Class(
       if (lifecycle::is_present(by)) {
         call <- if (col == "corresponding") "corresponding_author" else col
         call <- glue("set_{call}")
-        lifecycle::deprecate_warn("0.2.0", glue("{call}(by)"), glue("{call}(.by)"))
-        .by <- by
+        lifecycle::deprecate_stop(
+          "0.2.0",
+          glue("{call}(by)"),
+          glue("{call}(.by)")
+        )
       }
       by <- private$process_by(.by)
       binder$bind(private$plume[[by]])

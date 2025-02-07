@@ -52,11 +52,11 @@ test_that("sets status to selected authors", {
 # Deprecation ----
 
 test_that("the `by` parameter is deprecated", {
-  expect_snapshot({
-    aut <- Plume$new(basic_df)
-    aut$set_corresponding_authors(zip, by = "given_name")
-  })
-  expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
+  aut <- Plume$new(basic_df)
+  expect_snapshot(
+    aut$set_corresponding_authors(zip, by = "given_name"),
+    error = TRUE
+  )
 })
 
 test_that("set_equal_contributor() is deprecated", {
