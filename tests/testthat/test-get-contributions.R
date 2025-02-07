@@ -182,14 +182,13 @@ test_that("set_main_contributors() ranks contributors", {
 # Deprecation ----
 
 test_that("specifying roles inside columns is deprecated", {
-  expect_snapshot({
+  expect_snapshot(error = TRUE, {
     aut <- Plume$new(data.frame(
       given_name = "Zip",
       family_name = "Zap",
       role = "a"
     ))
   })
-  expect_equal(aut$get_contributions(), "a: Z.Z.")
 })
 
 test_that("`credit_roles = TRUE` is deprecated", {

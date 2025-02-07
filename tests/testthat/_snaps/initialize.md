@@ -95,17 +95,6 @@
       Error:
       ! `interword_spacing` must be `TRUE` or `FALSE`.
     Code
-      (expect_error({
-        withr::local_options(lifecycle_verbosity = "quiet")
-        Plume$new(data.frame(given_name = "x", family_name = "y", role_1 = c("a", ""),
-        role_2 = c("b", "c")))
-      }))
-    Output
-      <error/rlang_error>
-      Error:
-      ! Multiple roles found in column `role_2`.
-      i Roles must be unique within a column.
-    Code
       (expect_error(Plume$new(basic_df, roles = 1)))
     Output
       <error/rlang_error>

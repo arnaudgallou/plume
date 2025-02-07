@@ -70,7 +70,7 @@ PlumeHandler <- R6Class(
 
     mount = function() {
       private$build()
-      for (var in private$pick("nestables")) {
+      for (var in private$pick("nestables", "role")) {
         if (private$is_nestable(var)) {
           private$nest(var)
         }
@@ -80,7 +80,6 @@ PlumeHandler <- R6Class(
     build = function() {
       private$mold()
       private$sanitise()
-      private$check_roles()
       private$add_author_names()
       if (!is.null(private$roles)) {
         private$process_roles()
@@ -207,23 +206,6 @@ PlumeHandler <- R6Class(
         glue("Missing author name found in position {names(missing_name)}."),
         i = "All authors must have a given and family name."
       ))
-    },
-
-    check_roles = function() {
-      role <- private$pick("role")
-      if (!private$has_col(begins_with(role))) {
-        return()
-      }
-      roles <- select(private$plume, starts_with(role))
-      roles <- map(roles, \(x) length(condense(x)))
-      multiple_roles <- seek(roles, \(x) x > 1L)
-      if (is.null(multiple_roles)) {
-        return()
-      }
-      abort(c(
-        glue("Multiple roles found in column `{names(multiple_roles)}`."),
-        i = "Roles must be unique within a column."
-      ))
     }
   )
 )
@@ -238,6 +220,15 @@ PlumeHandler$set("private", "check_role_system", function() {
   if (!all(have_explicit_roles)) {
     return()
   }
-  print_deprecation("explicit_roles")
-  private$plume <- select(private$plume, !any_of(names(private$roles)))
+  lifecycle::deprecate_stop(
+    "0.2.0",
+    what = I("Defining explicit roles in the input data"),
+    with = "new(roles)",
+    details = paste0(
+      "See <",
+      "https://arnaudgallou.github.io/plume/articles/plume.html",
+      "#defining-roles-and-contributors",
+      ">."
+    )
+  )
 })

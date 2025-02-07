@@ -4,7 +4,8 @@
       id = "id",
       initials = "initials",
       literal_name = "literal_name",
-      corresponding = "corresponding"
+      corresponding = "corresponding",
+      role = "role"
     ),
     primaries = list(
       given_name = "given_name",
@@ -19,7 +20,6 @@
     ),
     nestables = list(
       affiliation = "affiliation",
-      role = "role",
       note = "note"
     )
   ),
@@ -58,27 +58,7 @@
   )
 )
 
-.deprecations <- list(
-  explicit_roles = \() {
-    lifecycle::deprecate_warn(
-      "0.2.0",
-      what = I("Defining explicit roles in the input data"),
-      with = "new(roles)",
-      details = paste0(
-        "See <",
-        "https://arnaudgallou.github.io/plume/articles/plume.html",
-        "#defining-roles-and-contributors",
-        ">."
-      )
-    )
-  }
-)
-
 link <- function(id) {
   els <- .links[[id]]
   md_link(els[[2]], els[[1]])
-}
-
-print_deprecation <- function(id, ...) {
-  do.call(.deprecations[[id]], list(...))
 }
