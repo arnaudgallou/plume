@@ -34,10 +34,6 @@ make_initials <- function(x, dot = FALSE) {
   out
 }
 
-discard <- function(x, ...) {
-  x[!vec_in(x, c(...))]
-}
-
 vec_drop_na <- function(x) {
   x[!is.na(x)]
 }

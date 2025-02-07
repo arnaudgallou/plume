@@ -16,6 +16,8 @@
 
 * The `$set_equal_contributor()` method, deprecated in 0.2.0, is now defunct.
 
+* `everyone_but()`, deprecated in 0.2.0, is now defunct.
+
 # plume 0.2.5
 
 * `$get_author_list(suffix =)` is now slightly more flexible and will try less hard to sanitise author list suffixes (#90).

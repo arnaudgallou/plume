@@ -16,6 +16,14 @@
       ! `set_equal_contributor()` was deprecated in plume 0.2.0 and is now defunct.
       i Please use `set_cofirst_authors()` instead.
 
+# everyone_but() is deprecated
+
+    Code
+      aut$set_corresponding_authors(everyone_but(ric))
+    Condition
+      Error:
+      ! `everyone_but()` was deprecated in plume 0.2.0 and is now defunct.
+
 # set_*() methods give meaningful error messages
 
     Code
@@ -88,18 +96,8 @@
 # everyone*() selectors error if used in a wrong context
 
     Code
-      (expect_error(everyone()))
-    Output
-      <error/rlang_error>
+      everyone()
+    Condition
       Error:
       ! `everyone()` must be used within a *status setter* method.
-    Code
-      (expect_error(everyone_but()))
-    Condition
-      Warning:
-      `everyone_but()` was deprecated in plume 0.2.0.
-    Output
-      <error/rlang_error>
-      Error:
-      ! `everyone_but()` must be used within a *status setter* method.
 
