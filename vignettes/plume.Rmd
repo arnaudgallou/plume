@@ -108,13 +108,7 @@ make_table_vars("secondaries")
 make_table_vars("nestables")
 ```
 
-<a name="constants" />
-
-**Constants**: optional names that can be provided in the input data. These names are standardised and must be provided as is.
-
-```{r, echo = FALSE}
-make_table_vars("protected")
-```
+**Roles**: optional user-defined variables describing authors' roles (see [Defining roles and contributors](#defining_roles) for details). By default, uses CRediT roles as defined by `credit_roles()`.
 
 **Internals**: variables created internally. These variables don't need to be provided in the input data and are ignored if supplied. You shouldn't worry much about these variables unless you want to customise names or extend plume classes with new default names.
 
@@ -141,6 +135,8 @@ Plume$new(
 )
 ```
 
+<a name="defining_roles" />
+
 ## Defining roles and contributors
 
 You can add roles by creating specific role columns in the input data and indicate contributors using `1`:
@@ -154,7 +150,7 @@ tibble::tibble(
 )
 ```
 
-plume uses the `r plume:::link("crt")` (CRediT) by default (assuming the input data contains the [appropriate columns](#constants)). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys identify role columns and values define the actual roles to use.
+plume uses the `r plume:::link("crt")` (CRediT) by default, assuming the input data contains the appropriate columns (see `credit_roles()` for details). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys identify role columns and values define the actual roles to use.
 
 ```{r, eval = FALSE}
 Plume$new(data, roles = c(
