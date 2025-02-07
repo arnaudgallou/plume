@@ -43,7 +43,11 @@
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
 <ul><li><p>The <code>orcid</code> variable is now customisable (<a href="https://github.com/arnaudgallou/plume/issues/96" class="external-link">#96</a>).</p></li>
 <li><p>New helper <code><a href="../reference/as_lines.html">as_lines()</a></code> to output elements returned by <code>Plume</code>’s methods on multiple lines when rendering an R Markdown or Quarto document.</p></li>
+</ul><div class="section level3">
+<h3 id="lifecycle-changes-development-version">Lifecycle changes<a class="anchor" aria-label="anchor" href="#lifecycle-changes-development-version"></a></h3>
+<ul><li>All functionalities deprecated in 0.2.1 and earlier now throw an error. This includes the <code>credit_roles</code> parameter in <code><a href="../reference/plm_template.html">plm_template()</a></code> and <code>$new()</code>, the <code>format</code> parameter in <code>$get_author_list()</code>, the <code>by</code> parameter in <code>$set_*()</code> methods, <code><a href="../reference/everyone.html">everyone_but()</a></code>, <code>$set_equal_contributor()</code> and the use of explicit roles in the input data.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.5" id="plume-025">plume 0.2.5<a class="anchor" aria-label="anchor" href="#plume-025"></a></h2><p class="text-muted">CRAN release: 2024-09-02</p>
 <ul><li><p><code>$get_author_list(suffix =)</code> is now slightly more flexible and will try less hard to sanitise author list suffixes (<a href="https://github.com/arnaudgallou/plume/issues/90" class="external-link">#90</a>).</p></li>
