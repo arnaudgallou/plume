@@ -4,6 +4,10 @@
 
 * New helper `as_lines()` to output elements returned by `Plume`'s methods on multiple lines when rendering an R Markdown or Quarto document.
 
+## Lifecycle changes
+
+* The `credit_roles` parameter in `plm_template()` and `Plume$new()`, deprecated in 0.2.0, is now defunct.
+
 # plume 0.2.5
 
 * `$get_author_list(suffix =)` is now slightly more flexible and will try less hard to sanitise author list suffixes (#90).

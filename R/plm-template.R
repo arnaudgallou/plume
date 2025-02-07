@@ -22,8 +22,11 @@ plm_template <- function(minimal = TRUE, role_cols = credit_roles(), credit_role
   check_args("bool", quos(minimal, credit_roles))
   check_character(role_cols, allow("null", "unnamed"))
   if (credit_roles) {
-    print_deprecation("credit_roles", "plm_template", param = "role_cols")
-    role_cols <- credit_roles()
+    lifecycle::deprecate_stop(
+      "0.2.0",
+      "plm_template(credit_roles)",
+      I("`role_cols = credit_roles()`")
+    )
   }
   vars <- get_template_vars(minimal, role_cols)
   tibble(!!!vars, .rows = 0L)

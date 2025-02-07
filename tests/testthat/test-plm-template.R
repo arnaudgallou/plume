@@ -37,13 +37,7 @@ test_that("role columns are of type numeric", {
 # Deprecation ----
 
 test_that("`credit_roles = TRUE` is deprecated", {
-  expect_snapshot({
-    tbl <- plm_template(credit_roles = TRUE)
-  })
-  expect_named(tbl, c(
-    "given_name", "family_name", "email", "orcid",
-    "affiliation_1", "affiliation_2", "note", names(credit_roles())
-  ), ignore.order = TRUE)
+  expect_snapshot(plm_template(credit_roles = TRUE), error = TRUE)
 })
 
 # Errors ----
@@ -58,9 +52,6 @@ test_that("plm_template() gives meaningful error messages", {
     ))
     (expect_error(
       plm_template(role_cols = c("foo", "foo"))
-    ))
-    (expect_error(
-      plm_template(credit_roles = 1)
     ))
   })
 })

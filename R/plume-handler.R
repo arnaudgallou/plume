@@ -30,8 +30,13 @@ PlumeHandler <- R6Class(
       if (!interword_spacing) {
         private$interword_spacing <- ""
       }
-      private$crt <- credit_roles
-      private$check_param_credit_roles()
+      if (credit_roles) {
+        lifecycle::deprecate_stop(
+          "0.2.0",
+          "new(credit_roles)",
+          I("`roles = credit_roles()`")
+        )
+      }
       private$roles <- roles
       private$check_role_system()
       if (!is.null(names)) {
@@ -60,7 +65,6 @@ PlumeHandler <- R6Class(
     plume_names = .names,
     initials_given_name = NULL,
     family_name_first = NULL,
-    crt = NULL,
     roles = NULL,
     interword_spacing = " ",
 
@@ -78,20 +82,18 @@ PlumeHandler <- R6Class(
       private$sanitise()
       private$check_roles()
       private$add_author_names()
-      if (!is.null(private$roles) || private$crt) {
+      if (!is.null(private$roles)) {
         private$process_roles()
       }
       private$add_ids()
     },
 
     mold = function(...) {
-      vars <- private$get_vars()
       private$plume <- select(
         private$plume,
-        all_of(vars$primaries),
-        any_of(c(vars$secondaries, names(private$roles))),
-        starts_with(vars$nestables),
-        if (private$crt) any_of(names(list_fetch(.names, "crt"))),
+        all_of(private$pick("primaries")),
+        any_of(c(private$pick("secondaries"), names(private$roles))),
+        starts_with(private$pick("nestables")),
         ...
       )
     },
@@ -106,24 +108,8 @@ PlumeHandler <- R6Class(
       private$plume <- nest(out, !!col := any_of(col))
     },
 
-    get_vars = function() {
-      nestables <- private$pick("affiliation", "note", "degree")
-      if (!private$crt) {
-        nestables <- c(nestables, private$pick("role"))
-      }
-      list(
-        primaries = private$pick("primaries"),
-        secondaries = private$pick("secondaries", "orcid"),
-        nestables = nestables
-      )
-    },
-
     process_roles = function() {
-      if (!is.null(private$roles)) {
-        roles <- private$roles
-      } else {
-        roles <- list_fetch(.names, "crt")
-      }
+      roles <- private$roles
       roles <- roles[names(roles) %in% names(private$plume)]
       out <- assign_roles(private$plume, roles)
       private$plume <- rename_roles(out, roles, key = private$pick("role"))
@@ -241,13 +227,6 @@ PlumeHandler <- R6Class(
     }
   )
 )
-
-PlumeHandler$set("private", "check_param_credit_roles", function() {
-  if (!private$crt) {
-    return()
-  }
-  print_deprecation("credit_roles", caller = "new", param = "roles")
-})
 
 PlumeHandler$set("private", "check_role_system", function() {
   var <- private$pick("role")

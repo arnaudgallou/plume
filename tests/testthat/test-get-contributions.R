@@ -193,13 +193,12 @@ test_that("specifying roles inside columns is deprecated", {
 })
 
 test_that("`credit_roles = TRUE` is deprecated", {
-  expect_snapshot({
-    aut <- Plume$new(
+  expect_snapshot(error = TRUE, {
+    Plume$new(
       data.frame(given_name = "Zip", family_name = "Zap", analysis = 1),
       credit_roles = TRUE
     )
   })
-  expect_equal(aut$get_contributions(), "Formal analysis: Z.Z.")
 })
 
 # Errors ----

@@ -11,11 +11,11 @@
 # `credit_roles = TRUE` is deprecated
 
     Code
-      aut <- Plume$new(data.frame(given_name = "Zip", family_name = "Zap", analysis = 1),
+      Plume$new(data.frame(given_name = "Zip", family_name = "Zap", analysis = 1),
       credit_roles = TRUE)
     Condition
-      Warning:
-      The `credit_roles` argument of `new()` is deprecated as of plume 0.2.0.
+      Error:
+      ! The `credit_roles` argument of `new()` was deprecated in plume 0.2.0 and is now defunct.
       i Please use `roles = credit_roles()` instead.
 
 # get_contributions() gives meaningful error messages
