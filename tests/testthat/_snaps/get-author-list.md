@@ -10,10 +10,10 @@
 # `format` is deprecated
 
     Code
-      author_list <- aut$get_author_list(format = "a")
+      aut$get_author_list(format = "a")
     Condition
-      Warning:
-      The `format` argument of `get_author_list()` is deprecated as of plume 0.2.0.
+      Error:
+      ! The `format` argument of `get_author_list()` was deprecated in plume 0.2.1 and is now defunct.
       i Please use the `suffix` argument instead.
 
 # get_author_list() gives meaningful error messages
