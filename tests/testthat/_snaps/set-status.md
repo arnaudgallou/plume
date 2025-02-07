@@ -1,29 +1,3 @@
-# the `by` parameter is deprecated
-
-    Code
-      aut$set_corresponding_authors(zip, by = "given_name")
-    Condition
-      Error:
-      ! The `by` argument of `set_corresponding_author()` was deprecated in plume 0.2.0 and is now defunct.
-      i Please use the `.by` argument instead.
-
-# set_equal_contributor() is deprecated
-
-    Code
-      aut$set_equal_contributor(1, 3)
-    Condition
-      Error:
-      ! `set_equal_contributor()` was deprecated in plume 0.2.0 and is now defunct.
-      i Please use `set_cofirst_authors()` instead.
-
-# everyone_but() is deprecated
-
-    Code
-      aut$set_corresponding_authors(everyone_but(ric))
-    Condition
-      Error:
-      ! `everyone_but()` was deprecated in plume 0.2.0 and is now defunct.
-
 # set_*() methods give meaningful error messages
 
     Code

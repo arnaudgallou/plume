@@ -1,12 +1,3 @@
-# `credit_roles = TRUE` is deprecated
-
-    Code
-      plm_template(credit_roles = TRUE)
-    Condition
-      Error:
-      ! The `credit_roles` argument of `plm_template()` was deprecated in plume 0.2.0 and is now defunct.
-      i Please use `role_cols = credit_roles()` instead.
-
 # plm_template() gives meaningful error messages
 
     Code

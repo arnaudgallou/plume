@@ -43,29 +43,6 @@ test_that("sets status to selected authors", {
   }, c(TRUE, FALSE, FALSE))
 })
 
-# Deprecation ----
-
-test_that("the `by` parameter is deprecated", {
-  aut <- Plume$new(basic_df)
-  expect_snapshot(
-    aut$set_corresponding_authors(zip, by = "given_name"),
-    error = TRUE
-  )
-})
-
-test_that("set_equal_contributor() is deprecated", {
-  aut <- PlumeQuarto$new(basic_df, temp_file())
-  expect_snapshot(aut$set_equal_contributor(1, 3), error = TRUE)
-})
-
-test_that("everyone_but() is deprecated", {
-  aut <- PlumeQuarto$new(basic_df, temp_file())
-  expect_snapshot(
-    aut$set_corresponding_authors(everyone_but(ric)),
-    error = TRUE
-  )
-})
-
 # Errors ----
 
 test_that("set_*() methods give meaningful error messages", {

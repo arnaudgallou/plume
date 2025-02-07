@@ -112,13 +112,6 @@ test_that("get_author_list() makes ORCID icons", {
   expect_snapshot(aut$get_author_list("o"), transform = scrub_icon_path)
 })
 
-# Deprecation ----
-
-test_that("`format` is deprecated", {
-  aut <- Plume$new(basic_df)
-  expect_snapshot(aut$get_author_list(format = "a"), error = TRUE)
-})
-
 # Errors ----
 
 test_that("get_author_list() gives meaningful error messages", {

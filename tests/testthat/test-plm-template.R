@@ -34,12 +34,6 @@ test_that("role columns are of type numeric", {
   expect_equal(get_numeric_cols(df), "a")
 })
 
-# Deprecation ----
-
-test_that("`credit_roles = TRUE` is deprecated", {
-  expect_snapshot(plm_template(credit_roles = TRUE), error = TRUE)
-})
-
 # Errors ----
 
 test_that("plm_template() gives meaningful error messages", {

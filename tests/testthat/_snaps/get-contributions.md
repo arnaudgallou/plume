@@ -1,23 +1,3 @@
-# specifying roles inside columns is deprecated
-
-    Code
-      aut <- Plume$new(data.frame(given_name = "Zip", family_name = "Zap", role = "a"))
-    Condition
-      Error:
-      ! Defining explicit roles in the input data was deprecated in plume 0.2.0 and is now defunct.
-      i Please use the `roles` argument of `new()` instead.
-      i See <https://arnaudgallou.github.io/plume/articles/plume.html#defining-roles-and-contributors>.
-
-# `credit_roles = TRUE` is deprecated
-
-    Code
-      Plume$new(data.frame(given_name = "Zip", family_name = "Zap", analysis = 1),
-      credit_roles = TRUE)
-    Condition
-      Error:
-      ! The `credit_roles` argument of `new()` was deprecated in plume 0.2.0 and is now defunct.
-      i Please use `roles = credit_roles()` instead.
-
 # get_contributions() gives meaningful error messages
 
     Code
