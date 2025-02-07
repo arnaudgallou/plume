@@ -8,6 +8,8 @@
 
 * The `credit_roles` parameter in `plm_template()` and `Plume$new()`, deprecated in 0.2.0, is now defunct.
 
+* Defining explicit roles in the input data, deprecated in 0.2.0, is now defunct. Roles must now be specified using the `roles` parameter in `Plume$new()` and `PlumeQuarto$new()`.
+
 # plume 0.2.5
 
 * `$get_author_list(suffix =)` is now slightly more flexible and will try less hard to sanitise author list suffixes (#90).
