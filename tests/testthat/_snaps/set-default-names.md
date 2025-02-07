@@ -3,43 +3,26 @@
     Code
       str(nms)
     Output
-      List of 2
-       $ public   :List of 4
-        ..$ internals  :List of 6
-        .. ..$ id              : chr "id"
-        .. ..$ initials        : chr "initiales"
-        .. ..$ literal_name    : chr "nom_complet"
-        .. ..$ corresponding   : chr "correspondant"
-        .. ..$ role            : chr "role"
-        .. ..$ contributor_rank: chr "rang_contributeur"
-        ..$ primaries  :List of 2
-        .. ..$ given_name : chr "prénom"
-        .. ..$ family_name: chr "nom"
-        ..$ secondaries:List of 5
-        .. ..$ orcid: chr "orcid"
-        .. ..$ email: chr "courriel"
-        .. ..$ phone: chr "téléphone"
-        .. ..$ fax  : chr "fax"
-        .. ..$ url  : chr "url"
-        ..$ nestables  :List of 2
-        .. ..$ affiliation: chr "affiliation"
-        .. ..$ note       : chr "note"
-       $ protected:List of 1
-        ..$ crt:List of 14
-        .. ..$ conceptualization: chr "Conceptualization"
-        .. ..$ data_curation    : chr "Data curation"
-        .. ..$ analysis         : chr "Formal analysis"
-        .. ..$ funding          : chr "Funding acquisition"
-        .. ..$ investigation    : chr "Investigation"
-        .. ..$ methodology      : chr "Methodology"
-        .. ..$ administration   : chr "Project administration"
-        .. ..$ resources        : chr "Resources"
-        .. ..$ software         : chr "Software"
-        .. ..$ supervision      : chr "Supervision"
-        .. ..$ validation       : chr "Validation"
-        .. ..$ visualization    : chr "Visualization"
-        .. ..$ writing          : chr "Writing - original draft"
-        .. ..$ editing          : chr "Writing - review & editing"
+      List of 4
+       $ internals  :List of 6
+        ..$ id              : chr "id"
+        ..$ initials        : chr "initiales"
+        ..$ literal_name    : chr "nom_complet"
+        ..$ corresponding   : chr "correspondant"
+        ..$ role            : chr "role"
+        ..$ contributor_rank: chr "rang_contributeur"
+       $ primaries  :List of 2
+        ..$ given_name : chr "prénom"
+        ..$ family_name: chr "nom"
+       $ secondaries:List of 5
+        ..$ orcid: chr "orcid"
+        ..$ email: chr "courriel"
+        ..$ phone: chr "téléphone"
+        ..$ fax  : chr "fax"
+        ..$ url  : chr "url"
+       $ nestables  :List of 2
+        ..$ affiliation: chr "affiliation"
+        ..$ note       : chr "note"
 
 # set_default_names() gives meaningful error messages
 

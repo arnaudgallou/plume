@@ -1,6 +1,7 @@
-.names_plume <- list_modify(.names, public = list(
+.names_plume <- list_modify(
+  .names,
   internals = list(contributor_rank = "contributor_rank")
-))
+)
 
 .symbols <- list(
   affiliation = NULL,

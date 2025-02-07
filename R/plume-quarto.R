@@ -1,4 +1,5 @@
-.names_quarto <- list_modify(.names, public = list(
+.names_quarto <- list_modify(
+  .names,
   internals = list(
     deceased = "deceased",
     equal_contributor = "equal_contributor"
@@ -11,7 +12,7 @@
   nestables = list(
     degree = "degree"
   )
-))
+)
 
 #' @title PlumeQuarto class
 #' @description Class that pushes author metadata in YAML files or the YAML

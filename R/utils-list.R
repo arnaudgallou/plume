@@ -26,9 +26,6 @@ list_fetch <- function(x, name) {
 
 list_replace <- function(x, y) {
   for (i in names(x)) {
-    if (i == "protected") {
-      next
-    }
     x_i <- x[[i]]
     if (is.list(x_i)) {
       list_slice(x, i) <- list_replace(x_i, y)
