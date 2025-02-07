@@ -5,11 +5,12 @@
     Output
       List of 2
        $ public   :List of 4
-        ..$ internals  :List of 5
+        ..$ internals  :List of 6
         .. ..$ id              : chr "id"
         .. ..$ initials        : chr "initiales"
         .. ..$ literal_name    : chr "nom_complet"
         .. ..$ corresponding   : chr "correspondant"
+        .. ..$ role            : chr "role"
         .. ..$ contributor_rank: chr "rang_contributeur"
         ..$ primaries  :List of 2
         .. ..$ given_name : chr "prénom"
@@ -20,9 +21,8 @@
         .. ..$ phone: chr "téléphone"
         .. ..$ fax  : chr "fax"
         .. ..$ url  : chr "url"
-        ..$ nestables  :List of 3
+        ..$ nestables  :List of 2
         .. ..$ affiliation: chr "affiliation"
-        .. ..$ role       : chr "role"
         .. ..$ note       : chr "note"
        $ protected:List of 1
         ..$ crt:List of 14

@@ -30,8 +30,13 @@ PlumeHandler <- R6Class(
       if (!interword_spacing) {
         private$interword_spacing <- ""
       }
-      private$crt <- credit_roles
-      private$check_param_credit_roles()
+      if (credit_roles) {
+        lifecycle::deprecate_stop(
+          "0.2.0",
+          "new(credit_roles)",
+          I("`roles = credit_roles()`")
+        )
+      }
       private$roles <- roles
       private$check_role_system()
       if (!is.null(names)) {
@@ -60,13 +65,12 @@ PlumeHandler <- R6Class(
     plume_names = .names,
     initials_given_name = NULL,
     family_name_first = NULL,
-    crt = NULL,
     roles = NULL,
     interword_spacing = " ",
 
     mount = function() {
       private$build()
-      for (var in private$pick("nestables")) {
+      for (var in private$pick("nestables", "role")) {
         if (private$is_nestable(var)) {
           private$nest(var)
         }
@@ -76,22 +80,19 @@ PlumeHandler <- R6Class(
     build = function() {
       private$mold()
       private$sanitise()
-      private$check_roles()
       private$add_author_names()
-      if (!is.null(private$roles) || private$crt) {
+      if (!is.null(private$roles)) {
         private$process_roles()
       }
       private$add_ids()
     },
 
     mold = function(...) {
-      vars <- private$get_vars()
       private$plume <- select(
         private$plume,
-        all_of(vars$primaries),
-        any_of(c(vars$secondaries, names(private$roles))),
-        starts_with(vars$nestables),
-        if (private$crt) any_of(names(list_fetch(.names, "crt"))),
+        all_of(private$pick("primaries")),
+        any_of(c(private$pick("secondaries"), names(private$roles))),
+        starts_with(private$pick("nestables")),
         ...
       )
     },
@@ -106,24 +107,8 @@ PlumeHandler <- R6Class(
       private$plume <- nest(out, !!col := any_of(col))
     },
 
-    get_vars = function() {
-      nestables <- private$pick("affiliation", "note", "degree")
-      if (!private$crt) {
-        nestables <- c(nestables, private$pick("role"))
-      }
-      list(
-        primaries = private$pick("primaries"),
-        secondaries = private$pick("secondaries", "orcid"),
-        nestables = nestables
-      )
-    },
-
     process_roles = function() {
-      if (!is.null(private$roles)) {
-        roles <- private$roles
-      } else {
-        roles <- list_fetch(.names, "crt")
-      }
+      roles <- private$roles
       roles <- roles[names(roles) %in% names(private$plume)]
       out <- assign_roles(private$plume, roles)
       private$plume <- rename_roles(out, roles, key = private$pick("role"))
@@ -221,33 +206,9 @@ PlumeHandler <- R6Class(
         glue("Missing author name found in position {names(missing_name)}."),
         i = "All authors must have a given and family name."
       ))
-    },
-
-    check_roles = function() {
-      role <- private$pick("role")
-      if (!private$has_col(begins_with(role))) {
-        return()
-      }
-      roles <- select(private$plume, starts_with(role))
-      roles <- map(roles, \(x) length(condense(x)))
-      multiple_roles <- seek(roles, \(x) x > 1L)
-      if (is.null(multiple_roles)) {
-        return()
-      }
-      abort(c(
-        glue("Multiple roles found in column `{names(multiple_roles)}`."),
-        i = "Roles must be unique within a column."
-      ))
     }
   )
 )
-
-PlumeHandler$set("private", "check_param_credit_roles", function() {
-  if (!private$crt) {
-    return()
-  }
-  print_deprecation("credit_roles", caller = "new", param = "roles")
-})
 
 PlumeHandler$set("private", "check_role_system", function() {
   var <- private$pick("role")
@@ -259,6 +220,15 @@ PlumeHandler$set("private", "check_role_system", function() {
   if (!all(have_explicit_roles)) {
     return()
   }
-  print_deprecation("explicit_roles")
-  private$plume <- select(private$plume, !any_of(names(private$roles)))
+  lifecycle::deprecate_stop(
+    "0.2.0",
+    what = I("Defining explicit roles in the input data"),
+    with = "new(roles)",
+    details = paste0(
+      "See <",
+      "https://arnaudgallou.github.io/plume/articles/plume.html",
+      "#defining-roles-and-contributors",
+      ">."
+    )
+  )
 })

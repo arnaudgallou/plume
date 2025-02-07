@@ -87,7 +87,7 @@ test_that("`affiliation`, `role` and `note` columns are nestable", {
   }
 
   cols <- get_nested_cols(aut$get_plume())
-  expect_equal(cols, c("affiliation", "role", "note"))
+  expect_equal(cols, c("affiliation", "note", "role"))
 })
 
 test_that("single nestables don't nest", {
@@ -243,14 +243,6 @@ test_that("initialize() gives meaningful error messages", {
     (expect_error(
       Plume$new(basic_df, interword_spacing = 1)
     ))
-    (expect_error({
-      withr::local_options(lifecycle_verbosity = "quiet")
-      Plume$new(data.frame(
-        given_name = "x", family_name = "y",
-        role_1 = c("a", ""),
-        role_2 = c("b", "c")
-      ))
-    }))
     (expect_error(
       Plume$new(basic_df, roles = 1)
     ))

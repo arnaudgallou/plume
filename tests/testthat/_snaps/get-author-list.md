@@ -7,15 +7,6 @@
       Ric Rac[\hspace{3pt}![](orcid.pdf){height=16px}\hspace{3pt}](https://orcid.org/0000-0000-0000-0002)
       Pim-Pam Pom
 
-# `format` is deprecated
-
-    Code
-      author_list <- aut$get_author_list(format = "a")
-    Condition
-      Warning:
-      The `format` argument of `get_author_list()` is deprecated as of plume 0.2.0.
-      i Please use the `suffix` argument instead.
-
 # get_author_list() gives meaningful error messages
 
     Code

@@ -24,7 +24,5 @@ everyone <- function() {
 #'   values is case-insensitive.
 #' @export
 everyone_but <- function(...) {
-  lifecycle::deprecate_warn("0.2.0", "everyone_but()")
-  out <- binder$pull()
-  discard(out, enexprs(...))
+  lifecycle::deprecate_stop("0.2.0", "everyone_but()")
 }
