@@ -6,17 +6,7 @@
 
 ## Lifecycle changes
 
-* The `credit_roles` parameter in `plm_template()` and `Plume$new()`, deprecated in 0.2.0, is now defunct.
-
-* Defining explicit roles in the input data, deprecated in 0.2.0, is now defunct. Roles must now be specified using the `roles` parameter in `Plume$new()` and `PlumeQuarto$new()`.
-
-* The `format` parameter in `$get_author_list()`, deprecated in 0.2.1, is now defunct.
-
-* The `by` parameter in `$set_*()` methods, deprecated in 0.2.0, is now defunct.
-
-* The `$set_equal_contributor()` method, deprecated in 0.2.0, is now defunct.
-
-* `everyone_but()`, deprecated in 0.2.0, is now defunct.
+* All functionalities deprecated in 0.2.1 and earlier now throw an error. This includes the `credit_roles` parameter in `plm_template()` and `$new()`, the `format` parameter in `$get_author_list()`, the `by` parameter in `$set_*()` methods, `everyone_but()`, `$set_equal_contributor()` and the use of explicit roles in the input data.
 
 # plume 0.2.5
 
