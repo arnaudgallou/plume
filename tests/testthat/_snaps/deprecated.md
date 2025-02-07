@@ -1,4 +1,4 @@
-# defunct objects generate informative errors
+# deprecated objects generate informative errors
 
     Code
       aut <- PlumeQuarto$new(basic_df, temp_file())
