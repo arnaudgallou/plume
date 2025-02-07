@@ -10,11 +10,10 @@
 # set_equal_contributor() is deprecated
 
     Code
-      aut <- PlumeQuarto$new(basic_df, temp_file())
       aut$set_equal_contributor(1, 3)
     Condition
-      Warning:
-      `set_equal_contributor()` was deprecated in plume 0.2.0.
+      Error:
+      ! `set_equal_contributor()` was deprecated in plume 0.2.0 and is now defunct.
       i Please use `set_cofirst_authors()` instead.
 
 # set_*() methods give meaningful error messages

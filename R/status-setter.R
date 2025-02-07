@@ -143,12 +143,11 @@ StatusSetterPlumeQuarto <- R6Class(
     #'   Please use the `.by` parameter instead.
     #' @return The class instance.
     set_equal_contributor = function(..., .by = NULL, by = deprecated()) {
-      lifecycle::deprecate_warn(
+      lifecycle::deprecate_stop(
         "0.2.0",
         "set_equal_contributor()",
         "set_cofirst_authors()"
       )
-      private$set_status("equal_contributor", ..., .by = .by, by = by)
     },
 
     #' @description Set deceased authors.

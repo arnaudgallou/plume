@@ -60,11 +60,8 @@ test_that("the `by` parameter is deprecated", {
 })
 
 test_that("set_equal_contributor() is deprecated", {
-  expect_snapshot({
-    aut <- PlumeQuarto$new(basic_df, temp_file())
-    aut$set_equal_contributor(1, 3)
-  })
-  expect_equal(aut$get_plume()$equal_contributor, c(TRUE, FALSE, TRUE))
+  aut <- PlumeQuarto$new(basic_df, temp_file())
+  expect_snapshot(aut$set_equal_contributor(1, 3), error = TRUE)
 })
 
 # Errors ----
