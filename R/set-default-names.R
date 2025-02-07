@@ -7,7 +7,7 @@
 #' @details
 #' Available names are:
 #'
-#' `r wrap(list_fetch_all(.names_plume, "public", "orcid", squash = TRUE), "\x60")`.
+#' `r wrap(squash(.names_plume), "\x60")`.
 #'
 #' Using `.plume_quarto = TRUE` adds `deceased`, `equal_contributor`, `number`,
 #' `dropping_particle` and `acknowledgements`.

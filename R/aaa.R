@@ -1,45 +1,25 @@
 .names <- list(
-  public = list(
-    internals = list(
-      id = "id",
-      initials = "initials",
-      literal_name = "literal_name",
-      corresponding = "corresponding",
-      role = "role"
-    ),
-    primaries = list(
-      given_name = "given_name",
-      family_name = "family_name"
-    ),
-    secondaries = list(
-      orcid = "orcid",
-      email = "email",
-      phone = "phone",
-      fax = "fax",
-      url = "url"
-    ),
-    nestables = list(
-      affiliation = "affiliation",
-      note = "note"
-    )
+  internals = list(
+    id = "id",
+    initials = "initials",
+    literal_name = "literal_name",
+    corresponding = "corresponding",
+    role = "role"
   ),
-  protected = list(
-    crt = list(
-      conceptualization = "Conceptualization",
-      data_curation = "Data curation",
-      analysis = "Formal analysis",
-      funding = "Funding acquisition",
-      investigation = "Investigation",
-      methodology = "Methodology",
-      administration = "Project administration",
-      resources = "Resources",
-      software = "Software",
-      supervision = "Supervision",
-      validation = "Validation",
-      visualization = "Visualization",
-      writing = "Writing - original draft",
-      editing = "Writing - review & editing"
-    )
+  primaries = list(
+    given_name = "given_name",
+    family_name = "family_name"
+  ),
+  secondaries = list(
+    orcid = "orcid",
+    email = "email",
+    phone = "phone",
+    fax = "fax",
+    url = "url"
+  ),
+  nestables = list(
+    affiliation = "affiliation",
+    note = "note"
   )
 )
 
