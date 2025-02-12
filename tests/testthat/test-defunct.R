@@ -1,4 +1,4 @@
-test_that("deprecated objects generate informative errors", {
+test_that("defunct functionalities generate informative errors", {
   expect_snapshot(error = TRUE, {
     aut <- PlumeQuarto$new(basic_df, temp_file())
     aut$set_equal_contributor(1)
