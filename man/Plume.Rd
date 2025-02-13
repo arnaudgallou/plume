@@ -253,19 +253,20 @@ A character vector.
 Get the contact details of corresponding authors.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Plume$get_contact_details(
-  format = "{details} ({name})",
+  template = "{details} ({name})",
   email = TRUE,
   phone = FALSE,
   fax = FALSE,
   url = FALSE,
-  sep = ", "
+  sep = ", ",
+  format = deprecated()
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{format}}{A \code{\link[glue:glue]{glue}} specification that uses the
+\item{\code{template}}{A \code{\link[glue:glue]{glue}} specification that uses the
 variables \code{name} and/or \code{details}.}
 
 \item{\code{email, phone, fax, url}}{Arguments equal to \code{TRUE} are evaluated and
@@ -273,6 +274,10 @@ passed to the variable \code{details}. By default, only \code{email} is set to
 \code{TRUE}.}
 
 \item{\code{sep}}{Separator used to separate \code{details} items.}
+
+\item{\code{format}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Please use the parameter \code{template} instead.}
 }
 \if{html}{\out{</div>}}
 }

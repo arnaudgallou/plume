@@ -1,18 +1,18 @@
 # get_conctact_details() gives meaningful error messages
 
     Code
-      (expect_error(aut$get_contact_details(format = "foo")))
+      (expect_error(aut$get_contact_details("foo")))
     Output
       <error/rlang_error>
       Error:
-      ! `format` must be a glue specification.
+      ! `template` must be a glue specification.
     Code
-      (expect_error(aut$get_contact_details(format = "{foo}")))
+      (expect_error(aut$get_contact_details("{foo}")))
     Output
       <error/rlang_error>
       Error:
       ! Invalid variable `foo`.
-      i `format` must use variables `name` and/or `details`.
+      i `template` must use variables `name` and/or `details`.
     Code
       (expect_error(aut$get_contact_details()))
     Output

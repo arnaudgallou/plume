@@ -186,22 +186,34 @@ Plume <- R6Class(
     },
 
     #' @description Get the contact details of corresponding authors.
-    #' @param format A [`glue`][glue::glue()] specification that uses the
+    #' @param template A [`glue`][glue::glue()] specification that uses the
     #'   variables `name` and/or `details`.
+    #' @param format `r lifecycle::badge("deprecated")`
+    #'
+    #' Please use the parameter `template` instead.
     #' @param email,phone,fax,url Arguments equal to `TRUE` are evaluated and
     #'   passed to the variable `details`. By default, only `email` is set to
     #'   `TRUE`.
     #' @param sep Separator used to separate `details` items.
     #' @return A character vector.
     get_contact_details = function(
-      format = "{details} ({name})",
+      template = "{details} ({name})",
       email = TRUE,
       phone = FALSE,
       fax = FALSE,
       url = FALSE,
-      sep = ", "
+      sep = ", ",
+      format = deprecated()
     ) {
-      check_glue(format, allowed = c("name", "details"))
+      if (lifecycle::is_present(format)) {
+        lifecycle::deprecate_warn(
+          "0.2.6",
+          "get_contact_details(format)",
+          "get_contact_details(template)"
+        )
+        template <- format
+      }
+      check_glue(template, allowed = c("name", "details"))
       check_args("bool", quos(email, phone, fax, url))
       check_string(sep)
       vars <- private$pick("corresponding", "literal_name", squash = FALSE)
@@ -215,7 +227,7 @@ Plume <- R6Class(
       data <- filter(private$plume, .data[[vars$corresponding]] & !all_na(cols))
       dict <- list(details = cols, name = vars$literal_name)
       items <- map(dict, \(item) collapse_cols(data, item, sep))
-      as_plm(glue::glue_data(items, format))
+      as_plm(glue::glue_data(items, template))
     },
 
     #' @description Get authors' contributions.

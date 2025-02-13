@@ -260,10 +260,10 @@ is_glueish <- function(x) {
 
 check_glue <- function(x, allowed, arg = caller_arg(x), ...) {
   check_type(x, is_glueish, "a glue specification", arg, ...)
-  check_glue_vars(x, allowed, ...)
+  check_glue_vars(x, allowed, arg, ...)
 }
 
-check_glue_vars <- function(x, allowed, ...) {
+check_glue_vars <- function(x, allowed, arg = caller_arg(x), ...) {
   vars <- extract_glue_vars(x)
   if (all(vec_in(vars, allowed, ignore_case = FALSE))) {
     return(invisible())
@@ -272,7 +272,7 @@ check_glue_vars <- function(x, allowed, ...) {
   allowed_vars <- format_valid(allowed, last = " and/or ")
   abort(c(
     glue("Invalid variable `{invalid_var}`."),
-    i = glue("`format` must use variables {allowed_vars}.")
+    i = glue("`{arg}` must use variables {allowed_vars}.")
   ), ...)
 }
 
