@@ -8,6 +8,10 @@
 
 * All functionalities deprecated in 0.2.1 and earlier now throw an error. This includes the `credit_roles` parameter in `plm_template()` and `$new()`, the `format` parameter in `$get_author_list()`, the `by` parameter in `$set_*()` methods, `everyone_but()`, `$set_equal_contributor()` and the use of explicit roles in the input data.
 
+### Newly deprecated
+
+* The `format` parameter of `$get_contact_details()` is now deprecated in favour of the more explicit `template` parameter.
+
 # plume 0.2.5
 
 * `$get_author_list(suffix =)` is now slightly more flexible and will try less hard to sanitise author list suffixes (#90).
