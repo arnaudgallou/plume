@@ -317,7 +317,7 @@ aut$get_contact_details()
 
 aut$get_contact_details(phone = TRUE)
 
-aut$get_contact_details(format = "{name}: {details}")
+aut$get_contact_details(template = "{name}: {details}")
 ```
 
 ### Contributions

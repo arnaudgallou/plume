@@ -46,10 +46,10 @@ test_that("get_conctact_details() gives meaningful error messages", {
 
   expect_snapshot({
     (expect_error(
-      aut$get_contact_details(format = "foo")
+      aut$get_contact_details("foo")
     ))
     (expect_error(
-      aut$get_contact_details(format = "{foo}")
+      aut$get_contact_details("{foo}")
     ))
     (expect_error(
       aut$get_contact_details()
