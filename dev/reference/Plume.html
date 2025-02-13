@@ -271,18 +271,19 @@ Use <code>NULL</code> or an empty string to list author names without suffixes.<
 <p>Get the contact details of corresponding authors.</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_contact_details</span><span class="op">(</span></span>
-<span>  format <span class="op">=</span> <span class="st">"{details} ({name})"</span>,</span>
+<span>  template <span class="op">=</span> <span class="st">"{details} ({name})"</span>,</span>
 <span>  email <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  phone <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  fax <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  url <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  sep <span class="op">=</span> <span class="st">", "</span></span>
+<span>  sep <span class="op">=</span> <span class="st">", "</span>,</span>
+<span>  format <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>format</code></dt>
+<p></p><div class="arguments"><dl><dt><code>template</code></dt>
 <dd><p>A <code><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></code> specification that uses the
 variables <code>name</code> and/or <code>details</code>.</p></dd>
 
@@ -295,6 +296,11 @@ passed to the variable <code>details</code>. By default, only <code>email</code>
 
 <dt><code>sep</code></dt>
 <dd><p>Separator used to separate <code>details</code> items.</p></dd>
+
+
+<dt><code>format</code></dt>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p>
+<p>Please use the parameter <code>template</code> instead.</p></dd>
 
 
 </dl><p></p></div>
