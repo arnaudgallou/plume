@@ -1,8 +1,8 @@
 test_that("printing a `plm_icon` object returns a formatted output", {
-  expect_output(print(orcid()), "<orcid>")
+  expect_output(print(icn_orcid()), "<orcid icon>")
 })
 
-test_that("orcid() makes orcid icon metadata", {
+test_that("icn_orcid() makes orcid icon metadata", {
   skip_if(!rmarkdown::pandoc_available(), "pandoc is not available")
 
   render <- partial(rmarkdown::render, clean = FALSE, quiet = TRUE)
@@ -17,9 +17,9 @@ test_that("orcid() makes orcid icon metadata", {
       title: test
       ---
       ```{r results = 'asis'}
-      str(attributes(orcid()))
-      str(attributes(orcid(size = 24)))
-      str(attributes(orcid(bw = TRUE)))
+      str(attributes(icn_orcid()))
+      str(attributes(icn_orcid(size = 24)))
+      str(attributes(icn_orcid(bw = TRUE)))
       ```
     "), fileext = ".Rmd", tmpdir = getwd())
 
@@ -36,13 +36,13 @@ test_that("orcid() makes orcid icon metadata", {
 
 # Errors ----
 
-test_that("orcid() gives meaningful error messages", {
+test_that("icn_orcid() gives meaningful error messages", {
   expect_snapshot({
     (expect_error(
-      orcid(size = NULL)
+      icn_orcid(size = NULL)
     ))
     (expect_error(
-      orcid(bw = 1)
+      icn_orcid(bw = 1)
     ))
   })
 })

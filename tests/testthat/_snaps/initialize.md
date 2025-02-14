@@ -69,7 +69,7 @@
       <error/rlang_error>
       Error:
       ! Invalid `orcid_icon` input.
-      i Use `orcid()` to set the ORCID icon.
+      i Use `icn_orcid()` to set the ORCID icon.
     Code
       (expect_error(Plume$new(basic_df, initials_given_name = 1)))
     Output

@@ -10,4 +10,12 @@
       i Please use the `template` argument instead.
     Output
       Zip Zap zipzap@test.com
+    Code
+      orcid()
+    Condition
+      Warning:
+      `orcid()` was deprecated in plume 0.2.6.
+      i Please use `icn_orcid()` instead.
+    Output
+      <orcid icon>
 

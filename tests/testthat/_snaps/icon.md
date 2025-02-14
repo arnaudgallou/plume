@@ -1,4 +1,4 @@
-# orcid() makes orcid icon metadata
+# icn_orcid() makes orcid icon metadata
 
     Code
       read_rendered_md()
@@ -8,7 +8,7 @@
       ---
       
       ``` r
-      str(attributes(orcid()))
+      str(attributes(icn_orcid()))
       ```
       
       List of 5
@@ -19,7 +19,7 @@
        $ spacing : chr "\\hspace{3pt}"
       
       ``` r
-      str(attributes(orcid(size = 24)))
+      str(attributes(icn_orcid(size = 24)))
       ```
       
       List of 5
@@ -30,7 +30,7 @@
        $ spacing : chr "\\hspace{4pt}"
       
       ``` r
-      str(attributes(orcid(bw = TRUE)))
+      str(attributes(icn_orcid(bw = TRUE)))
       ```
       
       List of 5
@@ -50,7 +50,7 @@
       ---
       
       ``` r
-      str(attributes(orcid()))
+      str(attributes(icn_orcid()))
       ```
       
       List of 5
@@ -61,7 +61,7 @@
        $ spacing : chr ""
       
       ``` r
-      str(attributes(orcid(size = 24)))
+      str(attributes(icn_orcid(size = 24)))
       ```
       
       List of 5
@@ -72,7 +72,7 @@
        $ spacing : chr ""
       
       ``` r
-      str(attributes(orcid(bw = TRUE)))
+      str(attributes(icn_orcid(bw = TRUE)))
       ```
       
       List of 5
@@ -82,18 +82,18 @@
        $ style   : chr " style='margin: 0 4px; vertical-align: baseline'"
        $ spacing : chr ""
 
-# orcid() gives meaningful error messages
+# icn_orcid() gives meaningful error messages
 
     Code
-      (expect_error(orcid(size = NULL)))
+      (expect_error(icn_orcid(size = NULL)))
     Output
       <error/rlang_error>
-      Error in `orcid()`:
+      Error in `icn_orcid()`:
       ! `size` must be a numeric vector.
     Code
-      (expect_error(orcid(bw = 1)))
+      (expect_error(icn_orcid(bw = 1)))
     Output
       <error/rlang_error>
-      Error in `orcid()`:
+      Error in `icn_orcid()`:
       ! `bw` must be `TRUE` or `FALSE`.
 

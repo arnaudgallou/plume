@@ -89,7 +89,7 @@ Create a \code{Plume} object.
   initials_given_name = FALSE,
   family_name_first = FALSE,
   interword_spacing = TRUE,
-  orcid_icon = orcid(),
+  orcid_icon = icn_orcid(),
   by = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -124,7 +124,7 @@ It is now recommended to use \code{roles = credit_roles()} to use the
 is only useful for people writing in languages that don't separate
 words with a space such as Chinese or Japanese.}
 
-\item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=orcid]{orcid()}}, to be used.}
+\item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=icn_orcid]{icn_orcid()}}, to be used.}
 
 \item{\code{by}}{A character string defining the default variable used to assign
 specific metadata to authors in all \verb{set_*()} methods. By default, uses

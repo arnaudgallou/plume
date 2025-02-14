@@ -7,7 +7,7 @@
 orcid(size = 16, bw = FALSE)
 }
 \arguments{
-\item{size}{Size (in pixels) of the icon.}
+\item{size}{Size of the icon (in pixels).}
 
 \item{bw}{Should the black and white version of the icon be used?}
 }
@@ -15,9 +15,8 @@ orcid(size = 16, bw = FALSE)
 A plume icon.
 }
 \description{
-Helper function to control the size and colour of the ORCID
-icon.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Please use \code{\link[=icn_orcid]{icn_orcid()}} instead.
 }
-\examples{
-aut <- Plume$new(encyclopedists, orcid_icon = orcid(bw = TRUE))
-}
+\keyword{internal}

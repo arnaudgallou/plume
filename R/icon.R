@@ -1,21 +1,34 @@
-#' @title ORCID icon
-#' @description Helper function to control the size and colour of the ORCID
-#'   icon.
-#' @param size Size (in pixels) of the icon.
+#' @title Create an ORCID icon
+#' @description Create an ORCID icon for use with the [`Plume`] class.
+#' @param size Size of the icon (in pixels).
 #' @param bw Should the black and white version of the icon be used?
-#' @returns A plume icon.
+#' @returns A plume icon, i.e. an object with S3 class `plm_icon`.
 #' @examples
-#' aut <- Plume$new(encyclopedists, orcid_icon = orcid(bw = TRUE))
+#' aut <- Plume$new(encyclopedists, orcid_icon = icn_orcid(bw = TRUE))
 #' @export
-orcid <- function(size = 16, bw = FALSE) {
+icn_orcid <- function(size = 16, bw = FALSE) {
   check_num(size, call = current_env())
   check_bool(bw, call = current_env())
   new_icon("orcid", size = size, bw = bw)
 }
 
+#' @title ORCID icon
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' Please use [icn_orcid()] instead.
+#' @inheritParams icn_orcid
+#' @returns A plume icon.
+#' @keywords internal
+#' @export
+orcid <- function(size = 16, bw = FALSE) {
+  lifecycle::deprecate_warn("0.2.6", "orcid()", "icn_orcid()")
+  icn_orcid(size, bw)
+}
+
 #' @export
 print.plm_icon <- function(x, ...) {
-  cat(sprintf("<%s>", x))
+  cat(sprintf("<%s icon>%s", x, eol()))
 }
 
 new_icon <- function(x, ..., size, bw) {

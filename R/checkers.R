@@ -303,6 +303,6 @@ check_orcid_icon <- function(x, arg = caller_arg(x), ...) {
   }
   abort(c(
     glue("Invalid `{arg}` input."),
-    i = "Use `orcid()` to set the ORCID icon."
+    i = "Use `icn_orcid()` to set the ORCID icon."
   ), ...)
 }
