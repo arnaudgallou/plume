@@ -17,7 +17,7 @@ reference:
       - credit_roles
       - enumerate
       - everyone
-      - orcid
+      - icn_orcid
       - plm_template
       - sequential
       - set_default_names

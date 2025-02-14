@@ -76,7 +76,7 @@ Plume <- R6Class(
     #' @param interword_spacing Should literal names use spacing? This parameter
     #'   is only useful for people writing in languages that don't separate
     #'   words with a space such as Chinese or Japanese.
-    #' @param orcid_icon The ORCID icon, as defined by [`orcid()`], to be used.
+    #' @param orcid_icon The ORCID icon, as defined by [`icn_orcid()`], to be used.
     #' @param by A character string defining the default variable used to assign
     #'   specific metadata to authors in all `set_*()` methods. By default, uses
     #'   authors' id.
@@ -90,7 +90,7 @@ Plume <- R6Class(
       initials_given_name = FALSE,
       family_name_first = FALSE,
       interword_spacing = TRUE,
-      orcid_icon = orcid(),
+      orcid_icon = icn_orcid(),
       by = NULL
     ) {
       super$initialize(
