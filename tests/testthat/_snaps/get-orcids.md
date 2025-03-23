@@ -36,18 +36,18 @@
       (expect_error(aut$get_orcids(compact = 1)))
     Output
       <error/rlang_error>
-      Error:
+      Error in `aut$get_orcids()`:
       ! `compact` must be `TRUE` or `FALSE`.
     Code
       (expect_error(aut$get_orcids(icon = 1)))
     Output
       <error/rlang_error>
-      Error:
+      Error in `aut$get_orcids()`:
       ! `icon` must be `TRUE` or `FALSE`.
     Code
       (expect_error(aut$get_orcids(sep = 1)))
     Output
       <error/rlang_error>
-      Error:
+      Error in `aut$get_orcids()`:
       ! `sep` must be a character string.
 

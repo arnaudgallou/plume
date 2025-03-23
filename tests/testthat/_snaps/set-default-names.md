@@ -30,36 +30,36 @@
       (expect_error(set_default_names()))
     Output
       <error/rlang_error>
-      Error:
+      Error in `set_default_names()`:
       ! `...` must not be empty.
     Code
       (expect_error(set_default_names(1)))
     Output
       <error/rlang_error>
-      Error:
+      Error in `set_default_names()`:
       ! `...` must be a character vector.
     Code
       (expect_error(set_default_names("a")))
     Output
       <error/rlang_error>
-      Error:
+      Error in `set_default_names()`:
       ! All `...` inputs must be named.
     Code
       (expect_error(set_default_names(x = "a", y = "a")))
     Output
       <error/rlang_error>
-      Error:
+      Error in `set_default_names()`:
       ! `...` must have unique input values.
     Code
       (expect_error(set_default_names(x = "a", x = "b")))
     Output
       <error/rlang_error>
-      Error:
+      Error in `set_default_names()`:
       ! `...` must have unique input names.
     Code
       (expect_error(set_default_names(given_name = "nom", .plume_quarto = 1)))
     Output
       <error/rlang_error>
-      Error:
+      Error in `set_default_names()`:
       ! `.plume_quarto` must be `TRUE` or `FALSE`.
 

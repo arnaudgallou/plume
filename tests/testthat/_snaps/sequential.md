@@ -3,6 +3,6 @@
     Code
       sequential(1)
     Condition
-      Error:
+      Error in `sequential()`:
       ! `x` must be a character vector.
 

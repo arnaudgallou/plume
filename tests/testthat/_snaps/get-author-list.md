@@ -13,25 +13,25 @@
       (expect_error(aut$get_author_list(1)))
     Output
       <error/rlang_error>
-      Error:
+      Error in `aut$get_author_list()`:
       ! `suffix` must be a character string.
     Code
       (expect_error(aut$get_author_list("aa")))
     Output
       <error/rlang_error>
-      Error:
+      Error in `aut$get_author_list()`:
       ! `suffix` must have unique keys.
     Code
       (expect_error(aut$get_author_list("az")))
     Output
       <error/rlang_error>
-      Error:
+      Error in `aut$get_author_list()`:
       ! `suffix` must only contain any of `a`, `c`, `n`, `o`, `^` or `,`.
     Code
       (expect_error(aut$get_author_list("ac")))
     Output
       <error/rlang_error>
-      Error:
+      Error in `aut$get_author_list()`:
       ! Column `corresponding` doesn't exist.
       i Did you forget to assign corresponding authors?
       i Use `set_corresponding_authors()` to set corresponding authors.
@@ -39,7 +39,7 @@
       (expect_error(aut$get_author_list("o")))
     Output
       <error/rlang_error>
-      Error:
+      Error in `aut$get_author_list()`:
       ! Invalid ORCID identifier found: `0000`.
       i ORCID identifiers must have 16 digits, separated by a hyphen every 4 digits.
       i The last character of the identifiers must be a digit or `X`.
