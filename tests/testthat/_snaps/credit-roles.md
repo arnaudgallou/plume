@@ -43,6 +43,6 @@
     Code
       credit_roles(oxford_spelling = 1)
     Condition
-      Error:
+      Error in `credit_roles()`:
       ! `oxford_spelling` must be `TRUE` or `FALSE`.
 

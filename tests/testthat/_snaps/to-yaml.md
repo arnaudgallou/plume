@@ -256,7 +256,7 @@
     Code
       aut$to_yaml()
     Condition
-      Error:
+      Error in `aut$to_yaml()`:
       ! No YAML headers found.
       i YAML headers must be at the beginning of the document.
       i YAML headers must start and end with three hyphens.
@@ -266,7 +266,7 @@
     Code
       aut$to_yaml()
     Condition
-      Error:
+      Error in `aut$to_yaml()`:
       ! Invalid ORCID identifier found: `0000`.
       i ORCID identifiers must have 16 digits, separated by a hyphen every 4 digits.
       i The last character of the identifiers must be a digit or `X`.
