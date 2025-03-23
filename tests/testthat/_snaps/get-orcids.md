@@ -51,3 +51,21 @@
       Error in `aut$get_orcids()`:
       ! `sep` must be a character string.
 
+---
+
+    Code
+      aut$get_orcids(icon = FALSE)
+    Condition
+      Error in `aut$get_orcids()`:
+      ! Invalid ORCID identifier found: `0000`.
+      i ORCID identifiers must have 16 digits, separated by a hyphen every 4 digits.
+      i The last character of the identifiers must be a digit or `X`.
+
+---
+
+    Code
+      aut$get_orcids()
+    Condition
+      Error in `aut$get_orcids()`:
+      ! Column `orcid` doesn't exist.
+

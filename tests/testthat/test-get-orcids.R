@@ -25,4 +25,11 @@ test_that("get_orcids() gives meaningful error messages", {
       aut$get_orcids(sep = 1)
     ))
   })
+
+  basic_df$orcid <- c(NA, "0000", NA)
+  aut <- Plume$new(basic_df)
+  expect_snapshot(aut$get_orcids(icon = FALSE), error = TRUE)
+
+  aut <- Plume$new(data.frame(given_name = "A", family_name = "B"))
+  expect_snapshot(aut$get_orcids(), error = TRUE)
 })

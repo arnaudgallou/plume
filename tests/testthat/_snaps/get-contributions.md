@@ -49,3 +49,11 @@
       Error in `aut$get_contributions()`:
       ! `divider` must be a character string.
 
+---
+
+    Code
+      aut$get_contributions()
+    Condition
+      Error in `aut$get_contributions()`:
+      ! Column `role` doesn't exist.
+
