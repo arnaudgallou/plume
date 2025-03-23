@@ -210,4 +210,7 @@ test_that("get_contributions() gives meaningful error messages", {
       aut$get_contributions(divider = 1)
     ))
   })
+
+  aut <- Plume$new(data.frame(given_name = "A", family_name = "B"))
+  expect_snapshot(aut$get_contributions(), error = TRUE)
 })

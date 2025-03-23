@@ -22,7 +22,7 @@ test_that("get_affiliations/notes() return affiliations/notes", {
   expect_equal(aut$get_notes(), c("^†^a", "^‡^c", "^§^b"))
 })
 
-test_that("get_affiliations/notes() returns `NULL` if no affiliations/notes", {
+test_that("get_affiliations/notes() return `NULL` if no affiliations/notes", {
   aut <- Plume$new(data.frame(
     given_name = "Zip",
     family_name = "Zap",
@@ -33,7 +33,7 @@ test_that("get_affiliations/notes() returns `NULL` if no affiliations/notes", {
 
 # Errors ----
 
-test_that("get_affiliations() give meaningful error messages", {
+test_that("get_affiliations()/get_notes() give meaningful error messages", {
   aut <- Plume$new(basic_df)
 
   expect_snapshot({
@@ -43,18 +43,22 @@ test_that("get_affiliations() give meaningful error messages", {
     (expect_error(
       aut$get_affiliations(superscript = "")
     ))
-  })
-})
-
-test_that("get_notes() give meaningful error messages", {
-  aut <- Plume$new(basic_df)
-
-  expect_snapshot({
     (expect_error(
       aut$get_notes(sep = 1)
     ))
     (expect_error(
       aut$get_notes(superscript = "")
+    ))
+  })
+
+  aut <- Plume$new(data.frame(given_name = "A", family_name = "B"))
+
+  expect_snapshot({
+    (expect_error(
+      aut$get_affiliations()
+    ))
+    (expect_error(
+      aut$get_notes()
     ))
   })
 })
