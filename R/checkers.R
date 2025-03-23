@@ -251,11 +251,11 @@ file_ext <- function(x) {
   str_extract(x, "(?<=\\.)[^.]+$")
 }
 
-check_file <- function(x, extensions, arg = caller_arg(x)) {
+check_file <- function(x, exts, arg = caller_arg(x)) {
   check_string(x, arg = arg)
-  asserter <- function(x) vec_in(x, extensions)
-  valid_ext <- format_valid(predot(extensions))
-  check_type(file_ext(x), asserter, glue("a {valid_ext} file"), arg)
+  asserter <- function(x) vec_in(x, exts)
+  valid_exts <- format_valid(predot(exts))
+  check_type(file_ext(x), asserter, glue("a {valid_exts} file"), arg)
   check_path(x)
 }
 
@@ -263,9 +263,9 @@ is_glueish <- function(x) {
   is_string(x) && str_detect(x, "\\{[^}]+\\}")
 }
 
-check_glue <- function(x, allowed, arg = caller_arg(x)) {
+check_glue <- function(x, vars, arg = caller_arg(x)) {
   check_type(x, is_glueish, "a glue specification", arg)
-  check_glue_vars(x, allowed, arg)
+  check_glue_vars(x, vars, arg)
 }
 
 check_glue_vars <- function(x, allowed, arg = caller_arg(x)) {

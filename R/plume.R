@@ -213,7 +213,7 @@ Plume <- R6Class(
         )
         template <- format
       }
-      check_glue(template, allowed = c("name", "details"))
+      check_glue(template, vars = c("name", "details"))
       check_args("bool", quos(email, phone, fax, url))
       check_string(sep)
       vars <- private$pick("corresponding", "literal_name", squash = FALSE)
@@ -262,7 +262,11 @@ Plume <- R6Class(
         dotted_initials,
         literal_names
       ))
-      check_args("string", quos(divider, sep, sep_last), allow("empty", "unnamed"))
+      check_args(
+        "string",
+        quos(divider, sep, sep_last),
+        allow("empty", "unnamed")
+      )
       out <- unnest_drop_na(private$plume, role)
       if (is_empty(out)) {
         return()

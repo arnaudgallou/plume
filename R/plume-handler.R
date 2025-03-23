@@ -104,7 +104,7 @@ PlumeHandler <- R6Class(
         values_to = col,
         names_to = NULL
       )
-      private$plume <- nest(out, !!col := any_of(col))
+      private$plume <- nest(out, !!col := all_of(col))
     },
 
     process_roles = function() {
@@ -149,7 +149,7 @@ PlumeHandler <- R6Class(
       private$plume <- mutate(
         private$plume,
         !!name := make_initials(.data[[col]], dot = dot),
-        .after = any_of(col)
+        .after = all_of(col)
       )
     },
 
@@ -191,7 +191,7 @@ PlumeHandler <- R6Class(
         return()
       }
       bullets <- .col_bullets[[names(missing_col)]]
-      abort(c(glue("Column `{missing_col}` doesn't exist."), bullets))
+      abort(glue("Column `{missing_col}` doesn't exist."), footer = bullets)
     },
 
     check_authors = function() {

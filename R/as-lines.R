@@ -10,5 +10,5 @@
 #' as_lines(aut$get_affiliations())
 #' @export
 as_lines <- function(...) {
-  cat(c(...), sep = strrep(eol(), 2L))
+  cat(..., sep = strrep(eol(), 2L))
 }
