@@ -33,6 +33,7 @@ Internal class processing and shaping tabular data into a
   credit_roles,
   initials_given_name,
   family_name_first = FALSE,
+  distinct_initials = FALSE,
   interword_spacing = TRUE
 )}\if{html}{\out{</div>}}
 }

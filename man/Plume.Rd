@@ -88,6 +88,7 @@ Create a \code{Plume} object.
   credit_roles = FALSE,
   initials_given_name = FALSE,
   family_name_first = FALSE,
+  distinct_initials = FALSE,
   interword_spacing = TRUE,
   orcid_icon = icn_orcid(),
   by = NULL
@@ -119,6 +120,11 @@ It is now recommended to use \code{roles = credit_roles()} to use the
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
 
 \item{\code{family_name_first}}{Should literal names show family names first?}
+
+\item{\code{distinct_initials}}{If \code{TRUE}, will expand identical initials with
+additional letters from their respective family name until initials are
+unique. Initials of authors sharing the exact same name will remain in
+the short form.}
 
 \item{\code{interword_spacing}}{Should literal names use spacing? This parameter
 is only useful for people writing in languages that don't separate
