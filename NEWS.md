@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `Plume$new()` gains a new parameter `distinct_initials` to differentiate similar authors' initials, when possible.
+
 * The `orcid` variable is now customisable (#96).
 
 * New helper `as_lines()` to output elements returned by `Plume`'s methods on multiple lines when rendering an R Markdown or Quarto document.
