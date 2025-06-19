@@ -73,6 +73,10 @@ Plume <- R6Class(
     #'   `r link("crt")`.
     #' @param initials_given_name Should the initials of given names be used?
     #' @param family_name_first Should literal names show family names first?
+    #' @param distinct_initials If `TRUE`, will expand identical initials with
+    #'   additional letters from their respective family name until initials are
+    #'   unique. Initials of authors sharing the exact same name will remain in
+    #'   the short form.
     #' @param interword_spacing Should literal names use spacing? This parameter
     #'   is only useful for people writing in languages that don't separate
     #'   words with a space such as Chinese or Japanese.
@@ -89,6 +93,7 @@ Plume <- R6Class(
       credit_roles = FALSE,
       initials_given_name = FALSE,
       family_name_first = FALSE,
+      distinct_initials = FALSE,
       interword_spacing = TRUE,
       orcid_icon = icn_orcid(),
       by = NULL
@@ -100,6 +105,7 @@ Plume <- R6Class(
         credit_roles,
         initials_given_name,
         family_name_first,
+        distinct_initials,
         interword_spacing,
         by = by
       )

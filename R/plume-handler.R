@@ -13,6 +13,7 @@ PlumeHandler <- R6Class(
       credit_roles,
       initials_given_name,
       family_name_first = FALSE,
+      distinct_initials = FALSE,
       interword_spacing = TRUE
     ) {
       check_df(data)
@@ -21,12 +22,14 @@ PlumeHandler <- R6Class(
         credit_roles,
         initials_given_name,
         family_name_first,
+        distinct_initials,
         interword_spacing
       ))
       super$initialize(private$plume_names)
       private$plume <- as_tibble(data)
       private$initials_given_name <- initials_given_name
       private$family_name_first <- family_name_first
+      private$distinct_initials <- distinct_initials
       if (!interword_spacing) {
         private$interword_spacing <- ""
       }
@@ -65,6 +68,7 @@ PlumeHandler <- R6Class(
     plume_names = .names,
     initials_given_name = NULL,
     family_name_first = NULL,
+    distinct_initials = NULL,
     roles = NULL,
     interword_spacing = " ",
 
@@ -115,42 +119,48 @@ PlumeHandler <- R6Class(
     },
 
     add_author_names = function() {
-      if (private$initials_given_name) {
-        private$make_initials("given_name", dot = TRUE)
-      }
-      private$add_literal_names()
       private$add_initials()
+      private$add_literal_names()
     },
 
     add_literal_names = function() {
-      nominal <- private$pick("primaries")
+      nominals <- private$pick("primaries")
       if (private$family_name_first) {
-        nominal <- rev(nominal)
+        nominals <- rev(nominals)
       }
       vars <- private$pick("literal_name", "family_name", squash = FALSE)
       private$plume <- mutate(private$plume, !!vars$literal_name := paste(
-        !!!syms(nominal),
+        !!!syms(nominals),
         sep = private$interword_spacing
       ), .after = all_of(vars$family_name))
     },
 
     add_initials = function() {
-      private$make_initials("literal_name", name = private$pick("initials"))
-    },
-
-    make_initials = function(col, name, dot = FALSE) {
-      col <- private$pick(col)
-      if (!private$has_uppercase(col)) {
+      vars <- private$pick("primaries", squash = FALSE)
+      if (!private$has_uppercase(vars$family_name)) {
         return()
-      }
-      if (missing(name)) {
-        name <- col
       }
       private$plume <- mutate(
         private$plume,
-        !!name := make_initials(.data[[col]], dot = dot),
-        .after = all_of(col)
+        private$make_initials(vars),
+        .after = all_of(vars$family_name)
       )
+    },
+
+    make_initials = function(vars) {
+      cols <- squash(vars)
+      out <- select(private$plume, all_of(cols))
+      out <- mutate(out, across(all_of(cols), make_initials))
+      if (private$distinct_initials) {
+        out <- add_long_initials(
+          out,
+          vars$family_name,
+          private$pull("family_name")
+        )
+      }
+      out <- mutate(out, !!private$pick("initials") := do.call(paste0, out))
+      to_drop <- if (private$initials_given_name) vars$family_name else cols
+      select(out, -any_of(to_drop))
     },
 
     add_ids = function() {

@@ -113,10 +113,23 @@ test_that("`roles = credit_roles()` handles CRediT roles", {
 test_that("`initials_given_name = TRUE` initialises given names", {
   aut <- Plume$new(basic_df, initials_given_name = TRUE)
 
-  expect_equal(aut$get_plume()$given_name, c("Z.", "R.", "P.-P."))
+  expect_equal(aut$get_plume()$given_name, c("Z", "R", "P-P"))
   expect_equal(
     aut$get_plume()$literal_name,
-    c("Z. Zap", "R. Rac", "P.-P. Pom")
+    c("Z Zap", "R Rac", "P-P Pom")
+  )
+})
+
+test_that("`distinct_initials = TRUE` makes unique initials", {
+  df <- data.frame(
+    given_name = c("A", "B", "A", "C", "C", "D", "D"),
+    family_name = c("Dufour", "Fo", "Dupont", "de Rose", "de Reeth", "Ba", "Ba")
+  )
+  aut <- Plume$new(df, distinct_initials = TRUE)
+
+  expect_equal(
+    aut$get_plume()$initials,
+    c("ADuf", "BF", "ADup", "CdRo", "CdRe", "DB", "DB")
   )
 })
 

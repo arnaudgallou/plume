@@ -34,6 +34,36 @@ make_initials <- function(x, dot = FALSE) {
   out
 }
 
+lengthen_initials <- function(initials, names) {
+  str_replace(initials, "(?=\\.?$)", get_shortest_unique_suffixes(names))
+}
+
+last_word <- function(x) {
+  x <- strsplit(x, "\\W")
+  map_vec(x, \(.x) .x[length(.x)])
+}
+
+str_starts <- function(x, y) {
+  substr(x, 1L, nchar(y)) == y
+}
+
+get_shortest_unique_suffixes <- function(x) {
+  x <- last_word(x)
+  purrr::imap_vec(x, \(value, key) {
+    names <- x[-key]
+    n_chars <- nchar(value)
+    if (value %in% names || n_chars == 1L) {
+      return("")
+    }
+    for (i in seq_len(n_chars)[-1]) {
+      prefix <- substr(value, 1L, i)
+      if (!any(str_starts(names, prefix))) {
+        return(stringr::str_sub(prefix, 2L))
+      }
+    }
+  })
+}
+
 vec_drop_na <- function(x) {
   x[!is.na(x)]
 }

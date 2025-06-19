@@ -103,3 +103,12 @@ rename_roles <- function(data, roles, key) {
   }
   rename(data, any_of(set_names(nms, key)))
 }
+
+add_long_initials <- function(data, col, names) {
+  data[col] <- if_else(
+    vctrs::vec_duplicate_detect(data),
+    lengthen_initials(data[[col]], names),
+    data[[col]]
+  )
+  data
+}
