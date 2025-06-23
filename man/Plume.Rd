@@ -87,6 +87,7 @@ Create a \code{Plume} object.
   roles = credit_roles(),
   credit_roles = FALSE,
   initials_given_name = FALSE,
+  dotted_initials = TRUE,
   family_name_first = FALSE,
   distinct_initials = FALSE,
   interword_spacing = TRUE,
@@ -118,6 +119,8 @@ It is now recommended to use \code{roles = credit_roles()} to use the
 \href{https://credit.niso.org}{Contributor Roles Taxonomy}.}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
+
+\item{\code{dotted_initials}}{Should initials be dot-separated?}
 
 \item{\code{family_name_first}}{Should literal names show family names first?}
 
@@ -301,11 +304,11 @@ Get authors' contributions.
   roles_first = TRUE,
   by_author = FALSE,
   alphabetical_order = FALSE,
-  dotted_initials = TRUE,
   literal_names = FALSE,
   divider = ": ",
   sep = ", ",
-  sep_last = " and "
+  sep_last = " and ",
+  dotted_initials = deprecated()
 )}\if{html}{\out{</div>}}
 }
 
@@ -320,8 +323,6 @@ Get authors' contributions.
 \item{\code{alphabetical_order}}{Should authors be listed in alphabetical order?
 By default, lists authors in the order they are defined in the data.}
 
-\item{\code{dotted_initials}}{Should initials be dot-separated?}
-
 \item{\code{literal_names}}{Should literal names be used?}
 
 \item{\code{divider}}{Separator used to separate roles from authors.}
@@ -330,6 +331,10 @@ By default, lists authors in the order they are defined in the data.}
 
 \item{\code{sep_last}}{Separator used to separate the last two roles or authors
 if more than one item is associated to a role or author.}
+
+\item{\code{dotted_initials}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Please use the \code{dotted_initials} parameter of \code{Plume$new()} instead.}
 }
 \if{html}{\out{</div>}}
 }

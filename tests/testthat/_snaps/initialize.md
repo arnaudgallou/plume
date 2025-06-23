@@ -77,6 +77,12 @@
       Error in `initialize()`:
       ! `initials_given_name` must be `TRUE` or `FALSE`.
     Code
+      (expect_error(Plume$new(basic_df, dotted_initials = 1)))
+    Output
+      <error/rlang_error>
+      Error in `initialize()`:
+      ! `dotted_initials` must be `TRUE` or `FALSE`.
+    Code
       (expect_error(Plume$new(basic_df, family_name_first = 1)))
     Output
       <error/rlang_error>

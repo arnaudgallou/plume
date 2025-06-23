@@ -64,10 +64,18 @@ test_that("initialize() ignores variables with the same name as internal ones", 
 })
 
 test_that("initialize() makes proper initials", {
-  aut <- Plume$new(data.frame(
+  df <- data.frame(
     given_name = c("Zip", "ric", "Pim-Pam", "Tic", "Fip", "12"),
     family_name = c("Zap", "rac", "Pom", "tac Toc", "A'Fop", "34")
-  ))
+  )
+
+  aut <- Plume$new(df)
+  expect_equal(
+    aut$get_plume()$initials,
+    c("Z.Z.", "r.r.", "P.-P.P.", "T.t.T.", "F.A'F.", "1.3.")
+  )
+
+  aut <- Plume$new(df, dotted_initials = FALSE)
   expect_equal(
     aut$get_plume()$initials,
     c("ZZ", "rr", "P-PP", "TtT", "FA'F", "13")
@@ -75,7 +83,10 @@ test_that("initialize() makes proper initials", {
 })
 
 test_that("initials remove dots (#31)", {
-  aut <- Plume$new(data.frame(given_name = "X Y.", family_name = "Z"))
+  aut <- Plume$new(
+    data.frame(given_name = "X Y.", family_name = "Z"),
+    dotted_initials = FALSE
+  )
   expect_equal(aut$get_plume()$initials, "XYZ")
 })
 
@@ -113,10 +124,10 @@ test_that("`roles = credit_roles()` handles CRediT roles", {
 test_that("`initials_given_name = TRUE` initialises given names", {
   aut <- Plume$new(basic_df, initials_given_name = TRUE)
 
-  expect_equal(aut$get_plume()$given_name, c("Z", "R", "P-P"))
+  expect_equal(aut$get_plume()$given_name, c("Z.", "R.", "P.-P."))
   expect_equal(
     aut$get_plume()$literal_name,
-    c("Z Zap", "R Rac", "P-P Pom")
+    c("Z. Zap", "R. Rac", "P.-P. Pom")
   )
 })
 
@@ -129,7 +140,7 @@ test_that("`distinct_initials = TRUE` makes unique initials", {
 
   expect_equal(
     aut$get_plume()$initials,
-    c("ADuf", "BF", "ADup", "CdRo", "CdRe", "DB", "DB")
+    c("A.Duf.", "B.F.", "A.Dup.", "C.d.Ro.", "C.d.Re.", "D.B.", "D.B.")
   )
 })
 
@@ -165,11 +176,11 @@ test_that("`interword_spacing = FALSE` binds given and family names", {
 
 test_that("`by` overrides default `by` value", {
   aut <- Plume$new(basic_df, by = "initials")
-  aut$set_corresponding_authors(zz)
+  aut$set_corresponding_authors(z.z.)
   expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
 
   aut <- PlumeQuarto$new(basic_df, temp_file(), by = "initials")
-  aut$set_corresponding_authors(zz)
+  aut$set_corresponding_authors(z.z.)
   expect_equal(aut$get_plume()$corresponding, c(TRUE, FALSE, FALSE))
 })
 
@@ -185,7 +196,7 @@ test_that("initialize() converts blank and empty strings to `NA` (#2)", {
 
   expect_equal(
     unlist(aut$get_plume(), use.names = FALSE),
-    c("1", "X", "Y", "X Y", "XY", NA, "a", NA, NA)
+    c("1", "X", "Y", "X Y", "X.Y.", NA, "a", NA, NA)
   )
 })
 
@@ -246,6 +257,9 @@ test_that("initialize() gives meaningful error messages", {
     ))
     (expect_error(
       Plume$new(basic_df, initials_given_name = 1)
+    ))
+    (expect_error(
+      Plume$new(basic_df, dotted_initials = 1)
     ))
     (expect_error(
       Plume$new(basic_df, family_name_first = 1)

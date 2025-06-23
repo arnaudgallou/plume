@@ -11,6 +11,15 @@
     Output
       Zip Zap zipzap@test.com
     Code
+      aut$get_contributions(dotted_initials = TRUE)
+    Condition
+      Warning:
+      The `dotted_initials` argument of `get_contributions()` is deprecated as of plume 0.3.0.
+      i Please use the `dotted_initials` argument of `Plume$new()` instead.
+    Output
+      Formal analysis: Z.Z., R.R. and P.-P.P.
+      Writing - original draft: Z.Z.
+    Code
       orcid()
     Condition
       Warning:

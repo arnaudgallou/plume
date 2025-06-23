@@ -72,6 +72,7 @@ Plume <- R6Class(
     #'   It is now recommended to use `roles = credit_roles()` to use the
     #'   `r link("crt")`.
     #' @param initials_given_name Should the initials of given names be used?
+    #' @param dotted_initials Should initials be dot-separated?
     #' @param family_name_first Should literal names show family names first?
     #' @param distinct_initials If `TRUE`, will expand identical initials with
     #'   additional letters from their respective family name until initials are
@@ -92,6 +93,7 @@ Plume <- R6Class(
       roles = credit_roles(),
       credit_roles = FALSE,
       initials_given_name = FALSE,
+      dotted_initials = TRUE,
       family_name_first = FALSE,
       distinct_initials = FALSE,
       interword_spacing = TRUE,
@@ -104,6 +106,7 @@ Plume <- R6Class(
         roles,
         credit_roles,
         initials_given_name,
+        dotted_initials,
         family_name_first,
         distinct_initials,
         interword_spacing,
@@ -242,7 +245,9 @@ Plume <- R6Class(
     #' @param by_author Should roles be grouped by author?
     #' @param alphabetical_order Should authors be listed in alphabetical order?
     #'   By default, lists authors in the order they are defined in the data.
-    #' @param dotted_initials Should initials be dot-separated?
+    #' @param dotted_initials `r lifecycle::badge("deprecated")`
+    #'
+    #' Please use the `dotted_initials` parameter of `Plume$new()` instead.
     #' @param literal_names Should literal names be used?
     #' @param divider Separator used to separate roles from authors.
     #' @param sep Separator used to separate roles or authors.
@@ -253,19 +258,25 @@ Plume <- R6Class(
       roles_first = TRUE,
       by_author = FALSE,
       alphabetical_order = FALSE,
-      dotted_initials = TRUE,
       literal_names = FALSE,
       divider = ": ",
       sep = ", ",
-      sep_last = " and "
+      sep_last = " and ",
+      dotted_initials = deprecated()
     ) {
+      if (lifecycle::is_present(dotted_initials)) {
+        lifecycle::deprecate_warn(
+          "0.3.0",
+          "get_contributions(dotted_initials)",
+          "Plume$new(dotted_initials)"
+        )
+      }
       role <- private$pick("role")
       private$check_col(role)
       check_args("bool", quos(
         roles_first,
         by_author,
         alphabetical_order,
-        dotted_initials,
         literal_names
       ))
       check_args(
@@ -278,9 +289,6 @@ Plume <- R6Class(
         return()
       }
       pars <- private$contribution_pars(roles_first, by_author, literal_names)
-      if (dotted_initials && pars$has_initials && !literal_names) {
-        out <- mutate(out, !!pars$author := dot(.data[[pars$author]]))
-      }
       out <- summarise(out, !!pars$var := enumerate(
         contribution_items(pars, by_author, alphabetical_order),
         sep = sep,
@@ -340,8 +348,7 @@ Plume <- R6Class(
         "initials", "literal_name", "role", "id", "contributor_rank",
         squash = FALSE
       )
-      has_initials <- private$has_col(vars$initials)
-      if (!has_initials || literal_names) {
+      if (!private$has_col(vars$initials) || literal_names) {
         author <- vars$literal_name
       } else {
         author <- vars$initials
@@ -358,8 +365,6 @@ Plume <- R6Class(
         var <- author
       }
       list(
-        has_initials = has_initials,
-        author = author,
         grp_var = grp_var,
         rank = vars$contributor_rank,
         var = var,

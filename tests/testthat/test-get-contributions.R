@@ -41,10 +41,6 @@ test_that("get_contributions() return authors' contributions", {
     c("a: Z.Z., R.R. & P.-P.P.", "b: Z.Z.")
   )
   expect_equal(
-    aut$get_contributions(by_author = FALSE, dotted_initials = FALSE),
-    c("a: ZZ, RR and P-PP", "b: ZZ")
-  )
-  expect_equal(
     aut$get_contributions(by_author = FALSE, literal_names = TRUE),
     c("a: Zip Zap, Ric Rac and Pim-Pam Pom", "b: Zip Zap")
   )
@@ -163,14 +159,14 @@ test_that("set_main_contributors() ranks contributors", {
     c("Writing: A.A., C.C. and B.B.", "Analysis: A.A., C.C. and B.B.")
   )
 
-  aut$set_main_contributors(writing = aa, analysis = bb, .by = "initials")
+  aut$set_main_contributors(writing = a.a., analysis = b.b., .by = "initials")
   expect_equal(
     aut$get_contributions(),
     c("Writing: A.A., C.C. and B.B.", "Analysis: B.B., C.C. and A.A.")
   )
 
   aut$set_main_contributors(
-    writing = c(aa, bb), analysis = bb,
+    writing = c(a.a., b.b.), analysis = b.b.,
     .by = "initials"
   )
   expect_equal(
@@ -193,9 +189,6 @@ test_that("get_contributions() gives meaningful error messages", {
     ))
     (expect_error(
       aut$get_contributions(alphabetical_order = "")
-    ))
-    (expect_error(
-      aut$get_contributions(dotted_initials = "")
     ))
     (expect_error(
       aut$get_contributions(literal_names = "")
