@@ -78,6 +78,7 @@ Create a \code{PlumeQuarto} object.
   roles = credit_roles(),
   credit_roles = FALSE,
   initials_given_name = FALSE,
+  dotted_initials = TRUE,
   by = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -101,6 +102,8 @@ It is now recommended to use \code{roles = credit_roles()} to use the
 \href{https://credit.niso.org}{Contributor Roles Taxonomy}.}
 
 \item{\code{initials_given_name}}{Should the initials of given names be used?}
+
+\item{\code{dotted_initials}}{Should initials be dot-separated?}
 
 \item{\code{by}}{A character string defining the default variable used to assign
 specific metadata to authors in all \verb{set_*()} methods. By default, uses

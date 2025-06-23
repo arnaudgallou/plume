@@ -67,6 +67,7 @@ PlumeQuarto <- R6Class(
     #'   It is now recommended to use `roles = credit_roles()` to use the
     #'   `r link("crt")`.
     #' @param initials_given_name Should the initials of given names be used?
+    #' @param dotted_initials Should initials be dot-separated?
     #' @param by A character string defining the default variable used to assign
     #'   specific metadata to authors in all `set_*()` methods. By default, uses
     #'   authors' id.
@@ -78,10 +79,19 @@ PlumeQuarto <- R6Class(
       roles = credit_roles(),
       credit_roles = FALSE,
       initials_given_name = FALSE,
+      dotted_initials = TRUE,
       by = NULL
     ) {
       check_file(file, exts = c("qmd", "yml", "yaml"))
-      super$initialize(data, names, roles, credit_roles, initials_given_name, by = by)
+      super$initialize(
+        data,
+        names,
+        roles,
+        credit_roles,
+        initials_given_name,
+        dotted_initials,
+        by = by
+      )
       private$file <- file
       private$id <- private$pick("id")
     },

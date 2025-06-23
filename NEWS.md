@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `Plume$new()` and `PlumeQuarto$new()` gain a new parameter `dotted_initials` to control whether or not initials should be dotted. This parameter replaces the `dotted_initials` parameter of `$get_contributions()`, which is now deprecated (#112).
+
 * `Plume$new()` gains a new parameter `distinct_initials` to differentiate similar authors' initials, when possible.
 
 * The `orcid` variable is now customisable (#96).

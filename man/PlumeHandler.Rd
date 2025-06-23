@@ -32,6 +32,7 @@ Internal class processing and shaping tabular data into a
   roles,
   credit_roles,
   initials_given_name,
+  dotted_initials,
   family_name_first = FALSE,
   distinct_initials = FALSE,
   interword_spacing = TRUE

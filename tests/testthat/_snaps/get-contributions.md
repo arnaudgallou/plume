@@ -19,12 +19,6 @@
       Error in `aut$get_contributions()`:
       ! `alphabetical_order` must be `TRUE` or `FALSE`.
     Code
-      (expect_error(aut$get_contributions(dotted_initials = "")))
-    Output
-      <error/rlang_error>
-      Error in `aut$get_contributions()`:
-      ! `dotted_initials` must be `TRUE` or `FALSE`.
-    Code
       (expect_error(aut$get_contributions(literal_names = "")))
     Output
       <error/rlang_error>

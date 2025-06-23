@@ -12,6 +12,7 @@ PlumeHandler <- R6Class(
       roles,
       credit_roles,
       initials_given_name,
+      dotted_initials,
       family_name_first = FALSE,
       distinct_initials = FALSE,
       interword_spacing = TRUE
@@ -23,6 +24,7 @@ PlumeHandler <- R6Class(
         initials_given_name,
         family_name_first,
         distinct_initials,
+        dotted_initials,
         interword_spacing
       ))
       super$initialize(private$plume_names)
@@ -30,6 +32,7 @@ PlumeHandler <- R6Class(
       private$initials_given_name <- initials_given_name
       private$family_name_first <- family_name_first
       private$distinct_initials <- distinct_initials
+      private$dotted_initials <- dotted_initials
       if (!interword_spacing) {
         private$interword_spacing <- ""
       }
@@ -69,6 +72,7 @@ PlumeHandler <- R6Class(
     initials_given_name = NULL,
     family_name_first = NULL,
     distinct_initials = NULL,
+    dotted_initials = NULL,
     roles = NULL,
     interword_spacing = " ",
 
@@ -150,7 +154,10 @@ PlumeHandler <- R6Class(
     make_initials = function(vars) {
       cols <- squash(vars)
       out <- select(private$plume, all_of(cols))
-      out <- mutate(out, across(all_of(cols), make_initials))
+      out <- mutate(out, across(
+        all_of(cols),
+        \(col) make_initials(col, private$dotted_initials)
+      ))
       if (private$distinct_initials) {
         out <- add_long_initials(
           out,
