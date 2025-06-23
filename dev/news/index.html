@@ -41,7 +41,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
-<ul><li><p><code>Plume$new()</code> gains a new parameter <code>distinct_initials</code> to differentiate similar authors’ initials, when possible.</p></li>
+<ul><li><p><code>Plume$new()</code> and <code>PlumeQuarto$new()</code> gain a new parameter <code>dotted_initials</code> to control whether or not initials should be dotted. This parameter replaces the <code>dotted_initials</code> parameter of <code>$get_contributions()</code>, which is now deprecated (<a href="https://github.com/arnaudgallou/plume/issues/112" class="external-link">#112</a>).</p></li>
+<li><p><code>Plume$new()</code> gains a new parameter <code>distinct_initials</code> to differentiate similar authors’ initials, when possible.</p></li>
 <li><p>The <code>orcid</code> variable is now customisable (<a href="https://github.com/arnaudgallou/plume/issues/96" class="external-link">#96</a>).</p></li>
 <li><p>New helper <code><a href="../reference/as_lines.html">as_lines()</a></code> to output elements returned by <code>Plume</code>’s methods on multiple lines when rendering an R Markdown or Quarto document.</p></li>
 </ul><div class="section level3">

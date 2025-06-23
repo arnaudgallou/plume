@@ -94,10 +94,10 @@ classes with default names in your desired language. plume provides
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 11</span></span></span>
 <span><span class="co">#&gt;      id prénom  nom   nom_complet initiales orcid courriel téléphone role  note </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis   Dide… Denis Dide… DD        0000… diderot… +1234     Supe… né e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-J… Rous… Jean-Jacqu… J-JR      0000… roussea… <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 Franço… Arou… François-M… F-MA      <span style="color: #BB0000;">NA</span>    arouet@… <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>    dit …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean    Le R… Jean Le Ro… JLRd'A    0000… alember… <span style="color: #BB0000;">NA</span>        Supe… né e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 Denis   Dide… Denis Dide… D.D.      0000… diderot… +1234     Supe… né e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 Jean-J… Rous… Jean-Jacqu… J.-J.R.   0000… roussea… <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 Franço… Arou… François-M… F.-M.A.   <span style="color: #BB0000;">NA</span>    arouet@… <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>    dit …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean    Le R… Jean Le Ro… J.L.R.d'… 0000… alember… <span style="color: #BB0000;">NA</span>        Supe… né e…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: affiliation &lt;list&gt;</span></span></span></code></pre></div>
 <p>You can also overwrite the default arguments of some methods to match
 your language. I recommend doing it in the <code>public</code> argument
@@ -110,14 +110,13 @@ of the class definition. For the purpose of this example, I’ll use the
 <span>  <span class="va">roles_first</span> <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">by_author</span> <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">alphabetical_order</span> <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  <span class="va">dotted_initials</span> <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">literal_names</span> <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">divider</span> <span class="op">=</span> <span class="st">" : "</span>,</span>
 <span>  <span class="va">sep</span> <span class="op">=</span> <span class="st">", "</span>,</span>
 <span>  <span class="va">sep_last</span> <span class="op">=</span> <span class="st">" et "</span></span>
 <span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">super</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span></span>
-<span>    <span class="va">roles_first</span>, <span class="va">by_author</span>, <span class="va">alphabetical_order</span>, <span class="va">dotted_initials</span>,</span>
+<span>    <span class="va">roles_first</span>, <span class="va">by_author</span>, <span class="va">alphabetical_order</span>,</span>
 <span>    <span class="va">literal_names</span>, <span class="va">divider</span>, <span class="va">sep</span>, <span class="va">sep_last</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
