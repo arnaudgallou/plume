@@ -43,6 +43,16 @@ test_that("sets status to selected authors", {
   }, c(TRUE, FALSE, FALSE))
 })
 
+test_that("status setters are dot-insensitive", {
+  aut <- Plume$new(basic_df)
+  aut$set_corresponding_authors(zz, .by = "initials")
+
+  expect_equal(
+    aut$get_plume()$corresponding,
+    c(TRUE, FALSE, FALSE)
+  )
+})
+
 # Errors ----
 
 test_that("set_*() methods give meaningful error messages", {

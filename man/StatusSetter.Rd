@@ -50,8 +50,8 @@ Set corresponding authors.
 \describe{
 \item{\code{...}}{One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by \code{by}/\code{.by}
-determine corresponding authors. Matching of values is case-
-insensitive.}
+determine corresponding authors. Matching of values is case-insensitive
+and dot agnostic.}
 
 \item{\code{.by}}{Variable used to set corresponding authors. By default, uses
 authors' id.}
