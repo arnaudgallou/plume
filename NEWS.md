@@ -16,6 +16,8 @@
 
 ### Newly deprecated
 
+* `$get_roles()` is deprecated in favour of `$roles()` (#114).
+
 * `orcid()` is deprecated in favour of `icn_orcid()`.
 
 * The `format` parameter of `$get_contact_details()` is now deprecated in favour of the more explicit `template` parameter.
