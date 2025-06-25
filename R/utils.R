@@ -64,6 +64,10 @@ get_shortest_unique_suffixes <- function(x) {
   })
 }
 
+undot <- function(x) {
+  gsub(".", "", x, fixed = TRUE)
+}
+
 vec_drop_na <- function(x) {
   x[!is.na(x)]
 }
@@ -72,20 +76,26 @@ vec_arrange <- function(x) {
   x[order(nchar(x), x)]
 }
 
-vec_in <- function(x, y, ignore_case = TRUE) {
-  if (ignore_case) {
-    x <- tolower(x)
-    y <- tolower(y)
-  }
-  x %in% y
+vec_normalise <- function(x, y, ignore_case = TRUE, ignore_dots = FALSE) {
+  map(list(x = x, y = y), \(item) {
+    if (ignore_case) {
+      item <- tolower(item)
+    }
+    if (ignore_dots) {
+      item <- undot(item)
+    }
+    item
+  })
 }
 
-vec_match <- function(x, y, ignore_case = TRUE) {
-  if (ignore_case) {
-    x <- tolower(x)
-    y <- tolower(y)
-  }
-  match(x, y)
+vec_in <- function(x, y, ignore_case = TRUE, ignore_dots = FALSE) {
+  items <- vec_normalise(x, y, ignore_case, ignore_dots)
+  items$x %in% items$y
+}
+
+vec_match <- function(x, y, ignore_case = TRUE, ignore_dots = TRUE) {
+  items <- vec_normalise(x, y, ignore_case, ignore_dots)
+  match(items$x, items$y)
 }
 
 rank <- function(x, base) {

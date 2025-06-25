@@ -49,6 +49,16 @@ test_that("named expressions have the priority over `.roles`", {
   )
 })
 
+test_that("setting main contributors is dot-agnostic", {
+  aut <- Plume$new(basic_df)
+  aut$set_main_contributors(analysis = rr, .by = "initials")
+
+  expect_equal(
+    pull_nested_var(aut, "role", "contributor_rank"),
+    c(2, NA, 1, NA, 2, NA)
+  )
+})
+
 # Errors ----
 
 test_that("set_ranks() gives meaningful error messages", {
