@@ -43,7 +43,7 @@ PlumeHandler <- R6Class(
           I("`roles = credit_roles()`")
         )
       }
-      private$roles <- roles
+      private$.roles <- roles
       private$check_role_system()
       if (!is.null(names)) {
         private$set_names(names)
@@ -61,8 +61,13 @@ PlumeHandler <- R6Class(
       private$plume
     },
 
+    roles = function() {
+      private$.roles
+    },
+
     get_roles = function() {
-      private$roles
+      lifecycle::deprecate_warn("0.3.0", "get_roles()", "roles()")
+      private$.roles
     }
   ),
 
@@ -73,7 +78,7 @@ PlumeHandler <- R6Class(
     family_name_first = NULL,
     distinct_initials = NULL,
     dotted_initials = NULL,
-    roles = NULL,
+    .roles = NULL,
     interword_spacing = " ",
 
     mount = function() {
@@ -89,7 +94,7 @@ PlumeHandler <- R6Class(
       private$mold()
       private$sanitise()
       private$add_author_names()
-      if (!is.null(private$roles)) {
+      if (!is.null(private$.roles)) {
         private$process_roles()
       }
       private$add_ids()
@@ -99,7 +104,7 @@ PlumeHandler <- R6Class(
       private$plume <- select(
         private$plume,
         all_of(private$pick("primaries")),
-        any_of(c(private$pick("secondaries"), names(private$roles))),
+        any_of(c(private$pick("secondaries"), names(private$.roles))),
         starts_with(private$pick("nestables")),
         ...
       )
@@ -116,7 +121,7 @@ PlumeHandler <- R6Class(
     },
 
     process_roles = function() {
-      roles <- private$roles
+      roles <- private$.roles
       roles <- roles[names(roles) %in% names(private$plume)]
       out <- assign_roles(private$plume, roles)
       private$plume <- rename_roles(out, roles, key = private$pick("role"))

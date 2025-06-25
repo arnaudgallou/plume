@@ -356,7 +356,7 @@ aut$get_contributions()
 You can assign the same main contributors across multiple roles using the `.roles` parameter. E.g. to set a main contributor across all roles:
 
 ```{r}
-aut$set_main_contributors(jean, .roles = aut$get_roles(), .by = "given_name")
+aut$set_main_contributors(jean, .roles = aut$roles(), .by = "given_name")
 aut$get_contributions()
 ```
 
@@ -369,7 +369,7 @@ aut$get_contributions(alphabetical_order = TRUE)
 The `.roles` parameter only applies to unnamed expressions. This allows you to set the same main contributors across all but a few specific roles at once.
 
 ```{r, eval = FALSE}
-aut$set_main_contributors(4, 3, supervision = 1, .roles = aut$get_roles())
+aut$set_main_contributors(4, 3, supervision = 1, .roles = aut$roles())
 ```
 
 Here, authors 4 and 3 are the main contributors in all roles but `supervision`, where author 1 is the main contributor.

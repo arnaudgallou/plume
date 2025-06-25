@@ -20,6 +20,12 @@
       Formal analysis: Z.Z., R.R. and P.-P.P.
       Writing - original draft: Z.Z.
     Code
+      invisible(aut$get_roles())
+    Condition
+      Warning:
+      `get_roles()` was deprecated in plume 0.3.0.
+      i Please use `roles()` instead.
+    Code
       orcid()
     Condition
       Warning:
