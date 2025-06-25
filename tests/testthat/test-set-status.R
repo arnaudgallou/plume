@@ -43,7 +43,7 @@ test_that("sets status to selected authors", {
   }, c(TRUE, FALSE, FALSE))
 })
 
-test_that("status setters are dot-insensitive", {
+test_that("status setters are dot-agnostic", {
   aut <- Plume$new(basic_df)
   aut$set_corresponding_authors(zz, .by = "initials")
 

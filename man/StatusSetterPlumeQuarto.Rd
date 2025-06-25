@@ -45,7 +45,7 @@ Set co-first authors.
 \item{\code{...}}{One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by \code{by}/\code{.by}
 determine co-first authors. Matching of values is case-insensitive and
-dot agnostic.}
+dot-agnostic.}
 
 \item{\code{.by}}{Variable used to specify which authors contributed equally to
 the work. By default, uses authors' id.}
@@ -106,7 +106,7 @@ Set deceased authors.
 \item{\code{...}}{One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by \code{by}/\code{.by}
 determine deceased authors. Matching of values is case-insensitive and
-dot agnostic.}
+dot-agnostic.}
 
 \item{\code{.by}}{Variable used to specify whether an author is deceased or not.
 By default, uses authors' id.}

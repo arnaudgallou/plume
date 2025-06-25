@@ -49,7 +49,7 @@ test_that("named expressions have the priority over `.roles`", {
   )
 })
 
-test_that("setting main contributors is dot-insensitive", {
+test_that("setting main contributors is dot-agnostic", {
   aut <- Plume$new(basic_df)
   aut$set_main_contributors(analysis = rr, .by = "initials")
 

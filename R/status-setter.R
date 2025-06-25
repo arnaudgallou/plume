@@ -22,7 +22,7 @@ StatusSetter <- R6Class(
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by`/`.by`
     #'   determine corresponding authors. Matching of values is case-insensitive
-    #'   and dot agnostic.
+    #'   and dot-agnostic.
     #' @param .by Variable used to set corresponding authors. By default, uses
     #'   authors' id.
     #' @param by `r lifecycle::badge("deprecated")`
@@ -83,7 +83,7 @@ StatusSetterPlume <- R6Class(
     #'   determine main contributors. Expressions can be named after any role to
     #'   set different main contributors to different roles at once, in which
     #'   case the `.roles` parameter only applies roles that are not already set
-    #'   to unnamed expressions. Matching of values is case-insensitive and dot
+    #'   to unnamed expressions. Matching of values is case-insensitive and dot-
     #'   agnostic.
     #' @param .roles Roles to assign main contributors to. If `.roles` is a
     #'   named vector, only the names will be used.
@@ -124,7 +124,7 @@ StatusSetterPlumeQuarto <- R6Class(
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by`/`.by`
     #'   determine co-first authors. Matching of values is case-insensitive and
-    #'   dot agnostic.
+    #'   dot-agnostic.
     #' @param .by Variable used to specify which authors contributed equally to
     #'   the work. By default, uses authors' id.
     #' @return The class instance.
@@ -156,7 +156,7 @@ StatusSetterPlumeQuarto <- R6Class(
     #' @param ... One or more unquoted expressions separated by commas.
     #'   Expressions matching values in the column defined by `by`/`.by`
     #'   determine deceased authors. Matching of values is case-insensitive and
-    #'   dot agnostic.
+    #'   dot-agnostic.
     #' @param .by Variable used to specify whether an author is deceased or not.
     #'   By default, uses authors' id.
     #' @param by `r lifecycle::badge("deprecated")`
