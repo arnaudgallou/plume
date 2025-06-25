@@ -106,7 +106,7 @@ StatusSetterPlume <- R6Class(
         dots <- propagate_names(dots, nms = .roles)
       }
       out <- unnest(private$plume, col = all_of(vars$role))
-      out <- add_contribution_ranks(out, dots, private$roles, by, vars)
+      out <- add_contribution_ranks(out, dots, private$.roles, by, vars)
       private$plume <- nest(out, !!vars$role := squash(vars))
       invisible(self)
     }

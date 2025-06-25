@@ -294,7 +294,7 @@ Plume <- R6Class(
         sep = sep,
         last = sep_last
       ), .by = all_of(pars$grp_var))
-      if (are_credit_roles(private$roles) && !by_author) {
+      if (are_credit_roles(private$.roles) && !by_author) {
         out <- arrange(out, role)
       }
       out <- collapse_cols(out, pars$format, sep = divider)
