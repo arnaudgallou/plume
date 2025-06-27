@@ -10,7 +10,7 @@
 #' aut <- Plume$new(encyclopedists)
 #'
 #' aut$set_corresponding_authors(everyone())
-#' aut$get_plume() |> dplyr::select(1:3, corresponding)
+#' aut$data() |> dplyr::select(1:3, corresponding)
 #' @export
 everyone <- function() {
   binder$pull()

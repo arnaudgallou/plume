@@ -16,6 +16,8 @@
 
 ### Newly deprecated
 
+* `$get_plume()` is deprecated in favour of `$data()` (#115).
+
 * `$get_roles()` is deprecated in favour of `$roles()` (#114).
 
 * `orcid()` is deprecated in favour of `icn_orcid()`.

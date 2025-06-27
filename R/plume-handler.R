@@ -57,7 +57,18 @@ PlumeHandler <- R6Class(
       print(private$plume)
     },
 
+    #' @description Get the data of a plume object.
+    #' @return A tibble.
+    data = function() {
+      private$plume
+    },
+
+    #' @description `r lifecycle::badge("deprecated")`
+    #'
+    #' Please use `$data()` instead.
+    #' @return A tibble.
     get_plume = function() {
+      lifecycle::deprecate_warn("0.3.0", "get_plume()", "data()")
       private$plume
     },
 
