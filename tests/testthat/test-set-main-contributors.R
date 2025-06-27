@@ -3,7 +3,7 @@ test_that("ranking contributors makes a `contributor_rank` column", {
   aut$set_main_contributors(1, .roles = "analysis")
 
   expect_named(
-    aut$get_plume()$role[[1]],
+    aut$data()$role[[1]],
     c("role", "contributor_rank")
   )
 })

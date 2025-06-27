@@ -66,6 +66,7 @@ aut$get_contributions(roles_first = FALSE, divider = " ")
 \if{html}{\out{
 <details><summary>Inherited methods</summary>
 <ul>
+<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="data"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-data'><code>plume::PlumeHandler$data()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_roles'><code>plume::PlumeHandler$get_roles()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></span></li>

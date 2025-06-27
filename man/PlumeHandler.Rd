@@ -16,6 +16,7 @@ Internal class processing and shaping tabular data into a
 \itemize{
 \item \href{#method-PlumeHandler-new}{\code{PlumeHandler$new()}}
 \item \href{#method-PlumeHandler-print}{\code{PlumeHandler$print()}}
+\item \href{#method-PlumeHandler-data}{\code{PlumeHandler$data()}}
 \item \href{#method-PlumeHandler-get_plume}{\code{PlumeHandler$get_plume()}}
 \item \href{#method-PlumeHandler-roles}{\code{PlumeHandler$roles()}}
 \item \href{#method-PlumeHandler-get_roles}{\code{PlumeHandler$get_roles()}}
@@ -51,13 +52,32 @@ Internal class processing and shaping tabular data into a
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-PlumeHandler-data"></a>}}
+\if{latex}{\out{\hypertarget{method-PlumeHandler-data}{}}}
+\subsection{Method \code{data()}}{
+Get the data of a plume object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{PlumeHandler$data()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A tibble.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PlumeHandler-get_plume"></a>}}
 \if{latex}{\out{\hypertarget{method-PlumeHandler-get_plume}{}}}
 \subsection{Method \code{get_plume()}}{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Please use \verb{$data()} instead.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeHandler$get_plume()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A tibble.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PlumeHandler-roles"></a>}}
