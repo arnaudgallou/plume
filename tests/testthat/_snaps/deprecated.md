@@ -26,6 +26,12 @@
       `get_roles()` was deprecated in plume 0.3.0.
       i Please use `roles()` instead.
     Code
+      invisible(aut$get_plume())
+    Condition
+      Warning:
+      `get_plume()` was deprecated in plume 0.3.0.
+      i Please use `data()` instead.
+    Code
       orcid()
     Condition
       Warning:

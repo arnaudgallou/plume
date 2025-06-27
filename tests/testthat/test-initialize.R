@@ -265,6 +265,9 @@ test_that("initialize() gives meaningful error messages", {
       Plume$new(basic_df, family_name_first = 1)
     ))
     (expect_error(
+      Plume$new(basic_df, distinct_initials = 1)
+    ))
+    (expect_error(
       Plume$new(basic_df, credit_roles = 1)
     ))
     (expect_error(

@@ -89,6 +89,12 @@
       Error in `initialize()`:
       ! `family_name_first` must be `TRUE` or `FALSE`.
     Code
+      (expect_error(Plume$new(basic_df, distinct_initials = 1)))
+    Output
+      <error/rlang_error>
+      Error in `initialize()`:
+      ! `distinct_initials` must be `TRUE` or `FALSE`.
+    Code
       (expect_error(Plume$new(basic_df, credit_roles = 1)))
     Output
       <error/rlang_error>
