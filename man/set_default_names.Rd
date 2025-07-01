@@ -33,7 +33,7 @@ PlumeFr <- R6::R6Class(
   classname = "PlumeFr",
   inherit = Plume,
   private = list(
-    plume_names = set_default_names(
+    names = set_default_names(
       initials = "initiales",
       literal_name = "nom_complet",
       corresponding = "correspondant",

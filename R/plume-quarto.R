@@ -111,7 +111,7 @@ PlumeQuarto <- R6Class(
 
   private = list(
     file = NULL,
-    plume_names = .names_quarto,
+    names = .names_quarto,
     meta_key = "meta-",
     id = NULL,
 

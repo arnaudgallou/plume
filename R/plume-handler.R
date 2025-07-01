@@ -27,7 +27,7 @@ PlumeHandler <- R6Class(
         dotted_initials,
         interword_spacing
       ))
-      super$initialize(private$plume_names)
+      super$initialize(private$names)
       private$plume <- as_tibble(data)
       private$initials_given_name <- initials_given_name
       private$family_name_first <- family_name_first
@@ -84,7 +84,7 @@ PlumeHandler <- R6Class(
 
   private = list(
     plume = NULL,
-    plume_names = .names,
+    names = .names,
     initials_given_name = NULL,
     family_name_first = NULL,
     distinct_initials = NULL,
