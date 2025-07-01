@@ -303,7 +303,7 @@ Plume <- R6Class(
   ),
 
   private = list(
-    plume_names = .names_plume,
+    names = .names_plume,
     symbols = .symbols,
     orcid_icon = NULL,
 

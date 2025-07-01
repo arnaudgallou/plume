@@ -1,5 +1,7 @@
 # plume (development version)
 
+* Setting new default names to a plume subclass must now be done via the `names` field (#117).
+
 * `$set_*()` methods are now dot-agnostic (#113).
 
 * `Plume$new()` and `PlumeQuarto$new()` gain a new parameter `dotted_initials` to control whether or not initials should be dotted. This parameter replaces the `dotted_initials` parameter of `$get_contributions()`, which is now deprecated (#112).
