@@ -5,12 +5,7 @@
 #'   respective replacements.
 #' @param .plume_quarto Are you setting new names for [`PlumeQuarto`]?
 #' @details
-#' Available names are:
-#'
-#' `r wrap(squash(.names_plume), "\x60")`.
-#'
-#' Using `.plume_quarto = TRUE` adds `deceased`, `equal_contributor`, `number`,
-#' `dropping_particle` and `acknowledgements`.
+#' Available names are: `r plm_table_vars(id = "plm-vars")`
 #' @returns A named list.
 #' @examples
 #' # Extending `Plume` with default names in French
