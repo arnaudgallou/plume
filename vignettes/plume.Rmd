@@ -364,7 +364,7 @@ To output author data as markdown content, use the chunk option `results: asis` 
 ````{verbatim}
 ```{r}
 #| results: asis
-aut$get_contributions() |> cat(sep = "; ")
+cat(aut$get_contributions(), sep = "; ")
 ```
 ````
 

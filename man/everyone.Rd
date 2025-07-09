@@ -30,6 +30,6 @@ authors should normally be given a particular status.
 aut <- Plume$new(encyclopedists)
 
 aut$set_corresponding_authors(everyone())
-aut$data() |> dplyr::select(1:3, corresponding)
+dplyr::select(aut$data(), 1:3, corresponding)
 }
 \keyword{internal}

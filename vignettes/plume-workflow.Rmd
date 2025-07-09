@@ -71,7 +71,7 @@ aut$set_corresponding_authors(1)
 
 ```{r}
 #| results: asis
-aut$get_affiliations() |> cat(sep = "\n\n")
+as_lines(aut$get_affiliations())
 ```
 
 \*Correspondence to: `r aut$get_contact_details()`
@@ -84,7 +84,7 @@ Lorem ipsum...
 
 ```{r}
 #| results: asis
-aut$get_contributions() |> cat(sep = "; ")
+as_lines(aut$get_contributions())
 ```
 ````
 
