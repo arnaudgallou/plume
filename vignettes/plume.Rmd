@@ -23,7 +23,7 @@ The goal of the plume package is to make the handling and formatting of author d
 
 ## Example data
 
-We'll use the data sets `encyclopedists` and `encyclopedists_fr` to explore the different functionalities of the package. These data sets contain information on four famous authors of the "Encyclopédie", published in France in the 18th century. `encyclopedists_fr` is the French translation of `encyclopedists` and will be used to illustrate how to handle custom variable names. Both data sets are documented in `?encyclopedists`.
+We'll use the data sets `encyclopedists` and `encyclopedists_fr` to explore the different functionalities of the package. These data sets contain information about four notable authors of the "Encyclopédie", published in France in the 18th century. `encyclopedists_fr` is the French translation of `encyclopedists` and will be used to illustrate how to handle custom variable names. Both data sets are documented in `?encyclopedists`.
 
 ```{r}
 encyclopedists
@@ -104,10 +104,13 @@ tibble::tibble(
 plume uses the `r plume:::link("crt")` (CRediT) by default, assuming the input data contains the appropriate columns (see `credit_roles()` for details). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys identify role columns and values define the actual roles to use.
 
 ```{r, eval = FALSE}
-Plume$new(data, roles = c(
-  supervision = "supervised the project",
-  writing = "contributed to the writing"
-))
+Plume$new(
+  data,
+  roles = c(
+    supervision = "supervised the project",
+    writing = "contributed to the writing"
+  )
+)
 ```
 
 ## Assigning status to authors
@@ -177,7 +180,10 @@ aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 1, 4), tmp_file)
+aut <- PlumeQuarto$new(
+  dplyr::slice(encyclopedists, 1, 4),
+  tmp_file
+)
 aut$to_yaml()
 cat(read_file(tmp_file))
 ```
@@ -195,7 +201,10 @@ aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 2), tmp_file)
+aut <- PlumeQuarto$new(
+  dplyr::slice(encyclopedists, 2),
+  tmp_file
+)
 aut$to_yaml()
 cat(read_file(tmp_file))
 ```
@@ -284,10 +293,13 @@ aut$get_contributions(
   literal_names = TRUE
 )
 
-aut2 <- Plume$new(encyclopedists, roles = c(
-  supervision = "supervised the project",
-  writing = "contributed to the Encyclopédie"
-))
+aut2 <- Plume$new(
+  encyclopedists,
+  roles = c(
+    supervision = "supervised the project",
+    writing = "contributed to the Encyclopédie"
+  )
+)
 aut2$get_contributions(roles_first = FALSE, divider = " ")
 ```
 
