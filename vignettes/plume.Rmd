@@ -23,7 +23,7 @@ The goal of the plume package is to make the handling and formatting of author d
 
 ## Example data
 
-We'll use the data sets `encyclopedists` and `encyclopedists_fr` to explore the different functionalities of the package. These data sets contain information about four notable authors of the "Encyclopédie", published in France in the 18th century. `encyclopedists_fr` is the French translation of `encyclopedists` and will be used to illustrate how to handle custom variable names. Both data sets are documented in `?encyclopedists`.
+We'll use the datasets `encyclopedists` and `encyclopedists_fr` to explore the different functionalities of the package. These datasets contain information about four notable authors of the "Encyclopédie", published in France in the 18th century. `encyclopedists_fr` is the French translation of `encyclopedists` and will be used to illustrate how to handle custom variable names. Both datasets are documented in `?encyclopedists`.
 
 ```{r}
 encyclopedists

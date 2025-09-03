@@ -46,7 +46,7 @@ pak::pak("arnaudgallou/plume")
 
 ## Usage
 
-The minimal required data to work with plume classes is a data set
+The minimal required data to work with plume classes is a dataset
 containing given and family names but you would normally want to provide
 more information such as email addresses, ORCIDs, affiliations, etc.
 
@@ -65,12 +65,12 @@ encyclopedists
 
 Plume$new(encyclopedists)
 #> # A tibble: 4 × 11
-#>      id given_name     family_name literal_name initials email phone orcid note 
+#>      id given_name     family_name literal_name initials orcid email phone note 
 #>   <int> <chr>          <chr>       <chr>        <chr>    <chr> <chr> <chr> <chr>
-#> 1     1 Denis          Diderot     Denis Dider… DD       dide… +1234 0000… born…
-#> 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… <NA>  0000… <NA> 
-#> 3     3 François-Marie Arouet      François-Ma… F-MA     arou… <NA>  <NA>  also…
-#> 4     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… <NA>  0000… born…
+#> 1     1 Denis          Diderot     Denis Dider… D.D.     0000… dide… +1234 born…
+#> 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J.-J.R.  0000… rous… <NA>  <NA> 
+#> 3     3 François-Marie Arouet      François-Ma… F.-M.A.  <NA>  arou… <NA>  also…
+#> 4     4 Jean           Le Rond d'… Jean Le Ron… J.L.R.d… 0000… alem… <NA>  born…
 #> # ℹ 2 more variables: affiliation <list>, role <list>
 ```
 

@@ -47,7 +47,7 @@ pak::pak("arnaudgallou/plume")
 
 ## Usage
 
-The minimal required data to work with plume classes is a data set containing given and family names but you would normally want to provide more information such as email addresses, ORCIDs, affiliations, etc.
+The minimal required data to work with plume classes is a dataset containing given and family names but you would normally want to provide more information such as email addresses, ORCIDs, affiliations, etc.
 
 ```{r, message = FALSE}
 library(plume)
