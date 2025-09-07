@@ -1,5 +1,6 @@
 #' @title Create an ORCID icon
-#' @description Create an ORCID icon for use with the [`Plume`] class.
+#' @description
+#' Create an ORCID icon for use with the [`Plume`] class.
 #' @param size Size of the icon (in pixels).
 #' @param bw Should the black and white version of the icon be used?
 #' @returns A plume icon, i.e. an object with S3 class `plm_icon`.

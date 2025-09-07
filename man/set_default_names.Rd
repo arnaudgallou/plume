@@ -16,8 +16,8 @@ respective replacements.}
 A named list.
 }
 \description{
-This helper function allows you to set new default names to a
-plume subclass, e.g. to set default names to a language other than English.
+This function allows you to set new default names to a plume subclass, e.g.
+to set default names to a language other than English.
 }
 \details{
 Available names are: \if{html}{\out{<!--html_preserve-->}}\if{html}{\out{<div id="plm-vars" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">}}\if{html}{\out{

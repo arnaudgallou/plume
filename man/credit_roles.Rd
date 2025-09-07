@@ -13,10 +13,9 @@ credit_roles(oxford_spelling = TRUE)
 A named vector.
 }
 \description{
-Helper function returning the 14 contributor roles of the
-\href{https://credit.niso.org}{Contributor Roles Taxonomy} (CRediT). This function is the default argument of the
-\code{roles} and \code{role_cols} parameters in plume classes and \code{\link[=plm_template]{plm_template()}},
-respectively.
+Helper function returning the 14 contributor roles of the \href{https://credit.niso.org}{Contributor Roles Taxonomy}
+(CRediT). This function is the default argument of the \code{roles} and
+\code{role_cols} parameters in plume classes and \code{\link[=plm_template]{plm_template()}}, respectively.
 }
 \examples{
 credit_roles()

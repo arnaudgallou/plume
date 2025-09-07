@@ -9,9 +9,15 @@
   note = c("\u2020", "\u2021", "\u00a7", "\u00b6", "\u0023", "\\*\\*")
 )
 
-#' @title Plume class
-#' @description Class that generates author lists and other author-related
-#'   information as character strings.
+#' @title Generate author information within a document
+#' @description
+#' `Plume` provides several methods to generate author information directly
+#' within an R Markdown or Quarto document. This is a convenient solution when
+#' you don't need preformatted reports.
+#'
+#' In some instances, `Plume` gives you greater control over how to format
+#' author information as it supports features that are not available in
+#' [`PlumeQuarto`].
 #' @examples
 #' # Create a Plume instance
 #' aut <- Plume$new(encyclopedists)
@@ -75,13 +81,14 @@ Plume <- R6Class(
     #' @param dotted_initials Should initials be dot-separated?
     #' @param family_name_first Should literal names show family names first?
     #' @param distinct_initials If `TRUE`, will expand identical initials with
-    #'   additional letters from their respective family name until initials are
-    #'   unique. Initials of authors sharing the exact same name will remain in
-    #'   the short form.
+    #'   additional letters from the last word of their respective family name
+    #'   until initials are unique. Initials of authors sharing the exact same
+    #'   name will remain in the short form.
     #' @param interword_spacing Should literal names use spacing? This parameter
     #'   is only useful for people writing in languages that don't separate
     #'   words with a space such as Chinese or Japanese.
-    #' @param orcid_icon The ORCID icon, as defined by [`icn_orcid()`], to be used.
+    #' @param orcid_icon The ORCID icon, as defined by [`icn_orcid()`], to be
+    #'   used.
     #' @param by A character string defining the default variable used to assign
     #'   specific metadata to authors in all `set_*()` methods. By default, uses
     #'   authors' id.
@@ -132,13 +139,14 @@ Plume <- R6Class(
     #' * `a` for affiliations
     #' * `c` for corresponding authors
     #' * `n` for notes
-    #' * `o` for ORCIDs
+    #' * `o` for ORCID icons
     #'
     #' The order of the keys determines the order of symbol types. E.g. `"ac"`
     #' shows affiliation ids first and corresponding author mark second, when
     #' `"ca"` shows corresponding author mark first and affiliation ids second.
     #' Use `","` to separate and `"^"` to superscript symbols.
-    #' Use `NULL` or an empty string to list author names without suffixes.
+    #'
+    #' Set to `NULL` or `""` to list authors without suffixes.
     #' @return A character vector.
     get_author_list = function(suffix = NULL, format = deprecated()) {
       if (lifecycle::is_present(format)) {

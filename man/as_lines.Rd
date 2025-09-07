@@ -2,7 +2,7 @@
 % Please edit documentation in R/as-lines.R
 \name{as_lines}
 \alias{as_lines}
-\title{Print vector elements on multiple lines}
+\title{Print vector elements on distinct lines}
 \usage{
 as_lines(...)
 }
@@ -10,13 +10,11 @@ as_lines(...)
 \item{...}{Objects to print.}
 }
 \value{
-\code{NULL} invisibly.
+\code{NULL}, invisibly.
 }
 \description{
-Thin wrapper around \code{\link[=cat]{cat()}} to display vector elements on
-multiple lines when rendering an R Markdown or Quarto document. This is
-primarily intended to be used with \code{\link{Plume}}'s methods to output each
-returned element on its own line.
+Thin wrapper around \code{cat()} to display vector elements on distinct lines when
+rendering an R Markdown or Quarto document.
 }
 \examples{
 aut <- Plume$new(encyclopedists)

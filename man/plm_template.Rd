@@ -24,9 +24,8 @@ It is now recommended to use \code{role_cols = credit_roles()} to use the
 An empty tibble.
 }
 \description{
-This helper function allows you to generate an empty
-\code{\link[tibble:tibble]{tibble}} that you can use as a template to supply
-author data.
+Create an empty \code{\link[tibble:tibble]{tibble}} that can be used as a template
+to supply author data.
 }
 \examples{
 plm_template()
