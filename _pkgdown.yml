@@ -9,17 +9,21 @@ template:
 reference:
   - title: Classes
     contents:
-      - PlumeQuarto
       - Plume
+      - PlumeQuarto
   - title: Helpers
     contents:
-      - as_lines
       - credit_roles
-      - enumerate
       - everyone
       - icn_orcid
       - plm_template
       - sequential
+  - title: Printing
+    contents:
+      - as_lines
+      - enumerate
+  - title: Class extension
+    contents:
       - set_default_names
   - title: Built-in datasets
     contents:

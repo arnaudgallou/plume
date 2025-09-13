@@ -16,16 +16,11 @@ respective replacements.}
 A named list.
 }
 \description{
-This helper function allows you to set new default names to a
-plume subclass, e.g. to set default names to a language other than English.
+This function allows you to set new default names to a plume subclass, e.g.
+to set default names to a language other than English.
 }
 \details{
-Available names are:
-
-\code{id}, \code{initials}, \code{literal_name}, \code{corresponding}, \code{role}, \code{contributor_rank}, \code{given_name}, \code{family_name}, \code{orcid}, \code{email}, \code{phone}, \code{fax}, \code{url}, \code{affiliation}, \code{note}.
-
-Using \code{.plume_quarto = TRUE} adds \code{deceased}, \code{equal_contributor}, \code{number},
-\code{dropping_particle} and \code{acknowledgements}.
+See \code{vignette("plume")} for the list of available names.
 }
 \examples{
 # Extending `Plume` with default names in French

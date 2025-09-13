@@ -23,7 +23,7 @@ The goal of the plume package is to make the handling and formatting of author d
 
 ## Example data
 
-We'll use the data sets `encyclopedists` and `encyclopedists_fr` to explore the different functionalities of the package. These data sets contain information on four famous authors of the "Encyclopédie", published in France in the 18th century. `encyclopedists_fr` is the French translation of `encyclopedists` and will be used to illustrate how to handle custom variable names. Both data sets are documented in `?encyclopedists`.
+We'll use the datasets `encyclopedists` and `encyclopedists_fr` to explore the different functionalities of the package. These datasets contain information about four notable authors of the "Encyclopédie", published in France in the 18th century. `encyclopedists_fr` is the French translation of `encyclopedists` and will be used to illustrate how to handle custom variable names. Both datasets are documented in `?encyclopedists`.
 
 ```{r}
 encyclopedists
@@ -39,73 +39,24 @@ Plume$new(encyclopedists)
 
 ## Available names
 
-```{r, echo = FALSE}
-list_keys <- function(x) {
-  nms <- names(x)
-  out <- vector("list", length(x))
-  for (i in seq_along(x)) {
-    x_i <- x[[i]]
-    if (is.list(x_i)) {
-      out[[i]] <- list_keys(x_i)
-    } else {
-      out[[i]] <- nms[i]
-    }
-  }
-  unlist(out)
-}
-
-build_table <- function(data) {
-  gt(data) |>
-  text_case_match(
-    "TRUE" ~ fontawesome::fa("check"),
-    .default = "",
-    .locations = cells_body(tidyselect::starts_with("Plume"))
-  ) |>
-  cols_label(name = "Name") |>
-  cols_align(align = "center", columns = tidyselect::starts_with("Plume")) |>
-  cols_width(name ~ pct(50)) |>
-  opt_row_striping()
-}
-
-fetch <- plume:::list_fetch
-.names_plume <- plume:::.names_plume
-.names_quarto <- plume:::.names_quarto
-.names_all <- purrr::list_modify(.names_plume, !!!.names_quarto)
-
-are_within <- function(x, y) {
-  unlist(y) %in% unlist(x)
-}
-
-make_table_vars <- function(category) {
-  vars_plume <- fetch(.names_plume, category)
-  vars_plume_quarto <- fetch(.names_quarto, category)
-  vars <- fetch(.names_all, category)
-  build_table(tibble::tibble(
-    name = list_keys(vars),
-    Plume = are_within(vars_plume, vars),
-    PlumeQuarto = are_within(vars_plume_quarto, vars),
-  ))
-}
-```
-
 The default variables handled by plume classes are organised into six categories:
 
 **Primaries**: variables required to create a `plume` object.
 
 ```{r, echo = FALSE}
-make_table_vars("primaries")
+plume:::plm_table_vars("primaries")
 ```
 
 **Secondaries**: optional variables that can be provided in the input data.
 
 ```{r, echo = FALSE}
-make_table_vars("secondaries")
+plume:::plm_table_vars("secondaries")
 ```
 
 **Nestables**: optional variables that can be provided in the input data to pass multiple independent values to authors. Nestable variables must start with the same prefix. E.g. `affiliation_1`, `affiliation_2`, ..., `affiliation_n` to pass several affiliations to authors.
 
 ```{r, echo = FALSE}
-make_table_vars("nestables")
+plume:::plm_table_vars("nestables")
 ```
 
 **Roles**: optional user-defined variables describing authors' roles (see [Defining roles and contributors](#defining_roles) for details). By default, uses CRediT roles as defined by `credit_roles()`.
@@ -113,7 +64,7 @@ make_table_vars("nestables")
 **Internals**: variables created internally. These variables don't need to be provided in the input data and are ignored if supplied. You shouldn't worry much about these variables unless you want to customise names or extend plume classes with new default names.
 
 ```{r, echo = FALSE}
-make_table_vars("internals")
+plume:::plm_table_vars("internals")
 ```
 
 **Meta**: `PlumeQuarto`-specific variables used to pass extra information that doesn't fit in other categories. Meta columns must start with the prefix `meta-` and are followed by a custom name (e.g. `meta-custom_name`). You should only use these variables to pass data that are template specific. See Quarto's [arbitrary-metadata](https://quarto.org/docs/journals/authors.html#arbitrary-metadata) section for details.
@@ -153,17 +104,20 @@ tibble::tibble(
 plume uses the `r plume:::link("crt")` (CRediT) by default, assuming the input data contains the appropriate columns (see `credit_roles()` for details). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys identify role columns and values define the actual roles to use.
 
 ```{r, eval = FALSE}
-Plume$new(data, roles = c(
-  supervision = "supervised the project",
-  writing = "contributed to the writing"
-))
+Plume$new(
+  data,
+  roles = c(
+    supervision = "supervised the project",
+    writing = "contributed to the writing"
+  )
+)
 ```
 
 ## Assigning status to authors
 
 ```{r, echo = FALSE}
 status_methods <- tibble::tibble(
-  name = c(
+  Name = c(
     "set_corresponding_authors()",
     "set_main_contributors()",
     "set_cofirst_authors()",
@@ -177,7 +131,7 @@ status_methods <- tibble::tibble(
 plume provides `r nrow(status_methods)` methods to set particular status to authors:
 
 ```{r, echo = FALSE}
-build_table(status_methods)
+plume:::plm_table(status_methods)
 ```
 
 By default, `set_*()` methods assign values by authors' id. You can change this behaviour at the object or method level using the `by`/`.by` parameters.
@@ -226,7 +180,10 @@ aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 1, 4), tmp_file)
+aut <- PlumeQuarto$new(
+  dplyr::slice(encyclopedists, 1, 4),
+  tmp_file
+)
 aut$to_yaml()
 cat(read_file(tmp_file))
 ```
@@ -244,7 +201,10 @@ aut$to_yaml()
 ```
 
 ```{r, echo = FALSE, comment = ""}
-aut <- PlumeQuarto$new(dplyr::slice(encyclopedists, 2), tmp_file)
+aut <- PlumeQuarto$new(
+  dplyr::slice(encyclopedists, 2),
+  tmp_file
+)
 aut$to_yaml()
 cat(read_file(tmp_file))
 ```
@@ -333,10 +293,13 @@ aut$get_contributions(
   literal_names = TRUE
 )
 
-aut2 <- Plume$new(encyclopedists, roles = c(
-  supervision = "supervised the project",
-  writing = "contributed to the Encyclopédie"
-))
+aut2 <- Plume$new(
+  encyclopedists,
+  roles = c(
+    supervision = "supervised the project",
+    writing = "contributed to the Encyclopédie"
+  )
+)
 aut2$get_contributions(roles_first = FALSE, divider = " ")
 ```
 
@@ -413,7 +376,7 @@ To output author data as markdown content, use the chunk option `results: asis` 
 ````{verbatim}
 ```{r}
 #| results: asis
-aut$get_contributions() |> cat(sep = "; ")
+cat(aut$get_contributions(), sep = "; ")
 ```
 ````
 

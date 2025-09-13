@@ -16,9 +16,8 @@ matching values in the column defined by the \code{by}/\code{.by} parameters of
 values is case-insensitive.}
 }
 \description{
-Selection helpers to use in conjonction with status setter
-methods (i.e. methods that assign a status to authors with either \code{TRUE}
-or \code{FALSE}):
+Selection helpers to use in conjonction with status setter methods (i.e.
+methods that assign a status to authors with either \code{TRUE} or \code{FALSE}):
 \itemize{
 \item \code{\link[=everyone]{everyone()}} select all authors.
 \item \code{\link[=everyone_but]{everyone_but()}} \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} this function was
@@ -30,6 +29,6 @@ authors should normally be given a particular status.
 aut <- Plume$new(encyclopedists)
 
 aut$set_corresponding_authors(everyone())
-aut$data() |> dplyr::select(1:3, corresponding)
+dplyr::select(aut$data(), 1:3, corresponding)
 }
 \keyword{internal}

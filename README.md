@@ -18,14 +18,14 @@ plume provides tools for handling and generating author-related
 information for scientific writing in R Markdown and Quarto. The package
 implements two R6 classes:
 
-- `PlumeQuarto`: class that allows you to push author metadata in YAML
-  files or the YAML header of Quarto files. The generated YAML complies
-  with Quarto’s [author and affiliations
+- `PlumeQuarto`: class that allows you to add or update author metadata
+  in YAML files or the YAML header of Quarto documents. The generated
+  YAML complies with Quarto’s [author and affiliations
   schemas](https://quarto.org/docs/journals/authors.html). This is the
-  class to use if you work with journal templates.
+  class to use when working with journal templates.
 
 - `Plume`: class that generates author lists and other author-related
-  information as character strings. This is an easy and convenient
+  information as character vectors. This is a simple and convenient
   solution when you don’t need preformatted documents.
 
 ## Installation
@@ -46,7 +46,7 @@ pak::pak("arnaudgallou/plume")
 
 ## Usage
 
-The minimal required data to work with plume classes is a data set
+The minimal required data to work with plume classes is a dataset
 containing given and family names but you would normally want to provide
 more information such as email addresses, ORCIDs, affiliations, etc.
 
@@ -65,12 +65,12 @@ encyclopedists
 
 Plume$new(encyclopedists)
 #> # A tibble: 4 × 11
-#>      id given_name     family_name literal_name initials email phone orcid note 
+#>      id given_name     family_name literal_name initials orcid email phone note 
 #>   <int> <chr>          <chr>       <chr>        <chr>    <chr> <chr> <chr> <chr>
-#> 1     1 Denis          Diderot     Denis Dider… DD       dide… +1234 0000… born…
-#> 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… <NA>  0000… <NA> 
-#> 3     3 François-Marie Arouet      François-Ma… F-MA     arou… <NA>  <NA>  also…
-#> 4     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… <NA>  0000… born…
+#> 1     1 Denis          Diderot     Denis Dider… D.D.     0000… dide… +1234 born…
+#> 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J.-J.R.  0000… rous… <NA>  <NA> 
+#> 3     3 François-Marie Arouet      François-Ma… F.-M.A.  <NA>  arou… <NA>  also…
+#> 4     4 Jean           Le Rond d'… Jean Le Ron… J.L.R.d… 0000… alem… <NA>  born…
 #> # ℹ 2 more variables: affiliation <list>, role <list>
 ```
 
@@ -162,7 +162,7 @@ aut$to_yaml()
 
     Qui scribit bis legit
 
-Alternatively, you can generate author information as character strings
+Alternatively, you can generate author information as character vectors
 using `Plume`:
 
 ``` r

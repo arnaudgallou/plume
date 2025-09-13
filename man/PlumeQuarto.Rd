@@ -2,10 +2,12 @@
 % Please edit documentation in R/plume-quarto.R
 \name{PlumeQuarto}
 \alias{PlumeQuarto}
-\title{PlumeQuarto class}
+\title{Add or update author data in YAML for Quarto}
 \description{
-Class that pushes author metadata in YAML files or the YAML
-header of Quarto files.
+\code{PlumeQuarto} allows you to insert or update author data in YAML files or the
+YAML header of Quarto documents. The generated YAML complies with Quarto's
+\href{https://quarto.org/docs/journals/authors.html}{author and affiliations schemas}. Use this class when working with journal
+templates.
 }
 \examples{
 # Create a simple temporary file with a YAML header
@@ -23,12 +25,12 @@ aut <- PlumeQuarto$new(
   file = tmp_file
 )
 
-# And push author data to the YAML header
+# And insert author data to the YAML header
 aut$to_yaml()
 
 cat(readr::read_file(tmp_file))
 
-# Pushing again with new data updates the YAML
+# Running the method again with new data updates the YAML
 # header accordingly
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 2),
@@ -38,7 +40,7 @@ aut$to_yaml()
 
 cat(readr::read_file(tmp_file))
 
-# Clean up the temporary file
+# Clean up
 unlink(tmp_file)
 }
 \section{Super classes}{
@@ -121,21 +123,13 @@ A \code{PlumeQuarto} object.
 \if{html}{\out{<a id="method-PlumeQuarto-to_yaml"></a>}}
 \if{latex}{\out{\hypertarget{method-PlumeQuarto-to_yaml}{}}}
 \subsection{Method \code{to_yaml()}}{
-Push or update author information in a YAML file or YAML
-header. The generated YAML complies with Quarto's
-\href{https://quarto.org/docs/journals/authors.html}{author and affiliations schemas}.
+Add or update author data in the input \code{file}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeQuarto$to_yaml()}\if{html}{\out{</div>}}
 }
 
-\subsection{Details}{
-If missing, \code{to_yaml()} inserts author information into the desired file.
-Otherwise, the function replaces old \code{author} and \code{affiliations} values
-with the ones provided in the input data.
-}
-
 \subsection{Returns}{
-The input \code{file} invisibly.
+The input \code{file}, invisibly.
 }
 }
 \if{html}{\out{<hr>}}

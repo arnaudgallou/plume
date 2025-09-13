@@ -21,9 +21,7 @@ plume is designed to work with spreadsheets, which makes it easy to store, maint
 First, you'll need to create a spreadsheet. `plm_template()` provides a default template for that purpose.
 
 ```{r eval = FALSE}
-library(googlesheets4)
-
-gs4_create(
+googlesheets4::gs4_create(
   name = "authors",
   sheets = plm_template()
 )
@@ -38,7 +36,7 @@ Note that if it's the first time you use googlesheets4, you'll need to grant the
 Once the sheet is online, use `read_sheet()` to read it in R.
 
 ```{r eval = FALSE}
-read_sheet(gs4_find("authors"))
+googlesheets4::read_sheet("sheet_id")
 ```
 
 ## Set up
@@ -58,10 +56,9 @@ execute:
 #| label: setup
 #| include: false
 
-library(googlesheets4)
 library(plume)
 
-tbl_authors <- read_sheet(gs4_find("sheet_name"))
+tbl_authors <- googlesheets4::read_sheet("sheet_id")
 
 aut <- Plume$new(tbl_authors)
 aut$set_corresponding_authors(1)
@@ -71,7 +68,7 @@ aut$set_corresponding_authors(1)
 
 ```{r}
 #| results: asis
-aut$get_affiliations() |> cat(sep = "\n\n")
+as_lines(aut$get_affiliations())
 ```
 
 \*Correspondence to: `r aut$get_contact_details()`
@@ -84,7 +81,7 @@ Lorem ipsum...
 
 ```{r}
 #| results: asis
-aut$get_contributions() |> cat(sep = "; ")
+as_lines(aut$get_contributions())
 ```
 ````
 
@@ -95,10 +92,9 @@ To modify author data, simply edit the spreadsheet. All author information in th
 If you use `PlumeQuarto` to inject author information in a Quarto document, you'll have to pass the data from a separate R script.
 
 ```{r, eval = FALSE}
-library(googlesheets4)
 library(plume)
 
-tbl_authors <- read_sheet(gs4_find("sheet_name"))
+tbl_authors <- googlesheets4::read_sheet("sheet_id")
 
 aut <- PlumeQuarto$new(tbl_authors, file = "file.qmd")
 aut$set_corresponding_authors(1)

@@ -1,6 +1,6 @@
 #' @title Control the sequencing behaviour of character vectors
-#' @description Modifier function used to generate logical sequences of
-#'   characters.
+#' @description
+#' Modifier function used to generate logical sequences of characters.
 #' @param x A character vector.
 #' @returns A character vector with parent S3 class `sequential`.
 #' @examples

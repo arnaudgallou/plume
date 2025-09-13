@@ -14,9 +14,12 @@
   )
 )
 
-#' @title PlumeQuarto class
-#' @description Class that pushes author metadata in YAML files or the YAML
-#'   header of Quarto files.
+#' @title Add or update author data in YAML for Quarto
+#' @description
+#' `PlumeQuarto` allows you to insert or update author data in YAML files or the
+#' YAML header of Quarto documents. The generated YAML complies with Quarto's
+#' `r link("quarto_schemas")`. Use this class when working with journal
+#' templates.
 #' @examples
 #' # Create a simple temporary file with a YAML header
 #' # containing a title
@@ -33,12 +36,12 @@
 #'   file = tmp_file
 #' )
 #'
-#' # And push author data to the YAML header
+#' # And insert author data to the YAML header
 #' aut$to_yaml()
 #'
 #' cat(readr::read_file(tmp_file))
 #'
-#' # Pushing again with new data updates the YAML
+#' # Running the method again with new data updates the YAML
 #' # header accordingly
 #' aut <- PlumeQuarto$new(
 #'   dplyr::slice(encyclopedists, 2),
@@ -48,7 +51,7 @@
 #'
 #' cat(readr::read_file(tmp_file))
 #'
-#' # Clean up the temporary file
+#' # Clean up
 #' unlink(tmp_file)
 #' @export
 PlumeQuarto <- R6Class(
@@ -96,14 +99,8 @@ PlumeQuarto <- R6Class(
       private$id <- private$pick("id")
     },
 
-    #' @description Push or update author information in a YAML file or YAML
-    #'   header. The generated YAML complies with Quarto's
-    #'   `r link("quarto_schemas")`.
-    #' @details
-    #' If missing, `to_yaml()` inserts author information into the desired file.
-    #' Otherwise, the function replaces old `author` and `affiliations` values
-    #' with the ones provided in the input data.
-    #' @return The input `file` invisibly.
+    #' @description Add or update author data in the input `file`.
+    #' @return The input `file`, invisibly.
     to_yaml = function() {
       yaml_push(private$get_template(), file = private$file)
     }

@@ -2,10 +2,14 @@
 % Please edit documentation in R/plume.R
 \name{Plume}
 \alias{Plume}
-\title{Plume class}
+\title{Generate author information within a document}
 \description{
-Class that generates author lists and other author-related
-information as character strings.
+\code{Plume} provides several methods to generate author information directly
+within an R Markdown or Quarto document. This is a convenient solution when
+you don't need preformatted reports.
+
+In some cases, \code{Plume} gives you greater control over the formatting of
+author information, as it supports features not available in \code{\link{PlumeQuarto}}.
 }
 \examples{
 # Create a Plume instance
@@ -41,10 +45,13 @@ aut$get_affiliations()
 
 # It is also possible to output contributions in the
 # active voice
-aut <- Plume$new(encyclopedists, roles = c(
-  supervision = "supervised the project",
-  writing = "contributed to the Encyclopédie"
-))
+aut <- Plume$new(
+  encyclopedists,
+  roles = c(
+    supervision = "supervised the project",
+    writing = "contributed to the Encyclopédie"
+  )
+)
 aut$get_contributions(roles_first = FALSE, divider = " ")
 }
 \section{Super classes}{
@@ -127,15 +134,16 @@ It is now recommended to use \code{roles = credit_roles()} to use the
 \item{\code{family_name_first}}{Should literal names show family names first?}
 
 \item{\code{distinct_initials}}{If \code{TRUE}, will expand identical initials with
-additional letters from their respective family name until initials are
-unique. Initials of authors sharing the exact same name will remain in
-the short form.}
+additional letters from the last word of their respective family name
+until initials are unique. Initials of authors sharing the exact same
+name will remain in the short form.}
 
 \item{\code{interword_spacing}}{Should literal names use spacing? This parameter
 is only useful for people writing in languages that don't separate
 words with a space such as Chinese or Japanese.}
 
-\item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=icn_orcid]{icn_orcid()}}, to be used.}
+\item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=icn_orcid]{icn_orcid()}}, to be
+used.}
 
 \item{\code{by}}{A character string defining the default variable used to assign
 specific metadata to authors in all \verb{set_*()} methods. By default, uses
@@ -175,14 +183,15 @@ using the following keys:
 \item \code{a} for affiliations
 \item \code{c} for corresponding authors
 \item \code{n} for notes
-\item \code{o} for ORCIDs
+\item \code{o} for ORCID icons
 }
 
 The order of the keys determines the order of symbol types. E.g. \code{"ac"}
 shows affiliation ids first and corresponding author mark second, when
 \code{"ca"} shows corresponding author mark first and affiliation ids second.
 Use \code{","} to separate and \code{"^"} to superscript symbols.
-Use \code{NULL} or an empty string to list author names without suffixes.
+
+Set to \code{NULL} or \code{""} to list authors without suffixes.
 }
 
 \subsection{Returns}{

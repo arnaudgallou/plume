@@ -1,11 +1,14 @@
-#' Famous encyclopedists
-#'
-#' Data on four famous authors of the Encyclopédie (originally "Encyclopédie, ou
-#' dictionnaire raisonné des sciences, des arts et des métiers") published in
-#' France in the second half of the 18th century. The data set is available in
+#' @title Famous encyclopedists
+#' @description
+#' Data on four notable authors of the Encyclopédie (originally "Encyclopédie,
+#' ou dictionnaire raisonné des sciences, des arts et des métiers") published in
+#' France in the second half of the 18th century. The dataset is available in
 #' English (`encyclopedists`) and French (`encyclopedists_fr`).
-#'
-#' @format A tibble with 4 rows and 10 variables:
+#' @format
+#' ```{r echo=FALSE}
+#' dim <- dim(encyclopedists)
+#' ```
+#' A tibble with `r dim[[1]]` rows and `r dim[[2]]` variables:
 #' \describe{
 #'   \item{given_name,prénom}{authors' given names}
 #'   \item{family_name,nom}{authors' family names}

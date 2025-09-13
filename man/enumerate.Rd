@@ -18,10 +18,10 @@ enumerate(x, sep = ", ", last = " and ")
 A character string with the same class as \code{x}.
 }
 \description{
-Wrapper around \code{\link[glue:glue_collapse]{glue_collapse()}} using
-\code{sep = ", "} and \code{last = " and "} as default arguments.
+Wrapper around \code{\link[glue:glue_collapse]{glue_collapse()}} using \code{sep = ", "}
+and \code{last = " and "} as default arguments.
 }
 \examples{
 aut <- Plume$new(encyclopedists)
-aut$get_author_list() |> enumerate()
+enumerate(aut$get_author_list())
 }

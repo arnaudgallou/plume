@@ -13,8 +13,7 @@ sequential(x)
 A character vector with parent S3 class \code{sequential}.
 }
 \description{
-Modifier function used to generate logical sequences of
-characters.
+Modifier function used to generate logical sequences of characters.
 }
 \examples{
 aut <- Plume$new(

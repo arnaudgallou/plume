@@ -1,16 +1,16 @@
 #' @title Select all authors or exclude some from a selection
-#' @description Selection helpers to use in conjonction with status setter
-#'   methods (i.e. methods that assign a status to authors with either `TRUE`
-#'   or `FALSE`):
-#'   * [`everyone()`] select all authors.
-#'   * [`everyone_but()`] `r lifecycle::badge("deprecated")` this function was
-#'   deprecated as I believe it is not necessary since not more than a couple of
-#'   authors should normally be given a particular status.
+#' @description
+#' Selection helpers to use in conjonction with status setter methods (i.e.
+#' methods that assign a status to authors with either `TRUE` or `FALSE`):
+#' * [`everyone()`] select all authors.
+#' * [`everyone_but()`] `r lifecycle::badge("deprecated")` this function was
+#' deprecated as I believe it is not necessary since not more than a couple of
+#' authors should normally be given a particular status.
 #' @examples
 #' aut <- Plume$new(encyclopedists)
 #'
 #' aut$set_corresponding_authors(everyone())
-#' aut$data() |> dplyr::select(1:3, corresponding)
+#' dplyr::select(aut$data(), 1:3, corresponding)
 #' @export
 everyone <- function() {
   binder$pull()
