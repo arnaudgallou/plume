@@ -66,8 +66,8 @@
 </h2>
 <p>plume provides tools for handling and generating author-related information for scientific writing in R Markdown and Quarto. The package implements two R6 classes:</p>
 <ul>
-<li><p><code>PlumeQuarto</code>: class that allows you to push author metadata in YAML files or the YAML header of Quarto files. The generated YAML complies with Quarto’s <a href="https://quarto.org/docs/journals/authors.html" class="external-link">author and affiliations schemas</a>. This is the class to use if you work with journal templates.</p></li>
-<li><p><code>Plume</code>: class that generates author lists and other author-related information as character strings. This is an easy and convenient solution when you don’t need preformatted documents.</p></li>
+<li><p><code>PlumeQuarto</code>: class that allows you to add or update author metadata in YAML files or the YAML header of Quarto documents. The generated YAML complies with Quarto’s <a href="https://quarto.org/docs/journals/authors.html" class="external-link">author and affiliations schemas</a>. This is the class to use when working with journal templates.</p></li>
+<li><p><code>Plume</code>: class that generates author lists and other author-related information as character vectors. This is a simple and convenient solution when you don’t need preformatted documents.</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -84,7 +84,7 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>The minimal required data to work with plume classes is a data set containing given and family names but you would normally want to provide more information such as email addresses, ORCIDs, affiliations, etc.</p>
+<p>The minimal required data to work with plume classes is a dataset containing given and family names but you would normally want to provide more information such as email addresses, ORCIDs, affiliations, etc.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://arnaudgallou.github.io/plume/">plume</a></span><span class="op">)</span></span>
 <span></span>
@@ -100,12 +100,12 @@
 <span></span>
 <span><span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 11</span></span>
-<span><span class="co">#&gt;      id given_name     family_name literal_name initials email phone orcid note </span></span>
+<span><span class="co">#&gt;      id given_name     family_name literal_name initials orcid email phone note </span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1     1 Denis          Diderot     Denis Dider… DD       dide… +1234 0000… born…</span></span>
-<span><span class="co">#&gt; 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J-JR     rous… &lt;NA&gt;  0000… &lt;NA&gt; </span></span>
-<span><span class="co">#&gt; 3     3 François-Marie Arouet      François-Ma… F-MA     arou… &lt;NA&gt;  &lt;NA&gt;  also…</span></span>
-<span><span class="co">#&gt; 4     4 Jean           Le Rond d'… Jean Le Ron… JLRd'A   alem… &lt;NA&gt;  0000… born…</span></span>
+<span><span class="co">#&gt; 1     1 Denis          Diderot     Denis Dider… D.D.     0000… dide… +1234 born…</span></span>
+<span><span class="co">#&gt; 2     2 Jean-Jacques   Rousseau    Jean-Jacque… J.-J.R.  0000… rous… &lt;NA&gt;  &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 3     3 François-Marie Arouet      François-Ma… F.-M.A.  &lt;NA&gt;  arou… &lt;NA&gt;  also…</span></span>
+<span><span class="co">#&gt; 4     4 Jean           Le Rond d'… Jean Le Ron… J.L.R.d… 0000… alem… &lt;NA&gt;  born…</span></span>
 <span><span class="co">#&gt; # ℹ 2 more variables: affiliation &lt;list&gt;, role &lt;list&gt;</span></span></code></pre></div>
 <p><code>PlumeQuarto</code> lets you push author metadata in YAML files or the YAML header of any <code>.qmd</code> file using the <code>to_yaml()</code> method.</p>
 <p>Consider the following example:</p>
@@ -188,7 +188,7 @@
 <span id="cb6-65"><a href="#cb6-65" tabindex="-1"></a><span class="st">---</span></span>
 <span id="cb6-66"><a href="#cb6-66" tabindex="-1"></a></span>
 <span id="cb6-67"><a href="#cb6-67" tabindex="-1"></a><span class="st">Qui scribit bis legit</span></span></code></pre></div>
-<p>Alternatively, you can generate author information as character strings using <code>Plume</code>:</p>
+<p>Alternatively, you can generate author information as character vectors using <code>Plume</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="va">diderot</span>, .by <span class="op">=</span> <span class="st">"family_name"</span><span class="op">)</span></span>
