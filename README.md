@@ -25,7 +25,7 @@ implements two R6 classes:
   class to use when working with journal templates.
 
 - `Plume`: class that generates author lists and other author-related
-  information as character vectors. This is an simple and convenient
+  information as character vectors. This is a simple and convenient
   solution when you don’t need preformatted documents.
 
 ## Installation
