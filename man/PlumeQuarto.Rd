@@ -25,12 +25,12 @@ aut <- PlumeQuarto$new(
   file = tmp_file
 )
 
-# And push author data to the YAML header
+# And insert author data to the YAML header
 aut$to_yaml()
 
 cat(readr::read_file(tmp_file))
 
-# Pushing again with new data updates the YAML
+# Running the method again with new data updates the YAML
 # header accordingly
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 2),
