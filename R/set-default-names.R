@@ -6,7 +6,7 @@
 #'   respective replacements.
 #' @param .plume_quarto Are you setting new names for [`PlumeQuarto`]?
 #' @details
-#' Available names are: `r plm_table_vars(id = "plm-vars")`
+#' See `vignette("plume")` for the list of available names.
 #' @returns A named list.
 #' @examples
 #' # Extending `Plume` with default names in French
