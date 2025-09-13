@@ -8,9 +8,8 @@
 within an R Markdown or Quarto document. This is a convenient solution when
 you don't need preformatted reports.
 
-In some instances, \code{Plume} gives you greater control over how to format
-author information as it supports features that are not available in
-\code{\link{PlumeQuarto}}.
+In some cases, \code{Plume} gives you greater control over the formatting of
+author information, as it supports features not available in \code{\link{PlumeQuarto}}.
 }
 \examples{
 # Create a Plume instance

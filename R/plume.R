@@ -15,9 +15,8 @@
 #' within an R Markdown or Quarto document. This is a convenient solution when
 #' you don't need preformatted reports.
 #'
-#' In some instances, `Plume` gives you greater control over how to format
-#' author information as it supports features that are not available in
-#' [`PlumeQuarto`].
+#' In some cases, `Plume` gives you greater control over the formatting of
+#' author information, as it supports features not available in [`PlumeQuarto`].
 #' @examples
 #' # Create a Plume instance
 #' aut <- Plume$new(encyclopedists)
