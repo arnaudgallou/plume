@@ -31,6 +31,7 @@
 #' @importFrom readr read_file
 #' @importFrom readr write_lines
 #' @importFrom rlang :=
+#' @importFrom rlang .data
 #' @importFrom rlang caller_arg
 #' @importFrom rlang caller_env
 #' @importFrom rlang current_env
