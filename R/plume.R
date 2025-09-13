@@ -52,10 +52,13 @@
 #'
 #' # It is also possible to output contributions in the
 #' # active voice
-#' aut <- Plume$new(encyclopedists, roles = c(
-#'   supervision = "supervised the project",
-#'   writing = "contributed to the Encyclopédie"
-#' ))
+#' aut <- Plume$new(
+#'   encyclopedists,
+#'   roles = c(
+#'     supervision = "supervised the project",
+#'     writing = "contributed to the Encyclopédie"
+#'   )
+#' )
 #' aut$get_contributions(roles_first = FALSE, divider = " ")
 #' @export
 Plume <- R6Class(

@@ -4,7 +4,6 @@
 #' ou dictionnaire raisonné des sciences, des arts et des métiers") published in
 #' France in the second half of the 18th century. The dataset is available in
 #' English (`encyclopedists`) and French (`encyclopedists_fr`).
-#'
 #' @format
 #' ```{r echo=FALSE}
 #' dim <- dim(encyclopedists)

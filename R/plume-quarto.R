@@ -51,7 +51,7 @@
 #'
 #' cat(readr::read_file(tmp_file))
 #'
-#' # Clean up the temporary file
+#' # Clean up
 #' unlink(tmp_file)
 #' @export
 PlumeQuarto <- R6Class(
