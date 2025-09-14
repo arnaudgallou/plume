@@ -82,19 +82,29 @@ A tibble.
 \if{html}{\out{<a id="method-PlumeHandler-roles"></a>}}
 \if{latex}{\out{\hypertarget{method-PlumeHandler-roles}{}}}
 \subsection{Method \code{roles()}}{
+Get the roles used in a plume object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeHandler$roles()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A character vector.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PlumeHandler-get_roles"></a>}}
 \if{latex}{\out{\hypertarget{method-PlumeHandler-get_roles}{}}}
 \subsection{Method \code{get_roles()}}{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Please use \verb{$roles()} instead.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PlumeHandler$get_roles()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A character vector.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PlumeHandler-clone"></a>}}

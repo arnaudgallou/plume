@@ -72,10 +72,16 @@ PlumeHandler <- R6Class(
       private$plume
     },
 
+    #' @description Get the roles used in a plume object.
+    #' @return A character vector.
     roles = function() {
       private$.roles
     },
 
+    #' @description `r lifecycle::badge("deprecated")`
+    #'
+    #' Please use `$roles()` instead.
+    #' @return A character vector.
     get_roles = function() {
       lifecycle::deprecate_warn("0.3.0", "get_roles()", "roles()")
       private$.roles
