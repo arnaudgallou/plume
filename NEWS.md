@@ -1,5 +1,9 @@
 # plume (development version)
 
+* [`Plume`] now automatically escapes special Markdown characters used as symbols (#119).
+
+* New `plm_symbols()` to set the symbols used in [`Plume`] (#119).
+
 * Setting new default names to a plume subclass must now be done via the `names` field (#117).
 
 * `$set_*()` methods are now dot-agnostic (#113).
