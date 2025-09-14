@@ -198,7 +198,7 @@ aut2 <- Plume$new(
     supervision = "supervised the project",
     writing = "contributed to the Encyclopédie"
   ),
-  symbols = list(affiliation = letters)
+  symbols = plm_symbols(affiliation = letters)
 )
 
 aut2$get_author_list("^a^")

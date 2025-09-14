@@ -1,0 +1,31 @@
+#' @title Set symbols for `Plume`
+#' @description
+#' Set the symbols used in a [`Plume`] object.
+#' @param affiliation,corresponding,note Character vectors of symbols to use,
+#'   or `NULL` to use numerals.
+#' @details
+#' Note that you should not escape special characters yourself when using this
+#' function, as this is done internally by [`Plume`].
+#' @returns A named list.
+#' @examples
+#' aut <- Plume$new(
+#'   encyclopedists,
+#'   symbols = plm_symbols(affiliation = sequential(letters))
+#' )
+#' @export
+plm_symbols <- function(
+  affiliation = NULL,
+  corresponding = "*",
+  note = c("\u2020", "\u2021", "\u00a7", "\u00b6", "#", "**")
+) {
+  check_args(
+    "character",
+    quos(affiliation, corresponding, note),
+    allow("null", "unnamed")
+  )
+  add_class(cls = "plm_list", list(
+    affiliation = affiliation,
+    corresponding = corresponding,
+    note = note
+  ))
+}

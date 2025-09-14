@@ -342,17 +342,17 @@ Here, authors 4 and 3 are the main contributors in all roles but `supervision`, 
 Default symbols are:
 
 ```{r, echo = FALSE}
-str(plume:::.symbols)
+str(unclass(plm_symbols()))
 ```
 
 You can change symbols when creating a `plume` object using the parameter `symbols`.
 
-Use `NULL` to display numbers:
+Use `NULL` to display numerals:
 
 ```{r}
 aut <- Plume$new(
   encyclopedists,
-  symbols = list(affiliation = letters, note = NULL)
+  symbols = plm_symbols(affiliation = letters, note = NULL)
 )
 
 aut$get_author_list("^a,n^")
@@ -363,7 +363,7 @@ Use `NULL` as much as possible for symbols using numerous unique items (typicall
 ```{r, eval = FALSE}
 Plume$new(
   encyclopedists,
-  symbols = list(affiliation = sequential(letters))
+  symbols = plm_symbols(affiliation = sequential(letters))
 )
 ```
 

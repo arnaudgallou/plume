@@ -3,12 +3,6 @@
   internals = list(contributor_rank = "contributor_rank")
 )
 
-.symbols <- list(
-  affiliation = NULL,
-  corresponding = "\\*",
-  note = c("\u2020", "\u2021", "\u00a7", "\u00b6", "\u0023", "\\*\\*")
-)
-
 #' @title Generate author information within a document
 #' @description
 #' `Plume` provides several methods to generate author information directly
@@ -42,7 +36,7 @@
 #' # E.g. to use letters as affiliation ids:
 #' aut <- Plume$new(
 #'   encyclopedists,
-#'   symbols = list(affiliation = letters)
+#'   symbols = plm_symbols(affiliation = letters)
 #' )
 #'
 #' aut$get_author_list("^a^")
@@ -68,11 +62,9 @@ Plume <- R6Class(
     #' @param data A data frame containing author-related data.
     #' @param names A vector of key-value pairs specifying custom names to use,
     #'   where keys are default names and values their respective replacements.
-    #' @param symbols A list of key-value pairs defining the symbols to use to
-    #'   link authors and their metadata. Valid keys are `"affiliation"`,
-    #'   `"corresponding"` and `"note"`. By default, uses digits for
-    #'   affiliations, `"*"` for corresponding authors and `"†"`, `"‡"`, `"§"`,
-    #'   `"¶"`, `"#"`, `"**"` for notes. Set a key to `NULL` to use numerals.
+    #' @param symbols Symbols, as defined by [`plm_symbols()`], used to link
+    #'   authors to their metadata. Special characters are automatically escaped
+    #'   internally.
     #' @param roles A vector of key-value pairs defining roles where keys
     #'   identify role columns and values describe the actual roles to use.
     #' @param credit_roles `r lifecycle::badge("deprecated")`
@@ -98,7 +90,7 @@ Plume <- R6Class(
     initialize = function(
       data,
       names = NULL,
-      symbols = NULL,
+      symbols = plm_symbols(),
       roles = credit_roles(),
       credit_roles = FALSE,
       initials_given_name = FALSE,
@@ -121,11 +113,9 @@ Plume <- R6Class(
         interword_spacing,
         by = by
       )
-      check_list(symbols, allow("null"))
+      check_symbols(symbols)
       check_orcid_icon(orcid_icon)
-      if (!is.null(symbols)) {
-        private$symbols <- list_replace(private$symbols, symbols)
-      }
+      private$symbols <- map(symbols, md_escape)
       private$orcid_icon <- orcid_icon
     },
 
@@ -314,7 +304,7 @@ Plume <- R6Class(
 
   private = list(
     names = .names_plume,
-    symbols = .symbols,
+    symbols = NULL,
     orcid_icon = NULL,
 
     get_author_list_suffixes = function(template) {

@@ -16,7 +16,7 @@ test_that("get_affiliations/notes() return affiliations/notes", {
     c("1: a", "2: b", "3: c", "4: d")
   )
 
-  aut <- Plume$new(basic_df, symbols = list(affiliation = letters))
+  aut <- Plume$new(basic_df, symbols = plm_symbols(affiliation = letters))
 
   expect_equal(aut$get_affiliations(), c("^a^a", "^b^b", "^c^c", "^d^d"))
   expect_equal(aut$get_notes(), c("^†^a", "^‡^c", "^§^b"))

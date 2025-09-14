@@ -16,6 +16,7 @@ reference:
       - credit_roles
       - everyone
       - icn_orcid
+      - plm_symbols
       - plm_template
       - sequential
   - title: Printing

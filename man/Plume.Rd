@@ -36,7 +36,7 @@ aut$get_contributions()
 # E.g. to use letters as affiliation ids:
 aut <- Plume$new(
   encyclopedists,
-  symbols = list(affiliation = letters)
+  symbols = plm_symbols(affiliation = letters)
 )
 
 aut$get_author_list("^a^")
@@ -92,7 +92,7 @@ Create a \code{Plume} object.
 \if{html}{\out{<div class="r">}}\preformatted{Plume$new(
   data,
   names = NULL,
-  symbols = NULL,
+  symbols = plm_symbols(),
   roles = credit_roles(),
   credit_roles = FALSE,
   initials_given_name = FALSE,
@@ -113,11 +113,9 @@ Create a \code{Plume} object.
 \item{\code{names}}{A vector of key-value pairs specifying custom names to use,
 where keys are default names and values their respective replacements.}
 
-\item{\code{symbols}}{A list of key-value pairs defining the symbols to use to
-link authors and their metadata. Valid keys are \code{"affiliation"},
-\code{"corresponding"} and \code{"note"}. By default, uses digits for
-affiliations, \code{"*"} for corresponding authors and \code{"†"}, \code{"‡"}, \code{"§"},
-\code{"¶"}, \code{"#"}, \code{"**"} for notes. Set a key to \code{NULL} to use numerals.}
+\item{\code{symbols}}{Symbols, as defined by \code{\link[=plm_symbols]{plm_symbols()}}, used to link
+authors to their metadata. Special characters are automatically escaped
+internally.}
 
 \item{\code{roles}}{A vector of key-value pairs defining roles where keys
 identify role columns and values describe the actual roles to use.}

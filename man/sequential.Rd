@@ -22,7 +22,7 @@ aut <- Plume$new(
     family_name = "Y",
     affiliation = 1:60
   ),
-  symbols = list(affiliation = sequential(letters))
+  symbols = plm_symbols(affiliation = sequential(letters))
 )
 
 aut$get_affiliations(sep = ": ", superscript = FALSE)

@@ -78,7 +78,7 @@ test_that("get_author_list() returns author list", {
 
   # overrides default symbols
 
-  aut <- Plume$new(basic_df, symbols = list(
+  aut <- Plume$new(basic_df, symbols = plm_symbols(
     affiliation = letters,
     corresponding = "#",
     note = NULL
@@ -86,7 +86,7 @@ test_that("get_author_list() returns author list", {
   aut$set_corresponding_authors(1, 3)
 
   .a <- c("a,b", "c", "a,d")
-  .c <- c("#", "", "#")
+  .c <- c("\\#", "", "\\#")
   .n <- c("1,2", "", "3")
 
   expect_equal(
