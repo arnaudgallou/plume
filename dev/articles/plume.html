@@ -2940,15 +2940,15 @@ all but a few specific roles at once.</p>
 <p>Default symbols are:</p>
 <pre><code><span><span class="co">#&gt; List of 3</span></span>
 <span><span class="co">#&gt;  $ affiliation  : NULL</span></span>
-<span><span class="co">#&gt;  $ corresponding: chr "\\*"</span></span>
-<span><span class="co">#&gt;  $ note         : chr [1:6] "†" "‡" "§" "¶" "#" "\\*\\*"</span></span></code></pre>
+<span><span class="co">#&gt;  $ corresponding: chr "*"</span></span>
+<span><span class="co">#&gt;  $ note         : chr [1:6] "†" "‡" "§" "¶" "#" "**"</span></span></code></pre>
 <p>You can change symbols when creating a <code>plume</code> object
 using the parameter <code>symbols</code>.</p>
-<p>Use <code>NULL</code> to display numbers:</p>
+<p>Use <code>NULL</code> to display numerals:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
-<span>  symbols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="va">letters</span>, note <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span>  symbols <span class="op">=</span> <span class="fu"><a href="../reference/plm_symbols.html">plm_symbols</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="va">letters</span>, note <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span><span class="st">"^a,n^"</span><span class="op">)</span></span>
@@ -2964,7 +2964,7 @@ as shown below:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>
-<span>  symbols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="fu"><a href="../reference/sequential.html">sequential</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span><span class="op">)</span></span>
+<span>  symbols <span class="op">=</span> <span class="fu"><a href="../reference/plm_symbols.html">plm_symbols</a></span><span class="op">(</span>affiliation <span class="op">=</span> <span class="fu"><a href="../reference/sequential.html">sequential</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>By default, plume repeats elements when all elements in a vector are
 consumed. Using <code><a href="../reference/sequential.html">sequential()</a></code> allows you to display a
