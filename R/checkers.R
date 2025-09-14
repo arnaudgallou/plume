@@ -311,3 +311,13 @@ check_orcid_icon <- function(x, arg = caller_arg(x)) {
     i = "Use `icn_orcid()` to set the ORCID icon."
   ))
 }
+
+check_symbols <- function(x, arg = caller_arg(x)) {
+  if (inherits(x, "plm_list")) {
+    return(invisible())
+  }
+  abort(c(
+    glue("Invalid `{arg}` input."),
+    i = "Use `plm_symbols()` to set the symbols."
+  ))
+}

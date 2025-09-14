@@ -14,3 +14,9 @@ compare_proxy.plm <- function(x, path = "x") {
   x <- unstructure(x)
   NextMethod()
 }
+
+#' @export
+print.plm_list <- function(x, ...) {
+  print(unclass(x))
+  invisible(x)
+}

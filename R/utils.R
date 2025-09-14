@@ -234,3 +234,10 @@ split_chars <- function(x) {
 quos <- function(...) {
   rlang::quos(..., .named = TRUE)
 }
+
+md_escape <- function(x) {
+  if (is.null(x)) {
+    return()
+  }
+  gsub("([\\\\`#.*+!_{}\\[\\]()-])", "\\\\\\1", x, perl = TRUE)
+}

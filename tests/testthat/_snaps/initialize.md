@@ -52,17 +52,12 @@
       Error in `initialize()`:
       ! `names` must have unique input names.
     Code
-      (expect_error(Plume$new(basic_df, symbols = c(note = letters))))
+      (expect_error(Plume$new(basic_df, symbols = list(note = NULL))))
     Output
       <error/rlang_error>
       Error in `initialize()`:
-      ! `symbols` must be a list.
-    Code
-      (expect_error(Plume$new(basic_df, symbols = list(note = NULL, note = NULL))))
-    Output
-      <error/rlang_error>
-      Error in `initialize()`:
-      ! `symbols` must have unique input names.
+      ! Invalid `symbols` input.
+      i Use `plm_symbols()` to set the symbols.
     Code
       (expect_error(Plume$new(basic_df, orcid_icon = NULL)))
     Output
