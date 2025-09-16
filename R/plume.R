@@ -62,11 +62,11 @@ Plume <- R6Class(
     #' @param data A data frame containing author-related data.
     #' @param names A vector of key-value pairs specifying custom names to use,
     #'   where keys are default names and values their respective replacements.
+    #' @param roles A vector of key-value pairs defining roles where keys
+    #'   identify role columns and values describe the actual roles to use.
     #' @param symbols Symbols, as defined by [`plm_symbols()`], used to link
     #'   authors to their metadata. Special characters are automatically escaped
     #'   internally.
-    #' @param roles A vector of key-value pairs defining roles where keys
-    #'   identify role columns and values describe the actual roles to use.
     #' @param credit_roles `r lifecycle::badge("deprecated")`
     #'
     #'   It is now recommended to use `roles = credit_roles()` to use the
@@ -90,8 +90,8 @@ Plume <- R6Class(
     initialize = function(
       data,
       names = NULL,
-      symbols = plm_symbols(),
       roles = credit_roles(),
+      symbols = plm_symbols(),
       credit_roles = FALSE,
       initials_given_name = FALSE,
       dotted_initials = TRUE,

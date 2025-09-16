@@ -92,8 +92,8 @@ Create a \code{Plume} object.
 \if{html}{\out{<div class="r">}}\preformatted{Plume$new(
   data,
   names = NULL,
-  symbols = plm_symbols(),
   roles = credit_roles(),
+  symbols = plm_symbols(),
   credit_roles = FALSE,
   initials_given_name = FALSE,
   dotted_initials = TRUE,
@@ -113,12 +113,12 @@ Create a \code{Plume} object.
 \item{\code{names}}{A vector of key-value pairs specifying custom names to use,
 where keys are default names and values their respective replacements.}
 
+\item{\code{roles}}{A vector of key-value pairs defining roles where keys
+identify role columns and values describe the actual roles to use.}
+
 \item{\code{symbols}}{Symbols, as defined by \code{\link[=plm_symbols]{plm_symbols()}}, used to link
 authors to their metadata. Special characters are automatically escaped
 internally.}
-
-\item{\code{roles}}{A vector of key-value pairs defining roles where keys
-identify role columns and values describe the actual roles to use.}
 
 \item{\code{credit_roles}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
