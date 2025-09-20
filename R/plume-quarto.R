@@ -20,6 +20,8 @@
 #' YAML header of Quarto documents. The generated YAML complies with Quarto's
 #' `r link("quarto_schemas")`. Use this class when working with journal
 #' templates.
+#' @section Notes:
+#' `new_plume_quarto()` is an alias for `PlumeQuarto$new()`.
 #' @examples
 #' # Create a simple temporary file with a YAML header
 #' # containing a title
@@ -248,6 +250,11 @@ PlumeQuarto <- R6Class(
     }
   )
 )
+
+#' @rdname PlumeQuarto
+#' @usage NULL
+#' @export
+new_plume_quarto <- PlumeQuarto$new
 
 .affiliation_keys <- c(
   "number", "name", "department", "address", "city", "region", "state",

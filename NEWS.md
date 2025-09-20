@@ -1,5 +1,7 @@
 # plume (development version)
 
+* New `new_plume()` and `new_plume_quarto()` that are aliases for `Plume$new()` and `PlumeQuarto$new()`, respectively (#124).
+
 * [`Plume`] now automatically escapes special Markdown characters used as symbols (#119).
 
 * New `plm_symbols()` to set the symbols used in [`Plume`] (#119).

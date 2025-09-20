@@ -11,6 +11,8 @@
 #'
 #' In some cases, `Plume` gives you greater control over the formatting of
 #' author information, as it supports features not available in [`PlumeQuarto`].
+#' @section Notes:
+#' `new_plume()` is an alias for `Plume$new()`.
 #' @examples
 #' # Create a Plume instance
 #' aut <- Plume$new(encyclopedists)
@@ -373,6 +375,11 @@ Plume <- R6Class(
     }
   )
 )
+
+#' @rdname Plume
+#' @usage NULL
+#' @export
+new_plume <- Plume$new
 
 contribution_items <- function(pars, by_author, alphabetical_order) {
   data <- dplyr::pick(any_of(c(pars$var, pars$rank)))
