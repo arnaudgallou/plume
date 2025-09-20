@@ -7,7 +7,7 @@ template:
       <script data-goatcounter="https://gh-plume.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 reference:
-  - title: Classes
+  - title: Constructors
     contents:
       - Plume
       - PlumeQuarto

@@ -2,6 +2,7 @@
 % Please edit documentation in R/plume-quarto.R
 \name{PlumeQuarto}
 \alias{PlumeQuarto}
+\alias{new_plume_quarto}
 \title{Add or update author data in YAML for Quarto}
 \description{
 \code{PlumeQuarto} allows you to insert or update author data in YAML files or the
@@ -9,6 +10,11 @@ YAML header of Quarto documents. The generated YAML complies with Quarto's
 \href{https://quarto.org/docs/journals/authors.html}{author and affiliations schemas}. Use this class when working with journal
 templates.
 }
+\section{Notes}{
+
+\code{new_plume_quarto()} is an alias for \code{PlumeQuarto$new()}.
+}
+
 \examples{
 # Create a simple temporary file with a YAML header
 # containing a title

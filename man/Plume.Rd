@@ -2,6 +2,7 @@
 % Please edit documentation in R/plume.R
 \name{Plume}
 \alias{Plume}
+\alias{new_plume}
 \title{Generate author information within a document}
 \description{
 \code{Plume} provides several methods to generate author information directly
@@ -11,6 +12,11 @@ you don't need preformatted reports.
 In some cases, \code{Plume} gives you greater control over the formatting of
 author information, as it supports features not available in \code{\link{PlumeQuarto}}.
 }
+\section{Notes}{
+
+\code{new_plume()} is an alias for \code{Plume$new()}.
+}
+
 \examples{
 # Create a Plume instance
 aut <- Plume$new(encyclopedists)
