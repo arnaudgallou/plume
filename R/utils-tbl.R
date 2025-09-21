@@ -55,7 +55,11 @@ add_symbols <- function(data, col, symbols) {
 }
 
 add_orcid_icons <- function(data, col, orcid) {
-  data[predot(col)] <- make_orcid_icon(data[[col]], attributes(orcid))
+  data[predot(col)] <- if (is_using_quarto()) {
+    ""
+  } else {
+    make_orcid_icon(data[[col]], attributes(orcid))
+  }
   data
 }
 

@@ -63,6 +63,14 @@ is_selector <- function(expr) {
   is_call(expr, nms, ns = c("plume", ""))
 }
 
+is_using_quarto <- function() {
+  fls <- list.files(pattern = "(?:_quarto\\.ya?ml|\\.qmd)$")
+  if (length(fls) == 0L) {
+    return(FALSE)
+  }
+  TRUE
+}
+
 are_credit_roles <- function(x) {
   all(x %in% credit_roles()) || all(x %in% credit_roles(FALSE))
 }

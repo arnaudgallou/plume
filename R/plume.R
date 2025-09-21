@@ -84,7 +84,7 @@ Plume <- R6Class(
     #'   is only useful for people writing in languages that don't separate
     #'   words with a space such as Chinese or Japanese.
     #' @param orcid_icon The ORCID icon, as defined by [`icn_orcid()`], to be
-    #'   used.
+    #'   used. This is currently only compatible with R Markdown.
     #' @param by A character string defining the default variable used to assign
     #'   specific metadata to authors in all `set_*()` methods. By default, uses
     #'   authors' id.
