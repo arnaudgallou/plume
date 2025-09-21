@@ -107,6 +107,18 @@ test_that("get_author_list() returns author list", {
   )
 })
 
+test_that("Leading ^ are dropped when there are no symbols to display.", {
+  aut <- Plume$new(tibble::tibble(
+    given_name = "X",
+    family_name = "Y",
+    note = NA
+  ))
+  expect_equal(
+    aut$get_author_list("^n^"),
+    "X Y"
+  )
+})
+
 test_that("get_author_list() makes ORCID icons", {
   aut <- Plume$new(basic_df)
   expect_snapshot(aut$get_author_list("o"), transform = scrub_icon_path)
