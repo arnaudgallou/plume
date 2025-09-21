@@ -147,7 +147,7 @@ is only useful for people writing in languages that don't separate
 words with a space such as Chinese or Japanese.}
 
 \item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=icn_orcid]{icn_orcid()}}, to be
-used.}
+used. This is currently only compatible with R Markdown.}
 
 \item{\code{by}}{A character string defining the default variable used to assign
 specific metadata to authors in all \verb{set_*()} methods. By default, uses

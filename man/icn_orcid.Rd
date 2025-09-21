@@ -15,7 +15,8 @@ icn_orcid(size = 16, bw = FALSE)
 A plume icon, i.e. an object with S3 class \code{plm_icon}.
 }
 \description{
-Create an ORCID icon for use with the \code{\link{Plume}} class.
+Create an ORCID icon for use with the \code{\link{Plume}} class. This is currently only
+compatible with R Markdown.
 }
 \examples{
 aut <- Plume$new(encyclopedists, orcid_icon = icn_orcid(bw = TRUE))

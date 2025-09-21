@@ -223,7 +223,7 @@ cat(read_file(tmp_file))
 
 - `n` for notes
 
-- `o` for ORCIDs
+- `o` for ORCIDs (currently only compatible with R Markdown)
 
 The order of the keys determines the order of symbol categories.
 
