@@ -23,7 +23,7 @@ als_extract_mark <- function(format, key) {
 }
 
 als_sanitise <- function(x) {
-  str_remove_all(x, "(?<=([,^]))\\1+")
+  str_remove_all(x, "(?<=([,^]))\\1+|^\\^+$")
 }
 
 als_parse <- function(format) {
