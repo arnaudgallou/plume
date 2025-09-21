@@ -1,5 +1,7 @@
 # plume (development version)
 
+* ORCID icons are now ignored in Quarto documents. They continue to work in R Markdown as before (#109).
+
 * New `new_plume()` and `new_plume_quarto()` that are aliases for `Plume$new()` and `PlumeQuarto$new()`, respectively (#124).
 
 * [`Plume`] now automatically escapes special Markdown characters used as symbols (#119).
