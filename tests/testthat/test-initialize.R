@@ -133,14 +133,25 @@ test_that("`initials_given_name = TRUE` initialises given names", {
 
 test_that("`distinct_initials = TRUE` makes unique initials", {
   df <- data.frame(
-    given_name = c("A", "B", "A", "C", "C", "D", "D"),
-    family_name = c("Dufour", "Fo", "Dupont", "de Rose", "de Reeth", "Ba", "Ba")
+    given_name = c("A", "B", "B", "C", "C"),
+    family_name = c("Foo", "de Rose", "de Reeth", "Bar", "Bar")
   )
   aut <- Plume$new(df, distinct_initials = TRUE)
 
   expect_equal(
     aut$data()$initials,
-    c("A.Duf.", "B.F.", "A.Dup.", "C.d.Ro.", "C.d.Re.", "D.B.", "D.B.")
+    c("A.F.", "B.d.Ro.", "B.d.Re.", "C.B.", "C.B.")
+  )
+
+  df <- data.frame(
+    given_name = c("A", "A", "B"),
+    family_name = c("Dufour", "Delatour", "Dupont")
+  )
+  aut <- Plume$new(df, distinct_initials = TRUE)
+
+  expect_equal(
+    aut$data()$initials,
+    c("A.Du.", "A.De.", "B.D.")
   )
 })
 
