@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `$get_author_list()` now correctly drops leading `^` when there are no symbols to display (#127).
+
 * ORCID icons are now ignored in Quarto documents. They continue to work in R Markdown as before (#109).
 
 * New `new_plume()` and `new_plume_quarto()` that are aliases for `Plume$new()` and `PlumeQuarto$new()`, respectively (#124).
