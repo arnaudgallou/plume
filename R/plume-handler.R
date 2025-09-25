@@ -28,7 +28,7 @@ PlumeHandler <- R6Class(
         interword_spacing
       ))
       super$initialize(private$names)
-      private$plume <- as_tibble(data)
+      private$plume <- tibble::as_tibble(data)
       private$initials_given_name <- initials_given_name
       private$family_name_first <- family_name_first
       private$distinct_initials <- distinct_initials
@@ -128,7 +128,7 @@ PlumeHandler <- R6Class(
     },
 
     nest = function(col) {
-      out <- pivot_longer(
+      out <- tidyr::pivot_longer(
         private$plume,
         cols = starts_with(col),
         values_to = col,
@@ -219,7 +219,7 @@ PlumeHandler <- R6Class(
 
     has_col = function(col) {
       if (any(has_metachr(col))) {
-        col <- regex(col)
+        col <- stringr::regex(col)
       }
       has_name(private$plume, col)
     },

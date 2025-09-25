@@ -9,5 +9,6 @@
 #' as_lines(aut$get_affiliations())
 #' @export
 as_lines <- function(...) {
+  check_atomic(c(...), arg = "...")
   cat(..., sep = strrep(eol(), 2L))
 }

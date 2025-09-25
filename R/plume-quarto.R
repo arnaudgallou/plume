@@ -98,13 +98,12 @@ PlumeQuarto <- R6Class(
         by = by
       )
       private$file <- file
-      private$id <- private$pick("id")
     },
 
     #' @description Add or update author data in the input `file`.
     #' @return The input `file`, invisibly.
     to_yaml = function() {
-      yaml_push(private$get_template(), file = private$file)
+      yaml_update(private$get_template(), file = private$file)
     }
   ),
 
@@ -112,7 +111,6 @@ PlumeQuarto <- R6Class(
     file = NULL,
     names = .names_quarto,
     meta_key = "meta-",
-    id = NULL,
 
     mold = function(...) {
       super$mold(starts_with(private$meta_key), ...)
@@ -187,8 +185,8 @@ PlumeQuarto <- R6Class(
         .data[[col]],
         callback(.data[[col]]),
         all = TRUE
-      ), .by = private$id)
-      out[["_"]]
+      ), .by = private$pick("id"))
+      out$"_"
     },
 
     author_attributes = function() {
@@ -217,8 +215,8 @@ PlumeQuarto <- R6Class(
       ))
       out <- summarise(out, `_` = list(
         tibble(ref = sort(!!sym(.col)))
-      ), .by = private$id)
-      out[["_"]]
+      ), .by = private$pick("id"))
+      out$"_"
     },
 
     author_metadata = function() {
@@ -239,7 +237,7 @@ PlumeQuarto <- R6Class(
         return(tibble(id = ids, name = affiliations))
       }
       out <- map(affiliations, \(affiliation) {
-        as_tibble_row(parse_affiliation(affiliation))
+        tibble::as_tibble_row(parse_affiliation(affiliation))
       })
       out <- list_rbind(out, names_to = "id")
       out <- mutate(out, id = make_affiliation_id(id))
@@ -257,8 +255,20 @@ PlumeQuarto <- R6Class(
 new_plume_quarto <- PlumeQuarto$new
 
 .affiliation_keys <- c(
-  "number", "name", "department", "address", "city", "region", "state",
-  "country", "postal-code", "url", "isni", "ringgold", "ror", "group"
+  "number",
+  "name",
+  "department",
+  "address",
+  "city",
+  "region",
+  "state",
+  "country",
+  "postal-code",
+  "url",
+  "isni",
+  "ringgold",
+  "ror",
+  "group"
 )
 
 parse_affiliation <- function(x) {

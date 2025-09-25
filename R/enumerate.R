@@ -12,6 +12,6 @@
 #' enumerate(aut$get_author_list())
 #' @export
 enumerate <- function(x, sep = ", ", last = " and ") {
-  out <- glue_collapse(x, sep = sep, last = last)
-  vec_restore(out, x)
+  out <- glue::glue_collapse(x, sep = sep, last = last)
+  vctrs::vec_restore(out, x)
 }

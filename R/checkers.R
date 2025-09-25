@@ -186,8 +186,8 @@ check_character <- function(x, let = allow(), arg = caller_arg(x)) {
   check_vec(x, "character", "a character vector", let, arg)
 }
 
-check_num <- function(x, let = allow("unnamed"), arg = caller_arg(x)) {
-  check_vec(x, "numeric", "a numeric vector", let, arg)
+check_numeric <- function(x, arg = caller_arg(x)) {
+  check_type(x, is.numeric, "a numeric vector", arg)
 }
 
 is_df <- function(x) {
@@ -199,7 +199,11 @@ check_df <- function(x, arg = caller_arg(x)) {
 }
 
 check_bool <- function(x, arg = caller_arg(x)) {
-  check_type(x, is_bool, "`TRUE` or `FALSE`", arg)
+  check_type(x, rlang::is_bool, "`TRUE` or `FALSE`", arg)
+}
+
+check_atomic <- function(x, arg = caller_arg(x)) {
+  check_type(x, is.atomic, "an atomic vector", arg)
 }
 
 is_stringish <- function(x, allow_empty) {
@@ -306,12 +310,8 @@ check_orcid <- function(x) {
   ))
 }
 
-is_icon <- function(x) {
-  inherits(x, "plm_icon")
-}
-
 check_orcid_icon <- function(x, arg = caller_arg(x)) {
-  if (is_icon(x)) {
+  if (inherits(x, "plm_icon")) {
     return(invisible())
   }
   abort(c(

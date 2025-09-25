@@ -18,10 +18,10 @@
 #'
 #' plm_template(role_cols = paste0("role_", 1:5))
 #' @export
-plm_template <- function(minimal = TRUE, role_cols = credit_roles(), credit_roles = FALSE) {
-  check_args("bool", quos(minimal, credit_roles))
+plm_template <- function(minimal = TRUE, role_cols = credit_roles(), credit_roles = deprecated()) {
+  check_bool(minimal)
   check_character(role_cols, allow("null", "unnamed"))
-  if (credit_roles) {
+  if (lifecycle::is_present(credit_roles)) {
     lifecycle::deprecate_stop(
       "0.2.0",
       "plm_template(credit_roles)",

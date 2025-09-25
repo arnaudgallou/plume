@@ -9,7 +9,7 @@
 #' aut <- Plume$new(encyclopedists, orcid_icon = icn_orcid(bw = TRUE))
 #' @export
 icn_orcid <- function(size = 16, bw = FALSE) {
-  check_num(size)
+  check_numeric(size)
   check_bool(bw)
   new_icon("orcid", size = size, bw = bw)
 }

@@ -4,7 +4,7 @@ col_count <- function(data, name) {
 
 itemise_rows <- function(data, cols) {
   out <- map(data[cols], as.character)
-  list_transpose(out)
+  purrr::list_transpose(out)
 }
 
 collapse_cols <- function(data, cols, sep) {
@@ -35,7 +35,8 @@ add_suffixes <- function(data, cols, symbols) {
       if (is.null(value)) {
         return()
       }
-      data <<- switch(key,
+      data <<- switch(
+        key,
         orcid = add_orcid_icons(data, key, value),
         add_symbols(data, .cols[[key]], value)
       )
@@ -105,7 +106,7 @@ rename_roles <- function(data, roles, key) {
   if (length(nms) > 1L) {
     key <- paste(key, seq_along(nms), sep = "_")
   }
-  rename(data, any_of(set_names(nms, key)))
+  dplyr::rename(data, any_of(set_names(nms, key)))
 }
 
 add_long_initials <- function(data, col, names) {

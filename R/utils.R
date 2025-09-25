@@ -100,7 +100,7 @@ vec_match <- function(x, y, ignore_case = TRUE, ignore_dots = TRUE) {
 
 rank <- function(x, base) {
   matches <- vec_match(x, base)
-  vec_rank(matches, ties = "dense")
+  vctrs::vec_rank(matches, ties = "dense")
 }
 
 recycle_to_names <- function(x, nms) {
@@ -177,7 +177,7 @@ caller_args <- function(n = 2) {
 
 get_detail_vars <- function() {
   args <- caller_args()
-  args_true <- args[map_vec(args, is_true)]
+  args_true <- args[map_vec(args, rlang::is_true)]
   names(args_true)
 }
 
@@ -186,9 +186,9 @@ extract_glue_vars <- function(x) {
 }
 
 group_id <- function(x) {
-  out <- vec_group_id(x)
+  out <- vctrs::vec_group_id(x)
   out <- replace(out, is.na(x) | x == 0L, NA)
-  dense_rank(out)
+  dplyr::dense_rank(out)
 }
 
 predot <- function(x) {
