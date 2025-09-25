@@ -5,7 +5,7 @@ test_that("printing a `plm_icon` object returns a formatted output", {
 test_that("icn_orcid() makes orcid icon metadata", {
   skip_if(!rmarkdown::pandoc_available(), "pandoc is not available")
 
-  render <- partial(rmarkdown::render, clean = FALSE, quiet = TRUE)
+  render <- purrr::partial(rmarkdown::render, clean = FALSE, quiet = TRUE)
 
   read_rendered_md <- function() {
     read_test_file(list.files(pattern = "\\.md$"))

@@ -1,12 +1,13 @@
+.key_set <- c(
+  a = "affiliation",
+  c = "corresponding",
+  n = "note",
+  o = "orcid"
+)
+
 als_key_set <- function(format) {
-  set <- c(
-    a = "affiliation",
-    c = "corresponding",
-    n = "note",
-    o = "orcid"
-  )
   keys <- als_extract_keys(format)
-  set[keys]
+  .key_set[keys]
 }
 
 als_extract_keys <- function(x) {
@@ -39,7 +40,7 @@ als_parse <- function(format) {
 
 als_join <- function(x, marks) {
   prev_item <- vector("character", 1L)
-  out <- map2_vec(x, marks, \(item, mark) {
+  out <- purrr::map2_vec(x, marks, \(item, mark) {
     if (is_empty(item) && str_contain(mark, "^")) {
       return("^")
     }
