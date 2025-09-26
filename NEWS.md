@@ -1,30 +1,46 @@
 # plume (development version)
 
-* `$get_author_list()` now correctly drops leading `^` when there are no symbols to display (#127).
-
-* ORCID icons are now ignored in Quarto documents. They continue to work in R Markdown as before (#109).
+## New features
 
 * New `new_plume()` and `new_plume_quarto()` that are aliases for `Plume$new()` and `PlumeQuarto$new()`, respectively (#124).
 
-* [`Plume`] now automatically escapes special Markdown characters used as symbols (#119).
+* New `plm_symbols()` to set the symbols used in `Plume` (#119).
 
-* New `plm_symbols()` to set the symbols used in [`Plume`] (#119).
+* `Plume$new()` and `PlumeQuarto$new()` gain a new parameter `dotted_initials` to control whether or not initials should be dotted. This parameter replaces the `dotted_initials` parameter of `$get_contributions()`, which is now deprecated (#112).
+
+* `Plume$new()` gains a new parameter `distinct_initials` to differentiate similar authors' initials, when possible. This is done by adding extra letters from the last word of authors' family name until initials are unique. Initials will remain in the short form if authors share the same family name (#111).
+
+* New `as_lines()` to output vector elements on distinct lines when rendering an R Markdown or Quarto document (#98).
+
+## Minor improvements and bug fixes
+
+* `$get_author_list()` now correctly drops leading `^` when there are no symbols to display (#127).
+
+* ORCID icons are now ignored in Quarto documents due to a change introduced in Quarto 1.5. They continue to work in R Markdown as before (#109).
+
+* `Plume` now automatically escapes special Markdown characters used as symbols (#119).
 
 * Setting new default names to a plume subclass must now be done via the `names` field (#117).
 
 * `$set_*()` methods are now dot-agnostic (#113).
 
-* `Plume$new()` and `PlumeQuarto$new()` gain a new parameter `dotted_initials` to control whether or not initials should be dotted. This parameter replaces the `dotted_initials` parameter of `$get_contributions()`, which is now deprecated (#112).
-
-* `Plume$new()` gains a new parameter `distinct_initials` to differentiate similar authors' initials, when possible.
-
 * The `orcid` variable is now customisable (#96).
-
-* New helper `as_lines()` to output elements returned by `Plume`'s methods on multiple lines when rendering an R Markdown or Quarto document.
 
 ## Lifecycle changes
 
-* All functionalities deprecated in 0.2.1 and earlier now throw an error. This includes the `credit_roles` parameter in `plm_template()` and `$new()`, the `format` parameter in `$get_author_list()`, the `by` parameter in `$set_*()` methods, `everyone_but()`, `$set_equal_contributor()` and the use of explicit roles in the input data.
+* All functionalities deprecated in 0.2.1 and earlier now throw an error. This includes:
+
+  * The `credit_roles` parameter in `plm_template()` and `$new()`.
+
+  * The `format` parameter in `$get_author_list()`.
+
+  * The `by` parameter in `$set_*()` methods.
+
+  * `everyone_but()`.
+
+  * `$set_equal_contributor()`.
+
+  * Defining authors' roles explicitly in the input dataset.
 
 ### Newly deprecated
 
@@ -32,9 +48,11 @@
 
 * `$get_roles()` is deprecated in favour of `$roles()` (#114).
 
-* `orcid()` is deprecated in favour of `icn_orcid()`.
+* The `dotted_initials` parameter of `$get_contributions()` is now deprecated. This parameter must now be set in the constructors (#112).
 
-* The `format` parameter of `$get_contact_details()` is now deprecated in favour of the more explicit `template` parameter.
+* `orcid()` is deprecated in favour of `icn_orcid()` (#105).
+
+* The `format` parameter of `$get_contact_details()` is now deprecated in favour of the more explicit `template` parameter (#104).
 
 # plume 0.2.5
 
@@ -50,7 +68,7 @@
 
 # plume 0.2.4
 
-* Tweaked some examples in the vignettes and expand the `Contributions` section in `vignette("plume")`.
+* Tweaked some examples in the vignettes and expanded the `Contributions` section in `vignette("plume")`.
 
 * Fixed selection helpers not working when imported explicitly with `::` (#76).
 
@@ -106,7 +124,7 @@
 
 * `Plume` gains a new method `$set_main_contributors()` that allows you to force one or more contributors to appear first in the contribution list for any given role. Because of this new method, `Plume`'s contructor gained the parameter `by` to set the default `by`/`.by` value used in all `$set_*()` methods (#40).
 
-* New helper `credit_roles()` that returns the 14 contributor roles of the [Contributor Roles Taxonomy](https://credit.niso.org). These are now the default roles used by plume.
+* New `credit_roles()` that returns the 14 contributor roles of the [Contributor Roles Taxonomy](https://credit.niso.org). These are now the default roles used by plume.
 
 <a name="new_role_system" />
 
@@ -134,7 +152,7 @@
     2 Ric        Rac             NA      1
     ```
 
-    And speficy roles when creating a `plume` object:
+    And speficy roles when creating a plume object:
 
     ```
     Plume$new(data, roles = c(role_1 = "Supervision", role_2 = "Writing"))
