@@ -95,14 +95,15 @@ custom variable names. Both datasets are documented in
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: affiliation_1 &lt;chr&gt;, affiliation_2 &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="creating-a-plume-object">Creating a <code>plume</code> object<a class="anchor" aria-label="anchor" href="#creating-a-plume-object"></a>
+<h2 id="creating-a-plume-object">Creating a plume object<a class="anchor" aria-label="anchor" href="#creating-a-plume-object"></a>
 </h2>
-<p>plume provides two R6 classes, namely <code>Plume</code> and
-<code>PlumeQuarto</code>. To create a <code>plume</code> object, simply
-write the name of the class you want to use followed by the
-<code>new()</code> method. plume classes take a data frame or tibble as
-input data. The input data must have at least two columns, one for given
-names and another for family names.</p>
+<p>plume provides two R6 classes: <code>Plume</code> and
+<code>PlumeQuarto</code>. You can create a plume object with
+<code>Plume$new()</code> or <code>PlumeQuarto$new()</code>.
+Alternatively, you can use their alias <code><a href="../reference/Plume.html">new_plume()</a></code> and
+<code><a href="../reference/PlumeQuarto.html">new_plume_quarto()</a></code>. plume classes take a data frame or
+tibble as input data. The input data must have at least two columns, one
+for given names and another for family names.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">encyclopedists</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 11</span></span></span>
@@ -119,8 +120,8 @@ names and another for family names.</p>
 </h2>
 <p>The default variables handled by plume classes are organised into six
 categories:</p>
-<p><strong>Primaries</strong>: variables required to create a
-<code>plume</code> object.</p>
+<p><strong>Primaries</strong>: variables required to create a plume
+object.</p>
 <div id="mwlefoodfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#mwlefoodfi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1103,7 +1104,7 @@ in the input data.</p>
 </div>
 <p><strong>Nestables</strong>: optional variables that can be provided
 in the input data to pass multiple independent values to authors.
-Nestable variables must start with the same prefix. E.g.
+Nestable variables must start with the same prefix. For example,
 <code>affiliation_1</code>, <code>affiliation_2</code>, …,
 <code>affiliation_n</code> to pass several affiliations to authors.</p>
 <div id="ulbfdpbcyv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -2137,7 +2138,7 @@ replacements.</p>
 <h2 id="defining-roles-and-contributors">Defining roles and contributors<a class="anchor" aria-label="anchor" href="#defining-roles-and-contributors"></a>
 </h2>
 <p>You can add roles by creating specific role columns in the input data
-and indicate contributors using <code>1</code>:</p>
+and indicating contributors with the number <code>1</code>:</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
 <span><span class="co">#&gt;   given_name     family_name        supervision writing</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -2149,9 +2150,9 @@ and indicate contributors using <code>1</code>:</p>
 Taxonomy</a> (CRediT) by default, assuming the input data contains the
 appropriate columns (see <code><a href="../reference/credit_roles.html">credit_roles()</a></code> for details). You
 can specify your own roles via the <code>roles</code> parameter when
-creating a <code>plume</code> object. The <code>roles</code> parameter
-takes a vector of key-value pairs where keys identify role columns and
-values define the actual roles to use.</p>
+creating a plume object. The <code>roles</code> parameter takes a vector
+of key-value pairs where keys identify role columns and values define
+the actual roles to use.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
@@ -2651,8 +2652,8 @@ values define the actual roles to use.</p>
 </div>
 <p>By default, <code>set_*()</code> methods assign values by authors’
 id. You can change this behaviour at the object or method level using
-the <code>by</code>/<code>.by</code> parameters.</p>
-<p>Note that these methods are case insensitive.</p>
+the <code>by</code> or <code>.by</code> parameter.</p>
+<p>Note that these methods are case-insensitive and dot-agnostic.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">encyclopedists</span>, <span class="va">given_name</span>, <span class="va">family_name</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -2679,27 +2680,22 @@ authors:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4 Jean           Le Rond d'Alembert Jean Le Rond d… J.L.R.d… TRUE</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="pushing-data-into-a-yaml-or-quarto-file">Pushing data into a YAML or Quarto file<a class="anchor" aria-label="anchor" href="#pushing-data-into-a-yaml-or-quarto-file"></a>
+<h2 id="inserting-data-into-a-yaml-or-quarto-file">Inserting data into a YAML or Quarto file<a class="anchor" aria-label="anchor" href="#inserting-data-into-a-yaml-or-quarto-file"></a>
 </h2>
-<p><code>PlumeQuarto</code> allows you to inject author metadata
+<p><code>PlumeQuarto</code> allows you to add or update author data
 directly into YAML files or the YAML header of <code>.qmd</code>
-files.</p>
-<p>Consider the following Quarto document:</p>
-<pre><code>---
-title: Encyclopédie
----
-
-Qui scribit bis legit</code></pre>
-<p>You can push information from the input data into the YAML or Quarto
-file using the <code>to_yaml()</code> method:</p>
+documents.</p>
+<p>Consider the following YAML file:</p>
+<pre><code><span><span class="va">title</span><span class="op">:</span> <span class="va">Encyclopédie</span></span></code></pre>
+<p>You can add author data to the file using the <code>to_yaml()</code>
+method:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">encyclopedists</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span></span>
+<span>  file <span class="op">=</span> <span class="st">"example.yml"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>---
-title: Encyclopédie
+<pre><code>title: Encyclopédie
 author:
   - id: aut1
     name:
@@ -2731,10 +2727,7 @@ affiliations:
   - id: aff1
     name: Université de Paris
   - id: aff2
-    name: Collège des Quatre-Nations
----
-
-Qui scribit bis legit</code></pre>
+    name: Collège des Quatre-Nations</code></pre>
 <p>Authors are listed in the order they’re defined in the input
 data.</p>
 <p>If the YAML or Quarto file already has an <code>author</code> and
@@ -2743,11 +2736,10 @@ values with new ones.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PlumeQuarto.html">PlumeQuarto</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">encyclopedists</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  file <span class="op">=</span> <span class="st">"file.qmd"</span></span>
+<span>  file <span class="op">=</span> <span class="st">"example.yml"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">to_yaml</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>---
-title: Encyclopédie
+<pre><code>title: Encyclopédie
 author:
   - name:
       given: Jean-Jacques
@@ -2760,18 +2752,15 @@ author:
       - ref: aff1
 affiliations:
   - id: aff1
-    name: Lycée Louis-le-Grand
----
-
-Qui scribit bis legit</code></pre>
+    name: Lycée Louis-le-Grand</code></pre>
 </div>
 <div class="section level2">
 <h2 id="getting-author-information">Getting author information<a class="anchor" aria-label="anchor" href="#getting-author-information"></a>
 </h2>
-<p><code>get_*()</code> methods (available through the
-<code>Plume</code> class) format author information as character
-vectors. This is useful if you want to output author data in a document
-without using journal templates.</p>
+<p><code>get_*()</code> methods (available in the <code>Plume</code>
+class) generate author information as character vectors. This is useful
+when you don’t need or want to output author information using journal
+templates.</p>
 <div class="section level3">
 <h3 id="author-lists">Author lists<a class="anchor" aria-label="anchor" href="#author-lists"></a>
 </h3>
@@ -2785,8 +2774,7 @@ using the following keys:</p>
 <li><p><code>a</code> for affiliations</p></li>
 <li><p><code>c</code> for corresponding authors</p></li>
 <li><p><code>n</code> for notes</p></li>
-<li><p><code>o</code> for ORCIDs (currently only compatible with R
-Markdown)</p></li>
+<li><p><code>o</code> for ORCIDs (only supported in R Markdown)</p></li>
 </ul>
 <p>The order of the keys determines the order of symbol categories.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -2913,8 +2901,8 @@ any given role by setting main contributors:</p>
 <span><span class="co">#&gt; Supervision: J.L.R.d'A. and D.D.</span></span>
 <span><span class="co">#&gt; Writing - original draft: F.-M.A., J.-J.R., D.D. and J.L.R.d'A.</span></span></code></pre></div>
 <p>You can assign the same main contributors across multiple roles using
-the <code>.roles</code> parameter. E.g. to set a main contributor across
-all roles:</p>
+the <code>.roles</code> parameter. For example, to set a main
+contributor across all roles:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span><span class="op">$</span><span class="fu">set_main_contributors</span><span class="op">(</span><span class="va">jean</span>, .roles <span class="op">=</span> <span class="va">aut</span><span class="op">$</span><span class="fu">roles</span><span class="op">(</span><span class="op">)</span>, .by <span class="op">=</span> <span class="st">"given_name"</span><span class="op">)</span></span>
 <span><span class="va">aut</span><span class="op">$</span><span class="fu">get_contributions</span><span class="op">(</span><span class="op">)</span></span>
@@ -2943,8 +2931,8 @@ all but a few specific roles at once.</p>
 <span><span class="co">#&gt;  $ affiliation  : NULL</span></span>
 <span><span class="co">#&gt;  $ corresponding: chr "*"</span></span>
 <span><span class="co">#&gt;  $ note         : chr [1:6] "†" "‡" "§" "¶" "#" "**"</span></span></code></pre>
-<p>You can change symbols when creating a <code>plume</code> object
-using the parameter <code>symbols</code>.</p>
+<p>You can change symbols when creating a plume object using the
+parameter <code>symbols</code>.</p>
 <p>Use <code>NULL</code> to display numerals:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aut</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
@@ -2958,10 +2946,10 @@ using the parameter <code>symbols</code>.</p>
 <span><span class="co">#&gt; François-Marie Arouet^b,2^</span></span>
 <span><span class="co">#&gt; Jean Le Rond d'Alembert^a,c,3^</span></span></code></pre></div>
 <p>Use <code>NULL</code> as much as possible for symbols using numerous
-unique items (typically affiliations). If you have to use letters for a
-given category that has more unique items than letters, you can control
-the sequencing behaviour using the <code><a href="../reference/sequential.html">sequential()</a></code> modifier,
-as shown below:</p>
+unique items (typically affiliations). If you have to use a character
+vector for a given category that has more unique items than vector
+elements, you can control the sequencing behaviour using the
+<code><a href="../reference/sequential.html">sequential()</a></code> modifier, as shown below:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">encyclopedists</span>,</span>

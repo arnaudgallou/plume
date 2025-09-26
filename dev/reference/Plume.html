@@ -111,7 +111,7 @@ author information, as it supports features not available in <code><a href="Plum
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>data</code></dt>
-<dd><p>A data frame containing author-related data.</p></dd>
+<dd><p>A data frame containing author data.</p></dd>
 
 
 <dt><code>names</code></dt>
@@ -126,8 +126,8 @@ identify role columns and values describe the actual roles to use.</p></dd>
 
 <dt><code>symbols</code></dt>
 <dd><p>Symbols, as defined by <code><a href="plm_symbols.html">plm_symbols()</a></code>, used to link
-authors to their metadata. Special characters are automatically escaped
-internally.</p></dd>
+authors to their metadata. Special Markdown characters are
+automatically escaped internally.</p></dd>
 
 
 <dt><code>credit_roles</code></dt>
@@ -163,7 +163,7 @@ words with a space such as Chinese or Japanese.</p></dd>
 
 <dt><code>orcid_icon</code></dt>
 <dd><p>The ORCID icon, as defined by <code><a href="icn_orcid.html">icn_orcid()</a></code>, to be
-used. This is currently only compatible with R Markdown.</p></dd>
+used. Only supported in R Markdown.</p></dd>
 
 
 <dt><code>by</code></dt>
@@ -181,7 +181,7 @@ authors' id.</p></dd>
 
 </div><p></p><hr><a id="method-Plume-get_author_list"></a><div class="section">
 <h3 id="method-get-author-list-">Method <code>get_author_list()</code><a class="anchor" aria-label="anchor" href="#method-get-author-list-"></a></h3>
-<p>Get author list.</p><div class="section">
+<p>Get the list of authors.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Plume</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span>suffix <span class="op">=</span> <span class="cn">NULL</span>, format <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -206,11 +206,11 @@ author names. See details.</p></dd>
 using the following keys:</p><ul><li><p><code>a</code> for affiliations</p></li>
 <li><p><code>c</code> for corresponding authors</p></li>
 <li><p><code>n</code> for notes</p></li>
-<li><p><code>o</code> for ORCID icons</p></li>
-</ul><p>The order of the keys determines the order of symbol types. E.g. <code>"ac"</code>
-shows affiliation ids first and corresponding author mark second, when
-<code>"ca"</code> shows corresponding author mark first and affiliation ids second.
-Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.</p>
+<li><p><code>o</code> for ORCID icons (only supported in R Markdown)</p></li>
+</ul><p>The order of the keys determines the order of symbol types. For example,
+<code>"ac"</code> shows affiliation ids first and corresponding author mark second,
+when <code>"ca"</code> shows corresponding author mark first and affiliation ids
+second. Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.</p>
 <p>Set to <code>NULL</code> or <code>""</code> to list authors without suffixes.</p>
 </div>
 
@@ -281,7 +281,8 @@ Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.</p
 
 
 <dt><code>icon</code></dt>
-<dd><p>Should the ORCID icon be shown?</p></dd>
+<dd><p>Should the ORCID icon be shown? This is only supported in R
+Markdown.</p></dd>
 
 
 <dt><code>sep</code></dt>
@@ -313,7 +314,7 @@ Use <code>","</code> to separate and <code>"^"</code> to superscript symbols.</p
 <div class="section">
 <h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>template</code></dt>
-<dd><p>A <code><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></code> specification that uses the
+<dd><p>A <a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a> specification that uses the
 variables <code>name</code> and/or <code>details</code>.</p></dd>
 
 
@@ -429,7 +430,7 @@ if more than one item is associated to a role or author.</p></dd>
 <span class="r-in"><span><span class="co"># authors' id by default</span></span></span>
 <span class="r-in"><span><span class="va">aut</span><span class="op">$</span><span class="fu">set_corresponding_authors</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Getting authors suffixed by affiliation ids</span></span></span>
+<span class="r-in"><span><span class="co"># Listing authors, followed by affiliation ids</span></span></span>
 <span class="r-in"><span><span class="co"># and the corresponding author mark:</span></span></span>
 <span class="r-in"><span><span class="va">aut</span><span class="op">$</span><span class="fu">get_author_list</span><span class="op">(</span><span class="st">"^a,c^"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Denis Diderot^1,\*^</span>
