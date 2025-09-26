@@ -1,6 +1,6 @@
 #' @title Create a table template for plume classes
 #' @description
-#' Create an empty [`tibble`][tibble::tibble()] that can be used as a template
+#' Create an empty [tibble][tibble::tibble()] that can be used as a template
 #' to supply author data.
 #' @param minimal If `TRUE`, returns an empty tibble with the following columns:
 #'   `given_name`, `family_name`, `email`, `orcid`, `affiliation` and `note`.

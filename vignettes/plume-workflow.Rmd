@@ -89,7 +89,7 @@ To modify author data, simply edit the spreadsheet. All author information in th
 
 ### PlumeQuarto
 
-If you use `PlumeQuarto` to inject author information in a Quarto document, you'll have to pass the data from a separate R script.
+If you use `PlumeQuarto` to add or update author information in a Quarto document, you'll have to pass the data from a separate R script.
 
 ```{r, eval = FALSE}
 library(plume)

@@ -74,8 +74,8 @@ Plume$new(encyclopedists)
 #> # ℹ 2 more variables: affiliation <list>, role <list>
 ```
 
-`PlumeQuarto` lets you push author metadata in YAML files or the YAML
-header of any `.qmd` file using the `to_yaml()` method.
+`PlumeQuarto` lets you insert author data into YAML files or the YAML
+header of any `.qmd` document using the `to_yaml()` method.
 
 Consider the following example:
 
@@ -88,7 +88,7 @@ Consider the following example:
 ``` r
 aut <- PlumeQuarto$new(
   encyclopedists,
-  file = "file.qmd"
+  file = "example.qmd"
 )
 aut$set_corresponding_authors(1, 4)
 aut$to_yaml()

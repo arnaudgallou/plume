@@ -25,7 +25,7 @@ aut <- Plume$new(encyclopedists)
 # authors' id by default
 aut$set_corresponding_authors(1, 4)
 
-# Getting authors suffixed by affiliation ids
+# Listing authors, followed by affiliation ids
 # and the corresponding author mark:
 aut$get_author_list("^a,c^")
 
@@ -114,7 +114,7 @@ Create a \code{Plume} object.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{data}}{A data frame containing author-related data.}
+\item{\code{data}}{A data frame containing author data.}
 
 \item{\code{names}}{A vector of key-value pairs specifying custom names to use,
 where keys are default names and values their respective replacements.}
@@ -123,8 +123,8 @@ where keys are default names and values their respective replacements.}
 identify role columns and values describe the actual roles to use.}
 
 \item{\code{symbols}}{Symbols, as defined by \code{\link[=plm_symbols]{plm_symbols()}}, used to link
-authors to their metadata. Special characters are automatically escaped
-internally.}
+authors to their metadata. Special Markdown characters are
+automatically escaped internally.}
 
 \item{\code{credit_roles}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
@@ -147,7 +147,7 @@ is only useful for people writing in languages that don't separate
 words with a space such as Chinese or Japanese.}
 
 \item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=icn_orcid]{icn_orcid()}}, to be
-used. This is currently only compatible with R Markdown.}
+used. Only supported in R Markdown.}
 
 \item{\code{by}}{A character string defining the default variable used to assign
 specific metadata to authors in all \verb{set_*()} methods. By default, uses
@@ -163,7 +163,7 @@ A \code{Plume} object.
 \if{html}{\out{<a id="method-Plume-get_author_list"></a>}}
 \if{latex}{\out{\hypertarget{method-Plume-get_author_list}{}}}
 \subsection{Method \code{get_author_list()}}{
-Get author list.
+Get the list of authors.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Plume$get_author_list(suffix = NULL, format = deprecated())}\if{html}{\out{</div>}}
 }
@@ -187,13 +187,13 @@ using the following keys:
 \item \code{a} for affiliations
 \item \code{c} for corresponding authors
 \item \code{n} for notes
-\item \code{o} for ORCID icons
+\item \code{o} for ORCID icons (only supported in R Markdown)
 }
 
-The order of the keys determines the order of symbol types. E.g. \code{"ac"}
-shows affiliation ids first and corresponding author mark second, when
-\code{"ca"} shows corresponding author mark first and affiliation ids second.
-Use \code{","} to separate and \code{"^"} to superscript symbols.
+The order of the keys determines the order of symbol types. For example,
+\code{"ac"} shows affiliation ids first and corresponding author mark second,
+when \code{"ca"} shows corresponding author mark first and affiliation ids
+second. Use \code{","} to separate and \code{"^"} to superscript symbols.
 
 Set to \code{NULL} or \code{""} to list authors without suffixes.
 }
@@ -260,7 +260,8 @@ Get authors' ORCID.
 \describe{
 \item{\code{compact}}{Should links only display the 16-digit identifier?}
 
-\item{\code{icon}}{Should the ORCID icon be shown?}
+\item{\code{icon}}{Should the ORCID icon be shown? This is only supported in R
+Markdown.}
 
 \item{\code{sep}}{Separator used to separate authors and their respective ORCID.}
 }
@@ -290,7 +291,7 @@ Get the contact details of corresponding authors.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{template}}{A \code{\link[glue:glue]{glue}} specification that uses the
+\item{\code{template}}{A \link[glue:glue]{glue} specification that uses the
 variables \code{name} and/or \code{details}.}
 
 \item{\code{email, phone, fax, url}}{Arguments equal to \code{TRUE} are evaluated and

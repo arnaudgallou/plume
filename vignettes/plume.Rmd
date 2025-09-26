@@ -29,9 +29,9 @@ We'll use the datasets `encyclopedists` and `encyclopedists_fr` to explore the d
 encyclopedists
 ```
 
-## Creating a `plume` object
+## Creating a plume object
 
-plume provides two R6 classes, namely `Plume` and `PlumeQuarto`. To create a `plume` object, simply write the name of the class you want to use followed by the `new()` method. plume classes take a data frame or tibble as input data. The input data must have at least two columns, one for given names and another for family names.
+plume provides two R6 classes: `Plume` and `PlumeQuarto`. You can create a plume object with `Plume$new()` or `PlumeQuarto$new()`. Alternatively, you can use their alias `new_plume()` and `new_plume_quarto()`. plume classes take a data frame or tibble as input data. The input data must have at least two columns, one for given names and another for family names.
 
 ```{r}
 Plume$new(encyclopedists)
@@ -41,7 +41,7 @@ Plume$new(encyclopedists)
 
 The default variables handled by plume classes are organised into six categories:
 
-**Primaries**: variables required to create a `plume` object.
+**Primaries**: variables required to create a plume object.
 
 ```{r, echo = FALSE}
 plume:::plm_table_vars("primaries")
@@ -53,7 +53,7 @@ plume:::plm_table_vars("primaries")
 plume:::plm_table_vars("secondaries")
 ```
 
-**Nestables**: optional variables that can be provided in the input data to pass multiple independent values to authors. Nestable variables must start with the same prefix. E.g. `affiliation_1`, `affiliation_2`, ..., `affiliation_n` to pass several affiliations to authors.
+**Nestables**: optional variables that can be provided in the input data to pass multiple independent values to authors. Nestable variables must start with the same prefix. For example, `affiliation_1`, `affiliation_2`, ..., `affiliation_n` to pass several affiliations to authors.
 
 ```{r, echo = FALSE}
 plume:::plm_table_vars("nestables")
@@ -90,7 +90,7 @@ Plume$new(
 
 ## Defining roles and contributors
 
-You can add roles by creating specific role columns in the input data and indicate contributors using `1`:
+You can add roles by creating specific role columns in the input data and indicating contributors with the number `1`:
 
 ```{r, echo = FALSE}
 tibble::tibble(
@@ -101,7 +101,7 @@ tibble::tibble(
 )
 ```
 
-plume uses the `r plume:::link("crt")` (CRediT) by default, assuming the input data contains the appropriate columns (see `credit_roles()` for details). You can specify your own roles via the `roles` parameter when creating a `plume` object. The `roles` parameter takes a vector of key-value pairs where keys identify role columns and values define the actual roles to use.
+plume uses the `r plume:::link("crt")` (CRediT) by default, assuming the input data contains the appropriate columns (see `credit_roles()` for details). You can specify your own roles via the `roles` parameter when creating a plume object. The `roles` parameter takes a vector of key-value pairs where keys identify role columns and values define the actual roles to use.
 
 ```{r, eval = FALSE}
 Plume$new(
@@ -134,9 +134,9 @@ plume provides `r nrow(status_methods)` methods to set particular status to auth
 plume:::plm_table(status_methods)
 ```
 
-By default, `set_*()` methods assign values by authors' id. You can change this behaviour at the object or method level using the `by`/`.by` parameters.
+By default, `set_*()` methods assign values by authors' id. You can change this behaviour at the object or method level using the `by` or `.by` parameter.
 
-Note that these methods are case insensitive.
+Note that these methods are case-insensitive and dot-agnostic.
 
 ```{r}
 aut <- Plume$new(dplyr::select(encyclopedists, given_name, family_name))
@@ -152,16 +152,16 @@ aut$set_corresponding_authors(everyone())
 aut
 ```
 
-## Pushing data into a YAML or Quarto file
+## Inserting data into a YAML or Quarto file
 
-`PlumeQuarto` allows you to inject author metadata directly into YAML files or the YAML header of `.qmd` files.
+`PlumeQuarto` allows you to add or update author data directly into YAML files or the YAML header of `.qmd` documents.
 
-Consider the following Quarto document:
+Consider the following YAML file:
 
 ```{r, include = FALSE}
 tmp_file <- withr::local_tempfile(
-  lines = "---\ntitle: Encyclopédie\n---\n\nQui scribit bis legit",
-  fileext = ".qmd"
+  lines = "title: Encyclopédie",
+  fileext = ".yml"
 )
 ```
 
@@ -169,12 +169,12 @@ tmp_file <- withr::local_tempfile(
 cat(read_file(tmp_file))
 ```
 
-You can push information from the input data into the YAML or Quarto file using the `to_yaml()` method:
+You can add author data to the file using the `to_yaml()` method:
 
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 1, 4),
-  file = "file.qmd"
+  file = "example.yml"
 )
 aut$to_yaml()
 ```
@@ -195,7 +195,7 @@ If the YAML or Quarto file already has an `author` and `affiliations` keys, `to_
 ```{r, eval = FALSE}
 aut <- PlumeQuarto$new(
   dplyr::slice(encyclopedists, 2),
-  file = "file.qmd"
+  file = "example.yml"
 )
 aut$to_yaml()
 ```
@@ -211,7 +211,7 @@ cat(read_file(tmp_file))
 
 ## Getting author information
 
-`get_*()` methods (available through the `Plume` class) format author information as character vectors. This is useful if you want to output author data in a document without using journal templates.
+`get_*()` methods (available in the `Plume` class) generate author information as character vectors. This is useful when you don't need or want to output author information using journal templates.
 
 ### Author lists
 
@@ -223,7 +223,7 @@ cat(read_file(tmp_file))
 
 - `n` for notes
 
-- `o` for ORCIDs (currently only compatible with R Markdown)
+- `o` for ORCIDs (only supported in R Markdown)
 
 The order of the keys determines the order of symbol categories.
 
@@ -316,7 +316,7 @@ aut$set_main_contributors(supervision = 4, writing = c(3, 2))
 aut$get_contributions()
 ```
 
-You can assign the same main contributors across multiple roles using the `.roles` parameter. E.g. to set a main contributor across all roles:
+You can assign the same main contributors across multiple roles using the `.roles` parameter. For example, to set a main contributor across all roles:
 
 ```{r}
 aut$set_main_contributors(jean, .roles = aut$roles(), .by = "given_name")
@@ -345,7 +345,7 @@ Default symbols are:
 str(unclass(plm_symbols()))
 ```
 
-You can change symbols when creating a `plume` object using the parameter `symbols`.
+You can change symbols when creating a plume object using the parameter `symbols`.
 
 Use `NULL` to display numerals:
 
@@ -358,7 +358,7 @@ aut <- Plume$new(
 aut$get_author_list("^a,n^")
 ```
 
-Use `NULL` as much as possible for symbols using numerous unique items (typically affiliations). If you have to use letters for a given category that has more unique items than letters, you can control the sequencing behaviour using the `sequential()` modifier, as shown below:
+Use `NULL` as much as possible for symbols using numerous unique items (typically affiliations). If you have to use a character vector for a given category that has more unique items than vector elements, you can control the sequencing behaviour using the `sequential()` modifier, as shown below:
 
 ```{r, eval = FALSE}
 Plume$new(

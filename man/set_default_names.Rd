@@ -16,8 +16,8 @@ respective replacements.}
 A named list.
 }
 \description{
-This function allows you to set new default names to a plume subclass, e.g.
-to set default names to a language other than English.
+This function allows you to set new default names to a plume subclass, for
+example to set default names to a language other than English.
 }
 \details{
 See \code{vignette("plume")} for the list of available names.

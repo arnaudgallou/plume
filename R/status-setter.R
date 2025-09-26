@@ -21,7 +21,7 @@ StatusSetter <- R6Class(
 
     #' @description Set corresponding authors.
     #' @param ... One or more unquoted expressions separated by commas.
-    #'   Expressions matching values in the column defined by `by`/`.by`
+    #'   Expressions matching values in the column defined by `by` or `.by`
     #'   determine corresponding authors. Matching of values is case-insensitive
     #'   and dot-agnostic.
     #' @param .by Variable used to set corresponding authors. By default, uses
@@ -81,7 +81,7 @@ StatusSetterPlume <- R6Class(
     #' @description Force one or more contributors' names to appear first in the
     #'   contribution list.
     #' @param ... One or more unquoted expressions separated by commas.
-    #'   Expressions matching values in the column defined by `by`/`.by`
+    #'   Expressions matching values in the column defined by `by` or `.by`
     #'   determine main contributors. Expressions can be named after any role to
     #'   set different main contributors to different roles at once, in which
     #'   case the `.roles` parameter only applies roles that are not already set
@@ -125,7 +125,7 @@ StatusSetterPlumeQuarto <- R6Class(
   public = list(
     #' @description Set co-first authors.
     #' @param ... One or more unquoted expressions separated by commas.
-    #'   Expressions matching values in the column defined by `by`/`.by`
+    #'   Expressions matching values in the column defined by `by` or `.by`
     #'   determine co-first authors. Matching of values is case-insensitive and
     #'   dot-agnostic.
     #' @param .by Variable used to specify which authors contributed equally to
@@ -157,7 +157,7 @@ StatusSetterPlumeQuarto <- R6Class(
 
     #' @description Set deceased authors.
     #' @param ... One or more unquoted expressions separated by commas.
-    #'   Expressions matching values in the column defined by `by`/`.by`
+    #'   Expressions matching values in the column defined by `by` or `.by`
     #'   determine deceased authors. Matching of values is case-insensitive and
     #'   dot-agnostic.
     #' @param .by Variable used to specify whether an author is deceased or not.

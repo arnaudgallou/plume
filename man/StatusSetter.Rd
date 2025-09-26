@@ -51,7 +51,7 @@ Set corresponding authors.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{One or more unquoted expressions separated by commas.
-Expressions matching values in the column defined by \code{by}/\code{.by}
+Expressions matching values in the column defined by \code{by} or \code{.by}
 determine corresponding authors. Matching of values is case-insensitive
 and dot-agnostic.}
 

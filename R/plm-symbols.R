@@ -3,15 +3,13 @@
 #' Set the symbols used in a [`Plume`] object.
 #' @param affiliation,corresponding,note Character vectors of symbols to use,
 #'   or `NULL` to use numerals.
-#' @details
-#' Note that you should not escape special characters yourself when using this
-#' function, as this is done internally by [`Plume`].
 #' @returns A named list.
 #' @examples
 #' aut <- Plume$new(
 #'   encyclopedists,
-#'   symbols = plm_symbols(affiliation = sequential(letters))
+#'   symbols = plm_symbols(affiliation = letters)
 #' )
+#' aut$get_author_list("^a^")
 #' @export
 plm_symbols <- function(
   affiliation = NULL,

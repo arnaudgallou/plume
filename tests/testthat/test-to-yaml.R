@@ -1,4 +1,4 @@
-test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
+test_that("to_yaml() adds authors and affiliations into YAML headers", {
   tmp_file <- withr::local_tempfile(
     lines = "---\ntitle: test\n---\n\n```{r}\n#| echo: false\nx <- 1\n```",
     fileext = ".qmd"
@@ -24,7 +24,7 @@ test_that("to_yaml() injects authors and affiliations into a `.qmd`", {
   expect_snapshot(read_test_file(tmp_file))
 })
 
-test_that("to_yaml() doesn't add the `affiliations` schema if there're no affiliations", {
+test_that("to_yaml() leaves out the affiliations schema if none are defined", {
   tmp_file <- withr::local_tempfile(
     lines = dedent("
       ---
@@ -44,7 +44,7 @@ test_that("to_yaml() doesn't add the `affiliations` schema if there're no affili
   expect_snapshot(read_test_file(tmp_file))
 })
 
-test_that("to_yaml() pushes data to empty YAML headers", {
+test_that("to_yaml() updates empty YAML headers", {
   tmp_file <- withr::local_tempfile(lines = "---\n---", fileext = ".qmd")
 
   aut <- PlumeQuarto$new(tibble(
@@ -57,7 +57,7 @@ test_that("to_yaml() pushes data to empty YAML headers", {
   expect_snapshot(read_test_file(tmp_file))
 })
 
-test_that("to_yaml() exits before pushing new header if invalid YAML", {
+test_that("to_yaml() exits before updating header if invalid YAML", {
   tmp_file <- withr::local_tempfile(
     lines = "---\ntitle: test\n--\n\nLorem ipsum\n\n---",
     fileext = ".qmd"
@@ -88,7 +88,7 @@ test_that("to_yaml() preserves line breaks preceding `---` (#37)", {
   expect_snapshot(read_test_file(tmp_file))
 })
 
-test_that("to_yaml() writes in a separate header to preserve strippable data (#56)", {
+test_that("to_yaml() adds a header to preserve strippable data (#56)", {
   tmp_file <- withr::local_tempfile(
     lines = dedent("
       ---
@@ -113,7 +113,7 @@ test_that("to_yaml() writes in a separate header to preserve strippable data (#5
   expect_snapshot(read_test_file(tmp_file))
 })
 
-test_that("to_yaml() can push data into YAML files", {
+test_that("to_yaml() updates YAML files", {
   tmp_file <- withr::local_tempfile(
     lines = "title: foo",
     fileext = ".yaml"
