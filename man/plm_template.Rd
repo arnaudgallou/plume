@@ -24,7 +24,7 @@ It is now recommended to use \code{role_cols = credit_roles()} to use the
 An empty tibble.
 }
 \description{
-Create an empty \code{\link[tibble:tibble]{tibble}} that can be used as a template
+Create an empty \link[tibble:tibble]{tibble} that can be used as a template
 to supply author data.
 }
 \examples{

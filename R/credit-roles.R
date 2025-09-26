@@ -2,7 +2,7 @@
 #' @description
 #' Helper function returning the `r length(credit_roles())` contributor roles of
 #' the `r link("crt")` (CRediT). This function is the default argument of the
-#' `roles` and `role_cols` parameters in plume classes and [`plm_template()`],
+#' `roles` and `role_cols` parameters in plume classes and [plm_template()],
 #' respectively.
 #' @param oxford_spelling Should the suffix -ize/-ization be used?
 #' @returns A named vector.

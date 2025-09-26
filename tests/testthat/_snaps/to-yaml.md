@@ -1,4 +1,4 @@
-# to_yaml() injects authors and affiliations into a `.qmd`
+# to_yaml() adds authors and affiliations into YAML headers
 
     Code
       read_test_file(tmp_file)
@@ -162,7 +162,7 @@
       x <- 1
       ```
 
-# to_yaml() doesn't add the `affiliations` schema if there're no affiliations
+# to_yaml() leaves out the affiliations schema if none are defined
 
     Code
       read_test_file(tmp_file)
@@ -174,7 +174,7 @@
             family: Zap
       ---
 
-# to_yaml() pushes data to empty YAML headers
+# to_yaml() updates empty YAML headers
 
     Code
       read_test_file(tmp_file)
@@ -202,7 +202,7 @@
       Lorem ipsum
       ---
 
-# to_yaml() writes in a separate header to preserve strippable data (#56)
+# to_yaml() adds a header to preserve strippable data (#56)
 
     Code
       read_test_file(tmp_file)
@@ -220,7 +220,7 @@
         Vivamus quis
       ---
 
-# to_yaml() can push data into YAML files
+# to_yaml() updates YAML files
 
     Code
       read_test_file(tmp_file)

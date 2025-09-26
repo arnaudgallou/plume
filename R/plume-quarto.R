@@ -16,35 +16,34 @@
 
 #' @title Add or update author data in YAML for Quarto
 #' @description
-#' `PlumeQuarto` allows you to insert or update author data in YAML files or the
+#' `PlumeQuarto` allows you to add or update author data in YAML files or the
 #' YAML header of Quarto documents. The generated YAML complies with Quarto's
 #' `r link("quarto_schemas")`. Use this class when working with journal
 #' templates.
 #' @section Notes:
 #' `new_plume_quarto()` is an alias for `PlumeQuarto$new()`.
 #' @examples
-#' # Create a simple temporary file with a YAML header
-#' # containing a title
-#' tmp_file <- tempfile(fileext = ".qmd")
-#' readr::write_lines("---\ntitle: Encyclopédie\n---", tmp_file)
+#' # Create a simple temporary YAML file containing a title
+#' tmp_file <- tempfile(fileext = ".yml")
+#' readr::write_lines("title: Encyclopédie", tmp_file)
 #'
 #' # View the temporary file
 #' cat(readr::read_file(tmp_file))
 #'
 #' # Create a PlumeQuarto instance using the temporary file
-#' # you've just created
+#' # we've just created
 #' aut <- PlumeQuarto$new(
 #'   encyclopedists,
 #'   file = tmp_file
 #' )
 #'
-#' # And insert author data to the YAML header
+#' # And add author data to the YAML file
 #' aut$to_yaml()
 #'
 #' cat(readr::read_file(tmp_file))
 #'
 #' # Running the method again with new data updates the YAML
-#' # header accordingly
+#' # accordingly
 #' aut <- PlumeQuarto$new(
 #'   dplyr::slice(encyclopedists, 2),
 #'   file = tmp_file
@@ -61,7 +60,7 @@ PlumeQuarto <- R6Class(
   inherit = StatusSetterPlumeQuarto,
   public = list(
     #' @description Create a `PlumeQuarto` object.
-    #' @param data A data frame containing author-related data.
+    #' @param data A data frame containing author data.
     #' @param file A `.qmd`, `.yml` or `.yaml` file to insert author data into.
     #' @param names A vector of key-value pairs specifying custom names to use,
     #'   where keys are default names and values their respective replacements.

@@ -21,7 +21,7 @@
 #' # authors' id by default
 #' aut$set_corresponding_authors(1, 4)
 #'
-#' # Getting authors suffixed by affiliation ids
+#' # Listing authors, followed by affiliation ids
 #' # and the corresponding author mark:
 #' aut$get_author_list("^a,c^")
 #'
@@ -61,14 +61,14 @@ Plume <- R6Class(
   inherit = StatusSetterPlume,
   public = list(
     #' @description Create a `Plume` object.
-    #' @param data A data frame containing author-related data.
+    #' @param data A data frame containing author data.
     #' @param names A vector of key-value pairs specifying custom names to use,
     #'   where keys are default names and values their respective replacements.
     #' @param roles A vector of key-value pairs defining roles where keys
     #'   identify role columns and values describe the actual roles to use.
-    #' @param symbols Symbols, as defined by [`plm_symbols()`], used to link
-    #'   authors to their metadata. Special characters are automatically escaped
-    #'   internally.
+    #' @param symbols Symbols, as defined by [plm_symbols()], used to link
+    #'   authors to their metadata. Special Markdown characters are
+    #'   automatically escaped internally.
     #' @param credit_roles `r lifecycle::badge("deprecated")`
     #'
     #'   It is now recommended to use `roles = credit_roles()` to use the
@@ -83,8 +83,8 @@ Plume <- R6Class(
     #' @param interword_spacing Should literal names use spacing? This parameter
     #'   is only useful for people writing in languages that don't separate
     #'   words with a space such as Chinese or Japanese.
-    #' @param orcid_icon The ORCID icon, as defined by [`icn_orcid()`], to be
-    #'   used. This is currently only compatible with R Markdown.
+    #' @param orcid_icon The ORCID icon, as defined by [icn_orcid()], to be
+    #'   used. Only supported in R Markdown.
     #' @param by A character string defining the default variable used to assign
     #'   specific metadata to authors in all `set_*()` methods. By default, uses
     #'   authors' id.
@@ -121,7 +121,7 @@ Plume <- R6Class(
       private$orcid_icon <- orcid_icon
     },
 
-    #' @description Get author list.
+    #' @description Get the list of authors.
     #' @param suffix A character string defining the format of symbols suffixing
     #'   author names. See details.
     #' @param format `r lifecycle::badge("deprecated")`
@@ -133,12 +133,12 @@ Plume <- R6Class(
     #' * `a` for affiliations
     #' * `c` for corresponding authors
     #' * `n` for notes
-    #' * `o` for ORCID icons
+    #' * `o` for ORCID icons (only supported in R Markdown)
     #'
-    #' The order of the keys determines the order of symbol types. E.g. `"ac"`
-    #' shows affiliation ids first and corresponding author mark second, when
-    #' `"ca"` shows corresponding author mark first and affiliation ids second.
-    #' Use `","` to separate and `"^"` to superscript symbols.
+    #' The order of the keys determines the order of symbol types. For example,
+    #' `"ac"` shows affiliation ids first and corresponding author mark second,
+    #' when `"ca"` shows corresponding author mark first and affiliation ids
+    #' second. Use `","` to separate and `"^"` to superscript symbols.
     #'
     #' Set to `NULL` or `""` to list authors without suffixes.
     #' @return A character vector.
@@ -178,7 +178,8 @@ Plume <- R6Class(
 
     #' @description Get authors' ORCID.
     #' @param compact Should links only display the 16-digit identifier?
-    #' @param icon Should the ORCID icon be shown?
+    #' @param icon Should the ORCID icon be shown? This is only supported in R
+    #'   Markdown.
     #' @param sep Separator used to separate authors and their respective ORCID.
     #' @return A character vector.
     get_orcids = function(compact = FALSE, icon = TRUE, sep = "") {
@@ -197,7 +198,7 @@ Plume <- R6Class(
     },
 
     #' @description Get the contact details of corresponding authors.
-    #' @param template A [`glue`][glue::glue()] specification that uses the
+    #' @param template A [glue][glue::glue()] specification that uses the
     #'   variables `name` and/or `details`.
     #' @param format `r lifecycle::badge("deprecated")`
     #'

@@ -20,13 +20,10 @@ A named list.
 \description{
 Set the symbols used in a \code{\link{Plume}} object.
 }
-\details{
-Note that you should not escape special characters yourself when using this
-function, as this is done internally by \code{\link{Plume}}.
-}
 \examples{
 aut <- Plume$new(
   encyclopedists,
-  symbols = plm_symbols(affiliation = sequential(letters))
+  symbols = plm_symbols(affiliation = letters)
 )
+aut$get_author_list("^a^")
 }

@@ -11,16 +11,16 @@ everyone_but(...)
 }
 \arguments{
 \item{...}{One or more unquoted expressions separated by commas. Expressions
-matching values in the column defined by the \code{by}/\code{.by} parameters of
-\verb{set_*()} methods are used to set a given status to authors. Matching of
-values is case-insensitive.}
+matching values in the column defined by the \code{by} or \code{.by} parameter
+are used to set a given status to authors. Matching of values is case-
+insensitive and dot-agnostic.}
 }
 \description{
 Selection helpers to use in conjonction with status setter methods (i.e.
 methods that assign a status to authors with either \code{TRUE} or \code{FALSE}):
 \itemize{
-\item \code{\link[=everyone]{everyone()}} select all authors.
-\item \code{\link[=everyone_but]{everyone_but()}} \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} this function was
+\item \code{everyone()} select all authors.
+\item \code{everyone_but()} \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} this function was
 deprecated as I believe it is not necessary since not more than a couple of
 authors should normally be given a particular status.
 }

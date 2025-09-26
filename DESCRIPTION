@@ -7,7 +7,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-1002-4247"))
 Description: Handles and formats author information in scientific writing
     in 'R Markdown' and 'Quarto'. 'plume' provides easy-to-use and
-    flexible tools for injecting author metadata in 'YAML' headers as well
+    flexible tools for inserting author data in 'YAML' as well
     as generating author and contribution lists (among others) as strings
     from tabular data.
 License: GPL (>= 3)
