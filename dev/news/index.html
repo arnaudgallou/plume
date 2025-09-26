@@ -41,26 +41,41 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
+<div class="section level3">
+<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li><p>New <code><a href="../reference/Plume.html">new_plume()</a></code> and <code><a href="../reference/PlumeQuarto.html">new_plume_quarto()</a></code> that are aliases for <code>Plume$new()</code> and <code>PlumeQuarto$new()</code>, respectively (<a href="https://github.com/arnaudgallou/plume/issues/124" class="external-link">#124</a>).</p></li>
+<li><p>New <code><a href="../reference/plm_symbols.html">plm_symbols()</a></code> to set the symbols used in <code>Plume</code> (<a href="https://github.com/arnaudgallou/plume/issues/119" class="external-link">#119</a>).</p></li>
+<li><p><code>Plume$new()</code> and <code>PlumeQuarto$new()</code> gain a new parameter <code>dotted_initials</code> to control whether or not initials should be dotted. This parameter replaces the <code>dotted_initials</code> parameter of <code>$get_contributions()</code>, which is now deprecated (<a href="https://github.com/arnaudgallou/plume/issues/112" class="external-link">#112</a>).</p></li>
+<li><p><code>Plume$new()</code> gains a new parameter <code>distinct_initials</code> to differentiate similar authors’ initials, when possible. This is done by adding extra letters from the last word of authors’ family name until initials are unique. Initials will remain in the short form if authors share the same family name (<a href="https://github.com/arnaudgallou/plume/issues/111" class="external-link">#111</a>).</p></li>
+<li><p>New <code><a href="../reference/as_lines.html">as_lines()</a></code> to output vector elements on distinct lines when rendering an R Markdown or Quarto document (<a href="https://github.com/arnaudgallou/plume/issues/98" class="external-link">#98</a>).</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
 <ul><li><p><code>$get_author_list()</code> now correctly drops leading <code>^</code> when there are no symbols to display (<a href="https://github.com/arnaudgallou/plume/issues/127" class="external-link">#127</a>).</p></li>
-<li><p>ORCID icons are now ignored in Quarto documents. They continue to work in R Markdown as before (<a href="https://github.com/arnaudgallou/plume/issues/109" class="external-link">#109</a>).</p></li>
-<li><p>New <code><a href="../reference/Plume.html">new_plume()</a></code> and <code><a href="../reference/PlumeQuarto.html">new_plume_quarto()</a></code> that are aliases for <code>Plume$new()</code> and <code>PlumeQuarto$new()</code>, respectively (<a href="https://github.com/arnaudgallou/plume/issues/124" class="external-link">#124</a>).</p></li>
-<li><p>[<code>Plume</code>] now automatically escapes special Markdown characters used as symbols (<a href="https://github.com/arnaudgallou/plume/issues/119" class="external-link">#119</a>).</p></li>
-<li><p>New <code><a href="../reference/plm_symbols.html">plm_symbols()</a></code> to set the symbols used in [<code>Plume</code>] (<a href="https://github.com/arnaudgallou/plume/issues/119" class="external-link">#119</a>).</p></li>
+<li><p>ORCID icons are now ignored in Quarto documents due to a change introduced in Quarto 1.5. They continue to work in R Markdown as before (<a href="https://github.com/arnaudgallou/plume/issues/109" class="external-link">#109</a>).</p></li>
+<li><p><code>Plume</code> now automatically escapes special Markdown characters used as symbols (<a href="https://github.com/arnaudgallou/plume/issues/119" class="external-link">#119</a>).</p></li>
 <li><p>Setting new default names to a plume subclass must now be done via the <code>names</code> field (<a href="https://github.com/arnaudgallou/plume/issues/117" class="external-link">#117</a>).</p></li>
 <li><p><code>$set_*()</code> methods are now dot-agnostic (<a href="https://github.com/arnaudgallou/plume/issues/113" class="external-link">#113</a>).</p></li>
-<li><p><code>Plume$new()</code> and <code>PlumeQuarto$new()</code> gain a new parameter <code>dotted_initials</code> to control whether or not initials should be dotted. This parameter replaces the <code>dotted_initials</code> parameter of <code>$get_contributions()</code>, which is now deprecated (<a href="https://github.com/arnaudgallou/plume/issues/112" class="external-link">#112</a>).</p></li>
-<li><p><code>Plume$new()</code> gains a new parameter <code>distinct_initials</code> to differentiate similar authors’ initials, when possible.</p></li>
 <li><p>The <code>orcid</code> variable is now customisable (<a href="https://github.com/arnaudgallou/plume/issues/96" class="external-link">#96</a>).</p></li>
-<li><p>New helper <code><a href="../reference/as_lines.html">as_lines()</a></code> to output elements returned by <code>Plume</code>’s methods on multiple lines when rendering an R Markdown or Quarto document.</p></li>
-</ul><div class="section level3">
+</ul></div>
+<div class="section level3">
 <h3 id="lifecycle-changes-development-version">Lifecycle changes<a class="anchor" aria-label="anchor" href="#lifecycle-changes-development-version"></a></h3>
-<ul><li>All functionalities deprecated in 0.2.1 and earlier now throw an error. This includes the <code>credit_roles</code> parameter in <code><a href="../reference/plm_template.html">plm_template()</a></code> and <code>$new()</code>, the <code>format</code> parameter in <code>$get_author_list()</code>, the <code>by</code> parameter in <code>$set_*()</code> methods, <code><a href="../reference/everyone.html">everyone_but()</a></code>, <code>$set_equal_contributor()</code> and the use of explicit roles in the input data.</li>
+<ul><li>
+<p>All functionalities deprecated in 0.2.1 and earlier now throw an error. This includes:</p>
+<ul><li><p>The <code>credit_roles</code> parameter in <code><a href="../reference/plm_template.html">plm_template()</a></code> and <code>$new()</code>.</p></li>
+<li><p>The <code>format</code> parameter in <code>$get_author_list()</code>.</p></li>
+<li><p>The <code>by</code> parameter in <code>$set_*()</code> methods.</p></li>
+<li><p><code><a href="../reference/everyone.html">everyone_but()</a></code>.</p></li>
+<li><p><code>$set_equal_contributor()</code>.</p></li>
+<li><p>Defining authors’ roles explicitly in the input dataset.</p></li>
+</ul></li>
 </ul><div class="section level4">
 <h4 id="newly-deprecated-development-version">Newly deprecated<a class="anchor" aria-label="anchor" href="#newly-deprecated-development-version"></a></h4>
 <ul><li><p><code>$get_plume()</code> is deprecated in favour of <code>$data()</code> (<a href="https://github.com/arnaudgallou/plume/issues/115" class="external-link">#115</a>).</p></li>
 <li><p><code>$get_roles()</code> is deprecated in favour of <code>$roles()</code> (<a href="https://github.com/arnaudgallou/plume/issues/114" class="external-link">#114</a>).</p></li>
-<li><p><code><a href="../reference/orcid.html">orcid()</a></code> is deprecated in favour of <code><a href="../reference/icn_orcid.html">icn_orcid()</a></code>.</p></li>
-<li><p>The <code>format</code> parameter of <code>$get_contact_details()</code> is now deprecated in favour of the more explicit <code>template</code> parameter.</p></li>
+<li><p>The <code>dotted_initials</code> parameter of <code>$get_contributions()</code> is now deprecated. This parameter must now be set in the constructors (<a href="https://github.com/arnaudgallou/plume/issues/112" class="external-link">#112</a>).</p></li>
+<li><p><code><a href="../reference/orcid.html">orcid()</a></code> is deprecated in favour of <code><a href="../reference/icn_orcid.html">icn_orcid()</a></code> (<a href="https://github.com/arnaudgallou/plume/issues/105" class="external-link">#105</a>).</p></li>
+<li><p>The <code>format</code> parameter of <code>$get_contact_details()</code> is now deprecated in favour of the more explicit <code>template</code> parameter (<a href="https://github.com/arnaudgallou/plume/issues/104" class="external-link">#104</a>).</p></li>
 </ul></div>
 </div>
 </div>
@@ -74,7 +89,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.4" id="plume-024">plume 0.2.4<a class="anchor" aria-label="anchor" href="#plume-024"></a></h2><p class="text-muted">CRAN release: 2024-05-10</p>
-<ul><li><p>Tweaked some examples in the vignettes and expand the <code>Contributions</code> section in <code><a href="../articles/plume.html">vignette("plume")</a></code>.</p></li>
+<ul><li><p>Tweaked some examples in the vignettes and expanded the <code>Contributions</code> section in <code><a href="../articles/plume.html">vignette("plume")</a></code>.</p></li>
 <li><p>Fixed selection helpers not working when imported explicitly with <code>::</code> (<a href="https://github.com/arnaudgallou/plume/issues/76" class="external-link">#76</a>).</p></li>
 <li><p><code>citation("plume")</code> now generates the complete and up-to-date citation of plume (<a href="https://github.com/arnaudgallou/plume/issues/75" class="external-link">#75</a>).</p></li>
 </ul></div>
@@ -116,7 +131,7 @@
 <div class="section level3">
 <h3 id="new-features-0-2-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-2-0"></a></h3>
 <ul><li><p><code>Plume</code> gains a new method <code>$set_main_contributors()</code> that allows you to force one or more contributors to appear first in the contribution list for any given role. Because of this new method, <code>Plume</code>’s contructor gained the parameter <code>by</code> to set the default <code>by</code>/<code>.by</code> value used in all <code>$set_*()</code> methods (<a href="https://github.com/arnaudgallou/plume/issues/40" class="external-link">#40</a>).</p></li>
-<li><p>New helper <code><a href="../reference/credit_roles.html">credit_roles()</a></code> that returns the 14 contributor roles of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>. These are now the default roles used by plume.</p></li>
+<li><p>New <code><a href="../reference/credit_roles.html">credit_roles()</a></code> that returns the 14 contributor roles of the <a href="https://credit.niso.org" class="external-link">Contributor Roles Taxonomy</a>. These are now the default roles used by plume.</p></li>
 </ul><p><a name="new_role_system"></a></p>
 <ul><li>
 <p>The plume role handling system has been overhauled for better flexibility and ease of use (<a href="https://github.com/arnaudgallou/plume/issues/29" class="external-link">#29</a>).</p>
@@ -134,7 +149,7 @@
   &lt;chr&gt;      &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
 1 Zip        Zap              1      1
 2 Ric        Rac             NA      1</code></pre>
-<p>And speficy roles when creating a <code>plume</code> object:</p>
+<p>And speficy roles when creating a plume object:</p>
 <pre><code><span><span class="va"><a href="../reference/Plume.html">Plume</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">data</span>, roles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>role_1 <span class="op">=</span> <span class="st">"Supervision"</span>, role_2 <span class="op">=</span> <span class="st">"Writing"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </li>
 <li><p><code><a href="../reference/plm_template.html">plm_template()</a></code> gains a new parameter <code>role_cols</code> to create role columns from a character vector.</p></li>
