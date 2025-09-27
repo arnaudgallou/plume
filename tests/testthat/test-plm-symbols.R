@@ -1,5 +1,6 @@
 test_that("plm_symbols() returns a list of symbols", {
-  expect_snapshot(str(plm_symbols()))
+  expect_snapshot(plm_symbols())
+  expect_s3_class(plm_symbols(), "plm_list")
 })
 
 # Errors ----
