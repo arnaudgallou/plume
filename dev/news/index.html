@@ -50,11 +50,14 @@
 <li><p>New <code><a href="../reference/as_lines.html">as_lines()</a></code> to output vector elements on distinct lines when rendering an R Markdown or Quarto document (<a href="https://github.com/arnaudgallou/plume/issues/98" class="external-link">#98</a>).</p></li>
 </ul></div>
 <div class="section level3">
+<h3 id="breaking-changes-development-version">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<ul><li>Setting new default names to a plume subclass must now be done via the <code>names</code> field (<a href="https://github.com/arnaudgallou/plume/issues/117" class="external-link">#117</a>).</li>
+</ul></div>
+<div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
 <ul><li><p><code>$get_author_list()</code> now correctly drops leading <code>^</code> when there are no symbols to display (<a href="https://github.com/arnaudgallou/plume/issues/127" class="external-link">#127</a>).</p></li>
-<li><p>ORCID icons are now ignored in Quarto documents due to a change introduced in Quarto 1.5. They continue to work in R Markdown as before (<a href="https://github.com/arnaudgallou/plume/issues/109" class="external-link">#109</a>).</p></li>
+<li><p>ORCID icons are now ignored in Quarto documents due to a change introduced in Quarto 1.5 regarding how paths are resolved. They continue to work in R Markdown as before (<a href="https://github.com/arnaudgallou/plume/issues/109" class="external-link">#109</a>).</p></li>
 <li><p><code>Plume</code> now automatically escapes special Markdown characters used as symbols (<a href="https://github.com/arnaudgallou/plume/issues/119" class="external-link">#119</a>).</p></li>
-<li><p>Setting new default names to a plume subclass must now be done via the <code>names</code> field (<a href="https://github.com/arnaudgallou/plume/issues/117" class="external-link">#117</a>).</p></li>
 <li><p><code>$set_*()</code> methods are now dot-agnostic (<a href="https://github.com/arnaudgallou/plume/issues/113" class="external-link">#113</a>).</p></li>
 <li><p>The <code>orcid</code> variable is now customisable (<a href="https://github.com/arnaudgallou/plume/issues/96" class="external-link">#96</a>).</p></li>
 </ul></div>
