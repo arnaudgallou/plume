@@ -1,4 +1,4 @@
-# plume (development version)
+# plume 0.3.0
 
 ## New features
 
