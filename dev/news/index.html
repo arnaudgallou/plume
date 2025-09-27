@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">plume</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.5.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,8 +41,11 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="plume-development-version">plume (development version)<a class="anchor" aria-label="anchor" href="#plume-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.0" id="plume-030">plume 0.3.0<a class="anchor" aria-label="anchor" href="#plume-030"></a></h2><p class="text-muted">CRAN release: 2025-09-27</p>
 <div class="section level3">
-<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<h3 id="new-features-0-3-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-3-0"></a></h3>
 <ul><li><p>New <code><a href="../reference/Plume.html">new_plume()</a></code> and <code><a href="../reference/PlumeQuarto.html">new_plume_quarto()</a></code> that are aliases for <code>Plume$new()</code> and <code>PlumeQuarto$new()</code>, respectively (<a href="https://github.com/arnaudgallou/plume/issues/124" class="external-link">#124</a>).</p></li>
 <li><p>New <code><a href="../reference/plm_symbols.html">plm_symbols()</a></code> to set the symbols used in <code>Plume</code> (<a href="https://github.com/arnaudgallou/plume/issues/119" class="external-link">#119</a>).</p></li>
 <li><p><code>Plume$new()</code> and <code>PlumeQuarto$new()</code> gain a new parameter <code>dotted_initials</code> to control whether or not initials should be dotted. This parameter replaces the <code>dotted_initials</code> parameter of <code>$get_contributions()</code>, which is now deprecated (<a href="https://github.com/arnaudgallou/plume/issues/112" class="external-link">#112</a>).</p></li>
@@ -50,11 +53,11 @@
 <li><p>New <code><a href="../reference/as_lines.html">as_lines()</a></code> to output vector elements on distinct lines when rendering an R Markdown or Quarto document (<a href="https://github.com/arnaudgallou/plume/issues/98" class="external-link">#98</a>).</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="breaking-changes-development-version">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<h3 id="breaking-changes-0-3-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-3-0"></a></h3>
 <ul><li>Setting new default names to a plume subclass must now be done via the <code>names</code> field (<a href="https://github.com/arnaudgallou/plume/issues/117" class="external-link">#117</a>).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="minor-improvements-and-bug-fixes-development-version">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-development-version"></a></h3>
+<h3 id="minor-improvements-and-bug-fixes-0-3-0">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-0-3-0"></a></h3>
 <ul><li><p><code>$get_author_list()</code> now correctly drops leading <code>^</code> when there are no symbols to display (<a href="https://github.com/arnaudgallou/plume/issues/127" class="external-link">#127</a>).</p></li>
 <li><p>ORCID icons are now ignored in Quarto documents due to a change introduced in Quarto 1.5 regarding how paths are resolved. They continue to work in R Markdown as before (<a href="https://github.com/arnaudgallou/plume/issues/109" class="external-link">#109</a>).</p></li>
 <li><p><code>Plume</code> now automatically escapes special Markdown characters used as symbols (<a href="https://github.com/arnaudgallou/plume/issues/119" class="external-link">#119</a>).</p></li>
@@ -62,7 +65,7 @@
 <li><p>The <code>orcid</code> variable is now customisable (<a href="https://github.com/arnaudgallou/plume/issues/96" class="external-link">#96</a>).</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="lifecycle-changes-development-version">Lifecycle changes<a class="anchor" aria-label="anchor" href="#lifecycle-changes-development-version"></a></h3>
+<h3 id="lifecycle-changes-0-3-0">Lifecycle changes<a class="anchor" aria-label="anchor" href="#lifecycle-changes-0-3-0"></a></h3>
 <ul><li>
 <p>All functionalities deprecated in 0.2.1 and earlier now throw an error. This includes:</p>
 <ul><li><p>The <code>credit_roles</code> parameter in <code><a href="../reference/plm_template.html">plm_template()</a></code> and <code>$new()</code>.</p></li>
@@ -73,7 +76,7 @@
 <li><p>Defining authors’ roles explicitly in the input dataset.</p></li>
 </ul></li>
 </ul><div class="section level4">
-<h4 id="newly-deprecated-development-version">Newly deprecated<a class="anchor" aria-label="anchor" href="#newly-deprecated-development-version"></a></h4>
+<h4 id="newly-deprecated-0-3-0">Newly deprecated<a class="anchor" aria-label="anchor" href="#newly-deprecated-0-3-0"></a></h4>
 <ul><li><p><code>$get_plume()</code> is deprecated in favour of <code>$data()</code> (<a href="https://github.com/arnaudgallou/plume/issues/115" class="external-link">#115</a>).</p></li>
 <li><p><code>$get_roles()</code> is deprecated in favour of <code>$roles()</code> (<a href="https://github.com/arnaudgallou/plume/issues/114" class="external-link">#114</a>).</p></li>
 <li><p>The <code>dotted_initials</code> parameter of <code>$get_contributions()</code> is now deprecated. This parameter must now be set in the constructors (<a href="https://github.com/arnaudgallou/plume/issues/112" class="external-link">#112</a>).</p></li>
