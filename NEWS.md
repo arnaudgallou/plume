@@ -12,15 +12,17 @@
 
 * New `as_lines()` to output vector elements on distinct lines when rendering an R Markdown or Quarto document (#98).
 
+## Breaking changes
+
+* Setting new default names to a plume subclass must now be done via the `names` field (#117).
+
 ## Minor improvements and bug fixes
 
 * `$get_author_list()` now correctly drops leading `^` when there are no symbols to display (#127).
 
-* ORCID icons are now ignored in Quarto documents due to a change introduced in Quarto 1.5. They continue to work in R Markdown as before (#109).
+* ORCID icons are now ignored in Quarto documents due to a change introduced in Quarto 1.5 regarding how paths are resolved. They continue to work in R Markdown as before (#109).
 
 * `Plume` now automatically escapes special Markdown characters used as symbols (#119).
-
-* Setting new default names to a plume subclass must now be done via the `names` field (#117).
 
 * `$set_*()` methods are now dot-agnostic (#113).
 
