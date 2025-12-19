@@ -155,6 +155,12 @@ test_that("`distinct_initials = TRUE` makes unique initials", {
   )
 })
 
+test_that("`distinct_initials` remains quiet when initials are unique (#134)", {
+  expect_no_error(
+    Plume$new(basic_df, distinct_initials = TRUE)
+  )
+})
+
 test_that("`initials_given_name` doesn't make initials in scripts not using letter cases (#73)", {
   aut <- Plume$new(
     data.frame(given_name = "菖蒲", family_name = "佐藤"),
