@@ -1,5 +1,7 @@
 # plume (development version)
 
+* `Plume$new(distinct_initials = TRUE)` now remains quiet when all initials are already unique (#134).
+
 # plume 0.3.0
 
 ## New features
