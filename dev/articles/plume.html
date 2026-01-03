@@ -2138,7 +2138,9 @@ replacements.</p>
 <h2 id="defining-roles-and-contributors">Defining roles and contributors<a class="anchor" aria-label="anchor" href="#defining-roles-and-contributors"></a>
 </h2>
 <p>You can add roles by creating specific role columns in the input data
-and indicating contributors with the number <code>1</code>:</p>
+and indicating contributors with logical values or their numeric
+equivalents (0 and 1). <code>NA</code> can also be used to indicate no
+contributions.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
 <span><span class="co">#&gt;   given_name     family_name        supervision writing</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
