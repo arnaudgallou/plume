@@ -157,7 +157,11 @@ test_that("`distinct_initials = TRUE` makes unique initials", {
 
 test_that("`distinct_initials` remains quiet when initials are unique (#134)", {
   expect_no_error(
-    Plume$new(basic_df, distinct_initials = TRUE)
+    aut <- Plume$new(basic_df, distinct_initials = TRUE)
+  )
+  expect_equal(
+    aut$data()$initials,
+    c("Z.Z.", "R.R.", "P.-P.P.")
   )
 })
 
