@@ -90,7 +90,7 @@ Plume$new(
 
 ## Defining roles and contributors
 
-You can add roles by creating specific role columns in the input data and indicating contributors with the number `1`:
+You can add roles by creating specific role columns in the input data and indicating contributors with logical values or their numeric equivalents (0 and 1). `NA` can also be used to indicate no contributions.
 
 ```{r, echo = FALSE}
 tibble::tibble(
