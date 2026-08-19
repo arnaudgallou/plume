@@ -19,3 +19,8 @@ Useful links:
 
 **Maintainer**: Arnaud Gallou <arangacas@gmail.com>
 ([ORCID](https://orcid.org/0000-0002-1002-4247)) \[copyright holder\]
+
+Authors:
+
+- Arnaud Gallou <arangacas@gmail.com>
+  ([ORCID](https://orcid.org/0000-0002-1002-4247)) \[copyright holder\]

@@ -21,6 +21,7 @@ implements two R6 classes:
 Install plume from CRAN with:
 
 ``` r
+
 install.packages("plume")
 ```
 
@@ -28,6 +29,7 @@ Alternatively, you can install the development version of plume from
 GitHub with:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("arnaudgallou/plume")
 ```
@@ -39,6 +41,7 @@ containing given and family names but you would normally want to provide
 more information such as email addresses, ORCIDs, affiliations, etc.
 
 ``` r
+
 library(plume)
 
 encyclopedists
@@ -76,6 +79,7 @@ Qui scribit bis legit
 ```
 
 ``` r
+
 aut <- PlumeQuarto$new(
   encyclopedists,
   file = "example.qmd"
@@ -158,6 +162,7 @@ Alternatively, you can generate author information as character vectors
 using `Plume`:
 
 ``` r
+
 aut <- Plume$new(encyclopedists)
 aut$set_corresponding_authors(diderot, .by = "family_name")
 

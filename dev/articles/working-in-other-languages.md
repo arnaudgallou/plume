@@ -8,6 +8,7 @@ to help you set new default names.
 For example, to extend `Plume` with default names in French:
 
 ``` r
+
 PlumeFr <- R6::R6Class(
   classname = "PlumeFr",
   inherit = Plume,
@@ -26,6 +27,7 @@ PlumeFr <- R6::R6Class(
 ```
 
 ``` r
+
 PlumeFr$new(encyclopedists_fr)
 #> # A tibble: 4 × 11
 #>      id prénom  nom   nom_complet initiales orcid courriel téléphone role  note 
@@ -43,6 +45,7 @@ your language. Expanding on the example above, we can add a new
 `divider` and `sep_last` parameters:
 
 ``` r
+
 PlumeFr <- R6::R6Class(
   classname = "PlumeFr",
   inherit = Plume,
@@ -82,6 +85,7 @@ PlumeFr <- R6::R6Class(
 ```
 
 ``` r
+
 aut <- PlumeFr$new(
   encyclopedists_fr,
   roles = c(supervision = "Supervision", rédaction = "Rédaction")

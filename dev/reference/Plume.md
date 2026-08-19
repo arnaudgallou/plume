@@ -14,19 +14,19 @@ author information, as it supports features not available in
 
 ## Super classes
 
-`plume::NameHandler` -\>
-[`plume::PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
+`NameHandler` -\>
+[`PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
 -\>
-[`plume::StatusSetter`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.md)
+[`StatusSetter`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.md)
 -\>
-[`plume::StatusSetterPlume`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlume.md)
+[`StatusSetterPlume`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlume.md)
 -\> `Plume`
 
 ## Methods
 
 ### Public methods
 
-- [`Plume$new()`](#method-Plume-new)
+- [`Plume$new()`](#method-Plume-initialize)
 
 - [`Plume$get_author_list()`](#method-Plume-get_author_list)
 
@@ -44,17 +44,17 @@ author information, as it supports features not available in
 
 Inherited methods
 
-- [`plume::PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
-- [`plume::PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
-- [`plume::PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
-- [`plume::PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
-- [`plume::PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
-- [`plume::StatusSetter$set_corresponding_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-set_corresponding_authors)
-- [`plume::StatusSetterPlume$set_main_contributors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlume.html#method-set_main_contributors)
+- [`PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
+- [`PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
+- [`PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
+- [`PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
+- [`PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
+- [`StatusSetter$set_corresponding_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-set_corresponding_authors)
+- [`StatusSetterPlume$set_main_contributors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlume.html#method-set_main_contributors)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `Plume$new()`
 
 Create a `Plume` object.
 
@@ -148,13 +148,13 @@ A `Plume` object.
 
 ------------------------------------------------------------------------
 
-### Method `get_author_list()`
+### `Plume$get_author_list()`
 
 Get the list of authors.
 
 #### Usage
 
-    Plume$get_author_list(suffix = NULL, format = deprecated())
+    Plume$get_author_list(suffix = NULL)
 
 #### Arguments
 
@@ -162,12 +162,6 @@ Get the list of authors.
 
   A character string defining the format of symbols suffixing author
   names. See details.
-
-- `format`:
-
-  **\[deprecated\]**
-
-  Please use the parameter `suffix` instead.
 
 #### Details
 
@@ -195,7 +189,7 @@ A character vector.
 
 ------------------------------------------------------------------------
 
-### Method `get_affiliations()`
+### `Plume$get_affiliations()`
 
 Get authors' affiliations.
 
@@ -219,7 +213,7 @@ A character vector.
 
 ------------------------------------------------------------------------
 
-### Method `get_notes()`
+### `Plume$get_notes()`
 
 Get authors' notes.
 
@@ -243,7 +237,7 @@ A character vector.
 
 ------------------------------------------------------------------------
 
-### Method `get_orcids()`
+### `Plume$get_orcids()`
 
 Get authors' ORCID.
 
@@ -271,7 +265,7 @@ A character vector.
 
 ------------------------------------------------------------------------
 
-### Method `get_contact_details()`
+### `Plume$get_contact_details()`
 
 Get the contact details of corresponding authors.
 
@@ -315,7 +309,7 @@ A character vector.
 
 ------------------------------------------------------------------------
 
-### Method `get_contributions()`
+### `Plume$get_contributions()`
 
 Get authors' contributions.
 
@@ -377,7 +371,7 @@ A character vector.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `Plume$clone()`
 
 The objects of this class are cloneable with this method.
 

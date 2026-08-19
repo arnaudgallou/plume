@@ -4,10 +4,10 @@ Internal class extending `StatusSetter` for `PlumeQuarto`.
 
 ## Super classes
 
-`plume::NameHandler` -\>
-[`plume::PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
+`NameHandler` -\>
+[`PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
 -\>
-[`plume::StatusSetter`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.md)
+[`StatusSetter`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.md)
 -\> `StatusSetterPlumeQuarto`
 
 ## Methods
@@ -24,17 +24,17 @@ Internal class extending `StatusSetter` for `PlumeQuarto`.
 
 Inherited methods
 
-- [`plume::PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
-- [`plume::PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
-- [`plume::PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
-- [`plume::PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
-- [`plume::PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
-- [`plume::StatusSetter$initialize()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-initialize)
-- [`plume::StatusSetter$set_corresponding_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-set_corresponding_authors)
+- [`PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
+- [`PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
+- [`PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
+- [`PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
+- [`PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
+- [`StatusSetter$initialize()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-initialize)
+- [`StatusSetter$set_corresponding_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-set_corresponding_authors)
 
 ------------------------------------------------------------------------
 
-### Method `set_cofirst_authors()`
+### `StatusSetterPlumeQuarto$set_cofirst_authors()`
 
 Set co-first authors.
 
@@ -62,7 +62,7 @@ The class instance.
 
 ------------------------------------------------------------------------
 
-### Method `set_equal_contributor()`
+### `StatusSetterPlumeQuarto$set_equal_contributor()`
 
 **\[deprecated\]**
 
@@ -101,7 +101,7 @@ The class instance.
 
 ------------------------------------------------------------------------
 
-### Method `set_deceased()`
+### `StatusSetterPlumeQuarto$set_deceased()`
 
 Set deceased authors.
 
@@ -135,7 +135,7 @@ The class instance.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `StatusSetterPlumeQuarto$clone()`
 
 The objects of this class are cloneable with this method.
 

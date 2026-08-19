@@ -14,6 +14,7 @@ Affiliations with no or unrecognised keys are assigned to the `name`
 key.
 
 ``` r
+
 author <- tibble::tibble(
   given_name = "René",
   family_name = "Descartes",
@@ -29,6 +30,7 @@ author <- tibble::tibble(
 ```
 
 ``` r
+
 aut <- PlumeQuarto$new(author, file = "file.qmd")
 aut$to_yaml()
 ```

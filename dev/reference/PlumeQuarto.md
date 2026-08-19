@@ -12,19 +12,19 @@ when working with journal templates.
 
 ## Super classes
 
-`plume::NameHandler` -\>
-[`plume::PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
+`NameHandler` -\>
+[`PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
 -\>
-[`plume::StatusSetter`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.md)
+[`StatusSetter`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.md)
 -\>
-[`plume::StatusSetterPlumeQuarto`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlumeQuarto.md)
+[`StatusSetterPlumeQuarto`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlumeQuarto.md)
 -\> `PlumeQuarto`
 
 ## Methods
 
 ### Public methods
 
-- [`PlumeQuarto$new()`](#method-PlumeQuarto-new)
+- [`PlumeQuarto$new()`](#method-PlumeQuarto-initialize)
 
 - [`PlumeQuarto$to_yaml()`](#method-PlumeQuarto-to_yaml)
 
@@ -32,19 +32,19 @@ when working with journal templates.
 
 Inherited methods
 
-- [`plume::PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
-- [`plume::PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
-- [`plume::PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
-- [`plume::PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
-- [`plume::PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
-- [`plume::StatusSetter$set_corresponding_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-set_corresponding_authors)
-- [`plume::StatusSetterPlumeQuarto$set_cofirst_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlumeQuarto.html#method-set_cofirst_authors)
-- [`plume::StatusSetterPlumeQuarto$set_deceased()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlumeQuarto.html#method-set_deceased)
-- [`plume::StatusSetterPlumeQuarto$set_equal_contributor()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlumeQuarto.html#method-set_equal_contributor)
+- [`PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
+- [`PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
+- [`PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
+- [`PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
+- [`PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
+- [`StatusSetter$set_corresponding_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-set_corresponding_authors)
+- [`StatusSetterPlumeQuarto$set_cofirst_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlumeQuarto.html#method-set_cofirst_authors)
+- [`StatusSetterPlumeQuarto$set_deceased()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlumeQuarto.html#method-set_deceased)
+- [`StatusSetterPlumeQuarto$set_equal_contributor()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetterPlumeQuarto.html#method-set_equal_contributor)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `PlumeQuarto$new()`
 
 Create a `PlumeQuarto` object.
 
@@ -108,7 +108,7 @@ A `PlumeQuarto` object.
 
 ------------------------------------------------------------------------
 
-### Method `to_yaml()`
+### `PlumeQuarto$to_yaml()`
 
 Add or update author data in the input `file`.
 
@@ -122,7 +122,7 @@ The input `file`, invisibly.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `PlumeQuarto$clone()`
 
 The objects of this class are cloneable with this method.
 

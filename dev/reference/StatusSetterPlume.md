@@ -4,10 +4,10 @@ Internal class extending `StatusSetter` for `Plume`.
 
 ## Super classes
 
-`plume::NameHandler` -\>
-[`plume::PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
+`NameHandler` -\>
+[`PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
 -\>
-[`plume::StatusSetter`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.md)
+[`StatusSetter`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.md)
 -\> `StatusSetterPlume`
 
 ## Methods
@@ -20,17 +20,17 @@ Internal class extending `StatusSetter` for `Plume`.
 
 Inherited methods
 
-- [`plume::PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
-- [`plume::PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
-- [`plume::PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
-- [`plume::PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
-- [`plume::PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
-- [`plume::StatusSetter$initialize()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-initialize)
-- [`plume::StatusSetter$set_corresponding_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-set_corresponding_authors)
+- [`PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
+- [`PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
+- [`PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
+- [`PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
+- [`PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
+- [`StatusSetter$initialize()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-initialize)
+- [`StatusSetter$set_corresponding_authors()`](https://arnaudgallou.github.io/plume/dev/reference/StatusSetter.html#method-set_corresponding_authors)
 
 ------------------------------------------------------------------------
 
-### Method `set_main_contributors()`
+### `StatusSetterPlume$set_main_contributors()`
 
 Force one or more contributors' names to appear first in the
 contribution list.
@@ -67,7 +67,7 @@ The class instance.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `StatusSetterPlume$clone()`
 
 The objects of this class are cloneable with this method.
 

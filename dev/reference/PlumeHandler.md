@@ -4,13 +4,13 @@ Internal class processing and shaping tabular data into a plume object.
 
 ## Super class
 
-`plume::NameHandler` -\> `PlumeHandler`
+`NameHandler` -\> `PlumeHandler`
 
 ## Methods
 
 ### Public methods
 
-- [`PlumeHandler$new()`](#method-PlumeHandler-new)
+- [`PlumeHandler$new()`](#method-PlumeHandler-initialize)
 
 - [`PlumeHandler$print()`](#method-PlumeHandler-print)
 
@@ -26,7 +26,7 @@ Internal class processing and shaping tabular data into a plume object.
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `PlumeHandler$new()`
 
 #### Usage
 
@@ -44,7 +44,7 @@ Internal class processing and shaping tabular data into a plume object.
 
 ------------------------------------------------------------------------
 
-### Method [`print()`](https://rdrr.io/r/base/print.html)
+### `PlumeHandler$print()`
 
 #### Usage
 
@@ -52,7 +52,7 @@ Internal class processing and shaping tabular data into a plume object.
 
 ------------------------------------------------------------------------
 
-### Method [`data()`](https://rdrr.io/r/utils/data.html)
+### `PlumeHandler$data()`
 
 Get the data of a plume object.
 
@@ -66,7 +66,7 @@ A tibble.
 
 ------------------------------------------------------------------------
 
-### Method `get_plume()`
+### `PlumeHandler$get_plume()`
 
 **\[deprecated\]**
 
@@ -82,7 +82,7 @@ A tibble.
 
 ------------------------------------------------------------------------
 
-### Method `roles()`
+### `PlumeHandler$roles()`
 
 Get the roles used in a plume object.
 
@@ -96,7 +96,7 @@ A character vector.
 
 ------------------------------------------------------------------------
 
-### Method `get_roles()`
+### `PlumeHandler$get_roles()`
 
 **\[deprecated\]**
 
@@ -112,7 +112,7 @@ A character vector.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `PlumeHandler$clone()`
 
 The objects of this class are cloneable with this method.
 

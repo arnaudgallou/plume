@@ -13,6 +13,7 @@ First, you’ll need to create a spreadsheet.
 provides a default template for that purpose.
 
 ``` r
+
 googlesheets4::gs4_create(
   name = "authors",
   sheets = plm_template()
@@ -34,6 +35,7 @@ more about googlesheets4 authentication
 Once the sheet is online, use `read_sheet()` to read it in R.
 
 ``` r
+
 googlesheets4::read_sheet("sheet_id")
 ```
 
@@ -94,6 +96,7 @@ If you use `PlumeQuarto` to add or update author information in a Quarto
 document, you’ll have to pass the data from a separate R script.
 
 ``` r
+
 library(plume)
 
 tbl_authors <- googlesheets4::read_sheet("sheet_id")

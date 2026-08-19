@@ -4,15 +4,15 @@ Internal class that manages authors' status.
 
 ## Super classes
 
-`plume::NameHandler` -\>
-[`plume::PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
+`NameHandler` -\>
+[`PlumeHandler`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.md)
 -\> `StatusSetter`
 
 ## Methods
 
 ### Public methods
 
-- [`StatusSetter$new()`](#method-StatusSetter-new)
+- [`StatusSetter$new()`](#method-StatusSetter-initialize)
 
 - [`StatusSetter$set_corresponding_authors()`](#method-StatusSetter-set_corresponding_authors)
 
@@ -20,15 +20,15 @@ Internal class that manages authors' status.
 
 Inherited methods
 
-- [`plume::PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
-- [`plume::PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
-- [`plume::PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
-- [`plume::PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
-- [`plume::PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
+- [`PlumeHandler$data()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-data)
+- [`PlumeHandler$get_plume()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_plume)
+- [`PlumeHandler$get_roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-get_roles)
+- [`PlumeHandler$print()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-print)
+- [`PlumeHandler$roles()`](https://arnaudgallou.github.io/plume/dev/reference/PlumeHandler.html#method-roles)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `StatusSetter$new()`
 
 #### Usage
 
@@ -36,7 +36,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `set_corresponding_authors()`
+### `StatusSetter$set_corresponding_authors()`
 
 Set corresponding authors.
 
@@ -70,7 +70,7 @@ The class instance.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `StatusSetter$clone()`
 
 The objects of this class are cloneable with this method.
 
