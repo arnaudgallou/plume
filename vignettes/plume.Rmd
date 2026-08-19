@@ -15,8 +15,6 @@ knitr::opts_chunk$set(
 )
 options(str = strOptions(vec.len = 9))
 library(plume)
-library(readr)
-library(gt)
 ```
 
 The goal of the plume package is to make the handling and formatting of author data for scientific writing in R Markdown and Quarto easy and painless.
@@ -166,7 +164,7 @@ tmp_file <- withr::local_tempfile(
 ```
 
 ```{r, echo = FALSE, comment = ""}
-cat(read_file(tmp_file))
+cat(readr::read_file(tmp_file))
 ```
 
 You can add author data to the file using the `to_yaml()` method:
@@ -185,7 +183,7 @@ aut <- PlumeQuarto$new(
   tmp_file
 )
 aut$to_yaml()
-cat(read_file(tmp_file))
+cat(readr::read_file(tmp_file))
 ```
 
 Authors are listed in the order they're defined in the input data.
@@ -206,7 +204,7 @@ aut <- PlumeQuarto$new(
   tmp_file
 )
 aut$to_yaml()
-cat(read_file(tmp_file))
+cat(readr::read_file(tmp_file))
 ```
 
 ## Getting author information
