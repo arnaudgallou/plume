@@ -8,136 +8,137 @@ Internal class extending \code{StatusSetter} for \code{PlumeQuarto}.
 }
 \keyword{internal}
 \section{Super classes}{
-\code{plume::NameHandler} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{StatusSetterPlumeQuarto}
+\code{NameHandler} -> \code{\link[plume:PlumeHandler]{PlumeHandler}} -> \code{\link[plume:StatusSetter]{StatusSetter}} -> \code{StatusSetterPlumeQuarto}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-StatusSetterPlumeQuarto-set_cofirst_authors}{\code{StatusSetterPlumeQuarto$set_cofirst_authors()}}
-\item \href{#method-StatusSetterPlumeQuarto-set_equal_contributor}{\code{StatusSetterPlumeQuarto$set_equal_contributor()}}
-\item \href{#method-StatusSetterPlumeQuarto-set_deceased}{\code{StatusSetterPlumeQuarto$set_deceased()}}
-\item \href{#method-StatusSetterPlumeQuarto-clone}{\code{StatusSetterPlumeQuarto$clone()}}
+  \itemize{
+    \item \href{#method-StatusSetterPlumeQuarto-set_cofirst_authors}{\code{StatusSetterPlumeQuarto$set_cofirst_authors()}}
+    \item \href{#method-StatusSetterPlumeQuarto-set_equal_contributor}{\code{StatusSetterPlumeQuarto$set_equal_contributor()}}
+    \item \href{#method-StatusSetterPlumeQuarto-set_deceased}{\code{StatusSetterPlumeQuarto$set_deceased()}}
+    \item \href{#method-StatusSetterPlumeQuarto-clone}{\code{StatusSetterPlumeQuarto$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="data"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-data'><code>plume::PlumeHandler$data()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_roles'><code>plume::PlumeHandler$get_roles()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-roles'><code>plume::PlumeHandler$roles()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="initialize"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-initialize'><code>plume::StatusSetter$initialize()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>plume::StatusSetter$set_corresponding_authors()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="data"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-data'><code>PlumeHandler$data()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>PlumeHandler$get_plume()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_roles'><code>PlumeHandler$get_roles()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>PlumeHandler$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-roles'><code>PlumeHandler$roles()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="initialize"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-initialize'><code>StatusSetter$initialize()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>StatusSetter$set_corresponding_authors()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StatusSetterPlumeQuarto-set_cofirst_authors"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-set_cofirst_authors}{}}}
-\subsection{Method \code{set_cofirst_authors()}}{
-Set co-first authors.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_cofirst_authors(..., .by = NULL)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{One or more unquoted expressions separated by commas.
+\subsection{\code{StatusSetterPlumeQuarto$set_cofirst_authors()}}{
+  Set co-first authors.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{StatusSetterPlumeQuarto$set_cofirst_authors(..., .by = NULL)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by \code{by} or \code{.by}
 determine co-first authors. Matching of values is case-insensitive and
 dot-agnostic.}
-
-\item{\code{.by}}{Variable used to specify which authors contributed equally to
+      \item{\code{.by}}{Variable used to specify which authors contributed equally to
 the work. By default, uses authors' id.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    The class instance.
+  }
 }
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-The class instance.
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StatusSetterPlumeQuarto-set_equal_contributor"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-set_equal_contributor}{}}}
-\subsection{Method \code{set_equal_contributor()}}{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+\subsection{\code{StatusSetterPlumeQuarto$set_equal_contributor()}}{
+  \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 This method has been deprecated in favour of \code{set_cofirst_authors()}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_equal_contributor(
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{StatusSetterPlumeQuarto$set_equal_contributor(
   ...,
   .by = NULL,
   by = deprecated()
-)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{One or more unquoted expressions separated by commas.
+)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by \code{by}/\code{.by}
 determine equal contributors. Matching of values is case-insensitive.}
-
-\item{\code{.by}}{Variable used to specify which authors are equal contributors.
+      \item{\code{.by}}{Variable used to specify which authors are equal contributors.
 By default, uses authors' id.}
-
-\item{\code{by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+      \item{\code{by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 Please use the \code{.by} parameter instead.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    The class instance.
+  }
 }
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-The class instance.
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StatusSetterPlumeQuarto-set_deceased"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-set_deceased}{}}}
-\subsection{Method \code{set_deceased()}}{
-Set deceased authors.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$set_deceased(..., .by = NULL, by = deprecated())}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{One or more unquoted expressions separated by commas.
+\subsection{\code{StatusSetterPlumeQuarto$set_deceased()}}{
+  Set deceased authors.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{StatusSetterPlumeQuarto$set_deceased(..., .by = NULL, by = deprecated())}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by \code{by} or \code{.by}
 determine deceased authors. Matching of values is case-insensitive and
 dot-agnostic.}
-
-\item{\code{.by}}{Variable used to specify whether an author is deceased or not.
+      \item{\code{.by}}{Variable used to specify whether an author is deceased or not.
 By default, uses authors' id.}
-
-\item{\code{by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+      \item{\code{by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 Please use the \code{.by} parameter instead.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    The class instance.
+  }
 }
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-The class instance.
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StatusSetterPlumeQuarto-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetterPlumeQuarto-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetterPlumeQuarto$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{StatusSetterPlumeQuarto$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{StatusSetterPlumeQuarto$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

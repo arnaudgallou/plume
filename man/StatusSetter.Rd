@@ -8,81 +8,83 @@ Internal class that manages authors' status.
 }
 \keyword{internal}
 \section{Super classes}{
-\code{plume::NameHandler} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{StatusSetter}
+\code{NameHandler} -> \code{\link[plume:PlumeHandler]{PlumeHandler}} -> \code{StatusSetter}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-StatusSetter-new}{\code{StatusSetter$new()}}
-\item \href{#method-StatusSetter-set_corresponding_authors}{\code{StatusSetter$set_corresponding_authors()}}
-\item \href{#method-StatusSetter-clone}{\code{StatusSetter$clone()}}
+  \itemize{
+    \item \href{#method-StatusSetter-initialize}{\code{StatusSetter$new()}}
+    \item \href{#method-StatusSetter-set_corresponding_authors}{\code{StatusSetter$set_corresponding_authors()}}
+    \item \href{#method-StatusSetter-clone}{\code{StatusSetter$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="data"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-data'><code>plume::PlumeHandler$data()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_roles'><code>plume::PlumeHandler$get_roles()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-roles'><code>plume::PlumeHandler$roles()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="data"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-data'><code>PlumeHandler$data()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>PlumeHandler$get_plume()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_roles'><code>PlumeHandler$get_roles()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>PlumeHandler$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-roles'><code>PlumeHandler$roles()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-StatusSetter-new"></a>}}
-\if{latex}{\out{\hypertarget{method-StatusSetter-new}{}}}
-\subsection{Method \code{new()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$new(..., by)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-StatusSetter-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-StatusSetter-initialize}{}}}
+\subsection{\code{StatusSetter$new()}}{
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{StatusSetter$new(..., by)}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StatusSetter-set_corresponding_authors"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetter-set_corresponding_authors}{}}}
-\subsection{Method \code{set_corresponding_authors()}}{
-Set corresponding authors.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$set_corresponding_authors(..., .by = NULL, by = deprecated())}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{One or more unquoted expressions separated by commas.
+\subsection{\code{StatusSetter$set_corresponding_authors()}}{
+  Set corresponding authors.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{StatusSetter$set_corresponding_authors(..., .by = NULL, by = deprecated())}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{One or more unquoted expressions separated by commas.
 Expressions matching values in the column defined by \code{by} or \code{.by}
 determine corresponding authors. Matching of values is case-insensitive
 and dot-agnostic.}
-
-\item{\code{.by}}{Variable used to set corresponding authors. By default, uses
+      \item{\code{.by}}{Variable used to set corresponding authors. By default, uses
 authors' id.}
-
-\item{\code{by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+      \item{\code{by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 Please use the \code{.by} parameter instead.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    The class instance.
+  }
 }
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-The class instance.
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StatusSetter-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-StatusSetter-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StatusSetter$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{StatusSetter$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{StatusSetter$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

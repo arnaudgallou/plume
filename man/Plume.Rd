@@ -61,41 +61,40 @@ aut <- Plume$new(
 aut$get_contributions(roles_first = FALSE, divider = " ")
 }
 \section{Super classes}{
-\code{plume::NameHandler} -> \code{\link[plume:PlumeHandler]{plume::PlumeHandler}} -> \code{\link[plume:StatusSetter]{plume::StatusSetter}} -> \code{\link[plume:StatusSetterPlume]{plume::StatusSetterPlume}} -> \code{Plume}
+\code{NameHandler} -> \code{\link[plume:PlumeHandler]{PlumeHandler}} -> \code{\link[plume:StatusSetter]{StatusSetter}} -> \code{\link[plume:StatusSetterPlume]{StatusSetterPlume}} -> \code{Plume}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-Plume-new}{\code{Plume$new()}}
-\item \href{#method-Plume-get_author_list}{\code{Plume$get_author_list()}}
-\item \href{#method-Plume-get_affiliations}{\code{Plume$get_affiliations()}}
-\item \href{#method-Plume-get_notes}{\code{Plume$get_notes()}}
-\item \href{#method-Plume-get_orcids}{\code{Plume$get_orcids()}}
-\item \href{#method-Plume-get_contact_details}{\code{Plume$get_contact_details()}}
-\item \href{#method-Plume-get_contributions}{\code{Plume$get_contributions()}}
-\item \href{#method-Plume-clone}{\code{Plume$clone()}}
+  \itemize{
+    \item \href{#method-Plume-initialize}{\code{Plume$new()}}
+    \item \href{#method-Plume-get_author_list}{\code{Plume$get_author_list()}}
+    \item \href{#method-Plume-get_affiliations}{\code{Plume$get_affiliations()}}
+    \item \href{#method-Plume-get_notes}{\code{Plume$get_notes()}}
+    \item \href{#method-Plume-get_orcids}{\code{Plume$get_orcids()}}
+    \item \href{#method-Plume-get_contact_details}{\code{Plume$get_contact_details()}}
+    \item \href{#method-Plume-get_contributions}{\code{Plume$get_contributions()}}
+    \item \href{#method-Plume-clone}{\code{Plume$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="data"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-data'><code>plume::PlumeHandler$data()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>plume::PlumeHandler$get_plume()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_roles'><code>plume::PlumeHandler$get_roles()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>plume::PlumeHandler$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-roles'><code>plume::PlumeHandler$roles()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>plume::StatusSetter$set_corresponding_authors()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterPlume" data-id="set_main_contributors"><a href='../../plume/html/StatusSetterPlume.html#method-StatusSetterPlume-set_main_contributors'><code>plume::StatusSetterPlume$set_main_contributors()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="data"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-data'><code>PlumeHandler$data()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_plume"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_plume'><code>PlumeHandler$get_plume()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="get_roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-get_roles'><code>PlumeHandler$get_roles()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="print"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-print'><code>PlumeHandler$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="PlumeHandler" data-id="roles"><a href='../../plume/html/PlumeHandler.html#method-PlumeHandler-roles'><code>PlumeHandler$roles()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetter" data-id="set_corresponding_authors"><a href='../../plume/html/StatusSetter.html#method-StatusSetter-set_corresponding_authors'><code>StatusSetter$set_corresponding_authors()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="plume" data-topic="StatusSetterPlume" data-id="set_main_contributors"><a href='../../plume/html/StatusSetterPlume.html#method-StatusSetterPlume-set_main_contributors'><code>StatusSetterPlume$set_main_contributors()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Plume-new"></a>}}
-\if{latex}{\out{\hypertarget{method-Plume-new}{}}}
-\subsection{Method \code{new()}}{
-Create a \code{Plume} object.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$new(
+\if{html}{\out{<a id="method-Plume-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-Plume-initialize}{}}}
+\subsection{\code{Plume$new()}}{
+  Create a \code{Plume} object.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Plume$new(
   data,
   names = NULL,
   roles = credit_roles(),
@@ -108,80 +107,67 @@ Create a \code{Plume} object.
   interword_spacing = TRUE,
   orcid_icon = icn_orcid(),
   by = NULL
-)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{data}}{A data frame containing author data.}
-
-\item{\code{names}}{A vector of key-value pairs specifying custom names to use,
+)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{data}}{A data frame containing author data.}
+      \item{\code{names}}{A vector of key-value pairs specifying custom names to use,
 where keys are default names and values their respective replacements.}
-
-\item{\code{roles}}{A vector of key-value pairs defining roles where keys
+      \item{\code{roles}}{A vector of key-value pairs defining roles where keys
 identify role columns and values describe the actual roles to use.}
-
-\item{\code{symbols}}{Symbols, as defined by \code{\link[=plm_symbols]{plm_symbols()}}, used to link
+      \item{\code{symbols}}{Symbols, as defined by \code{\link[=plm_symbols]{plm_symbols()}}, used to link
 authors to their metadata. Special Markdown characters are
 automatically escaped internally.}
-
-\item{\code{credit_roles}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+      \item{\code{credit_roles}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 It is now recommended to use \code{roles = credit_roles()} to use the
 \href{https://credit.niso.org}{Contributor Roles Taxonomy}.}
-
-\item{\code{initials_given_name}}{Should the initials of given names be used?}
-
-\item{\code{dotted_initials}}{Should initials be dot-separated?}
-
-\item{\code{family_name_first}}{Should literal names show family names first?}
-
-\item{\code{distinct_initials}}{If \code{TRUE}, will expand identical initials with
+      \item{\code{initials_given_name}}{Should the initials of given names be used?}
+      \item{\code{dotted_initials}}{Should initials be dot-separated?}
+      \item{\code{family_name_first}}{Should literal names show family names first?}
+      \item{\code{distinct_initials}}{If \code{TRUE}, will expand identical initials with
 additional letters from the last word of their respective family name
 until initials are unique. Initials of authors sharing the exact same
 name will remain in the short form.}
-
-\item{\code{interword_spacing}}{Should literal names use spacing? This parameter
+      \item{\code{interword_spacing}}{Should literal names use spacing? This parameter
 is only useful for people writing in languages that don't separate
 words with a space such as Chinese or Japanese.}
-
-\item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=icn_orcid]{icn_orcid()}}, to be
+      \item{\code{orcid_icon}}{The ORCID icon, as defined by \code{\link[=icn_orcid]{icn_orcid()}}, to be
 used. Only supported in R Markdown.}
-
-\item{\code{by}}{A character string defining the default variable used to assign
+      \item{\code{by}}{A character string defining the default variable used to assign
 specific metadata to authors in all \verb{set_*()} methods. By default, uses
 authors' id.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A \code{Plume} object.
+  }
 }
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A \code{Plume} object.
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-get_author_list"></a>}}
 \if{latex}{\out{\hypertarget{method-Plume-get_author_list}{}}}
-\subsection{Method \code{get_author_list()}}{
-Get the list of authors.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$get_author_list(suffix = NULL, format = deprecated())}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{suffix}}{A character string defining the format of symbols suffixing
+\subsection{\code{Plume$get_author_list()}}{
+  Get the list of authors.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Plume$get_author_list(suffix = NULL)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{suffix}}{A character string defining the format of symbols suffixing
 author names. See details.}
-
-\item{\code{format}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
-
-Please use the parameter \code{suffix} instead.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Details}{
-\code{suffix} lets you choose which symbol categories to suffix authors with,
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Details}{
+    \code{suffix} lets you choose which symbol categories to suffix authors with,
 using the following keys:
 \itemize{
 \item \code{a} for affiliations
@@ -196,88 +182,91 @@ when \code{"ca"} shows corresponding author mark first and affiliation ids
 second. Use \code{","} to separate and \code{"^"} to superscript symbols.
 
 Set to \code{NULL} or \code{""} to list authors without suffixes.
+  }
+  \subsection{Returns}{
+    A character vector.
+  }
 }
 
-\subsection{Returns}{
-A character vector.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-get_affiliations"></a>}}
 \if{latex}{\out{\hypertarget{method-Plume-get_affiliations}{}}}
-\subsection{Method \code{get_affiliations()}}{
-Get authors' affiliations.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$get_affiliations(superscript = TRUE, sep = "")}\if{html}{\out{</div>}}
+\subsection{\code{Plume$get_affiliations()}}{
+  Get authors' affiliations.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Plume$get_affiliations(superscript = TRUE, sep = "")}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{superscript}}{Should affiliation ids be superscripted?}
+      \item{\code{sep}}{Separator used to separate affiliation ids and affiliations.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A character vector.
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{superscript}}{Should affiliation ids be superscripted?}
-
-\item{\code{sep}}{Separator used to separate affiliation ids and affiliations.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A character vector.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-get_notes"></a>}}
 \if{latex}{\out{\hypertarget{method-Plume-get_notes}{}}}
-\subsection{Method \code{get_notes()}}{
-Get authors' notes.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$get_notes(superscript = TRUE, sep = "")}\if{html}{\out{</div>}}
+\subsection{\code{Plume$get_notes()}}{
+  Get authors' notes.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Plume$get_notes(superscript = TRUE, sep = "")}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{superscript}}{Should note ids be superscripted?}
+      \item{\code{sep}}{Separator used to separate note ids and notes.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A character vector.
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{superscript}}{Should note ids be superscripted?}
-
-\item{\code{sep}}{Separator used to separate note ids and notes.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A character vector.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-get_orcids"></a>}}
 \if{latex}{\out{\hypertarget{method-Plume-get_orcids}{}}}
-\subsection{Method \code{get_orcids()}}{
-Get authors' ORCID.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$get_orcids(compact = FALSE, icon = TRUE, sep = "")}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{compact}}{Should links only display the 16-digit identifier?}
-
-\item{\code{icon}}{Should the ORCID icon be shown? This is only supported in R
+\subsection{\code{Plume$get_orcids()}}{
+  Get authors' ORCID.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Plume$get_orcids(compact = FALSE, icon = TRUE, sep = "")}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{compact}}{Should links only display the 16-digit identifier?}
+      \item{\code{icon}}{Should the ORCID icon be shown? This is only supported in R
 Markdown.}
+      \item{\code{sep}}{Separator used to separate authors and their respective ORCID.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A character vector.
+  }
+}
 
-\item{\code{sep}}{Separator used to separate authors and their respective ORCID.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A character vector.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-get_contact_details"></a>}}
 \if{latex}{\out{\hypertarget{method-Plume-get_contact_details}{}}}
-\subsection{Method \code{get_contact_details()}}{
-Get the contact details of corresponding authors.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$get_contact_details(
+\subsection{\code{Plume$get_contact_details()}}{
+  Get the contact details of corresponding authors.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Plume$get_contact_details(
   template = "{details} ({name})",
   email = TRUE,
   phone = FALSE,
@@ -285,38 +274,37 @@ Get the contact details of corresponding authors.
   url = FALSE,
   sep = ", ",
   format = deprecated()
-)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{template}}{A \link[glue:glue]{glue} specification that uses the
+)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{template}}{A \link[glue:glue]{glue} specification that uses the
 variables \code{name} and/or \code{details}.}
-
-\item{\code{email, phone, fax, url}}{Arguments equal to \code{TRUE} are evaluated and
+      \item{\code{email, phone, fax, url}}{Arguments equal to \code{TRUE} are evaluated and
 passed to the variable \code{details}. By default, only \code{email} is set to
 \code{TRUE}.}
-
-\item{\code{sep}}{Separator used to separate \code{details} items.}
-
-\item{\code{format}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+      \item{\code{sep}}{Separator used to separate \code{details} items.}
+      \item{\code{format}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 Please use the parameter \code{template} instead.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A character vector.
+  }
 }
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A character vector.
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-get_contributions"></a>}}
 \if{latex}{\out{\hypertarget{method-Plume-get_contributions}{}}}
-\subsection{Method \code{get_contributions()}}{
-Get authors' contributions.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$get_contributions(
+\subsection{\code{Plume$get_contributions()}}{
+  Get authors' contributions.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Plume$get_contributions(
   roles_first = TRUE,
   by_author = FALSE,
   alphabetical_order = FALSE,
@@ -325,54 +313,50 @@ Get authors' contributions.
   sep = ", ",
   sep_last = " and ",
   dotted_initials = deprecated()
-)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{roles_first}}{If \code{TRUE}, displays roles first and authors second. If
+)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{roles_first}}{If \code{TRUE}, displays roles first and authors second. If
 \code{FALSE}, roles follow authors.}
-
-\item{\code{by_author}}{Should roles be grouped by author?}
-
-\item{\code{alphabetical_order}}{Should authors be listed in alphabetical order?
+      \item{\code{by_author}}{Should roles be grouped by author?}
+      \item{\code{alphabetical_order}}{Should authors be listed in alphabetical order?
 By default, lists authors in the order they are defined in the data.}
-
-\item{\code{literal_names}}{Should literal names be used?}
-
-\item{\code{divider}}{Separator used to separate roles from authors.}
-
-\item{\code{sep}}{Separator used to separate roles or authors.}
-
-\item{\code{sep_last}}{Separator used to separate the last two roles or authors
+      \item{\code{literal_names}}{Should literal names be used?}
+      \item{\code{divider}}{Separator used to separate roles from authors.}
+      \item{\code{sep}}{Separator used to separate roles or authors.}
+      \item{\code{sep_last}}{Separator used to separate the last two roles or authors
 if more than one item is associated to a role or author.}
-
-\item{\code{dotted_initials}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+      \item{\code{dotted_initials}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 Please use the \code{dotted_initials} parameter of \code{Plume$new()} instead.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A character vector.
+  }
 }
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A character vector.
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Plume-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-Plume-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Plume$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{Plume$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Plume$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

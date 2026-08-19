@@ -19,48 +19,62 @@ export(plm_template)
 export(sequential)
 export(set_default_names)
 importFrom(R6,R6Class)
-importFrom(dplyr,across)
-importFrom(dplyr,arrange)
-importFrom(dplyr,distinct)
-importFrom(dplyr,filter)
-importFrom(dplyr,if_else)
-importFrom(dplyr,mutate)
-importFrom(dplyr,select)
-importFrom(dplyr,summarise)
+importFrom(dplyr,
+  across,
+  arrange,
+  distinct,
+  filter,
+  if_else,
+  mutate,
+  select,
+  summarise
+)
 importFrom(glue,glue)
 importFrom(lifecycle,deprecated)
-importFrom(purrr,iwalk)
-importFrom(purrr,list_assign)
-importFrom(purrr,list_modify)
-importFrom(purrr,list_rbind)
-importFrom(purrr,map)
-importFrom(purrr,map_vec)
-importFrom(purrr,reduce)
-importFrom(rlang,":=")
-importFrom(rlang,.data)
-importFrom(rlang,caller_arg)
-importFrom(rlang,caller_env)
-importFrom(rlang,enexprs)
-importFrom(rlang,have_name)
-importFrom(rlang,is_call)
-importFrom(rlang,is_named)
-importFrom(rlang,is_string)
-importFrom(rlang,set_names)
-importFrom(rlang,sym)
-importFrom(rlang,syms)
-importFrom(stringr,fixed)
-importFrom(stringr,str_extract)
-importFrom(stringr,str_extract_all)
-importFrom(stringr,str_remove_all)
-importFrom(stringr,str_replace)
-importFrom(stringr,str_replace_all)
-importFrom(stringr,str_split_1)
-importFrom(tibble,rowid_to_column)
-importFrom(tibble,tibble)
-importFrom(tidyr,drop_na)
-importFrom(tidyr,nest)
-importFrom(tidyr,unnest)
-importFrom(tidyselect,all_of)
-importFrom(tidyselect,any_of)
-importFrom(tidyselect,starts_with)
+importFrom(purrr,
+  iwalk,
+  list_assign,
+  list_modify,
+  list_rbind,
+  map,
+  map_vec,
+  reduce
+)
+importFrom(rlang,
+  ":=",
+  .data,
+  caller_arg,
+  caller_env,
+  enexprs,
+  have_name,
+  is_call,
+  is_named,
+  is_string,
+  set_names,
+  sym,
+  syms
+)
+importFrom(stringr,
+  fixed,
+  str_extract,
+  str_extract_all,
+  str_remove_all,
+  str_replace,
+  str_replace_all,
+  str_split_1
+)
+importFrom(tibble,
+  rowid_to_column,
+  tibble
+)
+importFrom(tidyr,
+  drop_na,
+  nest,
+  unnest
+)
+importFrom(tidyselect,
+  all_of,
+  any_of,
+  starts_with
+)
 importFrom(vctrs,vec_duplicate_any)
